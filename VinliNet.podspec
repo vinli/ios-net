@@ -20,7 +20,8 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/vinli/ios-net.git", :tag => "1.0.2" }
 
-  s.source_files =  s.source_files = 'VinliSDK/*.{h,m}'
+  s.source_files = 'VinliSDK/*.{h,m}'
+  s.resources    = 'VinliSDK/*.{storyboard}'
 
   # s.framework  = "SomeFramework"
   # s.frameworks = "SomeFramework", "AnotherFramework"

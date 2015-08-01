@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "VLService.h"
 #import "VLLoginViewController.h"
+#import "VLDevicePickerViewController.h"
 
 //! Project version number for VinliSDK.
 FOUNDATION_EXPORT double VinliSDKVersionNumber;
