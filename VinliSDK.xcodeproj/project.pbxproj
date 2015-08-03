@@ -79,7 +79,7 @@
 		0B89E4971B18BA3E00E69AEA /* VLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B89E4951B18BA3E00E69AEA /* VLUser.m */; };
 		0BD2E50E1B0FF3DD00A5D2BC /* VLRuleServicesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2E50D1B0FF3DD00A5D2BC /* VLRuleServicesTests.m */; };
 		131398F6054ED704978CFAC1 /* libPods-VinliSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB1A1E6D3FE8D940C96F5C0D /* libPods-VinliSDKTests.a */; };
-		49E2518E1B6D397A0085D241 /* VLDevicePickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E2518C1B6D397A0085D241 /* VLDevicePickerViewController.h */; };
+		49E2518E1B6D397A0085D241 /* VLDevicePickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E2518C1B6D397A0085D241 /* VLDevicePickerViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49E2518F1B6D397A0085D241 /* VLDevicePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E2518D1B6D397A0085D241 /* VLDevicePickerViewController.m */; };
 		49E251911B6D3A480085D241 /* Vinli.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E251901B6D3A480085D241 /* Vinli.storyboard */; };
 		49E2F2FF1B6AA93700CD743C /* NSDictionary+NonNullable.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E2F2FD1B6AA93700CD743C /* NSDictionary+NonNullable.h */; };
