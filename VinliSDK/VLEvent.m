@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "VLRule.h"
 #import "VLEvent.h"
+#import "NSDictionary+NonNullable.h"
 
 
 @implementation VLEvent
@@ -37,6 +38,11 @@
             if([dictionary objectForKey:@"links"] != nil){
                 _selfURL = [NSURL URLWithString:dictionary[@"links"][@"self"]];
                 _notificationsURL = [NSURL URLWithString:dictionary[@"links"][@"notifications"]];
+            }
+            
+            if ([dictionary jsonObjectForKey:@"meta"])
+            {
+                _vehicleId = [[dictionary jsonObjectForKey:@"meta"] jsonObjectForKey:@"vehicleId"];
             }
         }
     }

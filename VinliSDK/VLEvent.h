@@ -16,6 +16,8 @@
 @property (readonly) NSString *stored;
 @property (readonly) NSString *eventType;
 
+@property (readonly) NSString *vehicleId;
+
 @property (readonly) NSString *objectId;
 @property (readonly) NSString *objectType;
 
