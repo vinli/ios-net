@@ -7,6 +7,7 @@
 //
 
 #import "VLSubscription.h"
+#import "NSDictionary+NonNullable.h"
 
 @implementation VLSubscription
 
@@ -35,6 +36,8 @@
             _deviceId = dictionary[@"deviceId"];
             _eventType = dictionary[@"eventType"];
             _url =   [NSURL URLWithString:dictionary[@"url"]];
+            _createdAt = [dictionary jsonObjectForKey:@"createdAt"];
+            _updatedAt = [dictionary jsonObjectForKey:@"updatedAt"];
             
             if(dictionary[@"appData"]){
                 NSString *jsonString = dictionary[@"appData"];
@@ -42,7 +45,7 @@
                 _appData = [NSJSONSerialization JSONObjectWithData:jsonData options:NSUTF8StringEncoding error:nil];
             }
             
-            if(dictionary[@"object"]){
+            if([dictionary jsonObjectForKey:@"object"]){
                 _objectRef = [[VLObjectRef alloc] initWithDictionary:dictionary[@"object"]];
             }
             
