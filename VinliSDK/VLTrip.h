@@ -32,6 +32,8 @@
 @property (readonly) NSURL *messagesURL;
 @property (readonly) NSURL *eventsURL;
 
+@property (readonly) NSDictionary* stats;
+
 - (id) initWithDictionary: (NSDictionary *) dictionary;
 
 @end

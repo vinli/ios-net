@@ -45,6 +45,12 @@
                 _messagesURL = [NSURL URLWithString:[[dictionary objectForKey:@"links"] objectForKey:@"messages"]];
                 _eventsURL = [NSURL URLWithString:[[dictionary objectForKey:@"links"] objectForKey:@"events"]];
             }
+            
+            if ([dictionary jsonObjectForKey:@"stats"])
+            {
+                _stats = [dictionary jsonObjectForKey:@"stats"];
+            }
+            
         }
     }
     return self;
