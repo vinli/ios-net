@@ -285,7 +285,41 @@
             onFailureBlock(error, response, bodyString);
         }
     }];
+}
+
+- (void)getDeviceCapabilitiesWithId:(NSString *)deviceId
+                        onSuccess:(void (^)(NSDictionary *capabilites, NSHTTPURLResponse *response))onSuccessBlock
+                        onFailure:(void (^)(NSError *, NSHTTPURLResponse *, NSString *))onFailureBlock
+{
+    if(_session == nil){
+        if(onFailureBlock){
+            onFailureBlock([self getNoSessionError], nil, nil);
+        }
+        return;
+    }
     
+    NSString *path = [NSString stringWithFormat:@"/devices/%@/capabilities", deviceId];
+    
+    [self startWithHost:STRING_HOST_PLATFORM path:path queries:nil HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        
+        if (response.statusCode == 200) {
+            if (onSuccessBlock) {
+                NSDictionary* capabilites = result[@"capabilities"];
+                onSuccessBlock(capabilites, response);
+            }
+        }
+        else {
+            if (onFailureBlock) {
+                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:2002 userInfo:@{@"NSLocalizedDescriptionKey": @"Received unexpected response from API call"}];
+                onFailureBlock(error, response, result.description);
+            }
+        }
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) {
+            onFailureBlock(error, response, bodyString);
+        }
+    }];
+
 }
 
 - (void) getLatestVehicleForDeviceWithId:(NSString *) deviceId
@@ -1198,85 +1232,6 @@
             onFailureBlock(error, response, bodyString);
         }
     }];
-}
-
-#pragma mark - Auth Services
-
-- (void) getUserOnSuccess:(void (^)(VLUser *user, NSHTTPURLResponse *response))onSuccessBlock
-       onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
-    
-    if(_session == nil){
-        if(onFailureBlock){
-            onFailureBlock([self getNoSessionError], nil, nil);
-        }
-        return;
-    }
-    
-    NSString *path = [NSString stringWithFormat:@"/user"];
-    
-    [self startWithHost:STRING_HOST_AUTH path:path queries:nil HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        
-        if (response.statusCode == 200) {
-            if (onSuccessBlock) {
-                VLUser *user = [[VLUser alloc] initWithDictionary:result];
-                onSuccessBlock(user, response);
-            }
-        }
-        else {
-            if (onFailureBlock) {
-                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:2002 userInfo:@{@"NSLocalizedDescriptionKey": @"Received unexpected response from API call"}];
-                onFailureBlock(error, response, result.description);
-            }
-        }
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-        if (onFailureBlock) {
-            onFailureBlock(error, response, bodyString);
-        }
-    }];
-    
-}
-
-- (void) getDevicesForUserOnSuccess:(void (^)(NSArray *deviceArray, NSHTTPURLResponse *response))onSuccessBlock
-                    onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
- 
-    if(_session == nil){
-        if(onFailureBlock){
-            onFailureBlock([self getNoSessionError], nil, nil);
-        }
-        return;
-    }
-    
-    NSString *path = [NSString stringWithFormat:@"/user/devices"];
-    
-    [self startWithHost:STRING_HOST_AUTH path:path queries:nil HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        
-        if (response.statusCode == 200) {
-            if (onSuccessBlock) {
-                
-                NSArray *json = result[@"devices"];
-                NSMutableArray *deviceArray = [[NSMutableArray alloc] init];
-                
-                if(json.count > 0){
-                    for(NSDictionary *device in json){
-                        [deviceArray addObject:[[VLDevice alloc] initWithDictionary:device]];
-                    }
-                }
-                
-                onSuccessBlock(deviceArray, response);
-            }
-        }
-        else {
-            if (onFailureBlock) {
-                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:2002 userInfo:@{@"NSLocalizedDescriptionKey": @"Received unexpected response from API call"}];
-                onFailureBlock(error, response, result.description);
-            }
-        }
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-        if (onFailureBlock) {
-            onFailureBlock(error, response, bodyString);
-        }
-    }];
-    
 }
 
 #pragma mark - NSError

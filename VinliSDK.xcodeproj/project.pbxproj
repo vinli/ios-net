@@ -74,14 +74,13 @@
 		0B89E4891B179FD000E69AEA /* VLEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 7367E39F1B165ECF004223A6 /* VLEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B89E48A1B179FE300E69AEA /* VLNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = 7367E3A51B1759BB004223A6 /* VLNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B89E48B1B17A03000E69AEA /* VLNotificationPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7367E3A81B175FFE004223A6 /* VLNotificationPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0B89E4931B17DC3300E69AEA /* VLAuthServicesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B89E4921B17DC3300E69AEA /* VLAuthServicesTests.m */; };
 		0B89E4961B18BA3E00E69AEA /* VLUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B89E4941B18BA3E00E69AEA /* VLUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B89E4971B18BA3E00E69AEA /* VLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B89E4951B18BA3E00E69AEA /* VLUser.m */; };
 		0BD2E50E1B0FF3DD00A5D2BC /* VLRuleServicesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2E50D1B0FF3DD00A5D2BC /* VLRuleServicesTests.m */; };
 		131398F6054ED704978CFAC1 /* libPods-VinliSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB1A1E6D3FE8D940C96F5C0D /* libPods-VinliSDKTests.a */; };
+		49096B081B796699002D2401 /* Vinli.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E251901B6D3A480085D241 /* Vinli.storyboard */; };
 		49E2518E1B6D397A0085D241 /* VLDevicePickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E2518C1B6D397A0085D241 /* VLDevicePickerViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49E2518F1B6D397A0085D241 /* VLDevicePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E2518D1B6D397A0085D241 /* VLDevicePickerViewController.m */; };
-		49E251911B6D3A480085D241 /* Vinli.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E251901B6D3A480085D241 /* Vinli.storyboard */; };
 		49E2F2FF1B6AA93700CD743C /* NSDictionary+NonNullable.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E2F2FD1B6AA93700CD743C /* NSDictionary+NonNullable.h */; };
 		49E2F3001B6AA93700CD743C /* NSDictionary+NonNullable.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E2F2FE1B6AA93700CD743C /* NSDictionary+NonNullable.m */; };
 		7367E39E1B165EB6004223A6 /* VLEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367E39D1B165EB6004223A6 /* VLEvent.m */; };
@@ -175,7 +174,6 @@
 		0B3DDC5D1B15355200D95E61 /* VLTripPager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTripPager.m; sourceTree = "<group>"; };
 		0B69F0A81B39B54100684F6D /* VLObjectRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLObjectRef.h; sourceTree = "<group>"; };
 		0B69F0A91B39B54100684F6D /* VLObjectRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLObjectRef.m; sourceTree = "<group>"; };
-		0B89E4921B17DC3300E69AEA /* VLAuthServicesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLAuthServicesTests.m; sourceTree = "<group>"; };
 		0B89E4941B18BA3E00E69AEA /* VLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLUser.h; sourceTree = "<group>"; };
 		0B89E4951B18BA3E00E69AEA /* VLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLUser.m; sourceTree = "<group>"; };
 		0BD2E50D1B0FF3DD00A5D2BC /* VLRuleServicesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLRuleServicesTests.m; sourceTree = "<group>"; };
@@ -298,7 +296,6 @@
 				0B3DDC3B1B14EEE200D95E61 /* VLTestHelper.h */,
 				0B3DDC3C1B14EEE200D95E61 /* VLTestHelper.m */,
 				E92943661B165A3300AAC7D3 /* VLEventServicesTests.m */,
-				0B89E4921B17DC3300E69AEA /* VLAuthServicesTests.m */,
 			);
 			path = VinliSDKTests;
 			sourceTree = "<group>";
@@ -586,7 +583,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49E251911B6D3A480085D241 /* Vinli.storyboard in Resources */,
+				49096B081B796699002D2401 /* Vinli.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,7 +697,6 @@
 				E929436D1B166B4600AAC7D3 /* VLSubscriptionServiceTests.m in Sources */,
 				E92943591B15387C00AAC7D3 /* VLTelemetryServicesTests.m in Sources */,
 				0B3DDC571B1528DB00D95E61 /* VLTripServicesTests.m in Sources */,
-				0B89E4931B17DC3300E69AEA /* VLAuthServicesTests.m in Sources */,
 				E92943671B165A3300AAC7D3 /* VLEventServicesTests.m in Sources */,
 				0B3DDC3D1B14EEE200D95E61 /* VLTestHelper.m in Sources */,
 			);

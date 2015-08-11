@@ -20,6 +20,7 @@
 @property (readonly) NSURL *eventsURL;
 @property (readonly) NSURL *subscriptionsURL;
 @property (readonly) NSURL *iconURL;
+@property (readonly) NSString* chipID;
 
 - (id) initWithDictionary: (NSDictionary *) dictionary;
 

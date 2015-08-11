@@ -7,6 +7,7 @@
 //
 
 #import "VLDevice.h"
+#import "NSDictionary+NonNullable.h"
 
 @implementation VLDevice
 
@@ -32,6 +33,11 @@
                 _iconURL = nil;
             }else{
                 _iconURL = [NSURL URLWithString:[dictionary objectForKey:@"icon"]];
+            }
+            
+            if ([dictionary jsonObjectForKey:@"chipId"])
+            {
+                _chipID = [dictionary jsonObjectForKey:@"chipId"];
             }
             
             if (dictionary[@"links"]) {
