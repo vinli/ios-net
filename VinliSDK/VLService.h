@@ -722,6 +722,20 @@
                                 onSuccess:(void (^)(NSHTTPURLResponse *response))onSuccessBlock
                                 onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
+#pragma mark - Auth Services
+
+// Get a VLUser object from the Vinli Web API
+// Route: GET /user
+// @callbacks:
+// onSuccessBlock:  This is a block that will be called if (onSuccessBlock != nil)
+//                  User will be passed parameters through this callback block
+//                  @params:
+//                  user:     A VLUser object.
+//                  response:   An NSHTTPURLResponse instance, from which user will know the URL, statusCode, etc.
+// onFailureBlock:  Called when connection failed. Usually occurred when the website does not exist, or no internet connection.
+- (void) getUserOnSuccess:(void (^)(VLUser *user, NSHTTPURLResponse *response))onSuccessBlock
+                onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
 
 
 @end

@@ -1234,6 +1234,42 @@
     }];
 }
 
+#pragma mark - Auth Services
+
+- (void) getUserOnSuccess:(void (^)(VLUser *user, NSHTTPURLResponse *response))onSuccessBlock
+       onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
+    
+    if(_session == nil){
+        if(onFailureBlock){
+            onFailureBlock([self getNoSessionError], nil, nil);
+        }
+        return;
+    }
+    
+    NSString *path = [NSString stringWithFormat:@"/users/_current"];
+    
+    [self startWithHost:STRING_HOST_AUTH path:path queries:nil HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        
+        if (response.statusCode == 200) {
+            if (onSuccessBlock) {
+                VLUser *user = [[VLUser alloc] initWithDictionary:result];
+                onSuccessBlock(user, response);
+            }
+        }
+        else {
+            if (onFailureBlock) {
+                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:2002 userInfo:@{@"NSLocalizedDescriptionKey": @"Received unexpected response from API call"}];
+                onFailureBlock(error, response, result.description);
+            }
+        }
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) {
+            onFailureBlock(error, response, bodyString);
+        }
+    }];
+    
+}
+
 #pragma mark - NSError
 
 - (NSError *) getNoSessionError{
