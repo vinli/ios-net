@@ -79,11 +79,7 @@
     NSString *strUri = @"";
     host = [host stringByAppendingString:_host];
     
-    if([host hasPrefix:STRING_HOST_AUTH]){
-        strUri = path;
-    }else{
-        strUri = [NSString stringWithFormat:@"%@%@", STRING_API_VERSION, path];
-    }
+    strUri = [NSString stringWithFormat:@"%@%@", STRING_API_VERSION, path];
     
     if(queries != nil){
         NSString *queryString = @"";
