@@ -73,6 +73,7 @@
 - (BOOL) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     
     NSString *requestString = request.URL.absoluteString;
+    NSLog(@"request = %@", requestString);
     
     if([requestString hasPrefix:_redirectUri.lowercaseString]){
         

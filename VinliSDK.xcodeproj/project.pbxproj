@@ -78,9 +78,12 @@
 		0B89E4971B18BA3E00E69AEA /* VLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B89E4951B18BA3E00E69AEA /* VLUser.m */; };
 		0BD2E50E1B0FF3DD00A5D2BC /* VLRuleServicesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2E50D1B0FF3DD00A5D2BC /* VLRuleServicesTests.m */; };
 		131398F6054ED704978CFAC1 /* libPods-VinliSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB1A1E6D3FE8D940C96F5C0D /* libPods-VinliSDKTests.a */; };
-		49096B081B796699002D2401 /* Vinli.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E251901B6D3A480085D241 /* Vinli.storyboard */; };
-		49E2518E1B6D397A0085D241 /* VLDevicePickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E2518C1B6D397A0085D241 /* VLDevicePickerViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		49E2518F1B6D397A0085D241 /* VLDevicePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E2518D1B6D397A0085D241 /* VLDevicePickerViewController.m */; };
+		49AB6E971B82432C00DCF808 /* VLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 49AB6E931B82432C00DCF808 /* VLSessionManager.h */; };
+		49AB6E981B82432C00DCF808 /* VLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AB6E941B82432C00DCF808 /* VLSessionManager.m */; };
+		49AB6E991B82432C00DCF808 /* VLUrlParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 49AB6E951B82432C00DCF808 /* VLUrlParser.h */; };
+		49AB6E9A1B82432C00DCF808 /* VLUrlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AB6E961B82432C00DCF808 /* VLUrlParser.m */; };
+		49AB6E9D1B82446900DCF808 /* VLUserCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 49AB6E9B1B82446900DCF808 /* VLUserCache.h */; };
+		49AB6E9E1B82446900DCF808 /* VLUserCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AB6E9C1B82446900DCF808 /* VLUserCache.m */; };
 		49E2F2FF1B6AA93700CD743C /* NSDictionary+NonNullable.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E2F2FD1B6AA93700CD743C /* NSDictionary+NonNullable.h */; };
 		49E2F3001B6AA93700CD743C /* NSDictionary+NonNullable.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E2F2FE1B6AA93700CD743C /* NSDictionary+NonNullable.m */; };
 		7367E39E1B165EB6004223A6 /* VLEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367E39D1B165EB6004223A6 /* VLEvent.m */; };
@@ -178,9 +181,12 @@
 		0B89E4951B18BA3E00E69AEA /* VLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLUser.m; sourceTree = "<group>"; };
 		0BD2E50D1B0FF3DD00A5D2BC /* VLRuleServicesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLRuleServicesTests.m; sourceTree = "<group>"; };
 		20DC824FFEF4A47CAA1EA879 /* Pods-VinliSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinliSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VinliSDKTests/Pods-VinliSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
-		49E2518C1B6D397A0085D241 /* VLDevicePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLDevicePickerViewController.h; sourceTree = "<group>"; };
-		49E2518D1B6D397A0085D241 /* VLDevicePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLDevicePickerViewController.m; sourceTree = "<group>"; };
-		49E251901B6D3A480085D241 /* Vinli.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Vinli.storyboard; sourceTree = "<group>"; };
+		49AB6E931B82432C00DCF808 /* VLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLSessionManager.h; sourceTree = "<group>"; };
+		49AB6E941B82432C00DCF808 /* VLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLSessionManager.m; sourceTree = "<group>"; };
+		49AB6E951B82432C00DCF808 /* VLUrlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLUrlParser.h; sourceTree = "<group>"; };
+		49AB6E961B82432C00DCF808 /* VLUrlParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLUrlParser.m; sourceTree = "<group>"; };
+		49AB6E9B1B82446900DCF808 /* VLUserCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLUserCache.h; sourceTree = "<group>"; };
+		49AB6E9C1B82446900DCF808 /* VLUserCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLUserCache.m; sourceTree = "<group>"; };
 		49E2F2FD1B6AA93700CD743C /* NSDictionary+NonNullable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NonNullable.h"; sourceTree = "<group>"; };
 		49E2F2FE1B6AA93700CD743C /* NSDictionary+NonNullable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NonNullable.m"; sourceTree = "<group>"; };
 		7367E39D1B165EB6004223A6 /* VLEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLEvent.m; sourceTree = "<group>"; };
@@ -259,11 +265,14 @@
 		0B1671061B0FC2B8009BE7A9 /* VinliSDK */ = {
 			isa = PBXGroup;
 			children = (
-				49E251901B6D3A480085D241 /* Vinli.storyboard */,
+				49AB6E9B1B82446900DCF808 /* VLUserCache.h */,
+				49AB6E9C1B82446900DCF808 /* VLUserCache.m */,
+				49AB6E931B82432C00DCF808 /* VLSessionManager.h */,
+				49AB6E941B82432C00DCF808 /* VLSessionManager.m */,
+				49AB6E951B82432C00DCF808 /* VLUrlParser.h */,
+				49AB6E961B82432C00DCF808 /* VLUrlParser.m */,
 				0B16712F1B0FC39D009BE7A9 /* VLService.h */,
 				0B1671301B0FC39D009BE7A9 /* VLService.m */,
-				49E2518C1B6D397A0085D241 /* VLDevicePickerViewController.h */,
-				49E2518D1B6D397A0085D241 /* VLDevicePickerViewController.m */,
 				0BD2E50C1B0FDB7C00A5D2BC /* Models */,
 				0B1671731B0FC408009BE7A9 /* Util */,
 				0B1671561B0FC3F0009BE7A9 /* VLClasses */,
@@ -465,6 +474,7 @@
 				0B16714F1B0FC39D009BE7A9 /* VLVehicle.h in Headers */,
 				0B3DDC381B14D1DD00D95E61 /* VLVehiclePager.h in Headers */,
 				0B1671491B0FC39D009BE7A9 /* VLRule.h in Headers */,
+				49AB6E991B82432C00DCF808 /* VLUrlParser.h in Headers */,
 				0B2277001B165DD1000AF179 /* VLLoginViewController.h in Headers */,
 				0B3DDC2E1B14C40A00D95E61 /* VLChronoPager.h in Headers */,
 				0B3DDC2A1B14C31B00D95E61 /* VLOffsetPager.h in Headers */,
@@ -483,14 +493,15 @@
 				0B3778231B25E0A7004AC2D6 /* VLRadiusBoundary.h in Headers */,
 				0B37781F1B25DEF9004AC2D6 /* VLParametricBoundary.h in Headers */,
 				E929436A1B165D0800AAC7D3 /* VLSubscription.h in Headers */,
+				49AB6E9D1B82446900DCF808 /* VLUserCache.h in Headers */,
 				E92943741B17D6B100AAC7D3 /* VLDevicePager.h in Headers */,
 				0B89E4961B18BA3E00E69AEA /* VLUser.h in Headers */,
 				0B89E48A1B179FE300E69AEA /* VLNotification.h in Headers */,
 				0B37782B1B28B7B8004AC2D6 /* VLLoginButton.h in Headers */,
+				49AB6E971B82432C00DCF808 /* VLSessionManager.h in Headers */,
 				E990CE6E1B26405A00CDEF15 /* VLPolygonBoundary.h in Headers */,
 				0B69F0AA1B39B54100684F6D /* VLObjectRef.h in Headers */,
 				0B3DDC261B14C28600D95E61 /* VLPager.h in Headers */,
-				49E2518E1B6D397A0085D241 /* VLDevicePickerViewController.h in Headers */,
 				0B16710A1B0FC2B8009BE7A9 /* VinliSDK.h in Headers */,
 				0B1671541B0FC3DD009BE7A9 /* JCDHTTPConnection.h in Headers */,
 				0B1671761B0FC418009BE7A9 /* NSString+Random.h in Headers */,
@@ -583,7 +594,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49096B081B796699002D2401 /* Vinli.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,11 +662,11 @@
 				7367E39E1B165EB6004223A6 /* VLEvent.m in Sources */,
 				0B3DDC551B1518BE00D95E61 /* VLRulePager.m in Sources */,
 				E929435D1B15425400AAC7D3 /* VLTelemetryMessagePager.m in Sources */,
+				49AB6E9E1B82446900DCF808 /* VLUserCache.m in Sources */,
 				0B3DDC2F1B14C40A00D95E61 /* VLChronoPager.m in Sources */,
 				0B16716A1B0FC401009BE7A9 /* VLRequestHeader.m in Sources */,
 				0B16714E1B0FC39D009BE7A9 /* VLTelemetryMessage.m in Sources */,
 				E92943751B17D6B100AAC7D3 /* VLDevicePager.m in Sources */,
-				49E2518F1B6D397A0085D241 /* VLDevicePickerViewController.m in Sources */,
 				0B16713A1B0FC39D009BE7A9 /* VLBoundary.m in Sources */,
 				0B1671501B0FC39D009BE7A9 /* VLVehicle.m in Sources */,
 				0B3DDC271B14C28600D95E61 /* VLPager.m in Sources */,
@@ -671,6 +681,7 @@
 				0B16713C1B0FC39D009BE7A9 /* VLDevice.m in Sources */,
 				E92943611B160F3700AAC7D3 /* VLLocation.m in Sources */,
 				E92943651B160F4B00AAC7D3 /* VLLocationPager.m in Sources */,
+				49AB6E9A1B82432C00DCF808 /* VLUrlParser.m in Sources */,
 				49E2F3001B6AA93700CD743C /* NSDictionary+NonNullable.m in Sources */,
 				0B3DDC5F1B15355200D95E61 /* VLTripPager.m in Sources */,
 				0B2277011B165DD1000AF179 /* VLLoginViewController.m in Sources */,
@@ -684,6 +695,7 @@
 				0B3DDC5B1B1534AB00D95E61 /* VLTrip.m in Sources */,
 				E92943711B1679F600AAC7D3 /* VLSubscriptionPager.m in Sources */,
 				0B1671551B0FC3DD009BE7A9 /* JCDHTTPConnection.m in Sources */,
+				49AB6E981B82432C00DCF808 /* VLSessionManager.m in Sources */,
 				0B3778201B25DEF9004AC2D6 /* VLParametricBoundary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
