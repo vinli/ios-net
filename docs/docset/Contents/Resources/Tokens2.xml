@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/CoveredState.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/CoveredState</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>VLRule.h</DeclaredIn>
+            
+			
+			<NodeRef refid="2"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/CoveredStateTrue</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>CoveredStateTrue</Declaration>
+            
+            <DeclaredIn>VLRule.h</DeclaredIn>
+            
+            <NodeRef refid="2"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/CoveredStateFalse</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>CoveredStateFalse</Declaration>
+            
+            <DeclaredIn>VLRule.h</DeclaredIn>
+            
+            <NodeRef refid="2"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/CoveredStateNull</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>CoveredStateNull</Declaration>
+            
+            <DeclaredIn>VLRule.h</DeclaredIn>
+            
+            <NodeRef refid="2"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

@@ -1,0 +1,4 @@
+Documentation set was installed to Xcode!
+
+Path: /Users/Andrew/Library/Developer/Shared/Documentation/DocSets/li.Vin.VinliSDK.docset
+Time: 2015-08-19 14:47:53 +0000
