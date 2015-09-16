@@ -201,6 +201,70 @@ static NSString * VLSessionManagerCachedSessionsKey = @"VLSessionManagerCachedSe
     
 }
 
+- (void)loginWithCompletion:(AuthenticationCompletion)onCompletion
+{
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Choose User"
+                                                                   message:@""
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"New User"
+                                                            style:UIAlertActionStyleCancel
+                                                          handler:^(UIAlertAction * action) {
+                                                              [self loginWithUserId:nil withCompletion:onCompletion];
+                                                          }];
+    
+    [alert addAction:defaultAction];
+
+    
+    [[VLUserCache getUsersCache].allValues enumerateObjectsUsingBlock:^(VLUserCache* userCache, NSUInteger idx, BOOL *stop) {
+        
+        if (!userCache.user.firstName) {
+            return;
+        }
+        
+        UIAlertAction* action = [UIAlertAction actionWithTitle:userCache.user.firstName style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [self loginWithUserId:userCache.user.userId withCompletion:onCompletion];
+        }];
+        [alert addAction:action];
+    }];
+    
+    
+    
+    [[[UIApplication sharedApplication].windows[0] rootViewController] presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)loginWithUserId:(NSString *)userId withCompletion:(AuthenticationCompletion)onCompletion
+{
+    [self getSessionForUserWithId:userId completion:^(VLSession *session, NSError *error) {
+        
+        if (onCompletion)
+        {
+            onCompletion(session, error);
+        }
+        
+        if (!error)
+        {
+            if ([VLUserCache getUserWithId:userId].user) {
+                ;
+            }
+            
+            [self.service getUserOnSuccess:^(VLUser *user, NSHTTPURLResponse *response) {
+                
+                VLUserCache* userCache = [[VLUserCache alloc] initWithUser:user];
+                userCache.userId = user.userId;
+                userCache.accessToken = session.accessToken;
+                [userCache save];
+                
+            } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+                NSLog(@"Failure retrieving user data after login");
+            }];
+        }
+    }];
+    
+}
+
+
 
 
 @end

@@ -27,13 +27,14 @@ typedef void(^AuthenticationCompletion)(VLSession* session, NSError* error);
 
 @property (readonly, strong, nonatomic) VLSession *currentSession;
 
-
-
 + (instancetype)sharedManager;
 
 - (void)handleCustomURL:(NSURL *)url;
 
 
 - (void)getSessionForUserWithId:(NSString *)userId completion:(AuthenticationCompletion)onCompletion;
+
+// Convenience method to display an AlertView with available users.
+- (void)loginWithCompletion:(AuthenticationCompletion)onCompletion;
 
 @end
