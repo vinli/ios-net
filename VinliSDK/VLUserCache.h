@@ -7,13 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "VLUser.h"
 
 @interface VLUserCache : NSObject
 
 @property (strong, nonatomic) NSString* userId;
 @property (strong, nonatomic) NSString* accessToken;
-@property (strong, nonatomic) NSString* devicesStr;
 @property (strong, nonatomic) NSDictionary* devices;
+
+@property (strong, nonatomic, readonly) VLUser* user;
+
+- (instancetype)initWithUser:(VLUser *)user;
 
 - (void)save;
 + (VLUserCache *)getUserWithId:(NSString *)userId;

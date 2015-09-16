@@ -47,10 +47,9 @@ static NSString * const VLUrlParserKeyUserId        = @"userId";
         
         if (params[VLUrlParserKeyDevices])
         {
-            NSString* devicesString = params[VLUrlParserKeyDevices];
-            userCache.devicesStr = devicesString;
-            NSArray* devicesArr = [devicesString componentsSeparatedByString:@","];
-            NSLog(@"Devices = %@", devicesArr);
+//            NSString* devicesString = params[VLUrlParserKeyDevices];
+//            NSArray* devicesArr = [devicesString componentsSeparatedByString:@","];
+//            NSLog(@"Devices = %@", devicesArr);
         }
         
         if (params[VLUrlParserKeyUserId])
@@ -64,22 +63,28 @@ static NSString * const VLUrlParserKeyUserId        = @"userId";
     return nil;
 }
 
-- (NSURL *)buildUrl
+- (NSURL *)buildUrlWithUserId:(NSString *)userId host:(NSString *)host
 {
-    // Powell User ID
-    //9e1dbe1d-a6e4-4b9d-af1e-f97ab7064e79
-    
-    NSString* userId = @"9e1dbe1d-a6e4-4b9d-af1e-f97ab7064e79";
-    
     NSString* redirectUri = self.redirectUri;
     if (![redirectUri containsString:@"://"])
     {
         redirectUri = [NSString stringWithFormat:@"%@://", redirectUri];
     }
-    
+
     NSString* urlStr = [NSString stringWithFormat:@"myvinli://?redirectUri=%@&userId=%@&clientId=%@",redirectUri, userId, self.clientId];
     
+    if (host)
+    {
+        urlStr = [NSString stringWithFormat:@"%@&host=%@", urlStr, host];
+    }
+    
     return [NSURL URLWithString:urlStr];
+
+}
+
+- (NSURL *)buildUrlWithUserId:(NSString *)userId
+{
+    return [self buildUrlWithUserId:userId host:nil];
 }
 
 @end

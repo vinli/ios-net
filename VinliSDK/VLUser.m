@@ -33,4 +33,30 @@
     return self;
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"<%@: %p (userId: %@) (firstName: %@) (lastName: %@)>", NSStringFromClass([self class]), self, self.userId, self.firstName, self.lastName];;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder {
+    [encoder encodeObject:self.userId forKey:@"userId"];
+    [encoder encodeObject:self.firstName forKey:@"firstName"];
+    [encoder encodeObject:self.lastName forKey:@"lastName"];
+    [encoder encodeObject:self.email forKey:@"email"];
+    [encoder encodeObject:self.phone forKey:@"phone"];
+    [encoder encodeObject:self.imageURL forKey:@"imageURL"];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    if((self = [super init])) {
+        _userId = [decoder decodeObjectForKey:@"userId"];
+        _firstName = [decoder decodeObjectForKey:@"firstName"];
+        _lastName = [decoder decodeObjectForKey:@"lastName"];
+        _email = [decoder decodeObjectForKey:@"email"];
+        _phone = [decoder decodeObjectForKey:@"phone"];
+        _imageURL = [decoder decodeObjectForKey:@"firstName"];
+    }
+    return self;
+}
+
+
 @end

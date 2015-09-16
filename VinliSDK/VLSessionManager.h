@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define VLSESSIONMANAGER_USE_DEV_HOST                       0
+
 @class VLUser;
 @class VLSession;
 @class VLService;

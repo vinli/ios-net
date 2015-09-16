@@ -12,6 +12,17 @@ static NSString * const VLUserCacheUsers = @"VLUserCacheUsers";
 
 @implementation VLUserCache
 
+#pragma mark - Initialization
+- (instancetype)initWithUser:(VLUser *)user
+{
+    if (self = [super init])
+    {
+        _user = user;
+    }
+    
+    return self;
+}
+
 + (NSDictionary *)getUsersCache
 {
     NSDictionary* cacheData = [[NSUserDefaults standardUserDefaults] objectForKey:VLUserCacheUsers];
@@ -28,17 +39,19 @@ static NSString * const VLUserCacheUsers = @"VLUserCacheUsers";
 - (void)encodeWithCoder:(NSCoder *)encoder {
     
     [encoder encodeObject:self.accessToken forKey:@"accessToken"];
-    [encoder encodeObject:self.devicesStr forKey:@"devicesStr"];
     [encoder encodeObject:self.userId forKey:@"userId"];
     [encoder encodeObject:self.devices forKey:@"devices"];
+    
+    [encoder encodeObject:[NSKeyedArchiver archivedDataWithRootObject:_user] forKey:@"user"];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder {
     if((self = [super init])) {
         self.accessToken = [decoder decodeObjectForKey:@"accessToken"];
-        self.devicesStr = [decoder decodeObjectForKey:@"devicesStr"];
         self.userId = [decoder decodeObjectForKey:@"userId"];
         self.devices = [decoder decodeObjectForKey:@"devices"];
+        
+        _user = [NSKeyedUnarchiver unarchiveObjectWithData:[decoder decodeObjectForKey:@"user"]];
     }
     return self;
 }

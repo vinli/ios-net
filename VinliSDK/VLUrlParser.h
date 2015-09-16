@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSString* redirectUri;
 
 - (VLUserCache *)parseUrl:(NSURL *)url;
-- (NSURL *)buildUrl;
+- (NSURL *)buildUrlWithUserId:(NSString *)userId;
+- (NSURL *)buildUrlWithUserId:(NSString *)userId host:(NSString *)host;
 
 @end

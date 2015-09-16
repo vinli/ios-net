@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface VLUser : NSObject
+@interface VLUser : NSObject <NSCoding>
 
 @property (readonly) NSString *userId;
 @property (readonly) NSString *firstName;

@@ -53,7 +53,7 @@ static NSString * VLSessionManagerCachedSessionsKey = @"VLSessionManagerCachedSe
     if (!_service)
     {
         _service = [[VLService alloc] init];
-#if DEBUG
+#if VLSESSIONMANAGER_USE_DEV_HOST
         _service.host = VLSessionManagerHostDev;
 #endif
     }
@@ -133,11 +133,15 @@ static NSString * VLSessionManagerCachedSessionsKey = @"VLSessionManagerCachedSe
     
 }
 
-- (void)callMyVinliApp
+- (void)callMyVinliAppWithUserId:(NSString *)userId
 {
-    
     // TODO: Add delegate methods here to ask client if we should do this
-    NSURL* url = [self.urlParser buildUrl];
+    NSURL* url;
+#if VLSESSIONMANAGER_USE_DEV_HOST
+    url = [self.urlParser buildUrlWithUserId:userId host:VLSessionManagerHostDev];
+#else
+   url = [self.urlParser buildUrlWithUserId:userId];
+#endif
     
     if (![[UIApplication sharedApplication] openURL:url])
     {
@@ -177,19 +181,23 @@ static NSString * VLSessionManagerCachedSessionsKey = @"VLSessionManagerCachedSe
         return;
     }
     
-    // Check user session in the cach
-    VLSession* cachedSession = (VLSession *)[NSKeyedUnarchiver unarchiveObjectWithData:[self.cachedSessions objectForKey:userId]];
-    if (cachedSession)
+    // Check user session in the cache
+    if (self.cachedSessions.count > 0)
     {
-        // validate token
-        [self.service useSession:cachedSession];
-        if (onCompletion) { onCompletion(self.currentSession, nil) ; }
-        return;
+        VLSession* cachedSession = (VLSession *)[NSKeyedUnarchiver unarchiveObjectWithData:[self.cachedSessions objectForKey:userId]];
+        if (cachedSession)
+        {
+            // validate token
+            [self.service useSession:cachedSession];
+            if (onCompletion) { onCompletion(self.currentSession, nil) ; }
+            return;
+        }
+
     }
     
     // Call MyVinli to authenticate
     self.authenticationCompletionBlock = onCompletion;
-    [self callMyVinliApp];
+    [self callMyVinliAppWithUserId:userId];
     
 }
 
