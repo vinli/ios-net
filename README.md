@@ -1,4 +1,10 @@
-# Vinli-OAuth-iOS-SDK
+# Vinli Net SDK
+
+A framework for accessing Vinli services.
+
+##Documentation
+
+http://cocoadocs.org/docsets/VinliNet
 
 ##Installation
 
