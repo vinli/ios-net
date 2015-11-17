@@ -899,7 +899,7 @@
         }
     }
     
-    NSString *path = [NSString stringWithFormat:@"/devices/%@/subscriptions/%@", subscription.deviceId, subscription.subscriptionId];
+    NSString* path = [NSString stringWithFormat:@"/subscriptions/%@", subscription.subscriptionId];
     NSDictionary *parameters = [subscription toSubscriptionEditDictionary];
     
     [self startWithHost:STRING_HOST_EVENTS path:path queries:nil HTTPMethod:@"PUT" parameters:parameters token:_session.accessToken onSuccess:^(NSDictionary * result, NSHTTPURLResponse *response) {

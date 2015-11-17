@@ -87,4 +87,18 @@ static NSString * const VLUrlParserKeyUserId        = @"userId";
     return [self buildUrlWithUserId:userId host:nil];
 }
 
+
+- (NSURL *)buildURLWithDeviceChipId:(NSString *)chipId
+{
+    NSString* redirectUri = self.redirectUri;
+    if (![redirectUri containsString:@"://"])
+    {
+        redirectUri = [NSString stringWithFormat:@"%@://", redirectUri];
+    }
+    
+    NSString* urlStr = [NSString stringWithFormat:@"myvinli://?redirectUri=%@&clientId=%@&chipId=%@",redirectUri, self.clientId, chipId];
+    
+    return [NSURL URLWithString:urlStr];
+}
+
 @end

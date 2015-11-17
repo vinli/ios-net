@@ -7,10 +7,7 @@
 //
 
 #import "VLSessionManager.h"
-#import "VLUrlParser.h"
 #import <UIKit/UIKit.h>
-
-#import "VLUserCache.h"
 #import <VinliNet/VinliSDK.h>
 
 static NSString * VLSessionManagerClientIdDemo = @"3d0de990-6491-47cf-afda-e6855e7cd1c8";
@@ -145,7 +142,7 @@ static NSString * VLSessionManagerCachedSessionsKey = @"VLSessionManagerCachedSe
     
     if (![[UIApplication sharedApplication] openURL:url])
     {
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Warning"
                                                                        message:@"You must download the MyVinli app to continue."
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         
@@ -153,7 +150,7 @@ static NSString * VLSessionManagerCachedSessionsKey = @"VLSessionManagerCachedSe
         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Go to AppStore"
                                                                 style:UIAlertActionStyleDefault
                                                               handler:^(UIAlertAction * action) {
-                                                                  NSString *iTunesLink = @"itms://itunes.apple.com/us/app/apple-store/id375380948?mt=8";
+                                                                  NSString *iTunesLink = @"https://itunes.apple.com/us/app/vinli/id1032484712?ls=1&mt=8;";//@"itms://itunes.apple.com/us/app/myvinli/id1032484712?ls=1&mt=8";
                                                                   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iTunesLink]];
                                                               }];
         

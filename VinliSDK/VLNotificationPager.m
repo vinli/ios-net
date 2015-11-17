@@ -20,7 +20,9 @@
                 NSMutableArray *notificationArray = [[NSMutableArray alloc] init];
                 
                 for(NSDictionary *notification in json){
-                    [notificationArray addObject:[[VLNotification alloc] initWithDictionary:notification]];
+                    if (notification) {
+                        [notificationArray addObject:[[VLNotification alloc] initWithDictionary:notification]];
+                    }
                 }
                 
                 _notifications = notificationArray;

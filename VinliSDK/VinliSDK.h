@@ -11,6 +11,7 @@
 #import "VLSessionManager.h"
 #import "VLLoginViewController.h"
 #import "VLUserCache.h"
+#import "VLUrlParser.h"
 
 //! Project version number for VinliSDK.
 FOUNDATION_EXPORT double VinliSDKVersionNumber;

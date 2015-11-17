@@ -121,7 +121,7 @@ static NSString * const VLUserCacheUsers = @"VLUserCacheUsers";
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@: %p (userId: %@) (accessToken: %@)>", NSStringFromClass([self class]), self, self.userId, self.accessToken];
+    return [NSString stringWithFormat:@"<%@: %p (userId: %@) (accessToken: %@)> (devices: %@)", NSStringFromClass([self class]), self, self.userId, self.accessToken, self.devices];
 }
 
 @end

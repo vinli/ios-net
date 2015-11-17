@@ -19,4 +19,6 @@
 - (NSURL *)buildUrlWithUserId:(NSString *)userId;
 - (NSURL *)buildUrlWithUserId:(NSString *)userId host:(NSString *)host;
 
+- (NSURL *)buildURLWithDeviceChipId:(NSString *)chipId;
+
 @end
