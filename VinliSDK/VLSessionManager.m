@@ -198,7 +198,7 @@ static NSString * VLSessionManagerCachedSessionsKey = @"VLSessionManagerCachedSe
     
 }
 
-- (void)loginWithCompletion:(AuthenticationCompletion)onCompletion
+- (void)loginWithCompletion:(AuthenticationCompletion)onCompletion onCancel:(void(^)(void))cancel
 {
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Choose User"
                                                                    message:@""
@@ -206,7 +206,7 @@ static NSString * VLSessionManagerCachedSessionsKey = @"VLSessionManagerCachedSe
     
     
     UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"New User"
-                                                            style:UIAlertActionStyleCancel
+                                                            style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
                                                               [self loginWithUserId:nil withCompletion:onCompletion];
                                                           }];
@@ -225,6 +225,14 @@ static NSString * VLSessionManagerCachedSessionsKey = @"VLSessionManagerCachedSe
         }];
         [alert addAction:action];
     }];
+    
+    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        if (cancel) {
+            cancel();
+        }
+        [alert.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [alert addAction:cancelAction];
     
     
     

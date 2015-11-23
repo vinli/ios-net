@@ -35,6 +35,6 @@ typedef void(^AuthenticationCompletion)(VLSession* session, NSError* error);
 - (void)getSessionForUserWithId:(NSString *)userId completion:(AuthenticationCompletion)onCompletion;
 
 // Convenience method to display an AlertView with available users.
-- (void)loginWithCompletion:(AuthenticationCompletion)onCompletion;
+- (void)loginWithCompletion:(AuthenticationCompletion)onCompletion onCancel:(void(^)(void))onCancel;
 
 @end
