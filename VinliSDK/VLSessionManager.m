@@ -8,7 +8,8 @@
 
 #import "VLSessionManager.h"
 #import <UIKit/UIKit.h>
-#import <VinliNet/VinliSDK.h>
+#import "VinliSDK.h"
+//#import <VinliNet/VinliSDK.h>
 
 static NSString * VLSessionManagerClientIdDemo = @"3d0de990-6491-47cf-afda-e6855e7cd1c8";
 static NSString * VLSessionManagerClientIdDev = @"f06e03c5-dcb8-4d69-b060-29e39dd98512";

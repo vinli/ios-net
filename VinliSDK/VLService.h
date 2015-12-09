@@ -54,6 +54,13 @@
 // session:     A valid VLSession to use
 - (void) useSession:(nullable VLSession *) session;
 
+
+// Allows users of the class ability handle any 401 errors
+// @params:
+// handler: A block of code to be executed
+- (void)setAccessTokenExpirationHandler:(void (^)(VLService* service, NSError* error))handler;
+
+
 #pragma mark - Factory Methods
 
 // @params:

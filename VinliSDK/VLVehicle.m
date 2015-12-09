@@ -38,4 +38,14 @@
     return [NSString stringWithFormat: @"Vehicle ID :%@, Year:%@, Make:%@, Model:%@", _vehicleId, _year, _make, _model];
 }
 
+- (NSDictionary *)toDictionary
+{
+    return @{@"id" : _vehicleId.length > 0 ? _vehicleId : @"",
+             @"year" : _year.length > 0 ? _year : @"",
+             @"make" : _make.length > 0 ? _make : @"",
+             @"model" : _model.length > 0 ? _model : @"",
+             @"trim" : _trim.length > 0 ? _trim : @"",
+             @"vin" : _vin.length > 0 ? _vin : @""};
+}
+
 @end

@@ -19,5 +19,6 @@
 @property (readonly) NSString *name;
 
 - (id) initWithDictionary: (NSDictionary *) dictionary;
+- (NSDictionary *)toDictionary;
 
 @end

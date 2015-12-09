@@ -89,11 +89,11 @@
 		0B89E4971B18BA3E00E69AEA /* VLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B89E4951B18BA3E00E69AEA /* VLUser.m */; };
 		0BD2E50E1B0FF3DD00A5D2BC /* VLRuleServicesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2E50D1B0FF3DD00A5D2BC /* VLRuleServicesTests.m */; };
 		131398F6054ED704978CFAC1 /* libPods-VinliSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB1A1E6D3FE8D940C96F5C0D /* libPods-VinliSDKTests.a */; };
-		49AB6E971B82432C00DCF808 /* VLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 49AB6E931B82432C00DCF808 /* VLSessionManager.h */; };
+		49AB6E971B82432C00DCF808 /* VLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 49AB6E931B82432C00DCF808 /* VLSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49AB6E981B82432C00DCF808 /* VLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AB6E941B82432C00DCF808 /* VLSessionManager.m */; };
-		49AB6E991B82432C00DCF808 /* VLUrlParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 49AB6E951B82432C00DCF808 /* VLUrlParser.h */; };
+		49AB6E991B82432C00DCF808 /* VLUrlParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 49AB6E951B82432C00DCF808 /* VLUrlParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49AB6E9A1B82432C00DCF808 /* VLUrlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AB6E961B82432C00DCF808 /* VLUrlParser.m */; };
-		49AB6E9D1B82446900DCF808 /* VLUserCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 49AB6E9B1B82446900DCF808 /* VLUserCache.h */; };
+		49AB6E9D1B82446900DCF808 /* VLUserCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 49AB6E9B1B82446900DCF808 /* VLUserCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49AB6E9E1B82446900DCF808 /* VLUserCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AB6E9C1B82446900DCF808 /* VLUserCache.m */; };
 		49E2F2FF1B6AA93700CD743C /* NSDictionary+NonNullable.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E2F2FD1B6AA93700CD743C /* NSDictionary+NonNullable.h */; };
 		49E2F3001B6AA93700CD743C /* NSDictionary+NonNullable.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E2F2FE1B6AA93700CD743C /* NSDictionary+NonNullable.m */; };
@@ -987,6 +987,7 @@
 				49DD2CCB1B84CE1D00991353 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

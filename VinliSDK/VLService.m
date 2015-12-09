@@ -34,6 +34,9 @@
 @interface VLService (){
 }
 
+@property (copy, nonatomic) void(^AccessTokenExpirationHandler)(VLService* service, NSError* error);
+
+
 @end
 
 @implementation VLService
@@ -150,6 +153,18 @@
          }
          
      } failure:^(NSHTTPURLResponse *response, NSString *bodyString, NSError *error) {
+         
+         if (response.statusCode == 401) {
+             NSLog(@"Access token has expired");
+             // Genereate custom nserror
+             
+             // Give option to execute block
+             if (self.AccessTokenExpirationHandler) {
+                 self.AccessTokenExpirationHandler(self, error);
+             }
+             
+         }
+         
          if (onFailureBlock) {
              onFailureBlock(error, response, bodyString);
          }
@@ -1271,5 +1286,16 @@
 - (NSError *) getNoSessionError{
     return [NSError errorWithDomain:ERROR_NO_SESSION code:2003 userInfo:@{@"NSLocalizedDescriptionKey" : @"Valid VLSession required to use this VLService method."}];
 }
+
+#pragma mark - Handlers
+
+- (void)setAccessTokenExpirationHandler:(void (^)(VLService* service, NSError* error))handler
+{
+    if (handler) {
+        _AccessTokenExpirationHandler = handler;
+    }
+}
+
+
 
 @end
