@@ -1,0 +1,624 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		483253DB1B0A3EE677C95398 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B94EB28C2F610BC03C32B6E5 /* libPods.a */; };
+		7729C51F1C1255160093F8EA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7729C51E1C1255160093F8EA /* main.m */; };
+		7729C5221C1255160093F8EA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7729C5211C1255160093F8EA /* AppDelegate.m */; };
+		7729C5251C1255160093F8EA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7729C5241C1255160093F8EA /* ViewController.m */; };
+		7729C5281C1255160093F8EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7729C5261C1255160093F8EA /* Main.storyboard */; };
+		7729C52A1C1255160093F8EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7729C5291C1255160093F8EA /* Assets.xcassets */; };
+		7729C52D1C1255160093F8EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7729C52B1C1255160093F8EA /* LaunchScreen.storyboard */; };
+		7729C5381C1255160093F8EA /* VinliAuthTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7729C5371C1255160093F8EA /* VinliAuthTests.m */; };
+		7729C5431C1255160093F8EA /* VinliAuthUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7729C5421C1255160093F8EA /* VinliAuthUITests.m */; };
+		7729C5581C1651990093F8EA /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7729C5571C1651990093F8EA /* ProfileViewController.m */; };
+		77DAEEFF1C1B9FE6004A7393 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F688321C1B9E3A005F2DD0 /* MapKit.framework */; };
+		77F688311C1B3940005F2DD0 /* DeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F688301C1B3940005F2DD0 /* DeviceViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7729C5341C1255160093F8EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7729C5121C1255150093F8EA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7729C5191C1255160093F8EA;
+			remoteInfo = VinliAuth;
+		};
+		7729C53F1C1255160093F8EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7729C5121C1255150093F8EA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7729C5191C1255160093F8EA;
+			remoteInfo = VinliAuth;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		626622AB424644654C4199C8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		7729C51A1C1255160093F8EA /* VinliAuth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VinliAuth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7729C51E1C1255160093F8EA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7729C5201C1255160093F8EA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7729C5211C1255160093F8EA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7729C5231C1255160093F8EA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		7729C5241C1255160093F8EA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		7729C5271C1255160093F8EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7729C5291C1255160093F8EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7729C52C1C1255160093F8EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7729C52E1C1255160093F8EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7729C5331C1255160093F8EA /* VinliAuthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VinliAuthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7729C5371C1255160093F8EA /* VinliAuthTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VinliAuthTests.m; sourceTree = "<group>"; };
+		7729C5391C1255160093F8EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7729C53E1C1255160093F8EA /* VinliAuthUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VinliAuthUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7729C5421C1255160093F8EA /* VinliAuthUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VinliAuthUITests.m; sourceTree = "<group>"; };
+		7729C5441C1255160093F8EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7729C5561C1651990093F8EA /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		7729C5571C1651990093F8EA /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		77F6882F1C1B3940005F2DD0 /* DeviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceViewController.h; sourceTree = "<group>"; };
+		77F688301C1B3940005F2DD0 /* DeviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceViewController.m; sourceTree = "<group>"; };
+		77F688321C1B9E3A005F2DD0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		96F135F068A055A2D53EE4D5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		B94EB28C2F610BC03C32B6E5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7729C5171C1255160093F8EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77DAEEFF1C1B9FE6004A7393 /* MapKit.framework in Frameworks */,
+				483253DB1B0A3EE677C95398 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7729C5301C1255160093F8EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7729C53B1C1255160093F8EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		41BF0BF03E2BF581CE0375E1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				77F688321C1B9E3A005F2DD0 /* MapKit.framework */,
+				B94EB28C2F610BC03C32B6E5 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7729C5111C1255150093F8EA = {
+			isa = PBXGroup;
+			children = (
+				7729C51C1C1255160093F8EA /* VinliAuth */,
+				7729C5361C1255160093F8EA /* VinliAuthTests */,
+				7729C5411C1255160093F8EA /* VinliAuthUITests */,
+				7729C51B1C1255160093F8EA /* Products */,
+				841B0E4792356AE0929E6610 /* Pods */,
+				41BF0BF03E2BF581CE0375E1 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7729C51B1C1255160093F8EA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7729C51A1C1255160093F8EA /* VinliAuth.app */,
+				7729C5331C1255160093F8EA /* VinliAuthTests.xctest */,
+				7729C53E1C1255160093F8EA /* VinliAuthUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7729C51C1C1255160093F8EA /* VinliAuth */ = {
+			isa = PBXGroup;
+			children = (
+				7729C5201C1255160093F8EA /* AppDelegate.h */,
+				7729C5211C1255160093F8EA /* AppDelegate.m */,
+				7729C5231C1255160093F8EA /* ViewController.h */,
+				7729C5241C1255160093F8EA /* ViewController.m */,
+				7729C5561C1651990093F8EA /* ProfileViewController.h */,
+				7729C5571C1651990093F8EA /* ProfileViewController.m */,
+				77F6882F1C1B3940005F2DD0 /* DeviceViewController.h */,
+				77F688301C1B3940005F2DD0 /* DeviceViewController.m */,
+				7729C5261C1255160093F8EA /* Main.storyboard */,
+				7729C5291C1255160093F8EA /* Assets.xcassets */,
+				7729C52B1C1255160093F8EA /* LaunchScreen.storyboard */,
+				7729C52E1C1255160093F8EA /* Info.plist */,
+				7729C51D1C1255160093F8EA /* Supporting Files */,
+			);
+			path = VinliAuth;
+			sourceTree = "<group>";
+		};
+		7729C51D1C1255160093F8EA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7729C51E1C1255160093F8EA /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7729C5361C1255160093F8EA /* VinliAuthTests */ = {
+			isa = PBXGroup;
+			children = (
+				7729C5371C1255160093F8EA /* VinliAuthTests.m */,
+				7729C5391C1255160093F8EA /* Info.plist */,
+			);
+			path = VinliAuthTests;
+			sourceTree = "<group>";
+		};
+		7729C5411C1255160093F8EA /* VinliAuthUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7729C5421C1255160093F8EA /* VinliAuthUITests.m */,
+				7729C5441C1255160093F8EA /* Info.plist */,
+			);
+			path = VinliAuthUITests;
+			sourceTree = "<group>";
+		};
+		841B0E4792356AE0929E6610 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				96F135F068A055A2D53EE4D5 /* Pods.debug.xcconfig */,
+				626622AB424644654C4199C8 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7729C5191C1255160093F8EA /* VinliAuth */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7729C5471C1255160093F8EA /* Build configuration list for PBXNativeTarget "VinliAuth" */;
+			buildPhases = (
+				60310B63943B82B6B25DC116 /* Check Pods Manifest.lock */,
+				7729C5161C1255160093F8EA /* Sources */,
+				7729C5171C1255160093F8EA /* Frameworks */,
+				7729C5181C1255160093F8EA /* Resources */,
+				88BF3C6470D9D3480208B580 /* Embed Pods Frameworks */,
+				EA27B41C55F4557153FFBE4E /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VinliAuth;
+			productName = VinliAuth;
+			productReference = 7729C51A1C1255160093F8EA /* VinliAuth.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7729C5321C1255160093F8EA /* VinliAuthTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7729C54A1C1255160093F8EA /* Build configuration list for PBXNativeTarget "VinliAuthTests" */;
+			buildPhases = (
+				7729C52F1C1255160093F8EA /* Sources */,
+				7729C5301C1255160093F8EA /* Frameworks */,
+				7729C5311C1255160093F8EA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7729C5351C1255160093F8EA /* PBXTargetDependency */,
+			);
+			name = VinliAuthTests;
+			productName = VinliAuthTests;
+			productReference = 7729C5331C1255160093F8EA /* VinliAuthTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7729C53D1C1255160093F8EA /* VinliAuthUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7729C54D1C1255160093F8EA /* Build configuration list for PBXNativeTarget "VinliAuthUITests" */;
+			buildPhases = (
+				7729C53A1C1255160093F8EA /* Sources */,
+				7729C53B1C1255160093F8EA /* Frameworks */,
+				7729C53C1C1255160093F8EA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7729C5401C1255160093F8EA /* PBXTargetDependency */,
+			);
+			name = VinliAuthUITests;
+			productName = VinliAuthUITests;
+			productReference = 7729C53E1C1255160093F8EA /* VinliAuthUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7729C5121C1255150093F8EA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Jai Ghanekar";
+				TargetAttributes = {
+					7729C5191C1255160093F8EA = {
+						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = V826A2XT85;
+					};
+					7729C5321C1255160093F8EA = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = 7729C5191C1255160093F8EA;
+					};
+					7729C53D1C1255160093F8EA = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = 7729C5191C1255160093F8EA;
+					};
+				};
+			};
+			buildConfigurationList = 7729C5151C1255150093F8EA /* Build configuration list for PBXProject "VinliAuth" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7729C5111C1255150093F8EA;
+			productRefGroup = 7729C51B1C1255160093F8EA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7729C5191C1255160093F8EA /* VinliAuth */,
+				7729C5321C1255160093F8EA /* VinliAuthTests */,
+				7729C53D1C1255160093F8EA /* VinliAuthUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7729C5181C1255160093F8EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7729C52D1C1255160093F8EA /* LaunchScreen.storyboard in Resources */,
+				7729C52A1C1255160093F8EA /* Assets.xcassets in Resources */,
+				7729C5281C1255160093F8EA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7729C5311C1255160093F8EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7729C53C1C1255160093F8EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		60310B63943B82B6B25DC116 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		88BF3C6470D9D3480208B580 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA27B41C55F4557153FFBE4E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7729C5161C1255160093F8EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7729C5251C1255160093F8EA /* ViewController.m in Sources */,
+				7729C5221C1255160093F8EA /* AppDelegate.m in Sources */,
+				7729C51F1C1255160093F8EA /* main.m in Sources */,
+				7729C5581C1651990093F8EA /* ProfileViewController.m in Sources */,
+				77F688311C1B3940005F2DD0 /* DeviceViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7729C52F1C1255160093F8EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7729C5381C1255160093F8EA /* VinliAuthTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7729C53A1C1255160093F8EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7729C5431C1255160093F8EA /* VinliAuthUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7729C5351C1255160093F8EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7729C5191C1255160093F8EA /* VinliAuth */;
+			targetProxy = 7729C5341C1255160093F8EA /* PBXContainerItemProxy */;
+		};
+		7729C5401C1255160093F8EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7729C5191C1255160093F8EA /* VinliAuth */;
+			targetProxy = 7729C53F1C1255160093F8EA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7729C5261C1255160093F8EA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7729C5271C1255160093F8EA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7729C52B1C1255160093F8EA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7729C52C1C1255160093F8EA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7729C5451C1255160093F8EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7729C5461C1255160093F8EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7729C5481C1255160093F8EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96F135F068A055A2D53EE4D5 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = VinliAuth/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jai.VinliAuth;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		7729C5491C1255160093F8EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 626622AB424644654C4199C8 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = VinliAuth/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jai.VinliAuth;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		7729C54B1C1255160093F8EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = VinliAuthTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jai.VinliAuthTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VinliAuth.app/VinliAuth";
+			};
+			name = Debug;
+		};
+		7729C54C1C1255160093F8EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = VinliAuthTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jai.VinliAuthTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VinliAuth.app/VinliAuth";
+			};
+			name = Release;
+		};
+		7729C54E1C1255160093F8EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = VinliAuthUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jai.VinliAuthUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = VinliAuth;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		7729C54F1C1255160093F8EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = VinliAuthUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jai.VinliAuthUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = VinliAuth;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7729C5151C1255150093F8EA /* Build configuration list for PBXProject "VinliAuth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7729C5451C1255160093F8EA /* Debug */,
+				7729C5461C1255160093F8EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7729C5471C1255160093F8EA /* Build configuration list for PBXNativeTarget "VinliAuth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7729C5481C1255160093F8EA /* Debug */,
+				7729C5491C1255160093F8EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7729C54A1C1255160093F8EA /* Build configuration list for PBXNativeTarget "VinliAuthTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7729C54B1C1255160093F8EA /* Debug */,
+				7729C54C1C1255160093F8EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7729C54D1C1255160093F8EA /* Build configuration list for PBXNativeTarget "VinliAuthUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7729C54E1C1255160093F8EA /* Debug */,
+				7729C54F1C1255160093F8EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7729C5121C1255150093F8EA /* Project object */;
+}
