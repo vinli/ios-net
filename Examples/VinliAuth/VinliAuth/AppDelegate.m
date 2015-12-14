@@ -22,7 +22,7 @@
     
     [VLSessionManager sharedManager].clientId =  @"77543031-8ec2-477c-87a7-7d52de685678";
     [VLSessionManager sharedManager].redirectUri = @"li.vin.auth";
-    
+       
     return YES;
 }
 

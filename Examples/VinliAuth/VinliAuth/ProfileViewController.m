@@ -34,15 +34,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    UIColor *grayColor = [[UIColor alloc]initWithRed:211.0f/255.0f green:211.0f/255.0f blue:211.0f/255.0f alpha:1]; //divide by 255.0f
+    UIColor *grayColor = [[UIColor alloc]initWithRed:244.0f/255.0f green:244.0f/255.0f blue:244.0f/255.0f alpha:1]; //divide by 255.0f
     self.view.backgroundColor = grayColor;
     
     self.tableView.backgroundColor = grayColor;
+    self.tableView.tableFooterView = [UIView new];
     
    // [self.profileImageView setHidden:YES];
     [self.fullNameLabel setHidden:YES];
     [self.phoneNumberLabel setHidden:YES];
     [self.emailLabel setHidden:YES];
+    [self.emailText setHidden:YES];
+    [self.phoneLabel setHidden:YES];
     
     self.tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
    
@@ -63,8 +66,15 @@
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         //
     }]; 
-
-    
+    UIColor *vinliColor = [[UIColor alloc]initWithRed:0/255.0f green:163.0f/255.0f blue:224.0f/255.0f alpha:1]; //divide by 255.0f
+    self.navigationController.navigationBar.backgroundColor = vinliColor;
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+    //[self.navigationController.navigationBar setTranslucent:NO];
+    //[self.navigationController.navigationBar setOpaque:YES];
+    //self.navigationController.navigationBar.tintColor = [UIColor clearColor];
+    [[UINavigationBar appearance] setBarStyle:UIBarStyleDefault];
+    [[UINavigationBar appearance] setBarTintColor:vinliColor];
+    [self.navigationController.navigationBar setTranslucent:NO];
     
     
 }
@@ -81,14 +91,19 @@
         
         //self.fullNameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
         self.navigationController.navigationBar.topItem.title = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
-        self.phoneNumberLabel.text = [NSString stringWithFormat:@"Phone: %@", user.phone];
         
-        self.emailLabel.text = [NSString stringWithFormat:@"Email: %@", user.email];
+
+        self.phoneNumberLabel.text = [NSString stringWithFormat:@"%@", user.phone];
+        
+        self.emailLabel.text = [NSString stringWithFormat:@"%@", user.email];
         
       
         //[self.fullNameLabel setHidden:NO];
         [self.phoneNumberLabel setHidden:NO];
         [self.emailLabel setHidden:NO];
+        
+        [self.emailText setHidden:NO];
+        [self.phoneLabel setHidden:NO];
 
         
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
@@ -154,9 +169,6 @@
         
         
     }
-    
-
-   
     
     cell.backgroundColor = [UIColor whiteColor];
     

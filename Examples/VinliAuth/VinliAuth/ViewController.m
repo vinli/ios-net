@@ -29,11 +29,13 @@
 {
     [super viewDidLoad];
     
-    UIColor *vinliColor = [[UIColor alloc]initWithRed:0/255.0f green:163.0f/255.0f blue:224.0f/255.0f alpha:1]; //divide by 255.0f
     
-    self.view.backgroundColor = vinliColor;
+    self.view.backgroundColor = [UIColor whiteColor];
     
     self.navigationController.navigationBar.hidden = YES;
+    UIColor *vinliColor = [[UIColor alloc]initWithRed:0/255.0f green:163.0f/255.0f blue:224.0f/255.0f alpha:1]; //divide by 255.0f
+    self.logInButton.backgroundColor = vinliColor;
+
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
@@ -51,7 +53,15 @@
         // Handle your errors
     }];
 }
-
+// - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    if ([segue.identifier isEqualToString:@"showProfile"])
+//    {
+//        UINavigationController *navController = segue.destinationViewController;
+//        //[navController.navigationBar setTintColor:[UIColor clearColor]];
+//        [navController.navigationBar setTranslucent:NO];
+//    }
+//}
 
 
 

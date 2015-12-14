@@ -26,55 +26,16 @@
     [self.locationLabel setHidden:YES];
     [self.locationMapView setHidden:YES];
     // Do any additional setup after loading the view.
-    UIColor *grayColor = [[UIColor alloc]initWithRed:211.0f/255.0f green:211.0f/255.0f blue:211.0f/255.0f alpha:1]; //divide by 255.0f
+    UIColor *grayColor = [[UIColor alloc]initWithRed:244.0f/255.0f green:244.0f/255.0f blue:244.0f/255.0f alpha:1]; //divide by 255.0f
     self.view.backgroundColor = grayColor;
-    
-    
-    //set the top nav bar
-    //self.navigationController.navigationBar.topItem.title = [NSString stringWithFormat:@"%@", self.currentDevice.name];
-    
-    //get methods on relevant items
-//    [[VLSessionManager sharedManager].service getLocationsForDeviceWithId:self.currentDevice.deviceId onSuccess:^(VLLocationPager *locationPager, NSHTTPURLResponse *response) {
-//        
-//        if ((locationPager.locations.count <= 0 || nil == locationPager.locations)) {
-//            // Set to current location
-//            // Use CLLocationManager Current Location
-//           
-//            
-//            
-//            self.locationManager = [[CLLocationManager alloc]init];
-//            self.locationManager.distanceFilter = kCLDistanceFilterNone;
-//            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-//            self.locationManager.delegate = self;
-//            [self.locationManager requestWhenInUseAuthorization];
-//            
-//            
-//            
-//            [self.locationManager startUpdatingLocation];
-//            
-//           
-//        }
-//        
-//        else if (locationPager.locations.count > 0)
-//        {
-//            self.location = [locationPager.locations objectAtIndex:0];//tempLocation;
-//            
-//            
-//            [self putOnMap:self.location.latitude longitude:self.location.longitude];
-//        }
-//        
-//        
-//        
-//    } onFailure:nil];
-    
+    //self.navigationController.navigationBar.topItem. = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     [[VLSessionManager sharedManager].service getLatestVehicleForDeviceWithId:self.currentDevice.deviceId onSuccess:^(VLVehicle *vehicle, NSHTTPURLResponse *response) {
         
         if (!vehicle)
         {
-            
             self.noVehicleLabel.text = @"No Vehicle info availible";
             return;
-            
         }
         
         self.latestVehicle = vehicle;
