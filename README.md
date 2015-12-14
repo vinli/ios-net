@@ -6,6 +6,10 @@ A framework for accessing Vinli services.
 
 http://cocoadocs.org/docsets/VinliNet
 
+##OAuth Quick Start Guide
+
+https://gist.github.com/JaiGhanekar/1ce8d396cedd18b819d3
+
 ##Installation
 
 Install With CocoaPods
