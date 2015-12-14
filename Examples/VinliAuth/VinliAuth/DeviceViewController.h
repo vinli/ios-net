@@ -18,5 +18,6 @@
 @property (strong, nonatomic) IBOutlet MKMapView *locationMapView;
 
 @property (strong, nonatomic) IBOutlet UILabel *locationLabel;
-
+@property (weak, nonatomic) IBOutlet UILabel *noVehicleLabel;
+@property (strong, nonatomic) CLLocationManager *locationManager;
 @end

@@ -12,10 +12,19 @@
 #import <VinliNet/VinliSDK.h>
 
 
+@interface MyCustomCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UIImageView *thumbNail;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
+@end
+
+
 
 @interface ProfileViewController ()
 
 @property (strong, nonatomic) NSArray *deviceArray;
+
 
 @end
 
@@ -98,6 +107,7 @@
     [self.navigationController pushViewController:deviceViewController animated:YES];
     //[self performSegueWithIdentifier:@"deviceCell" sender:self];
     
+    
 }
 
 
@@ -125,27 +135,48 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *MyIdentifier = @"device cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+    static NSString *MyIdentifier = @"MyCustomCell";
+    
+    
+    MyCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier];
+        cell = [[MyCustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier];
     }
     
     VLDevice* device = self.deviceArray[indexPath.row];
-    cell.textLabel.text = device.name;
-
+    cell.nameLabel.text = device.name;
+    
     if (device.iconURL)
     {
+        
         UIImage *picture = [UIImage imageWithData:[NSData dataWithContentsOfURL:device.iconURL]];
-        cell.imageView.image = picture;
+        cell.thumbNail.image = picture;
+        
+        
     }
     
-    cell.imageView.layer.cornerRadius = 25;
-    cell.imageView.layer.masksToBounds = YES;
+
+   
     
     cell.backgroundColor = [UIColor whiteColor];
     
     return cell;
+}
+
+@end
+
+@implementation MyCustomCell
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    self.thumbNail.layer.cornerRadius = self.thumbNail.frame.size.width / 2;
+    [self.thumbNail setClipsToBounds:YES];
+    self.thumbNail.layer.borderWidth = 1.0f;
+    // really light grey
+    UIColor *lightGrayColor = [[UIColor alloc]initWithRed:225.0f/255.0f green:211.0f/255.0f blue:193.0f/255.0f alpha:1]; //divide by 255.0f
+    self.thumbNail.layer.borderColor = [lightGrayColor CGColor];
 }
 
 @end

@@ -12,8 +12,9 @@
 #import <MapKit/MapKit.h>
 
 @interface DeviceViewController ()
-@property (strong, atomic) VLLocation *location;
+@property (strong, nonatomic) VLLocation *location;
 @property (strong, nonatomic) VLVehicle *latestVehicle;
+
 @end
 
 @implementation DeviceViewController
@@ -23,30 +24,84 @@
     [self.vehicleInfo setHidden:YES];
     [self.locationMapView setHidden:YES];
     [self.locationLabel setHidden:YES];
-    
-    
+    [self.locationMapView setHidden:YES];
     // Do any additional setup after loading the view.
     UIColor *grayColor = [[UIColor alloc]initWithRed:211.0f/255.0f green:211.0f/255.0f blue:211.0f/255.0f alpha:1]; //divide by 255.0f
     self.view.backgroundColor = grayColor;
     
     
     //set the top nav bar
-    self.navigationController.navigationBar.topItem.title = [NSString stringWithFormat:@"%@", self.currentDevice.name];
+    //self.navigationController.navigationBar.topItem.title = [NSString stringWithFormat:@"%@", self.currentDevice.name];
     
     //get methods on relevant items
-    [[VLSessionManager sharedManager].service getLocationsForDeviceWithId:self.currentDevice.deviceId onSuccess:^(VLLocationPager *locationPager, NSHTTPURLResponse *response) {
-       VLLocation *tempLocation = [locationPager.locations objectAtIndex:0];
-        self.location = tempLocation;
-    } onFailure:nil];
+//    [[VLSessionManager sharedManager].service getLocationsForDeviceWithId:self.currentDevice.deviceId onSuccess:^(VLLocationPager *locationPager, NSHTTPURLResponse *response) {
+//        
+//        if ((locationPager.locations.count <= 0 || nil == locationPager.locations)) {
+//            // Set to current location
+//            // Use CLLocationManager Current Location
+//           
+//            
+//            
+//            self.locationManager = [[CLLocationManager alloc]init];
+//            self.locationManager.distanceFilter = kCLDistanceFilterNone;
+//            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+//            self.locationManager.delegate = self;
+//            [self.locationManager requestWhenInUseAuthorization];
+//            
+//            
+//            
+//            [self.locationManager startUpdatingLocation];
+//            
+//           
+//        }
+//        
+//        else if (locationPager.locations.count > 0)
+//        {
+//            self.location = [locationPager.locations objectAtIndex:0];//tempLocation;
+//            
+//            
+//            [self putOnMap:self.location.latitude longitude:self.location.longitude];
+//        }
+//        
+//        
+//        
+//    } onFailure:nil];
     
     [[VLSessionManager sharedManager].service getLatestVehicleForDeviceWithId:self.currentDevice.deviceId onSuccess:^(VLVehicle *vehicle, NSHTTPURLResponse *response) {
+        
+        if (!vehicle)
+        {
+            
+            self.noVehicleLabel.text = @"No Vehicle info availible";
+            return;
+            
+        }
+        
         self.latestVehicle = vehicle;
+        
+        [[VLSessionManager sharedManager].service getLocationsForDeviceWithId:self.currentDevice.deviceId onSuccess:^(VLLocationPager *locationPager, NSHTTPURLResponse *response) {
+        
+            
+            if (locationPager.locations.count > 0 && self.latestVehicle)
+            {
+                self.location = [locationPager.locations objectAtIndex:0];//tempLocation;
+                
+                
+                [self putOnMap:self.location.latitude longitude:self.location.longitude];
+            }
+            
+            
+            
+        } onFailure:nil];
+
+        
+        
         
     } onFailure:nil];
     
     
     //create the map view
-    self.locationMapView.mapType = MKMapTypeHybrid;
+    self.locationMapView.mapType = MKMapTypeStandard;
     
    
 }
@@ -55,53 +110,36 @@
 {
     [super viewDidAppear:animated];
     
+    [self.vehicleInfo setHidden:NO];
+    [self.locationLabel setHidden:NO];
+    
+}
+
+- (void)putOnMap:(double)latitude longitude:(double) longitude
+{
     //the rest of the map view
+    [self.locationMapView setHidden:NO];
     CLLocationCoordinate2D coord;
-    coord.latitude = self.location.latitude;
-    coord.longitude = self.location.longitude;
-    MKCoordinateSpan span = {.latitudeDelta =  0.5, .longitudeDelta =  0.5};
-    MKCoordinateRegion region = {coord, span};
+    coord.latitude = latitude;
+    coord.longitude = longitude;
+    //MKCoordinateSpan span = {.latitudeDelta =  0.25, .longitudeDelta =  0.05};
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coord, 250, 250);
     
     //add a title
     MKPointAnnotation *annotation = [[MKPointAnnotation alloc]init];
     [annotation setCoordinate:coord];
     [annotation setTitle:[NSString stringWithFormat:@" %@, %@ %@", self.latestVehicle.year, self.latestVehicle.make, self.latestVehicle.model]];
+    [self.locationMapView setCenterCoordinate:coord animated:YES];
     [self.locationMapView setRegion:region];
     [self.locationMapView addAnnotation:annotation];
-
-    
-    //update the label for the vehcicle info and
-    
-    //update make and model lable
-//    
-//    self.vehicleInfo.text = [NSString stringWithFormat:@" %@, %@ %@", self.latestVehicle.year, self.latestVehicle.make, self.latestVehicle.model];
-//    
-//    self.locationLabel.text = [NSString stringWithFormat:@"Latitude: %f, Longitude: %f ", self.location.latitude, self.location.longitude];
-    
-    [self.vehicleInfo setHidden:NO];
-    [self.locationMapView setHidden:NO];
-    [self.locationLabel setHidden:NO];
-    
-    
+   
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 
 
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

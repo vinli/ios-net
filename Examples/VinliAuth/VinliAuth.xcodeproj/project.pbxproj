@@ -17,6 +17,7 @@
 		7729C5381C1255160093F8EA /* VinliAuthTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7729C5371C1255160093F8EA /* VinliAuthTests.m */; };
 		7729C5431C1255160093F8EA /* VinliAuthUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7729C5421C1255160093F8EA /* VinliAuthUITests.m */; };
 		7729C5581C1651990093F8EA /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7729C5571C1651990093F8EA /* ProfileViewController.m */; };
+		77D4AAED1C1F5B9200336B6A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77D4AAEC1C1F5B9200336B6A /* CoreLocation.framework */; };
 		77DAEEFF1C1B9FE6004A7393 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F688321C1B9E3A005F2DD0 /* MapKit.framework */; };
 		77F688311C1B3940005F2DD0 /* DeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F688301C1B3940005F2DD0 /* DeviceViewController.m */; };
 /* End PBXBuildFile section */
@@ -58,6 +59,7 @@
 		7729C5441C1255160093F8EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7729C5561C1651990093F8EA /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		7729C5571C1651990093F8EA /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		77D4AAEC1C1F5B9200336B6A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		77F6882F1C1B3940005F2DD0 /* DeviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceViewController.h; sourceTree = "<group>"; };
 		77F688301C1B3940005F2DD0 /* DeviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceViewController.m; sourceTree = "<group>"; };
 		77F688321C1B9E3A005F2DD0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -70,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77D4AAED1C1F5B9200336B6A /* CoreLocation.framework in Frameworks */,
 				77DAEEFF1C1B9FE6004A7393 /* MapKit.framework in Frameworks */,
 				483253DB1B0A3EE677C95398 /* libPods.a in Frameworks */,
 			);
@@ -95,6 +98,7 @@
 		41BF0BF03E2BF581CE0375E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				77D4AAEC1C1F5B9200336B6A /* CoreLocation.framework */,
 				77F688321C1B9E3A005F2DD0 /* MapKit.framework */,
 				B94EB28C2F610BC03C32B6E5 /* libPods.a */,
 			);
