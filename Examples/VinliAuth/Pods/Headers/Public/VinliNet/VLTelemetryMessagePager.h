@@ -1,0 +1,1 @@
+../../../VinliNet/VinliSDK/VLTelemetryMessagePager.h
