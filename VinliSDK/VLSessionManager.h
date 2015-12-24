@@ -14,7 +14,7 @@
 @class VLSession;
 @class VLService;
 
-typedef void(^AuthenticationCompletion)(VLSession* session, NSError* error);
+typedef void(^AuthenticationCompletion)(VLSession* _Nullable session, NSError* _Nullable error);
 
 @interface VLSessionManager : NSObject
 

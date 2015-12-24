@@ -129,6 +129,12 @@
         [self dismissViewControllerAnimated:YES completion:nil];
         return NO;
     }
+    else
+    if ([requestString isEqualToString:@"https://my.vin.li/#/sign-up"])
+    {
+        [[UIApplication sharedApplication] openURL:request.URL];
+        return NO;
+    }
     
     return YES;
 }
