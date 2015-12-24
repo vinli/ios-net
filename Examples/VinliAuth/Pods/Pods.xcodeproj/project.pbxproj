@@ -1,0 +1,1103 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0208C713988536826A9234DB77C6AA15 /* VLBoundary.h in Headers */ = {isa = PBXBuildFile; fileRef = ACAA7FE50B42BD0EAEE692B22CDF787D /* VLBoundary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		05880A9305D8F6912C449546497B85F5 /* VLEventPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1890C5F1CADF2FD91F9D3BA37988C3EB /* VLEventPager.m */; };
+		06C48244E1995ABFD6BE6E45A98B3F81 /* VLPolygonBoundary.h in Headers */ = {isa = PBXBuildFile; fileRef = 7812CF71E0E757DF37333ADBE110B9B3 /* VLPolygonBoundary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		070C0F624CD788B933FF682C0D1748F5 /* VLBoundary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFF447ECB737210CD1E31E049E2C10 /* VLBoundary.m */; };
+		0784BD164418577954800B997D4B86D3 /* VLRulePager.m in Sources */ = {isa = PBXBuildFile; fileRef = C513313028BF0A7F7ADEAF4424945D16 /* VLRulePager.m */; };
+		08E8B45F73ECEF2EF2158AAEEAD7D6E4 /* VLLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0EE4A95E6FFA4B928C41BF816D3DA1 /* VLLocation.m */; };
+		08E971BAC6E9A519CCBCC115E2E09118 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		0B24709E94B5908313B62F12098C9076 /* JCDHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 819FD8FB1C91224FA28E817F7CF86781 /* JCDHTTPConnection.m */; };
+		0D9FE9AA7B94EA24741EADAEFCC40F4B /* NSDictionary+NonNullable.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C2D1465A4B8AFCFB3C93B762C066042 /* NSDictionary+NonNullable.m */; };
+		13768E22284392A66377432C9E7EBC49 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		1704F3A289BA7F448B557874BBAAA644 /* VLEventPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 501BAB89E2A9CC67B27983D36B101A15 /* VLEventPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		17BB6F5BC8A19D316090651FE20B5D1D /* VLChronoPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 31BDEF7F0A9766783C593BC0F15DD31C /* VLChronoPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1BB1551EE03D02F2D97AFC0BCD8BAA07 /* VLSubscriptionPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EDAAE49D8E8E581B7ACCE2C5692447B /* VLSubscriptionPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1BC5B095CCE880AB8C60163CD486B0FE /* VLEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 053723A67CA489BEAEA7BEE64D79A35F /* VLEvent.m */; };
+		1CA2519E148150C238FC3F2A4E8723C6 /* VLDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = E2D7731AE97A0E3EEA90E576C2CCF979 /* VLDevice.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1E47552E0890CD5E895BE9E883277AF6 /* JCDHTTPConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 58C86EF2BFE5BF7258AC47947AFD1D4B /* JCDHTTPConnection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2472BBA1468C2E3F5B6887EA0B284FC5 /* VLPager.h in Headers */ = {isa = PBXBuildFile; fileRef = B329E27D56347C9FB3AE47C23BF2DF46 /* VLPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25A588861BB60574863F63FBE935A911 /* VLTripPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 28D4B07389295D5C108FCFC3A25E900C /* VLTripPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27B074B810F5701448E480558F1632FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		28029F369F97996B0A7F73E6D01102D7 /* VLVehiclePager.h in Headers */ = {isa = PBXBuildFile; fileRef = 9231CBB7CF0DA6CF89EA871D8D68D8A5 /* VLVehiclePager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		289909353ED1DE21CCAEBDFE7BA12934 /* VLDevicePager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3363FC16AECBEF08CE31A3F4197E9F05 /* VLDevicePager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2CC08D96226B6FCFD88FA7387893340B /* VLUserCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A18C4846A16EA151D551B8E8F2024DB3 /* VLUserCache.m */; };
+		2DC13CD95D0035BA97AA9469635A32CE /* VLUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 61322DE02607039584C62AD136A20149 /* VLUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39CE30BCBD0DCAE5B600D93A8C42D864 /* VLPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B898D62F98CC921243598F2468C998 /* VLPager.m */; };
+		3B579D8EC45364812711927D4373A4D9 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A39A91E4F18ED73CD5F2FE9587E6AD7A /* Pods-dummy.m */; };
+		3D397A623EE6691A652BFEA1088AF7C5 /* VLRadiusBoundary.m in Sources */ = {isa = PBXBuildFile; fileRef = 89443F20F150521E59FA02957A68FD2C /* VLRadiusBoundary.m */; };
+		4538EC6E054BF05682BE3E717CF1D20D /* VLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 255E6D2CEABFE5A90C4C35016F274819 /* VLUser.m */; };
+		45D7B7E170C5957050029CFD60495CA2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		46DDC6AEDC1A62487E44C3B68B50CA4F /* VLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = B155C743F07F9B7F08BD9B7BD444B6EB /* VLSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		48260D2B68164E9AB3654E3BE28754CA /* VLSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 916632133B0729C820221B99110C23C6 /* VLSession.m */; };
+		4EEAECFF458F1E1CD5817A5D652C7FD7 /* VLLocationPager.h in Headers */ = {isa = PBXBuildFile; fileRef = B7D4AE45D6122681CAC4A70AFF4A90B0 /* VLLocationPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F8C078A6BDA497213968B7877E9478E /* VLSubscriptionPager.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EF6F512F7C3AF516AFA201E9560142 /* VLSubscriptionPager.m */; };
+		58DCFB8242DD82392227653F62F7740A /* VLRadiusBoundary.h in Headers */ = {isa = PBXBuildFile; fileRef = CD1C080E3C5827A882523C5C9C7472A9 /* VLRadiusBoundary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5E917E04E7A832E7EF8FC8A03D42511F /* VLUrlParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 491A384834E92ACBB442C3D794240339 /* VLUrlParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		61A8ED410A1AA24B01ABD1B3837C38E3 /* VLTelemetryMessagePager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F150F1D7319B18119B8E1337093DC5A /* VLTelemetryMessagePager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		63D740F10DA4A3E97A3E4A1D03262135 /* Pods-VinliAuth-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE160042249A7C42B03B1A21EA85D1 /* Pods-VinliAuth-dummy.m */; };
+		647F9712A6835F1F4397EFCDAE9A6816 /* VLChronoPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 86E23BAA6293EC7CF0044DF005E1C4F9 /* VLChronoPager.m */; };
+		666AA5648A6D000E0A5F82DE2C95B1E5 /* VLRequestHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E51876381179313E010BBCB06D15E /* VLRequestHeader.m */; };
+		68292CB0BD6B53479AFE6841DC3A1AB2 /* VLVehiclePager.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4F0884EC6ABAD89D4F922093416396 /* VLVehiclePager.m */; };
+		7249223364EB347B53B4454ABCB504C2 /* VLParametricBoundary.m in Sources */ = {isa = PBXBuildFile; fileRef = 458EF13A8CE50D374FC2A58CFB78BF51 /* VLParametricBoundary.m */; };
+		75481D934A24FA6F82738C47905E2AD6 /* VLTelemetryMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8039FE5C2CE26173936ABFC9092861BE /* VLTelemetryMessage.m */; };
+		79FB184485AAE6F2A28508075C92DF70 /* Pods-VinliAuthUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3212B90F09D6045FBB8BAAD8EC3293D5 /* Pods-VinliAuthUITests-dummy.m */; };
+		7B90F69F5DE785CEF7011CCB3C95548D /* VLNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = 61B31D17E523C480B376AACCEACBDF74 /* VLNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7C300E6BFFB3D3AA3AC73FEE4311C253 /* VLOffsetPager.m in Sources */ = {isa = PBXBuildFile; fileRef = AD193437EAFEA205FA15994D1E568268 /* VLOffsetPager.m */; };
+		84C125074B9AB8BBB0A12849FB890302 /* VLTrip.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D581A0FC32D697DBE3E246846562E32 /* VLTrip.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8526973069ADC705AB6CDE57D7C1A21C /* VLNotificationPager.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FD03A055AADDB95CFE4305F6356BE4 /* VLNotificationPager.m */; };
+		8DE3630FF0E111DE2BDBD8E1A329BB97 /* VLSnapshotPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DDBA90E143F7F485C4B0B584EB7230A /* VLSnapshotPager.m */; };
+		8FA304B215228B306DF841CB46770F8B /* VLPolygonBoundary.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EF380011E6F4CBB98F2C67F709CAB4A /* VLPolygonBoundary.m */; };
+		910E4285CB229AD48B028C4F33E479BE /* VLSnapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA1F396C75F5047513B2370B417ED1D /* VLSnapshot.m */; };
+		9D8485A99E4E03E46020FA81CB7B4E73 /* VLNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 21F7AE7B968F0FFDD58B19BCDB5479A0 /* VLNotification.m */; };
+		9E52596FCF1215CDEFFEFE9609AFB227 /* VLTelemetryMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D2512EEF593C43A5658281FB9EF8340 /* VLTelemetryMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9EDCAA121B5EA1DD4EFFAD75D65E49F5 /* NSDictionary+NonNullable.h in Headers */ = {isa = PBXBuildFile; fileRef = F641D955E3FFAFBB0B4F2F4848672C68 /* NSDictionary+NonNullable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A08A1E07C0100F8B1EAF6BC474D2003B /* VLRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 112B59903DAF7834CD4D36846EE8938A /* VLRule.m */; };
+		A15C97224EFDCFBFB94E76E3975D5D28 /* NSString+Random.h in Headers */ = {isa = PBXBuildFile; fileRef = F49BB61C173BC39F5D9E51E39281BC0F /* NSString+Random.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A640544C864613F8694B360282F5F988 /* VLSnapshotPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DA9F97761F160F3083FCE0000943E3D /* VLSnapshotPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AB313A47361CBE86049C94A5F023EE18 /* VLParametricBoundary.h in Headers */ = {isa = PBXBuildFile; fileRef = 0684382AC673F1DC18ED00D43750DA57 /* VLParametricBoundary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AB41A0C77772ECB93538752821CB3A00 /* VLObjectRef.h in Headers */ = {isa = PBXBuildFile; fileRef = 613A5463ADE5005F5B76FB1D61B861EA /* VLObjectRef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AD897925AC79EA72679A31027C1F84BC /* NSString+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCBFF41A4C8196D1E22491DA15843FF /* NSString+Random.m */; };
+		B05404AA2B8D699E040981A4863B4492 /* VLObjectRef.m in Sources */ = {isa = PBXBuildFile; fileRef = CB99DD606DD96816C2A604BE6BBECC57 /* VLObjectRef.m */; };
+		B97D7AFFAAA010D73DC2C50976651684 /* VLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A533F9D4754950633543E7385FEA03 /* VLLoginViewController.m */; };
+		BE9992ED1FB5C58F4C833720B8ECE5FD /* VLOffsetPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 100A3915C3CC5AA5EA89947668699A3C /* VLOffsetPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF9783933860F62DA0973EFE4886182C /* VLSnapshot.h in Headers */ = {isa = PBXBuildFile; fileRef = E3AFC8F28D84F483214AE4351E97195D /* VLSnapshot.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C2A15CE001F1679D0120C970FE628D56 /* VLLocationPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4422114D97DD56D7A656A47530565C5C /* VLLocationPager.m */; };
+		C7B7D975B7F424227F60BC41A7E5C2CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		C81AE22EDF271F0E2DEA653ABE6B88CE /* VLService.m in Sources */ = {isa = PBXBuildFile; fileRef = B396C8A33C01A81873163BFFB11B1969 /* VLService.m */; };
+		C8205092F5A2640037C960D3ED1B5547 /* VLService.h in Headers */ = {isa = PBXBuildFile; fileRef = 74DD8C9455D8B41FBE5DBD395B801BEA /* VLService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D250D88687AD33B1B7F0315D5E3E3C64 /* VLLoginButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E4A24A9CC1A45ADB6AAD87826413906 /* VLLoginButton.m */; };
+		D2B850414F0D3F39936F1C0C8C05C8E1 /* VLTelemetryMessagePager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0E5EB75C384EBECDB4AFDA53513158 /* VLTelemetryMessagePager.m */; };
+		D46FC849656498BAE9FE4C73F18DE745 /* VLRulePager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A01A35A63B95DF83BA491492ACD1984 /* VLRulePager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D95C5F2D5B32B8A386E36080CCB52B86 /* VLDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CEF9AE1794B5397CE6682A5370DCD /* VLDevice.m */; };
+		DCFA3C3A6E04FEF1BBBDA91006C65499 /* VinliSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C019BC2A32AD73A40D4B5121E29777D /* VinliSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD2E9ACFDD85A77183679F5452EB8155 /* VLNotificationPager.h in Headers */ = {isa = PBXBuildFile; fileRef = E70B8AB1920DC14CE1EB92651F8D9248 /* VLNotificationPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DE2DA2D545316ED722DC1147094FC774 /* Pods-VinliAuthTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DC609AB008300E3C5DAAC4D6147F2D /* Pods-VinliAuthTests-dummy.m */; };
+		E2715014B383D7D412AF2511812F33C3 /* VLDevicePager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF63C1F52F57DE4C31A42D469A186E /* VLDevicePager.m */; };
+		E347F9F844B65D9014D32B5B13051CC1 /* VLTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0ABB6C83702A29804F3FE91F5136C6 /* VLTrip.m */; };
+		E3CE2811780BBFD4866B56B46BDF7276 /* VLSubscription.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E0A413EF0E8F05DEB165759D9C84FB2 /* VLSubscription.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E3F8614F88423CC602B25C159CE8F13B /* VLLoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E83B9F511DF2176831FFD8E1B9CA7DCB /* VLLoginViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E54A608A24AACD51F17C90B3EB4DFD8B /* VLSubscription.m in Sources */ = {isa = PBXBuildFile; fileRef = 0754FD3EF5632C7164ABBC2D768A5C3F /* VLSubscription.m */; };
+		E562DE6117C3A877966993F4CFF45CB1 /* VLEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 3869313A2974CF4A21255FF3C85C725B /* VLEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E5900FE5F415A6953B9E47C2445EA480 /* VinliNet-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D5EFC0EE6ED5F3783A912F6368428721 /* VinliNet-dummy.m */; };
+		EB1F50CAC63A511C8DB7A0B73C3836CC /* VLRule.h in Headers */ = {isa = PBXBuildFile; fileRef = 92E72E3CBDBC39034BC3A4AF3B7E919B /* VLRule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EDB34A6669A18DAED7AD66A4456C4AA6 /* VLLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E75EBC5E160AFC77EAD1C53A6C8BEA3 /* VLLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EFBC6E527E821230E00DFFDC7D8642A0 /* VLUserCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DB0D9846182F727318CD786D2BC86C1 /* VLUserCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F211D68819F0F493F440315E8466B526 /* VLLoginButton.h in Headers */ = {isa = PBXBuildFile; fileRef = E754D7B40B3BF0C55520AF67D2D54477 /* VLLoginButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F29321A18935BB6CFA60671D0B293B63 /* VLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C3F59298CE2F7D72D96AD977F7DF8D5 /* VLSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F32B5E7BAB205D119005257809A3C379 /* VLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A985BFF383536EE8F6DE9386949D3CB /* VLSessionManager.m */; };
+		F39147FDEEAF49A79249DF8E276ABE8C /* VLVehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 23F0810B55424246FF1613249BF5129F /* VLVehicle.m */; };
+		FB48DC3F1661437998B8E8249FF25DE8 /* VLRequestHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 93B08FEC98D03EA1FD2BB04B811309C5 /* VLRequestHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FC9B880AA7A4BE3289FDD9A5C090DBCD /* VLVehicle.h in Headers */ = {isa = PBXBuildFile; fileRef = ACF5BF74EF42D4C45451A02AB3D4A51D /* VLVehicle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE961C1356F48874B923338D32946C8F /* VLUrlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB23D23CE4C34099AF9CE4BABBCA3DB2 /* VLUrlParser.m */; };
+		FEE0494ADAE4F25F64139E5EF570E94D /* VLTripPager.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1ED2D5E4F68A3259489E22FFCEB643 /* VLTripPager.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2C9BFA69F30ACC02849A0FB74B17BBFC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7E7C5D2F09C4AC8A2B38D096448AC75C;
+			remoteInfo = VinliNet;
+		};
+		97478A38B1C5938D8D69921829AD6794 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7E7C5D2F09C4AC8A2B38D096448AC75C;
+			remoteInfo = VinliNet;
+		};
+		9C7DE54F0B9AA5274222630E938DB68D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7E7C5D2F09C4AC8A2B38D096448AC75C;
+			remoteInfo = VinliNet;
+		};
+		E848BA600DCFF4FD61B609DE8977FD49 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7E7C5D2F09C4AC8A2B38D096448AC75C;
+			remoteInfo = VinliNet;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00EA784DEA4A00D453AF557029A7C12B /* VinliNet-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VinliNet-prefix.pch"; sourceTree = "<group>"; };
+		04B898D62F98CC921243598F2468C998 /* VLPager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLPager.m; path = VinliSDK/VLPager.m; sourceTree = "<group>"; };
+		053723A67CA489BEAEA7BEE64D79A35F /* VLEvent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLEvent.m; path = VinliSDK/VLEvent.m; sourceTree = "<group>"; };
+		05824BF41E771C75DF335C2F4F26C5A3 /* Pods-VinliAuthUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VinliAuthUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		0684382AC673F1DC18ED00D43750DA57 /* VLParametricBoundary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLParametricBoundary.h; path = VinliSDK/VLParametricBoundary.h; sourceTree = "<group>"; };
+		0754FD3EF5632C7164ABBC2D768A5C3F /* VLSubscription.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLSubscription.m; path = VinliSDK/VLSubscription.m; sourceTree = "<group>"; };
+		0C3F59298CE2F7D72D96AD977F7DF8D5 /* VLSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLSessionManager.h; path = VinliSDK/VLSessionManager.h; sourceTree = "<group>"; };
+		0D9E51876381179313E010BBCB06D15E /* VLRequestHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLRequestHeader.m; path = VinliSDK/VLRequestHeader.m; sourceTree = "<group>"; };
+		0DCE160042249A7C42B03B1A21EA85D1 /* Pods-VinliAuth-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VinliAuth-dummy.m"; sourceTree = "<group>"; };
+		0E8DC704CF40BF90C0425D3221EF9BC6 /* Pods-VinliAuth.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VinliAuth.debug.xcconfig"; sourceTree = "<group>"; };
+		0F0ABB6C83702A29804F3FE91F5136C6 /* VLTrip.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLTrip.m; path = VinliSDK/VLTrip.m; sourceTree = "<group>"; };
+		100A3915C3CC5AA5EA89947668699A3C /* VLOffsetPager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLOffsetPager.h; path = VinliSDK/VLOffsetPager.h; sourceTree = "<group>"; };
+		112B59903DAF7834CD4D36846EE8938A /* VLRule.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLRule.m; path = VinliSDK/VLRule.m; sourceTree = "<group>"; };
+		1890C5F1CADF2FD91F9D3BA37988C3EB /* VLEventPager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLEventPager.m; path = VinliSDK/VLEventPager.m; sourceTree = "<group>"; };
+		1A01A35A63B95DF83BA491492ACD1984 /* VLRulePager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLRulePager.h; path = VinliSDK/VLRulePager.h; sourceTree = "<group>"; };
+		21F7AE7B968F0FFDD58B19BCDB5479A0 /* VLNotification.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLNotification.m; path = VinliSDK/VLNotification.m; sourceTree = "<group>"; };
+		227E0D661FA9272DDCC00A378841002F /* Pods-VinliAuthUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VinliAuthUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		23F0810B55424246FF1613249BF5129F /* VLVehicle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLVehicle.m; path = VinliSDK/VLVehicle.m; sourceTree = "<group>"; };
+		255E6D2CEABFE5A90C4C35016F274819 /* VLUser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLUser.m; path = VinliSDK/VLUser.m; sourceTree = "<group>"; };
+		2660AAD2EB7398A1B3025ED1C23FC22A /* Pods-VinliAuth-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VinliAuth-acknowledgements.plist"; sourceTree = "<group>"; };
+		27903D2C81D0F2FC88F866BBCDF5EC26 /* Pods-VinliAuth-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VinliAuth-resources.sh"; sourceTree = "<group>"; };
+		28D4B07389295D5C108FCFC3A25E900C /* VLTripPager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLTripPager.h; path = VinliSDK/VLTripPager.h; sourceTree = "<group>"; };
+		2C2D1465A4B8AFCFB3C93B762C066042 /* NSDictionary+NonNullable.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+NonNullable.m"; path = "VinliSDK/NSDictionary+NonNullable.m"; sourceTree = "<group>"; };
+		2DDBA90E143F7F485C4B0B584EB7230A /* VLSnapshotPager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLSnapshotPager.m; path = VinliSDK/VLSnapshotPager.m; sourceTree = "<group>"; };
+		2E0A413EF0E8F05DEB165759D9C84FB2 /* VLSubscription.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLSubscription.h; path = VinliSDK/VLSubscription.h; sourceTree = "<group>"; };
+		2EDAAE49D8E8E581B7ACCE2C5692447B /* VLSubscriptionPager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLSubscriptionPager.h; path = VinliSDK/VLSubscriptionPager.h; sourceTree = "<group>"; };
+		31BDEF7F0A9766783C593BC0F15DD31C /* VLChronoPager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLChronoPager.h; path = VinliSDK/VLChronoPager.h; sourceTree = "<group>"; };
+		3212B90F09D6045FBB8BAAD8EC3293D5 /* Pods-VinliAuthUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VinliAuthUITests-dummy.m"; sourceTree = "<group>"; };
+		32947BD04EAC817936ED0390339751E2 /* Pods-VinliAuthTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VinliAuthTests-frameworks.sh"; sourceTree = "<group>"; };
+		3363FC16AECBEF08CE31A3F4197E9F05 /* VLDevicePager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLDevicePager.h; path = VinliSDK/VLDevicePager.h; sourceTree = "<group>"; };
+		3869313A2974CF4A21255FF3C85C725B /* VLEvent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLEvent.h; path = VinliSDK/VLEvent.h; sourceTree = "<group>"; };
+		388883556CEAEB07BBFCC917E28E4E2F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
+		3BCF63C1F52F57DE4C31A42D469A186E /* VLDevicePager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLDevicePager.m; path = VinliSDK/VLDevicePager.m; sourceTree = "<group>"; };
+		3DA9F97761F160F3083FCE0000943E3D /* VLSnapshotPager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLSnapshotPager.h; path = VinliSDK/VLSnapshotPager.h; sourceTree = "<group>"; };
+		3DB0D9846182F727318CD786D2BC86C1 /* VLUserCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLUserCache.h; path = VinliSDK/VLUserCache.h; sourceTree = "<group>"; };
+		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3F150F1D7319B18119B8E1337093DC5A /* VLTelemetryMessagePager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLTelemetryMessagePager.h; path = VinliSDK/VLTelemetryMessagePager.h; sourceTree = "<group>"; };
+		4422114D97DD56D7A656A47530565C5C /* VLLocationPager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLLocationPager.m; path = VinliSDK/VLLocationPager.m; sourceTree = "<group>"; };
+		458EF13A8CE50D374FC2A58CFB78BF51 /* VLParametricBoundary.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLParametricBoundary.m; path = VinliSDK/VLParametricBoundary.m; sourceTree = "<group>"; };
+		491A384834E92ACBB442C3D794240339 /* VLUrlParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLUrlParser.h; path = VinliSDK/VLUrlParser.h; sourceTree = "<group>"; };
+		4E71AF7B90AF689684A79D1A9B042D96 /* libPods-VinliAuthTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VinliAuthTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4ECFF447ECB737210CD1E31E049E2C10 /* VLBoundary.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLBoundary.m; path = VinliSDK/VLBoundary.m; sourceTree = "<group>"; };
+		501BAB89E2A9CC67B27983D36B101A15 /* VLEventPager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLEventPager.h; path = VinliSDK/VLEventPager.h; sourceTree = "<group>"; };
+		58C86EF2BFE5BF7258AC47947AFD1D4B /* JCDHTTPConnection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JCDHTTPConnection.h; path = VinliSDK/JCDHTTPConnection.h; sourceTree = "<group>"; };
+		5E75EBC5E160AFC77EAD1C53A6C8BEA3 /* VLLocation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLLocation.h; path = VinliSDK/VLLocation.h; sourceTree = "<group>"; };
+		5EF380011E6F4CBB98F2C67F709CAB4A /* VLPolygonBoundary.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLPolygonBoundary.m; path = VinliSDK/VLPolygonBoundary.m; sourceTree = "<group>"; };
+		61322DE02607039584C62AD136A20149 /* VLUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLUser.h; path = VinliSDK/VLUser.h; sourceTree = "<group>"; };
+		613A5463ADE5005F5B76FB1D61B861EA /* VLObjectRef.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLObjectRef.h; path = VinliSDK/VLObjectRef.h; sourceTree = "<group>"; };
+		61B31D17E523C480B376AACCEACBDF74 /* VLNotification.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLNotification.h; path = VinliSDK/VLNotification.h; sourceTree = "<group>"; };
+		63045D35BB5064B8CBA8093F1473988C /* Pods-VinliAuthTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VinliAuthTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6A985BFF383536EE8F6DE9386949D3CB /* VLSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLSessionManager.m; path = VinliSDK/VLSessionManager.m; sourceTree = "<group>"; };
+		6C019BC2A32AD73A40D4B5121E29777D /* VinliSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VinliSDK.h; path = VinliSDK/VinliSDK.h; sourceTree = "<group>"; };
+		6E4A24A9CC1A45ADB6AAD87826413906 /* VLLoginButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLLoginButton.m; path = VinliSDK/VLLoginButton.m; sourceTree = "<group>"; };
+		74DD8C9455D8B41FBE5DBD395B801BEA /* VLService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLService.h; path = VinliSDK/VLService.h; sourceTree = "<group>"; };
+		7812CF71E0E757DF37333ADBE110B9B3 /* VLPolygonBoundary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLPolygonBoundary.h; path = VinliSDK/VLPolygonBoundary.h; sourceTree = "<group>"; };
+		7A0E5EB75C384EBECDB4AFDA53513158 /* VLTelemetryMessagePager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLTelemetryMessagePager.m; path = VinliSDK/VLTelemetryMessagePager.m; sourceTree = "<group>"; };
+		7A80DEA8A3BE310C83F630292C0C5A52 /* libPods-VinliAuthUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VinliAuthUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AED42BCF35146D3F5D11483776A428B /* Pods-VinliAuthTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-VinliAuthTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		7D581A0FC32D697DBE3E246846562E32 /* VLTrip.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLTrip.h; path = VinliSDK/VLTrip.h; sourceTree = "<group>"; };
+		8039FE5C2CE26173936ABFC9092861BE /* VLTelemetryMessage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLTelemetryMessage.m; path = VinliSDK/VLTelemetryMessage.m; sourceTree = "<group>"; };
+		819FD8FB1C91224FA28E817F7CF86781 /* JCDHTTPConnection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JCDHTTPConnection.m; path = VinliSDK/JCDHTTPConnection.m; sourceTree = "<group>"; };
+		86E23BAA6293EC7CF0044DF005E1C4F9 /* VLChronoPager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLChronoPager.m; path = VinliSDK/VLChronoPager.m; sourceTree = "<group>"; };
+		88867B4DE7144826AEFAFEB972AA8974 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
+		89443F20F150521E59FA02957A68FD2C /* VLRadiusBoundary.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLRadiusBoundary.m; path = VinliSDK/VLRadiusBoundary.m; sourceTree = "<group>"; };
+		916632133B0729C820221B99110C23C6 /* VLSession.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLSession.m; path = VinliSDK/VLSession.m; sourceTree = "<group>"; };
+		9231CBB7CF0DA6CF89EA871D8D68D8A5 /* VLVehiclePager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLVehiclePager.h; path = VinliSDK/VLVehiclePager.h; sourceTree = "<group>"; };
+		92E72E3CBDBC39034BC3A4AF3B7E919B /* VLRule.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLRule.h; path = VinliSDK/VLRule.h; sourceTree = "<group>"; };
+		93B08FEC98D03EA1FD2BB04B811309C5 /* VLRequestHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLRequestHeader.h; path = VinliSDK/VLRequestHeader.h; sourceTree = "<group>"; };
+		9C0EE4A95E6FFA4B928C41BF816D3DA1 /* VLLocation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLLocation.m; path = VinliSDK/VLLocation.m; sourceTree = "<group>"; };
+		9D2512EEF593C43A5658281FB9EF8340 /* VLTelemetryMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLTelemetryMessage.h; path = VinliSDK/VLTelemetryMessage.h; sourceTree = "<group>"; };
+		9FA7A9AC26C894301D438E98D90610A9 /* Pods-VinliAuth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VinliAuth.release.xcconfig"; sourceTree = "<group>"; };
+		A18C4846A16EA151D551B8E8F2024DB3 /* VLUserCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLUserCache.m; path = VinliSDK/VLUserCache.m; sourceTree = "<group>"; };
+		A39A91E4F18ED73CD5F2FE9587E6AD7A /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
+		A423CCAD55A28110686EF2A52C8E2AE7 /* Pods-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-frameworks.sh"; sourceTree = "<group>"; };
+		A70FCA703FBA0C5C730605093413C626 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A83C25C9287056BB3F1B0BBB8FCA7E1C /* Pods-VinliAuth-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-VinliAuth-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A9A533F9D4754950633543E7385FEA03 /* VLLoginViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLLoginViewController.m; path = VinliSDK/VLLoginViewController.m; sourceTree = "<group>"; };
+		AA1ED2D5E4F68A3259489E22FFCEB643 /* VLTripPager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLTripPager.m; path = VinliSDK/VLTripPager.m; sourceTree = "<group>"; };
+		ACAA7FE50B42BD0EAEE692B22CDF787D /* VLBoundary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLBoundary.h; path = VinliSDK/VLBoundary.h; sourceTree = "<group>"; };
+		ACF5BF74EF42D4C45451A02AB3D4A51D /* VLVehicle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLVehicle.h; path = VinliSDK/VLVehicle.h; sourceTree = "<group>"; };
+		AD193437EAFEA205FA15994D1E568268 /* VLOffsetPager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLOffsetPager.m; path = VinliSDK/VLOffsetPager.m; sourceTree = "<group>"; };
+		AFD8B34EC3F2617D22EBD34BADD63406 /* Pods-VinliAuthTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VinliAuthTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		B155C743F07F9B7F08BD9B7BD444B6EB /* VLSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLSession.h; path = VinliSDK/VLSession.h; sourceTree = "<group>"; };
+		B329E27D56347C9FB3AE47C23BF2DF46 /* VLPager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLPager.h; path = VinliSDK/VLPager.h; sourceTree = "<group>"; };
+		B396C8A33C01A81873163BFFB11B1969 /* VLService.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLService.m; path = VinliSDK/VLService.m; sourceTree = "<group>"; };
+		B503BC8D5A8F30CCBDFCC42B644D46D8 /* Pods-VinliAuthTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VinliAuthTests.release.xcconfig"; sourceTree = "<group>"; };
+		B7D4AE45D6122681CAC4A70AFF4A90B0 /* VLLocationPager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLLocationPager.h; path = VinliSDK/VLLocationPager.h; sourceTree = "<group>"; };
+		B9F4A82701A06E99DDE6064A622471F6 /* Pods-VinliAuthUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-VinliAuthUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BE4F0884EC6ABAD89D4F922093416396 /* VLVehiclePager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLVehiclePager.m; path = VinliSDK/VLVehiclePager.m; sourceTree = "<group>"; };
+		C09CF05CFB90E3799FBFAA06A1816E2C /* Pods-VinliAuth-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VinliAuth-frameworks.sh"; sourceTree = "<group>"; };
+		C15EE27AC94BABFD192F228077714B6C /* Pods-VinliAuthTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VinliAuthTests-resources.sh"; sourceTree = "<group>"; };
+		C513313028BF0A7F7ADEAF4424945D16 /* VLRulePager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLRulePager.m; path = VinliSDK/VLRulePager.m; sourceTree = "<group>"; };
+		CB99DD606DD96816C2A604BE6BBECC57 /* VLObjectRef.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLObjectRef.m; path = VinliSDK/VLObjectRef.m; sourceTree = "<group>"; };
+		CBA1F396C75F5047513B2370B417ED1D /* VLSnapshot.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLSnapshot.m; path = VinliSDK/VLSnapshot.m; sourceTree = "<group>"; };
+		CD1C080E3C5827A882523C5C9C7472A9 /* VLRadiusBoundary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLRadiusBoundary.h; path = VinliSDK/VLRadiusBoundary.h; sourceTree = "<group>"; };
+		CFBA4B947E6B0988601D88B7FD361067 /* Pods-VinliAuthUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VinliAuthUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D15E57625D839960D6FCDB6FB893B6A7 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		D5EFC0EE6ED5F3783A912F6368428721 /* VinliNet-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "VinliNet-dummy.m"; sourceTree = "<group>"; };
+		D7FD03A055AADDB95CFE4305F6356BE4 /* VLNotificationPager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLNotificationPager.m; path = VinliSDK/VLNotificationPager.m; sourceTree = "<group>"; };
+		DAAD50797064A9BE2D32D59962ED2139 /* Pods-VinliAuthUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VinliAuthUITests-frameworks.sh"; sourceTree = "<group>"; };
+		DB23D23CE4C34099AF9CE4BABBCA3DB2 /* VLUrlParser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLUrlParser.m; path = VinliSDK/VLUrlParser.m; sourceTree = "<group>"; };
+		DDCBFF41A4C8196D1E22491DA15843FF /* NSString+Random.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+Random.m"; path = "VinliSDK/NSString+Random.m"; sourceTree = "<group>"; };
+		DF35BE2CDC87356F3E7D01D250F0CA9B /* VinliNet.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = VinliNet.xcconfig; sourceTree = "<group>"; };
+		E2D7731AE97A0E3EEA90E576C2CCF979 /* VLDevice.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLDevice.h; path = VinliSDK/VLDevice.h; sourceTree = "<group>"; };
+		E2E62CB121E45E78E507A9CBA8CEB01E /* libVinliNet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libVinliNet.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3AFC8F28D84F483214AE4351E97195D /* VLSnapshot.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLSnapshot.h; path = VinliSDK/VLSnapshot.h; sourceTree = "<group>"; };
+		E57CEF9AE1794B5397CE6682A5370DCD /* VLDevice.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLDevice.m; path = VinliSDK/VLDevice.m; sourceTree = "<group>"; };
+		E70B8AB1920DC14CE1EB92651F8D9248 /* VLNotificationPager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLNotificationPager.h; path = VinliSDK/VLNotificationPager.h; sourceTree = "<group>"; };
+		E754D7B40B3BF0C55520AF67D2D54477 /* VLLoginButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLLoginButton.h; path = VinliSDK/VLLoginButton.h; sourceTree = "<group>"; };
+		E83B9F511DF2176831FFD8E1B9CA7DCB /* VLLoginViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VLLoginViewController.h; path = VinliSDK/VLLoginViewController.h; sourceTree = "<group>"; };
+		E9D6C32D3E0F5FD6776587B806DB797A /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
+		ED75D2932BBAD67731B6A912C47E6A11 /* libPods-VinliAuth.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VinliAuth.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3F3BEEDD411B67534D3278DAD77B907 /* Pods-VinliAuthUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VinliAuthUITests-resources.sh"; sourceTree = "<group>"; };
+		F49BB61C173BC39F5D9E51E39281BC0F /* NSString+Random.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+Random.h"; path = "VinliSDK/NSString+Random.h"; sourceTree = "<group>"; };
+		F5EF6F512F7C3AF516AFA201E9560142 /* VLSubscriptionPager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VLSubscriptionPager.m; path = VinliSDK/VLSubscriptionPager.m; sourceTree = "<group>"; };
+		F641D955E3FFAFBB0B4F2F4848672C68 /* NSDictionary+NonNullable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+NonNullable.h"; path = "VinliSDK/NSDictionary+NonNullable.h"; sourceTree = "<group>"; };
+		F7DC609AB008300E3C5DAAC4D6147F2D /* Pods-VinliAuthTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VinliAuthTests-dummy.m"; sourceTree = "<group>"; };
+		F8DBE7C0EA9CD98B9792AC64408DA75C /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3E874D22C094ADA3BCB927849118E0DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13768E22284392A66377432C9E7EBC49 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		57A12708BC6E4FC8BD6C9856262CA4DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45D7B7E170C5957050029CFD60495CA2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99DA55FAACD0094C760EA9D1E560AD3D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7B7D975B7F424227F60BC41A7E5C2CD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2DB0E055A7D566451A16ED1FBD0EBB2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27B074B810F5701448E480558F1632FF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9DD422BD7AB51B87067CFBAAA58DF09 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08E971BAC6E9A519CCBCC115E2E09118 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		16FC573D1B1083E89761953209B941A7 /* Pods-VinliAuthUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B9F4A82701A06E99DDE6064A622471F6 /* Pods-VinliAuthUITests-acknowledgements.markdown */,
+				227E0D661FA9272DDCC00A378841002F /* Pods-VinliAuthUITests-acknowledgements.plist */,
+				3212B90F09D6045FBB8BAAD8EC3293D5 /* Pods-VinliAuthUITests-dummy.m */,
+				DAAD50797064A9BE2D32D59962ED2139 /* Pods-VinliAuthUITests-frameworks.sh */,
+				F3F3BEEDD411B67534D3278DAD77B907 /* Pods-VinliAuthUITests-resources.sh */,
+				05824BF41E771C75DF335C2F4F26C5A3 /* Pods-VinliAuthUITests.debug.xcconfig */,
+				CFBA4B947E6B0988601D88B7FD361067 /* Pods-VinliAuthUITests.release.xcconfig */,
+			);
+			name = "Pods-VinliAuthUITests";
+			path = "Target Support Files/Pods-VinliAuthUITests";
+			sourceTree = "<group>";
+		};
+		1FCC4381D24096DD9CFA44D82B12F7F5 /* VinliNet */ = {
+			isa = PBXGroup;
+			children = (
+				58C86EF2BFE5BF7258AC47947AFD1D4B /* JCDHTTPConnection.h */,
+				819FD8FB1C91224FA28E817F7CF86781 /* JCDHTTPConnection.m */,
+				F641D955E3FFAFBB0B4F2F4848672C68 /* NSDictionary+NonNullable.h */,
+				2C2D1465A4B8AFCFB3C93B762C066042 /* NSDictionary+NonNullable.m */,
+				F49BB61C173BC39F5D9E51E39281BC0F /* NSString+Random.h */,
+				DDCBFF41A4C8196D1E22491DA15843FF /* NSString+Random.m */,
+				6C019BC2A32AD73A40D4B5121E29777D /* VinliSDK.h */,
+				ACAA7FE50B42BD0EAEE692B22CDF787D /* VLBoundary.h */,
+				4ECFF447ECB737210CD1E31E049E2C10 /* VLBoundary.m */,
+				31BDEF7F0A9766783C593BC0F15DD31C /* VLChronoPager.h */,
+				86E23BAA6293EC7CF0044DF005E1C4F9 /* VLChronoPager.m */,
+				E2D7731AE97A0E3EEA90E576C2CCF979 /* VLDevice.h */,
+				E57CEF9AE1794B5397CE6682A5370DCD /* VLDevice.m */,
+				3363FC16AECBEF08CE31A3F4197E9F05 /* VLDevicePager.h */,
+				3BCF63C1F52F57DE4C31A42D469A186E /* VLDevicePager.m */,
+				3869313A2974CF4A21255FF3C85C725B /* VLEvent.h */,
+				053723A67CA489BEAEA7BEE64D79A35F /* VLEvent.m */,
+				501BAB89E2A9CC67B27983D36B101A15 /* VLEventPager.h */,
+				1890C5F1CADF2FD91F9D3BA37988C3EB /* VLEventPager.m */,
+				5E75EBC5E160AFC77EAD1C53A6C8BEA3 /* VLLocation.h */,
+				9C0EE4A95E6FFA4B928C41BF816D3DA1 /* VLLocation.m */,
+				B7D4AE45D6122681CAC4A70AFF4A90B0 /* VLLocationPager.h */,
+				4422114D97DD56D7A656A47530565C5C /* VLLocationPager.m */,
+				E754D7B40B3BF0C55520AF67D2D54477 /* VLLoginButton.h */,
+				6E4A24A9CC1A45ADB6AAD87826413906 /* VLLoginButton.m */,
+				E83B9F511DF2176831FFD8E1B9CA7DCB /* VLLoginViewController.h */,
+				A9A533F9D4754950633543E7385FEA03 /* VLLoginViewController.m */,
+				61B31D17E523C480B376AACCEACBDF74 /* VLNotification.h */,
+				21F7AE7B968F0FFDD58B19BCDB5479A0 /* VLNotification.m */,
+				E70B8AB1920DC14CE1EB92651F8D9248 /* VLNotificationPager.h */,
+				D7FD03A055AADDB95CFE4305F6356BE4 /* VLNotificationPager.m */,
+				613A5463ADE5005F5B76FB1D61B861EA /* VLObjectRef.h */,
+				CB99DD606DD96816C2A604BE6BBECC57 /* VLObjectRef.m */,
+				100A3915C3CC5AA5EA89947668699A3C /* VLOffsetPager.h */,
+				AD193437EAFEA205FA15994D1E568268 /* VLOffsetPager.m */,
+				B329E27D56347C9FB3AE47C23BF2DF46 /* VLPager.h */,
+				04B898D62F98CC921243598F2468C998 /* VLPager.m */,
+				0684382AC673F1DC18ED00D43750DA57 /* VLParametricBoundary.h */,
+				458EF13A8CE50D374FC2A58CFB78BF51 /* VLParametricBoundary.m */,
+				7812CF71E0E757DF37333ADBE110B9B3 /* VLPolygonBoundary.h */,
+				5EF380011E6F4CBB98F2C67F709CAB4A /* VLPolygonBoundary.m */,
+				CD1C080E3C5827A882523C5C9C7472A9 /* VLRadiusBoundary.h */,
+				89443F20F150521E59FA02957A68FD2C /* VLRadiusBoundary.m */,
+				93B08FEC98D03EA1FD2BB04B811309C5 /* VLRequestHeader.h */,
+				0D9E51876381179313E010BBCB06D15E /* VLRequestHeader.m */,
+				92E72E3CBDBC39034BC3A4AF3B7E919B /* VLRule.h */,
+				112B59903DAF7834CD4D36846EE8938A /* VLRule.m */,
+				1A01A35A63B95DF83BA491492ACD1984 /* VLRulePager.h */,
+				C513313028BF0A7F7ADEAF4424945D16 /* VLRulePager.m */,
+				74DD8C9455D8B41FBE5DBD395B801BEA /* VLService.h */,
+				B396C8A33C01A81873163BFFB11B1969 /* VLService.m */,
+				B155C743F07F9B7F08BD9B7BD444B6EB /* VLSession.h */,
+				916632133B0729C820221B99110C23C6 /* VLSession.m */,
+				0C3F59298CE2F7D72D96AD977F7DF8D5 /* VLSessionManager.h */,
+				6A985BFF383536EE8F6DE9386949D3CB /* VLSessionManager.m */,
+				E3AFC8F28D84F483214AE4351E97195D /* VLSnapshot.h */,
+				CBA1F396C75F5047513B2370B417ED1D /* VLSnapshot.m */,
+				3DA9F97761F160F3083FCE0000943E3D /* VLSnapshotPager.h */,
+				2DDBA90E143F7F485C4B0B584EB7230A /* VLSnapshotPager.m */,
+				2E0A413EF0E8F05DEB165759D9C84FB2 /* VLSubscription.h */,
+				0754FD3EF5632C7164ABBC2D768A5C3F /* VLSubscription.m */,
+				2EDAAE49D8E8E581B7ACCE2C5692447B /* VLSubscriptionPager.h */,
+				F5EF6F512F7C3AF516AFA201E9560142 /* VLSubscriptionPager.m */,
+				9D2512EEF593C43A5658281FB9EF8340 /* VLTelemetryMessage.h */,
+				8039FE5C2CE26173936ABFC9092861BE /* VLTelemetryMessage.m */,
+				3F150F1D7319B18119B8E1337093DC5A /* VLTelemetryMessagePager.h */,
+				7A0E5EB75C384EBECDB4AFDA53513158 /* VLTelemetryMessagePager.m */,
+				7D581A0FC32D697DBE3E246846562E32 /* VLTrip.h */,
+				0F0ABB6C83702A29804F3FE91F5136C6 /* VLTrip.m */,
+				28D4B07389295D5C108FCFC3A25E900C /* VLTripPager.h */,
+				AA1ED2D5E4F68A3259489E22FFCEB643 /* VLTripPager.m */,
+				491A384834E92ACBB442C3D794240339 /* VLUrlParser.h */,
+				DB23D23CE4C34099AF9CE4BABBCA3DB2 /* VLUrlParser.m */,
+				61322DE02607039584C62AD136A20149 /* VLUser.h */,
+				255E6D2CEABFE5A90C4C35016F274819 /* VLUser.m */,
+				3DB0D9846182F727318CD786D2BC86C1 /* VLUserCache.h */,
+				A18C4846A16EA151D551B8E8F2024DB3 /* VLUserCache.m */,
+				ACF5BF74EF42D4C45451A02AB3D4A51D /* VLVehicle.h */,
+				23F0810B55424246FF1613249BF5129F /* VLVehicle.m */,
+				9231CBB7CF0DA6CF89EA871D8D68D8A5 /* VLVehiclePager.h */,
+				BE4F0884EC6ABAD89D4F922093416396 /* VLVehiclePager.m */,
+				331F2281A5E21BBAFA3F8F70E2CD4D71 /* Support Files */,
+			);
+			path = VinliNet;
+			sourceTree = "<group>";
+		};
+		27C0419B1EDD5E06646963798C952664 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A3FA48949B6333B9156D26F9F0FCC69F /* Pods */,
+				431E3687B309EC4316E33BF831C86365 /* Pods-VinliAuth */,
+				295F4FC153AD516A8286ABDF3744AF5D /* Pods-VinliAuthTests */,
+				16FC573D1B1083E89761953209B941A7 /* Pods-VinliAuthUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		295F4FC153AD516A8286ABDF3744AF5D /* Pods-VinliAuthTests */ = {
+			isa = PBXGroup;
+			children = (
+				7AED42BCF35146D3F5D11483776A428B /* Pods-VinliAuthTests-acknowledgements.markdown */,
+				AFD8B34EC3F2617D22EBD34BADD63406 /* Pods-VinliAuthTests-acknowledgements.plist */,
+				F7DC609AB008300E3C5DAAC4D6147F2D /* Pods-VinliAuthTests-dummy.m */,
+				32947BD04EAC817936ED0390339751E2 /* Pods-VinliAuthTests-frameworks.sh */,
+				C15EE27AC94BABFD192F228077714B6C /* Pods-VinliAuthTests-resources.sh */,
+				63045D35BB5064B8CBA8093F1473988C /* Pods-VinliAuthTests.debug.xcconfig */,
+				B503BC8D5A8F30CCBDFCC42B644D46D8 /* Pods-VinliAuthTests.release.xcconfig */,
+			);
+			name = "Pods-VinliAuthTests";
+			path = "Target Support Files/Pods-VinliAuthTests";
+			sourceTree = "<group>";
+		};
+		331F2281A5E21BBAFA3F8F70E2CD4D71 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				DF35BE2CDC87356F3E7D01D250F0CA9B /* VinliNet.xcconfig */,
+				D5EFC0EE6ED5F3783A912F6368428721 /* VinliNet-dummy.m */,
+				00EA784DEA4A00D453AF557029A7C12B /* VinliNet-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/VinliNet";
+			sourceTree = "<group>";
+		};
+		431E3687B309EC4316E33BF831C86365 /* Pods-VinliAuth */ = {
+			isa = PBXGroup;
+			children = (
+				A83C25C9287056BB3F1B0BBB8FCA7E1C /* Pods-VinliAuth-acknowledgements.markdown */,
+				2660AAD2EB7398A1B3025ED1C23FC22A /* Pods-VinliAuth-acknowledgements.plist */,
+				0DCE160042249A7C42B03B1A21EA85D1 /* Pods-VinliAuth-dummy.m */,
+				C09CF05CFB90E3799FBFAA06A1816E2C /* Pods-VinliAuth-frameworks.sh */,
+				27903D2C81D0F2FC88F866BBCDF5EC26 /* Pods-VinliAuth-resources.sh */,
+				0E8DC704CF40BF90C0425D3221EF9BC6 /* Pods-VinliAuth.debug.xcconfig */,
+				9FA7A9AC26C894301D438E98D90610A9 /* Pods-VinliAuth.release.xcconfig */,
+			);
+			name = "Pods-VinliAuth";
+			path = "Target Support Files/Pods-VinliAuth";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				C81983A7E4357A0F0AE127E87F822EB0 /* Pods */,
+				8B34883DC41C0E1CA542882029518124 /* Products */,
+				27C0419B1EDD5E06646963798C952664 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8B34883DC41C0E1CA542882029518124 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A70FCA703FBA0C5C730605093413C626 /* libPods.a */,
+				ED75D2932BBAD67731B6A912C47E6A11 /* libPods-VinliAuth.a */,
+				4E71AF7B90AF689684A79D1A9B042D96 /* libPods-VinliAuthTests.a */,
+				7A80DEA8A3BE310C83F630292C0C5A52 /* libPods-VinliAuthUITests.a */,
+				E2E62CB121E45E78E507A9CBA8CEB01E /* libVinliNet.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A3FA48949B6333B9156D26F9F0FCC69F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E9D6C32D3E0F5FD6776587B806DB797A /* Pods-acknowledgements.markdown */,
+				D15E57625D839960D6FCDB6FB893B6A7 /* Pods-acknowledgements.plist */,
+				A39A91E4F18ED73CD5F2FE9587E6AD7A /* Pods-dummy.m */,
+				A423CCAD55A28110686EF2A52C8E2AE7 /* Pods-frameworks.sh */,
+				F8DBE7C0EA9CD98B9792AC64408DA75C /* Pods-resources.sh */,
+				388883556CEAEB07BBFCC917E28E4E2F /* Pods.debug.xcconfig */,
+				88867B4DE7144826AEFAFEB972AA8974 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			path = "Target Support Files/Pods";
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		C81983A7E4357A0F0AE127E87F822EB0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1FCC4381D24096DD9CFA44D82B12F7F5 /* VinliNet */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1B924D753FF46AA853AD1086425281EA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E47552E0890CD5E895BE9E883277AF6 /* JCDHTTPConnection.h in Headers */,
+				9EDCAA121B5EA1DD4EFFAD75D65E49F5 /* NSDictionary+NonNullable.h in Headers */,
+				A15C97224EFDCFBFB94E76E3975D5D28 /* NSString+Random.h in Headers */,
+				DCFA3C3A6E04FEF1BBBDA91006C65499 /* VinliSDK.h in Headers */,
+				0208C713988536826A9234DB77C6AA15 /* VLBoundary.h in Headers */,
+				17BB6F5BC8A19D316090651FE20B5D1D /* VLChronoPager.h in Headers */,
+				1CA2519E148150C238FC3F2A4E8723C6 /* VLDevice.h in Headers */,
+				289909353ED1DE21CCAEBDFE7BA12934 /* VLDevicePager.h in Headers */,
+				E562DE6117C3A877966993F4CFF45CB1 /* VLEvent.h in Headers */,
+				1704F3A289BA7F448B557874BBAAA644 /* VLEventPager.h in Headers */,
+				EDB34A6669A18DAED7AD66A4456C4AA6 /* VLLocation.h in Headers */,
+				4EEAECFF458F1E1CD5817A5D652C7FD7 /* VLLocationPager.h in Headers */,
+				F211D68819F0F493F440315E8466B526 /* VLLoginButton.h in Headers */,
+				E3F8614F88423CC602B25C159CE8F13B /* VLLoginViewController.h in Headers */,
+				7B90F69F5DE785CEF7011CCB3C95548D /* VLNotification.h in Headers */,
+				DD2E9ACFDD85A77183679F5452EB8155 /* VLNotificationPager.h in Headers */,
+				AB41A0C77772ECB93538752821CB3A00 /* VLObjectRef.h in Headers */,
+				BE9992ED1FB5C58F4C833720B8ECE5FD /* VLOffsetPager.h in Headers */,
+				2472BBA1468C2E3F5B6887EA0B284FC5 /* VLPager.h in Headers */,
+				AB313A47361CBE86049C94A5F023EE18 /* VLParametricBoundary.h in Headers */,
+				06C48244E1995ABFD6BE6E45A98B3F81 /* VLPolygonBoundary.h in Headers */,
+				58DCFB8242DD82392227653F62F7740A /* VLRadiusBoundary.h in Headers */,
+				FB48DC3F1661437998B8E8249FF25DE8 /* VLRequestHeader.h in Headers */,
+				EB1F50CAC63A511C8DB7A0B73C3836CC /* VLRule.h in Headers */,
+				D46FC849656498BAE9FE4C73F18DE745 /* VLRulePager.h in Headers */,
+				C8205092F5A2640037C960D3ED1B5547 /* VLService.h in Headers */,
+				46DDC6AEDC1A62487E44C3B68B50CA4F /* VLSession.h in Headers */,
+				F29321A18935BB6CFA60671D0B293B63 /* VLSessionManager.h in Headers */,
+				BF9783933860F62DA0973EFE4886182C /* VLSnapshot.h in Headers */,
+				A640544C864613F8694B360282F5F988 /* VLSnapshotPager.h in Headers */,
+				E3CE2811780BBFD4866B56B46BDF7276 /* VLSubscription.h in Headers */,
+				1BB1551EE03D02F2D97AFC0BCD8BAA07 /* VLSubscriptionPager.h in Headers */,
+				9E52596FCF1215CDEFFEFE9609AFB227 /* VLTelemetryMessage.h in Headers */,
+				61A8ED410A1AA24B01ABD1B3837C38E3 /* VLTelemetryMessagePager.h in Headers */,
+				84C125074B9AB8BBB0A12849FB890302 /* VLTrip.h in Headers */,
+				25A588861BB60574863F63FBE935A911 /* VLTripPager.h in Headers */,
+				5E917E04E7A832E7EF8FC8A03D42511F /* VLUrlParser.h in Headers */,
+				2DC13CD95D0035BA97AA9469635A32CE /* VLUser.h in Headers */,
+				EFBC6E527E821230E00DFFDC7D8642A0 /* VLUserCache.h in Headers */,
+				FC9B880AA7A4BE3289FDD9A5C090DBCD /* VLVehicle.h in Headers */,
+				28029F369F97996B0A7F73E6D01102D7 /* VLVehiclePager.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		7E7C5D2F09C4AC8A2B38D096448AC75C /* VinliNet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 936484578C428F9915AD614B0FDAD57A /* Build configuration list for PBXNativeTarget "VinliNet" */;
+			buildPhases = (
+				4708F9348B4A8085BB42A747E8D4406F /* Sources */,
+				B2DB0E055A7D566451A16ED1FBD0EBB2 /* Frameworks */,
+				1B924D753FF46AA853AD1086425281EA /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VinliNet;
+			productName = VinliNet;
+			productReference = E2E62CB121E45E78E507A9CBA8CEB01E /* libVinliNet.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		9DB7FDADD1CC46C9421EDAFB2E8F1FB0 /* Pods-VinliAuthTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3AAFEFB4BF3DF2C15B276ACEF1C7CE65 /* Build configuration list for PBXNativeTarget "Pods-VinliAuthTests" */;
+			buildPhases = (
+				6392FD5FC7613E2D761D34AE738F09F6 /* Sources */,
+				3E874D22C094ADA3BCB927849118E0DD /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				76258BEF155441626995E27C0FA210F3 /* PBXTargetDependency */,
+			);
+			name = "Pods-VinliAuthTests";
+			productName = "Pods-VinliAuthTests";
+			productReference = 4E71AF7B90AF689684A79D1A9B042D96 /* libPods-VinliAuthTests.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		B292A9EAA42B46004521787668D380B0 /* Pods-VinliAuth */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D285D446D2A54F80824724301B0FEAE5 /* Build configuration list for PBXNativeTarget "Pods-VinliAuth" */;
+			buildPhases = (
+				1DCD245F42932F71B50943F9F85FC15E /* Sources */,
+				57A12708BC6E4FC8BD6C9856262CA4DE /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E15BE6E5A4248992304622D0DC2FF57F /* PBXTargetDependency */,
+			);
+			name = "Pods-VinliAuth";
+			productName = "Pods-VinliAuth";
+			productReference = ED75D2932BBAD67731B6A912C47E6A11 /* libPods-VinliAuth.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		BEA952F393A73508253500784D74CA3C /* Pods */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B44A37A340EF12DBB46F47D5A2927457 /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildPhases = (
+				26B141D7E63BD98748ED855C25FCF7A4 /* Sources */,
+				99DA55FAACD0094C760EA9D1E560AD3D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BCFDFE1046AD59D3F0ACC39E159FFAB3 /* PBXTargetDependency */,
+			);
+			name = Pods;
+			productName = Pods;
+			productReference = A70FCA703FBA0C5C730605093413C626 /* libPods.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		CF356533BAE2C59D60DD0B1E9A38B328 /* Pods-VinliAuthUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 29346BB788C1254332912CBB7B1A70F5 /* Build configuration list for PBXNativeTarget "Pods-VinliAuthUITests" */;
+			buildPhases = (
+				467B3EE338F5791D52DBC7C8216F2A28 /* Sources */,
+				D9DD422BD7AB51B87067CFBAAA58DF09 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D96A775F3F1D0E5BF19E4E5F98BE26D5 /* PBXTargetDependency */,
+			);
+			name = "Pods-VinliAuthUITests";
+			productName = "Pods-VinliAuthUITests";
+			productReference = 7A80DEA8A3BE310C83F630292C0C5A52 /* libPods-VinliAuthUITests.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 8B34883DC41C0E1CA542882029518124 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BEA952F393A73508253500784D74CA3C /* Pods */,
+				B292A9EAA42B46004521787668D380B0 /* Pods-VinliAuth */,
+				9DB7FDADD1CC46C9421EDAFB2E8F1FB0 /* Pods-VinliAuthTests */,
+				CF356533BAE2C59D60DD0B1E9A38B328 /* Pods-VinliAuthUITests */,
+				7E7C5D2F09C4AC8A2B38D096448AC75C /* VinliNet */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1DCD245F42932F71B50943F9F85FC15E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63D740F10DA4A3E97A3E4A1D03262135 /* Pods-VinliAuth-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		26B141D7E63BD98748ED855C25FCF7A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B579D8EC45364812711927D4373A4D9 /* Pods-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		467B3EE338F5791D52DBC7C8216F2A28 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79FB184485AAE6F2A28508075C92DF70 /* Pods-VinliAuthUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4708F9348B4A8085BB42A747E8D4406F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B24709E94B5908313B62F12098C9076 /* JCDHTTPConnection.m in Sources */,
+				0D9FE9AA7B94EA24741EADAEFCC40F4B /* NSDictionary+NonNullable.m in Sources */,
+				AD897925AC79EA72679A31027C1F84BC /* NSString+Random.m in Sources */,
+				E5900FE5F415A6953B9E47C2445EA480 /* VinliNet-dummy.m in Sources */,
+				070C0F624CD788B933FF682C0D1748F5 /* VLBoundary.m in Sources */,
+				647F9712A6835F1F4397EFCDAE9A6816 /* VLChronoPager.m in Sources */,
+				D95C5F2D5B32B8A386E36080CCB52B86 /* VLDevice.m in Sources */,
+				E2715014B383D7D412AF2511812F33C3 /* VLDevicePager.m in Sources */,
+				1BC5B095CCE880AB8C60163CD486B0FE /* VLEvent.m in Sources */,
+				05880A9305D8F6912C449546497B85F5 /* VLEventPager.m in Sources */,
+				08E8B45F73ECEF2EF2158AAEEAD7D6E4 /* VLLocation.m in Sources */,
+				C2A15CE001F1679D0120C970FE628D56 /* VLLocationPager.m in Sources */,
+				D250D88687AD33B1B7F0315D5E3E3C64 /* VLLoginButton.m in Sources */,
+				B97D7AFFAAA010D73DC2C50976651684 /* VLLoginViewController.m in Sources */,
+				9D8485A99E4E03E46020FA81CB7B4E73 /* VLNotification.m in Sources */,
+				8526973069ADC705AB6CDE57D7C1A21C /* VLNotificationPager.m in Sources */,
+				B05404AA2B8D699E040981A4863B4492 /* VLObjectRef.m in Sources */,
+				7C300E6BFFB3D3AA3AC73FEE4311C253 /* VLOffsetPager.m in Sources */,
+				39CE30BCBD0DCAE5B600D93A8C42D864 /* VLPager.m in Sources */,
+				7249223364EB347B53B4454ABCB504C2 /* VLParametricBoundary.m in Sources */,
+				8FA304B215228B306DF841CB46770F8B /* VLPolygonBoundary.m in Sources */,
+				3D397A623EE6691A652BFEA1088AF7C5 /* VLRadiusBoundary.m in Sources */,
+				666AA5648A6D000E0A5F82DE2C95B1E5 /* VLRequestHeader.m in Sources */,
+				A08A1E07C0100F8B1EAF6BC474D2003B /* VLRule.m in Sources */,
+				0784BD164418577954800B997D4B86D3 /* VLRulePager.m in Sources */,
+				C81AE22EDF271F0E2DEA653ABE6B88CE /* VLService.m in Sources */,
+				48260D2B68164E9AB3654E3BE28754CA /* VLSession.m in Sources */,
+				F32B5E7BAB205D119005257809A3C379 /* VLSessionManager.m in Sources */,
+				910E4285CB229AD48B028C4F33E479BE /* VLSnapshot.m in Sources */,
+				8DE3630FF0E111DE2BDBD8E1A329BB97 /* VLSnapshotPager.m in Sources */,
+				E54A608A24AACD51F17C90B3EB4DFD8B /* VLSubscription.m in Sources */,
+				4F8C078A6BDA497213968B7877E9478E /* VLSubscriptionPager.m in Sources */,
+				75481D934A24FA6F82738C47905E2AD6 /* VLTelemetryMessage.m in Sources */,
+				D2B850414F0D3F39936F1C0C8C05C8E1 /* VLTelemetryMessagePager.m in Sources */,
+				E347F9F844B65D9014D32B5B13051CC1 /* VLTrip.m in Sources */,
+				FEE0494ADAE4F25F64139E5EF570E94D /* VLTripPager.m in Sources */,
+				FE961C1356F48874B923338D32946C8F /* VLUrlParser.m in Sources */,
+				4538EC6E054BF05682BE3E717CF1D20D /* VLUser.m in Sources */,
+				2CC08D96226B6FCFD88FA7387893340B /* VLUserCache.m in Sources */,
+				F39147FDEEAF49A79249DF8E276ABE8C /* VLVehicle.m in Sources */,
+				68292CB0BD6B53479AFE6841DC3A1AB2 /* VLVehiclePager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6392FD5FC7613E2D761D34AE738F09F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE2DA2D545316ED722DC1147094FC774 /* Pods-VinliAuthTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		76258BEF155441626995E27C0FA210F3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VinliNet;
+			target = 7E7C5D2F09C4AC8A2B38D096448AC75C /* VinliNet */;
+			targetProxy = 2C9BFA69F30ACC02849A0FB74B17BBFC /* PBXContainerItemProxy */;
+		};
+		BCFDFE1046AD59D3F0ACC39E159FFAB3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VinliNet;
+			target = 7E7C5D2F09C4AC8A2B38D096448AC75C /* VinliNet */;
+			targetProxy = 9C7DE54F0B9AA5274222630E938DB68D /* PBXContainerItemProxy */;
+		};
+		D96A775F3F1D0E5BF19E4E5F98BE26D5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VinliNet;
+			target = 7E7C5D2F09C4AC8A2B38D096448AC75C /* VinliNet */;
+			targetProxy = 97478A38B1C5938D8D69921829AD6794 /* PBXContainerItemProxy */;
+		};
+		E15BE6E5A4248992304622D0DC2FF57F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VinliNet;
+			target = 7E7C5D2F09C4AC8A2B38D096448AC75C /* VinliNet */;
+			targetProxy = E848BA600DCFF4FD61B609DE8977FD49 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		48B619D35A051AA57DC6F4BB9AE9D343 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF35BE2CDC87356F3E7D01D250F0CA9B /* VinliNet.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/VinliNet/VinliNet-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		5990112A8E02D3FDBFDA7D70D9CCB551 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88867B4DE7144826AEFAFEB972AA8974 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		5ECD1AF41436C6809A3182814308D52E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63045D35BB5064B8CBA8093F1473988C /* Pods-VinliAuthTests.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		6783815597DA0DA9F4DC046D85CBD81D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E8DC704CF40BF90C0425D3221EF9BC6 /* Pods-VinliAuth.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		6CA8E23EDC398FC4FBD980868E00EEE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FA7A9AC26C894301D438E98D90610A9 /* Pods-VinliAuth.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		9552FABFCF10F132E3A2937E2134353D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05824BF41E771C75DF335C2F4F26C5A3 /* Pods-VinliAuthUITests.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		A4B4ED81DF26CE61C736548B773A93E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CFBA4B947E6B0988601D88B7FD361067 /* Pods-VinliAuthUITests.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		A58386EC017A5419682A70862898FF12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B503BC8D5A8F30CCBDFCC42B644D46D8 /* Pods-VinliAuthTests.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		B8C002ACCEFA20424F4595B88DF6B540 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF35BE2CDC87356F3E7D01D250F0CA9B /* VinliNet.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/VinliNet/VinliNet-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		C074F63C9EE7CB4D8C618390A32CEC35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		DDEF4B62193CA9702C78D40F04827784 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 388883556CEAEB07BBFCC917E28E4E2F /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		E43846B588E1892F3093F3B7082B6DFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		29346BB788C1254332912CBB7B1A70F5 /* Build configuration list for PBXNativeTarget "Pods-VinliAuthUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9552FABFCF10F132E3A2937E2134353D /* Debug */,
+				A4B4ED81DF26CE61C736548B773A93E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C074F63C9EE7CB4D8C618390A32CEC35 /* Debug */,
+				E43846B588E1892F3093F3B7082B6DFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3AAFEFB4BF3DF2C15B276ACEF1C7CE65 /* Build configuration list for PBXNativeTarget "Pods-VinliAuthTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5ECD1AF41436C6809A3182814308D52E /* Debug */,
+				A58386EC017A5419682A70862898FF12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		936484578C428F9915AD614B0FDAD57A /* Build configuration list for PBXNativeTarget "VinliNet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48B619D35A051AA57DC6F4BB9AE9D343 /* Debug */,
+				B8C002ACCEFA20424F4595B88DF6B540 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B44A37A340EF12DBB46F47D5A2927457 /* Build configuration list for PBXNativeTarget "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DDEF4B62193CA9702C78D40F04827784 /* Debug */,
+				5990112A8E02D3FDBFDA7D70D9CCB551 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D285D446D2A54F80824724301B0FEAE5 /* Build configuration list for PBXNativeTarget "Pods-VinliAuth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6783815597DA0DA9F4DC046D85CBD81D /* Debug */,
+				6CA8E23EDC398FC4FBD980868E00EEE3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
