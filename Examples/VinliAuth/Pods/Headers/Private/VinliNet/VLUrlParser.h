@@ -1,1 +1,1 @@
-../../../VinliNet/VinliSDK/VLUrlParser.h
+../../../../../../VinliSDK/VLUrlParser.h

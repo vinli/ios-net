@@ -1,1 +1,1 @@
-../../../VinliNet/VinliSDK/VLSessionManager.h
+../../../../../../VinliSDK/VLSessionManager.h

@@ -15,5 +15,6 @@ target 'VinliAuthUITests' do
 
 end
 
-pod ‘VinliNet’
+pod ‘VinliNet’, :path => ‘~/Documents/Programs/Vinli/ios-net’
+pod ‘VinliUIResources’, :path => ‘~/Documents/Programs/Vinli/VinliUIResources’
 

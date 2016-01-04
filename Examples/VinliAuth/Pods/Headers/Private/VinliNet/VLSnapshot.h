@@ -1,1 +1,1 @@
-../../../VinliNet/VinliSDK/VLSnapshot.h
+../../../../../../VinliSDK/VLSnapshot.h

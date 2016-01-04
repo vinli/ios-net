@@ -1,1 +1,1 @@
-../../../VinliNet/VinliSDK/VLDevicePager.h
+../../../../../../VinliSDK/VLDevicePager.h

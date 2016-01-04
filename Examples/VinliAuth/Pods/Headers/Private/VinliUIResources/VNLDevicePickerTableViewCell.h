@@ -1,0 +1,1 @@
+../../../../../../../VinliUIResources/VinliUIResources/VNLDevicePickerTableViewCell.h

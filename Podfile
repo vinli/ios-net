@@ -2,6 +2,7 @@
 # platform :ios, '6.0'
 
 target 'VinliSDK' do
+       
 
 end
 
@@ -9,3 +10,4 @@ target 'VinliSDKTests' do
 pod 'OCMock'
 end
 
+pod 'VinliUIResources', :path => '~/Documents/Programs/Vinli/VinliUIResources'

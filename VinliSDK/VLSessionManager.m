@@ -9,6 +9,8 @@
 #import "VLSessionManager.h"
 #import <UIKit/UIKit.h>
 #import "VinliSDK.h"
+#import <VinliUIResources/VLUserPickerViewController.h>
+#import <VinliUIResources/VLUserPickerTableCell.h>
 //#import <VinliNet/VinliSDK.h>
 
 static NSString * VLSessionManagerClientIdDemo = @"3d0de990-6491-47cf-afda-e6855e7cd1c8";
@@ -21,13 +23,15 @@ static NSString * VLSessionManagerHostDev = @"-dev.vin.li";
 static NSString * VLSessionManagerCachedSessionsKey = @"VLSessionManagerCachedSessionsKey";
 
 
-@interface VLSessionManager ()
+@interface VLSessionManager () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) VLUrlParser *urlParser;
 @property (copy, nonatomic) AuthenticationCompletion authenticationCompletionBlock;
 
 @property (strong, nonatomic) VLService* service;
 @property (strong, nonatomic) VLSession* currentSession;
 @property (strong, nonatomic) NSDictionary* cachedSessions;
+@property (strong, nonatomic) NSMutableArray<VLUser*> *userArray;
+
 @end
 
 @implementation VLSessionManager
@@ -61,6 +65,14 @@ static NSString * VLSessionManagerCachedSessionsKey = @"VLSessionManagerCachedSe
 - (VLSession *)currentSession
 {
     return _service.session;
+}
+
+- (NSMutableArray *)userArray
+{
+    if (!_userArray) {
+        _userArray = [NSMutableArray new];
+    }
+    return _userArray;
 }
 
 #pragma mark - Initialization
@@ -201,19 +213,22 @@ static NSString * VLSessionManagerCachedSessionsKey = @"VLSessionManagerCachedSe
 
 - (void)loginWithCompletion:(AuthenticationCompletion)onCompletion onCancel:(void(^)(void))cancel
 {
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Choose User"
-                                                                   message:@""
-                                                            preferredStyle:UIAlertControllerStyleAlert];
+//    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Choose User"
+//                                                                   message:@""
+//                                                            preferredStyle:UIAlertControllerStyleAlert];
+//    
+//    
+//    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"New User"
+//                                                            style:UIAlertActionStyleDefault
+//                                                          handler:^(UIAlertAction * action) {
+//                                                              [self loginWithUserId:nil withCompletion:onCompletion];
+//                                                          }];
+//    
+//    [alert addAction:defaultAction];
     
     
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"New User"
-                                                            style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * action) {
-                                                              [self loginWithUserId:nil withCompletion:onCompletion];
-                                                          }];
+    self.authenticationCompletionBlock = onCompletion;
     
-    [alert addAction:defaultAction];
-
     
     [[VLUserCache getUsersCache].allValues enumerateObjectsUsingBlock:^(VLUserCache* userCache, NSUInteger idx, BOOL *stop) {
         
@@ -221,24 +236,108 @@ static NSString * VLSessionManagerCachedSessionsKey = @"VLSessionManagerCachedSe
             return;
         }
         
-        UIAlertAction* action = [UIAlertAction actionWithTitle:userCache.user.firstName style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            [self loginWithUserId:userCache.user.userId withCompletion:onCompletion];
-        }];
-        [alert addAction:action];
+//        UIAlertAction* action = [UIAlertAction actionWithTitle:userCache.user.firstName style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+//            [self loginWithUserId:userCache.user.userId withCompletion:onCompletion];
+//        }];
+//        [alert addAction:action];
+        
+        [self.userArray addObject:userCache.user];
     }];
+
+//    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+//        if (cancel) {
+//            cancel();
+//        }
+//        [alert.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+//    }];
+//    [alert addAction:cancelAction];
     
-    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        if (cancel) {
-            cancel();
-        }
-        [alert.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    }];
-    [alert addAction:cancelAction];
     
     
+    VLUserPickerViewController *loginViewController = [VLUserPickerViewController initFromStoryboardWithDataSource:self delegate:self];
     
-    [[[UIApplication sharedApplication].windows[0] rootViewController] presentViewController:alert animated:YES completion:nil];
+    [[[UIApplication sharedApplication].windows[0] rootViewController] presentViewController:loginViewController animated:YES completion:nil];
 }
+
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == self.userArray.count) {
+        [self loginWithUserId:nil withCompletion:self.authenticationCompletionBlock];
+        return;
+    }
+
+    [self loginWithUserId:self.userArray[indexPath.row].userId withCompletion:^(VLSession * _Nullable session, NSError * _Nullable error) {
+    
+      
+        if (self.authenticationCompletionBlock) {
+            [[[UIApplication sharedApplication].windows[0] rootViewController] dismissViewControllerAnimated:YES completion:nil];
+            [self.userArray removeAllObjects];
+            self.authenticationCompletionBlock(session, error);
+            
+        }
+        
+    }];
+
+//    [self loginWithUserId:self.userArray[indexPath.row].userId withCompletion:self.authenticationCompletionBlock];
+//    [self.userArray removeAllObjects];
+//    [[[UIApplication sharedApplication].windows[0] rootViewController] dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.userArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    static NSString *myIdentifier = @"userCell";
+    
+    VLUserPickerTableCell *cell = [tableView dequeueReusableCellWithIdentifier:myIdentifier];
+    
+    if (!cell) {
+        cell = [[VLUserPickerTableCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:myIdentifier];
+    }
+    
+   
+    cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@" , self.userArray[indexPath.row].firstName, self.userArray[indexPath.row].lastName];
+    //cell.nameLabel.font = [UIFont fontWithName:@"Open-Sans" size:14.0f];
+    
+    return cell;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    
+    UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake( 0, 0, tableView.frame.size.width, 50)];
+    UIButton *newButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [newButton setTitle:@"New User" forState:UIControlStateNormal];
+    [newButton addTarget:self action:@selector(newUser:) forControlEvents:UIControlEventTouchUpInside];
+    [newButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    newButton.backgroundColor = [[UIColor alloc]initWithRed:0/255.0f green:163.0f/255.0f blue:224.0f/255.0f alpha:1]; //divide by 255.0f
+    newButton.frame = CGRectMake( 0, 0, tableView.frame.size.width, 50);
+    [footerView addSubview:newButton];
+    return footerView;
+
+}
+
+- (void)newUser:(id)sender
+{
+    [self loginWithUserId:nil withCompletion:self.authenticationCompletionBlock];
+    [self.userArray removeAllObjects];
+    [[[UIApplication sharedApplication].windows[0] rootViewController] dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 50.0f;
+}
+
+
 
 - (void)loginWithUserId:(NSString *)userId withCompletion:(AuthenticationCompletion)onCompletion
 {

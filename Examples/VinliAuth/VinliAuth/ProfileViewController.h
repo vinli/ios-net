@@ -23,4 +23,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
 @property (weak, nonatomic) IBOutlet UILabel *emailText;
 
++ (instancetype)initFromStoryboard;
+
 @end

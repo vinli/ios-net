@@ -1,10 +1,20 @@
 PODS:
-  - VinliNet (1.0.8)
+  - VinliNet (1.0.9):
+    - VinliUIResources
+  - VinliUIResources (1.0.0)
 
 DEPENDENCIES:
-  - VinliNet
+  - VinliNet (from `~/Documents/Programs/Vinli/ios-net`)
+  - VinliUIResources (from `~/Documents/Programs/Vinli/VinliUIResources`)
+
+EXTERNAL SOURCES:
+  VinliNet:
+    :path: "~/Documents/Programs/Vinli/ios-net"
+  VinliUIResources:
+    :path: "~/Documents/Programs/Vinli/VinliUIResources"
 
 SPEC CHECKSUMS:
-  VinliNet: 618054aa17cc2154357d4a3fce889e1024ca3bb2
+  VinliNet: 94f8a2df30f573d00345272da6fe6364249cabb2
+  VinliUIResources: f6d0dafe4c69735e5529e11a7c95318248c3ec05
 
 COCOAPODS: 0.39.0

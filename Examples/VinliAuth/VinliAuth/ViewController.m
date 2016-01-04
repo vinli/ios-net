@@ -47,7 +47,10 @@
     [[VLSessionManager sharedManager] loginWithCompletion:^(VLSession *session, NSError *error) {
         //handle login
         [self.logInButton setHidden:YES];
-        [self performSegueWithIdentifier:@"showProfile" sender:self];
+        //[self performSegueWithIdentifier:@"showProfile" sender:self];
+        ProfileViewController *profileViewController = [ProfileViewController initFromStoryboard];
+        [[[UIApplication sharedApplication].windows[0] rootViewController] presentViewController:profileViewController animated:YES completion:nil];
+       
         
     } onCancel:^{
         // Handle your errors

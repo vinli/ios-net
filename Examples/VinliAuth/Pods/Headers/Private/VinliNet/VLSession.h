@@ -1,1 +1,1 @@
-../../../VinliNet/VinliSDK/VLSession.h
+../../../../../../VinliSDK/VLSession.h

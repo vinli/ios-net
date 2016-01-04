@@ -1,1 +1,1 @@
-../../../VinliNet/VinliSDK/VLNotificationPager.h
+../../../../../../VinliSDK/VLNotificationPager.h

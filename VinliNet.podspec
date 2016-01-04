@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
 
   s.source_files = 'VinliSDK/*.{h,m}'
   #s.resources    = 'VinliSDK/*.{storyboard}'
-
+  s.dependency     'VinliUIResources'
   s.requires_arc = true
 
 end

@@ -30,6 +30,14 @@
 
 @implementation ProfileViewController
 
+
+
++ (instancetype)initFromStoryboard
+{
+    ProfileViewController* instance = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:NSStringFromClass(self.class)];
+    return instance;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
