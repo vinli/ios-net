@@ -11,9 +11,6 @@
 #import "VinliSDK.h"
 //#import <VinliNet/VinliSDK.h>
 
-static NSString * VLSessionManagerClientIdDemo = @"3d0de990-6491-47cf-afda-e6855e7cd1c8";
-static NSString * VLSessionManagerClientIdDev = @"f06e03c5-dcb8-4d69-b060-29e39dd98512";
-static NSString * VLSessionManagerClientIdProd = @"fed505a9-021c-49b2-9cc9-576e9766b9de";
 
 static NSString * VLSessionManagerHostDemo = @"-demo.vin.li";
 static NSString * VLSessionManagerHostDev = @"-dev.vin.li";
