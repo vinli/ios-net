@@ -18,13 +18,10 @@
             
             _locationType = dictionary[@"type"];
             
-            if(dictionary[@"geometry"]){
-                _geometryType = dictionary[@"geometry"][@"type"];
-                if(dictionary[@"geometry"][@"coordinates"]){
-                    _longitude = [dictionary[@"geometry"][@"coordinates"][0] doubleValue];
-                    _latitude = [dictionary[@"geometry"][@"coordinates"][1] doubleValue];
-                }
-            }
+          if (dictionary[@"coordinates"]) {
+              _longitude = [dictionary[@"coordinates"][0] doubleValue];
+              _latitude = [dictionary[@"coordinates"][1] doubleValue];
+          }  
             
             _properties = [dictionary objectForKey:@"properties"];
         }
