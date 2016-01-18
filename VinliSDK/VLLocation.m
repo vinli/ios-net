@@ -26,6 +26,16 @@
                 }
             }
             
+//alternate schema
+            if(dictionary[@"type"]){
+                _geometryType = dictionary[@"type"];
+            }
+            
+            if(dictionary[@"coordinates"]){
+                    _longitude = [dictionary[@"coordinates"][0] doubleValue];
+                    _latitude = [dictionary[@"coordinates"][1] doubleValue];
+            }
+            
             _properties = [dictionary objectForKey:@"properties"];
         }
     }
