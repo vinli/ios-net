@@ -17,6 +17,7 @@
 @property (readonly) NSString *status;
 @property (readonly) NSString *vehicleId;
 @property (readonly) NSString *deviceId;
+@property (readonly) NSString *preview;
 @property (readonly) NSNumber *distance;
 @property (readonly) NSNumber *duration;
 @property (readonly) NSNumber *locationCount;
@@ -31,6 +32,9 @@
 @property (readonly) NSURL *locationsURL;
 @property (readonly) NSURL *messagesURL;
 @property (readonly) NSURL *eventsURL;
+
+@property (readonly, nonatomic) NSDate* startDate;
+@property (readonly, nonatomic) NSDate* stopDate;
 
 @property (readonly) NSDictionary* stats;
 

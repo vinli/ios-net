@@ -9,10 +9,14 @@
 #import "VLLoginViewController.h"
 
 #define DEFAULT_HOST @".vin.li" 
+static NSString * const kVinliSignUpRequest = @"/#/sign-up";
 
 @interface VLLoginViewController (){
     UIWebView *webView;
 }
+
+@property (strong, nonatomic) NSString* vinliSignUpRequestURLStr;
+
 @end
 
 @implementation VLLoginViewController
@@ -57,6 +61,9 @@
         _host = DEFAULT_HOST;
     }
     
+    self.vinliSignUpRequestURLStr = [NSString stringWithFormat:@"https://my%@%@", _host, kVinliSignUpRequest];
+    
+    
     webView = [[UIWebView alloc] init];
     webView.translatesAutoresizingMaskIntoConstraints = NO;
     webView.delegate = self;
@@ -89,7 +96,7 @@
 - (BOOL) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     
     NSString *requestString = request.URL.absoluteString;
-    NSLog(@"request = %@", requestString);
+   // NSLog(@"request = %@", requestString);
     
     if([requestString hasPrefix:_redirectUri.lowercaseString]){
         
@@ -130,7 +137,7 @@
         return NO;
     }
     else
-    if ([requestString isEqualToString:@"https://my.vin.li/#/sign-up"])
+    if ([requestString isEqualToString:self.vinliSignUpRequestURLStr])
     {
         [[UIApplication sharedApplication] openURL:request.URL];
         return NO;

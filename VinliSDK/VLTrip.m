@@ -9,6 +9,13 @@
 #import "VLTrip.h"
 #import "NSDictionary+NonNullable.h"
 
+static NSDateFormatter* isoDateFormatter;
+
+@interface VLTrip()
+@property (strong, nonatomic) NSDate* startDate;
+@property (strong, nonatomic) NSDate* stopDate;
+@end
+
 @implementation VLTrip
 
 - (id) initWithDictionary:(NSDictionary *)dictionary{
@@ -32,6 +39,9 @@
             _locationCount = [dictionary objectForKey:@"locationCount"];
             _messageCount = [dictionary objectForKey:@"messageCount"];
             _mpg = [dictionary objectForKey:@"mpg"];
+            if ([dictionary[@"preview"] isKindOfClass:[NSString class]]) {
+                _preview = dictionary[@"preview"];
+            }
             
             _startPoint = ([dictionary jsonObjectForKey:@"startPoint"]) ? [[VLLocation alloc] initWithDictionary:[dictionary objectForKey:@"startPoint"]] : nil;
             _stopPoint = ([dictionary jsonObjectForKey:@"stopPoint"]) ? [[VLLocation alloc] initWithDictionary:[dictionary objectForKey:@"stopPoint"]] : nil;
@@ -50,14 +60,51 @@
             {
                 _stats = [dictionary jsonObjectForKey:@"stats"];
             }
-            
+        
         }
     }
     return self;
 }
 
-- (NSString *) description{
+- (NSString *) description {
     return [NSString stringWithFormat: @"Trip Id:%@, start:%@, stop:%@, status:%@, Vehicle Id%@", self.tripId, self.start, self.stop, self.status, self.vehicleId];
 }
+
+
+- (void)initializeDateFormatter
+{
+    if (isoDateFormatter) {
+        return;
+    }
+    
+    isoDateFormatter = [[NSDateFormatter alloc] init];
+    NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+    [isoDateFormatter setLocale:enUSPOSIXLocale];
+    [isoDateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZ"];
+}
+
+
+- (NSDate *)startDate
+{
+    if (!_startDate) {
+        [self initializeDateFormatter];
+        _startDate = [isoDateFormatter dateFromString:self.start];
+    }
+    
+    return _startDate;
+}
+
+- (NSDate *)stopDate
+{
+    if (!_stopDate) {
+        [self initializeDateFormatter];
+        _stopDate = [isoDateFormatter dateFromString:self.stop];
+    }
+    
+    return _stopDate;
+}
+
+
+
 
 @end

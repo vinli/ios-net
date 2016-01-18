@@ -24,10 +24,19 @@
             }
             
             _vehicleId = dictionary[@"id"];
-            _year = dictionary[@"year"];
-            _make = dictionary[@"make"];
-            _model = dictionary[@"model"];
-            _trim = dictionary[@"trim"];
+            
+            BOOL yearNull = [dictionary[@"year"] isKindOfClass:[NSNull class]];
+            _year = yearNull ? nil : dictionary[@"year"];
+            
+            BOOL makeNull = [dictionary[@"make"] isKindOfClass:[NSNull class]];
+            _make = makeNull ? nil : dictionary[@"make"];
+            
+            BOOL modelNull = [dictionary[@"model"] isKindOfClass:[NSNull class]];
+            _model = modelNull ? nil : dictionary[@"model"];
+            
+            BOOL trimNull = [dictionary[@"trim"] isKindOfClass:[NSNull class]];
+            _trim = trimNull ? nil : dictionary[@"trim"];
+            
             _vin = dictionary[@"vin"];
         }
     }
