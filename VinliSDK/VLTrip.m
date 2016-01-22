@@ -42,7 +42,7 @@ static NSDateFormatter* isoDateFormatter;
             if ([dictionary[@"preview"] isKindOfClass:[NSString class]]) {
                 _preview = dictionary[@"preview"];
             }
-            
+            _preview = ([dictionary jsonObjectForKey:@"preview"]) ? [dictionary jsonObjectForKey:@"preview"] : nil;
             _startPoint = ([dictionary jsonObjectForKey:@"startPoint"]) ? [[VLLocation alloc] initWithDictionary:[dictionary objectForKey:@"startPoint"]] : nil;
             _stopPoint = ([dictionary jsonObjectForKey:@"stopPoint"]) ? [[VLLocation alloc] initWithDictionary:[dictionary objectForKey:@"stopPoint"]] : nil;
             _orphanedAt = [dictionary objectForKey:@"orphanedAt"];
