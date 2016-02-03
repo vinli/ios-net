@@ -247,7 +247,7 @@
         
         if (response.statusCode == 200) {
             if (onSuccessBlock) {
-                VLDevicePager *devicePager = [[VLDevicePager alloc] initWithDictionary:result];
+                VLDevicePager *devicePager = [[VLDevicePager alloc] initWithDictionary:result service:self];
                 onSuccessBlock(devicePager, response);
             }
         }
@@ -393,7 +393,7 @@
         
         if (response.statusCode == 200) {
             if (onSuccessBlock) {
-                VLVehiclePager *vehiclePager = [[VLVehiclePager alloc] initWithDictionary:result];
+                VLVehiclePager *vehiclePager = [[VLVehiclePager alloc] initWithDictionary:result service:self];
                 onSuccessBlock(vehiclePager, response);
             }
         }
@@ -438,7 +438,7 @@
         
         if (response.statusCode == 200) {
             if (onSuccessBlock) {
-                VLRulePager *rulePager = [[VLRulePager alloc] initWithDictionary:result];
+                VLRulePager *rulePager = [[VLRulePager alloc] initWithDictionary:result service:self];
                 onSuccessBlock(rulePager, response);
             }
         }
@@ -598,7 +598,7 @@
         if (response.statusCode == 200) {
             if (onSuccessBlock) {
                 //NSLog(@"result: %@", result);
-                VLSnapshotPager *snapshotPager = [[VLSnapshotPager alloc] initWithDictionary:result fields:fields];
+                VLSnapshotPager *snapshotPager = [[VLSnapshotPager alloc] initWithDictionary:result service:self fields:fields];
                 onSuccessBlock(snapshotPager, response);
             }
         }
@@ -677,7 +677,7 @@
         
         if (response.statusCode == 200) {
             if (onSuccessBlock) {
-                VLTelemetryMessagePager *telemetryPager = [[VLTelemetryMessagePager alloc] initWithDictionary:result];
+                VLTelemetryMessagePager *telemetryPager = [[VLTelemetryMessagePager alloc] initWithDictionary:result service:self];
                 onSuccessBlock(telemetryPager, response);
             }
         }
@@ -722,7 +722,7 @@
         
         if (response.statusCode == 200) {
             if (onSuccessBlock) {
-                VLLocationPager *locationPager = [[VLLocationPager alloc] initWithDictionary:result];
+                VLLocationPager *locationPager = [[VLLocationPager alloc] initWithDictionary:result service:self];
                 onSuccessBlock(locationPager, response);
             }
         }
@@ -767,7 +767,7 @@
         
         if (response.statusCode == 200) {
             if (onSuccessBlock) {
-                VLTripPager *tripPager = [[VLTripPager alloc] initWithDictionary:result];
+                VLTripPager *tripPager = [[VLTripPager alloc] initWithDictionary:result service:self];
                 onSuccessBlock(tripPager, response);
             }
         }
@@ -810,7 +810,7 @@
         
         if (response.statusCode == 200) {
             if (onSuccessBlock) {
-                VLTripPager *tripPager = [[VLTripPager alloc] initWithDictionary:result];
+                VLTripPager *tripPager = [[VLTripPager alloc] initWithDictionary:result service:self];
                 onSuccessBlock(tripPager, response);
             }
         }
@@ -996,7 +996,7 @@
         
         if (response.statusCode == 200) {
             if (onSuccessBlock) {
-                VLSubscriptionPager *subscriptionPager = [[VLSubscriptionPager alloc] initWithDictionary:result];
+                VLSubscriptionPager *subscriptionPager = [[VLSubscriptionPager alloc] initWithDictionary:result service:self];
                 onSuccessBlock(subscriptionPager, response);
             }
         }
@@ -1108,7 +1108,7 @@
         
         if (response.statusCode == 200) {
             if (onSuccessBlock) {
-                VLEventPager *eventPager = [[VLEventPager alloc] initWithDictionary:result];
+                VLEventPager *eventPager = [[VLEventPager alloc] initWithDictionary:result service:self];
                 onSuccessBlock(eventPager, response);
             }
         }
@@ -1151,7 +1151,7 @@
         
         if (response.statusCode == 200) {
             if (onSuccessBlock) {
-                VLNotificationPager *notificationPager = [[VLNotificationPager alloc] initWithDictionary:result];
+                VLNotificationPager *notificationPager = [[VLNotificationPager alloc] initWithDictionary:result service:self];
                 onSuccessBlock(notificationPager, response);
             }
         }
@@ -1194,7 +1194,7 @@
         
         if (response.statusCode == 200) {
             if (onSuccessBlock) {
-                VLNotificationPager *notificationPager = [[VLNotificationPager alloc] initWithDictionary:result];
+                VLNotificationPager *notificationPager = [[VLNotificationPager alloc] initWithDictionary:result service:self];
                 onSuccessBlock(notificationPager, response);
             }
         }

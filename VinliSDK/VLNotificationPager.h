@@ -14,5 +14,5 @@
 @property (readonly) NSArray *notifications;
 
 - (id) initWithDictionary:(NSDictionary *)dictionary;
-
+- (id)initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service;
 @end

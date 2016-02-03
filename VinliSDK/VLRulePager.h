@@ -15,5 +15,6 @@
 @property (readonly) NSArray *rules;
 
 - (id) initWithDictionary:(NSDictionary *)dictionary;
+- (id)initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service;
 
 @end

@@ -15,4 +15,5 @@
 
 - (id) initWithDictionary:(NSDictionary *)dictionary fields:(NSString *)fields;
 
+- (id) initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service fields:(NSString *)fields;
 @end

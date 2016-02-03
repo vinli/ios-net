@@ -13,5 +13,6 @@
 @property (readonly) NSArray *events;
 
 - (id) initWithDictionary:(NSDictionary *)dictionary;
+- (id) initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service;
 
 @end

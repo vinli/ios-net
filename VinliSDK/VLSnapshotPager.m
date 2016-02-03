@@ -13,8 +13,13 @@
 
 - (id) initWithDictionary:(NSDictionary *)dictionary fields:(NSString *)fields{
     
-    self = [super initWithDictionary:dictionary];
-    if(self){
+    return [self initWithDictionary:dictionary service:nil fields:fields];
+}
+
+- (id)initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service fields:(NSString *)fields
+{
+    if (self = [super initWithDictionary:dictionary service:service])
+    {
         if(dictionary){
             if(dictionary[@"snapshots"]){
                 NSArray *jsonArray = dictionary[@"snapshots"];
@@ -24,11 +29,10 @@
                 }
                 
                 _snapshots = snapshotsArray;
-            }   
+            }
         }
     }
     return self;
 }
-
 
 @end

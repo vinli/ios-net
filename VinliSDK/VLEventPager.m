@@ -14,18 +14,27 @@
 @implementation VLEventPager : VLChronoPager;
 
 - (id) initWithDictionary:(NSDictionary *)dictionary{
-    self = [super initWithDictionary:dictionary];
-    if(self && dictionary && dictionary[@"events"]){
-        NSArray *json = dictionary[@"events"];
-        NSMutableArray *eventArrayTemp = [[NSMutableArray alloc] init];
-        
-        for(NSDictionary *event in json){
-            [eventArrayTemp addObject:[[VLEvent alloc] initWithDictionary:event]];
+    return [self initWithDictionary:dictionary service:nil];
+}
+
+- (id) initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service
+{
+    if (self = [super initWithDictionary:dictionary service:service])
+    {
+        if(dictionary && dictionary[@"events"]){
+            NSArray *json = dictionary[@"events"];
+            NSMutableArray *eventArrayTemp = [[NSMutableArray alloc] init];
+            
+            for(NSDictionary *event in json){
+                [eventArrayTemp addObject:[[VLEvent alloc] initWithDictionary:event]];
+            }
+            
+            _events = eventArrayTemp;
         }
-        
-        _events = eventArrayTemp;
     }
     return self;
 }
+
+
 
 @end

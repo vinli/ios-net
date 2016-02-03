@@ -34,11 +34,11 @@ static NSDateFormatter* isoDateFormatter;
             _status = [dictionary objectForKey:@"status"];
             _vehicleId = [dictionary objectForKey:@"vehicleId"];
             _deviceId = [dictionary objectForKey:@"deviceId"];
-            _distance = [dictionary objectForKey:@"distance"];
-            _duration = [dictionary objectForKey:@"duration"];
+            _distance = [[dictionary jsonObjectForKey:@"stats"] objectForKey:@"distance"];
+            _duration = [[dictionary jsonObjectForKey:@"stats"] objectForKey:@"duration"];
             _locationCount = [dictionary objectForKey:@"locationCount"];
             _messageCount = [dictionary objectForKey:@"messageCount"];
-            _mpg = [dictionary objectForKey:@"mpg"];
+            _mpg = [[dictionary jsonObjectForKey:@"stats"] objectForKey:@"fuelEconomy"];
             if ([dictionary[@"preview"] isKindOfClass:[NSString class]]) {
                 _preview = dictionary[@"preview"];
             }
@@ -59,6 +59,7 @@ static NSDateFormatter* isoDateFormatter;
             if ([dictionary jsonObjectForKey:@"stats"])
             {
                 _stats = [dictionary jsonObjectForKey:@"stats"];
+                
             }
         
         }

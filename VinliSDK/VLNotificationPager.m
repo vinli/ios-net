@@ -12,8 +12,13 @@
 @implementation VLNotificationPager
 
 - (id) initWithDictionary:(NSDictionary *)dictionary{
-    self = [super initWithDictionary:dictionary];
-    if(self){
+    return [self initWithDictionary:dictionary service:nil];
+}
+
+- (id) initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service
+{
+    if (self = [super initWithDictionary:dictionary service:service])
+    {
         if(dictionary){
             if(dictionary[@"notifications"]){
                 NSArray *json = dictionary[@"notifications"];

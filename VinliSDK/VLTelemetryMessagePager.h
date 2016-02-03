@@ -13,7 +13,7 @@
 @property (readonly) NSArray *messages;
 
 - (id) initWithDictionary:(NSDictionary *)dictionary;
-
+- (id) initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service;
 @end
 
 
