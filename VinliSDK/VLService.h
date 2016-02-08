@@ -34,6 +34,7 @@
 #import "VLLoginButton.h"
 #import "VLObjectRef.h"
 #import "VLPolygonBoundary.h"
+#import "VLTimeSeries.h"
 
 #pragma clang diagnostic ignored "-Wnullability-completeness"
 
@@ -88,6 +89,22 @@
                 token:(nonnull NSString *) token
             onSuccess:(void (^)(NSDictionary *, NSHTTPURLResponse *))onSuccessfulBlock
             onFailure:(void (^)(NSError *, NSHTTPURLResponse *, NSString *))onFailureBlock;
+
+
+
+- (void) startWithHost:(nonnull NSString *)token requestUri:(nonnull NSString *)requestUri onSuccess:(void (^)(NSDictionary *result, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *msg))onFailureBlock;
+
+
+//Get the queries for a particular URL
+
+- (NSDictionary *) getDictionaryWithLimit: (nullable NSNumber *) limit
+                                   offset:(nullable NSNumber *) offset;
+
+
+
+
+
+- (void)startConnectionWithRequest:(NSURLRequest *)request method:(NSString *)method onSuccess:(void (^)(NSDictionary *result, NSHTTPURLResponse *response))onSuccessfulBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *msg))onFailureBlock;
 
 #pragma mark - Platform Services
 

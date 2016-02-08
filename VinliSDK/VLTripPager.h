@@ -18,7 +18,7 @@
 
 - (id) initWithDictionary:(NSDictionary *)dictionary;
 - (id) initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service;
-- (void)getLatestValues:(void(^)(NSArray *values, NSError *error))completion;
+- (void)getLatestValues:(NSURL *)url onSuccess:(void(^)(NSArray *values, NSError *error))completion;
 - (NSArray *)poulateTrips:(NSDictionary *)dictionary;
 
 @end

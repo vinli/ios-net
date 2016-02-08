@@ -9,6 +9,7 @@
 #import "VLTripPager.h"
 #import "VLService.h"
 
+
 @implementation VLTripPager
 
 - (id) initWithDictionary:(NSDictionary *)dictionary{
@@ -40,7 +41,7 @@
     return self;
 }
 
-- (void)getLatestValues:(void(^)(NSArray *values, NSError *error))completion
+- (void)getLatestValues:(NSURL *)url onSuccess:(void(^)(NSArray *values, NSError *error))completion
 {
     
     
@@ -53,21 +54,31 @@
     //if (completion)
     //pass in values
     
-    if (self.latestURL)
+    
+    if (url)
     {
-        NSURLComponents *components = [NSURLComponents componentsWithURL:self.latestURL resolvingAgainstBaseURL:YES];
+       // NSURLComponents *components = [NSURLComponents componentsWithURL:self.priorURL resolvingAgainstBaseURL:NO];
         if (self.service)
         {
-            [self.service startWithHost:components.host path:components.path queries:nil HTTPMethod:@"GET" parameters:nil token:self.service.session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+//            [self.service startWithHost:components.host path:components.path queries:nil HTTPMethod:@"GET" parameters:nil token:self.service.session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+              [self.service startWithHost:self.service.session.accessToken requestUri:[url absoluteString] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
                 
+                  NSLog(@"%@", response);
                 if (result)
                 {
                     //use populate method
+                    NSArray *latestTrips = [self poulateTrips:result];
+                    
+                    if (completion)
+                    {
+                        completion(latestTrips, nil);
+                    }
+                    
                 }
                 
                 
             } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *message) {
-                //
+                NSLog(@"Could not start with Host");
             }];
         }
         else

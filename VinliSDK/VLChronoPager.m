@@ -18,8 +18,6 @@
 
 - (id) initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service
 {
-
-    
     if (self = [super initWithDictionary:dictionary service:service]) {
         if(dictionary && dictionary[@"meta"] && dictionary[@"meta"][@"pagination"]){
             _remaining = [dictionary[@"meta"][@"pagination"][@"remaining"] unsignedLongValue];//tbd this maybe should be remainingCount.

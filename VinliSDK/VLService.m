@@ -84,7 +84,7 @@
     
     strUri = [NSString stringWithFormat:@"%@%@", STRING_API_VERSION, path];
     
-    if(queries != nil){
+    if(queries != nil) {
         NSString *queryString = @"";
         
         for(NSString *key in queries.allKeys){
@@ -97,7 +97,7 @@
             }
         }
         
-        if(queryString.length > 0){
+        if(queryString.length > 0) {
             queryString = [queryString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             strUri = [strUri stringByAppendingString:queryString];
         }
@@ -126,6 +126,59 @@
                                                       payload:dictParams];
     //NSLog(@"REQUEST = %@", request);
     
+    
+    
+    
+    [self startConnectionWithRequest:request method:method onSuccess:onSuccessfulBlock onFailure:onFailureBlock];
+    
+//    JCDHTTPConnection *connection = [[JCDHTTPConnection alloc] initWithRequest:request];
+//    
+//    [connection executeRequestOnSuccess:
+//     ^(NSHTTPURLResponse *response, NSString *bodyString, NSData *responseData) {
+//         
+//         NSError *error;
+//         
+//         if((responseData == nil || responseData.length == 0) && [method isEqualToString:@"DELETE"]){
+//             if(onSuccessfulBlock){
+//                 onSuccessfulBlock(nil, response);
+//             }
+//             return;
+//         }
+//         
+//         NSDictionary *dictJSON = [NSJSONSerialization JSONObjectWithData:responseData options:NSUTF8StringEncoding error:&error];
+//         if (error) {
+//             if (onFailureBlock) {
+//                 onFailureBlock(error, response, bodyString);
+//             }
+//             return;
+//         }
+//         
+//         if (onSuccessfulBlock) {
+//             onSuccessfulBlock(dictJSON, response);
+//         }
+//         
+//     } failure:^(NSHTTPURLResponse *response, NSString *bodyString, NSError *error) {
+//         
+//         if (response.statusCode == 401) {
+//             NSLog(@"Access token has expired");
+//             // Genereate custom nserror
+//             
+//             // Give option to execute block
+//             if (self.AccessTokenExpirationHandler) {
+//                 self.AccessTokenExpirationHandler(self, error);
+//             }
+//             
+//         }
+//         
+//         if (onFailureBlock) {
+//             onFailureBlock(error, response, bodyString);
+//         }
+//     } didSendData:nil];
+}
+
+
+
+- (void)startConnectionWithRequest:(NSURLRequest *)request method:(NSString *)method onSuccess:(void (^)(NSDictionary *, NSHTTPURLResponse *))onSuccessfulBlock onFailure:(void (^)(NSError *, NSHTTPURLResponse *, NSString *))onFailureBlock {
     JCDHTTPConnection *connection = [[JCDHTTPConnection alloc] initWithRequest:request];
     
     [connection executeRequestOnSuccess:
@@ -169,7 +222,20 @@
              onFailureBlock(error, response, bodyString);
          }
      } didSendData:nil];
+    
+
 }
+
+- (void)startWithHost:(NSString *)token requestUri:(NSString *)requestUri onSuccess:(void (^)(NSDictionary *, NSHTTPURLResponse *))onSuccessBlock onFailure:(void (^)(NSError *, NSHTTPURLResponse *, NSString *))onFailureBlock
+{
+    NSURLRequest *request = [VLRequestHeader requestWithToken:token contentType:STRING_CONTENT_TYPE requestUri:requestUri];
+    [self startConnectionWithRequest:request method:@"GET" onSuccess:onSuccessBlock onFailure:onFailureBlock];
+}
+
+
+
+
+
 
 - (NSDictionary *) getDictionaryWithLimit: (nullable NSNumber *) limit
                                    offset:(nullable NSNumber *) offset{

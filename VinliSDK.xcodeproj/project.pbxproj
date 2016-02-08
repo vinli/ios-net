@@ -101,6 +101,8 @@
 		7367E3A21B166ABB004223A6 /* VLEventPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367E3A11B166ABB004223A6 /* VLEventPager.m */; };
 		7367E3A41B1759A2004223A6 /* VLNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367E3A31B1759A2004223A6 /* VLNotification.m */; };
 		7367E3A71B175FEA004223A6 /* VLNotificationPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367E3A61B175FEA004223A6 /* VLNotificationPager.m */; };
+		77BE999B1C690E77001E8F64 /* VLTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 77BE99991C690E77001E8F64 /* VLTimeSeries.h */; };
+		77BE999C1C690E77001E8F64 /* VLTimeSeries.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BE999A1C690E77001E8F64 /* VLTimeSeries.m */; };
 		E92943591B15387C00AAC7D3 /* VLTelemetryServicesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E92943581B15387C00AAC7D3 /* VLTelemetryServicesTests.m */; };
 		E929435C1B15425400AAC7D3 /* VLTelemetryMessagePager.h in Headers */ = {isa = PBXBuildFile; fileRef = E929435A1B15425400AAC7D3 /* VLTelemetryMessagePager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E929435D1B15425400AAC7D3 /* VLTelemetryMessagePager.m in Sources */ = {isa = PBXBuildFile; fileRef = E929435B1B15425400AAC7D3 /* VLTelemetryMessagePager.m */; };
@@ -208,6 +210,8 @@
 		7367E3A51B1759BB004223A6 /* VLNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VLNotification.h; sourceTree = "<group>"; };
 		7367E3A61B175FEA004223A6 /* VLNotificationPager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLNotificationPager.m; sourceTree = "<group>"; };
 		7367E3A81B175FFE004223A6 /* VLNotificationPager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VLNotificationPager.h; sourceTree = "<group>"; };
+		77BE99991C690E77001E8F64 /* VLTimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLTimeSeries.h; sourceTree = "<group>"; };
+		77BE999A1C690E77001E8F64 /* VLTimeSeries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTimeSeries.m; sourceTree = "<group>"; };
 		BB7D1A79C1AEAD3F566D9FA4 /* Pods-VinliSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinliSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VinliSDKTests/Pods-VinliSDKTests.release.xcconfig"; sourceTree = "<group>"; };
 		E92943581B15387C00AAC7D3 /* VLTelemetryServicesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTelemetryServicesTests.m; sourceTree = "<group>"; };
 		E929435A1B15425400AAC7D3 /* VLTelemetryMessagePager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLTelemetryMessagePager.h; sourceTree = "<group>"; };
@@ -284,6 +288,8 @@
 				49AB6E961B82432C00DCF808 /* VLUrlParser.m */,
 				0B16712F1B0FC39D009BE7A9 /* VLService.h */,
 				0B1671301B0FC39D009BE7A9 /* VLService.m */,
+				77BE99991C690E77001E8F64 /* VLTimeSeries.h */,
+				77BE999A1C690E77001E8F64 /* VLTimeSeries.m */,
 				0BD2E50C1B0FDB7C00A5D2BC /* Models */,
 				0B1671731B0FC408009BE7A9 /* Util */,
 				0B1671561B0FC3F0009BE7A9 /* VLClasses */,
@@ -478,6 +484,7 @@
 				0B16714D1B0FC39D009BE7A9 /* VLTelemetryMessage.h in Headers */,
 				0B1671391B0FC39D009BE7A9 /* VLBoundary.h in Headers */,
 				0B3DDC541B1518BE00D95E61 /* VLRulePager.h in Headers */,
+				77BE999B1C690E77001E8F64 /* VLTimeSeries.h in Headers */,
 				49E2F2FF1B6AA93700CD743C /* NSDictionary+NonNullable.h in Headers */,
 				0B16714F1B0FC39D009BE7A9 /* VLVehicle.h in Headers */,
 				0B2277061B167303000AF179 /* VLSession.h in Headers */,
@@ -704,6 +711,7 @@
 				E929437D1B18FE5F00AAC7D3 /* VLSnapshotPager.m in Sources */,
 				0B16714A1B0FC39D009BE7A9 /* VLRule.m in Sources */,
 				0B3DDC391B14D1DD00D95E61 /* VLVehiclePager.m in Sources */,
+				77BE999C1C690E77001E8F64 /* VLTimeSeries.m in Sources */,
 				0B1671481B0FC39D009BE7A9 /* VLService.m in Sources */,
 				0B3778241B25E0A7004AC2D6 /* VLRadiusBoundary.m in Sources */,
 				0B16713C1B0FC39D009BE7A9 /* VLDevice.m in Sources */,
