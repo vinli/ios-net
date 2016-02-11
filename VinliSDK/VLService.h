@@ -458,11 +458,22 @@
 //                  tripPager:    A VLTripPager object containing the list of trips and pagination data
 //                  response:   An NSHTTPURLResponse instance, from which user will know the URL, statusCode, etc.
 // onFailureBlock:  Called when connection failed. Usually occurred when the website does not exist, or no internet connection.
-- (void) getTripsForDeviceWithId:(nonnull NSString *) deviceId
-                           limit:(nullable NSNumber *)limit
-                          offset:(nullable NSNumber *)offset
-                       onSuccess:(void (^)(VLTripPager *tripPager, NSHTTPURLResponse *response))onSuccessBlock
-                       onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+
+
+//- (void) getTripsForDeviceWithId:(nonnull NSString *) deviceId
+//                           limit:(nullable NSNumber *)limit
+//                          offset:(nullable NSNumber *)offset
+//                       onSuccess:(void (^)(VLTripPager *tripPager, NSHTTPURLResponse *response))onSuccessBlock
+//                       onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+
+- (void)getTripsForDeviceWithId:(nonnull NSString *)deviceId
+                            timeSeries: (VLTimeSeries *)timeSeries
+                      onSuccess:(void (^)(VLTripPager *tripPager, NSHTTPURLResponse *response))onSuccessBlock
+                      onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+
 
 // Get a VLTripPager object containing a list of trips and pagination data
 // Route: GET /api/v1/vehicles/{vehicleId}/trips

@@ -42,11 +42,32 @@ static NSDateFormatter* isoDateFormatter;
     return [VLTimeSeries timeSeriesFromPreviousNumberOfWeeks:1];
 }
 
+
++ (instancetype)timeSeriesFromDate:(NSDate *)date until:(NSDate *)until
+{
+    VLTimeSeries *timeSeries = [VLTimeSeries new];
+    
+    timeSeries.since = date;
+    timeSeries.until = until;
+    return timeSeries;
+    
+}
+
+
 + (instancetype)timeSeriesFromDate:(NSDate *)date
 {
-    VLTimeSeries* timeSeries = [VLTimeSeries new];
-    timeSeries.until = date;
+//    VLTimeSeries* timeSeries = [VLTimeSeries new];
+//  //  timeSeries.until = date; //should this be since as well
+    
+    NSDate *now = [NSDate date];
+    VLTimeSeries *timeSeries = [VLTimeSeries timeSeriesFromDate:date until:now];
     return timeSeries;
+}
+
+
+- (void)setOrder:(NSInteger)order
+{
+    self.sortOrder = order;
 }
 
 - (NSDictionary *)toDictionary
@@ -69,6 +90,13 @@ static NSDateFormatter* isoDateFormatter;
     if (self.limit) {
         [retVal setObject:self.limit forKey:@"limit"];
     }
+    
+    if (self.sortOrder) {
+        if (self.sortOrder == VLTimerSeriesSortDirectionAscending) {
+            [retVal setObject:@"asc" forKey:@"sortDir"];
+        }
+    }
+    
     
     return [retVal copy];
 }

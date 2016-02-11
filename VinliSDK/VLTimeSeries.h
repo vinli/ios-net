@@ -17,6 +17,7 @@ typedef NS_ENUM(NSInteger, VLTimerSeriesSortDirection){
 
 @property (strong, nonatomic) NSDate* since;
 @property (strong, nonatomic) NSDate* until;
+@property (nonatomic) NSInteger sortOrder;
 
 // Limit doesnt need to be set - Defaults to 20
 @property (strong, nonatomic) NSNumber* limit;
@@ -24,7 +25,10 @@ typedef NS_ENUM(NSInteger, VLTimerSeriesSortDirection){
 + (instancetype)timeSeriesLast7Days;
 + (instancetype)timeSeriesFromPreviousNumberOfWeeks:(NSInteger)numWeeks;
 + (instancetype)timeSeriesFromDate:(NSDate *)date;
++ (instancetype)timeSeriesFromDate:(NSDate *)date until:(NSDate *)until;
 
+
+- (void)setOrder:(NSInteger)order;
 - (NSDictionary *)toDictionary;
 
 @end

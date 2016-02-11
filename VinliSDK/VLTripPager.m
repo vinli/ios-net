@@ -41,7 +41,7 @@
     return self;
 }
 
-- (void)getLatestValues:(NSURL *)url onSuccess:(void(^)(NSArray *values, NSError *error))completion
+- (void)getLatestTrips:(NSURL *)url onSuccess:(void(^)(NSArray *values, NSError *error))completion
 {
     
     

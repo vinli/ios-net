@@ -18,7 +18,7 @@
 @property (readonly) unsigned long remaining;
 @property (readonly) NSString *until;
 @property (readonly) NSString *since;
-@property (readonly) NSURL *latestURL;
+@property (readonly) NSURL *nextURL;
 @property (readonly) NSURL *priorURL;
 
 - (id) initWithDictionary:(NSDictionary *)dictionary;

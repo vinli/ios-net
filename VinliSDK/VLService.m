@@ -811,12 +811,11 @@
                              onSuccess:(void (^)(VLTripPager *tripPager, NSHTTPURLResponse *response))onSuccessBlock
                              onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
     
-    [self getTripsForDeviceWithId:deviceId limit:nil offset:nil onSuccess:onSuccessBlock onFailure:onFailureBlock];
+    [self getTripsForDeviceWithId:deviceId timeSeries:nil onSuccess:onSuccessBlock onFailure:onFailureBlock];
 }
 
 - (void) getTripsForDeviceWithId:(NSString *) deviceId
-                           limit:(nullable NSNumber *)limit
-                          offset:(nullable NSNumber *)offset
+                      timeSeries:(VLTimeSeries *)timeSeries
                        onSuccess:(void (^)(VLTripPager *tripPager, NSHTTPURLResponse *response))onSuccessBlock
                        onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
     
@@ -829,7 +828,10 @@
     
     NSString *path = [NSString stringWithFormat:@"/devices/%@/trips", deviceId];
     
-    [self startWithHost:STRING_HOST_TRIPS path:path queries:[self getDictionaryWithLimit:limit offset:offset] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+    
+    [self startWithHost:STRING_HOST_TRIPS path:path queries:[timeSeries toDictionary] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        
+
         
         if (response.statusCode == 200) {
             if (onSuccessBlock) {

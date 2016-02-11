@@ -24,7 +24,7 @@
             _until = dictionary[@"meta"][@"pagination"][@"until"];
             _since = dictionary[@"meta"][@"pagination"][@"since"];
             if(dictionary[@"meta"][@"pagination"][@"links"]){
-                _latestURL = [NSURL URLWithString:dictionary[@"meta"][@"pagination"][@"links"][@"latest"]];
+                _nextURL = [NSURL URLWithString:dictionary[@"meta"][@"pagination"][@"links"][@"next"]];
                 _priorURL = [NSURL URLWithString:dictionary[@"meta"][@"pagination"][@"links"][@"prior"]];
             }
         }
