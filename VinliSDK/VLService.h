@@ -341,6 +341,21 @@
 //                  snapshotPager:    A VLSnapshotPager object containing the list of snapshots and pagination data
 //                  response:   An NSHTTPURLResponse instance, from which user will know the URL, statusCode, etc.
 // onFailureBlock:  Called when connection failed. Usually occurred when the website does not exist, or no internet connection.
+
+
+
+
+- (void) getSnapshotsForDeviceWithId:(nonnull NSString *) deviceId
+                              fields:(nonnull NSString *)fields
+                              timeSeries:(VLTimeSeries *)timeSeries
+                           onSuccess:(void (^)(VLSnapshotPager *snapshotPager, NSHTTPURLResponse *response))onSuccessBlock
+                           onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+
+
+
+
+
 - (void) getSnapshotsForDeviceWithId:(nonnull NSString *) deviceId
                               fields:(nonnull NSString *)fields
                                limit:(nullable NSNumber *)limit
@@ -504,8 +519,7 @@
 //                  response:   An NSHTTPURLResponse instance, from which user will know the URL, statusCode, etc.
 // onFailureBlock:  Called when connection failed. Usually occurred when the website does not exist, or no internet connection.
 - (void) getTripsForVehicleWithId:(nonnull NSString *) vehicleId
-                            limit:(nullable NSNumber *)limit
-                           offset:(nullable NSNumber *)offset
+                       timeSeries: (VLTimeSeries *)timeSeries
                         onSuccess:(void (^)(VLTripPager *tripPager, NSHTTPURLResponse *response))onSuccessBlock
                         onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
@@ -538,7 +552,7 @@
 //                  response:   An NSHTTPURLResponse instance, from which user will know the URL, statusCode, etc.
 // onFailureBlock:  Called when connection failed. Usually occurred when the website does not exist, or no internet connection.
 - (void) getEventsForDeviceWithId:(nonnull NSString *) deviceId
-                        onSuccess:(void (^)(VLEventPager *EventPager, NSHTTPURLResponse *response))onSuccessBlock
+                        onSuccess:(void (^)(VLEventPager *eventPager, NSHTTPURLResponse *response))onSuccessBlock
                         onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
 // Get a VLEventPager object containing a list of events and pagination data
@@ -561,7 +575,7 @@
                             until:(nullable NSDate *)until
                             since:(nullable NSDate *)since
                     sortDirection:(nullable NSString *)sortDirection
-                        onSuccess:(void (^)(VLEventPager *EventPager, NSHTTPURLResponse *response))onSuccessBlock
+                        onSuccess:(void (^)(VLEventPager *eventPager, NSHTTPURLResponse *response))onSuccessBlock
                         onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
 // Create a subscription

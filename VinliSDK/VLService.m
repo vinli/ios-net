@@ -642,7 +642,19 @@
                        sortDirection:(nullable NSString *)sortDirection
                            onSuccess:(void (^)(VLSnapshotPager *snapshotPager, NSHTTPURLResponse *response))onSuccessBlock
                            onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
+
     
+    VLTimeSeries *timeSeries = [VLTimeSeries timeSeriesFromDate:since until:until];
+    timeSeries.sortOrder = ([sortDirection isEqualToString:@"asc"]) ? VLTimerSeriesSortDirectionAscending : VLTimerSeriesSortDirectionDescending;
+    timeSeries.limit = limit;
+    
+    [self getSnapshotsForDeviceWithId:deviceId fields:fields timeSeries:timeSeries onSuccess:onSuccessBlock onFailure:onFailureBlock];
+    
+    
+}
+
+- (void)getSnapshotsForDeviceWithId:(NSString *)deviceId fields:(NSString *)fields timeSeries:(VLTimeSeries *)timeSeries onSuccess:(void (^)(VLSnapshotPager *, NSHTTPURLResponse *))onSuccessBlock onFailure:(void (^)(NSError *, NSHTTPURLResponse *, NSString *))onFailureBlock
+{
     if(_session == nil){
         if(onFailureBlock){
             onFailureBlock([self getNoSessionError], nil, nil);
@@ -652,13 +664,13 @@
     
     NSString *path = [NSString stringWithFormat:@"/devices/%@/snapshots", deviceId];
     
-    NSMutableDictionary *queries = [[self getDictionaryWithLimit:limit until:until since:since sortDirection:sortDirection] mutableCopy];
+    NSMutableDictionary *queries = [[timeSeries toDictionary] mutableCopy];
     if (!queries)
     {
         queries = [NSMutableDictionary new];
     }
     [queries setObject:fields forKey:@"fields"];
-      
+    
     [self startWithHost:STRING_HOST_TELEMETRY path:path queries:queries HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
         if (response.statusCode == 200) {
@@ -680,6 +692,8 @@
         }
     }];
 }
+
+
 
 - (void) getTelemetryMessageWithId:(NSString *) messageId
                          onSuccess:(void (^)(VLTelemetryMessage *telemetryMessage, NSHTTPURLResponse *response))onSuccessBlock
@@ -856,16 +870,15 @@
                              onSuccess:(void (^)(VLTripPager *tripPager, NSHTTPURLResponse *response))onSuccessBlock
                              onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
     
-    [self getTripsForVehicleWithId:vehicleId limit:nil offset:nil onSuccess:onSuccessBlock onFailure:onFailureBlock];
+    [self getTripsForVehicleWithId:vehicleId timeSeries:nil onSuccess:onSuccessBlock onFailure:onFailureBlock];
 }
 
 - (void) getTripsForVehicleWithId:(NSString *) vehicleId
-                            limit:(nullable NSNumber *)limit
-                           offset:(nullable NSNumber *)offset
+                       timeSeries:(VLTimeSeries *)timeSeries
                         onSuccess:(void (^)(VLTripPager *tripPager, NSHTTPURLResponse *response))onSuccessBlock
                         onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
     
-    if(_session == nil){
+    if(_session == nil) {
         if(onFailureBlock){
             onFailureBlock([self getNoSessionError], nil, nil);
         }
@@ -874,7 +887,7 @@
     
     NSString *path = [NSString stringWithFormat:@"/vehicles/%@/trips", vehicleId];
     
-    [self startWithHost:STRING_HOST_TRIPS path:path queries:[self getDictionaryWithLimit:limit offset:offset] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+    [self startWithHost:STRING_HOST_TRIPS path:path queries:[timeSeries toDictionary] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
         if (response.statusCode == 200) {
             if (onSuccessBlock) {
@@ -1160,7 +1173,7 @@
                             until:(nullable NSDate *)until
                             since:(nullable NSDate *)since
                     sortDirection:(nullable NSString *)sortDirection
-                        onSuccess:(void (^)(VLEventPager *EventPager, NSHTTPURLResponse *response))onSuccessBlock
+                        onSuccess:(void (^)(VLEventPager *eventPager, NSHTTPURLResponse *response))onSuccessBlock
                         onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
     
     if(_session == nil){

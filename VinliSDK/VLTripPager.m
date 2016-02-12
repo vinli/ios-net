@@ -21,18 +21,7 @@
     if (self = [super initWithDictionary:dictionary service:service])
     {
         if(self){
-//            if(dictionary){
-//                if(dictionary[@"trips"]){
-//                    NSArray *json = dictionary[@"trips"];
-//                    NSMutableArray *tripArray = [[NSMutableArray alloc] init];
-//                    
-//                    for(NSDictionary *trip in json){
-//                        [tripArray addObject:[[VLTrip alloc] initWithDictionary:trip]];
-//                    }
-//                    
-//                    _trips = tripArray;
-//                }
-//            }
+
             _trips = [self poulateTrips:dictionary];
         }
 
@@ -44,32 +33,11 @@
 - (void)getNextTrips:(void(^)(NSArray *values, NSError *error))completion
 {
     
-    NSURL *url;
-    if (self.priorURL)
-    {
-        url = self.priorURL;
-    }
-    else if (self.nextURL)
-    {
-        url = self.nextURL;
-    }
+   NSURL* url = (self.priorURL) ? self.priorURL : self.nextURL; //if there is a call to getNextTrips there should be a prior or a next url
     
-    // Use NSURLComponents to parse _lastestURL
-    
-    // Use components to call VLService startWithHost...
-    
-    //make call
-    
-    //if (completion)
-    //pass in values
-    
-    
-    if (url)
-    {
-       // NSURLComponents *components = [NSURLComponents componentsWithURL:self.priorURL resolvingAgainstBaseURL:NO];
-        if (self.service)
+        if (url && self.service)
         {
-//            [self.service startWithHost:components.host path:components.path queries:nil HTTPMethod:@"GET" parameters:nil token:self.service.session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+
               [self.service startWithHost:self.service.session.accessToken requestUri:[url absoluteString] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
                 
                   NSLog(@"%@", response);
@@ -87,14 +55,10 @@
                 
                 
             } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *message) {
-                NSLog(@"Could not start with Host");
+                NSLog(@"No next or prior URL");
             }];
         }
-        else
-        {
-            return;
-        }
-    }
+    
     else
     {
         return;
