@@ -93,7 +93,7 @@ static NSDateFormatter* isoDateFormatter;
     
     if (self.sortOrder) {
         if (self.sortOrder == VLTimerSeriesSortDirectionAscending) {
-            [retVal setObject:@"asc" forKey:@"sortDir"];
+            [retVal setObject:@"asc" forKey:@"sortDir"]; //make a bit more clean later
         }
     }
     

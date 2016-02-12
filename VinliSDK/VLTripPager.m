@@ -41,9 +41,18 @@
     return self;
 }
 
-- (void)getLatestTrips:(NSURL *)url onSuccess:(void(^)(NSArray *values, NSError *error))completion
+- (void)getNextTrips:(void(^)(NSArray *values, NSError *error))completion
 {
     
+    NSURL *url;
+    if (self.priorURL)
+    {
+        url = self.priorURL;
+    }
+    else if (self.nextURL)
+    {
+        url = self.nextURL;
+    }
     
     // Use NSURLComponents to parse _lastestURL
     
