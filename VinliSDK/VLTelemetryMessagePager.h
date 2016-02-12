@@ -14,6 +14,8 @@
 
 - (id) initWithDictionary:(NSDictionary *)dictionary;
 - (id) initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service;
+- (void)getNextMessages:(void (^)(NSArray *values, NSError *error))completion;
+- (NSArray *)populateMessages:(NSDictionary *)dictionary;
 @end
 
 
