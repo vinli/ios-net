@@ -781,14 +781,11 @@
     [self getLocationsForDeviceWithId:deviceId limit:nil until:nil since:nil sortDirection:nil onSuccess:onSuccessBlock onFailure:onFailureBlock];
 }
 
-- (void) getLocationsForDeviceWithId:(NSString *) deviceId
-                               limit:(nullable NSNumber *)limit
-                               until:(nullable NSDate *)until
-                               since:(nullable NSDate *)since
-                       sortDirection:(nullable NSString *)sortDirection
-                           onSuccess:(void (^)(VLLocationPager *locationPager, NSHTTPURLResponse *response))onSuccessBlock
-                           onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
-    
+
+
+
+- (void)getLocationsForDeviceWithId:(NSString *)deviceId timeSeries:(VLTimeSeries *)timeSeries onSuccess:(void (^)(VLLocationPager *, NSHTTPURLResponse *))onSuccessBlock onFailure:(void (^)(NSError *, NSHTTPURLResponse *, NSString *))onFailureBlock
+{
     if(_session == nil){
         if(onFailureBlock){
             onFailureBlock([self getNoSessionError], nil, nil);
@@ -798,7 +795,7 @@
     
     NSString *path = [NSString stringWithFormat:@"/devices/%@/locations", deviceId];
     
-    [self startWithHost:STRING_HOST_TELEMETRY path:path queries:[self getDictionaryWithLimit:limit until:until since:since sortDirection:sortDirection] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+    [self startWithHost:STRING_HOST_TELEMETRY path:path queries:[timeSeries toDictionary] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
         if (response.statusCode == 200) {
             if (onSuccessBlock) {
@@ -817,6 +814,31 @@
             onFailureBlock(error, response, bodyString);
         }
     }];
+}
+
+
+
+
+
+
+
+- (void) getLocationsForDeviceWithId:(NSString *) deviceId
+                               limit:(nullable NSNumber *)limit
+                               until:(nullable NSDate *)until
+                               since:(nullable NSDate *)since
+                       sortDirection:(nullable NSString *)sortDirection
+                           onSuccess:(void (^)(VLLocationPager *locationPager, NSHTTPURLResponse *response))onSuccessBlock
+                           onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
+    
+    
+    VLTimeSeries *timeSeries = [VLTimeSeries timeSeriesFromDate:since until:until];
+    timeSeries.sortOrder = ([sortDirection isEqualToString:@"asc"]) ? VLTimerSeriesSortDirectionAscending : VLTimerSeriesSortDirectionDescending;
+    timeSeries.limit = limit;
+    
+    [self getLocationsForDeviceWithId:deviceId timeSeries:timeSeries onSuccess:onSuccessBlock onFailure:onFailureBlock];
+    
+    
+
 }
 
 #pragma mark - Trip Services

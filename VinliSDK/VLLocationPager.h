@@ -15,5 +15,7 @@
 
 - (id) initWithDictionary:(NSDictionary *)dictionary;
 - (id) initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service;
+- (void)getNextLocations:(void(^)(NSArray *values, NSError *error))completion;
 
+- (NSArray *)populateLocations:(NSDictionary *)dictionary;
 @end
