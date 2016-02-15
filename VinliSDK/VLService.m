@@ -1248,12 +1248,11 @@
                                  onSuccess:(void (^)(VLNotificationPager *notificationPager, NSHTTPURLResponse *response))onSuccessBlock
                                  onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
     
-    [self getNotificationsForEventWithId:eventId limit:nil offset:nil onSuccess:onSuccessBlock onFailure:onFailureBlock];
+    [self getNotificationsForEventWithId:eventId timeSeries:nil onSuccess:onSuccessBlock onFailure:onFailureBlock];
 }
 
 - (void) getNotificationsForEventWithId:(NSString *) eventId
-                                  limit:(nullable NSNumber *)limit
-                                 offset:(nullable NSNumber *)offset
+                             timeSeries:(VLTimeSeries *)timeSeries
                               onSuccess:(void (^)(VLNotificationPager *notificationPager, NSHTTPURLResponse *response))onSuccessBlock
                               onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
  
@@ -1266,7 +1265,7 @@
     
     NSString *path = [NSString stringWithFormat:@"/events/%@/notifications", eventId];
     
-    [self startWithHost:STRING_HOST_EVENTS path:path queries:[self getDictionaryWithLimit:limit offset:offset] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+    [self startWithHost:STRING_HOST_EVENTS path:path queries:[timeSeries toDictionary] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
         if (response.statusCode == 200) {
             if (onSuccessBlock) {

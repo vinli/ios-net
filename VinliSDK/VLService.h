@@ -673,8 +673,7 @@
 //                  response:   An NSHTTPURLResponse instance, from which user will know the URL, statusCode, etc.
 // onFailureBlock:  Called when connection failed. Usually occurred when the website does not exist, or no internet connection.
 - (void) getNotificationsForEventWithId:(nonnull NSString *) eventId
-                                  limit:(nullable NSNumber *)limit
-                                 offset:(nullable NSNumber *)offset
+                             timeSeries:(VLTimeSeries *)timeSeries
                               onSuccess:(void (^)(VLNotificationPager *notificationPager, NSHTTPURLResponse *response))onSuccessBlock
                               onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 

@@ -14,27 +14,29 @@
 @class VLSession;
 @class VLService;
 
+//check these nullablity specifiers 
+
 typedef void(^AuthenticationCompletion)(VLSession* _Nullable session, NSError* _Nullable error);
 
 @interface VLSessionManager : NSObject
 
-@property (strong, nonatomic) NSString *clientId;
-@property (strong, nonatomic) NSString *redirectUri;
+@property (strong, nonatomic) NSString* _Nonnull clientId;
+@property (strong, nonatomic) NSString* _Nonnull redirectUri;
 
-@property (readonly, strong, nonatomic) VLService *service;
+@property (readonly, strong, nonatomic) VLService* _Nonnull service;
 
-@property (readonly, strong, nonatomic) NSString* accessToken;
+@property (readonly, strong, nonatomic) NSString* _Nonnull accessToken;
 
-@property (readonly, strong, nonatomic) VLSession *currentSession;
+@property (readonly, strong, nonatomic) VLSession* _Nonnull currentSession;
 
-+ (instancetype)sharedManager;
++ (instancetype _Nonnull)sharedManager;
 
-- (void)handleCustomURL:(NSURL *)url;
+- (void)handleCustomURL:(NSURL * _Nullable)url;
 
 
-- (void)getSessionForUserWithId:(NSString *)userId completion:(AuthenticationCompletion)onCompletion;
+- (void)getSessionForUserWithId:(NSString * _Nonnull)userId completion:(AuthenticationCompletion _Nonnull)onCompletion;
 
 // Convenience method to display an AlertView with available users.
-- (void)loginWithCompletion:(AuthenticationCompletion)onCompletion onCancel:(void(^)(void))onCancel;
+- (void)loginWithCompletion:(AuthenticationCompletion _Nonnull)onCompletion onCancel:(nullable void(^)(void))onCancel;
 
 @end
