@@ -101,7 +101,7 @@
 		7367E3A21B166ABB004223A6 /* VLEventPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367E3A11B166ABB004223A6 /* VLEventPager.m */; };
 		7367E3A41B1759A2004223A6 /* VLNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367E3A31B1759A2004223A6 /* VLNotification.m */; };
 		7367E3A71B175FEA004223A6 /* VLNotificationPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367E3A61B175FEA004223A6 /* VLNotificationPager.m */; };
-		77BE999B1C690E77001E8F64 /* VLTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 77BE99991C690E77001E8F64 /* VLTimeSeries.h */; };
+		77BE999B1C690E77001E8F64 /* VLTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 77BE99991C690E77001E8F64 /* VLTimeSeries.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		77BE999C1C690E77001E8F64 /* VLTimeSeries.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BE999A1C690E77001E8F64 /* VLTimeSeries.m */; };
 		E92943591B15387C00AAC7D3 /* VLTelemetryServicesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E92943581B15387C00AAC7D3 /* VLTelemetryServicesTests.m */; };
 		E929435C1B15425400AAC7D3 /* VLTelemetryMessagePager.h in Headers */ = {isa = PBXBuildFile; fileRef = E929435A1B15425400AAC7D3 /* VLTelemetryMessagePager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -146,7 +146,7 @@
 		0B1671221B0FC39D009BE7A9 /* VLBoundary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLBoundary.m; sourceTree = "<group>"; };
 		0B1671231B0FC39D009BE7A9 /* VLDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLDevice.h; sourceTree = "<group>"; };
 		0B1671241B0FC39D009BE7A9 /* VLDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLDevice.m; sourceTree = "<group>"; };
-		0B16712F1B0FC39D009BE7A9 /* VLService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLService.h; sourceTree = "<group>"; };
+		0B16712F1B0FC39D009BE7A9 /* VLService.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = VLService.h; sourceTree = "<group>"; };
 		0B1671301B0FC39D009BE7A9 /* VLService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLService.m; sourceTree = "<group>"; };
 		0B1671311B0FC39D009BE7A9 /* VLRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLRule.h; sourceTree = "<group>"; };
 		0B1671321B0FC39D009BE7A9 /* VLRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLRule.m; sourceTree = "<group>"; };
@@ -892,6 +892,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 20DC824FFEF4A47CAA1EA879 /* Pods-VinliSDKTests.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -910,6 +911,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BB7D1A79C1AEAD3F566D9FA4 /* Pods-VinliSDKTests.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
