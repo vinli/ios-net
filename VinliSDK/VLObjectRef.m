@@ -13,7 +13,7 @@
 - (id) initWithDictionary:(NSDictionary *)dictionary{
     self = [super init];
     if(self){
-        if(dictionary != nil){
+        if(![dictionary isEqualToDictionary:@{}]){
             _type = dictionary[@"type"];
             _objectId = dictionary[@"id"];
         }

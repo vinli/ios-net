@@ -132,12 +132,11 @@
                                 @"meta": @{
                                         @"pagination" : @{
                                                 @"totalCount" : @14,
-                                                @"limit" : @10,
-                                                @"offset" : @0,
+                                                @"since" : @"2015-12-15T06:00:00.000Z",
+                                                @"until" : @"2016-02-06T06:00:00.000Z",
                                                 @"links" : @{
-                                                        @"first" : @"https://trips.vin.li/api/v1/devices/821374c0-d6d8-11e3-9c1a-0800200c9a66/trips?offset=0&limit=10",
-                                                        @"next" : @"https://trips.vin.li/api/v1/devices/821374c0-d6d8-11e3-9c1a-0800200c9a66/trips?offset=10&limit=10",
-                                                        @"last" : @"https://trips.vin.li/api/v1/devices/821374c0-d6d8-11e3-9c1a-0800200c9a66/trips?offset=10&limit=10"
+                                                        @"prior" : @"https://trips-dev.vin.li/api/v1/devices/fe4bbc20-cc90-11e3-8e05-f3abac5b6b58/trips?until=1434129972999",
+                                                        @"next" : @"https://trips.vin.li/api/v1/devices/d47ef610-c7b9-44ac-9a41-39f9c6056de5/trips?until=2016-02-06T00%3A00%3A00-06%3A00&limit=5&since=1450912114292&sortDir=asc",
                                                         }
                                                 }
                                         }
