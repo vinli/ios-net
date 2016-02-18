@@ -633,12 +633,9 @@
                                           ],
                                   @"meta": @{
                                           @"pagination": @{
-                                                  @"total": @0,
-                                                  @"limit": @20,
-                                                  @"offset": @0,
                                                   @"links": @{
-                                                          @"first": @"https://events-dev.vin.li/api/v1/events/538f1195-a733-4ee7-a4e8-1fbbe7131f6a/notifications?offset=0&limit=20",
-                                                          @"last": @"https://events-dev.vin.li/api/v1/events/538f1195-a733-4ee7-a4e8-1fbbe7131f6a/notifications?offset=0&limit=20"
+                                                          @"prior": @"https://events.vin.li/api/v1/subscriptions/532a8946-ec5c-4f53-803a-e336e02a8c0f/notifications?since=2016-02-11T13%3A21%3A18-06%3A00&limit=1&until=1455817232505",
+                                                          @"next": @"https://events.vin.li/api/v1/subscriptions/532a8946-ec5c-4f53-803a-e336e02a8c0f/notifications?since=1455737282236&sortDir=asc&limit=1"
                                                           }
                                                   }
                                           }

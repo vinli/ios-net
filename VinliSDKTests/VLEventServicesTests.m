@@ -46,7 +46,7 @@
         
         NSDictionary *event = [expectedJSON copy];
         
-        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:nil statusCode:200 HTTPVersion:nil headerFields:nil];
+        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:[NSURL  new] statusCode:200 HTTPVersion:nil headerFields:nil];
         
         void (^successBlock)(NSDictionary *result, NSHTTPURLResponse *response) = nil;
         
@@ -75,7 +75,7 @@
     
     [[[mockConnection expect] andDo:^(NSInvocation *invocation) {
         NSDictionary *event = [expectedJSON copy];
-        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:nil statusCode:200 HTTPVersion:nil headerFields:nil];
+        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:[NSURL new] statusCode:200 HTTPVersion:nil headerFields:nil];
         
         void (^successBlock)(NSDictionary *result, NSHTTPURLResponse *response) = nil;
         [invocation getArgument:&successBlock atIndex:8];
@@ -102,7 +102,7 @@
     
     [[[mockConnection expect] andDo:^(NSInvocation *invocation) {
         NSDictionary *event = [expectedJSON copy];
-        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:nil statusCode:200 HTTPVersion:nil headerFields:nil];
+        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:[NSURL new] statusCode:200 HTTPVersion:nil headerFields:nil];
         
         void (^successBlock)(NSDictionary *result, NSHTTPURLResponse *response) = nil;
         [invocation getArgument:&successBlock atIndex:8];
@@ -113,7 +113,8 @@
     [connection getNotificationsForEventWithId:eventId onSuccess:^(VLNotificationPager *notificationPager, NSHTTPURLResponse *response) {
         
         XCTAssertEqual(notificationPager.notifications.count, [expectedJSON[@"notifications"] count]); // Make sure that there are two objects in the array.
-        XCTAssertEqual(notificationPager.offset, [expectedJSON[@"meta"][@"pagination"][@"offset"] unsignedLongValue]); // Make sure that the Meta more or less translated correctly.
+        XCTAssertEqual([notificationPager.priorURL  absoluteString], expectedJSON[@"meta"][@"pagination"][@"links"][@"prior"]);
+        XCTAssertEqual([notificationPager.nextURL  absoluteString], expectedJSON[@"meta"][@"pagination"][@"links"][@"next"]); // Make sure that the Meta more or less translated correctly.
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
     }];
@@ -126,7 +127,7 @@
     
     [[[mockConnection expect] andDo:^(NSInvocation *invocation) {
         NSDictionary *event = [expectedJSON copy];
-        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:nil statusCode:200 HTTPVersion:nil headerFields:nil];
+        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:[NSURL new] statusCode:200 HTTPVersion:nil headerFields:nil];
         
         void (^successBlock)(NSDictionary *result, NSHTTPURLResponse *response) = nil;
         [invocation getArgument:&successBlock atIndex:8];
@@ -137,7 +138,8 @@
     [connection getNotificationsForSubscriptionWithId:subscriptionId onSuccess:^(VLNotificationPager *notificationPager, NSHTTPURLResponse *response) {
         
         XCTAssertEqual(notificationPager.notifications.count, [expectedJSON[@"notifications"] count]); // Make sure that there are two objects in the array.
-        XCTAssertEqual(notificationPager.offset, [expectedJSON[@"meta"][@"pagination"][@"offset"] unsignedLongValue]); // Make sure that the Meta more or less translated correctly.
+        XCTAssertEqualObjects([notificationPager.priorURL absoluteString], expectedJSON[@"meta"][@"pagination"][@"links"][@"prior"]);
+        XCTAssertEqualObjects([notificationPager.nextURL absoluteString], expectedJSON[@"meta"][@"pagination"][@"links"][@"next"]);
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
     }];
@@ -152,7 +154,7 @@
         
         NSDictionary *notification = [expectedJSON copy];
         
-        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:nil statusCode:200 HTTPVersion:nil headerFields:nil];
+        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:[NSURL new] statusCode:200 HTTPVersion:nil headerFields:nil];
         
         void (^successBlock)(NSDictionary *result, NSHTTPURLResponse *response) = nil;
         
