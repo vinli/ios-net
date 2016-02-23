@@ -13,7 +13,9 @@
 
 
 @interface VLPlatformServicesIntegrationTests : XCTestCase {
-        
+    NSDictionary *devices;
+    NSDictionary *vehicles;
+    NSString *accessToken;
 }
 
 @end
@@ -24,10 +26,40 @@
 
 - (void)setUp {
     [super setUp];
+    accessToken = @"HbZ_1S2vdywJk72iuPofm816fRhmYgRhT0OTwpyQX0okmDElQ7J8p5W_sKNUr8iE";
+    XCTestExpectation *expectation = [self expectationWithDescription:@"getting devices call"];
+    [[VLSessionManager sharedManager].service startWithHost:accessToken requestUri:@"https://platform.vin.li/api/v1/devices" onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        [expectation fulfill];
+        devices = result;
+        XCTAssertTrue(YES);
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
+        XCTAssertTrue(NO);
+    } ];
+    
+    [self waitForExpectationsWithTimeout:0.5 handler:nil];
+    
+    XCTestExpectation *expectationv = [self expectationWithDescription:@"getting vehicles call"];
+
+    [[VLSessionManager sharedManager].service startWithHost:accessToken requestUri:@"https://platform.vin.li/api/v1/devices/d47ef610-c7b9-44ac-9a41-39f9c6056de5/vehicles" onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        [expectationv fulfill];
+        vehicles = result;
+        XCTAssertTrue(YES);
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
+        XCTAssertTrue(NO);
+    } ];
+    
+    [self waitForExpectationsWithTimeout:0.5 handler:nil];
+
+    
+    
+    
+    
     
     
     
 }
+
+
 
 - (void)tearDown {
     [super tearDown];
@@ -35,7 +67,7 @@
 }
 
 - (void)testGetAllDevices {
-    NSDictionary *expectedJSON = @{}; //this will be the calls raw json
+    NSDictionary *expectedJSON = devices; //this will be the calls raw json
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"get all devices"];
     
@@ -43,8 +75,8 @@
        
        [expectation fulfill];
        XCTAssertEqual(devicePager.devices.count, [expectedJSON[@"devices"] count]);
-       XCTAssertEqual([[devicePager.devices objectAtIndex:0] deviceId], expectedJSON[@"devices"][0][@"id"]);
-       XCTAssertEqual([[devicePager.devices objectAtIndex:0] selfURL].absoluteString, expectedJSON[@"devices"][0][@"links"][@"self"]);
+       XCTAssertEqualObjects([[devicePager.devices objectAtIndex:0] deviceId], expectedJSON[@"devices"][0][@"id"]);
+       XCTAssertEqualObjects([[devicePager.devices objectAtIndex:0] selfURL].absoluteString, expectedJSON[@"devices"][0][@"links"][@"self"]);
        XCTAssertEqual(devicePager.total, [expectedJSON[@"meta"][@"pagination"][@"total"] unsignedIntegerValue]);
 
        
@@ -57,7 +89,7 @@
 
 
 - (void)testGetLatestVehicleWithDeviceId {
-    NSDictionary *expectedJSON = @{}; //add in raw json
+    NSDictionary *expectedJSON = vehicles; //add in raw json
     [[VLSessionManager sharedManager].service getDevicesOnSuccess:^(VLDevicePager *devicePager, NSHTTPURLResponse *response) {
         VLDevice *device = (devicePager.devices.count > 0) ? devicePager.devices[0] : nil;
         [[VLSessionManager sharedManager].service getVehiclesForDeviceWithId:device.deviceId onSuccess:^(VLVehiclePager *vehiclePager, NSHTTPURLResponse *response) {
