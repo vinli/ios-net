@@ -9,13 +9,14 @@
 #import <XCTest/XCTest.h>
 #import "VLService.h"
 #import "VLSessionManager.h"
-
+#import "VLDevice.h"
 
 
 @interface VLPlatformServicesIntegrationTests : XCTestCase {
     NSDictionary *devices;
     NSDictionary *vehicles;
     NSString *accessToken;
+    VLDevice *firstDevice;
 }
 
 @end
@@ -49,14 +50,23 @@
     } ];
     
     [self waitForExpectationsWithTimeout:0.5 handler:nil];
+    
+    
+    
+    XCTestExpectation *deviceExpectation = [self expectationWithDescription:@"get devices with sessionManager"];
+    [[VLSessionManager sharedManager].service getDevicesOnSuccess:^(VLDevicePager *devicePager, NSHTTPURLResponse *response) {
+        [deviceExpectation fulfill];
+        firstDevice = (devicePager.devices.count > 0) ? devicePager.devices[0] : nil;
+        if (firstDevice) {
+            XCTAssertTrue(YES);
+        }
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        XCTAssertTrue(NO);
+    }];
+    
+    [self waitForExpectationsWithTimeout:0.5 handler:nil];
+    
 
-    
-    
-    
-    
-    
-    
-    
 }
 
 
@@ -89,17 +99,18 @@
 
 
 - (void)testGetLatestVehicleWithDeviceId {
+    //using this method to just test vehicles no redundant calls
     NSDictionary *expectedJSON = vehicles; //add in raw json
-    [[VLSessionManager sharedManager].service getDevicesOnSuccess:^(VLDevicePager *devicePager, NSHTTPURLResponse *response) {
-        VLDevice *device = (devicePager.devices.count > 0) ? devicePager.devices[0] : nil;
-        [[VLSessionManager sharedManager].service getVehiclesForDeviceWithId:device.deviceId onSuccess:^(VLVehiclePager *vehiclePager, NSHTTPURLResponse *response) {
+    XCTestExpectation *vehicleExpecation = [self expectationWithDescription:@"Expecting vehicles"];
+        [[VLSessionManager sharedManager].service getVehiclesForDeviceWithId:firstDevice.deviceId onSuccess:^(VLVehiclePager *vehiclePager, NSHTTPURLResponse *response) {
+            [vehicleExpecation fulfill];
             VLVehicle *vehicle = (vehiclePager.vehicles.count > 0) ? vehiclePager.vehicles[0] : nil;
-            XCTAssertEqual(vehicle.make, expectedJSON[@"vehicle"][@"make"]);
+            XCTAssertEqualObjects(vehicle.make, expectedJSON[@"vehicles"][0][@"make"]);
         } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
             XCTAssertTrue(NO);
         }];
-        
-    } onFailure:nil];
+    [self waitForExpectationsWithTimeout:0.5 handler:nil];
+
 }
 
 
