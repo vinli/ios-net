@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "VLUserSettings.h"
 
 @interface VLUser : NSObject <NSCoding>
 
@@ -16,6 +17,7 @@
 @property (readonly) NSString *email;
 @property (readonly) NSString *phone;
 @property (readonly) NSURL *imageURL;
+@property (readonly) VLUserSettings* settings;
 
 - (id) initWithDictionary: (NSDictionary *) dictionary;
 

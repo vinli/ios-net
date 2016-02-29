@@ -39,7 +39,7 @@
             _createdAt = [dictionary jsonObjectForKey:@"createdAt"];
             _updatedAt = [dictionary jsonObjectForKey:@"updatedAt"];
             
-            if(dictionary[@"appData"]){
+            if([dictionary[@"appData"] jsonObjectForKey:@"appData"]){
                 NSString *jsonString = dictionary[@"appData"];
                 NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
                 _appData = [NSJSONSerialization JSONObjectWithData:jsonData options:NSUTF8StringEncoding error:nil];

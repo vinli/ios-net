@@ -7,6 +7,7 @@
 //
 
 #import "VLUser.h"
+#import "VLUnitLocalizer.h"
 
 @implementation VLUser
 
@@ -27,6 +28,13 @@
                 _phone = userDictionary[@"phone"];
                 
                 _imageURL = (userDictionary[@"image"] == (id)[NSNull null]) ? nil : [NSURL URLWithString:userDictionary[@"image"]];
+                
+                NSDictionary* settings = userDictionary[@"settings"];
+                if (settings){
+                    _settings = [[VLUserSettings alloc] initWithDictionary:settings];
+                    [VLUnitLocalizer setLocalizedUnitWithUnitString:_settings.unitStr]; 
+                }
+
             }
         }
     }
