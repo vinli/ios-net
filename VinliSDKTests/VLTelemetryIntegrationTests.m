@@ -82,7 +82,7 @@
         XCTAssertTrue(NO);
     }];
     
-    [self waitForExpectationsWithTimeout:0.50 handler:nil];
+    [self waitForExpectationsWithTimeout:0.5 handler:nil];
     
     
     XCTestExpectation *deviceExpectation = [self expectationWithDescription:@"get devices with sessionManager"];
@@ -137,7 +137,7 @@
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
     }];
-    [self waitForExpectationsWithTimeout:0.5 handler:nil];
+    [self waitForExpectationsWithTimeout:1.0 handler:nil];
     
     
 }

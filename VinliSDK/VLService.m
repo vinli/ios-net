@@ -121,7 +121,7 @@
                                                   contentType:STRING_CONTENT_TYPE
                                                      protocol:VLProtocolTypeHTTPS
                                                          host:host
-                                                   requestUri:strUri
+                                                 requestUri:strUri
                                                          port:nil
                                                       payload:dictParams];
     //NSLog(@"REQUEST = %@", request);
