@@ -23,7 +23,8 @@
 @property VLTelemetryMessage *testMessage;
 @property NSDictionary *message;
 @property NSDictionary *locations;
-
+@property NSString *messageId;
+@property NSDictionary *telemetryMessage;
 @end
 
 @implementation VLTelemetryIntegrationTests
@@ -32,6 +33,7 @@
 - (void)setUp {
     [super setUp];
     self.accessToken = @"HbZ_1S2vdywJk72iuPofm816fRhmYgRhT0OTwpyQX0okmDElQ7J8p5W_sKNUr8iE";
+    self.messageId = @"e3b8782c-0f00-4159-8e7d-9bbf221ededd";
     XCTestExpectation *expectation = [self expectationWithDescription:@"getting devices call"];
     [[VLSessionManager sharedManager].service startWithHost:self.accessToken requestUri:@"https://platform.vin.li/api/v1/devices" onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         [expectation fulfill];
@@ -99,7 +101,28 @@
     [self waitForExpectationsWithTimeout:0.5 handler:nil];
     
     
+    XCTestExpectation *expectedTelemetryMessage = [self expectationWithDescription:@"request for a telemetry message"];
+    [[VLSessionManager sharedManager].service startWithHost:self.accessToken requestUri:@"https://telemetry.vin.li/api/v1/messages/e3b8782c-0f00-4159-8e7d-9bbf221ededd" onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        [expectedTelemetryMessage fulfill];
+        self.telemetryMessage = result;
+        XCTAssertTrue(YES);
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
+        XCTAssertTrue(NO);
+    }];
+    [self waitForExpectationsWithTimeout:0.5 handler:nil];
+    
+    
+    
+    
+    
+    
+    
+    
 }
+
+
+
+
 
 - (void)tearDown {
     [super tearDown];
@@ -166,23 +189,19 @@
 
 
 
-//- (void)testGetTelemetryMessageWithMessageId {
-//    NSDictionary *expectedJSON = self.message; //this is the message we pulled
-//    XCTestExpectation *telemetryMessageExpectation = [self expectationWithDescription:@"single telemetry message"];
-//    [[VLSessionManager sharedManager].service getTelemetryMessageWithId:self.testMessage.messageId onSuccess:^(VLTelemetryMessage *telemetryMessage, NSHTTPURLResponse *response) {
-//        [telemetryMessageExpectation fulfill];
-//        
-//        XCTAssertEqual(telemetryMessage.messageId, expectedJSON[@"message"][@"id"] );
-//        
-//        XCTAssertEqual(telemetryMessage.latitude, [expectedJSON[@"message"][@"location"][@"coordinates"][0]unsignedLongValue ]);
-//
-//    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-//        XCTAssertTrue(NO);
-//    }];
-//    [self waitForExpectationsWithTimeout:0.5 handler:nil];
-//}
-
-//get locations test
+- (void)testGetTelemetryMessageWithId {
+    NSDictionary *expectedJSON = self.telemetryMessage;
+    XCTestExpectation *specificMessageExpectation = [self expectationWithDescription:@"service call for a single telemetry message"];
+    [[VLSessionManager sharedManager].service getTelemetryMessageWithId:self.messageId onSuccess:^(VLTelemetryMessage *telemetryMessage, NSHTTPURLResponse *response) {
+        [specificMessageExpectation fulfill];
+        XCTAssertTrue([telemetryMessage.messageId isEqualToString:expectedJSON[@"message"][@"id"]]);
+        XCTAssertEqual(telemetryMessage.latitude, [expectedJSON[@"message"][@"data"][@"location"][@"coordinates"][1]doubleValue ]); //fix to this internally
+        
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        XCTAssertTrue(NO);
+    }];
+    [self waitForExpectationsWithTimeout:0.5 handler:nil];
+}
 
 
 
