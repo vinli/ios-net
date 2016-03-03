@@ -10,6 +10,7 @@
 #import "VLService.h"
 #import "VLSessionManager.h"
 #import "VLDevice.h"
+#import "VLVehicle.h"
 
 
 @interface VLPlatformServicesIntegrationTests : XCTestCase {
@@ -17,6 +18,10 @@
     NSDictionary *vehicles;
     NSString *accessToken;
     VLDevice *firstDevice;
+    NSDictionary *latestVehicle;
+    NSString *deviceId;
+    NSDictionary *specificDevice;
+    
 }
 
 @end
@@ -28,6 +33,7 @@
 - (void)setUp {
     [super setUp];
     accessToken = @"HbZ_1S2vdywJk72iuPofm816fRhmYgRhT0OTwpyQX0okmDElQ7J8p5W_sKNUr8iE";
+    deviceId = @"d47ef610-c7b9-44ac-9a41-39f9c6056de5";
     XCTestExpectation *expectation = [self expectationWithDescription:@"getting devices call"];
     [[VLSessionManager sharedManager].service startWithHost:accessToken requestUri:@"https://platform.vin.li/api/v1/devices" onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         [expectation fulfill];
@@ -66,6 +72,30 @@
     
     [self waitForExpectationsWithTimeout:0.5 handler:nil];
     
+    
+    
+    XCTestExpectation *expectationLV = [self expectationWithDescription:@"URI to get the latest vehicle"];
+    [[VLSessionManager sharedManager].service startWithHost:accessToken requestUri:@"https://platform.vin.li/api/v1/devices/d47ef610-c7b9-44ac-9a41-39f9c6056de5/vehicles/_latest" onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        [expectationLV fulfill];
+        latestVehicle = result;
+        XCTAssertTrue(YES);
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
+        XCTAssertTrue(NO);
+    }];
+    
+    [self waitForExpectationsWithTimeout:0.5 handler:nil];
+    
+    
+    XCTestExpectation *expectationDevice = [self expectationWithDescription:@"get specific device"];
+    [[VLSessionManager sharedManager].service startWithHost:accessToken requestUri:@"https://platform.vin.li/api/v1/devices/d47ef610-c7b9-44ac-9a41-39f9c6056de5" onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        [expectationDevice fulfill];
+        specificDevice = result;
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
+        XCTAssertTrue(NO);
+    }];
+    [self waitForExpectationsWithTimeout:0.5 handler:nil];
+    
+    
 
 }
 
@@ -98,7 +128,7 @@
 }
 
 
-- (void)testGetLatestVehicleWithDeviceId {
+- (void)testAllVehicleWithDeviceId {
     //using this method to just test vehicles no redundant calls
     NSDictionary *expectedJSON = vehicles; //add in raw json
     XCTestExpectation *vehicleExpecation = [self expectationWithDescription:@"Expecting vehicles"];
@@ -112,6 +142,37 @@
     [self waitForExpectationsWithTimeout:0.5 handler:nil];
 
 }
+
+- (void)testGetLastestVehicleWithDeviceId {
+    NSDictionary *expectedJSON = latestVehicle;
+    XCTestExpectation *expectedLatestVehicle = [self expectationWithDescription:@"service call for latest vehicles"];
+    [[VLSessionManager sharedManager].service getLatestVehicleForDeviceWithId:firstDevice.deviceId onSuccess:^(VLVehicle *vehicle, NSHTTPURLResponse *response) {
+        [expectedLatestVehicle fulfill];
+        XCTAssertEqual(vehicle.make, expectedJSON[@"vehicle"][@"make"]);
+
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        XCTAssertTrue(NO);
+    }];
+    [self waitForExpectationsWithTimeout:0.5 handler:nil];
+    
+}
+
+
+- (void)testGetDeviceWithId {
+    NSDictionary *expectedJSON = specificDevice;
+    XCTestExpectation *singleDeviceExpectation = [self expectationWithDescription:@"service call for a single device"];
+    [[VLSessionManager sharedManager].service getDeviceWithId:deviceId onSuccess:^(VLDevice *device, NSHTTPURLResponse *response) {
+        [singleDeviceExpectation fulfill];
+        XCTAssertEqualObjects(device.deviceId, expectedJSON[@"device"][@"id"]);
+        XCTAssertEqualObjects(device.selfURL.absoluteString, expectedJSON[@"device"][@"links"][@"self"]);
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        XCTAssertTrue(NO);
+    } ];
+    [self waitForExpectationsWithTimeout:0.5 handler:nil];
+}
+
+
+
 
 
 
