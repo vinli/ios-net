@@ -16,7 +16,10 @@
 @property NSDictionary *devices;
 @property VLDevice *device;
 @property NSDictionary *subscriptions;
-
+@property NSString *deviceId;
+@property NSTimeInterval defaultTimeOut;
+@property NSString *subscriptionId;
+@property NSDictionary *subscription;
 @end
 
 @implementation VLSubscriptionIntegrationTests
@@ -26,9 +29,9 @@
     
     
     self.accessToken = @"HbZ_1S2vdywJk72iuPofm816fRhmYgRhT0OTwpyQX0okmDElQ7J8p5W_sKNUr8iE";
-    
-    
-    
+    self.deviceId = @"ba89372f-74f4-43c8-a4fd-b8f24699426e";
+    self.defaultTimeOut = 5.0;
+    self.subscriptionId = @"979c2120-49cf-4fea-a6ed-10b0c70ace57";
     XCTestExpectation *expectation = [self expectationWithDescription:@"getting devices call"];
     [[VLSessionManager sharedManager].service startWithHost:self.accessToken requestUri:@"https://platform.vin.li/api/v1/devices" onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         [expectation fulfill];
@@ -38,7 +41,7 @@
         XCTAssertTrue(NO);
     } ];
     
-    [self waitForExpectationsWithTimeout:0.5 handler:nil];
+    [self waitForExpectationsWithTimeout:self.defaultTimeOut handler:nil];
     
     
 
@@ -49,27 +52,24 @@
     
     
     XCTestExpectation *expectationS = [self expectationWithDescription:@"get subscriptions for device call"];
-    [[VLSessionManager sharedManager].service startWithHost:self.accessToken requestUri:@"https://events.vin.li/api/v1/devices/d47ef610-c7b9-44ac-9a41-39f9c6056de5/subscriptions" onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+    [[VLSessionManager sharedManager].service startWithHost:self.accessToken requestUri:[NSString stringWithFormat:@"https://events.vin.li/api/v1/devices/%@/subscriptions", self.deviceId] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         [expectationS fulfill];
         self.subscriptions = result;
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
         XCTAssertTrue(NO);
     }];
-    [self waitForExpectationsWithTimeout:0.5 handler:nil];
+    [self waitForExpectationsWithTimeout:self.defaultTimeOut handler:nil];
     
     
-    XCTestExpectation *deviceExpectation = [self expectationWithDescription:@"get devices with sessionManager"];
-    [[VLSessionManager sharedManager].service getDevicesOnSuccess:^(VLDevicePager *devicePager, NSHTTPURLResponse *response) {
-        [deviceExpectation fulfill];
-        self.device = (devicePager.devices.count > 0) ? devicePager.devices[0] : nil;
-        if (self.device) {
-            XCTAssertTrue(YES);
-        }
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+    XCTestExpectation *expectationSubscription = [self expectationWithDescription:@"single subscription get"];
+    [[VLSessionManager sharedManager].service startWithHost:self.accessToken requestUri:[NSString stringWithFormat:@"https://events.vin.li/api/v1/subscriptions/%@", self.subscriptionId] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        [expectationSubscription fulfill];
+        self.subscription = result;
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
         XCTAssertTrue(NO);
     }];
-    
-    [self waitForExpectationsWithTimeout:0.5 handler:nil];
+    [self waitForExpectationsWithTimeout:self.defaultTimeOut handler:nil];
+
 
 }
 
@@ -77,7 +77,7 @@
 - (void)testGetSubscriptionswithDeviceId {
     NSDictionary *expectedJSON = self.subscriptions;
     XCTestExpectation *expectedDevices = [self expectationWithDescription:@"getting the subscriptions"];
-    [[VLSessionManager sharedManager].service getSubscriptionsForDeviceWithId:self.device.deviceId onSuccess:^(VLSubscriptionPager *subscriptionPager, NSHTTPURLResponse *response) {
+    [[VLSessionManager sharedManager].service getSubscriptionsForDeviceWithId:self.deviceId onSuccess:^(VLSubscriptionPager *subscriptionPager, NSHTTPURLResponse *response) {
         [expectedDevices fulfill];
         XCTAssertEqual(subscriptionPager.subscriptions.count, [expectedJSON[@"subscriptions"] count]); // Make sure that there is one object in the array.
         
@@ -87,7 +87,29 @@
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
     }];
-    [self waitForExpectationsWithTimeout:5.0 handler:nil];
+    [self waitForExpectationsWithTimeout:self.defaultTimeOut handler:nil];
+}
+
+
+
+
+
+- (void)testGetSubscriptionWithId {
+    NSDictionary *expectedJSON = self.subscription;
+    XCTestExpectation *subscriptionExpectation = [self expectationWithDescription:@"service call for a subscription"];
+    [[VLSessionManager sharedManager].service getSubscriptionWithId:self.subscriptionId onSuccess:^(VLSubscription *subscription, NSHTTPURLResponse *response) {
+        [subscriptionExpectation fulfill];
+        
+        XCTAssertEqualObjects(subscription.deviceId, expectedJSON[@"subscription"][@"deviceId"]);
+        
+        XCTAssertEqualObjects(subscription.selfURL.absoluteString, expectedJSON[@"subscription"][@"links"][@"self"]);
+        
+        XCTAssertEqualObjects(subscription.objectRef.objectId, expectedJSON[@"subscription"][@"object"][@"id"]);
+        
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        XCTAssertTrue(NO);
+    }];
+    [self waitForExpectationsWithTimeout:self.defaultTimeOut handler:nil];
 }
 
 

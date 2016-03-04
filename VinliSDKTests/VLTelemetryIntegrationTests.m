@@ -25,6 +25,9 @@
 @property NSDictionary *locations;
 @property NSString *messageId;
 @property NSDictionary *telemetryMessage;
+@property NSString *deviceId;
+@property NSTimeInterval defaultTimeOut;
+
 @end
 
 @implementation VLTelemetryIntegrationTests
@@ -34,6 +37,11 @@
     [super setUp];
     self.accessToken = @"HbZ_1S2vdywJk72iuPofm816fRhmYgRhT0OTwpyQX0okmDElQ7J8p5W_sKNUr8iE";
     self.messageId = @"e3b8782c-0f00-4159-8e7d-9bbf221ededd";
+    self.defaultTimeOut = 5.0;
+    self.deviceId = @"ba89372f-74f4-43c8-a4fd-b8f24699426e";
+    
+    
+    
     XCTestExpectation *expectation = [self expectationWithDescription:@"getting devices call"];
     [[VLSessionManager sharedManager].service startWithHost:self.accessToken requestUri:@"https://platform.vin.li/api/v1/devices" onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         [expectation fulfill];
@@ -43,22 +51,22 @@
         XCTAssertTrue(NO);
     } ];
     
-    [self waitForExpectationsWithTimeout:0.5 handler:nil];
+    [self waitForExpectationsWithTimeout:self.defaultTimeOut handler:nil];
     
     //expectation_s snapshots json
     XCTestExpectation *expectations = [self expectationWithDescription:@"get the snapshots"];
-    [[VLSessionManager sharedManager].service startWithHost:self.accessToken requestUri:@"https://telemetry.vin.li/api/v1/devices/d47ef610-c7b9-44ac-9a41-39f9c6056de5/snapshots?fields=rpm" onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+    [[VLSessionManager sharedManager].service startWithHost:self.accessToken requestUri:[NSString stringWithFormat:@"https://telemetry.vin.li/api/v1/devices/%@/snapshots?fields=rpm", self.deviceId] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         [expectations fulfill];
         self.snapshots = result;
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
         XCTAssertTrue(NO);
     }];
     
-    [self waitForExpectationsWithTimeout:0.5 handler:nil];
+    [self waitForExpectationsWithTimeout:self.defaultTimeOut handler:nil];
     
     
     XCTestExpectation *expectationT = [self expectationWithDescription:@"telemetry json"];
-    [[VLSessionManager sharedManager].service startWithHost:self.accessToken requestUri:@"https://telemetry.vin.li/api/v1/devices/d47ef610-c7b9-44ac-9a41-39f9c6056de5/messages" onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+    [[VLSessionManager sharedManager].service startWithHost:self.accessToken requestUri:[NSString stringWithFormat:@"https://telemetry.vin.li/api/v1/devices/%@/messages", self.deviceId ] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         [expectationT fulfill];
         self.telemetryMessages = result;
         XCTAssertTrue(YES);
@@ -74,17 +82,17 @@
 //    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
 //        XCTAssertTrue(NO);
 //    }];
-//    [self waitForExpectationsWithTimeout:0.5 handler:nil];
+//    [self waitForExpectationsWithTimeout:self.defaultTimeOut handler:nil];
     
     XCTestExpectation *expectationL = [self expectationWithDescription:@"Get locations"];
-    [[VLSessionManager sharedManager].service startWithHost:self.accessToken requestUri:@"https://telemetry.vin.li/api/v1/devices/d47ef610-c7b9-44ac-9a41-39f9c6056de5/locations" onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+    [[VLSessionManager sharedManager].service startWithHost:self.accessToken requestUri:[NSString stringWithFormat:@"https://telemetry.vin.li/api/v1/devices/%@/locations", self.deviceId] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         [expectationL fulfill];
         self.locations = result;
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
         XCTAssertTrue(NO);
     }];
     
-    [self waitForExpectationsWithTimeout:0.5 handler:nil];
+    [self waitForExpectationsWithTimeout:self.defaultTimeOut handler:nil];
     
     
     XCTestExpectation *deviceExpectation = [self expectationWithDescription:@"get devices with sessionManager"];
@@ -98,25 +106,18 @@
         XCTAssertTrue(NO);
     }];
     
-    [self waitForExpectationsWithTimeout:0.5 handler:nil];
+    [self waitForExpectationsWithTimeout:self.defaultTimeOut handler:nil];
     
     
     XCTestExpectation *expectedTelemetryMessage = [self expectationWithDescription:@"request for a telemetry message"];
-    [[VLSessionManager sharedManager].service startWithHost:self.accessToken requestUri:@"https://telemetry.vin.li/api/v1/messages/e3b8782c-0f00-4159-8e7d-9bbf221ededd" onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+    [[VLSessionManager sharedManager].service startWithHost:self.accessToken requestUri:[NSString stringWithFormat:@"https://telemetry.vin.li/api/v1/messages/%@", self.messageId] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         [expectedTelemetryMessage fulfill];
         self.telemetryMessage = result;
         XCTAssertTrue(YES);
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
         XCTAssertTrue(NO);
     }];
-    [self waitForExpectationsWithTimeout:0.5 handler:nil];
-    
-    
-    
-    
-    
-    
-    
+    [self waitForExpectationsWithTimeout:self.defaultTimeOut handler:nil];
     
 }
 
@@ -141,7 +142,7 @@
         XCTAssertTrue(NO);
     }];
    
-    [self waitForExpectationsWithTimeout:0.5 handler:nil];
+    [self waitForExpectationsWithTimeout:self.defaultTimeOut handler:nil];
     
 }
 
@@ -184,7 +185,7 @@
         XCTAssertTrue(NO);
     }];
     
-    [self waitForExpectationsWithTimeout:0.5 handler:nil];
+    [self waitForExpectationsWithTimeout:self.defaultTimeOut handler:nil];
 }
 
 
@@ -200,7 +201,7 @@
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
     }];
-    [self waitForExpectationsWithTimeout:0.5 handler:nil];
+    [self waitForExpectationsWithTimeout:self.defaultTimeOut handler:nil];
 }
 
 
