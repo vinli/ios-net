@@ -13,6 +13,9 @@
 #define LITERS_TO_GALLONS 0.264172f
 #define MPG_TO_KML 0.425144f
 
+#define MPH_TO_KPH 1.60934f
+#define KPH_TO_MPH 0.621371f
+
 
 typedef NS_ENUM(NSInteger, VLLocalizedUnitType) {
     VLLocalizedUnitTypeImperial,
@@ -22,6 +25,8 @@ typedef NS_ENUM(NSInteger, VLLocalizedUnitType) {
 @interface VLUnitLocalizer : NSObject
 
 + (VLLocalizedUnitType)localizedUnitType;
+
++ (BOOL)isImperial;
 
 + (NSString *)getUnitTypeStr:(VLLocalizedUnitType)type;
 
