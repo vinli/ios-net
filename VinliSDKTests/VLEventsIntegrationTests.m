@@ -169,7 +169,7 @@
         XCTAssertEqualObjects([event.selfURL absoluteString], expectedJSON[@"links"][@"self"]);
         XCTAssertEqualObjects([event.notificationsURL absoluteString], expectedJSON[@"links"][@"notifications"]);
         XCTAssertEqualObjects(event.vehicleId, expectedJSON[@"meta"][@"vehicleId"]);
-        
+        //end of events tests
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
     }];
