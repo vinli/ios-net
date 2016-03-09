@@ -12,7 +12,9 @@
 
 
 
-+ (NSInteger) defaultTimeOut;
++ (NSInteger)defaultTimeOut;
++ (NSString *)accessToken;
++ (NSString *)deviceId;
 + (NSDictionary *)getVehicleJSON:(NSString *) deviceId;
 + (NSDictionary *)getTripJSON: (NSString *) vehicleId;
 + (NSDictionary *)getAllTripsJSON:(NSString *) deviceId;
@@ -39,6 +41,7 @@
 + (NSDictionary *)getUserJSON;
 + (NSDictionary *)getUserDevicesJSON;
 + (NSMutableDictionary *)cleanDictionary:(NSDictionary *)dict;
+
 
 
 //+ (NSDictionary *)getVehicleJsonAsync:(NSString *) deviceId;

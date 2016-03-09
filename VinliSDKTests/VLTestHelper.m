@@ -29,6 +29,15 @@
     return 5.0;
 }
 
++ (NSString *)accessToken {
+    return @"HbZ_1S2vdywJk72iuPofm816fRhmYgRhT0OTwpyQX0okmDElQ7J8p5W_sKNUr8iE";
+}
+
+
++ (NSString *)deviceId {
+    return @"ba89372f-74f4-43c8-a4fd-b8f24699426e";
+}
+
 + (NSDictionary *) getVehicleJSON:(NSString *) deviceId{
     int minYear = 2000;
     int maxYear = 2015;

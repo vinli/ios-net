@@ -15,9 +15,6 @@
 
 
 @interface VLEventsIntegrationTests : XCTestCase
-@property NSString *accessToken;
-@property NSDictionary *devices;
-@property VLDevice *device;
 @property NSDictionary *events;
 @property NSDictionary *eventNotifications;
 @property NSString *eventId;
@@ -26,6 +23,7 @@
 @property NSString *deviceId;
 @property NSString *notificationId;
 @property NSDictionary *notification;
+@property NSDictionary *event;
 @end
 
 @implementation VLEventsIntegrationTests
@@ -34,70 +32,49 @@
     [super setUp];
     
     self.notificationId = @"d5772824-c98f-44b5-9418-7e03974003a7";
-    self.accessToken = @"HbZ_1S2vdywJk72iuPofm816fRhmYgRhT0OTwpyQX0okmDElQ7J8p5W_sKNUr8iE";
-    self.deviceId = @"ba89372f-74f4-43c8-a4fd-b8f24699426e";
-    XCTestExpectation *expectation = [self expectationWithDescription:@"getting devices call"];
-    
-    
-    [[VLSessionManager sharedManager].service startWithHost:self.accessToken requestUri:@"https://platform.vin.li/api/v1/devices" onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        [expectation fulfill];
-        self.devices = result;
-        XCTAssertTrue(YES);
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
-        XCTAssertTrue(NO);
-    } ];
-    
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-    
-    
-    //this device id could be stored a string to skip making this call
-    
-    XCTestExpectation *deviceExpectation = [self expectationWithDescription:@"get devices with sessionManager"];
-    [[VLSessionManager sharedManager].service getDevicesOnSuccess:^(VLDevicePager *devicePager, NSHTTPURLResponse *response) {
-        [deviceExpectation fulfill];
-        self.device = (devicePager.devices.count > 0) ? devicePager.devices[0] : nil;
-        if (self.device) {
-            XCTAssertTrue(YES);
-        }
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-        XCTAssertTrue(NO);
-    }];
-    
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-
-    
     //call for the device's events
-    
     XCTestExpectation *expectationE = [self expectationWithDescription:@"call for subscription with device id"];
-    [[VLSessionManager sharedManager].service startWithHost:self.accessToken requestUri:[NSString stringWithFormat:@"https://events.vin.li/api/v1/devices/%@/events",self.deviceId] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://events.vin.li/api/v1/devices/%@/events",[VLTestHelper deviceId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         [expectationE fulfill];
         self.events = result;
-        XCTAssertTrue(YES);
+        
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
         XCTAssertTrue(NO);
     }];
     [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
     
-    
+
     //store event id
     self.eventId = @"44cdc7e9-5433-4e20-9957-09b8f1da1a7c";
     XCTestExpectation *expectationN = [self expectationWithDescription:@"call for notifications"];
-    [[VLSessionManager sharedManager].service startWithHost:self.accessToken requestUri:[NSString stringWithFormat:@"https://events.vin.li/api/v1/events/%@/notifications", self.eventId] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://events.vin.li/api/v1/events/%@/notifications", self.eventId] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         [expectationN fulfill];
         self.eventNotifications = result;
-        XCTAssertTrue(YES);
+        
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
         XCTAssertTrue(NO);
     }];
     
     [self waitForExpectationsWithTimeout:5.0 handler:nil];
     
+    
+    XCTestExpectation *expectationEvent = [self expectationWithDescription:@"raw json for single device"];
+    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://events.vin.li/api/v1/events/%@", self.eventId] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        [expectationEvent fulfill];
+        self.event = result;
+        
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
+        XCTAssertTrue(NO);
+    }];
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
+    
+    
     self.subscriptionId = @"1d83f2cb-acc9-4a5f-9760-2ed3991d7380";
     XCTestExpectation *expectationForSubscription = [self expectationWithDescription:@"notifications with subscription id"];
-    [[VLSessionManager sharedManager].service startWithHost:self.accessToken requestUri:[NSString stringWithFormat:@"https://events.vin.li/api/v1/subscriptions/%@/notifications", self.subscriptionId] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://events.vin.li/api/v1/subscriptions/%@/notifications", self.subscriptionId] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         [expectationForSubscription fulfill];
         self.subscriptionNotificiations = result;
-        XCTAssertTrue(YES);
+        
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
         XCTAssertTrue(NO);
     }];
@@ -107,10 +84,10 @@
     
     
     XCTestExpectation *expectingNotification = [self expectationWithDescription:@"single notification call"];
-    [[VLSessionManager sharedManager].service startWithHost:self.accessToken requestUri:[NSString stringWithFormat:@"https://events.vin.li/api/v1/notifications/%@", self.notificationId] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://events.vin.li/api/v1/notifications/%@", self.notificationId] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         [expectingNotification fulfill];
         self.notification = result;
-        XCTAssertTrue(YES);
+        
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
         XCTAssertTrue(NO);
     }];
@@ -131,7 +108,7 @@
     NSDictionary *expectedJSON = self.events;
     XCTestExpectation *eventsExpectation = [self expectationWithDescription:@"Getting events"];
     
-    [[VLSessionManager sharedManager].service getEventsForDeviceWithId:self.deviceId onSuccess:^(VLEventPager *eventPager, NSHTTPURLResponse *response) {
+    [[VLSessionManager sharedManager].service getEventsForDeviceWithId:[VLTestHelper deviceId] onSuccess:^(VLEventPager *eventPager, NSHTTPURLResponse *response) {
         [eventsExpectation fulfill];
         XCTAssertEqual(eventPager.events.count, [expectedJSON[@"events"] count]);
         //XCTAssertEqualObjects(eventPager.until, expectedJSON[@"meta"][@"pagination"][@"until"]); testing times defer
@@ -176,6 +153,30 @@
 
 
 
+- (void)testGetEventWithId {
+    NSDictionary *expectedJSON = [VLTestHelper cleanDictionary:self.event[@"event"]]; //clear the null values
+    XCTestExpectation *singleEventExpected = [self expectationWithDescription:@"service call for a single event"];
+    [[VLSessionManager sharedManager].service getEventWithId:self.eventId onSuccess:^(VLEvent *event, NSHTTPURLResponse *response) {
+        [singleEventExpected fulfill];
+        //add assertions in here
+        XCTAssertEqualObjects(event.eventId, expectedJSON[@"id"]);
+        XCTAssertEqualObjects(event.timestamp, expectedJSON[@"timestamp"]);
+        XCTAssertEqualObjects(event.deviceId, expectedJSON[@"deviceId"]);
+        XCTAssertEqualObjects(event.stored, expectedJSON[@"stored"]);
+        XCTAssertEqualObjects(event.eventType, expectedJSON[@"eventType"]);
+        XCTAssertEqualObjects(event.objectId, expectedJSON[@"object"][@"id"]);
+        XCTAssertEqualObjects(event.objectType, expectedJSON[@"object"][@"type"]);
+        XCTAssertEqualObjects([event.selfURL absoluteString], expectedJSON[@"links"][@"self"]);
+        XCTAssertEqualObjects([event.notificationsURL absoluteString], expectedJSON[@"links"][@"notifications"]);
+        XCTAssertEqualObjects(event.vehicleId, expectedJSON[@"meta"][@"vehicleId"]);
+        
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        XCTAssertTrue(NO);
+    }];
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
+}
+
+
 
 - (void)testGetNotificationWithId {
     NSMutableDictionary *expectedJSON = [VLTestHelper cleanDictionary:self.notification[@"notification"]];
@@ -198,7 +199,6 @@
         XCTAssertEqualObjects([notification.selfURL absoluteString], expectedJSON[@"links"][@"self"]);
         XCTAssertEqualObjects([notification.eventURL absoluteString], expectedJSON[@"links"][@"event"]);
         XCTAssertEqualObjects([notification.subscriptionURL absoluteString], expectedJSON[@"links"][@"subscription"]);
-        
         
         
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
