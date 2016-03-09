@@ -131,49 +131,7 @@
     
     [self startConnectionWithRequest:request method:method onSuccess:onSuccessfulBlock onFailure:onFailureBlock];
     
-//    JCDHTTPConnection *connection = [[JCDHTTPConnection alloc] initWithRequest:request];
-//    
-//    [connection executeRequestOnSuccess:
-//     ^(NSHTTPURLResponse *response, NSString *bodyString, NSData *responseData) {
-//         
-//         NSError *error;
-//         
-//         if((responseData == nil || responseData.length == 0) && [method isEqualToString:@"DELETE"]){
-//             if(onSuccessfulBlock){
-//                 onSuccessfulBlock(nil, response);
-//             }
-//             return;
-//         }
-//         
-//         NSDictionary *dictJSON = [NSJSONSerialization JSONObjectWithData:responseData options:NSUTF8StringEncoding error:&error];
-//         if (error) {
-//             if (onFailureBlock) {
-//                 onFailureBlock(error, response, bodyString);
-//             }
-//             return;
-//         }
-//         
-//         if (onSuccessfulBlock) {
-//             onSuccessfulBlock(dictJSON, response);
-//         }
-//         
-//     } failure:^(NSHTTPURLResponse *response, NSString *bodyString, NSError *error) {
-//         
-//         if (response.statusCode == 401) {
-//             NSLog(@"Access token has expired");
-//             // Genereate custom nserror
-//             
-//             // Give option to execute block
-//             if (self.AccessTokenExpirationHandler) {
-//                 self.AccessTokenExpirationHandler(self, error);
-//             }
-//             
-//         }
-//         
-//         if (onFailureBlock) {
-//             onFailureBlock(error, response, bodyString);
-//         }
-//     } didSendData:nil];
+
 }
 
 
@@ -1329,7 +1287,7 @@
 }
 
 - (void) getNotificationWithId:(NSString *) notificationId
-                             onSuccess:(void (^)(VLNotification *event, NSHTTPURLResponse *response))onSuccessBlock
+                             onSuccess:(void (^)(VLNotification *notification, NSHTTPURLResponse *response))onSuccessBlock
                              onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
     
     if(_session == nil){

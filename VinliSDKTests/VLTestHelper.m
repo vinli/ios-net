@@ -10,6 +10,25 @@
 
 @implementation VLTestHelper
 
+
+
+
+
++ (NSMutableDictionary *)cleanDictionary:(NSDictionary *)dict {
+    NSMutableDictionary *mutDict = [dict mutableCopy];
+    
+    NSArray *keyForNullValues = [mutDict allKeysForObject:[NSNull null]];
+    [mutDict removeObjectsForKeys:keyForNullValues];
+    
+    return mutDict;
+  
+    
+}
+
++ (NSInteger)defaultTimeOut {
+    return 5.0;
+}
+
 + (NSDictionary *) getVehicleJSON:(NSString *) deviceId{
     int minYear = 2000;
     int maxYear = 2015;

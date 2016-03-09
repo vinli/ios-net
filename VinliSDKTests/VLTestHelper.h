@@ -10,6 +10,9 @@
 
 @interface VLTestHelper : NSObject
 
+
+
++ (NSInteger) defaultTimeOut;
 + (NSDictionary *)getVehicleJSON:(NSString *) deviceId;
 + (NSDictionary *)getTripJSON: (NSString *) vehicleId;
 + (NSDictionary *)getAllTripsJSON:(NSString *) deviceId;
@@ -35,6 +38,7 @@
 + (NSDictionary *)getAllDevicesJSON;
 + (NSDictionary *)getUserJSON;
 + (NSDictionary *)getUserDevicesJSON;
++ (NSMutableDictionary *)cleanDictionary:(NSDictionary *)dict;
 
 
 //+ (NSDictionary *)getVehicleJsonAsync:(NSString *) deviceId;

@@ -11,6 +11,7 @@
 #import "VLService.h"
 #import "VLDevice.h"
 #import "VLEvent.h"
+#import "VLTestHelper.h"
 
 
 @interface VLEventsIntegrationTests : XCTestCase
@@ -23,7 +24,6 @@
 @property NSString *subscriptionId;
 @property NSDictionary *subscriptionNotificiations;
 @property NSString *deviceId;
-@property NSTimeInterval defaultTimeOut;
 @property NSString *notificationId;
 @property NSDictionary *notification;
 @end
@@ -33,8 +33,7 @@
 - (void)setUp {
     [super setUp];
     
-    self.defaultTimeOut = 5.0;
-    self.notificationId = @"53b5c852-8be5-4b6b-bc18-ae1d5db0d364";
+    self.notificationId = @"d5772824-c98f-44b5-9418-7e03974003a7";
     self.accessToken = @"HbZ_1S2vdywJk72iuPofm816fRhmYgRhT0OTwpyQX0okmDElQ7J8p5W_sKNUr8iE";
     self.deviceId = @"ba89372f-74f4-43c8-a4fd-b8f24699426e";
     XCTestExpectation *expectation = [self expectationWithDescription:@"getting devices call"];
@@ -48,7 +47,7 @@
         XCTAssertTrue(NO);
     } ];
     
-    [self waitForExpectationsWithTimeout:self.defaultTimeOut handler:nil];
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
     
     
     //this device id could be stored a string to skip making this call
@@ -64,7 +63,7 @@
         XCTAssertTrue(NO);
     }];
     
-    [self waitForExpectationsWithTimeout:self.defaultTimeOut handler:nil];
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
 
     
     //call for the device's events
@@ -77,7 +76,7 @@
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
         XCTAssertTrue(NO);
     }];
-    [self waitForExpectationsWithTimeout:self.defaultTimeOut handler:nil];
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
     
     
     //store event id
@@ -104,7 +103,7 @@
     }];
     
     
-    [self waitForExpectationsWithTimeout:self.defaultTimeOut handler:nil];
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
     
     
     XCTestExpectation *expectingNotification = [self expectationWithDescription:@"single notification call"];
@@ -115,7 +114,7 @@
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
         XCTAssertTrue(NO);
     }];
-    [self waitForExpectationsWithTimeout:self.defaultTimeOut handler:nil];
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
     
     
     
@@ -136,11 +135,13 @@
         [eventsExpectation fulfill];
         XCTAssertEqual(eventPager.events.count, [expectedJSON[@"events"] count]);
         //XCTAssertEqualObjects(eventPager.until, expectedJSON[@"meta"][@"pagination"][@"until"]); testing times defer
+        
+        //check for object at 0 condition
         XCTAssertEqualObjects(((VLEvent*)[eventPager.events objectAtIndex:0]).eventId, expectedJSON[@"events"][0][@"id"]);
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
     }];
-    [self waitForExpectationsWithTimeout:self.defaultTimeOut handler:nil];
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
     
 }
 
@@ -155,7 +156,7 @@
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
     }];
-    [self waitForExpectationsWithTimeout:self.defaultTimeOut handler:nil];
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
 }
 
 - (void)testGetNotificationsWithSubscriptionId {
@@ -170,21 +171,41 @@
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
     }];
-    [self waitForExpectationsWithTimeout:self.defaultTimeOut handler:nil];
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
 }
 
-//- (void)testGetNotificationWithId {
-//    NSDictionary *expectedJSON = self.notification;
-//    XCTestExpectation *expectingSingleNotification = [self expectationWithDescription:@"service call for single device"];
-//    [[VLSessionManager sharedManager].service getNotificationWithId:self.notificationId onSuccess:^(VLNotification *event, NSHTTPURLResponse *response) {
-//        [expectingSingleNotification fulfill];
-//        XCTAssertTrue(YES);
-//        
-//    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-//        XCTAssertTrue(NO);
-//    }];
-//    [self waitForExpectationsWithTimeout:self.defaultTimeOut handler:nil];
-//}
+
+
+
+- (void)testGetNotificationWithId {
+    NSMutableDictionary *expectedJSON = [VLTestHelper cleanDictionary:self.notification[@"notification"]];
+    XCTestExpectation *expectingSingleNotification = [self expectationWithDescription:@"service call for single device"];
+    [[VLSessionManager sharedManager].service getNotificationWithId:self.notificationId onSuccess:^(VLNotification *notification, NSHTTPURLResponse *response) {
+        [expectingSingleNotification fulfill];
+        XCTAssertEqualObjects(notification.notificationId, expectedJSON[@"id"]);
+        XCTAssertEqualObjects(notification.eventId, expectedJSON[@"eventId"]);
+        XCTAssertEqualObjects(notification.eventType, expectedJSON[@"eventType"]);
+        XCTAssertEqualObjects(notification.eventTimestamp, expectedJSON[@"eventTimestamp"]);
+        XCTAssertEqualObjects(notification.subscriptionId, expectedJSON[@"subscriptionId"]);
+        XCTAssertEqual(notification.responseCode, [expectedJSON[@"reponseCode"] unsignedLongValue]);
+        XCTAssertEqualObjects(notification.response, expectedJSON[@"response"]);
+        XCTAssertEqualObjects([notification.url absoluteString], expectedJSON[@"url"]);
+        XCTAssertEqualObjects(notification.payload, expectedJSON[@"payload"]);
+        XCTAssertEqualObjects(notification.state, expectedJSON[@"state"]);
+        XCTAssertEqualObjects(notification.notifiedAt, expectedJSON[@"notifiedAt"]);
+        XCTAssertEqualObjects(notification.respondedAt, expectedJSON[@"respondedAt"]);
+        XCTAssertEqualObjects(notification.createdAt, expectedJSON[@"createdAt"]);
+        XCTAssertEqualObjects([notification.selfURL absoluteString], expectedJSON[@"links"][@"self"]);
+        XCTAssertEqualObjects([notification.eventURL absoluteString], expectedJSON[@"links"][@"event"]);
+        XCTAssertEqualObjects([notification.subscriptionURL absoluteString], expectedJSON[@"links"][@"subscription"]);
+        
+        
+        
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        XCTAssertTrue(NO);
+    }];
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
+}
 
 
 @end
