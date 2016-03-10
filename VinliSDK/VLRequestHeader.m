@@ -60,4 +60,22 @@
     return (NSURLRequest *)URLRequest;
 }
 
+
+
++ (NSURLRequest *)requestWithToken:(NSString *)token contentType:(NSString *)contentType requestUri:(NSString *)requestUri
+{
+    NSMutableURLRequest *URLRequest = [[NSMutableURLRequest alloc]initWithURL:[NSURL URLWithString:requestUri]];
+    [URLRequest setHTTPMethod:@"GET"]; // only need get with this one but should use constant
+    [URLRequest setValue:contentType forHTTPHeaderField:@"Accept"];
+    [URLRequest setValue:contentType forHTTPHeaderField:@"Content-Type"];
+    [URLRequest setValue:[NSString stringWithFormat:@"Bearer %@", token] forHTTPHeaderField:@"Authorization"];
+    return (NSURLRequest *)URLRequest;
+    
+}
+
+
+
+
+
+
 @end

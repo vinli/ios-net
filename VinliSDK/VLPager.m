@@ -11,21 +11,35 @@
 @implementation VLPager
 
 - (id) initWithDictionary:(NSDictionary *)dictionary{
+
+    return [self initWithDictionary:dictionary service:nil];
+}
+
+
+- (id) initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service
+{
     self = [super init];
+    self.service = service;
     if(self){
         if(dictionary && dictionary[@"meta"] && dictionary[@"meta"][@"pagination"]){
             [self setLimit:[dictionary[@"meta"][@"pagination"][@"limit"] unsignedLongValue]];
         }
     }
+    
     return self;
 }
 
+
+
 - (void) setLimit:(unsigned long)limit{
-    if(limit > 50){
-        _limit = 50;
-    }else{
-        _limit = limit;
-    }
+//    if(limit > 50){
+//        _limit = 50;
+//    }else{
+//        _limit = limit;
+//    }
+    
+    _limit = (limit > 50) ? 50 : limit; //limit is 50 if its greater than 50 else its limit passed
+    
 }
 
 @end

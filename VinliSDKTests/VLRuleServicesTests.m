@@ -43,7 +43,7 @@
         
         NSDictionary *rule = [expectedJSON copy];
         
-        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:nil statusCode:201 HTTPVersion:nil headerFields:nil];
+        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:[NSURL new] statusCode:201 HTTPVersion:nil headerFields:nil];
         
         void (^successBlock)(NSDictionary *result, NSHTTPURLResponse *response) = nil;
         
@@ -77,7 +77,7 @@
         
         NSDictionary *rule = [expectedJSON copy];
         
-        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:nil statusCode:200 HTTPVersion:nil headerFields:nil];
+        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:[NSURL new] statusCode:200 HTTPVersion:nil headerFields:nil];
         
         void (^successBlock)(NSDictionary *result, NSHTTPURLResponse *response) = nil;
         
@@ -109,7 +109,7 @@
         
         NSDictionary *rule = nil;
         
-        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:nil statusCode:204 HTTPVersion:nil headerFields:nil];
+        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:[NSURL new] statusCode:204 HTTPVersion:nil headerFields:nil];
         
         void (^successBlock)(NSDictionary *result, NSHTTPURLResponse *response) = nil;
         
@@ -137,7 +137,7 @@
         
         NSDictionary *message = [expectedJSON copy];
         
-        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:nil statusCode:200 HTTPVersion:nil headerFields:nil];
+        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:[NSURL new] statusCode:200 HTTPVersion:nil headerFields:nil];
         
         void (^successBlock)(NSDictionary *result, NSHTTPURLResponse *response) = nil;
         

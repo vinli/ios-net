@@ -38,14 +38,14 @@
             _url =   [NSURL URLWithString:dictionary[@"url"]];
             _createdAt = [dictionary jsonObjectForKey:@"createdAt"];
             _updatedAt = [dictionary jsonObjectForKey:@"updatedAt"];
-                    
+
             if([dictionary jsonObjectForKey:@"appData"]){
                 NSString *jsonString = dictionary[@"appData"];
                 NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
                 _appData = [NSJSONSerialization JSONObjectWithData:jsonData options:NSUTF8StringEncoding error:nil];
             }
             
-            if([dictionary jsonObjectForKey:@"object"]){
+            if([dictionary jsonObjectForKey:@"object"]) {
                 _objectRef = [[VLObjectRef alloc] initWithDictionary:dictionary[@"object"]];
             }
             

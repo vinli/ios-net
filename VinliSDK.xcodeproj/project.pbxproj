@@ -44,7 +44,6 @@
 		0B16714A1B0FC39D009BE7A9 /* VLRule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1671321B0FC39D009BE7A9 /* VLRule.m */; };
 		0B16714D1B0FC39D009BE7A9 /* VLTelemetryMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B1671351B0FC39D009BE7A9 /* VLTelemetryMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B16714E1B0FC39D009BE7A9 /* VLTelemetryMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1671361B0FC39D009BE7A9 /* VLTelemetryMessage.m */; };
-		0B16714F1B0FC39D009BE7A9 /* VLVehicle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B1671371B0FC39D009BE7A9 /* VLVehicle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B1671501B0FC39D009BE7A9 /* VLVehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1671381B0FC39D009BE7A9 /* VLVehicle.m */; };
 		0B1671541B0FC3DD009BE7A9 /* JCDHTTPConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B1671521B0FC3DD009BE7A9 /* JCDHTTPConnection.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		0B1671551B0FC3DD009BE7A9 /* JCDHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1671531B0FC3DD009BE7A9 /* JCDHTTPConnection.m */; };
@@ -65,7 +64,6 @@
 		0B37782C1B28B7B8004AC2D6 /* VLLoginButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B37782A1B28B7B8004AC2D6 /* VLLoginButton.m */; };
 		0B3DDC261B14C28600D95E61 /* VLPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B3DDC241B14C28600D95E61 /* VLPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B3DDC271B14C28600D95E61 /* VLPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3DDC251B14C28600D95E61 /* VLPager.m */; };
-		0B3DDC2A1B14C31B00D95E61 /* VLOffsetPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B3DDC281B14C31B00D95E61 /* VLOffsetPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B3DDC2B1B14C31B00D95E61 /* VLOffsetPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3DDC291B14C31B00D95E61 /* VLOffsetPager.m */; };
 		0B3DDC2E1B14C40A00D95E61 /* VLChronoPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B3DDC2C1B14C40A00D95E61 /* VLChronoPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B3DDC2F1B14C40A00D95E61 /* VLChronoPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3DDC2D1B14C40A00D95E61 /* VLChronoPager.m */; };
@@ -101,6 +99,21 @@
 		7367E3A21B166ABB004223A6 /* VLEventPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367E3A11B166ABB004223A6 /* VLEventPager.m */; };
 		7367E3A41B1759A2004223A6 /* VLNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367E3A31B1759A2004223A6 /* VLNotification.m */; };
 		7367E3A71B175FEA004223A6 /* VLNotificationPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367E3A61B175FEA004223A6 /* VLNotificationPager.m */; };
+		7753A7801C7CE66300D3080F /* A_VLLoginIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7753A77E1C7CE66300D3080F /* A_VLLoginIntegrationTest.m */; };
+		7753A7811C7CE66300D3080F /* VLPlatformServicesIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7753A77F1C7CE66300D3080F /* VLPlatformServicesIntegrationTests.m */; };
+		7753A7831C7CEF3700D3080F /* VLTelemetryIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7753A7821C7CEF3700D3080F /* VLTelemetryIntegrationTests.m */; };
+		7753A7851C80C8A700D3080F /* VLSubscriptionIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7753A7841C80C8A700D3080F /* VLSubscriptionIntegrationTests.m */; };
+		7753A7871C80EC7A00D3080F /* VLEventsIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7753A7861C80EC7A00D3080F /* VLEventsIntegrationTests.m */; };
+		7753A7891C86365F00D3080F /* VLTripsIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7753A7881C86365F00D3080F /* VLTripsIntegrationTests.m */; };
+		7753A78B1C87713D00D3080F /* VLRulesIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7753A78A1C87713D00D3080F /* VLRulesIntegrationTests.m */; };
+		777A6B811C91E3080050F6C0 /* VLUserSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 777A6B7F1C91E3080050F6C0 /* VLUserSettings.h */; };
+		777A6B821C91E3080050F6C0 /* VLUserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 777A6B801C91E3080050F6C0 /* VLUserSettings.m */; };
+		777A6B851C91E31E0050F6C0 /* VLUnitLocalizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 777A6B831C91E31E0050F6C0 /* VLUnitLocalizer.h */; };
+		777A6B861C91E31E0050F6C0 /* VLUnitLocalizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 777A6B841C91E31E0050F6C0 /* VLUnitLocalizer.m */; };
+		77BE999B1C690E77001E8F64 /* VLTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 77BE99991C690E77001E8F64 /* VLTimeSeries.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		77BE999C1C690E77001E8F64 /* VLTimeSeries.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BE999A1C690E77001E8F64 /* VLTimeSeries.m */; };
+		77BE999D1C73A4A5001E8F64 /* VLOffsetPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B3DDC281B14C31B00D95E61 /* VLOffsetPager.h */; };
+		77BE999E1C73A4A5001E8F64 /* VLVehicle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B1671371B0FC39D009BE7A9 /* VLVehicle.h */; };
 		E92943591B15387C00AAC7D3 /* VLTelemetryServicesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E92943581B15387C00AAC7D3 /* VLTelemetryServicesTests.m */; };
 		E929435C1B15425400AAC7D3 /* VLTelemetryMessagePager.h in Headers */ = {isa = PBXBuildFile; fileRef = E929435A1B15425400AAC7D3 /* VLTelemetryMessagePager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E929435D1B15425400AAC7D3 /* VLTelemetryMessagePager.m in Sources */ = {isa = PBXBuildFile; fileRef = E929435B1B15425400AAC7D3 /* VLTelemetryMessagePager.m */; };
@@ -144,7 +157,7 @@
 		0B1671221B0FC39D009BE7A9 /* VLBoundary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLBoundary.m; sourceTree = "<group>"; };
 		0B1671231B0FC39D009BE7A9 /* VLDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLDevice.h; sourceTree = "<group>"; };
 		0B1671241B0FC39D009BE7A9 /* VLDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLDevice.m; sourceTree = "<group>"; };
-		0B16712F1B0FC39D009BE7A9 /* VLService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLService.h; sourceTree = "<group>"; };
+		0B16712F1B0FC39D009BE7A9 /* VLService.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = VLService.h; sourceTree = "<group>"; };
 		0B1671301B0FC39D009BE7A9 /* VLService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLService.m; sourceTree = "<group>"; };
 		0B1671311B0FC39D009BE7A9 /* VLRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLRule.h; sourceTree = "<group>"; };
 		0B1671321B0FC39D009BE7A9 /* VLRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLRule.m; sourceTree = "<group>"; };
@@ -208,6 +221,19 @@
 		7367E3A51B1759BB004223A6 /* VLNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VLNotification.h; sourceTree = "<group>"; };
 		7367E3A61B175FEA004223A6 /* VLNotificationPager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLNotificationPager.m; sourceTree = "<group>"; };
 		7367E3A81B175FFE004223A6 /* VLNotificationPager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VLNotificationPager.h; sourceTree = "<group>"; };
+		7753A77E1C7CE66300D3080F /* A_VLLoginIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A_VLLoginIntegrationTest.m; sourceTree = "<group>"; };
+		7753A77F1C7CE66300D3080F /* VLPlatformServicesIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLPlatformServicesIntegrationTests.m; sourceTree = "<group>"; };
+		7753A7821C7CEF3700D3080F /* VLTelemetryIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTelemetryIntegrationTests.m; sourceTree = "<group>"; };
+		7753A7841C80C8A700D3080F /* VLSubscriptionIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLSubscriptionIntegrationTests.m; sourceTree = "<group>"; };
+		7753A7861C80EC7A00D3080F /* VLEventsIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLEventsIntegrationTests.m; sourceTree = "<group>"; };
+		7753A7881C86365F00D3080F /* VLTripsIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTripsIntegrationTests.m; sourceTree = "<group>"; };
+		7753A78A1C87713D00D3080F /* VLRulesIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLRulesIntegrationTests.m; sourceTree = "<group>"; };
+		777A6B7F1C91E3080050F6C0 /* VLUserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLUserSettings.h; sourceTree = "<group>"; };
+		777A6B801C91E3080050F6C0 /* VLUserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLUserSettings.m; sourceTree = "<group>"; };
+		777A6B831C91E31E0050F6C0 /* VLUnitLocalizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLUnitLocalizer.h; sourceTree = "<group>"; };
+		777A6B841C91E31E0050F6C0 /* VLUnitLocalizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLUnitLocalizer.m; sourceTree = "<group>"; };
+		77BE99991C690E77001E8F64 /* VLTimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLTimeSeries.h; sourceTree = "<group>"; };
+		77BE999A1C690E77001E8F64 /* VLTimeSeries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTimeSeries.m; sourceTree = "<group>"; };
 		BB7D1A79C1AEAD3F566D9FA4 /* Pods-VinliSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinliSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VinliSDKTests/Pods-VinliSDKTests.release.xcconfig"; sourceTree = "<group>"; };
 		E92943581B15387C00AAC7D3 /* VLTelemetryServicesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTelemetryServicesTests.m; sourceTree = "<group>"; };
 		E929435A1B15425400AAC7D3 /* VLTelemetryMessagePager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLTelemetryMessagePager.h; sourceTree = "<group>"; };
@@ -276,6 +302,10 @@
 		0B1671061B0FC2B8009BE7A9 /* VinliSDK */ = {
 			isa = PBXGroup;
 			children = (
+				777A6B831C91E31E0050F6C0 /* VLUnitLocalizer.h */,
+				777A6B841C91E31E0050F6C0 /* VLUnitLocalizer.m */,
+				777A6B7F1C91E3080050F6C0 /* VLUserSettings.h */,
+				777A6B801C91E3080050F6C0 /* VLUserSettings.m */,
 				49AB6E9B1B82446900DCF808 /* VLUserCache.h */,
 				49AB6E9C1B82446900DCF808 /* VLUserCache.m */,
 				49AB6E931B82432C00DCF808 /* VLSessionManager.h */,
@@ -284,6 +314,8 @@
 				49AB6E961B82432C00DCF808 /* VLUrlParser.m */,
 				0B16712F1B0FC39D009BE7A9 /* VLService.h */,
 				0B1671301B0FC39D009BE7A9 /* VLService.m */,
+				77BE99991C690E77001E8F64 /* VLTimeSeries.h */,
+				77BE999A1C690E77001E8F64 /* VLTimeSeries.m */,
 				0BD2E50C1B0FDB7C00A5D2BC /* Models */,
 				0B1671731B0FC408009BE7A9 /* Util */,
 				0B1671561B0FC3F0009BE7A9 /* VLClasses */,
@@ -309,13 +341,20 @@
 			children = (
 				0B1671141B0FC2B9009BE7A9 /* Supporting Files */,
 				0B1671781B0FD64B009BE7A9 /* VLPlatformServicesTests.m */,
+				7753A7821C7CEF3700D3080F /* VLTelemetryIntegrationTests.m */,
 				0BD2E50D1B0FF3DD00A5D2BC /* VLRuleServicesTests.m */,
+				7753A77E1C7CE66300D3080F /* A_VLLoginIntegrationTest.m */,
+				7753A77F1C7CE66300D3080F /* VLPlatformServicesIntegrationTests.m */,
 				E92943581B15387C00AAC7D3 /* VLTelemetryServicesTests.m */,
 				E929436C1B166B4600AAC7D3 /* VLSubscriptionServiceTests.m */,
 				0B3DDC561B1528DB00D95E61 /* VLTripServicesTests.m */,
+				7753A7881C86365F00D3080F /* VLTripsIntegrationTests.m */,
 				0B3DDC3B1B14EEE200D95E61 /* VLTestHelper.h */,
 				0B3DDC3C1B14EEE200D95E61 /* VLTestHelper.m */,
 				E92943661B165A3300AAC7D3 /* VLEventServicesTests.m */,
+				7753A7861C80EC7A00D3080F /* VLEventsIntegrationTests.m */,
+				7753A7841C80C8A700D3080F /* VLSubscriptionIntegrationTests.m */,
+				7753A78A1C87713D00D3080F /* VLRulesIntegrationTests.m */,
 			);
 			path = VinliSDKTests;
 			sourceTree = "<group>";
@@ -478,17 +517,17 @@
 				0B16714D1B0FC39D009BE7A9 /* VLTelemetryMessage.h in Headers */,
 				0B1671391B0FC39D009BE7A9 /* VLBoundary.h in Headers */,
 				0B3DDC541B1518BE00D95E61 /* VLRulePager.h in Headers */,
+				77BE999B1C690E77001E8F64 /* VLTimeSeries.h in Headers */,
 				49E2F2FF1B6AA93700CD743C /* NSDictionary+NonNullable.h in Headers */,
-				0B16714F1B0FC39D009BE7A9 /* VLVehicle.h in Headers */,
+				77BE999E1C73A4A5001E8F64 /* VLVehicle.h in Headers */,
 				0B2277061B167303000AF179 /* VLSession.h in Headers */,
-				0B3DDC2A1B14C31B00D95E61 /* VLOffsetPager.h in Headers */,
-				0B16714F1B0FC39D009BE7A9 /* VLVehicle.h in Headers */,
+				77BE999D1C73A4A5001E8F64 /* VLOffsetPager.h in Headers */,
 				0B3DDC381B14D1DD00D95E61 /* VLVehiclePager.h in Headers */,
 				0B1671491B0FC39D009BE7A9 /* VLRule.h in Headers */,
+				777A6B811C91E3080050F6C0 /* VLUserSettings.h in Headers */,
 				49AB6E991B82432C00DCF808 /* VLUrlParser.h in Headers */,
 				0B2277001B165DD1000AF179 /* VLLoginViewController.h in Headers */,
 				0B3DDC2E1B14C40A00D95E61 /* VLChronoPager.h in Headers */,
-				0B3DDC2A1B14C31B00D95E61 /* VLOffsetPager.h in Headers */,
 				E92943701B1679F600AAC7D3 /* VLSubscriptionPager.h in Headers */,
 				0B89E48B1B17A03000E69AEA /* VLNotificationPager.h in Headers */,
 				0B89E4881B179FCA00E69AEA /* VLEventPager.h in Headers */,
@@ -504,6 +543,7 @@
 				0B3778231B25E0A7004AC2D6 /* VLRadiusBoundary.h in Headers */,
 				0B37781F1B25DEF9004AC2D6 /* VLParametricBoundary.h in Headers */,
 				E929436A1B165D0800AAC7D3 /* VLSubscription.h in Headers */,
+				777A6B851C91E31E0050F6C0 /* VLUnitLocalizer.h in Headers */,
 				49AB6E9D1B82446900DCF808 /* VLUserCache.h in Headers */,
 				E92943741B17D6B100AAC7D3 /* VLDevicePager.h in Headers */,
 				0B89E4961B18BA3E00E69AEA /* VLUser.h in Headers */,
@@ -567,7 +607,7 @@
 		0B1670FB1B0FC2B8009BE7A9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Vinli;
 				TargetAttributes = {
 					0B1671031B0FC2B8009BE7A9 = {
@@ -692,6 +732,7 @@
 				E929435D1B15425400AAC7D3 /* VLTelemetryMessagePager.m in Sources */,
 				49AB6E9E1B82446900DCF808 /* VLUserCache.m in Sources */,
 				0B3DDC2F1B14C40A00D95E61 /* VLChronoPager.m in Sources */,
+				777A6B861C91E31E0050F6C0 /* VLUnitLocalizer.m in Sources */,
 				0B16716A1B0FC401009BE7A9 /* VLRequestHeader.m in Sources */,
 				0B16714E1B0FC39D009BE7A9 /* VLTelemetryMessage.m in Sources */,
 				E92943751B17D6B100AAC7D3 /* VLDevicePager.m in Sources */,
@@ -704,6 +745,7 @@
 				E929437D1B18FE5F00AAC7D3 /* VLSnapshotPager.m in Sources */,
 				0B16714A1B0FC39D009BE7A9 /* VLRule.m in Sources */,
 				0B3DDC391B14D1DD00D95E61 /* VLVehiclePager.m in Sources */,
+				77BE999C1C690E77001E8F64 /* VLTimeSeries.m in Sources */,
 				0B1671481B0FC39D009BE7A9 /* VLService.m in Sources */,
 				0B3778241B25E0A7004AC2D6 /* VLRadiusBoundary.m in Sources */,
 				0B16713C1B0FC39D009BE7A9 /* VLDevice.m in Sources */,
@@ -713,6 +755,7 @@
 				49E2F3001B6AA93700CD743C /* NSDictionary+NonNullable.m in Sources */,
 				0B3DDC5F1B15355200D95E61 /* VLTripPager.m in Sources */,
 				0B2277011B165DD1000AF179 /* VLLoginViewController.m in Sources */,
+				777A6B821C91E3080050F6C0 /* VLUserSettings.m in Sources */,
 				0B2277071B167303000AF179 /* VLSession.m in Sources */,
 				0B89E4971B18BA3E00E69AEA /* VLUser.m in Sources */,
 				7367E3A41B1759A2004223A6 /* VLNotification.m in Sources */,
@@ -735,10 +778,17 @@
 				0BD2E50E1B0FF3DD00A5D2BC /* VLRuleServicesTests.m in Sources */,
 				0B1671791B0FD64B009BE7A9 /* VLPlatformServicesTests.m in Sources */,
 				E929436D1B166B4600AAC7D3 /* VLSubscriptionServiceTests.m in Sources */,
+				7753A7871C80EC7A00D3080F /* VLEventsIntegrationTests.m in Sources */,
 				E92943591B15387C00AAC7D3 /* VLTelemetryServicesTests.m in Sources */,
+				7753A7801C7CE66300D3080F /* A_VLLoginIntegrationTest.m in Sources */,
+				7753A78B1C87713D00D3080F /* VLRulesIntegrationTests.m in Sources */,
 				0B3DDC571B1528DB00D95E61 /* VLTripServicesTests.m in Sources */,
+				7753A7851C80C8A700D3080F /* VLSubscriptionIntegrationTests.m in Sources */,
 				E92943671B165A3300AAC7D3 /* VLEventServicesTests.m in Sources */,
+				7753A7811C7CE66300D3080F /* VLPlatformServicesIntegrationTests.m in Sources */,
+				7753A7831C7CEF3700D3080F /* VLTelemetryIntegrationTests.m in Sources */,
 				0B3DDC3D1B14EEE200D95E61 /* VLTestHelper.m in Sources */,
+				7753A7891C86365F00D3080F /* VLTripsIntegrationTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -775,6 +825,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -792,7 +843,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -854,6 +905,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "li.vin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -873,6 +925,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "li.vin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -884,6 +937,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 20DC824FFEF4A47CAA1EA879 /* Pods-VinliSDKTests.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -894,6 +948,7 @@
 				);
 				INFOPLIST_FILE = VinliSDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "li.vin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -902,12 +957,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BB7D1A79C1AEAD3F566D9FA4 /* Pods-VinliSDKTests.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = VinliSDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "li.vin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

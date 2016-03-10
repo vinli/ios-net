@@ -34,6 +34,7 @@
 #import "VLLoginButton.h"
 #import "VLObjectRef.h"
 #import "VLPolygonBoundary.h"
+#import "VLTimeSeries.h"
 
 #pragma clang diagnostic ignored "-Wnullability-completeness"
 
@@ -88,6 +89,22 @@
                 token:(nonnull NSString *) token
             onSuccess:(void (^)(NSDictionary *, NSHTTPURLResponse *))onSuccessfulBlock
             onFailure:(void (^)(NSError *, NSHTTPURLResponse *, NSString *))onFailureBlock;
+
+
+
+- (void) startWithHost:(nonnull NSString *)token requestUri:(nonnull NSString *)requestUri onSuccess:(void (^)(NSDictionary *result, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *msg))onFailureBlock;
+
+
+//Get the queries for a particular URL
+
+- (NSDictionary *) getDictionaryWithLimit: (nullable NSNumber *) limit
+                                   offset:(nullable NSNumber *) offset;
+
+
+
+
+
+- (void)startConnectionWithRequest:(NSURLRequest *)request method:(NSString *)method onSuccess:(void (^)(NSDictionary *result, NSHTTPURLResponse *response))onSuccessfulBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *msg))onFailureBlock;
 
 #pragma mark - Platform Services
 
@@ -324,6 +341,21 @@
 //                  snapshotPager:    A VLSnapshotPager object containing the list of snapshots and pagination data
 //                  response:   An NSHTTPURLResponse instance, from which user will know the URL, statusCode, etc.
 // onFailureBlock:  Called when connection failed. Usually occurred when the website does not exist, or no internet connection.
+
+
+
+
+- (void) getSnapshotsForDeviceWithId:(nonnull NSString *) deviceId
+                              fields:(nonnull NSString *)fields
+                              timeSeries:(VLTimeSeries *)timeSeries
+                           onSuccess:(void (^)(VLSnapshotPager *snapshotPager, NSHTTPURLResponse *response))onSuccessBlock
+                           onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+
+
+
+
+
 - (void) getSnapshotsForDeviceWithId:(nonnull NSString *) deviceId
                               fields:(nonnull NSString *)fields
                                limit:(nullable NSNumber *)limit
@@ -363,6 +395,16 @@
 //                  locationPager:    A VLLocationPager object containing the list of locations and pagination data
 //                  response:   An NSHTTPURLResponse instance, from which user will know the URL, statusCode, etc.
 // onFailureBlock:  Called when connection failed. Usually occurred when the website does not exist, or no internet connection.
+
+- (void) getLocationsForDeviceWithId:(nonnull NSString *) deviceId
+                          timeSeries:(VLTimeSeries *)timeSeries
+                           onSuccess:(void (^)(VLLocationPager *locationPager, NSHTTPURLResponse *response))onSuccessBlock
+                           onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+
+
+
+
 - (void) getLocationsForDeviceWithId:(nonnull NSString *) deviceId
                                limit:(nullable NSNumber *)limit
                                until:(nullable NSDate *)until
@@ -402,6 +444,15 @@
 //                  telemetryPager:    A VLTelemetryMessagePager object containing the list of trips and pagination data
 //                  response:   An NSHTTPURLResponse instance, from which user will know the URL, statusCode, etc.
 // onFailureBlock:  Called when connection failed. Usually occurred when the website does not exist, or no internet connection.
+
+
+
+- (void) getTelemetryMessagesForDeviceWithId:(nonnull NSString *) deviceId
+                                  timeSeries:(VLTimeSeries *)timeSeries
+                                   onSuccess:(void (^)(VLTelemetryMessagePager *telemetryPager, NSHTTPURLResponse *response))onSuccessBlock
+                                   onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+
 - (void) getTelemetryMessagesForDeviceWithId:(nonnull NSString *) deviceId
                                        limit:(nullable NSNumber *)limit
                                        until:(nullable NSDate *)until
@@ -441,11 +492,22 @@
 //                  tripPager:    A VLTripPager object containing the list of trips and pagination data
 //                  response:   An NSHTTPURLResponse instance, from which user will know the URL, statusCode, etc.
 // onFailureBlock:  Called when connection failed. Usually occurred when the website does not exist, or no internet connection.
-- (void) getTripsForDeviceWithId:(nonnull NSString *) deviceId
-                           limit:(nullable NSNumber *)limit
-                          offset:(nullable NSNumber *)offset
-                       onSuccess:(void (^)(VLTripPager *tripPager, NSHTTPURLResponse *response))onSuccessBlock
-                       onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+
+
+//- (void) getTripsForDeviceWithId:(nonnull NSString *) deviceId
+//                           limit:(nullable NSNumber *)limit
+//                          offset:(nullable NSNumber *)offset
+//                       onSuccess:(void (^)(VLTripPager *tripPager, NSHTTPURLResponse *response))onSuccessBlock
+//                       onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+
+- (void)getTripsForDeviceWithId:(nonnull NSString *)deviceId
+                            timeSeries: (VLTimeSeries *)timeSeries
+                      onSuccess:(void (^)(VLTripPager *tripPager, NSHTTPURLResponse *response))onSuccessBlock
+                      onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+
 
 // Get a VLTripPager object containing a list of trips and pagination data
 // Route: GET /api/v1/vehicles/{vehicleId}/trips
@@ -476,8 +538,7 @@
 //                  response:   An NSHTTPURLResponse instance, from which user will know the URL, statusCode, etc.
 // onFailureBlock:  Called when connection failed. Usually occurred when the website does not exist, or no internet connection.
 - (void) getTripsForVehicleWithId:(nonnull NSString *) vehicleId
-                            limit:(nullable NSNumber *)limit
-                           offset:(nullable NSNumber *)offset
+                       timeSeries: (VLTimeSeries *)timeSeries
                         onSuccess:(void (^)(VLTripPager *tripPager, NSHTTPURLResponse *response))onSuccessBlock
                         onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
@@ -510,7 +571,7 @@
 //                  response:   An NSHTTPURLResponse instance, from which user will know the URL, statusCode, etc.
 // onFailureBlock:  Called when connection failed. Usually occurred when the website does not exist, or no internet connection.
 - (void) getEventsForDeviceWithId:(nonnull NSString *) deviceId
-                        onSuccess:(void (^)(VLEventPager *EventPager, NSHTTPURLResponse *response))onSuccessBlock
+                        onSuccess:(void (^)(VLEventPager *eventPager, NSHTTPURLResponse *response))onSuccessBlock
                         onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
 // Get a VLEventPager object containing a list of events and pagination data
@@ -533,7 +594,7 @@
                             until:(nullable NSDate *)until
                             since:(nullable NSDate *)since
                     sortDirection:(nullable NSString *)sortDirection
-                        onSuccess:(void (^)(VLEventPager *EventPager, NSHTTPURLResponse *response))onSuccessBlock
+                        onSuccess:(void (^)(VLEventPager *eventPager, NSHTTPURLResponse *response))onSuccessBlock
                         onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
 // Create a subscription
@@ -612,8 +673,7 @@
 //                  response:   An NSHTTPURLResponse instance, from which user will know the URL, statusCode, etc.
 // onFailureBlock:  Called when connection failed. Usually occurred when the website does not exist, or no internet connection.
 - (void) getNotificationsForEventWithId:(nonnull NSString *) eventId
-                                  limit:(nullable NSNumber *)limit
-                                 offset:(nullable NSNumber *)offset
+                             timeSeries:(VLTimeSeries *)timeSeries
                               onSuccess:(void (^)(VLNotificationPager *notificationPager, NSHTTPURLResponse *response))onSuccessBlock
                               onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
@@ -646,8 +706,7 @@
 //                  response:   An NSHTTPURLResponse instance, from which user will know the URL, statusCode, etc.
 // onFailureBlock:  Called when connection failed. Usually occurred when the website does not exist, or no internet connection.
 - (void) getNotificationsForSubscriptionWithId:(nonnull NSString *) subscriptionId
-                                         limit:(nullable NSNumber *)limit
-                                        offset:(nullable NSNumber *)offset
+                                    timeSeries:(VLTimeSeries *)timeSeries
                                      onSuccess:(void (^)(VLNotificationPager *notificationPager, NSHTTPURLResponse *response))onSuccessBlock
                                      onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 

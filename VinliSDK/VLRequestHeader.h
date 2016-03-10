@@ -24,4 +24,7 @@ typedef NS_ENUM(NSInteger, VLProtocolType) {
                               port:(NSNumber *)port
                            payload:(NSDictionary *)dictPayload;  // will be the same as HTTP body
 
++ (NSURLRequest *) requestWithToken:(NSString *)token contentType:(NSString *)contentType requestUri:(NSString *)requestUri;
+
+
 @end

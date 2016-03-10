@@ -42,9 +42,9 @@
             _createdAt = [dictionary jsonObjectForKey:@"createdAt"];
             
             if([dictionary objectForKey:@"links"] != nil){
-                _selfURL = [NSURL URLWithString:@"self"];
-                _eventURL = [NSURL URLWithString:@"event"];
-                _subscriptionURL = [NSURL URLWithString:@"subscription"];
+                _selfURL = [NSURL URLWithString:dictionary[@"links"][@"self"]];
+                _eventURL = [NSURL URLWithString:dictionary[@"links"][@"event"]];
+                _subscriptionURL = [NSURL URLWithString:dictionary[@"links"][@"subscription"]];
             }
             
         }

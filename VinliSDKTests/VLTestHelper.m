@@ -10,6 +10,41 @@
 
 @implementation VLTestHelper
 
+
+
+
++ (NSString *)vehicleId {
+    return @"c1e6f9e4-77eb-4989-bc23-a5e1236fd090";
+}
+
+
++ (NSMutableDictionary *)cleanDictionary:(NSDictionary *)dict {
+    NSMutableDictionary *mutDict = [dict mutableCopy];
+    
+    NSArray *keyForNullValues = [mutDict allKeysForObject:[NSNull null]];
+    [mutDict removeObjectsForKeys:keyForNullValues];
+    
+    return mutDict;
+  
+    
+}
+
++ (NSInteger)defaultTimeOut {
+    return 5.0;
+}
+
++ (NSString *)accessToken {
+    
+    //Unzip token.zip and use the accesstoken here
+    
+    return @"";
+}
+
+
++ (NSString *)deviceId {
+    return @"ba89372f-74f4-43c8-a4fd-b8f24699426e";
+}
+
 + (NSDictionary *) getVehicleJSON:(NSString *) deviceId{
     int minYear = 2000;
     int maxYear = 2015;
@@ -132,12 +167,11 @@
                                 @"meta": @{
                                         @"pagination" : @{
                                                 @"totalCount" : @14,
-                                                @"limit" : @10,
-                                                @"offset" : @0,
+                                                @"since" : @"2015-12-15T06:00:00.000Z",
+                                                @"until" : @"2016-02-06T06:00:00.000Z",
                                                 @"links" : @{
-                                                        @"first" : @"https://trips.vin.li/api/v1/devices/821374c0-d6d8-11e3-9c1a-0800200c9a66/trips?offset=0&limit=10",
-                                                        @"next" : @"https://trips.vin.li/api/v1/devices/821374c0-d6d8-11e3-9c1a-0800200c9a66/trips?offset=10&limit=10",
-                                                        @"last" : @"https://trips.vin.li/api/v1/devices/821374c0-d6d8-11e3-9c1a-0800200c9a66/trips?offset=10&limit=10"
+                                                        @"prior" : @"https://trips-dev.vin.li/api/v1/devices/fe4bbc20-cc90-11e3-8e05-f3abac5b6b58/trips?until=1434129972999",
+                                                        @"next" : @"https://trips.vin.li/api/v1/devices/d47ef610-c7b9-44ac-9a41-39f9c6056de5/trips?until=2016-02-06T00%3A00%3A00-06%3A00&limit=5&since=1450912114292&sortDir=asc",
                                                         }
                                                 }
                                         }
@@ -634,12 +668,9 @@
                                           ],
                                   @"meta": @{
                                           @"pagination": @{
-                                                  @"total": @0,
-                                                  @"limit": @20,
-                                                  @"offset": @0,
                                                   @"links": @{
-                                                          @"first": @"https://events-dev.vin.li/api/v1/events/538f1195-a733-4ee7-a4e8-1fbbe7131f6a/notifications?offset=0&limit=20",
-                                                          @"last": @"https://events-dev.vin.li/api/v1/events/538f1195-a733-4ee7-a4e8-1fbbe7131f6a/notifications?offset=0&limit=20"
+                                                          @"prior": @"https://events.vin.li/api/v1/subscriptions/532a8946-ec5c-4f53-803a-e336e02a8c0f/notifications?since=2016-02-11T13%3A21%3A18-06%3A00&limit=1&until=1455817232505",
+                                                          @"next": @"https://events.vin.li/api/v1/subscriptions/532a8946-ec5c-4f53-803a-e336e02a8c0f/notifications?since=1455737282236&sortDir=asc&limit=1"
                                                           }
                                                   }
                                           }

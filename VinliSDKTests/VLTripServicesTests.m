@@ -43,7 +43,7 @@
     
     [[[mockConnection expect] andDo:^(NSInvocation *invocation) {
         NSDictionary *trip = [expectedJSON copy];
-        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:nil statusCode:200 HTTPVersion:nil headerFields:nil];
+        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:[NSURL new] statusCode:200 HTTPVersion:nil headerFields:nil];
         
         void (^successBlock)(NSDictionary *result, NSHTTPURLResponse *response) = nil;
         [invocation getArgument:&successBlock atIndex:8];
@@ -56,6 +56,10 @@
         XCTAssertEqual(tripPager.trips.count, [expectedJSON[@"trips"] count]); // Make sure that there are two objects in the array.
         //XCTAssertEqual(tripPager.total, [expectedJSON[@"meta"][@"pagination"][@"total"] unsignedLongValue]); // Make sure that the Meta more or less translated correctly.
         XCTAssertEqual(((VLTrip*)[tripPager.trips objectAtIndex:0]).tripId, expectedJSON[@"trips"][0][@"id"]); // Make sure that the trips array more or less translated correctly
+        XCTAssertEqual([tripPager.priorURL absoluteString], expectedJSON[@"meta"][@"pagination"][@"links"][@"prior"]);
+        XCTAssertEqual([tripPager.nextURL absoluteString], expectedJSON[@"meta"][@"pagination"][@"links"][@"next"]);
+        XCTAssertEqual(tripPager.since, expectedJSON[@"meta"][@"pagination"][@"since"]);
+        XCTAssertEqual(tripPager.until, expectedJSON[@"meta"][@"pagination"][@"until"]);
         
         
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
@@ -70,7 +74,7 @@
     
     [[[mockConnection expect] andDo:^(NSInvocation *invocation) {
         NSDictionary *trip = [expectedJSON copy];
-        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:nil statusCode:200 HTTPVersion:nil headerFields:nil];
+        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:[NSURL new] statusCode:200 HTTPVersion:nil headerFields:nil];
         
         void (^successBlock)(NSDictionary *result, NSHTTPURLResponse *response) = nil;
         [invocation getArgument:&successBlock atIndex:8];
@@ -83,6 +87,7 @@
         XCTAssertEqual(tripPager.trips.count, [expectedJSON[@"trips"] count]); // Make sure that there are two objects in the array.
         //XCTAssertEqual(tripPager.total, [expectedJSON[@"meta"][@"pagination"][@"total"] unsignedLongValue]); // Make sure that the Meta more or less translated correctly.
         XCTAssertEqual(((VLTrip*)[tripPager.trips objectAtIndex:0]).tripId, expectedJSON[@"trips"][0][@"id"]); // Make sure that the trips array more or less translated correctly
+        
         
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
@@ -98,7 +103,7 @@
         
         NSDictionary *trip = [expectedJSON copy];
         
-        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:nil statusCode:200 HTTPVersion:nil headerFields:nil];
+        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:[NSURL new] statusCode:200 HTTPVersion:nil headerFields:nil];
         
         void (^successBlock)(NSDictionary *result, NSHTTPURLResponse *response) = nil;
         

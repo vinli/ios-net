@@ -49,7 +49,7 @@
         
         NSDictionary *message = [expectedJSON copy];
         
-        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:nil statusCode:200 HTTPVersion:nil headerFields:nil];
+        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:[NSURL new] statusCode:200 HTTPVersion:nil headerFields:nil];
         
         void (^successBlock)(NSDictionary *result, NSHTTPURLResponse *response) = nil;
         
@@ -78,7 +78,7 @@
     [[[mockConnection expect] andDo:^(NSInvocation *invocation) {
         
         NSDictionary *message = [expectedJSON copy];
-        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:nil statusCode:200 HTTPVersion:nil headerFields:nil];
+        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:[NSURL new] statusCode:200 HTTPVersion:nil headerFields:nil];
         void (^successBlock)(NSDictionary *result, NSHTTPURLResponse *response) = nil;
         [invocation getArgument:&successBlock atIndex:8];
         successBlock(message, response);
@@ -102,7 +102,7 @@
     [[[mockConnection expect] andDo:^(NSInvocation *invocation) {
         
         NSDictionary *message = [expectedJSON copy];
-        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:nil statusCode:200 HTTPVersion:nil headerFields:nil];
+        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:[NSURL new] statusCode:200 HTTPVersion:nil headerFields:nil];
         void (^successBlock)(NSDictionary *result, NSHTTPURLResponse *response) = nil;
         [invocation getArgument:&successBlock atIndex:8];
         successBlock(message, response);
@@ -127,7 +127,7 @@
         
         NSDictionary *location = [expectedJSON copy];
         
-        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:nil statusCode:200 HTTPVersion:nil headerFields:nil];
+        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:[NSURL new] statusCode:200 HTTPVersion:nil headerFields:nil];
         
         void (^successBlock)(NSDictionary *result, NSHTTPURLResponse *response) = nil;
         
