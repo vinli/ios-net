@@ -30,7 +30,7 @@
 }
 
 + (NSInteger)defaultTimeOut {
-    return 5.0;
+    return 10.0;
 }
 
 + (NSString *)accessToken {

@@ -28,8 +28,12 @@
 #define STRING_HOST_RULES       @"rules"
 #define STRING_HOST_AUTH        @"auth"
 #define STRING_HOST_TRIPS       @"trips"
-
+#define STRING_HOST_DISTANCE   @"distance"
 #define DEFAULT_HOST            @".vin.li"
+
+
+
+
 
 @interface VLService (){
 }
@@ -1355,6 +1359,64 @@
     }];
     
 }
+
+
+
+
+#pragma mark - Distance Services 
+
+
+
+- (void)getDistancesForVehicleWithId:(NSString *)vehicleId onSuccess:(void (^)(VLDistancePager *distancePager, NSHTTPURLResponse *response))onSuccessBlock
+                           onFailure:(void (^)(NSError *, NSHTTPURLResponse *, NSString *))onFailureBlock {
+    
+    
+    [self getDistancesForVehicleWithId:vehicleId timeSeries:nil onSuccess:onSuccessBlock onFailure:onFailureBlock];
+    
+}
+
+
+- (void)getDistancesForVehicleWithId:(NSString *)vehicleId timeSeries:(VLTimeSeries *)timeSeries onSuccess:(void (^)(VLDistancePager *distancePager, NSHTTPURLResponse *response))onSuccessBlock
+                           onFailure:(void (^)(NSError *, NSHTTPURLResponse *, NSString *))onFailureBlock {
+    if (_session == nil) {
+        if (onFailureBlock) {
+            onFailureBlock([self getNoSessionError], nil, nil);
+        }
+        return;
+    }
+    
+    NSString *path = [NSString stringWithFormat:@"/vehicles/%@/distances", vehicleId];
+    
+    
+    [self startWithHost:STRING_HOST_DISTANCE path:path queries:[timeSeries toDictionary] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        
+        if (response.statusCode == 200) {
+            if (onSuccessBlock) {
+                VLDistancePager *distancePager = [[VLDistancePager alloc]initWithDictionary:result];
+                onSuccessBlock(distancePager, response);
+            }
+        }
+        else {
+            if (onFailureBlock) {
+                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:2002 userInfo:@{@"NSLocalizedDescriptionKey": @"Received unexpected response from API call"}];
+                onFailureBlock(error, response, result.description);
+            }
+        }
+        
+        
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) {
+            onFailureBlock(error, response, bodyString);
+        }
+    }];
+    
+    
+}
+
+
+
+
+
 
 #pragma mark - NSError
 

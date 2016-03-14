@@ -27,7 +27,7 @@
 - (void)testLogin {
     
     [[VLSessionManager sharedManager].service useSession:[[VLSession alloc]initWithAccessToken:[VLTestHelper accessToken] userId:self.userId]];
-    
+
 }
 
 

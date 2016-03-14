@@ -35,6 +35,8 @@
 #import "VLObjectRef.h"
 #import "VLPolygonBoundary.h"
 #import "VLTimeSeries.h"
+#import "VLDistance.h"
+#import "VLDistancePager.h"
 
 #pragma clang diagnostic ignored "-Wnullability-completeness"
 
@@ -801,6 +803,30 @@
 // onFailureBlock:  Called when connection failed. Usually occurred when the website does not exist, or no internet connection.
 - (void) getUserOnSuccess:(void (^)(VLUser *user, NSHTTPURLResponse *response))onSuccessBlock
                 onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+
+
+#pragma mark - Distance Services
+
+
+- (void)getDistancesForVehicleWithId:(nonnull NSString *)vehicleId
+                           onSuccess:(void (^)(VLDistancePager *distancePager, NSHTTPURLResponse *response))onSuccessBlock
+                           onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+
+
+- (void)getDistancesForVehicleWithId:(nonnull NSString *)vehicleId
+                           timeSeries:(VLTimeSeries *)timeSeries
+                           onSuccess:(void (^)(VLDistancePager *distancePager, NSHTTPURLResponse *response))onSuccessBlock
+                           onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString)) onFailureBlock;
+
+
+
+
+
+
+
+
 
 
 

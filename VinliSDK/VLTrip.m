@@ -20,7 +20,7 @@ static NSDateFormatter* isoDateFormatter;
 
 - (id) initWithDictionary:(NSDictionary *)dictionary{
     self = [super init];
-    if(self){
+    if(self) {
         
         if(dictionary){
             

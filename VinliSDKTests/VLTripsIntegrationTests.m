@@ -14,8 +14,6 @@
 
 
 @interface VLTripsIntegrationTests : XCTestCase
-@property NSDictionary *devices;
-@property VLDevice *device;
 @property NSDictionary *trips;
 @property NSString *tripId;
 @property NSDictionary *vehicleTrips;
@@ -30,34 +28,6 @@
 
 - (void)setUp {
     [super setUp];
-    
-    
-    
-    XCTestExpectation *expectation = [self expectationWithDescription:@"getting devices call"];
-    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:@"https://platform.vin.li/api/v1/devices" onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        [expectation fulfill];
-        self.devices = result;
-        XCTAssertTrue(YES);
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
-        XCTAssertTrue(NO);
-    } ];
-    
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-
-    
-    XCTestExpectation *deviceExpectation = [self expectationWithDescription:@"get devices with sessionManager"];
-    [[VLSessionManager sharedManager].service getDevicesOnSuccess:^(VLDevicePager *devicePager, NSHTTPURLResponse *response) {
-        [deviceExpectation fulfill];
-        self.device = (devicePager.devices.count > 0) ? devicePager.devices[0] : nil;
-        if (self.device) {
-            XCTAssertTrue(YES);
-        }
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-        XCTAssertTrue(NO);
-    }];
-    
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-
     
     
     
@@ -90,7 +60,7 @@
 - (void)testGetAllTripsWithDeviceId {
     NSDictionary *expectedJSON = self.trips;
     XCTestExpectation *tripsExpectation = [self expectationWithDescription:@"trips call"];
-    [[VLSessionManager sharedManager].service getTripsForDeviceWithId:self.device.deviceId onSuccess:^(VLTripPager *tripPager, NSHTTPURLResponse *response) {
+    [[VLSessionManager sharedManager].service getTripsForDeviceWithId:[VLTestHelper deviceId] onSuccess:^(VLTripPager *tripPager, NSHTTPURLResponse *response) {
         [tripsExpectation fulfill];
         
         
