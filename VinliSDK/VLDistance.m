@@ -1,4 +1,4 @@
-//
+
 //  VLDistance.m
 //  VinliSDK
 //
@@ -9,6 +9,10 @@
 #import "VLDistance.h"
 #import "NSDictionary+NonNullable.h"
 
+
+
+
+
 @implementation VLDistance
 
 
@@ -17,19 +21,22 @@
     
     if (self){
         if (dictionary) {
-            if (dictionary[@"distances"] != nil) {
-                dictionary = dictionary[@"distances"];
+            if (dictionary[@"distance"] != nil) {
+                dictionary = dictionary[@"distance"];
             }
             _confidenceMin = [dictionary jsonObjectForKey:@"confidenceMin"] ;
             _confidenceMax = [dictionary jsonObjectForKey:@"confidenceMax"];
             _value = [dictionary jsonObjectForKey:@"value"];
-            _lastOdometerDate = [dictionary jsonObjectForKey:@"lastOdometerDate"];
+            _lastOdometer = [dictionary jsonObjectForKey:@"lastOdometerDate"];
+
         }
     }
     
     
     return self;
 }
+
+
 
 
 

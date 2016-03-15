@@ -37,10 +37,13 @@
 #import "VLTimeSeries.h"
 #import "VLDistance.h"
 #import "VLDistancePager.h"
+#import "VLOdometer.h"
+#import "VLOdometerPager.h"
 
 #pragma clang diagnostic ignored "-Wnullability-completeness"
 
 @class VLDevice;
+@class VLOdometerPager;
 
 @interface VLService : NSObject
 
@@ -821,12 +824,27 @@
                            onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString)) onFailureBlock;
 
 
+//Create an Odometer Report
+//Route: POST to distance.vin.li/api/v1/vehicles/{vehicleId}/odometers
+//@callbacks: onSuccessBlock with newly created odometer
+//OnFailureBlock: connection fails
 
 
+- (void)createOdometer:(VLOdometer *)odometer vehicleId:(NSString *)vehicleId OnSuccess:(void (^)(VLOdometer *odometer, NSHTTPURLResponse *response))onSuccessBlock
+                        onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
 
+- (void)getOdometersForVehicleWithId:(NSString *)vehicleId timeSeries:(VLTimeSeries *)timeSeries onSucess:(void (^)(VLOdometerPager *odometerPager, NSHTTPURLResponse *response))onSuccessBlock
+                           onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+- (void)getOdometersForVehicleWithId:(NSString *)vehicleId onSuccess:(void (^)(VLOdometerPager *odometerPager, NSHTTPURLResponse *response))onSuccessBlock
+                          onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
 
+- (void)getOdometerWithId:(nonnull NSString *)odometerId onSuccess:(void (^)(VLOdometer *odometer, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+
+- (void)deleteOdometerWithId:(nonnull NSString *)odometerId onSuccess:(void (^)(NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
 
 

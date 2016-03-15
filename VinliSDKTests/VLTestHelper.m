@@ -42,7 +42,7 @@
 
 
 + (NSString *)deviceId {
-    return @"ba89372f-74f4-43c8-a4fd-b8f24699426e";
+    return @"aa89372f-74f4-43c8-a4fd-b8f24699426e";
 }
 
 + (NSDictionary *) getVehicleJSON:(NSString *) deviceId{

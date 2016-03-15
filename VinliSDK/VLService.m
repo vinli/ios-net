@@ -557,7 +557,7 @@
                         onSuccess:(void (^)(NSHTTPURLResponse *response))onSuccessBlock
                         onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
     
-    if(_session == nil){
+    if(_session == nil) {
         if(onFailureBlock){
             onFailureBlock([self getNoSessionError], nil, nil);
         }
@@ -1415,6 +1415,159 @@
 
 
 
+
+//Odometers
+
+- (void)createOdometer:(VLOdometer *)odometer vehicleId:(NSString *)vehicleId OnSuccess:(void (^)(VLOdometer *odometer, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *, NSHTTPURLResponse *, NSString *))onFailureBlock {
+    
+    if(_session == nil){
+        if(onFailureBlock){
+            onFailureBlock([self getNoSessionError], nil, nil);
+        }
+        return;
+    }
+    
+    NSString *path = [NSString stringWithFormat:@"/vehicles/%@/odometers", vehicleId];
+
+    
+    [self startWithHost:STRING_HOST_DISTANCE path:path queries:nil HTTPMethod:@"POST" parameters:[odometer toDictionary] token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        
+        if (response.statusCode == 201) {
+            if (onSuccessBlock) {
+                VLOdometer *odometer = [[VLOdometer alloc] initWithDictionary:result];
+                onSuccessBlock(odometer, response);
+            }
+        }
+        else {
+            if (onFailureBlock) {
+                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:2002 userInfo:@{@"NSLocalizedDescriptionKey": @"Received unexpected response from API call"}];
+                onFailureBlock(error, response, result.description);
+            }
+        }
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) {
+            onFailureBlock(error, response, bodyString);
+        }
+    }];
+    
+    
+    
+    
+}
+
+
+
+
+
+- (void)getOdometersForVehicleWithId:(NSString *)vehicleId onSuccess:(void (^)(VLOdometerPager *, NSHTTPURLResponse *))onSuccessBlock onFailure:(void (^)(NSError *, NSHTTPURLResponse *, NSString *))onFailureBlock {
+    [self getOdometersForVehicleWithId:vehicleId timeSeries:nil onSucess:onSuccessBlock onFailure:onFailureBlock];
+}
+
+
+- (void) getOdometersForVehicleWithId:(NSString *)vehicleId timeSeries:(VLTimeSeries *)timeSeries onSucess:(void (^)(VLOdometerPager *odometerPager, NSHTTPURLResponse *OdometerPager))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *, NSString *))onFailureBlock {
+    if(_session == nil){
+        if(onFailureBlock){
+            onFailureBlock([self getNoSessionError], nil, nil);
+        }
+        return;
+    }
+    
+    NSString *path = [NSString stringWithFormat:@"/vehicles/%@/odometers", vehicleId];
+    
+    
+    [self startWithHost:STRING_HOST_DISTANCE path:path queries:[timeSeries toDictionary] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        
+        if (response.statusCode == 200) {
+            if (onSuccessBlock) {
+                VLOdometerPager *odometerPager = [[VLOdometerPager alloc] initWithDictionary:result];
+                onSuccessBlock(odometerPager, response);
+            }
+        }
+        else {
+            if (onFailureBlock) {
+                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:2002 userInfo:@{@"NSLocalizedDescriptionKey": @"Received unexpected response from API call"}];
+                onFailureBlock(error, response, result.description);
+            }
+        }
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) {
+            onFailureBlock(error, response, bodyString);
+        }
+    }];
+}
+
+
+
+
+
+
+
+- (void)getOdometerWithId:(NSString *)odometerId onSuccess:(void (^)(VLOdometer *odometer, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *reponse, NSString *bodyString))onFailureBlock {
+    if(_session == nil){
+        if(onFailureBlock){
+            onFailureBlock([self getNoSessionError], nil, nil);
+        }
+        return;
+    }
+    
+    NSString *path = [NSString stringWithFormat:@"/odometers/%@", odometerId];
+    
+    [self startWithHost:STRING_HOST_DISTANCE path:path queries:nil HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        
+        if (response.statusCode == 200) {
+            if (onSuccessBlock) {
+                VLOdometer *odometer = [[VLOdometer alloc] initWithDictionary:result];
+                onSuccessBlock(odometer, response);
+            }
+        }
+        else {
+            if (onFailureBlock) {
+                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:2002 userInfo:@{@"NSLocalizedDescriptionKey": @"Received unexpected response from API call"}];
+                onFailureBlock(error, response, result.description);
+            }
+        }
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) {
+            onFailureBlock(error, response, bodyString);
+        }
+    }];
+    
+}
+
+
+
+
+
+- (void)deleteOdometerWithId:(NSString *)odometerId onSuccess:(void (^)(NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+    if(_session == nil){
+        if(onFailureBlock){
+            onFailureBlock([self getNoSessionError], nil, nil);
+        }
+        return;
+    }
+    
+    NSString *path = [NSString stringWithFormat:@"/odometers/%@", odometerId];
+    
+    [self startWithHost:STRING_HOST_DISTANCE path:path queries:nil HTTPMethod:@"DELETE" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        
+        if (response.statusCode == 204) {
+            if (onSuccessBlock) {
+                onSuccessBlock(response);
+            }
+        }
+        else {
+            if (onFailureBlock) {
+                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:2002 userInfo:@{@"NSLocalizedDescriptionKey": @"Received unexpected response from API call"}];
+                onFailureBlock(error, response, result.description);
+            }
+        }
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) {
+            onFailureBlock(error, response, bodyString);
+        }
+    }];
+    
+}
 
 
 

@@ -12,10 +12,11 @@
 
 
 @interface VLDistance : NSObject
-@property NSNumber *confidenceMin;
-@property NSNumber *confidenceMax;
-@property NSNumber *value;
-@property NSDate *lastOdometerDate;
+@property (readonly) NSNumber *confidenceMin;
+@property (readonly) NSNumber *confidenceMax;
+@property (readonly) NSNumber *value;
+@property (readonly) NSString *lastOdometer;
+
 
 - (instancetype) initWithDictionary: (NSDictionary *)dictionary;
 

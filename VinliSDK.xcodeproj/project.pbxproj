@@ -115,6 +115,10 @@
 		777A6B8D1C91FC5E0050F6C0 /* VLDistancePager.h in Headers */ = {isa = PBXBuildFile; fileRef = 777A6B8B1C91FC5E0050F6C0 /* VLDistancePager.h */; };
 		777A6B8E1C91FC5E0050F6C0 /* VLDistancePager.m in Sources */ = {isa = PBXBuildFile; fileRef = 777A6B8C1C91FC5E0050F6C0 /* VLDistancePager.m */; };
 		777A6B901C9379890050F6C0 /* VLDistanceServicesIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 777A6B8F1C9379890050F6C0 /* VLDistanceServicesIntegrationTests.m */; };
+		777A6B931C9729EA0050F6C0 /* VLOdometer.h in Headers */ = {isa = PBXBuildFile; fileRef = 777A6B911C9729EA0050F6C0 /* VLOdometer.h */; };
+		777A6B941C9729EA0050F6C0 /* VLOdometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 777A6B921C9729EA0050F6C0 /* VLOdometer.m */; };
+		777A6B971C9740470050F6C0 /* VLOdometerPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 777A6B951C9740470050F6C0 /* VLOdometerPager.h */; };
+		777A6B981C9740470050F6C0 /* VLOdometerPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 777A6B961C9740470050F6C0 /* VLOdometerPager.m */; };
 		77BE999B1C690E77001E8F64 /* VLTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 77BE99991C690E77001E8F64 /* VLTimeSeries.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		77BE999C1C690E77001E8F64 /* VLTimeSeries.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BE999A1C690E77001E8F64 /* VLTimeSeries.m */; };
 		77BE999D1C73A4A5001E8F64 /* VLOffsetPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B3DDC281B14C31B00D95E61 /* VLOffsetPager.h */; };
@@ -242,6 +246,10 @@
 		777A6B8B1C91FC5E0050F6C0 /* VLDistancePager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLDistancePager.h; sourceTree = "<group>"; };
 		777A6B8C1C91FC5E0050F6C0 /* VLDistancePager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLDistancePager.m; sourceTree = "<group>"; };
 		777A6B8F1C9379890050F6C0 /* VLDistanceServicesIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLDistanceServicesIntegrationTests.m; sourceTree = "<group>"; };
+		777A6B911C9729EA0050F6C0 /* VLOdometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLOdometer.h; sourceTree = "<group>"; };
+		777A6B921C9729EA0050F6C0 /* VLOdometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLOdometer.m; sourceTree = "<group>"; };
+		777A6B951C9740470050F6C0 /* VLOdometerPager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLOdometerPager.h; sourceTree = "<group>"; };
+		777A6B961C9740470050F6C0 /* VLOdometerPager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLOdometerPager.m; sourceTree = "<group>"; };
 		77BE99991C690E77001E8F64 /* VLTimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLTimeSeries.h; sourceTree = "<group>"; };
 		77BE999A1C690E77001E8F64 /* VLTimeSeries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTimeSeries.m; sourceTree = "<group>"; };
 		BB7D1A79C1AEAD3F566D9FA4 /* Pods-VinliSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinliSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VinliSDKTests/Pods-VinliSDKTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -437,6 +445,8 @@
 			isa = PBXGroup;
 			children = (
 				0B3DDC241B14C28600D95E61 /* VLPager.h */,
+				777A6B951C9740470050F6C0 /* VLOdometerPager.h */,
+				777A6B961C9740470050F6C0 /* VLOdometerPager.m */,
 				0B3DDC251B14C28600D95E61 /* VLPager.m */,
 				0B3DDC281B14C31B00D95E61 /* VLOffsetPager.h */,
 				0B3DDC291B14C31B00D95E61 /* VLOffsetPager.m */,
@@ -492,6 +502,8 @@
 				0B3DDC591B1534AB00D95E61 /* VLTrip.m */,
 				E92943681B165D0800AAC7D3 /* VLSubscription.h */,
 				E92943691B165D0800AAC7D3 /* VLSubscription.m */,
+				777A6B911C9729EA0050F6C0 /* VLOdometer.h */,
+				777A6B921C9729EA0050F6C0 /* VLOdometer.m */,
 				7367E39F1B165ECF004223A6 /* VLEvent.h */,
 				7367E39D1B165EB6004223A6 /* VLEvent.m */,
 				7367E3A51B1759BB004223A6 /* VLNotification.h */,
@@ -535,6 +547,7 @@
 				77BE999B1C690E77001E8F64 /* VLTimeSeries.h in Headers */,
 				49E2F2FF1B6AA93700CD743C /* NSDictionary+NonNullable.h in Headers */,
 				77BE999E1C73A4A5001E8F64 /* VLVehicle.h in Headers */,
+				777A6B971C9740470050F6C0 /* VLOdometerPager.h in Headers */,
 				0B2277061B167303000AF179 /* VLSession.h in Headers */,
 				77BE999D1C73A4A5001E8F64 /* VLOffsetPager.h in Headers */,
 				0B3DDC381B14D1DD00D95E61 /* VLVehiclePager.h in Headers */,
@@ -572,6 +585,7 @@
 				0B16710A1B0FC2B8009BE7A9 /* VinliSDK.h in Headers */,
 				777A6B891C91F7B00050F6C0 /* VLDistance.h in Headers */,
 				0B1671541B0FC3DD009BE7A9 /* JCDHTTPConnection.h in Headers */,
+				777A6B931C9729EA0050F6C0 /* VLOdometer.h in Headers */,
 				0B1671761B0FC418009BE7A9 /* NSString+Random.h in Headers */,
 				0B1671691B0FC401009BE7A9 /* VLRequestHeader.h in Headers */,
 			);
@@ -747,6 +761,7 @@
 				E929436B1B165D0800AAC7D3 /* VLSubscription.m in Sources */,
 				E92943791B18FAF600AAC7D3 /* VLSnapshot.m in Sources */,
 				7367E39E1B165EB6004223A6 /* VLEvent.m in Sources */,
+				777A6B981C9740470050F6C0 /* VLOdometerPager.m in Sources */,
 				0B3DDC551B1518BE00D95E61 /* VLRulePager.m in Sources */,
 				E929435D1B15425400AAC7D3 /* VLTelemetryMessagePager.m in Sources */,
 				49AB6E9E1B82446900DCF808 /* VLUserCache.m in Sources */,
@@ -756,6 +771,7 @@
 				0B16714E1B0FC39D009BE7A9 /* VLTelemetryMessage.m in Sources */,
 				E92943751B17D6B100AAC7D3 /* VLDevicePager.m in Sources */,
 				0B16713A1B0FC39D009BE7A9 /* VLBoundary.m in Sources */,
+				777A6B941C9729EA0050F6C0 /* VLOdometer.m in Sources */,
 				0B1671501B0FC39D009BE7A9 /* VLVehicle.m in Sources */,
 				0B3DDC271B14C28600D95E61 /* VLPager.m in Sources */,
 				E990CE6F1B26405A00CDEF15 /* VLPolygonBoundary.m in Sources */,

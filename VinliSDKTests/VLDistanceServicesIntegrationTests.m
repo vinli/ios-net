@@ -50,11 +50,9 @@
            NSDictionary *expectedDistanceJson = [VLTestHelper cleanDictionary:expectedJSON[@"distances"][0]];
             
             
-            
-            
             XCTAssertEqualObjects(distance.confidenceMax, expectedDistanceJson[@"confidenceMax"]);
             XCTAssertEqual(distance.confidenceMin, expectedDistanceJson[@"confidenceMin"]);
-            XCTAssertEqualObjects(distance.lastOdometerDate, expectedDistanceJson[@"lastOdometerDate"]);
+            XCTAssertEqualObjects(distance.lastOdometer, expectedDistanceJson[@"lastOdometerDate"]);
             XCTAssertEqualObjects([distance.value stringValue], [expectedDistanceJson[@"value"] stringValue]);
             
         }
