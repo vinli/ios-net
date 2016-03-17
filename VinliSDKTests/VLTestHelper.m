@@ -13,6 +13,18 @@
 
 
 
+
++ (NSString *)odometerTriggerId {
+    return @"2adf089d-06ba-4c18-acef-cc70f848c461";
+}
+
+
++ (NSString *)odometerId {
+    return @"7b98a761-d270-48e9-8720-6e221353769c";
+}
+
+
+
 + (NSString *)vehicleId {
     return @"c1e6f9e4-77eb-4989-bc23-a5e1236fd090";
 }
@@ -30,7 +42,7 @@
 }
 
 + (NSInteger)defaultTimeOut {
-    return 10.0;
+    return 15.0;
 }
 
 + (NSString *)accessToken {
@@ -42,7 +54,7 @@
 
 
 + (NSString *)deviceId {
-    return @"aa89372f-74f4-43c8-a4fd-b8f24699426e";
+    return @"ba89372f-74f4-43c8-a4fd-b8f24699426e";
 }
 
 + (NSDictionary *) getVehicleJSON:(NSString *) deviceId{

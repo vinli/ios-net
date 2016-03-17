@@ -17,7 +17,7 @@
 
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
-- (NSDictionary *)toDictionary;
+- (NSDictionary *)toDictionary:(NSString *)unit;
 
 
 

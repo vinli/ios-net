@@ -1368,7 +1368,7 @@
 
 
 - (void)getDistancesForVehicleWithId:(NSString *)vehicleId onSuccess:(void (^)(VLDistancePager *distancePager, NSHTTPURLResponse *response))onSuccessBlock
-                           onFailure:(void (^)(NSError *, NSHTTPURLResponse *, NSString *))onFailureBlock {
+                           onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
     
     
     [self getDistancesForVehicleWithId:vehicleId timeSeries:nil onSuccess:onSuccessBlock onFailure:onFailureBlock];
@@ -1377,7 +1377,7 @@
 
 
 - (void)getDistancesForVehicleWithId:(NSString *)vehicleId timeSeries:(VLTimeSeries *)timeSeries onSuccess:(void (^)(VLDistancePager *distancePager, NSHTTPURLResponse *response))onSuccessBlock
-                           onFailure:(void (^)(NSError *, NSHTTPURLResponse *, NSString *))onFailureBlock {
+                           onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
     if (_session == nil) {
         if (onFailureBlock) {
             onFailureBlock([self getNoSessionError], nil, nil);
@@ -1418,7 +1418,7 @@
 
 //Odometers
 
-- (void)createOdometer:(VLOdometer *)odometer vehicleId:(NSString *)vehicleId OnSuccess:(void (^)(VLOdometer *odometer, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *, NSHTTPURLResponse *, NSString *))onFailureBlock {
+- (void)createOdometer:(VLOdometer *)odometer unit:(NSString *)unit vehicleId:(NSString *)vehicleId OnSuccess:(void (^)(VLOdometer *odometer, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
     
     if(_session == nil){
         if(onFailureBlock){
@@ -1430,7 +1430,7 @@
     NSString *path = [NSString stringWithFormat:@"/vehicles/%@/odometers", vehicleId];
 
     
-    [self startWithHost:STRING_HOST_DISTANCE path:path queries:nil HTTPMethod:@"POST" parameters:[odometer toDictionary] token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+    [self startWithHost:STRING_HOST_DISTANCE path:path queries:nil HTTPMethod:@"POST" parameters:[odometer toDictionary:unit] token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
         if (response.statusCode == 201) {
             if (onSuccessBlock) {
@@ -1459,12 +1459,12 @@
 
 
 
-- (void)getOdometersForVehicleWithId:(NSString *)vehicleId onSuccess:(void (^)(VLOdometerPager *, NSHTTPURLResponse *))onSuccessBlock onFailure:(void (^)(NSError *, NSHTTPURLResponse *, NSString *))onFailureBlock {
+- (void)getOdometersForVehicleWithId:(NSString *)vehicleId onSuccess:(void (^)(VLOdometerPager *odometerPager, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
     [self getOdometersForVehicleWithId:vehicleId timeSeries:nil onSucess:onSuccessBlock onFailure:onFailureBlock];
 }
 
 
-- (void) getOdometersForVehicleWithId:(NSString *)vehicleId timeSeries:(VLTimeSeries *)timeSeries onSucess:(void (^)(VLOdometerPager *odometerPager, NSHTTPURLResponse *OdometerPager))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *, NSString *))onFailureBlock {
+- (void) getOdometersForVehicleWithId:(NSString *)vehicleId timeSeries:(VLTimeSeries *)timeSeries onSucess:(void (^)(VLOdometerPager *odometerPager, NSHTTPURLResponse *OdometerPager))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
     if(_session == nil){
         if(onFailureBlock){
             onFailureBlock([self getNoSessionError], nil, nil);
@@ -1568,6 +1568,162 @@
     }];
     
 }
+
+
+
+
+
+
+
+//Odometer Trigger Methods
+
+- (void)createOdometerTrigger:(VLOdometerTrigger *)odometerTrigger unit:(NSString *)unit vehicleId:(NSString *)vehicleId OnSuccess:(void (^)(VLOdometerTrigger *odometerTrigger, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+    
+    if(_session == nil){
+        if(onFailureBlock){
+            onFailureBlock([self getNoSessionError], nil, nil);
+        }
+        return;
+    }
+    
+    NSString *path = [NSString stringWithFormat:@"/vehicles/%@/odometer_triggers", vehicleId];
+    
+    
+    [self startWithHost:STRING_HOST_DISTANCE path:path queries:nil HTTPMethod:@"POST" parameters:[odometerTrigger toDictionary:unit] token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        
+        if (response.statusCode == 201) {
+            if (onSuccessBlock) {
+                VLOdometerTrigger *odometerTrigger = [[VLOdometerTrigger alloc] initWithDictionary:result];
+                onSuccessBlock(odometerTrigger, response);
+            }
+        }
+        else {
+            if (onFailureBlock) {
+                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:2002 userInfo:@{@"NSLocalizedDescriptionKey": @"Received unexpected response from API call"}];
+                onFailureBlock(error, response, result.description);
+            }
+        }
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) {
+            onFailureBlock(error, response, bodyString);
+        }
+    }];
+
+    
+    
+}
+
+- (void)getOdometerTriggersForVehicleWithId:(NSString *)vehicleId onSucess:(void (^)(VLOdometerTriggerPager *odometerTriggerPager, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+    [self getOdometerTriggersForVehicleWithId:vehicleId timeSeries:nil onSucess:onSuccessBlock onFailure:onFailureBlock];
+}
+
+
+- (void)getOdometerTriggersForVehicleWithId:(NSString *)vehicleId timeSeries:(VLTimeSeries *)timeSeries onSucess:(void (^)(VLOdometerTriggerPager *odometerTriggerPager, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+    if(_session == nil){
+        if(onFailureBlock){
+            onFailureBlock([self getNoSessionError], nil, nil);
+        }
+        return;
+    }
+    
+    NSString *path = [NSString stringWithFormat:@"/vehicles/%@/odometer_triggers", vehicleId];
+    
+    
+    [self startWithHost:STRING_HOST_DISTANCE path:path queries:[timeSeries toDictionary] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        
+        if (response.statusCode == 200) {
+            if (onSuccessBlock) {
+                VLOdometerTriggerPager *odometerTriggerPager = [[VLOdometerTriggerPager alloc] initWithDictionary:result];
+                onSuccessBlock(odometerTriggerPager, response);
+            }
+        }
+        else {
+            if (onFailureBlock) {
+                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:2002 userInfo:@{@"NSLocalizedDescriptionKey": @"Received unexpected response from API call"}];
+                onFailureBlock(error, response, result.description);
+            }
+        }
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) {
+            onFailureBlock(error, response, bodyString);
+        }
+    }];
+
+}
+
+- (void)getOdometerTriggerWithId:(NSString *)odometerTriggerId onSuccess:(void (^)(VLOdometerTrigger *, NSHTTPURLResponse *))onSuccessBlock onFailure:(void (^)(NSError *, NSHTTPURLResponse *, NSString *))onFailureBlock {
+    if(_session == nil){
+        if(onFailureBlock){
+            onFailureBlock([self getNoSessionError], nil, nil);
+        }
+        return;
+    }
+    
+    NSString *path = [NSString stringWithFormat:@"/odometer_triggers/%@", odometerTriggerId];
+    
+    [self startWithHost:STRING_HOST_DISTANCE path:path queries:nil HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        
+        if (response.statusCode == 200) {
+            if (onSuccessBlock) {
+                VLOdometerTrigger *odometerTrigger = [[VLOdometerTrigger alloc] initWithDictionary:result];
+                onSuccessBlock(odometerTrigger, response);
+            }
+        }
+        else {
+            if (onFailureBlock) {
+                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:2002 userInfo:@{@"NSLocalizedDescriptionKey": @"Received unexpected response from API call"}];
+                onFailureBlock(error, response, result.description);
+            }
+        }
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) {
+            onFailureBlock(error, response, bodyString);
+        }
+    }];
+    
+}
+
+
+
+
+- (void)deleteOdometerTriggerWithId:(NSString *)odometerTriggerId onSuccess:(void (^)(NSHTTPURLResponse *reponse))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+    if(_session == nil){
+        if(onFailureBlock){
+            onFailureBlock([self getNoSessionError], nil, nil);
+        }
+        return;
+    }
+    
+    NSString *path = [NSString stringWithFormat:@"/odometer_triggers/%@", odometerTriggerId];
+    
+    [self startWithHost:STRING_HOST_DISTANCE path:path queries:nil HTTPMethod:@"DELETE" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        
+        if (response.statusCode == 204) {
+            if (onSuccessBlock) {
+                onSuccessBlock(response);
+            }
+        }
+        else {
+            if (onFailureBlock) {
+                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:2002 userInfo:@{@"NSLocalizedDescriptionKey": @"Received unexpected response from API call"}];
+                onFailureBlock(error, response, result.description);
+            }
+        }
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) {
+            onFailureBlock(error, response, bodyString);
+        }
+    }];
+
+    
+}
+
+
+
+
+
+
+
 
 
 

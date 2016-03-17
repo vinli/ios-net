@@ -16,6 +16,8 @@
 + (NSString *)accessToken;
 + (NSString *)deviceId;
 + (NSString *)vehicleId;
++ (NSString *)odometerId;
++ (NSString *)odometerTriggerId;
 + (NSDictionary *)getVehicleJSON:(NSString *) deviceId;
 + (NSDictionary *)getTripJSON: (NSString *) vehicleId;
 + (NSDictionary *)getAllTripsJSON:(NSString *) deviceId;

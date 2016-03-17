@@ -40,14 +40,17 @@
 
 
 
-- (NSDictionary *)toDictionary {
-    NSMutableDictionary *odometer = [[NSMutableDictionary alloc]init];
-    NSMutableDictionary *odometer_body = [[NSMutableDictionary alloc]init];
+
+//used to send odometer in request
+
+- (NSDictionary *)toDictionary:(NSString *)unit {
+    NSMutableDictionary *odometer = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *odometer_body = [[NSMutableDictionary alloc] init];
     odometer_body[@"reading"] = _reading;
     odometer_body[@"date"] = _dateStr;
+    odometer_body[@"unit"] = unit;
     odometer[@"odometer"] = odometer_body; //convert back to a dictionary
     return odometer;
-    
     
     
 }

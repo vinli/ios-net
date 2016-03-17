@@ -39,11 +39,16 @@
 #import "VLDistancePager.h"
 #import "VLOdometer.h"
 #import "VLOdometerPager.h"
+#import "VLOdometerTrigger.h"
+#import "VLOdometerTriggerPager.h"
+
 
 #pragma clang diagnostic ignored "-Wnullability-completeness"
 
 @class VLDevice;
 @class VLOdometerPager;
+@class VLOdometerTriggerPager;
+@class VLOdometerTrigger;
 
 @interface VLService : NSObject
 
@@ -830,7 +835,14 @@
 //OnFailureBlock: connection fails
 
 
-- (void)createOdometer:(VLOdometer *)odometer vehicleId:(NSString *)vehicleId OnSuccess:(void (^)(VLOdometer *odometer, NSHTTPURLResponse *response))onSuccessBlock
+/* example*/
+//NSDictionary *dictionary = @{@"reading":@50000, @"date":@"2016-02-16T17:01:36.243Z"}; date is optional
+//VLOdometer *odometer = [[VLOdometer alloc]initWithDictionary:dictionary];
+//pass unit in creation method
+
+
+
+- (void)createOdometer:(VLOdometer *)odometer unit:(NSString *)unit vehicleId:(NSString *)vehicleId OnSuccess:(void (^)(VLOdometer *odometer, NSHTTPURLResponse *response))onSuccessBlock
                         onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
 
@@ -845,6 +857,39 @@
 
 
 - (void)deleteOdometerWithId:(nonnull NSString *)odometerId onSuccess:(void (^)(NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+
+
+//Create an Odometer Trigger
+//Route: POST to distance.vin.li/api/v1/vehicles/{vehicleId}/odometers_triggers
+//@callbacks: onSuccessBlock with newly created odometer trigger
+//OnFailureBlock: connection fails
+
+
+
+
+/* example*/
+//NSDictionary *dictionary = @{@"type":@"specific", @"threshold":@11};
+//VLOdometerTrigger *trigger = [[VLOdometerTrigger alloc]initWithDictionary:dictionary];
+//pass unit in creation method
+
+
+
+
+- (void)createOdometerTrigger:(VLOdometerTrigger *)odometerTrigger unit:(NSString *)unit vehicleId:(NSString *)vehicleId OnSuccess:(void (^)(VLOdometerTrigger *odometerTrigger, NSHTTPURLResponse *response))onSuccessBlock
+                    onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+- (void)getOdometerTriggersForVehicleWithId:(NSString *)vehicleId timeSeries:(VLTimeSeries *)timeSeries onSucess:(void (^)(VLOdometerTriggerPager *odometerTriggerPager, NSHTTPURLResponse *response))onSuccessBlock
+                                  onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+- (void)getOdometerTriggersForVehicleWithId:(NSString *)vehicleId onSucess:(void (^)(VLOdometerTriggerPager *odometerTriggerPager, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+
+- (void)getOdometerTriggerWithId:(nonnull NSString *)odometerTriggerId onSuccess:(void (^)(VLOdometerTrigger *odometerTrigger, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+
+- (void)deleteOdometerTriggerWithId:(nonnull NSString *)odometerTriggerId onSuccess:(void (^)(NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
 
 
 
