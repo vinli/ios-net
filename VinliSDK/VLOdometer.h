@@ -14,6 +14,7 @@
 @property (readonly) NSNumber *reading;
 @property (readonly) NSString *dateStr;
 @property (readonly) NSURL *vehicleURL;
+@property (readonly, nonatomic) NSDate *date;
 
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;

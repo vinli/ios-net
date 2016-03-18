@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "VLDateFormatter.h"
 
 @interface VLTestHelper : NSObject
 
@@ -17,6 +18,7 @@
 + (NSString *)deviceId;
 + (NSString *)vehicleId;
 + (NSString *)odometerId;
++ (NSString *)tripId;
 + (NSString *)odometerTriggerId;
 + (NSDictionary *)getVehicleJSON:(NSString *) deviceId;
 + (NSDictionary *)getTripJSON: (NSString *) vehicleId;

@@ -7,9 +7,10 @@
 // 
 
 #import "VLTrip.h"
+#import "VLDateFormatter.h"
 #import "NSDictionary+NonNullable.h"
 
-static NSDateFormatter* isoDateFormatter;
+
 
 @interface VLTrip()
 @property (strong, nonatomic) NSDate* startDate;
@@ -72,34 +73,24 @@ static NSDateFormatter* isoDateFormatter;
 }
 
 
-- (void)initializeDateFormatter
-{
-    if (isoDateFormatter) {
-        return;
-    }
-    
-    isoDateFormatter = [[NSDateFormatter alloc] init];
-    NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
-    [isoDateFormatter setLocale:enUSPOSIXLocale];
-    [isoDateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZ"];
-}
+
 
 
 - (NSDate *)startDate
 {
     if (!_startDate) {
-        [self initializeDateFormatter];
-        _startDate = [isoDateFormatter dateFromString:self.start];
+        _startDate = [VLDateFormatter initializeDateFromString:self.start];
+
     }
     
     return _startDate;
+    
 }
 
 - (NSDate *)stopDate
 {
     if (!_stopDate) {
-        [self initializeDateFormatter];
-        _stopDate = [isoDateFormatter dateFromString:self.stop];
+        _stopDate = [VLDateFormatter initializeDateFromString:self.stop];
     }
     
     return _stopDate;

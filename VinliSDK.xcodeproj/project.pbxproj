@@ -123,6 +123,8 @@
 		77B3C1B01C99ECF100BE836A /* VLOdometerTrigger.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B3C1AE1C99ECF100BE836A /* VLOdometerTrigger.m */; };
 		77B3C1B31C99F3C700BE836A /* VLOdometerTriggerPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 77B3C1B11C99F3C700BE836A /* VLOdometerTriggerPager.h */; };
 		77B3C1B41C99F3C700BE836A /* VLOdometerTriggerPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B3C1B21C99F3C700BE836A /* VLOdometerTriggerPager.m */; };
+		77B3C1B71C9B300C00BE836A /* VLDateFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 77B3C1B51C9B300C00BE836A /* VLDateFormatter.h */; };
+		77B3C1B81C9B300C00BE836A /* VLDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B3C1B61C9B300C00BE836A /* VLDateFormatter.m */; };
 		77BE999B1C690E77001E8F64 /* VLTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 77BE99991C690E77001E8F64 /* VLTimeSeries.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		77BE999C1C690E77001E8F64 /* VLTimeSeries.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BE999A1C690E77001E8F64 /* VLTimeSeries.m */; };
 		77BE999D1C73A4A5001E8F64 /* VLOffsetPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B3DDC281B14C31B00D95E61 /* VLOffsetPager.h */; };
@@ -258,6 +260,8 @@
 		77B3C1AE1C99ECF100BE836A /* VLOdometerTrigger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLOdometerTrigger.m; sourceTree = "<group>"; };
 		77B3C1B11C99F3C700BE836A /* VLOdometerTriggerPager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLOdometerTriggerPager.h; sourceTree = "<group>"; };
 		77B3C1B21C99F3C700BE836A /* VLOdometerTriggerPager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLOdometerTriggerPager.m; sourceTree = "<group>"; };
+		77B3C1B51C9B300C00BE836A /* VLDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLDateFormatter.h; sourceTree = "<group>"; };
+		77B3C1B61C9B300C00BE836A /* VLDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLDateFormatter.m; sourceTree = "<group>"; };
 		77BE99991C690E77001E8F64 /* VLTimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLTimeSeries.h; sourceTree = "<group>"; };
 		77BE999A1C690E77001E8F64 /* VLTimeSeries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTimeSeries.m; sourceTree = "<group>"; };
 		BB7D1A79C1AEAD3F566D9FA4 /* Pods-VinliSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinliSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VinliSDKTests/Pods-VinliSDKTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -350,6 +354,8 @@
 				0B1671071B0FC2B8009BE7A9 /* Supporting Files */,
 				0B2277041B167303000AF179 /* VLSession.h */,
 				0B2277051B167303000AF179 /* VLSession.m */,
+				77B3C1B51C9B300C00BE836A /* VLDateFormatter.h */,
+				77B3C1B61C9B300C00BE836A /* VLDateFormatter.m */,
 			);
 			path = VinliSDK;
 			sourceTree = "<group>";
@@ -556,6 +562,7 @@
 				0B16714D1B0FC39D009BE7A9 /* VLTelemetryMessage.h in Headers */,
 				0B1671391B0FC39D009BE7A9 /* VLBoundary.h in Headers */,
 				0B3DDC541B1518BE00D95E61 /* VLRulePager.h in Headers */,
+				77B3C1B71C9B300C00BE836A /* VLDateFormatter.h in Headers */,
 				77BE999B1C690E77001E8F64 /* VLTimeSeries.h in Headers */,
 				49E2F2FF1B6AA93700CD743C /* NSDictionary+NonNullable.h in Headers */,
 				77BE999E1C73A4A5001E8F64 /* VLVehicle.h in Headers */,
@@ -786,6 +793,7 @@
 				0B16714E1B0FC39D009BE7A9 /* VLTelemetryMessage.m in Sources */,
 				E92943751B17D6B100AAC7D3 /* VLDevicePager.m in Sources */,
 				0B16713A1B0FC39D009BE7A9 /* VLBoundary.m in Sources */,
+				77B3C1B81C9B300C00BE836A /* VLDateFormatter.m in Sources */,
 				777A6B941C9729EA0050F6C0 /* VLOdometer.m in Sources */,
 				0B1671501B0FC39D009BE7A9 /* VLVehicle.m in Sources */,
 				0B3DDC271B14C28600D95E61 /* VLPager.m in Sources */,

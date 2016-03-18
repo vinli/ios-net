@@ -15,7 +15,7 @@
 
 @interface VLTripsIntegrationTests : XCTestCase
 @property NSDictionary *trips;
-@property NSString *tripId;
+@property NSDictionary *trip;
 @property NSDictionary *vehicleTrips;
 
 
@@ -41,8 +41,16 @@
 }];
     [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
     
-    self.tripId = @"5ea04e77-d878-4775-8c3c-38eb966f349a";
-
+    XCTestExpectation *singleTripExpectation = [self expectationWithDescription:@"uri call for single trip"];
+    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://trips.vin.li/api/v1/trips/%@", [VLTestHelper tripId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        [singleTripExpectation fulfill];
+        self.trip = result;
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
+        XCTAssertTrue(NO);
+    }];
+    
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
+    
     
     XCTestExpectation *vehicleTripExpectation = [self expectationWithDescription:@"call to get a vehicles trips"];
     [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://trips.vin.li/api/v1/vehicles/%@/trips", [VLTestHelper vehicleId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
@@ -53,6 +61,11 @@
         XCTAssertTrue(NO);
     }];
     [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
+    
+    
+    
+    
+
 
 }
 
@@ -91,13 +104,21 @@
 
 
 - (void)testTripWithId {
-
+    NSDictionary *expectedJSON = [VLTestHelper cleanDictionary:self.trip[@"trip"]];
     XCTestExpectation *singleExpectedTrip = [self expectationWithDescription:@"test service call for getting a single trip"];
-    [[VLSessionManager sharedManager].service getTripWithId:self.tripId onSuccess:^(VLTrip *trip, NSHTTPURLResponse *response) {
+    [[VLSessionManager sharedManager].service getTripWithId:[VLTestHelper tripId] onSuccess:^(VLTrip *trip, NSHTTPURLResponse *response) {
         [singleExpectedTrip fulfill];
-        XCTAssert(trip != nil);
-        XCTAssert(trip.tripId != nil);
-        XCTAssert(trip.selfURL != nil);
+        XCTAssertEqualObjects(trip.tripId, expectedJSON[@"id"]);
+        XCTAssertEqualObjects(trip.start, expectedJSON[@"start"]);
+        XCTAssertEqualObjects([VLDateFormatter stringFromDate:[trip startDate]], expectedJSON[@"start"]);
+        XCTAssertEqualObjects(trip.stop, expectedJSON[@"stop"]);
+        XCTAssertEqualObjects([VLDateFormatter stringFromDate:[trip stopDate]], expectedJSON[@"stop"]);
+        XCTAssertEqualObjects(trip.status, expectedJSON[@"status"]);
+        
+        
+        
+
+       
         
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
