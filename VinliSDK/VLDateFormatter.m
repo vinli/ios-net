@@ -52,7 +52,7 @@ static NSDateFormatter* isoDateToStringFormatter;
     
     NSInteger seconds = [[NSTimeZone systemTimeZone] secondsFromGMT];
     isoStringToDateFormatter = [[NSDateFormatter alloc] init];
-    [isoStringToDateFormatter setDateFormat:@"yyyy-HM-dd'T'HH:mm:ss.SSSZZZZ'"];
+    [isoStringToDateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ'"];
     [isoStringToDateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:seconds]];
 
 
