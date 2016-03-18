@@ -8,6 +8,19 @@
 
 #import "VLOdometer.h"
 #import "NSDictionary+NonNullable.h"
+#import "VLDateFormatter.h"
+
+
+
+
+
+@interface VLOdometer()
+@property (strong, nonatomic) NSDate *date;
+@end
+
+
+
+
 
 @implementation VLOdometer
 
@@ -53,6 +66,16 @@
     return odometer;
     
     
+}
+
+
+
+- (NSDate *)date {
+    if (!_date) {
+        _date = [VLDateFormatter initializeDateFromString:self.dateStr];
+        
+    }
+    return _date;
 }
 
 @end

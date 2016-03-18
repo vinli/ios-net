@@ -41,6 +41,7 @@
 #import "VLOdometerPager.h"
 #import "VLOdometerTrigger.h"
 #import "VLOdometerTriggerPager.h"
+#import "VLDateFormatter.h"
 
 
 #pragma clang diagnostic ignored "-Wnullability-completeness"
