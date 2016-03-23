@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '3170E5FF7F7338D144BAB1EC'
+               BlueprintIdentifier = '15C487A10F7BF8BF74C8FADF'
                BlueprintName = 'VinliUIResources'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libVinliUIResources.a'>

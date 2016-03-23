@@ -7,17 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		018B463B37C237938C80A9C68D1C6E96 /* VLUserPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A8DA20CBEF97F1FBA81976E272E4AA0 /* VLUserPickerViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		03EF931564978791D4ABC400F3FDDBED /* OCMVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = E43E9CA2F306C7DB95BE7D2E6141CCE8 /* OCMVerifier.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		046937EA1C4859D4D96EFA7B7687E441 /* OCMBlockCaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7AA0923A4732C1B7C8C3102C0B8A55 /* OCMBlockCaller.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		055723E23A7A66D0E9564712C48E59E2 /* VinliUIResources.h in Headers */ = {isa = PBXBuildFile; fileRef = 66D4AD079020097E25960F7404AE5CDB /* VinliUIResources.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0934D3DAC27331C1569A357A677B2206 /* NSMethodSignature+OCMAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 9527469BA37C84399D12820A6CC526C6 /* NSMethodSignature+OCMAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		0A7C4089DBD8BD40374AFA8EEAB7CA3C /* OCMPassByRefSetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C317BBC48BDB08517A1F34CEF76F54D /* OCMPassByRefSetter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		0DBC1BB9708E74154FBE096321252C81 /* WhitneyHTF-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 86B8E7460608F4739A9F0C1C3877A8E3 /* WhitneyHTF-Medium.otf */; };
 		0EE98780873CB1A29EE8B4A36BA7E14A /* OCMFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = F2E14F26554BD55BB72FEEBAFA66D557 /* OCMFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		10AEAD2136880EEE7E771F533331F250 /* OCMock.h in Headers */ = {isa = PBXBuildFile; fileRef = F137173F9CF2296CAB75961E7D32EAA8 /* OCMock.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		149DE9C6DB74B12EFF07D185484D946F /* NSInvocation+OCMAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 638876C289DC86DA86BC2CEDC5E667BE /* NSInvocation+OCMAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		1586CD3BDB1E92D87A0E423AAC313FD4 /* OCMObserverRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EADD5FDDF0F6872D52A66D19463C48F /* OCMObserverRecorder.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		17DB6BAE2C371EB34A6E3F536945004F /* icn_checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6887800079534A83711F9504AA23A849 /* icn_checkmark@2x.png */; };
 		1B7E21160BEF08CC76BA8C17E94E455A /* OCMLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB630B2DAC2353B459788401945D97 /* OCMLocation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		1D09CF0BAC1D7C79651779810D71077D /* VNLDevicePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 074E98CF27B033B9ACBEAC6243DAC618 /* VNLDevicePickerViewController.m */; };
+		1D09CF0BAC1D7C79651779810D71077D /* VNLDevicePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 104D5AFCEC7201D27CA752117F236D6F /* VNLDevicePickerViewController.m */; };
 		20C39DB909C33B491D60F23FA1D415C2 /* OCMRealObjectForwarder.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FA65EDA8217AA85B34B2B0E96E642F /* OCMRealObjectForwarder.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		272E77251C73DB568F035CB5DD53249D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
 		3152811CD17686AA726713BFE3612206 /* OCMConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 914DDCAE22282C3410EF5AF0E63F7AB1 /* OCMConstraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -25,21 +27,26 @@
 		3A769EE15211B7EBBAF4B1C8AD542502 /* OCMFunctionsPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F6AD38FA4978BC5D7E8F32453E06BAB /* OCMFunctionsPrivate.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		3EEE56426C5838CA2F13E8F95B594401 /* OCMRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3217F14E2190A0F02DF7A5AFB392C1 /* OCMRecorder.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		40B2ABF25812A14D83A05D8937FBDB7B /* OCProtocolMockObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DFD97FFCF8917A67B4187B67938E6E4 /* OCProtocolMockObject.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		40D49C708DAF2DD9C6C02EB04D8C244A /* VLUserPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB1690792235F631B89EFB7881A8EEE /* VLUserPickerViewController.m */; };
+		40D49C708DAF2DD9C6C02EB04D8C244A /* VLUserPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C309C135E36DA42BA7D4915D8F7F30D /* VLUserPickerViewController.m */; };
+		41E3910FCFDCFFEBE9760B0428DDBCAB /* VNLDevicePickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 08CCF949925D215A0CA09E1E9AC23CC4 /* VNLDevicePickerViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4AF2A962774BEC3953865BEC5F79EB5C /* vinli_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ECC926C782EA8112D39C6378476B934 /* vinli_icon@2x.png */; };
 		4CF0A4AD04F2F3CF7465991A5E76AD47 /* OCMStubRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0974FBE25326D0D926C44BE86F8D8C /* OCMStubRecorder.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4E708CAACCBE7A4320B9023C5FA28270 /* icn_checkmark@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = E7D7DFF23DC2BD631CDB7EAF0EF9424B /* icn_checkmark@1x.png */; };
 		55EA7FCA2F507BCC25959CE95D295A8C /* OCMConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = CA13BDE0653E6CE653756C0F34D75CBD /* OCMConstraint.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		55F2C7C98AB5E300663D064AAA64B80B /* OCMArgAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 662752C0FDF6135C9CC3DEB9DA750726 /* OCMArgAction.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		562C4A7A171B6F0000B132E22372C3DA /* OCPartialMockObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 36A59B5914E9892A9E4F3C1F2D74E7DD /* OCPartialMockObject.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		59BC54DA90AD2433D20358F9853622CA /* OCMMacroState.m in Sources */ = {isa = PBXBuildFile; fileRef = 483303A117875B599261961B32BA9FCB /* OCMMacroState.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5BB246B2587EBC3E5597DBD6CD33777F /* NSMethodSignature+OCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C459598DE430610C385CF08A9971725 /* NSMethodSignature+OCMAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5DE7BCB5A00C1E875AB54D578E3CC566 /* VLUserPickerTableCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C32B1F785BDE92FF630DE4911CAB0BB /* VLUserPickerTableCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5E279FED57021E3C50468564F86AA8A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
 		5F04262019BBB326960E643861626099 /* OCMExceptionReturnValueProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = F603C6C681E472E9FBDCF1F98FBB7B7D /* OCMExceptionReturnValueProvider.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		6105C9351F474E5B2ACB873AB2EFDEC6 /* VNLDevicePickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F3EE1FFB07AA5EBBF6AB7DAAEBD7911A /* VNLDevicePickerTableViewCell.m */; };
+		5F7847ECC1819E9D08792AAA9D23C474 /* default_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EF03C27D9308F889B6ED29C928F8EFA /* default_icon@2x.png */; };
+		6105C9351F474E5B2ACB873AB2EFDEC6 /* VNLDevicePickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD694DD4DC496A9D1FB47990864BF95 /* VNLDevicePickerTableViewCell.m */; };
 		61F1E4357801732CF44C58A5260E5C10 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FA85BFADFE7886A233A160CAE8F677 /* Pods-dummy.m */; };
 		651F3096B56BFF131C5F956001D7BAAB /* OCMArg.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C2607D3107818A07E721EC2E5B83A1 /* OCMArg.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		672FE514B7C1EB583AF6CEB2538025A7 /* OCMBoxedReturnValueProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D6F72303754C772814AFD42964E77A1 /* OCMBoxedReturnValueProvider.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		69703329F5A5A3266A04A12A1694729E /* VinliUIResources-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AD52B161E975B06EAC7BCF775389E9FB /* VinliUIResources-dummy.m */; };
-		6D27E219BAF3E0C65E6453E13F17E8E5 /* VLUserPickerTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9CB1557EC686F4278E422EE43AB1863 /* VLUserPickerTableCell.m */; };
+		69703329F5A5A3266A04A12A1694729E /* VinliUIResources-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C25DF2B02CDF71CA172C75A5A644ECD /* VinliUIResources-dummy.m */; };
+		6D27E219BAF3E0C65E6453E13F17E8E5 /* VLUserPickerTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 42C55023D0B1C9833F004996E8EB87F2 /* VLUserPickerTableCell.m */; };
 		6D2AD1DFA8F27BA0EBB3365A5AF7AC1B /* OCMExpectationRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 54850673E7AE9B6519B1CE4BFEE499A9 /* OCMExpectationRecorder.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		70AC31D0736F568C0386716176361D09 /* OCMInvocationMatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EA4E16B0166BA178D0599CDAEAA6854 /* OCMInvocationMatcher.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		71899DFD8094C412FFC39669279B4533 /* OCMBlockArgCaller.h in Headers */ = {isa = PBXBuildFile; fileRef = D483095DA052D0F8DD35A6CD6077C870 /* OCMBlockArgCaller.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -47,38 +54,41 @@
 		7EE0FD33AB30006545874DEF02F9243E /* OCMNotificationPoster.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E54A985E57EE4377BB85DAB782CBB7 /* OCMNotificationPoster.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7FFCEEC0036EC9E7A5D3BAD719B28D4A /* NSNotificationCenter+OCMAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3312582F275DB5DDA1C8928EFC09B05C /* NSNotificationCenter+OCMAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		830B3A29668D59C62571A4CE4D3BAFCA /* OCMIndirectReturnValueProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 811860EE31BD386AC34AD87AAA4B5AE0 /* OCMIndirectReturnValueProvider.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		858CEA89EC358A1AE8CDD02B739B929B /* WhitneyHTF-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B35EF1350D615599A7AFC05DA3E0C339 /* WhitneyHTF-Light.otf */; };
 		87AA263FA688A8E92C2B8ADEE72C98C6 /* OCMObserverRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C535B63FC36C71F65EF6DBD80A3644F /* OCMObserverRecorder.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		8A1370FF0DD475F945954535A988ED4B /* OCMockObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 25F1886F79DE7DA5955613EBB2146A7D /* OCMockObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8CE2F0E2D9041B7938BFD5AAA416E343 /* icn_checkmark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24934D6A55DAD6620EFD03E61BC685B7 /* icn_checkmark@3x.png */; };
 		8D40AF80800C0D4A691F4A0656E53D98 /* OCMRealObjectForwarder.h in Headers */ = {isa = PBXBuildFile; fileRef = A4FADCBA913FD62F7CD901CCA4EC50A6 /* OCMRealObjectForwarder.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		94216C983E91F2BA503920465DE1972A /* OCClassMockObject.h in Headers */ = {isa = PBXBuildFile; fileRef = E8F80CD02A75227A72AF4D9B6BC8F4A5 /* OCClassMockObject.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		95076C666365D158461C99994701B012 /* Pods-VinliSDKTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5172F055CAEE2E601015F9388D7963 /* Pods-VinliSDKTests-dummy.m */; };
 		950C209E1D004EBDCD43D6C2136B5AA2 /* OCMStubRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = E6E6DC5765291E97A74367B6CD553397 /* OCMStubRecorder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9C195CB2280DCD3183057794B4504B22 /* OCMRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = F24DB96343355AA699F7F7C09F729C7E /* OCMRecorder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9C62B6D8570DC68ADB199A4F0E3B7EC3 /* WhitneyHTF-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 66BC93DEF0F89C86E339FB85B355298F /* WhitneyHTF-Light.otf */; };
+		9CAC865CB995FE4DCE4CA67EB80983A7 /* vinli_icon@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22623565DD7DB920194DDD62B9F556F9 /* vinli_icon@1x.png */; };
 		9ED6B48F0C000C83C89249483D3398A6 /* OCMFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7595D836442484519C0AEEDA0CEDB764 /* OCMFunctions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9F4A1A7711D8B857F7AF14A68305F70B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		A15DDB53229B2A18F49B1A3285499464 /* Vinli.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC195FA5F0CBFF0C1079EF40910B47B0 /* Vinli.storyboard */; };
 		A425B4C6EAA79B2C9BB4F374180DC194 /* NSValue+OCMAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 16C1F2D4DE5FC51A8B6B736FC3F765F4 /* NSValue+OCMAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A516CB608A827C4FEA550CB372854AF7 /* OCMReturnValueProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = BD2D0734D844DA6E171965870138DC0B /* OCMReturnValueProvider.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		A6C13195B097C477306ABB8B3D02DE79 /* VLUserPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 674D6EC6D2FE5B5BBCC7DA1DC18BBDDF /* VLUserPickerViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A84C1C21C445632BE8DD9956D4EA1E01 /* VNLDevicePickerTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = F47DCDC59A1A55AAE5E1B69F2F60123C /* VNLDevicePickerTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD672A92EF1A71CB35F77D51924A63D7 /* OCMInvocationStub.h in Headers */ = {isa = PBXBuildFile; fileRef = 81157FA34EC2F20F7B488766E2E2BA69 /* OCMInvocationStub.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		B0A02F6B9DE4FD0979184272FEBE069A /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E3C30B27ADC29E55AB7CEC9D4C3BF38 /* images.xcassets */; };
 		B28B82281F2A75B1A27E9B1B289B179D /* OCClassMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3594F9D0AB59F55A90690086627866CD /* OCClassMockObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B36995CF7E36CC57C8C118EC5EC049A6 /* OCMock-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1357BC4A54BC9BDFCB4FC6AEAB6048A9 /* OCMock-dummy.m */; };
 		B4D6973B3F74EB04E719BFCFCBF04C0B /* OCMInvocationStub.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D42A5F9AB1E0DC588C6A3874C3EBE0E /* OCMInvocationStub.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B59FA3E41BE76CA7EBC992B26963967E /* icn_bluetooth@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33011D7211E2289209A10C367BF12C1D /* icn_bluetooth@3x.png */; };
+		B6FA3680BD123E7A0BD053662278E0D1 /* VNLDevicePickerTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D98DF958EF10D105F38B07018FC24B8B /* VNLDevicePickerTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BA61479A8D4E889651CCB3FACA5B2D95 /* vinli_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7F0E7B5E2F751FC3EC39A0E967F87B6 /* vinli_icon@3x.png */; };
 		BC7143B82E45DDE808B1D8E8F6970E41 /* OCMInvocationExpectation.h in Headers */ = {isa = PBXBuildFile; fileRef = F0F4A6A6FD63C0D5EE543EE88C2E5F25 /* OCMInvocationExpectation.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C01520F21314A4A11E0BD5C9BE190A1A /* OCMExpectationRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = 791F6E6C76E25E20F12356E74A02E4C2 /* OCMExpectationRecorder.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		C11B87F1AC4A1B5DE2AA5B9B3A03D138 /* VLUserPickerTableCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 09652566715C87CC4FDB55396E2D03BD /* VLUserPickerTableCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C4235F3704F471BAF74CB4482A99D340 /* OCMReturnValueProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = A62848D638F77901D8D0C116E0066781 /* OCMReturnValueProvider.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C508640C7607A5BE183916AC4202A026 /* OCMInvocationMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC5E7DC3F04DCF0F85F81496BE3C8E2 /* OCMInvocationMatcher.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C55C0B0594D26DE09DEC7F161910A211 /* OCObserverMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D1C908FEFBEE732D8E050C3D8FD562 /* OCObserverMockObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C6DEDAD5B01946A2644F428020F881B6 /* OCObserverMockObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 454E2D90A2917450FDF09C51CF686732 /* OCObserverMockObject.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C796F27878B148315E4EB60535EEA4BE /* OCMLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 93A2DA12B7FFDD7AA8BB9757A6167462 /* OCMLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C8228EC14500F56F6B335D9C64E4DE8A /* icn_bluetooth@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F66F6477E4EDA11E788CF1E8F4DDFA3F /* icn_bluetooth@2x.png */; };
 		CC40C17D2E01DDDF48A7A8D50B8E92F8 /* OCMMacroState.h in Headers */ = {isa = PBXBuildFile; fileRef = 51020CB04843950D92EA77E154C50737 /* OCMMacroState.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CC4F14C27B167A64F09A356652410909 /* OCMInvocationExpectation.m in Sources */ = {isa = PBXBuildFile; fileRef = E90F1746941B3FFD6D567EBC527517F1 /* OCMInvocationExpectation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CC5C84B30927F4CE48D7EC04BF652005 /* OCMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 14DC03CC218CD72500811A7E2B5B74E1 /* OCMockObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CE1D11A21BB0D710B640F31B18935BF3 /* NSObject+OCMAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = C75B178292D26EEAFC37AE15F4484430 /* NSObject+OCMAdditions.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		CFCB706C40E76F5E6BF36F56D2CB941C /* icn_bluetooth@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 863F4EC5D23A05464FE4D6D543A6C5F4 /* icn_bluetooth@1x.png */; };
+		D1CB5874C8AC9759C339F49F7D04FD33 /* Vinli.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 443901454E4E544F8331D4D22E2E0D0A /* Vinli.storyboard */; };
 		D470FD7FF206B100A7B79714E7FA0F4A /* OCMNotificationPoster.h in Headers */ = {isa = PBXBuildFile; fileRef = C09ED70F3F23B5607267073061DE266E /* OCMNotificationPoster.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D78D41AA2CEB6ED571503108CEC3DA15 /* OCMArg.h in Headers */ = {isa = PBXBuildFile; fileRef = 69558BD0DB18D1B8BB12A507F15B8B9F /* OCMArg.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D9EA9C8052853B8962318FFD5A5551B6 /* OCMExceptionReturnValueProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 316556286F506E28036568E5473A9627 /* OCMExceptionReturnValueProvider.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -92,20 +102,20 @@
 		EA2A970253EA9B298F0BB63864AA18D1 /* OCProtocolMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AE24FA599B71AD8918EB67E7871BA527 /* OCProtocolMockObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		EEBEC3C68DD8C679511876B4610D582A /* OCMBoxedReturnValueProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E4475FABAA116E70EC0C1EED91CBDDA /* OCMBoxedReturnValueProvider.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F0E9BE1709D8B3501A9E791E8D36FBED /* NSNotificationCenter+OCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B18F6CEAB5D1FA1DF186FFD0B7F6FFF3 /* NSNotificationCenter+OCMAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F3E2D00B3ED99FEE764CD5E31A54CCC2 /* WhitneyHTF-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 05AAF79DE19D8416A340DE091532B6AA /* WhitneyHTF-Medium.otf */; };
 		F7D947559AFD09037019ED14D58E59E6 /* Pods-VinliSDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 85935E1295754081D1DDFE38F8B5251D /* Pods-VinliSDK-dummy.m */; };
 		F7FA41381736E74FB6120847FDCEF452 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
 		FB294C8C8DCC4EACB074C58C027C9723 /* OCMIndirectReturnValueProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = A57FAB1E7BCA9A71F44D17124B8C314A /* OCMIndirectReturnValueProvider.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		FDFD77CF38AE5FDD235A02217B763809 /* OCMBlockCaller.h in Headers */ = {isa = PBXBuildFile; fileRef = 1724C18E655D26341007BF1FC653703D /* OCMBlockCaller.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		FE0A5ACA3D5292C313A826E4E4CA03B5 /* VNLDevicePickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 66C179FEA8D2D8B1D431BEEE15053680 /* VNLDevicePickerViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		833DF2409AA8D6920AF6EC8D8768C8C5 /* PBXContainerItemProxy */ = {
+		406884079E2570E1F3E218E76C56FACA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9F69C60A6953ED7C45EA166FA44F3F07;
-			remoteInfo = "VinliUIResources-Resources";
+			remoteGlobalIDString = 9E28763BC1BD9455833B2448B8D9BD6B;
+			remoteInfo = "VinliUIResources-VinliUIResources";
 		};
 		8E71064D6D6412087815121F9E5AEB1D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -138,11 +148,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		074E98CF27B033B9ACBEAC6243DAC618 /* VNLDevicePickerViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VNLDevicePickerViewController.m; sourceTree = "<group>"; };
-		09652566715C87CC4FDB55396E2D03BD /* VLUserPickerTableCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VLUserPickerTableCell.h; sourceTree = "<group>"; };
+		04513C608645A57FB2D305ED1F5F7D56 /* VinliUIResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VinliUIResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		05AAF79DE19D8416A340DE091532B6AA /* WhitneyHTF-Medium.otf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = "WhitneyHTF-Medium.otf"; sourceTree = "<group>"; };
+		08CCF949925D215A0CA09E1E9AC23CC4 /* VNLDevicePickerViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VNLDevicePickerViewController.h; sourceTree = "<group>"; };
 		0C317BBC48BDB08517A1F34CEF76F54D /* OCMPassByRefSetter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMPassByRefSetter.m; path = Source/OCMock/OCMPassByRefSetter.m; sourceTree = "<group>"; };
 		0C535B63FC36C71F65EF6DBD80A3644F /* OCMObserverRecorder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMObserverRecorder.h; path = Source/OCMock/OCMObserverRecorder.h; sourceTree = "<group>"; };
 		0EADD5FDDF0F6872D52A66D19463C48F /* OCMObserverRecorder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMObserverRecorder.m; path = Source/OCMock/OCMObserverRecorder.m; sourceTree = "<group>"; };
+		0ECC926C782EA8112D39C6378476B934 /* vinli_icon@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "vinli_icon@2x.png"; sourceTree = "<group>"; };
+		104D5AFCEC7201D27CA752117F236D6F /* VNLDevicePickerViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VNLDevicePickerViewController.m; sourceTree = "<group>"; };
 		1357BC4A54BC9BDFCB4FC6AEAB6048A9 /* OCMock-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "OCMock-dummy.m"; sourceTree = "<group>"; };
 		14DC03CC218CD72500811A7E2B5B74E1 /* OCMockObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMockObject.m; path = Source/OCMock/OCMockObject.m; sourceTree = "<group>"; };
 		16C1F2D4DE5FC51A8B6B736FC3F765F4 /* NSValue+OCMAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSValue+OCMAdditions.h"; path = "Source/OCMock/NSValue+OCMAdditions.h"; sourceTree = "<group>"; };
@@ -150,20 +163,27 @@
 		1B5172F055CAEE2E601015F9388D7963 /* Pods-VinliSDKTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VinliSDKTests-dummy.m"; sourceTree = "<group>"; };
 		1D42A5F9AB1E0DC588C6A3874C3EBE0E /* OCMInvocationStub.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMInvocationStub.m; path = Source/OCMock/OCMInvocationStub.m; sourceTree = "<group>"; };
 		1DD4BCCE7DFC1ABD4C644B70CEA30751 /* Pods-VinliSDK-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-VinliSDK-acknowledgements.markdown"; sourceTree = "<group>"; };
+		1EF03C27D9308F889B6ED29C928F8EFA /* default_icon@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "default_icon@2x.png"; sourceTree = "<group>"; };
 		204EE12ACE7B27D8338DAB30117C92F0 /* Pods-VinliSDK-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VinliSDK-acknowledgements.plist"; sourceTree = "<group>"; };
 		206297666E3ED5C76DE6EC15F499BAC2 /* NSValue+OCMAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSValue+OCMAdditions.m"; path = "Source/OCMock/NSValue+OCMAdditions.m"; sourceTree = "<group>"; };
+		22623565DD7DB920194DDD62B9F556F9 /* vinli_icon@1x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "vinli_icon@1x.png"; sourceTree = "<group>"; };
 		2460DAEC89AFB2B47FE535431A3D0628 /* Pods-VinliSDK-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VinliSDK-resources.sh"; sourceTree = "<group>"; };
+		24934D6A55DAD6620EFD03E61BC685B7 /* icn_checkmark@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "icn_checkmark@3x.png"; sourceTree = "<group>"; };
 		25F1886F79DE7DA5955613EBB2146A7D /* OCMockObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMockObject.h; path = Source/OCMock/OCMockObject.h; sourceTree = "<group>"; };
 		27FA85BFADFE7886A233A160CAE8F677 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
 		2EA4E16B0166BA178D0599CDAEAA6854 /* OCMInvocationMatcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMInvocationMatcher.h; path = Source/OCMock/OCMInvocationMatcher.h; sourceTree = "<group>"; };
 		316556286F506E28036568E5473A9627 /* OCMExceptionReturnValueProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMExceptionReturnValueProvider.m; path = Source/OCMock/OCMExceptionReturnValueProvider.m; sourceTree = "<group>"; };
+		33011D7211E2289209A10C367BF12C1D /* icn_bluetooth@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "icn_bluetooth@3x.png"; sourceTree = "<group>"; };
 		3312582F275DB5DDA1C8928EFC09B05C /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSNotificationCenter+OCMAdditions.h"; path = "Source/OCMock/NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
 		3594F9D0AB59F55A90690086627866CD /* OCClassMockObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCClassMockObject.m; path = Source/OCMock/OCClassMockObject.m; sourceTree = "<group>"; };
 		359881A703876DDD13ABAF852CFBE15F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
 		36A59B5914E9892A9E4F3C1F2D74E7DD /* OCPartialMockObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCPartialMockObject.h; path = Source/OCMock/OCPartialMockObject.h; sourceTree = "<group>"; };
 		38983ADCC87DB598637BB93CF784A749 /* Pods-VinliSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VinliSDK.debug.xcconfig"; sourceTree = "<group>"; };
 		3A0974FBE25326D0D926C44BE86F8D8C /* OCMStubRecorder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMStubRecorder.m; path = Source/OCMock/OCMStubRecorder.m; sourceTree = "<group>"; };
+		3A8DA20CBEF97F1FBA81976E272E4AA0 /* VLUserPickerViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VLUserPickerViewController.h; sourceTree = "<group>"; };
 		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		42C55023D0B1C9833F004996E8EB87F2 /* VLUserPickerTableCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VLUserPickerTableCell.m; sourceTree = "<group>"; };
+		443901454E4E544F8331D4D22E2E0D0A /* Vinli.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = Vinli.storyboard; sourceTree = "<group>"; };
 		454E2D90A2917450FDF09C51CF686732 /* OCObserverMockObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCObserverMockObject.h; path = Source/OCMock/OCObserverMockObject.h; sourceTree = "<group>"; };
 		46AB74CD816BC0B04E665A4EBBC4EEFC /* OCPartialMockObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCPartialMockObject.m; path = Source/OCMock/OCPartialMockObject.m; sourceTree = "<group>"; };
 		483303A117875B599261961B32BA9FCB /* OCMMacroState.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMMacroState.m; path = Source/OCMock/OCMMacroState.m; sourceTree = "<group>"; };
@@ -171,34 +191,38 @@
 		50049AC73629CE49C91D9E8E32C11F10 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
 		50B7CAAD378E0F595E050CA3FE845151 /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
 		51020CB04843950D92EA77E154C50737 /* OCMMacroState.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMMacroState.h; path = Source/OCMock/OCMMacroState.h; sourceTree = "<group>"; };
-		5279568CE65FF53B55C499458A3200B9 /* libPods-VinliSDKTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VinliSDKTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52FA65EDA8217AA85B34B2B0E96E642F /* OCMRealObjectForwarder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMRealObjectForwarder.m; path = Source/OCMock/OCMRealObjectForwarder.m; sourceTree = "<group>"; };
 		53E54A985E57EE4377BB85DAB782CBB7 /* OCMNotificationPoster.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMNotificationPoster.m; path = Source/OCMock/OCMNotificationPoster.m; sourceTree = "<group>"; };
 		54850673E7AE9B6519B1CE4BFEE499A9 /* OCMExpectationRecorder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMExpectationRecorder.m; path = Source/OCMock/OCMExpectationRecorder.m; sourceTree = "<group>"; };
 		599C066951ECC2047A0C01C7E8A471D8 /* Pods-VinliSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VinliSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5D6F72303754C772814AFD42964E77A1 /* OCMBoxedReturnValueProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMBoxedReturnValueProvider.m; path = Source/OCMock/OCMBoxedReturnValueProvider.m; sourceTree = "<group>"; };
 		5DC5E7DC3F04DCF0F85F81496BE3C8E2 /* OCMInvocationMatcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMInvocationMatcher.m; path = Source/OCMock/OCMInvocationMatcher.m; sourceTree = "<group>"; };
+		5FD694DD4DC496A9D1FB47990864BF95 /* VNLDevicePickerTableViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VNLDevicePickerTableViewCell.m; sourceTree = "<group>"; };
 		638876C289DC86DA86BC2CEDC5E667BE /* NSInvocation+OCMAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSInvocation+OCMAdditions.h"; path = "Source/OCMock/NSInvocation+OCMAdditions.h"; sourceTree = "<group>"; };
 		64E524FBDD2ADF7B9CAD06BDC3324EE5 /* OCMArgAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMArgAction.h; path = Source/OCMock/OCMArgAction.h; sourceTree = "<group>"; };
 		662752C0FDF6135C9CC3DEB9DA750726 /* OCMArgAction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMArgAction.m; path = Source/OCMock/OCMArgAction.m; sourceTree = "<group>"; };
-		66C179FEA8D2D8B1D431BEEE15053680 /* VNLDevicePickerViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VNLDevicePickerViewController.h; sourceTree = "<group>"; };
-		674D6EC6D2FE5B5BBCC7DA1DC18BBDDF /* VLUserPickerViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VLUserPickerViewController.h; sourceTree = "<group>"; };
+		66BC93DEF0F89C86E339FB85B355298F /* WhitneyHTF-Light.otf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = "WhitneyHTF-Light.otf"; sourceTree = "<group>"; };
+		66D4AD079020097E25960F7404AE5CDB /* VinliUIResources.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VinliUIResources.h; sourceTree = "<group>"; };
+		6887800079534A83711F9504AA23A849 /* icn_checkmark@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "icn_checkmark@2x.png"; sourceTree = "<group>"; };
 		69558BD0DB18D1B8BB12A507F15B8B9F /* OCMArg.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMArg.h; path = Source/OCMock/OCMArg.h; sourceTree = "<group>"; };
 		6BCC155F0E821B4FE759284A99465BAE /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
-		6D15733A2433A558383D83A539F85B9C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BEE71922E67FA4172700C54C2EB7757 /* libPods-VinliSDKTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VinliSDKTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E4475FABAA116E70EC0C1EED91CBDDA /* OCMBoxedReturnValueProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMBoxedReturnValueProvider.h; path = Source/OCMock/OCMBoxedReturnValueProvider.h; sourceTree = "<group>"; };
 		7595D836442484519C0AEEDA0CEDB764 /* OCMFunctions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMFunctions.m; path = Source/OCMock/OCMFunctions.m; sourceTree = "<group>"; };
 		791F6E6C76E25E20F12356E74A02E4C2 /* OCMExpectationRecorder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMExpectationRecorder.h; path = Source/OCMock/OCMExpectationRecorder.h; sourceTree = "<group>"; };
+		7C309C135E36DA42BA7D4915D8F7F30D /* VLUserPickerViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VLUserPickerViewController.m; sourceTree = "<group>"; };
 		7C459598DE430610C385CF08A9971725 /* NSMethodSignature+OCMAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMethodSignature+OCMAdditions.m"; path = "Source/OCMock/NSMethodSignature+OCMAdditions.m"; sourceTree = "<group>"; };
 		7E7AA0923A4732C1B7C8C3102C0B8A55 /* OCMBlockCaller.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMBlockCaller.m; path = Source/OCMock/OCMBlockCaller.m; sourceTree = "<group>"; };
 		80C2607D3107818A07E721EC2E5B83A1 /* OCMArg.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMArg.m; path = Source/OCMock/OCMArg.m; sourceTree = "<group>"; };
 		81157FA34EC2F20F7B488766E2E2BA69 /* OCMInvocationStub.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMInvocationStub.h; path = Source/OCMock/OCMInvocationStub.h; sourceTree = "<group>"; };
 		811860EE31BD386AC34AD87AAA4B5AE0 /* OCMIndirectReturnValueProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMIndirectReturnValueProvider.m; path = Source/OCMock/OCMIndirectReturnValueProvider.m; sourceTree = "<group>"; };
+		84C6FCB2823AA756597066E816A8E38F /* VinliUIResources.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = VinliUIResources.xcconfig; sourceTree = "<group>"; };
 		85935E1295754081D1DDFE38F8B5251D /* Pods-VinliSDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VinliSDK-dummy.m"; sourceTree = "<group>"; };
-		86B8E7460608F4739A9F0C1C3877A8E3 /* WhitneyHTF-Medium.otf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = "WhitneyHTF-Medium.otf"; sourceTree = "<group>"; };
+		863F4EC5D23A05464FE4D6D543A6C5F4 /* icn_bluetooth@1x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "icn_bluetooth@1x.png"; sourceTree = "<group>"; };
 		88FFE8AE017FE629E13939F62D1C8A64 /* Pods-VinliSDKTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VinliSDKTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		89D1C908FEFBEE732D8E050C3D8FD562 /* OCObserverMockObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCObserverMockObject.m; path = Source/OCMock/OCObserverMockObject.m; sourceTree = "<group>"; };
-		8E3C30B27ADC29E55AB7CEC9D4C3BF38 /* images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
+		8C25DF2B02CDF71CA172C75A5A644ECD /* VinliUIResources-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "VinliUIResources-dummy.m"; sourceTree = "<group>"; };
+		8C32B1F785BDE92FF630DE4911CAB0BB /* VLUserPickerTableCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VLUserPickerTableCell.h; sourceTree = "<group>"; };
 		8EBB630B2DAC2353B459788401945D97 /* OCMLocation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMLocation.m; path = Source/OCMock/OCMLocation.m; sourceTree = "<group>"; };
 		8F6AD38FA4978BC5D7E8F32453E06BAB /* OCMFunctionsPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMFunctionsPrivate.h; path = Source/OCMock/OCMFunctionsPrivate.h; sourceTree = "<group>"; };
 		914DDCAE22282C3410EF5AF0E63F7AB1 /* OCMConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMConstraint.h; path = Source/OCMock/OCMConstraint.h; sourceTree = "<group>"; };
@@ -206,52 +230,48 @@
 		93A2DA12B7FFDD7AA8BB9757A6167462 /* OCMLocation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMLocation.h; path = Source/OCMock/OCMLocation.h; sourceTree = "<group>"; };
 		9527469BA37C84399D12820A6CC526C6 /* NSMethodSignature+OCMAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMethodSignature+OCMAdditions.h"; path = "Source/OCMock/NSMethodSignature+OCMAdditions.h"; sourceTree = "<group>"; };
 		9D1748D89CB4818FA3F254C02F35EE6E /* Pods-VinliSDK-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VinliSDK-frameworks.sh"; sourceTree = "<group>"; };
-		9F28DD4D714ABE9657FF5ABE2AAFC4BE /* libPods-VinliSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VinliSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A27EEFCE630EBE9A34E2D8815B4E92D2 /* VinliUIResources-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VinliUIResources-prefix.pch"; sourceTree = "<group>"; };
+		9F68C7BEE72F12F98E7FAA33408F15EC /* libOCMock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOCMock.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2B1493A9C835FA19AF4D20602961165 /* Pods-VinliSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VinliSDKTests.release.xcconfig"; sourceTree = "<group>"; };
-		A2C88E1724697E604B5E000181FC66A7 /* libVinliUIResources.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libVinliUIResources.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4FADCBA913FD62F7CD901CCA4EC50A6 /* OCMRealObjectForwarder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMRealObjectForwarder.h; path = Source/OCMock/OCMRealObjectForwarder.h; sourceTree = "<group>"; };
 		A57FAB1E7BCA9A71F44D17124B8C314A /* OCMIndirectReturnValueProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMIndirectReturnValueProvider.h; path = Source/OCMock/OCMIndirectReturnValueProvider.h; sourceTree = "<group>"; };
 		A5B67145ABAB295B7DD4A93CE3635B61 /* OCMVerifier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMVerifier.h; path = Source/OCMock/OCMVerifier.h; sourceTree = "<group>"; };
 		A62848D638F77901D8D0C116E0066781 /* OCMReturnValueProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMReturnValueProvider.h; path = Source/OCMock/OCMReturnValueProvider.h; sourceTree = "<group>"; };
 		A6E9A4E623B609F9F4E32F45A4A9E1FB /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
 		A8D209F6367D91A0FAAF368E0A20441A /* Pods-VinliSDKTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-VinliSDKTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		AD52B161E975B06EAC7BCF775389E9FB /* VinliUIResources-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "VinliUIResources-dummy.m"; sourceTree = "<group>"; };
-		ADB1690792235F631B89EFB7881A8EEE /* VLUserPickerViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VLUserPickerViewController.m; sourceTree = "<group>"; };
 		AE24FA599B71AD8918EB67E7871BA527 /* OCProtocolMockObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCProtocolMockObject.m; path = Source/OCMock/OCProtocolMockObject.m; sourceTree = "<group>"; };
 		AE2F41E6B4E3D929A3A55A460EC465E8 /* OCMock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = OCMock.xcconfig; sourceTree = "<group>"; };
 		B18F6CEAB5D1FA1DF186FFD0B7F6FFF3 /* NSNotificationCenter+OCMAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSNotificationCenter+OCMAdditions.m"; path = "Source/OCMock/NSNotificationCenter+OCMAdditions.m"; sourceTree = "<group>"; };
-		B35EF1350D615599A7AFC05DA3E0C339 /* WhitneyHTF-Light.otf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = "WhitneyHTF-Light.otf"; sourceTree = "<group>"; };
-		B9CB1557EC686F4278E422EE43AB1863 /* VLUserPickerTableCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VLUserPickerTableCell.m; sourceTree = "<group>"; };
+		B3F4AB9E624E55A3332BF94EAEA9730E /* libPods-VinliSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VinliSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B82D476E301F773B89F5BF1E9F0639C3 /* libVinliUIResources.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libVinliUIResources.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BD2D0734D844DA6E171965870138DC0B /* OCMReturnValueProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMReturnValueProvider.m; path = Source/OCMock/OCMReturnValueProvider.m; sourceTree = "<group>"; };
 		C09ED70F3F23B5607267073061DE266E /* OCMNotificationPoster.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMNotificationPoster.h; path = Source/OCMock/OCMNotificationPoster.h; sourceTree = "<group>"; };
 		C75B178292D26EEAFC37AE15F4484430 /* NSObject+OCMAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+OCMAdditions.h"; path = "Source/OCMock/NSObject+OCMAdditions.h"; sourceTree = "<group>"; };
+		C7995F442E91C492CA8CA35A08653B6A /* VinliUIResources-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "VinliUIResources-prefix.pch"; sourceTree = "<group>"; };
+		C7F0E7B5E2F751FC3EC39A0E967F87B6 /* vinli_icon@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "vinli_icon@3x.png"; sourceTree = "<group>"; };
 		C813729079411BF13795FF727FCE3E6E /* Pods-VinliSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VinliSDK.release.xcconfig"; sourceTree = "<group>"; };
 		CA13BDE0653E6CE653756C0F34D75CBD /* OCMConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMConstraint.m; path = Source/OCMock/OCMConstraint.m; sourceTree = "<group>"; };
-		CEBB0594D9B3607B761D2931EE7537F0 /* VinliUIResources.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = VinliUIResources.xcconfig; sourceTree = "<group>"; };
 		D403BED146DC5900F78E880740363C4A /* Pods-VinliSDKTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VinliSDKTests-resources.sh"; sourceTree = "<group>"; };
 		D483095DA052D0F8DD35A6CD6077C870 /* OCMBlockArgCaller.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMBlockArgCaller.h; path = Source/OCMock/OCMBlockArgCaller.h; sourceTree = "<group>"; };
 		D4D4B5FDC5B66DE7D5F274F4AA587F06 /* NSObject+OCMAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+OCMAdditions.m"; path = "Source/OCMock/NSObject+OCMAdditions.m"; sourceTree = "<group>"; };
-		DC195FA5F0CBFF0C1079EF40910B47B0 /* Vinli.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; path = Vinli.storyboard; sourceTree = "<group>"; };
+		D98DF958EF10D105F38B07018FC24B8B /* VNLDevicePickerTableViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VNLDevicePickerTableViewCell.h; sourceTree = "<group>"; };
+		DC3717FB22FDA4DD5508767E3873FB78 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC69FEA1CB8DB1B9A3831AED1CC0B35E /* Pods-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-frameworks.sh"; sourceTree = "<group>"; };
 		DE3217F14E2190A0F02DF7A5AFB392C1 /* OCMRecorder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMRecorder.m; path = Source/OCMock/OCMRecorder.m; sourceTree = "<group>"; };
 		E3A32DEF6D8D8E02CB68C2A6E36E1AEF /* Pods-VinliSDKTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VinliSDKTests-frameworks.sh"; sourceTree = "<group>"; };
 		E43E9CA2F306C7DB95BE7D2E6141CCE8 /* OCMVerifier.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMVerifier.m; path = Source/OCMock/OCMVerifier.m; sourceTree = "<group>"; };
 		E6E6DC5765291E97A74367B6CD553397 /* OCMStubRecorder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMStubRecorder.h; path = Source/OCMock/OCMStubRecorder.h; sourceTree = "<group>"; };
+		E7D7DFF23DC2BD631CDB7EAF0EF9424B /* icn_checkmark@1x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "icn_checkmark@1x.png"; sourceTree = "<group>"; };
 		E8F80CD02A75227A72AF4D9B6BC8F4A5 /* OCClassMockObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCClassMockObject.h; path = Source/OCMock/OCClassMockObject.h; sourceTree = "<group>"; };
 		E90F1746941B3FFD6D567EBC527517F1 /* OCMInvocationExpectation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMInvocationExpectation.m; path = Source/OCMock/OCMInvocationExpectation.m; sourceTree = "<group>"; };
 		F0F4A6A6FD63C0D5EE543EE88C2E5F25 /* OCMInvocationExpectation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMInvocationExpectation.h; path = Source/OCMock/OCMInvocationExpectation.h; sourceTree = "<group>"; };
 		F137173F9CF2296CAB75961E7D32EAA8 /* OCMock.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMock.h; path = Source/OCMock/OCMock.h; sourceTree = "<group>"; };
 		F24DB96343355AA699F7F7C09F729C7E /* OCMRecorder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMRecorder.h; path = Source/OCMock/OCMRecorder.h; sourceTree = "<group>"; };
 		F2E14F26554BD55BB72FEEBAFA66D557 /* OCMFunctions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMFunctions.h; path = Source/OCMock/OCMFunctions.h; sourceTree = "<group>"; };
-		F3EE1FFB07AA5EBBF6AB7DAAEBD7911A /* VNLDevicePickerTableViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = VNLDevicePickerTableViewCell.m; sourceTree = "<group>"; };
-		F47DCDC59A1A55AAE5E1B69F2F60123C /* VNLDevicePickerTableViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VNLDevicePickerTableViewCell.h; sourceTree = "<group>"; };
 		F603C6C681E472E9FBDCF1F98FBB7B7D /* OCMExceptionReturnValueProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMExceptionReturnValueProvider.h; path = Source/OCMock/OCMExceptionReturnValueProvider.h; sourceTree = "<group>"; };
-		F63CE746F7B48AD8E0A9ECEACBE9D33E /* Resources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Resources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		F66F6477E4EDA11E788CF1E8F4DDFA3F /* icn_bluetooth@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = "icn_bluetooth@2x.png"; sourceTree = "<group>"; };
 		FA77AF7086B37C50CF9E16041EFCBB66 /* NSInvocation+OCMAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSInvocation+OCMAdditions.m"; path = "Source/OCMock/NSInvocation+OCMAdditions.m"; sourceTree = "<group>"; };
 		FBF2D665F4B661BE01174424D5F4E43E /* OCMock-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "OCMock-prefix.pch"; sourceTree = "<group>"; };
-		FCF0B3610150977FA026FA1163CF1323 /* libOCMock.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOCMock.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF83D4F2C0839CACBA0254DF31249D8E /* OCMPassByRefSetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMPassByRefSetter.h; path = Source/OCMock/OCMPassByRefSetter.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -272,18 +292,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		36DD8C50BAA82A93AEC3C6819B75F2C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4C2602132A1D207DB135342BF83AB581 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				5E279FED57021E3C50468564F86AA8A0 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		87FC4C9E6B2E249C7185EFC344FCE21A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,17 +326,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0DEDC4376445E749F68392DF8CE3CE2F /* VinliUIResources */ = {
-			isa = PBXGroup;
-			children = (
-				A1DD1E28FACF6ED262434051185F3D4F /* Resources */,
-				A9116A9A4A30856676D1C7034C0A79E5 /* Support Files */,
-				C5F0A67748642B421C0957180A4F8606 /* VinliUIResources */,
-			);
-			name = VinliUIResources;
-			path = /Users/jaighanekar/Documents/Programs/Vinli/VinliUIResources;
-			sourceTree = "<absolute>";
-		};
 		100031338E0D0416B59FA14460D16F90 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,6 +336,28 @@
 			name = "Support Files";
 			path = "../Target Support Files/OCMock";
 			sourceTree = "<group>";
+		};
+		2F6E580D77A7A279B1B4881BA4C897A6 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				84C6FCB2823AA756597066E816A8E38F /* VinliUIResources.xcconfig */,
+				8C25DF2B02CDF71CA172C75A5A644ECD /* VinliUIResources-dummy.m */,
+				C7995F442E91C492CA8CA35A08653B6A /* VinliUIResources-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../ios-net/Pods/Target Support Files/VinliUIResources";
+			sourceTree = "<group>";
+		};
+		4E83250DF9238FD2BB499210D76FC5E8 /* VinliUIResources */ = {
+			isa = PBXGroup;
+			children = (
+				99A50CB0E66278953A49527A2B5A6DBD /* Resources */,
+				2F6E580D77A7A279B1B4881BA4C897A6 /* Support Files */,
+				A58855CDA9AD4C4B71F635F0B260CD9F /* VinliUIResources */,
+			);
+			name = VinliUIResources;
+			path = /Users/jaighanekar/Documents/Programs/Vinli/VinliUIResources;
+			sourceTree = "<absolute>";
 		};
 		5B600F075A69C69696E9D37553C6A041 /* Pods-VinliSDKTests */ = {
 			isa = PBXGroup;
@@ -346,7 +377,7 @@
 		5FB7D164BE4DD28822460EBC20AF3030 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0DEDC4376445E749F68392DF8CE3CE2F /* VinliUIResources */,
+				4E83250DF9238FD2BB499210D76FC5E8 /* VinliUIResources */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
@@ -460,6 +491,17 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		71ADFB260514E95FE27975F785A1FAAA /* VinliUIResources */ = {
+			isa = PBXGroup;
+			children = (
+				443901454E4E544F8331D4D22E2E0D0A /* Vinli.storyboard */,
+				66BC93DEF0F89C86E339FB85B355298F /* WhitneyHTF-Light.otf */,
+				05AAF79DE19D8416A340DE091532B6AA /* WhitneyHTF-Medium.otf */,
+				8C73220053AAEE85D35ED250040AE17A /* images */,
+			);
+			path = VinliUIResources;
+			sourceTree = "<group>";
+		};
 		75A217EB4EFA1CDA95415642E3BD61CC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -482,28 +524,50 @@
 				5FB7D164BE4DD28822460EBC20AF3030 /* Development Pods */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
 				635C585E46EEBA10F04C631B779EBEE6 /* Pods */,
-				CCB7B7B7B480F57BD74981E9ABEFE33A /* Products */,
+				BC56F80DA104C3FADFFBB3AD4A419CD6 /* Products */,
 				6BC9D78CA6D91DB146C6A6422F47C0C9 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		A1DD1E28FACF6ED262434051185F3D4F /* Resources */ = {
+		8C73220053AAEE85D35ED250040AE17A /* images */ = {
 			isa = PBXGroup;
 			children = (
-				FBD8698EF27AFB866A1315E80356E653 /* VinliUIResources */,
+				1EF03C27D9308F889B6ED29C928F8EFA /* default_icon@2x.png */,
+				863F4EC5D23A05464FE4D6D543A6C5F4 /* icn_bluetooth@1x.png */,
+				F66F6477E4EDA11E788CF1E8F4DDFA3F /* icn_bluetooth@2x.png */,
+				33011D7211E2289209A10C367BF12C1D /* icn_bluetooth@3x.png */,
+				E7D7DFF23DC2BD631CDB7EAF0EF9424B /* icn_checkmark@1x.png */,
+				6887800079534A83711F9504AA23A849 /* icn_checkmark@2x.png */,
+				24934D6A55DAD6620EFD03E61BC685B7 /* icn_checkmark@3x.png */,
+				22623565DD7DB920194DDD62B9F556F9 /* vinli_icon@1x.png */,
+				0ECC926C782EA8112D39C6378476B934 /* vinli_icon@2x.png */,
+				C7F0E7B5E2F751FC3EC39A0E967F87B6 /* vinli_icon@3x.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		99A50CB0E66278953A49527A2B5A6DBD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				71ADFB260514E95FE27975F785A1FAAA /* VinliUIResources */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		A9116A9A4A30856676D1C7034C0A79E5 /* Support Files */ = {
+		A58855CDA9AD4C4B71F635F0B260CD9F /* VinliUIResources */ = {
 			isa = PBXGroup;
 			children = (
-				CEBB0594D9B3607B761D2931EE7537F0 /* VinliUIResources.xcconfig */,
-				AD52B161E975B06EAC7BCF775389E9FB /* VinliUIResources-dummy.m */,
-				A27EEFCE630EBE9A34E2D8815B4E92D2 /* VinliUIResources-prefix.pch */,
+				66D4AD079020097E25960F7404AE5CDB /* VinliUIResources.h */,
+				8C32B1F785BDE92FF630DE4911CAB0BB /* VLUserPickerTableCell.h */,
+				42C55023D0B1C9833F004996E8EB87F2 /* VLUserPickerTableCell.m */,
+				3A8DA20CBEF97F1FBA81976E272E4AA0 /* VLUserPickerViewController.h */,
+				7C309C135E36DA42BA7D4915D8F7F30D /* VLUserPickerViewController.m */,
+				D98DF958EF10D105F38B07018FC24B8B /* VNLDevicePickerTableViewCell.h */,
+				5FD694DD4DC496A9D1FB47990864BF95 /* VNLDevicePickerTableViewCell.m */,
+				08CCF949925D215A0CA09E1E9AC23CC4 /* VNLDevicePickerViewController.h */,
+				104D5AFCEC7201D27CA752117F236D6F /* VNLDevicePickerViewController.m */,
 			);
-			name = "Support Files";
-			path = "../ios-net/Pods/Target Support Files/VinliUIResources";
+			path = VinliUIResources;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -514,6 +578,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BC56F80DA104C3FADFFBB3AD4A419CD6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9F68C7BEE72F12F98E7FAA33408F15EC /* libOCMock.a */,
+				DC3717FB22FDA4DD5508767E3873FB78 /* libPods.a */,
+				B3F4AB9E624E55A3332BF94EAEA9730E /* libPods-VinliSDK.a */,
+				6BEE71922E67FA4172700C54C2EB7757 /* libPods-VinliSDKTests.a */,
+				B82D476E301F773B89F5BF1E9F0639C3 /* libVinliUIResources.a */,
+				04513C608645A57FB2D305ED1F5F7D56 /* VinliUIResources.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -522,59 +599,9 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		C5F0A67748642B421C0957180A4F8606 /* VinliUIResources */ = {
-			isa = PBXGroup;
-			children = (
-				09652566715C87CC4FDB55396E2D03BD /* VLUserPickerTableCell.h */,
-				B9CB1557EC686F4278E422EE43AB1863 /* VLUserPickerTableCell.m */,
-				674D6EC6D2FE5B5BBCC7DA1DC18BBDDF /* VLUserPickerViewController.h */,
-				ADB1690792235F631B89EFB7881A8EEE /* VLUserPickerViewController.m */,
-				F47DCDC59A1A55AAE5E1B69F2F60123C /* VNLDevicePickerTableViewCell.h */,
-				F3EE1FFB07AA5EBBF6AB7DAAEBD7911A /* VNLDevicePickerTableViewCell.m */,
-				66C179FEA8D2D8B1D431BEEE15053680 /* VNLDevicePickerViewController.h */,
-				074E98CF27B033B9ACBEAC6243DAC618 /* VNLDevicePickerViewController.m */,
-			);
-			path = VinliUIResources;
-			sourceTree = "<group>";
-		};
-		CCB7B7B7B480F57BD74981E9ABEFE33A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FCF0B3610150977FA026FA1163CF1323 /* libOCMock.a */,
-				6D15733A2433A558383D83A539F85B9C /* libPods.a */,
-				9F28DD4D714ABE9657FF5ABE2AAFC4BE /* libPods-VinliSDK.a */,
-				5279568CE65FF53B55C499458A3200B9 /* libPods-VinliSDKTests.a */,
-				A2C88E1724697E604B5E000181FC66A7 /* libVinliUIResources.a */,
-				F63CE746F7B48AD8E0A9ECEACBE9D33E /* Resources.bundle */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		FBD8698EF27AFB866A1315E80356E653 /* VinliUIResources */ = {
-			isa = PBXGroup;
-			children = (
-				8E3C30B27ADC29E55AB7CEC9D4C3BF38 /* images.xcassets */,
-				DC195FA5F0CBFF0C1079EF40910B47B0 /* Vinli.storyboard */,
-				B35EF1350D615599A7AFC05DA3E0C339 /* WhitneyHTF-Light.otf */,
-				86B8E7460608F4739A9F0C1C3877A8E3 /* WhitneyHTF-Medium.otf */,
-			);
-			path = VinliUIResources;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		14497FB397F73742056294C10B48DFB9 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C11B87F1AC4A1B5DE2AA5B9B3A03D138 /* VLUserPickerTableCell.h in Headers */,
-				A6C13195B097C477306ABB8B3D02DE79 /* VLUserPickerViewController.h in Headers */,
-				A84C1C21C445632BE8DD9956D4EA1E01 /* VNLDevicePickerTableViewCell.h in Headers */,
-				FE0A5ACA3D5292C313A826E4E4CA03B5 /* VNLDevicePickerViewController.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5AFF86D43561748E7227622A6EDDA92B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -617,6 +644,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CE65D184FF41B734DD820554B8F34F9A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				055723E23A7A66D0E9564712C48E59E2 /* VinliUIResources.h in Headers */,
+				5DE7BCB5A00C1E875AB54D578E3CC566 /* VLUserPickerTableCell.h in Headers */,
+				018B463B37C237938C80A9C68D1C6E96 /* VLUserPickerViewController.h in Headers */,
+				B6FA3680BD123E7A0BD053662278E0D1 /* VNLDevicePickerTableViewCell.h in Headers */,
+				41E3910FCFDCFFEBE9760B0428DDBCAB /* VNLDevicePickerViewController.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -634,7 +673,7 @@
 			);
 			name = "Pods-VinliSDK";
 			productName = "Pods-VinliSDK";
-			productReference = 9F28DD4D714ABE9657FF5ABE2AAFC4BE /* libPods-VinliSDK.a */;
+			productReference = B3F4AB9E624E55A3332BF94EAEA9730E /* libPods-VinliSDK.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		4A2CAA839F2722C796C6F1DFDC806B92 /* OCMock */ = {
@@ -651,7 +690,7 @@
 			);
 			name = OCMock;
 			productName = OCMock;
-			productReference = FCF0B3610150977FA026FA1163CF1323 /* libOCMock.a */;
+			productReference = 9F68C7BEE72F12F98E7FAA33408F15EC /* libOCMock.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		4D6913FE64CB3C3AE203030CE8A53C50 /* VinliUIResources */ = {
@@ -660,16 +699,16 @@
 			buildPhases = (
 				4CF937ECDC11CD5370C2328444E2F2AE /* Sources */,
 				02876947604DACEB1E5B42F3FF8DF8B5 /* Frameworks */,
-				14497FB397F73742056294C10B48DFB9 /* Headers */,
+				CE65D184FF41B734DD820554B8F34F9A /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				5A36DEF4EBF5C7F7012A34E8C0FA9A03 /* PBXTargetDependency */,
+				DD29C08DA175F8F2680B5420042F8CEF /* PBXTargetDependency */,
 			);
 			name = VinliUIResources;
 			productName = VinliUIResources;
-			productReference = A2C88E1724697E604B5E000181FC66A7 /* libVinliUIResources.a */;
+			productReference = B82D476E301F773B89F5BF1E9F0639C3 /* libVinliUIResources.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		92A9574B945B788CCC91C17391DFB566 /* Pods */ = {
@@ -686,24 +725,24 @@
 			);
 			name = Pods;
 			productName = Pods;
-			productReference = 6D15733A2433A558383D83A539F85B9C /* libPods.a */;
+			productReference = DC3717FB22FDA4DD5508767E3873FB78 /* libPods.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		9F69C60A6953ED7C45EA166FA44F3F07 /* VinliUIResources-Resources */ = {
+		9E28763BC1BD9455833B2448B8D9BD6B /* VinliUIResources-VinliUIResources */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 854A8BDE9CF8C44916070523F59B44EE /* Build configuration list for PBXNativeTarget "VinliUIResources-Resources" */;
+			buildConfigurationList = 1EC96ABCE03FC99F1AB7417B78D5A1BD /* Build configuration list for PBXNativeTarget "VinliUIResources-VinliUIResources" */;
 			buildPhases = (
-				E7ACDF24DE8EFC5210747C3C0F220970 /* Sources */,
-				87FC4C9E6B2E249C7185EFC344FCE21A /* Frameworks */,
-				A663ACB15E2AA91355AC1D9C9E4DBA50 /* Resources */,
+				B0E141C3A25CB56C7F48F506D1661B3C /* Sources */,
+				36DD8C50BAA82A93AEC3C6819B75F2C7 /* Frameworks */,
+				85EA776A119765769848417C19ED02B1 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "VinliUIResources-Resources";
-			productName = "VinliUIResources-Resources";
-			productReference = F63CE746F7B48AD8E0A9ECEACBE9D33E /* Resources.bundle */;
+			name = "VinliUIResources-VinliUIResources";
+			productName = "VinliUIResources-VinliUIResources";
+			productReference = 04513C608645A57FB2D305ED1F5F7D56 /* VinliUIResources.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		C1A7129D076BEF067EFA9E65731696B1 /* Pods-VinliSDKTests */ = {
@@ -721,7 +760,7 @@
 			);
 			name = "Pods-VinliSDKTests";
 			productName = "Pods-VinliSDKTests";
-			productReference = 5279568CE65FF53B55C499458A3200B9 /* libPods-VinliSDKTests.a */;
+			productReference = 6BEE71922E67FA4172700C54C2EB7757 /* libPods-VinliSDKTests.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -741,7 +780,7 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = CCB7B7B7B480F57BD74981E9ABEFE33A /* Products */;
+			productRefGroup = BC56F80DA104C3FADFFBB3AD4A419CD6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -750,20 +789,29 @@
 				4774A275EB4E8DF4E84D2C41A80FBDE5 /* Pods-VinliSDK */,
 				C1A7129D076BEF067EFA9E65731696B1 /* Pods-VinliSDKTests */,
 				4D6913FE64CB3C3AE203030CE8A53C50 /* VinliUIResources */,
-				9F69C60A6953ED7C45EA166FA44F3F07 /* VinliUIResources-Resources */,
+				9E28763BC1BD9455833B2448B8D9BD6B /* VinliUIResources-VinliUIResources */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A663ACB15E2AA91355AC1D9C9E4DBA50 /* Resources */ = {
+		85EA776A119765769848417C19ED02B1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0A02F6B9DE4FD0979184272FEBE069A /* images.xcassets in Resources */,
-				A15DDB53229B2A18F49B1A3285499464 /* Vinli.storyboard in Resources */,
-				858CEA89EC358A1AE8CDD02B739B929B /* WhitneyHTF-Light.otf in Resources */,
-				0DBC1BB9708E74154FBE096321252C81 /* WhitneyHTF-Medium.otf in Resources */,
+				5F7847ECC1819E9D08792AAA9D23C474 /* default_icon@2x.png in Resources */,
+				CFCB706C40E76F5E6BF36F56D2CB941C /* icn_bluetooth@1x.png in Resources */,
+				C8228EC14500F56F6B335D9C64E4DE8A /* icn_bluetooth@2x.png in Resources */,
+				B59FA3E41BE76CA7EBC992B26963967E /* icn_bluetooth@3x.png in Resources */,
+				4E708CAACCBE7A4320B9023C5FA28270 /* icn_checkmark@1x.png in Resources */,
+				17DB6BAE2C371EB34A6E3F536945004F /* icn_checkmark@2x.png in Resources */,
+				8CE2F0E2D9041B7938BFD5AAA416E343 /* icn_checkmark@3x.png in Resources */,
+				D1CB5874C8AC9759C339F49F7D04FD33 /* Vinli.storyboard in Resources */,
+				9CAC865CB995FE4DCE4CA67EB80983A7 /* vinli_icon@1x.png in Resources */,
+				4AF2A962774BEC3953865BEC5F79EB5C /* vinli_icon@2x.png in Resources */,
+				BA61479A8D4E889651CCB3FACA5B2D95 /* vinli_icon@3x.png in Resources */,
+				9C62B6D8570DC68ADB199A4F0E3B7EC3 /* WhitneyHTF-Light.otf in Resources */,
+				F3E2D00B3ED99FEE764CD5E31A54CCC2 /* WhitneyHTF-Medium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -839,6 +887,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B0E141C3A25CB56C7F48F506D1661B3C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CF6C201DA9E61FB19FDC9B4BDA9C9DAD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -847,22 +902,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E7ACDF24DE8EFC5210747C3C0F220970 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5A36DEF4EBF5C7F7012A34E8C0FA9A03 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "VinliUIResources-Resources";
-			target = 9F69C60A6953ED7C45EA166FA44F3F07 /* VinliUIResources-Resources */;
-			targetProxy = 833DF2409AA8D6920AF6EC8D8768C8C5 /* PBXContainerItemProxy */;
-		};
 		8963CAC6CFB20314B228F84AA96E0C3B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = VinliUIResources;
@@ -887,6 +929,12 @@
 			target = 4A2CAA839F2722C796C6F1DFDC806B92 /* OCMock */;
 			targetProxy = E07C475692FC8E6906C3C80678AE96BD /* PBXContainerItemProxy */;
 		};
+		DD29C08DA175F8F2680B5420042F8CEF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "VinliUIResources-VinliUIResources";
+			target = 9E28763BC1BD9455833B2448B8D9BD6B /* VinliUIResources-VinliUIResources */;
+			targetProxy = 406884079E2570E1F3E218E76C56FACA /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -907,21 +955,9 @@
 			};
 			name = Release;
 		};
-		21FC51241ABCDB97D7D64DAB60C044D5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CEBB0594D9B3607B761D2931EE7537F0 /* VinliUIResources.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = Resources;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
 		2BB7D0F85E43D7A4A831295B0BA65668 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CEBB0594D9B3607B761D2931EE7537F0 /* VinliUIResources.xcconfig */;
+			baseConfigurationReference = 84C6FCB2823AA756597066E816A8E38F /* VinliUIResources.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/VinliUIResources/VinliUIResources-prefix.pch";
@@ -934,18 +970,6 @@
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		34A31D557B61268B01DB1DDED8D9033F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CEBB0594D9B3607B761D2931EE7537F0 /* VinliUIResources.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = Resources;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
@@ -1002,9 +1026,21 @@
 			};
 			name = Release;
 		};
+		6627B2E557027F6A5107F23F52A137C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84C6FCB2823AA756597066E816A8E38F /* VinliUIResources.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = VinliUIResources;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 		71B4688168625C57826305AEEB52040D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CEBB0594D9B3607B761D2931EE7537F0 /* VinliUIResources.xcconfig */;
+			baseConfigurationReference = 84C6FCB2823AA756597066E816A8E38F /* VinliUIResources.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/VinliUIResources/VinliUIResources-prefix.pch";
@@ -1110,6 +1146,18 @@
 			};
 			name = Debug;
 		};
+		A91FAA476089DE138CCE02F02D2C69D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84C6FCB2823AA756597066E816A8E38F /* VinliUIResources.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = VinliUIResources;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
 		E39CD1E764776175CB82EEC82A6C9948 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1182,6 +1230,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		1EC96ABCE03FC99F1AB7417B78D5A1BD /* Build configuration list for PBXNativeTarget "VinliUIResources-VinliUIResources" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A91FAA476089DE138CCE02F02D2C69D5 /* Debug */,
+				6627B2E557027F6A5107F23F52A137C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1196,15 +1253,6 @@
 			buildConfigurations = (
 				F9FEED3BFD83705A3AB57E2F8BEA58F5 /* Debug */,
 				07F33F5B963E3337CC4362B6BCDBE0DB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		854A8BDE9CF8C44916070523F59B44EE /* Build configuration list for PBXNativeTarget "VinliUIResources-Resources" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				34A31D557B61268B01DB1DDED8D9033F /* Debug */,
-				21FC51241ABCDB97D7D64DAB60C044D5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

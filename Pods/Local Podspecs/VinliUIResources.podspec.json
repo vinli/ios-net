@@ -14,8 +14,8 @@
   },
   "source_files": "VinliUIResources/*.{h,m}",
   "resource_bundles": {
-    "Resources": [
-      "VinliUIResources/**/*.{storyboard,xcassets,otf}"
+    "VinliUIResources": [
+      "VinliUIResources/**/*.{png,storyboard,otf}"
     ]
   },
   "requires_arc": true

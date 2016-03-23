@@ -11,6 +11,7 @@
 #import "VinliSDK.h"
 #import <VinliUIResources/VLUserPickerViewController.h>
 #import <VinliUIResources/VLUserPickerTableCell.h>
+#import <VinliUIResources/VLFontManager.h>
 //#import <VinliNet/VinliSDK.h>
 
 static NSString * VLSessionManagerClientIdDemo = @"3d0de990-6491-47cf-afda-e6855e7cd1c8";
@@ -304,7 +305,6 @@ static NSString * VLSessionManagerCachedSessionsKey = @"VLSessionManagerCachedSe
     
    
     cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@" , self.userArray[indexPath.row].firstName, self.userArray[indexPath.row].lastName];
-    //cell.nameLabel.font = [UIFont fontWithName:@"Open-Sans" size:14.0f];
     
     return cell;
 }
@@ -316,6 +316,7 @@ static NSString * VLSessionManagerCachedSessionsKey = @"VLSessionManagerCachedSe
     UIButton *newButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [newButton setTitle:@"New User" forState:UIControlStateNormal];
     [newButton addTarget:self action:@selector(newUser:) forControlEvents:UIControlEventTouchUpInside];
+    newButton.titleLabel.font = [VLFontManager fontWithSize:@"WhitneyHTF-Light" size:20.0f];
     [newButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     newButton.backgroundColor = [[UIColor alloc]initWithRed:0/255.0f green:163.0f/255.0f blue:224.0f/255.0f alpha:1]; //divide by 255.0f
     newButton.frame = CGRectMake( 0, 0, tableView.frame.size.width, 50);
@@ -327,8 +328,9 @@ static NSString * VLSessionManagerCachedSessionsKey = @"VLSessionManagerCachedSe
 - (void)newUser:(id)sender
 {
     [self loginWithUserId:nil withCompletion:self.authenticationCompletionBlock];
+    //[[[UIApplication sharedApplication].windows[0] rootViewController] dismissViewControllerAnimated:YES completion:nil];
+
     [self.userArray removeAllObjects];
-    [[[UIApplication sharedApplication].windows[0] rootViewController] dismissViewControllerAnimated:YES completion:nil];
     
 }
 
@@ -339,12 +341,14 @@ static NSString * VLSessionManagerCachedSessionsKey = @"VLSessionManagerCachedSe
 
 
 
+
 - (void)loginWithUserId:(NSString *)userId withCompletion:(AuthenticationCompletion)onCompletion
 {
     [self getSessionForUserWithId:userId completion:^(VLSession *session, NSError *error) {
         
         if (onCompletion)
         {
+            [[[UIApplication sharedApplication].windows[0] rootViewController] dismissViewControllerAnimated:YES completion:nil];
             onCompletion(session, error);
         }
         

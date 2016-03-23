@@ -1,5 +1,5 @@
 PODS:
-  - OCMock (3.2)
+  - OCMock (3.2.2)
   - VinliUIResources (1.0.0)
 
 DEPENDENCIES:
@@ -11,7 +11,7 @@ EXTERNAL SOURCES:
     :path: "~/Documents/Programs/Vinli/VinliUIResources"
 
 SPEC CHECKSUMS:
-  OCMock: 28def049ef47f996b515a8eeea958be7ccab2dbb
-  VinliUIResources: 7357110846f1dbc77ce0b7e28414c5ae7ba08324
+  OCMock: 18c9b7e67d4c2770e95bb77a9cc1ae0c91fe3835
+  VinliUIResources: 21ad7c2a4872812625d459200511925d155961db
 
 COCOAPODS: 0.39.0
