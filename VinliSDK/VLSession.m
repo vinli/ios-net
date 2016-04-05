@@ -8,7 +8,56 @@
 
 #import "VLSession.h"
 
+static NSString * const kVLSessionCachedSession = @"kVLSessionCachedSession";
+static VLSession *currentSession;
+static NSDictionary *sessionCache;
+
 @implementation VLSession
+
++ (VLSession *)currentSession {
+    // NSKeyedUnarchiver
+    
+    if (!currentSession) {
+        currentSession = [[NSUserDefaults standardUserDefaults] objectForKey:kVLSessionCachedSession];
+    }
+    
+    return currentSession;
+}
+
++ (BOOL)exitSession {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kVLSessionCachedSession];
+    return ![[NSUserDefaults standardUserDefaults] objectForKey:kVLSessionCachedSession] ? YES : NO;
+    
+    
+}
+
++ (void)setCurrentSession:(VLSession *)session {
+    // set defaults
+    if (!session) {
+        return;
+    }
+    
+    @synchronized(sessionCache)
+    {
+        NSMutableDictionary* mutableSessionsCache = [sessionCache mutableCopy];
+        if (!mutableSessionsCache)
+        {
+            mutableSessionsCache = [NSMutableDictionary new];
+        }
+        
+        NSData *encodedSession = [NSKeyedArchiver archivedDataWithRootObject:session];
+        [mutableSessionsCache setObject:encodedSession forKey:session.accessToken];
+        sessionCache = [mutableSessionsCache copy];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:sessionCache forKey:kVLSessionCachedSession];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+
+    
+    //return [VLSession new];
+}
+
+
 
 - (instancetype) initWithAccessToken:(NSString *)token{
     self = [super init];
@@ -16,6 +65,16 @@
         _accessToken = [token copy];
         _createdAt = [NSDate date];
         _lastUpdated = [NSDate date];
+        
+        // NSKeyedArchiver to data - store data in defaults
+        
+        [VLSession setCurrentSession:self];
+        
+//        [sessionCache setValue:self forKey:_accessToken];
+//        
+//        [[NSUserDefaults standardUserDefaults] setObject:sessionCache forKey:kVLSessionCachedSession];
+//        [[NSUserDefaults standardUserDefaults] synchronize];
+        
     }
     return self;
 }

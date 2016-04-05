@@ -39,4 +39,7 @@ typedef void(^AuthenticationCompletion)(VLSession* _Nullable session, NSError* _
 // Convenience method to display an AlertView with available users.
 - (void)loginWithCompletion:(AuthenticationCompletion _Nonnull)onCompletion onCancel:(nullable void(^)(void))onCancel;
 
+
+
+
 @end

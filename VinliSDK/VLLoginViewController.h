@@ -10,10 +10,13 @@
 #import "VLSession.h"
 
 @protocol VLLoginViewControllerDelegate;
+//@protocol VLLoginCompletionDelegate;
+
 
 @interface VLLoginViewController : UIViewController <UIWebViewDelegate>
 
 @property (nonatomic, weak) id<VLLoginViewControllerDelegate> delegate;
+//@property (nonatomic, weak) id <VLLoginCompletionDelegate> loginDelegate;
 @property NSString *clientId;
 @property NSString *redirectUri;
 @property NSString *host;
@@ -30,3 +33,10 @@
 - (void) vlLoginViewController:(VLLoginViewController *)loginController didFailToLoginWithError:(NSError *) error;
 
 @end
+
+
+//@protocol VLLoginCompletionDelegate <NSObject>
+//
+//@required
+//- (void)successfullLogin:(void(^)(void))onSuccessBlock onFailure:(void(^)(NSError *error))onFailureBlock;
+//@end

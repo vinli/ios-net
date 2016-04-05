@@ -99,6 +99,7 @@
 		7367E3A21B166ABB004223A6 /* VLEventPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367E3A11B166ABB004223A6 /* VLEventPager.m */; };
 		7367E3A41B1759A2004223A6 /* VLNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367E3A31B1759A2004223A6 /* VLNotification.m */; };
 		7367E3A71B175FEA004223A6 /* VLNotificationPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367E3A61B175FEA004223A6 /* VLNotificationPager.m */; };
+		770707131CB443B200A40468 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 770707121CB443B200A40468 /* images */; };
 		7753A7801C7CE66300D3080F /* A_VLLoginIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7753A77E1C7CE66300D3080F /* A_VLLoginIntegrationTest.m */; };
 		7753A7811C7CE66300D3080F /* VLPlatformServicesIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7753A77F1C7CE66300D3080F /* VLPlatformServicesIntegrationTests.m */; };
 		7753A7831C7CEF3700D3080F /* VLTelemetryIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7753A7821C7CEF3700D3080F /* VLTelemetryIntegrationTests.m */; };
@@ -114,6 +115,7 @@
 		77BE999C1C690E77001E8F64 /* VLTimeSeries.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BE999A1C690E77001E8F64 /* VLTimeSeries.m */; };
 		77BE999D1C73A4A5001E8F64 /* VLOffsetPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B3DDC281B14C31B00D95E61 /* VLOffsetPager.h */; };
 		77BE999E1C73A4A5001E8F64 /* VLVehicle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B1671371B0FC39D009BE7A9 /* VLVehicle.h */; };
+		C9282671332B8D879023C020 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B932AD70F20BD68F691129 /* libPods.a */; };
 		E92943591B15387C00AAC7D3 /* VLTelemetryServicesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E92943581B15387C00AAC7D3 /* VLTelemetryServicesTests.m */; };
 		E929435C1B15425400AAC7D3 /* VLTelemetryMessagePager.h in Headers */ = {isa = PBXBuildFile; fileRef = E929435A1B15425400AAC7D3 /* VLTelemetryMessagePager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E929435D1B15425400AAC7D3 /* VLTelemetryMessagePager.m in Sources */ = {isa = PBXBuildFile; fileRef = E929435B1B15425400AAC7D3 /* VLTelemetryMessagePager.m */; };
@@ -213,6 +215,7 @@
 		49AB6E9C1B82446900DCF808 /* VLUserCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLUserCache.m; sourceTree = "<group>"; };
 		49E2F2FD1B6AA93700CD743C /* NSDictionary+NonNullable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NonNullable.h"; sourceTree = "<group>"; };
 		49E2F2FE1B6AA93700CD743C /* NSDictionary+NonNullable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NonNullable.m"; sourceTree = "<group>"; };
+		5B1B53A0DCEBC8446A4F8B36 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7367E39D1B165EB6004223A6 /* VLEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLEvent.m; sourceTree = "<group>"; };
 		7367E39F1B165ECF004223A6 /* VLEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VLEvent.h; sourceTree = "<group>"; };
 		7367E3A01B166AA9004223A6 /* VLEventPager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VLEventPager.h; sourceTree = "<group>"; };
@@ -221,6 +224,7 @@
 		7367E3A51B1759BB004223A6 /* VLNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VLNotification.h; sourceTree = "<group>"; };
 		7367E3A61B175FEA004223A6 /* VLNotificationPager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLNotificationPager.m; sourceTree = "<group>"; };
 		7367E3A81B175FFE004223A6 /* VLNotificationPager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VLNotificationPager.h; sourceTree = "<group>"; };
+		770707121CB443B200A40468 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
 		7753A77E1C7CE66300D3080F /* A_VLLoginIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A_VLLoginIntegrationTest.m; sourceTree = "<group>"; };
 		7753A77F1C7CE66300D3080F /* VLPlatformServicesIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLPlatformServicesIntegrationTests.m; sourceTree = "<group>"; };
 		7753A7821C7CEF3700D3080F /* VLTelemetryIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTelemetryIntegrationTests.m; sourceTree = "<group>"; };
@@ -234,6 +238,7 @@
 		777A6B841C91E31E0050F6C0 /* VLUnitLocalizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLUnitLocalizer.m; sourceTree = "<group>"; };
 		77BE99991C690E77001E8F64 /* VLTimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLTimeSeries.h; sourceTree = "<group>"; };
 		77BE999A1C690E77001E8F64 /* VLTimeSeries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTimeSeries.m; sourceTree = "<group>"; };
+		993432346C00ED8EE12BA349 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BB7D1A79C1AEAD3F566D9FA4 /* Pods-VinliSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinliSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VinliSDKTests/Pods-VinliSDKTests.release.xcconfig"; sourceTree = "<group>"; };
 		E92943581B15387C00AAC7D3 /* VLTelemetryServicesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTelemetryServicesTests.m; sourceTree = "<group>"; };
 		E929435A1B15425400AAC7D3 /* VLTelemetryMessagePager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLTelemetryMessagePager.h; sourceTree = "<group>"; };
@@ -257,6 +262,7 @@
 		E990CE6C1B26405A00CDEF15 /* VLPolygonBoundary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLPolygonBoundary.h; sourceTree = "<group>"; };
 		E990CE6D1B26405A00CDEF15 /* VLPolygonBoundary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLPolygonBoundary.m; sourceTree = "<group>"; };
 		EB1A1E6D3FE8D940C96F5C0D /* libPods-VinliSDKTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VinliSDKTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5B932AD70F20BD68F691129 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +270,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9282671332B8D879023C020 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				777A6B831C91E31E0050F6C0 /* VLUnitLocalizer.h */,
+				770707121CB443B200A40468 /* images */,
 				777A6B841C91E31E0050F6C0 /* VLUnitLocalizer.m */,
 				777A6B7F1C91E3080050F6C0 /* VLUserSettings.h */,
 				777A6B801C91E3080050F6C0 /* VLUserSettings.m */,
@@ -494,6 +502,8 @@
 			children = (
 				20DC824FFEF4A47CAA1EA879 /* Pods-VinliSDKTests.debug.xcconfig */,
 				BB7D1A79C1AEAD3F566D9FA4 /* Pods-VinliSDKTests.release.xcconfig */,
+				5B1B53A0DCEBC8446A4F8B36 /* Pods.debug.xcconfig */,
+				993432346C00ED8EE12BA349 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -502,6 +512,7 @@
 			isa = PBXGroup;
 			children = (
 				EB1A1E6D3FE8D940C96F5C0D /* libPods-VinliSDKTests.a */,
+				F5B932AD70F20BD68F691129 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -567,10 +578,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0B16711A1B0FC2B9009BE7A9 /* Build configuration list for PBXNativeTarget "VinliSDK" */;
 			buildPhases = (
+				5BC02A8C59739DCED5653AAB /* Check Pods Manifest.lock */,
 				0B1670FF1B0FC2B8009BE7A9 /* Sources */,
 				0B1671001B0FC2B8009BE7A9 /* Frameworks */,
 				0B1671011B0FC2B8009BE7A9 /* Headers */,
 				0B1671021B0FC2B8009BE7A9 /* Resources */,
+				4F7BA42970CD65A2A663175B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -590,6 +603,7 @@
 				0B16710C1B0FC2B9009BE7A9 /* Frameworks */,
 				0B16710D1B0FC2B9009BE7A9 /* Resources */,
 				EAD5DC25A232FD03332B3991 /* Copy Pods Resources */,
+				FF9C5D927977682A7D7FACFE /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -649,6 +663,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				770707131CB443B200A40468 /* images in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -703,6 +718,36 @@
 			shellPath = /bin/sh;
 			shellScript = "#appledoc Xcode script\n# Start constants\ncompany=\"Vinli\";\ncompanyID=\"li.Vin\";\ncompanyURL=\"http://www.vin.li\";\ntarget=\"iphoneos\";\noutputPath=\"${PROJECT_DIR}/docs\";\n# End constants\n/usr/bin/appledoc \\\n--project-name \"${PROJECT_NAME}\" \\\n--project-company \"${company}\" \\\n--company-id \"${companyID}\" \\\n--docset-atom-filename \"${company}.atom\" \\\n--docset-feed-url \"${companyURL}/${company}/%DOCSETATOMFILENAME\" \\\n--docset-package-url \"${companyURL}/${company}/%DOCSETPACKAGEFILENAME\" \\\n--docset-fallback-url \"${companyURL}/${company}\" \\\n--output \"${outputPath}\" \\\n--publish-docset \\\n--docset-platform-family \"${target}\" \\\n--logformat xcode \\\n--keep-intermediate-files \\\n--no-repeat-first-par \\\n--no-warn-invalid-crossref \\\n--exit-threshold 2 \\\n\"${PROJECT_DIR}\"";
 		};
+		4F7BA42970CD65A2A663175B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5BC02A8C59739DCED5653AAB /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		EAD5DC25A232FD03332B3991 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -716,6 +761,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VinliSDKTests/Pods-VinliSDKTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF9C5D927977682A7D7FACFE /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VinliSDKTests/Pods-VinliSDKTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -895,6 +955,7 @@
 		};
 		0B16711B1B0FC2B9009BE7A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B1B53A0DCEBC8446A4F8B36 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -915,6 +976,7 @@
 		};
 		0B16711C1B0FC2B9009BE7A9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 993432346C00ED8EE12BA349 /* Pods.release.xcconfig */;
 			buildSettings = {
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;

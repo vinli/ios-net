@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2006-2014 Erik Doernenburg and contributors
+ *  Copyright (c) 2006-2016 Erik Doernenburg and contributors
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may
  *  not use these files except in compliance with the License. You may obtain
@@ -15,10 +15,31 @@
  */
 
 #import "NSInvocation+OCMAdditions.h"
-#import "OCMFunctions.h"
+#import "OCMFunctionsPrivate.h"
+#import "NSMethodSignature+OCMAdditions.h"
 
 
 @implementation NSInvocation(OCMAdditions)
+
++ (NSInvocation *)invocationForBlock:(id)block withArguments:(NSArray *)arguments
+{
+	NSMethodSignature *sig = [NSMethodSignature signatureForBlock:block];
+	NSInvocation *inv = [self invocationWithMethodSignature:sig];
+
+	NSUInteger numArgsRequired = sig.numberOfArguments - 1;
+	if((arguments != nil) && ([arguments count] != numArgsRequired))
+		[NSException raise:NSInvalidArgumentException format:@"Specified too few arguments for block; expected %lu arguments.", (unsigned long) numArgsRequired];
+
+	for(NSUInteger i = 0, j = 1; i < numArgsRequired; ++i, ++j)
+	{
+		id arg = [arguments objectAtIndex:i];
+		[inv setArgumentWithObject:arg atIndex:j];
+	}
+
+	return inv;
+
+}
+
 
 - (BOOL)hasCharPointerArgument
 {
@@ -30,6 +51,64 @@
             return YES;
     }
     return NO;
+}
+
+
+- (void)setArgumentWithObject:(id)arg atIndex:(NSInteger)idx
+{
+	const char *typeEncoding = [[self methodSignature] getArgumentTypeAtIndex:idx];
+	if((arg == nil) || [arg isKindOfClass:[NSNull class]])
+	{
+		if(typeEncoding[0] == '^')
+		{
+			void *nullPtr = NULL;
+			[self setArgument:&nullPtr atIndex:idx];
+		}
+		else if(typeEncoding[0] == '@')
+		{
+			id nilObj =  nil;
+			[self setArgument:&nilObj atIndex:idx];
+		}
+		else if(OCMNumberTypeForObjCType(typeEncoding))
+		{
+			NSUInteger argSize;
+			NSGetSizeAndAlignment(typeEncoding, NULL, &argSize);
+			void *argBuffer = calloc(1, argSize);
+			[self setArgument:argBuffer atIndex:idx];
+			free(argBuffer);
+		}
+		else
+		{
+			[NSException raise:NSInvalidArgumentException format:@"Unable to create default value for type '%s'.", typeEncoding];
+		}
+	}
+	else if(OCMIsObjectType(typeEncoding))
+	{
+		[self setArgument:&arg atIndex:idx];
+	}
+	else
+	{
+		if(![arg isKindOfClass:[NSValue class]])
+			[NSException raise:NSInvalidArgumentException format:@"Argument '%@' should be boxed in NSValue.", arg];
+
+		char const *valEncoding = [arg objCType];
+
+		/// @note Here we allow any data pointer to be passed as a void pointer and
+		/// any numerical types to be passed as arguments to the block.
+		BOOL takesVoidPtr = !strcmp(typeEncoding, "^v") && valEncoding[0] == '^';
+		BOOL takesNumber = OCMNumberTypeForObjCType(typeEncoding) && OCMNumberTypeForObjCType(valEncoding);
+
+		if(!takesVoidPtr && !takesNumber && !OCMEqualTypesAllowingOpaqueStructs(typeEncoding, valEncoding))
+			[NSException raise:NSInvalidArgumentException format:@"Argument type mismatch; type of argument required is '%s' but type of value provided is '%s'", typeEncoding, valEncoding];
+
+		NSUInteger argSize;
+		NSGetSizeAndAlignment(typeEncoding, &argSize, NULL);
+		void *argBuffer = malloc(argSize);
+		[arg getValue:argBuffer];
+		[self setArgument:argBuffer atIndex:idx];
+		free(argBuffer);
+	}
+
 }
 
 
@@ -364,8 +443,8 @@
 	char *cStringPtr;
 	
 	[self getArgument:&cStringPtr atIndex:anInt];
-	strncpy(buffer, cStringPtr, 100);
-    strcpy(buffer + 100, "...");
+	strlcpy(buffer, cStringPtr, sizeof(buffer));
+	strlcpy(buffer + 100, "...", (sizeof(buffer) - 100));
 	return [NSString stringWithFormat:@"\"%s\"", buffer];
 }
 

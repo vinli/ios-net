@@ -102,7 +102,7 @@ static NSString * const kVinliSignUpRequest = @"/#/sign-up";
         
         NSArray *parts = [requestString componentsSeparatedByString:@"#"];
         
-        if(parts.count == 2){
+        if(parts.count == 2) {
             
             NSString *query = parts[1];
             
@@ -115,10 +115,12 @@ static NSString * const kVinliSignUpRequest = @"/#/sign-up";
                 [params setObject:[elements objectAtIndex:1] forKey:[elements objectAtIndex:0]];
             }
             
+            //make better dismissal 
             if(params[@"access_token"]){
                 VLSession *session = [[VLSession alloc] initWithAccessToken:params[@"access_token"]];
+                 [self dismissViewControllerAnimated:YES completion:nil];
+                // Create static method on VLSession currentSession -- will return cached session
                 if(_delegate && [_delegate respondsToSelector:@selector(vlLoginViewController:didLoginWithSession:)]){
-                    
                     [_delegate vlLoginViewController:self didLoginWithSession:session];
                 }
             }
@@ -133,7 +135,7 @@ static NSString * const kVinliSignUpRequest = @"/#/sign-up";
             }
         }
         
-        [self dismissViewControllerAnimated:YES completion:nil];
+       
         return NO;
     }
     else

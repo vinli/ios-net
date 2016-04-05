@@ -9,7 +9,7 @@
 #import "VLSessionManager.h"
 #import <UIKit/UIKit.h>
 #import "VinliSDK.h"
-//#import <VinliNet/VinliSDK.h>
+
 
 
 static NSString * VLSessionManagerHostDemo = @"-demo.vin.li";
