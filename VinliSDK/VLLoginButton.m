@@ -14,7 +14,7 @@
 
 @interface VLLoginButton ()
 @property (strong, nonatomic) UINavigationController *navController;
-
+@property (weak, nonatomic) VLSession *currentSession;
 @end
 
 
@@ -99,7 +99,14 @@
 //abstract this color setting
 
 - (void)setHighlighted:(BOOL)highlighted {
+    
     [super setHighlighted:highlighted];
+    if (_currentSession) {
+        return;
+    }
+    
+    
+    
     if (highlighted) {
         [super setBackgroundColor:[[UIColor alloc]initWithRed:32/255.0f green:149/255.0f blue:200/255.0f alpha:1]];
 
@@ -110,7 +117,13 @@
 
 
 - (void)setSelected:(BOOL)selected {
+    
     [super setSelected:selected];
+    if (_currentSession) {
+        return;
+    }
+    
+    
     if (selected) {
         [super setBackgroundColor:[[UIColor alloc]initWithRed:32/255.0f green:149/255.0f blue:200/255.0f alpha:1]];
 
@@ -123,8 +136,9 @@
 
 - (void) initialize {
     
+    self.currentSession = [VLSession currentSession];
     
-    if ([VLSession currentSession]) {
+    if (self.currentSession) {
         [super setTitle:@"Sign Out" forState:UIControlStateNormal];
         [super setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [super setBackgroundColor:[UIColor redColor]];
@@ -134,6 +148,7 @@
         
         
     } else {
+        self.currentSession = nil; //set this to nil
         [super setTitle:@"Sign In With Vinli" forState:UIControlStateNormal];
         [super layer].cornerRadius = 5;
         [[super titleLabel] setFont:[UIFont fontWithName:@"OpenSans" size:20.0f]];
