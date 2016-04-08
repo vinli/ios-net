@@ -35,7 +35,7 @@
 
 @protocol VLLoginButtonDelegate <NSObject>
 
-
+@optional
 - (void)didButtonLogout;
 - (void)didButtonFailToLogout:(NSError *)error;
 

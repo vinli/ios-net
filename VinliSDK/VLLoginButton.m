@@ -9,7 +9,7 @@
 #import "VLLoginButton.h"
 #import "VLLoginViewController.h"
 #import "VLSessionManager.h"
-
+@import CoreText;
 
 
 @interface VLLoginButton ()
@@ -60,6 +60,69 @@
 
 
 }
+
+
+
+//font methods
+
+
+
+
+- (UIFont *)fontWithSize:(NSString *)fontString size:(CGFloat)size
+{
+    NSString *fontName = fontString;
+    UIFont *font = [UIFont fontWithName:fontName size:size];
+    if (!font) {
+        [self  dynamicallyLoadFontNamed:fontName];
+        font = [UIFont fontWithName:fontName size:size];
+        
+        // safe fallback
+        if (!font) {
+         font = [UIFont systemFontOfSize:size];
+        }
+    }
+    
+    return font;
+}
+
+
+
+- (void)dynamicallyLoadFontNamed:(NSString *)name
+{
+    NSString *resourceName = [NSString stringWithFormat:@"%@", name];
+    
+    NSString *bundlePath = [[NSBundle bundleForClass:[self class]]
+                            pathForResource:@"VinliSDK" ofType:@"bundle"];
+    
+    
+    NSBundle *bundle = [NSBundle bundleWithPath:bundlePath];
+    [bundle load];
+    
+    if (!bundle) {
+        bundle = [NSBundle mainBundle];
+    }
+    
+    
+    
+    NSURL *url = [bundle URLForResource:resourceName withExtension:@"ttf"];
+    NSData *fontData = [NSData dataWithContentsOfURL:url];
+    if (fontData) {
+        CFErrorRef error;
+        CGDataProviderRef provider = CGDataProviderCreateWithCFData((CFDataRef)fontData);
+        CGFontRef font = CGFontCreateWithDataProvider(provider);
+        if (!CTFontManagerRegisterGraphicsFont(font, &error)) {
+            CFStringRef errorDescription = CFErrorCopyDescription(error);
+            NSLog(@"Failed to load font: %@", errorDescription);
+            CFRelease(errorDescription);
+        }
+        CFRelease(font);
+        CFRelease(provider);
+    }
+}
+
+
+
+
 
 
 
@@ -134,25 +197,32 @@
 
 
 
+
+
+
+
+
 - (void) initialize {
     
     self.currentSession = [VLSession currentSession];
     
+    [[super titleLabel] setFont:[self fontWithSize:@"OpenSans-Regular" size:20.0f]];
+    
     if (self.currentSession) {
-        [super setTitle:@"Sign Out" forState:UIControlStateNormal];
+        [super setTitle:@"Sign Out With Vinli" forState:UIControlStateNormal];
         [super setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [super setBackgroundColor:[UIColor redColor]];
+        [super setBackgroundColor:[[UIColor alloc]initWithRed:0/255.0f green:163.0f/255.0f blue:224.0f/255.0f alpha:1]];
         [self addTarget:self action:@selector(logout:) forControlEvents:UIControlEventTouchUpInside];
         [super layer].cornerRadius = 5;
-        [[super titleLabel] setFont:[UIFont fontWithName:@"OpenSans" size:20.0f]];
+       
+        
         
         
     } else {
         self.currentSession = nil; //set this to nil
         [super setTitle:@"Sign In With Vinli" forState:UIControlStateNormal];
         [super layer].cornerRadius = 5;
-        [[super titleLabel] setFont:[UIFont fontWithName:@"OpenSans" size:20.0f]];
-        
+
        //customize the button
         UIImage *btnImage = [self imageFromBundle:@"vinli_icon.png" bundleName:@"VinliSDK"];
         btnImage = [btnImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -195,6 +265,7 @@
 
 
 #pragma mark - Override super methods
+
 
 - (void) setTitle:(NSString *)title forState:(UIControlState)state{}
 
