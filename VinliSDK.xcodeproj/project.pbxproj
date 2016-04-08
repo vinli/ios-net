@@ -100,6 +100,7 @@
 		7367E3A41B1759A2004223A6 /* VLNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367E3A31B1759A2004223A6 /* VLNotification.m */; };
 		7367E3A71B175FEA004223A6 /* VLNotificationPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367E3A61B175FEA004223A6 /* VLNotificationPager.m */; };
 		770707151CB576A200A40468 /* resources in Resources */ = {isa = PBXBuildFile; fileRef = 770707141CB576A200A40468 /* resources */; };
+		770707171CB80AB700A40468 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770707161CB80AB700A40468 /* CoreText.framework */; };
 		7753A7801C7CE66300D3080F /* A_VLLoginIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7753A77E1C7CE66300D3080F /* A_VLLoginIntegrationTest.m */; };
 		7753A7811C7CE66300D3080F /* VLPlatformServicesIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7753A77F1C7CE66300D3080F /* VLPlatformServicesIntegrationTests.m */; };
 		7753A7831C7CEF3700D3080F /* VLTelemetryIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7753A7821C7CEF3700D3080F /* VLTelemetryIntegrationTests.m */; };
@@ -225,6 +226,7 @@
 		7367E3A61B175FEA004223A6 /* VLNotificationPager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLNotificationPager.m; sourceTree = "<group>"; };
 		7367E3A81B175FFE004223A6 /* VLNotificationPager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VLNotificationPager.h; sourceTree = "<group>"; };
 		770707141CB576A200A40468 /* resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = resources; sourceTree = "<group>"; };
+		770707161CB80AB700A40468 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		7753A77E1C7CE66300D3080F /* A_VLLoginIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A_VLLoginIntegrationTest.m; sourceTree = "<group>"; };
 		7753A77F1C7CE66300D3080F /* VLPlatformServicesIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLPlatformServicesIntegrationTests.m; sourceTree = "<group>"; };
 		7753A7821C7CEF3700D3080F /* VLTelemetryIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTelemetryIntegrationTests.m; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				770707171CB80AB700A40468 /* CoreText.framework in Frameworks */,
 				C9282671332B8D879023C020 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,6 +514,7 @@
 		9B81BA4B3915B4D0C99218A5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				770707161CB80AB700A40468 /* CoreText.framework */,
 				EB1A1E6D3FE8D940C96F5C0D /* libPods-VinliSDKTests.a */,
 				F5B932AD70F20BD68F691129 /* libPods.a */,
 			);

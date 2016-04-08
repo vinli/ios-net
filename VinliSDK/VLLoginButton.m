@@ -78,7 +78,8 @@
         
         // safe fallback
         if (!font) {
-         font = [UIFont systemFontOfSize:size];
+            NSLog(@"Failed to load font. Falling back to system font!");
+            font = [UIFont systemFontOfSize:size];
         }
     }
     
@@ -112,7 +113,7 @@
         CGFontRef font = CGFontCreateWithDataProvider(provider);
         if (!CTFontManagerRegisterGraphicsFont(font, &error)) {
             CFStringRef errorDescription = CFErrorCopyDescription(error);
-            NSLog(@"Failed to load font: %@", errorDescription);
+            NSLog(@"Failed to create font: %@", errorDescription);
             CFRelease(errorDescription);
         }
         CFRelease(font);
@@ -206,7 +207,7 @@
     
     self.currentSession = [VLSession currentSession];
     
-    [[super titleLabel] setFont:[self fontWithSize:@"OpenSans-Regular" size:20.0f]];
+    
     
     if (self.currentSession) {
         [super setTitle:@"Sign Out With Vinli" forState:UIControlStateNormal];
@@ -214,7 +215,7 @@
         [super setBackgroundColor:[[UIColor alloc]initWithRed:0/255.0f green:163.0f/255.0f blue:224.0f/255.0f alpha:1]];
         [self addTarget:self action:@selector(logout:) forControlEvents:UIControlEventTouchUpInside];
         [super layer].cornerRadius = 5;
-       
+        [[self titleLabel] setFont:[self fontWithSize:@"OpenSans" size:20.0f]];
         
         
         
@@ -225,11 +226,21 @@
 
        //customize the button
         UIImage *btnImage = [self imageFromBundle:@"vinli_icon.png" bundleName:@"VinliSDK"];
+        [[self titleLabel] setFont:[self fontWithSize:@"OpenSans" size:20.0f]];
         btnImage = [btnImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         [self setImage:btnImage forState:UIControlStateNormal];
         //[[self imageView] setFrame:CGRectMake(self.imageView.frame.origin.x, self.imageView.frame.origin.y - 30, self.imageView.frame.size.width, self.imageView.frame.size.width)];
         [super setImageEdgeInsets:UIEdgeInsetsMake(0, (btnImage.size.width / 2) - 45, 0, 0)];
         [super setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        
+        //the size of the button
+        
+        
+        CGRect buttonFrame = self.frame;
+        buttonFrame.size = CGSizeMake(280.0f, 54.0f);
+        self.frame = buttonFrame;
+        
+        
         [super setBackgroundColor:[[UIColor alloc]initWithRed:0/255.0f green:163.0f/255.0f blue:224.0f/255.0f alpha:1]];
         //[super setBackgroundColor:[[UIColor alloc]initWithRed:32/255.0f green:149/255.0f blue:200/255.0f alpha:1]];
 
@@ -267,7 +278,10 @@
 #pragma mark - Override super methods
 
 
-- (void) setTitle:(NSString *)title forState:(UIControlState)state{}
+
+
+
+- (void) setTitle:(NSString *)title forState:(UIControlState)state {}
 
 - (void) setTitleColor:(UIColor *)color forState:(UIControlState)state{};
 
