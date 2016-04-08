@@ -7,6 +7,8 @@
 //
 
 #import "VLLoginViewController.h"
+#import "VLSessionManager.h"
+#import "VLService.h"
 
 #define DEFAULT_HOST @".vin.li" 
 static NSString * const kVinliSignUpRequest = @"/#/sign-up";
@@ -118,6 +120,7 @@ static NSString * const kVinliSignUpRequest = @"/#/sign-up";
             //make better dismissal 
             if(params[@"access_token"]){
                 VLSession *session = [[VLSession alloc] initWithAccessToken:params[@"access_token"]];
+                [[VLSessionManager sharedManager].service useSession:session];
                  [self dismissViewControllerAnimated:YES completion:nil];
                 // Create static method on VLSession currentSession -- will return cached session
                 if(_delegate && [_delegate respondsToSelector:@selector(vlLoginViewController:didLoginWithSession:)]){
