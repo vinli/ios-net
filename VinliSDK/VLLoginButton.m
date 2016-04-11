@@ -211,49 +211,38 @@
 - (void) initialize {
     
     self.currentSession = [VLSession currentSession];
-    self.adjustsImageWhenHighlighted = NO;
+    self.adjustsImageWhenHighlighted = NO; //prevents highlight change
+    [[self titleLabel] setFont:[self fontWithSize:@"OpenSans" size:20.0f]];
+    [super layer].cornerRadius = 5;
+    [self addTarget:self action:@selector(pressedDown:) forControlEvents:UIControlEventTouchDown];
+    [super setBackgroundColor:[[UIColor alloc]initWithRed:0/255.0f green:163.0f/255.0f blue:224.0f/255.0f alpha:1]];
+    [super setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal & UIControlStateSelected & UIControlStateHighlighted];
+    self.loginViewController.delegate = self;
     
     if (self.currentSession) {
         [super setTitle:@"Sign Out Of Vinli" forState:UIControlStateNormal & UIControlStateSelected & UIControlStateHighlighted];
-        [super setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal & UIControlStateSelected & UIControlStateHighlighted];
-        [super setBackgroundColor:[[UIColor alloc]initWithRed:0/255.0f green:163.0f/255.0f blue:224.0f/255.0f alpha:1]];
-        [super setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal & UIControlStateSelected & UIControlStateHighlighted];
         [self addTarget:self action:@selector(logout:) forControlEvents:UIControlEventTouchUpInside];
-        [self addTarget:self action:@selector(pressedDown:) forControlEvents:UIControlEventTouchDown];
-        [super layer].cornerRadius = 5;
-        [[self titleLabel] setFont:[self fontWithSize:@"OpenSans" size:20.0f]];
         
+       
         
         
     } else {
         self.currentSession = nil; //set this to nil
         [super setTitle:@"Sign In With Vinli" forState:UIControlStateNormal & UIControlStateHighlighted & UIControlStateSelected];
-        [super setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal & UIControlStateHighlighted & UIControlStateSelected];
-        [super layer].cornerRadius = 5;
+        
        //customize the button
         UIImage *btnImage = [self imageFromBundle:@"vinli_icon.png" bundleName:@"VinliSDK"];
-        [[self titleLabel] setFont:[self fontWithSize:@"OpenSans" size:20.0f]];
         btnImage = [btnImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         [self setImage:btnImage forState:UIControlStateNormal & UIControlStateHighlighted & UIControlStateSelected];
         //[[self imageView] setFrame:CGRectMake(self.imageView.frame.origin.x, self.imageView.frame.origin.y - 30, self.imageView.frame.size.width, self.imageView.frame.size.width)];
         [super setImageEdgeInsets:UIEdgeInsetsMake(0, (btnImage.size.width / 2) - 45, 0, 0)];
         [super setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         
-        //the size of the button
         
-        
-//        CGRect buttonFrame = self.frame;
-//        buttonFrame.size = CGSizeMake(280.0f, 54.0f);
-//        self.frame = buttonFrame;
-        
-        
-        [super setBackgroundColor:[[UIColor alloc]initWithRed:0/255.0f green:163.0f/255.0f blue:224.0f/255.0f alpha:1]];
-        //[super setBackgroundColor:[[UIColor alloc]initWithRed:32/255.0f green:149/255.0f blue:200/255.0f alpha:1]];
-        [self addTarget:self action:@selector(pressedDown:) forControlEvents:UIControlEventTouchDown];
         [self addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
         self.clipsToBounds = YES;
         self.loginViewController = [[VLLoginViewController alloc] initWithClientId:[VLSessionManager sharedManager].clientId redirectUri:[VLSessionManager sharedManager].redirectUri]; //instantiate login view controller and
-        self.loginViewController.delegate = self;
+        
     }
     
     
