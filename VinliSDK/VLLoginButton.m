@@ -217,7 +217,7 @@
     [self addTarget:self action:@selector(pressedDown:) forControlEvents:UIControlEventTouchDown];
     [super setBackgroundColor:[[UIColor alloc]initWithRed:0/255.0f green:163.0f/255.0f blue:224.0f/255.0f alpha:1]];
     [super setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal & UIControlStateSelected & UIControlStateHighlighted];
-    self.loginViewController.delegate = self;
+    
     
     if (self.currentSession) {
         [super setTitle:@"Sign Out Of Vinli" forState:UIControlStateNormal & UIControlStateSelected & UIControlStateHighlighted];
@@ -243,7 +243,7 @@
         self.clipsToBounds = YES;
     
         self.loginViewController = [[VLLoginViewController alloc] initWithClientId:[VLSessionManager sharedManager].clientId redirectUri:[VLSessionManager sharedManager].redirectUri]; //instantiate login view controller and
-      
+        self.loginViewController.delegate = self;
     }
     
     
