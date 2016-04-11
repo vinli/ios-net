@@ -163,19 +163,18 @@
 //abstract this color setting
 
 - (void)setHighlighted:(BOOL)highlighted {
-    
+   
     [super setHighlighted:highlighted];
-//    if (_currentSession) {
-//        return;
-//    }
-    
-    self.titleLabel.textColor = [UIColor whiteColor];
     
     if (highlighted) {
+        super.titleLabel.alpha = 1.0; //prevents highlight of textlabel
+        [[super imageView] setAlpha:1.0];
         [super setBackgroundColor:[[UIColor alloc]initWithRed:32/255.0f green:149/255.0f blue:200/255.0f alpha:1]];
+        
 
     } else {
         [super setBackgroundColor:[[UIColor alloc]initWithRed:0/255.0f green:163.0f/255.0f blue:224.0f/255.0f alpha:1]];
+       
     }
 }
 
@@ -183,23 +182,28 @@
 - (void)setSelected:(BOOL)selected {
     
     [super setSelected:selected];
-//    if (_currentSession) {
-//        return;
-//    }
-    
-    
+
     if (selected) {
+        super.titleLabel.alpha = 1.0; //prevents highlight of textlabel
+        NSLog(@"Selected!");
+        [[self imageView] setAlpha:1.0];
         [super setBackgroundColor:[[UIColor alloc]initWithRed:32/255.0f green:149/255.0f blue:200/255.0f alpha:1]];
+        
 
     } else {
         [super setBackgroundColor:[[UIColor alloc]initWithRed:0/255.0f green:163.0f/255.0f blue:224.0f/255.0f alpha:1]];
+        
     }
     
 }
 
 
-
-
+//keep properties when pressed down
+- (IBAction)pressedDown:(id)sender {
+    self.titleLabel.alpha = 1.0;
+    [self setHighlighted:YES]; //set highlighted when touched down
+    
+}
 
 
 
@@ -207,15 +211,15 @@
 - (void) initialize {
     
     self.currentSession = [VLSession currentSession];
-    
-    
+    self.adjustsImageWhenHighlighted = NO;
     
     if (self.currentSession) {
-        [super setTitle:@"Sign Out Of Vinli" forState:UIControlStateNormal];
-        [super setTitle:@"Sign Out Of Vinli" forState:UIControlStateHighlighted];
-        [super setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [super setTitle:@"Sign Out Of Vinli" forState:UIControlStateNormal & UIControlStateSelected & UIControlStateHighlighted];
+        [super setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal & UIControlStateSelected & UIControlStateHighlighted];
         [super setBackgroundColor:[[UIColor alloc]initWithRed:0/255.0f green:163.0f/255.0f blue:224.0f/255.0f alpha:1]];
+        [super setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal & UIControlStateSelected & UIControlStateHighlighted];
         [self addTarget:self action:@selector(logout:) forControlEvents:UIControlEventTouchUpInside];
+        [self addTarget:self action:@selector(pressedDown:) forControlEvents:UIControlEventTouchDown];
         [super layer].cornerRadius = 5;
         [[self titleLabel] setFont:[self fontWithSize:@"OpenSans" size:20.0f]];
         
@@ -223,18 +227,14 @@
         
     } else {
         self.currentSession = nil; //set this to nil
-        [super setTitle:@"Sign In With Vinli" forState:UIControlStateNormal];
-        [super setTitle:@"Sign In With Vinli" forState:UIControlStateHighlighted];
-        [super setTitle:@"Sign In With Vinli" forState:UIControlStateSelected];
+        [super setTitle:@"Sign In With Vinli" forState:UIControlStateNormal & UIControlStateHighlighted & UIControlStateSelected];
+        [super setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal & UIControlStateHighlighted & UIControlStateSelected];
         [super layer].cornerRadius = 5;
-
        //customize the button
         UIImage *btnImage = [self imageFromBundle:@"vinli_icon.png" bundleName:@"VinliSDK"];
         [[self titleLabel] setFont:[self fontWithSize:@"OpenSans" size:20.0f]];
         btnImage = [btnImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        [self setImage:btnImage forState:UIControlStateNormal];
-        [self setImage:btnImage forState:UIControlStateSelected];
-        [self setImage:btnImage forState:UIControlStateHighlighted];
+        [self setImage:btnImage forState:UIControlStateNormal & UIControlStateHighlighted & UIControlStateSelected];
         //[[self imageView] setFrame:CGRectMake(self.imageView.frame.origin.x, self.imageView.frame.origin.y - 30, self.imageView.frame.size.width, self.imageView.frame.size.width)];
         [super setImageEdgeInsets:UIEdgeInsetsMake(0, (btnImage.size.width / 2) - 45, 0, 0)];
         [super setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -249,7 +249,7 @@
         
         [super setBackgroundColor:[[UIColor alloc]initWithRed:0/255.0f green:163.0f/255.0f blue:224.0f/255.0f alpha:1]];
         //[super setBackgroundColor:[[UIColor alloc]initWithRed:32/255.0f green:149/255.0f blue:200/255.0f alpha:1]];
-
+        [self addTarget:self action:@selector(pressedDown:) forControlEvents:UIControlEventTouchDown];
         [self addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
         self.clipsToBounds = YES;
         self.loginViewController = [[VLLoginViewController alloc] initWithClientId:[VLSessionManager sharedManager].clientId redirectUri:[VLSessionManager sharedManager].redirectUri]; //instantiate login view controller and
@@ -289,7 +289,7 @@
 
 - (void) setTitle:(NSString *)title forState:(UIControlState)state {}
 
-- (void) setTitleColor:(UIColor *)color forState:(UIControlState)state{};
+- (void) setTitleColor:(UIColor *)color forState:(UIControlState)state {};
 
 - (void) setBackgroundColor:(UIColor *)backgroundColor{}
 
