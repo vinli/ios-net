@@ -241,8 +241,9 @@
         
         [self addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
         self.clipsToBounds = YES;
+    
         self.loginViewController = [[VLLoginViewController alloc] initWithClientId:[VLSessionManager sharedManager].clientId redirectUri:[VLSessionManager sharedManager].redirectUri]; //instantiate login view controller and
-        
+      
     }
     
     
