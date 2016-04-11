@@ -165,11 +165,11 @@
 - (void)setHighlighted:(BOOL)highlighted {
     
     [super setHighlighted:highlighted];
-    if (_currentSession) {
-        return;
-    }
+//    if (_currentSession) {
+//        return;
+//    }
     
-    
+    self.titleLabel.textColor = [UIColor whiteColor];
     
     if (highlighted) {
         [super setBackgroundColor:[[UIColor alloc]initWithRed:32/255.0f green:149/255.0f blue:200/255.0f alpha:1]];
@@ -183,9 +183,9 @@
 - (void)setSelected:(BOOL)selected {
     
     [super setSelected:selected];
-    if (_currentSession) {
-        return;
-    }
+//    if (_currentSession) {
+//        return;
+//    }
     
     
     if (selected) {
@@ -194,6 +194,7 @@
     } else {
         [super setBackgroundColor:[[UIColor alloc]initWithRed:0/255.0f green:163.0f/255.0f blue:224.0f/255.0f alpha:1]];
     }
+    
 }
 
 
@@ -210,7 +211,8 @@
     
     
     if (self.currentSession) {
-        [super setTitle:@"Sign Out With Vinli" forState:UIControlStateNormal];
+        [super setTitle:@"Sign Out Of Vinli" forState:UIControlStateNormal];
+        [super setTitle:@"Sign Out Of Vinli" forState:UIControlStateHighlighted];
         [super setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [super setBackgroundColor:[[UIColor alloc]initWithRed:0/255.0f green:163.0f/255.0f blue:224.0f/255.0f alpha:1]];
         [self addTarget:self action:@selector(logout:) forControlEvents:UIControlEventTouchUpInside];
@@ -222,6 +224,8 @@
     } else {
         self.currentSession = nil; //set this to nil
         [super setTitle:@"Sign In With Vinli" forState:UIControlStateNormal];
+        [super setTitle:@"Sign In With Vinli" forState:UIControlStateHighlighted];
+        [super setTitle:@"Sign In With Vinli" forState:UIControlStateSelected];
         [super layer].cornerRadius = 5;
 
        //customize the button
@@ -229,6 +233,8 @@
         [[self titleLabel] setFont:[self fontWithSize:@"OpenSans" size:20.0f]];
         btnImage = [btnImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         [self setImage:btnImage forState:UIControlStateNormal];
+        [self setImage:btnImage forState:UIControlStateSelected];
+        [self setImage:btnImage forState:UIControlStateHighlighted];
         //[[self imageView] setFrame:CGRectMake(self.imageView.frame.origin.x, self.imageView.frame.origin.y - 30, self.imageView.frame.size.width, self.imageView.frame.size.width)];
         [super setImageEdgeInsets:UIEdgeInsetsMake(0, (btnImage.size.width / 2) - 45, 0, 0)];
         [super setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -236,9 +242,9 @@
         //the size of the button
         
         
-        CGRect buttonFrame = self.frame;
-        buttonFrame.size = CGSizeMake(280.0f, 54.0f);
-        self.frame = buttonFrame;
+//        CGRect buttonFrame = self.frame;
+//        buttonFrame.size = CGSizeMake(280.0f, 54.0f);
+//        self.frame = buttonFrame;
         
         
         [super setBackgroundColor:[[UIColor alloc]initWithRed:0/255.0f green:163.0f/255.0f blue:224.0f/255.0f alpha:1]];
