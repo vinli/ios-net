@@ -95,6 +95,8 @@
 		49AB6E9E1B82446900DCF808 /* VLUserCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AB6E9C1B82446900DCF808 /* VLUserCache.m */; };
 		49E2F2FF1B6AA93700CD743C /* NSDictionary+NonNullable.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E2F2FD1B6AA93700CD743C /* NSDictionary+NonNullable.h */; };
 		49E2F3001B6AA93700CD743C /* NSDictionary+NonNullable.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E2F2FE1B6AA93700CD743C /* NSDictionary+NonNullable.m */; };
+		659718D21CBDA3020075BE36 /* VLStreamMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 659718D01CBDA3020075BE36 /* VLStreamMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		659718D31CBDA3020075BE36 /* VLStreamMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 659718D11CBDA3020075BE36 /* VLStreamMessage.m */; };
 		65F8CA6F1CBD813B00A58B4D /* VLStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 65F8CA6D1CBD813B00A58B4D /* VLStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65F8CA701CBD813B00A58B4D /* VLStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F8CA6E1CBD813B00A58B4D /* VLStream.m */; };
 		7367E39E1B165EB6004223A6 /* VLEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367E39D1B165EB6004223A6 /* VLEvent.m */; };
@@ -217,6 +219,8 @@
 		49AB6E9C1B82446900DCF808 /* VLUserCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLUserCache.m; sourceTree = "<group>"; };
 		49E2F2FD1B6AA93700CD743C /* NSDictionary+NonNullable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NonNullable.h"; sourceTree = "<group>"; };
 		49E2F2FE1B6AA93700CD743C /* NSDictionary+NonNullable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NonNullable.m"; sourceTree = "<group>"; };
+		659718D01CBDA3020075BE36 /* VLStreamMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLStreamMessage.h; sourceTree = "<group>"; };
+		659718D11CBDA3020075BE36 /* VLStreamMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLStreamMessage.m; sourceTree = "<group>"; };
 		65F8CA6D1CBD813B00A58B4D /* VLStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLStream.h; sourceTree = "<group>"; };
 		65F8CA6E1CBD813B00A58B4D /* VLStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLStream.m; sourceTree = "<group>"; };
 		7367E39D1B165EB6004223A6 /* VLEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLEvent.m; sourceTree = "<group>"; };
@@ -496,6 +500,8 @@
 				0B69F0A91B39B54100684F6D /* VLObjectRef.m */,
 				65F8CA6D1CBD813B00A58B4D /* VLStream.h */,
 				65F8CA6E1CBD813B00A58B4D /* VLStream.m */,
+				659718D01CBDA3020075BE36 /* VLStreamMessage.h */,
+				659718D11CBDA3020075BE36 /* VLStreamMessage.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -563,6 +569,7 @@
 				777A6B811C91E3080050F6C0 /* VLUserSettings.h in Headers */,
 				0B89E48A1B179FE300E69AEA /* VLNotification.h in Headers */,
 				0B37782B1B28B7B8004AC2D6 /* VLLoginButton.h in Headers */,
+				659718D21CBDA3020075BE36 /* VLStreamMessage.h in Headers */,
 				65F8CA6F1CBD813B00A58B4D /* VLStream.h in Headers */,
 				49AB6E971B82432C00DCF808 /* VLSessionManager.h in Headers */,
 				E990CE6E1B26405A00CDEF15 /* VLPolygonBoundary.h in Headers */,
@@ -823,6 +830,7 @@
 				0B2277071B167303000AF179 /* VLSession.m in Sources */,
 				0B89E4971B18BA3E00E69AEA /* VLUser.m in Sources */,
 				7367E3A41B1759A2004223A6 /* VLNotification.m in Sources */,
+				659718D31CBDA3020075BE36 /* VLStreamMessage.m in Sources */,
 				0B37782C1B28B7B8004AC2D6 /* VLLoginButton.m in Sources */,
 				0B1671771B0FC418009BE7A9 /* NSString+Random.m in Sources */,
 				0B69F0AB1B39B54100684F6D /* VLObjectRef.m in Sources */,

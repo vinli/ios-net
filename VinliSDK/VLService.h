@@ -791,7 +791,9 @@
 
 #pragma mark - Stream Services
 
-- (VLStream *) getStreamForDeviceId:(NSString *)deviceId;
+- (VLStream *) getStreamForDeviceId:(nonnull NSString *)deviceId;
+
+- (VLStream *) getStreamForDeviceId:(nonnull NSString *)deviceId onMessageBlock:(void (^)(VLStreamMessage *)) onMessageBlock onErrorBlock:(void (^)(NSError *)) onErrorBlock;
 
 #pragma mark - Auth Services
 

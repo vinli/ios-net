@@ -1324,9 +1324,17 @@
 #pragma mark - Stream Services
 
 - (VLStream *) getStreamForDeviceId:(NSString *)deviceId{
+    return [self getStreamForDeviceId:deviceId onMessageBlock:nil onErrorBlock:nil];
+}
+
+- (VLStream *) getStreamForDeviceId:(NSString *)deviceId onMessageBlock:(void (^)(VLStreamMessage *)) onMessageBlock onErrorBlock:(void (^)(NSError *)) onErrorBlock{
     NSString *urlString = [NSString stringWithFormat:@"wss://%@%@/api/v1/messages?token=%@", STRING_HOST_STREAM, _host, _session.accessToken];
     
-    return [[VLStream alloc] initWithURL:[NSURL URLWithString:urlString] deviceId:deviceId];
+    VLStream *stream = [[VLStream alloc] initWithURL:[NSURL URLWithString:urlString] deviceId:deviceId];
+    stream.onMessageBlock = onMessageBlock;
+    stream.onErrorBlock = onErrorBlock;
+    
+    return stream;
 }
 
 #pragma mark - Auth Services

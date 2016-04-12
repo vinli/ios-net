@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "VLStreamMessage.h"
 
 @interface VLStream : NSObject
 
-@property void (^onMessageBlock)(NSObject *message);
-@property void (^onErrorBlock)(NSError *error);
+@property (copy) void (^onMessageBlock)(VLStreamMessage *message);
+@property (copy) void (^onErrorBlock)(NSError *error);
 
 - (id) initWithURL:(NSURL*) url deviceId:(NSString *) deviceId;
 

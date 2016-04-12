@@ -27,8 +27,11 @@
 
 - (void) setupSocketWithURL:(NSURL *) url deviceId:(NSString *) deviceId{
     streamSocket = [[JFRWebSocket alloc] initWithURL:url protocols:nil];
+    [streamSocket addHeader:@"application/json" forKey:@"Accept"];
+    [streamSocket addHeader:@"application/json" forKey:@"Content-Type"];
     
     __weak JFRWebSocket *weakSocket = streamSocket;
+    __weak VLStream* weakSelf = self;
     
     streamSocket.onConnect = ^{
         NSLog(@"Websocket is connected");
@@ -57,6 +60,26 @@
     
     streamSocket.onText = ^(NSString * jsonStr){
         NSLog(@"Websocket gotText: %@", jsonStr);
+        
+        NSData *data = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
+        NSError *error;
+        id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+        
+        VLStream* strongSelf = weakSelf;
+        
+        if(error){
+            if(strongSelf.onErrorBlock != nil){
+                strongSelf.onErrorBlock(error);
+            }
+        }
+        
+        if([json isKindOfClass:[NSDictionary class]]){
+            VLStreamMessage *message = [[VLStreamMessage alloc] initWithDictionary:json];
+            
+            if(strongSelf.onMessageBlock != nil){
+                strongSelf.onMessageBlock(message);
+            }
+        }
     };
     
     streamSocket.onData = ^(NSData *data){
