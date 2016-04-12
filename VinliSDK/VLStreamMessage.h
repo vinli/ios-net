@@ -10,13 +10,16 @@
 
 @interface VLStreamMessage : NSObject
 
+@property (nonatomic, strong) NSString *deviceId;
+@property (nonatomic, strong) NSString *timestamp;
+
 - (id) initWithDictionary:(NSDictionary *) dictionary;
 
-- (NSString *) rawValueForValue:(NSString *)value defaultValue:(NSString *) defaultValue;
-- (int) integerForValue:(NSString *)value defaultValue:(int) defaultValue;
-- (double) doubleForValue:(NSString *)value defaultValue:(double) defaultValue;
-- (long) longForValue:(NSString *)value defaultValue:(long) defaultValue;
-- (float) floatForValue:(NSString *)value defaultValue:(float) defaultValue;
+- (NSString *) rawValueForKey:(NSString *)key;
+- (int) integerForKey:(NSString *)key defaultValue:(int) defaultValue;
+- (double) doubleForKey:(NSString *)key defaultValue:(double) defaultValue;
+- (long) longForKey:(NSString *)key defaultValue:(long) defaultValue;
+- (float) floatForKey:(NSString *)key defaultValue:(float) defaultValue;
 
 
 @end
