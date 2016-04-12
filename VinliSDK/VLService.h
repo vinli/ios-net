@@ -35,6 +35,7 @@
 #import "VLObjectRef.h"
 #import "VLPolygonBoundary.h"
 #import "VLTimeSeries.h"
+#import "VLStream.h"
 
 #pragma clang diagnostic ignored "-Wnullability-completeness"
 
@@ -787,6 +788,10 @@
 - (void) deleteSubscriptionWithId:(nonnull NSString *) subscriptionID
                                 onSuccess:(void (^)(NSHTTPURLResponse *response))onSuccessBlock
                                 onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+#pragma mark - Stream Services
+
+- (VLStream *) getStreamForDeviceId:(NSString *)deviceId;
 
 #pragma mark - Auth Services
 

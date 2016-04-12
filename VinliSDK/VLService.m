@@ -28,6 +28,7 @@
 #define STRING_HOST_RULES       @"rules"
 #define STRING_HOST_AUTH        @"auth"
 #define STRING_HOST_TRIPS       @"trips"
+#define STRING_HOST_STREAM      @"stream"
 
 #define DEFAULT_HOST            @".vin.li"
 
@@ -1318,6 +1319,14 @@
             onFailureBlock(error, response, bodyString);
         }
     }];
+}
+
+#pragma mark - Stream Services
+
+- (VLStream *) getStreamForDeviceId:(NSString *)deviceId{
+    NSString *urlString = [NSString stringWithFormat:@"wss://%@%@/api/v1/messages?token=%@", STRING_HOST_STREAM, _host, _session.accessToken];
+    
+    return [[VLStream alloc] initWithURL:[NSURL URLWithString:urlString] deviceId:deviceId];
 }
 
 #pragma mark - Auth Services
