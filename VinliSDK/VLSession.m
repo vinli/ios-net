@@ -25,8 +25,9 @@ static NSDictionary *sessionCache;
 }
 
 + (BOOL)exitSession {
+    currentSession = nil; //maybe get rid of this state
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kVLSessionCachedSession];
-    return ![[NSUserDefaults standardUserDefaults] objectForKey:kVLSessionCachedSession] ? YES : NO;
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kVLSessionCachedSession] == nil;
     
     
 }
@@ -59,7 +60,7 @@ static NSDictionary *sessionCache;
 
 
 
-- (instancetype) initWithAccessToken:(NSString *)token{
+- (instancetype) initWithAccessToken:(NSString *)token {
     self = [super init];
     if(self){
         _accessToken = [token copy];

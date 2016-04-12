@@ -48,15 +48,15 @@ static NSString * const kVinliSignUpRequest = @"/#/sign-up";
     
     self.title = @"Login to Vinli";
     
-    if (self.navigationController)
-    {
-        UIButton* cancelBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, self.navigationController.navigationBar.frame.size.height)];
-        [cancelBtn setTitle:@"Cancel" forState:UIControlStateNormal];
-        [cancelBtn.titleLabel setFont:[UIFont boldSystemFontOfSize:14]];
-        [cancelBtn setTitleColor:[UIColor colorWithRed:36.0f/255.0f green:167.0f/255.0f blue:223.0f/255.0f alpha:1] forState:UIControlStateNormal];
-        [cancelBtn addTarget:self action:@selector(onLoginViewControllerCancelButton:) forControlEvents:UIControlEventTouchUpInside];
-        [self.navigationController.navigationBar addSubview:cancelBtn];
-    }
+//    if (self.navigationController)
+//    {
+//        UIButton* cancelBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, self.navigationController.navigationBar.frame.size.height)];
+//        [cancelBtn setTitle:@"Cancel" forState:UIControlStateNormal];
+//        [cancelBtn.titleLabel setFont:[UIFont boldSystemFontOfSize:14]];
+//        [cancelBtn setTitleColor:[UIColor colorWithRed:36.0f/255.0f green:167.0f/255.0f blue:223.0f/255.0f alpha:1] forState:UIControlStateNormal];
+//        [cancelBtn addTarget:self action:@selector(onLoginViewControllerCancelButton:) forControlEvents:UIControlEventTouchUpInside];
+//        [self.navigationController.navigationBar addSubview:cancelBtn];
+//    }
     
     
     if(_host == nil || _host.length == 0){
@@ -121,7 +121,7 @@ static NSString * const kVinliSignUpRequest = @"/#/sign-up";
             if(params[@"access_token"]){
                 VLSession *session = [[VLSession alloc] initWithAccessToken:params[@"access_token"]];
                 [[VLSessionManager sharedManager].service useSession:session];
-                 [self dismissViewControllerAnimated:YES completion:nil];
+                 [self.navigationController popToRootViewControllerAnimated:YES];
                 // Create static method on VLSession currentSession -- will return cached session
                 if(_delegate && [_delegate respondsToSelector:@selector(vlLoginViewController:didLoginWithSession:)]){
                     [_delegate vlLoginViewController:self didLoginWithSession:session];

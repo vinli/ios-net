@@ -17,9 +17,9 @@
 @interface VLLoginButton : UIButton <VLLoginViewControllerDelegate>
 
 
-@property (nonatomic, weak ) id<VLLoginButtonDelegate> delegate; //this will pass the delegate to the loginViewController
-
-@property VLLoginViewController *loginViewController;
+@property (weak, nonatomic ) id<VLLoginButtonDelegate> delegate; //this will pass the delegate to the loginViewController
+@property (strong, nonatomic) UINavigationController *navController;
+@property (strong, nonatomic)VLLoginViewController *loginViewController;
 - (id) init;
 - (id) initWithCoder:(NSCoder *)aDecoder;
 - (id) initWithFrame:(CGRect)frame;

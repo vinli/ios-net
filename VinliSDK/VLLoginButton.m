@@ -13,7 +13,6 @@
 
 
 @interface VLLoginButton ()
-@property (strong, nonatomic) UINavigationController *navController;
 @property (weak, nonatomic) VLSession *currentSession;
 @end
 
@@ -149,10 +148,11 @@
   
     //check reference
     if (_navController) {
-        [[[UIApplication sharedApplication].windows[0] rootViewController] presentViewController:_navController animated:YES completion:nil];
+        [_navController pushViewController:self.loginViewController animated:YES];
     } else {
-        _navController = [[UINavigationController alloc] initWithRootViewController:self.loginViewController];
-        [[[UIApplication sharedApplication].windows[0] rootViewController] presentViewController:_navController animated:YES completion:nil];
+         _navController  = (UINavigationController *)[[UIApplication sharedApplication].windows[0] rootViewController];
+        
+        [_navController pushViewController:_loginViewController animated:YES];
     }
     
 
@@ -220,7 +220,7 @@
     
     
     if (self.currentSession) {
-        [super setTitle:@"Sign Out Of Vinli" forState:UIControlStateNormal & UIControlStateSelected & UIControlStateHighlighted];
+        [super setTitle:@"Sign Out With Vinli" forState:UIControlStateNormal & UIControlStateSelected & UIControlStateHighlighted];
         [self addTarget:self action:@selector(logout:) forControlEvents:UIControlEventTouchUpInside];
         
        
