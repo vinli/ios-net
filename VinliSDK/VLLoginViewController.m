@@ -58,6 +58,7 @@ static NSString * const kVinliSignUpRequest = @"/#/sign-up";
 //        [self.navigationController.navigationBar addSubview:cancelBtn];
 //    }
     
+    [self clearCookies];
     
     if(_host == nil || _host.length == 0){
         _host = DEFAULT_HOST;
@@ -82,6 +83,15 @@ static NSString * const kVinliSignUpRequest = @"/#/sign-up";
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?client_id=%@&redirect_uri=%@&response_type=%@", oauthEndpoint, _clientId, _redirectUri, responseType]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [webView loadRequest:request];
+}
+
+
+- (void)clearCookies {
+    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie *cookie in [storage cookies]) {
+        [storage deleteCookie:cookie];
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -52,6 +52,7 @@
     if (hasLoggedOut) {
     if (_delegate && [_delegate respondsToSelector:@selector(didButtonLogout)]) {
             [_delegate didButtonLogout];
+        
         }
     } else if (_delegate && [_delegate respondsToSelector:@selector(didButtonFailToLogout:)]) {
         [_delegate didButtonFailToLogout:nil];
@@ -60,6 +61,11 @@
 
 }
 
+
+
+- (void)redraw {
+    [self initialize];
+}
 
 
 //font methods
@@ -145,13 +151,11 @@
 
 
 - (IBAction)login:(id)sender {
-  
     //check reference
     if (_navController) {
         [_navController pushViewController:self.loginViewController animated:YES];
     } else {
          _navController  = (UINavigationController *)[[UIApplication sharedApplication].windows[0] rootViewController];
-        
         [_navController pushViewController:_loginViewController animated:YES];
     }
     
