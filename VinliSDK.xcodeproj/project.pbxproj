@@ -101,6 +101,8 @@
 		65F8CA701CBD813B00A58B4D /* VLStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F8CA6E1CBD813B00A58B4D /* VLStream.m */; };
 		65FFFB381CBE94E8009D4CF1 /* VLAccelData.h in Headers */ = {isa = PBXBuildFile; fileRef = 65FFFB361CBE94E8009D4CF1 /* VLAccelData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65FFFB391CBE94E8009D4CF1 /* VLAccelData.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FFFB371CBE94E8009D4CF1 /* VLAccelData.m */; };
+		65FFFB451CBEA17A009D4CF1 /* VLParametricFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 65FFFB431CBEA17A009D4CF1 /* VLParametricFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65FFFB461CBEA17A009D4CF1 /* VLParametricFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FFFB441CBEA17A009D4CF1 /* VLParametricFilter.m */; };
 		7367E39E1B165EB6004223A6 /* VLEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367E39D1B165EB6004223A6 /* VLEvent.m */; };
 		7367E3A21B166ABB004223A6 /* VLEventPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367E3A11B166ABB004223A6 /* VLEventPager.m */; };
 		7367E3A41B1759A2004223A6 /* VLNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367E3A31B1759A2004223A6 /* VLNotification.m */; };
@@ -227,6 +229,8 @@
 		65F8CA6E1CBD813B00A58B4D /* VLStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLStream.m; sourceTree = "<group>"; };
 		65FFFB361CBE94E8009D4CF1 /* VLAccelData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLAccelData.h; sourceTree = "<group>"; };
 		65FFFB371CBE94E8009D4CF1 /* VLAccelData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLAccelData.m; sourceTree = "<group>"; };
+		65FFFB431CBEA17A009D4CF1 /* VLParametricFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLParametricFilter.h; sourceTree = "<group>"; };
+		65FFFB441CBEA17A009D4CF1 /* VLParametricFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLParametricFilter.m; sourceTree = "<group>"; };
 		7367E39D1B165EB6004223A6 /* VLEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLEvent.m; sourceTree = "<group>"; };
 		7367E39F1B165ECF004223A6 /* VLEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VLEvent.h; sourceTree = "<group>"; };
 		7367E3A01B166AA9004223A6 /* VLEventPager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VLEventPager.h; sourceTree = "<group>"; };
@@ -527,6 +531,8 @@
 				65F8CA6E1CBD813B00A58B4D /* VLStream.m */,
 				65FFFB361CBE94E8009D4CF1 /* VLAccelData.h */,
 				65FFFB371CBE94E8009D4CF1 /* VLAccelData.m */,
+				65FFFB431CBEA17A009D4CF1 /* VLParametricFilter.h */,
+				65FFFB441CBEA17A009D4CF1 /* VLParametricFilter.m */,
 			);
 			name = Streaming;
 			sourceTree = "<group>";
@@ -586,6 +592,7 @@
 				659718D21CBDA3020075BE36 /* VLStreamMessage.h in Headers */,
 				65F8CA6F1CBD813B00A58B4D /* VLStream.h in Headers */,
 				49AB6E971B82432C00DCF808 /* VLSessionManager.h in Headers */,
+				65FFFB451CBEA17A009D4CF1 /* VLParametricFilter.h in Headers */,
 				65FFFB381CBE94E8009D4CF1 /* VLAccelData.h in Headers */,
 				E990CE6E1B26405A00CDEF15 /* VLPolygonBoundary.h in Headers */,
 				0B69F0AA1B39B54100684F6D /* VLObjectRef.h in Headers */,
@@ -850,6 +857,7 @@
 				0B37782C1B28B7B8004AC2D6 /* VLLoginButton.m in Sources */,
 				0B1671771B0FC418009BE7A9 /* NSString+Random.m in Sources */,
 				0B69F0AB1B39B54100684F6D /* VLObjectRef.m in Sources */,
+				65FFFB461CBEA17A009D4CF1 /* VLParametricFilter.m in Sources */,
 				7367E3A71B175FEA004223A6 /* VLNotificationPager.m in Sources */,
 				0B3DDC5B1B1534AB00D95E61 /* VLTrip.m in Sources */,
 				E92943711B1679F600AAC7D3 /* VLSubscriptionPager.m in Sources */,
