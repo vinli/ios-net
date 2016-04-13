@@ -40,7 +40,25 @@
     return self;
 }
 
-- (NSString *) rawValueForKey:(NSString *)key{
+- (VLAccelData *) accel{
+    NSDictionary *accelDictionary = (NSDictionary *)[self rawValueForKey:@"accel"];
+    if(accelDictionary != nil){
+        return [[VLAccelData alloc] initWithDictionary:accelDictionary];
+    }else{
+        return nil;
+    }
+}
+
+- (VLLocation *) coord{
+    NSDictionary *coordData = (NSDictionary *) [self rawValueForKey:@"location"];
+    if(coordData != nil){
+        return [[VLLocation alloc] initWithDictionary:coordData];
+    }else{
+        return nil;
+    }
+}
+
+- (NSObject *) rawValueForKey:(NSString *)key{
     
     if(payload == nil || [payload objectForKey:@"data"] == nil){
         return nil;
@@ -55,14 +73,16 @@
     if([value isKindOfClass:NSString.class]){
         return (NSString *) value;
     }else if([value isKindOfClass:NSNumber.class]){
-        return ((NSNumber *) value).stringValue;
+        return ((NSNumber *) value);
+    }else if([value isKindOfClass:NSDictionary.class]){
+        return ((NSDictionary *) value);
     }else{
-        return nil; // TODO do stuff here
+        return nil;
     }
 }
 
 - (double) doubleForKey:(NSString *)key defaultValue:(double)defaultValue{
-    NSString *value = [self rawValueForKey:key];
+    NSNumber *value = (NSNumber *)[self rawValueForKey:key];
     
     if(value == nil){
         return defaultValue;

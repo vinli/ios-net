@@ -99,6 +99,8 @@
 		659718D31CBDA3020075BE36 /* VLStreamMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 659718D11CBDA3020075BE36 /* VLStreamMessage.m */; };
 		65F8CA6F1CBD813B00A58B4D /* VLStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 65F8CA6D1CBD813B00A58B4D /* VLStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65F8CA701CBD813B00A58B4D /* VLStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F8CA6E1CBD813B00A58B4D /* VLStream.m */; };
+		65FFFB381CBE94E8009D4CF1 /* VLAccelData.h in Headers */ = {isa = PBXBuildFile; fileRef = 65FFFB361CBE94E8009D4CF1 /* VLAccelData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65FFFB391CBE94E8009D4CF1 /* VLAccelData.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FFFB371CBE94E8009D4CF1 /* VLAccelData.m */; };
 		7367E39E1B165EB6004223A6 /* VLEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367E39D1B165EB6004223A6 /* VLEvent.m */; };
 		7367E3A21B166ABB004223A6 /* VLEventPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367E3A11B166ABB004223A6 /* VLEventPager.m */; };
 		7367E3A41B1759A2004223A6 /* VLNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367E3A31B1759A2004223A6 /* VLNotification.m */; };
@@ -223,6 +225,8 @@
 		659718D11CBDA3020075BE36 /* VLStreamMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLStreamMessage.m; sourceTree = "<group>"; };
 		65F8CA6D1CBD813B00A58B4D /* VLStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLStream.h; sourceTree = "<group>"; };
 		65F8CA6E1CBD813B00A58B4D /* VLStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLStream.m; sourceTree = "<group>"; };
+		65FFFB361CBE94E8009D4CF1 /* VLAccelData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLAccelData.h; sourceTree = "<group>"; };
+		65FFFB371CBE94E8009D4CF1 /* VLAccelData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLAccelData.m; sourceTree = "<group>"; };
 		7367E39D1B165EB6004223A6 /* VLEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLEvent.m; sourceTree = "<group>"; };
 		7367E39F1B165ECF004223A6 /* VLEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VLEvent.h; sourceTree = "<group>"; };
 		7367E3A01B166AA9004223A6 /* VLEventPager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VLEventPager.h; sourceTree = "<group>"; };
@@ -471,6 +475,7 @@
 		0BD2E50C1B0FDB7C00A5D2BC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				65FFFB351CBE9460009D4CF1 /* Streaming */,
 				0B3778331B29C776004AC2D6 /* Login */,
 				0B37781C1B25DEDA004AC2D6 /* Boundaries */,
 				0B3DDC231B14C19A00D95E61 /* Pager */,
@@ -498,10 +503,6 @@
 				0B89E4951B18BA3E00E69AEA /* VLUser.m */,
 				0B69F0A81B39B54100684F6D /* VLObjectRef.h */,
 				0B69F0A91B39B54100684F6D /* VLObjectRef.m */,
-				65F8CA6D1CBD813B00A58B4D /* VLStream.h */,
-				65F8CA6E1CBD813B00A58B4D /* VLStream.m */,
-				659718D01CBDA3020075BE36 /* VLStreamMessage.h */,
-				659718D11CBDA3020075BE36 /* VLStreamMessage.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -515,6 +516,19 @@
 				32395D7687F956F7129D0A18 /* Pods-VinliSDK.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		65FFFB351CBE9460009D4CF1 /* Streaming */ = {
+			isa = PBXGroup;
+			children = (
+				659718D01CBDA3020075BE36 /* VLStreamMessage.h */,
+				659718D11CBDA3020075BE36 /* VLStreamMessage.m */,
+				65F8CA6D1CBD813B00A58B4D /* VLStream.h */,
+				65F8CA6E1CBD813B00A58B4D /* VLStream.m */,
+				65FFFB361CBE94E8009D4CF1 /* VLAccelData.h */,
+				65FFFB371CBE94E8009D4CF1 /* VLAccelData.m */,
+			);
+			name = Streaming;
 			sourceTree = "<group>";
 		};
 		9B81BA4B3915B4D0C99218A5 /* Frameworks */ = {
@@ -572,6 +586,7 @@
 				659718D21CBDA3020075BE36 /* VLStreamMessage.h in Headers */,
 				65F8CA6F1CBD813B00A58B4D /* VLStream.h in Headers */,
 				49AB6E971B82432C00DCF808 /* VLSessionManager.h in Headers */,
+				65FFFB381CBE94E8009D4CF1 /* VLAccelData.h in Headers */,
 				E990CE6E1B26405A00CDEF15 /* VLPolygonBoundary.h in Headers */,
 				0B69F0AA1B39B54100684F6D /* VLObjectRef.h in Headers */,
 				0B3DDC261B14C28600D95E61 /* VLPager.h in Headers */,
@@ -811,6 +826,7 @@
 				0B3DDC271B14C28600D95E61 /* VLPager.m in Sources */,
 				E990CE6F1B26405A00CDEF15 /* VLPolygonBoundary.m in Sources */,
 				7367E3A21B166ABB004223A6 /* VLEventPager.m in Sources */,
+				65FFFB391CBE94E8009D4CF1 /* VLAccelData.m in Sources */,
 				0B3DDC2B1B14C31B00D95E61 /* VLOffsetPager.m in Sources */,
 				E929437D1B18FE5F00AAC7D3 /* VLSnapshotPager.m in Sources */,
 				0B16714A1B0FC39D009BE7A9 /* VLRule.m in Sources */,

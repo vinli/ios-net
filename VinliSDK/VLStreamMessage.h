@@ -7,15 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "VLAccelData.h"
+#import "VLLocation.h"
 
 @interface VLStreamMessage : NSObject
 
 @property (nonatomic, strong) NSString *deviceId;
 @property (nonatomic, strong) NSString *timestamp;
+@property (nonatomic, readonly) VLAccelData *accel;
+@property (nonatomic, readonly) VLLocation *coord;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary;
 
-- (NSString *) rawValueForKey:(NSString *)key;
+- (NSObject *) rawValueForKey:(NSString *)key;
 - (int) integerForKey:(NSString *)key defaultValue:(int) defaultValue;
 - (double) doubleForKey:(NSString *)key defaultValue:(double) defaultValue;
 - (long) longForKey:(NSString *)key defaultValue:(long) defaultValue;
