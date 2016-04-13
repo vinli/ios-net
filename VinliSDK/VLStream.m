@@ -18,14 +18,21 @@
 @implementation VLStream
 
 - (id) initWithURL:(NSURL *)url deviceId:(NSString *)deviceId{
+    return [self initWithURL:url deviceId:deviceId parametricFilters:nil geometryFilter:nil];
+}
+
+- (id) initWithURL:(NSURL *)url deviceId:(NSString *)deviceId parametricFilters:(NSArray *)pFilters geometryFilter:(VLGeometryFilter *)gFilter{
     self = [super init];
+    
     if(self){
-        [self setupSocketWithURL:url deviceId:deviceId];
+        [self setupSocketWithURL:url deviceId:deviceId parametricFilters:pFilters geometryFilter:gFilter];
     }
+    
     return self;
 }
 
-- (void) setupSocketWithURL:(NSURL *) url deviceId:(NSString *) deviceId{
+- (void) setupSocketWithURL:(NSURL *)url deviceId:(NSString *)deviceId parametricFilters:(NSArray *)parametricFilters geometryFilter:(VLGeometryFilter *)geometryFilter{
+    
     streamSocket = [[JFRWebSocket alloc] initWithURL:url protocols:nil];
     [streamSocket addHeader:@"application/json" forKey:@"Accept"];
     [streamSocket addHeader:@"application/json" forKey:@"Content-Type"];
@@ -34,33 +41,35 @@
     __weak VLStream* weakSelf = self;
     
     streamSocket.onConnect = ^{
-        NSLog(@"Websocket is connected");
-        
         JFRWebSocket *socket = weakSocket;
+        VLStream *strongSelf = weakSelf;
         
         NSDictionary* subjectDic = @{@"type" : @"device",
                                      @"id" : deviceId};
         NSDictionary* subscription = @{@"type" : @"sub",
                                        @"subject" : subjectDic};
+
+        [strongSelf writeDictionary:subscription toSocket:socket];
         
-        NSError *error;
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:subscription options:0 error:&error];
+        for(VLParametricFilter *pFilter in parametricFilters){
+            NSDictionary *filterAsDictionary = [pFilter toDictionary];
+            [strongSelf writeDictionary:filterAsDictionary toSocket:socket];
+        }
         
-        if(jsonData){
-            NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-            [socket writeString:jsonString];
-        }else{
-            NSLog(@"Websocket got an error: %@", error.description);
+        if(geometryFilter != nil){
+            NSDictionary *filterAsDictionary = [geometryFilter toDictionary];
+            [strongSelf writeDictionary:filterAsDictionary toSocket:socket];
         }
     };
     
     streamSocket.onDisconnect = ^(NSError *error){
-        NSLog(@"Websocked is disconnected");
+        VLStream *strongSelf = weakSelf;
+        if(strongSelf.onErrorBlock != nil){
+            strongSelf.onErrorBlock(error);
+        }
     };
     
     streamSocket.onText = ^(NSString * jsonStr){
-        NSLog(@"Websocket gotText: %@", jsonStr);
-        
         NSData *data = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
         NSError *error;
         id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
@@ -76,17 +85,30 @@
         if([json isKindOfClass:[NSDictionary class]]){
             VLStreamMessage *message = [[VLStreamMessage alloc] initWithDictionary:json];
             
-            if(strongSelf.onMessageBlock != nil){
-                strongSelf.onMessageBlock(message);
+            // Only need to send publish messages to the user.
+            if([message.type isEqualToString:@"pub"]){
+                if(strongSelf.onMessageBlock != nil){
+                    strongSelf.onMessageBlock(message);
+                }
             }
         }
     };
     
-    streamSocket.onData = ^(NSData *data){
-        NSLog(@"Websocket got some binary data: %@", data.description);
-    };
+    streamSocket.onData = ^(NSData *data){};
     
     [streamSocket connect];
+}
+
+- (void) writeDictionary:(NSDictionary *)dictinary toSocket:(JFRWebSocket *)socket{
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictinary options:0 error:&error];
+    
+    if(jsonData){
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        [socket writeString:jsonString];
+    }else{
+        NSLog(@"Error parsing dictionary into JSON. Error: %@, Dictionary: %@", error, dictinary);
+    }
 }
 
 @end

@@ -35,6 +35,7 @@
 #import "VLObjectRef.h"
 #import "VLPolygonBoundary.h"
 #import "VLTimeSeries.h"
+#import "VLGeometryFilter.h"
 #import "VLStream.h"
 
 #pragma clang diagnostic ignored "-Wnullability-completeness"
@@ -794,6 +795,8 @@
 - (VLStream *) getStreamForDeviceId:(nonnull NSString *)deviceId;
 
 - (VLStream *) getStreamForDeviceId:(nonnull NSString *)deviceId onMessageBlock:(void (^)(VLStreamMessage *)) onMessageBlock onErrorBlock:(void (^)(NSError *)) onErrorBlock;
+
+- (VLStream *) getStreamForDeviceId:(NSString *)deviceId parametricFilters:(NSArray *)parametricFilters geometryFilter:(VLGeometryFilter *)geometryFilter onMessageBlock:(void (^)(VLStreamMessage *)) onMessageBlock onErrorBlock:(void (^)(NSError *)) onErrorBlock;
 
 #pragma mark - Auth Services
 

@@ -9,7 +9,6 @@
 #import "VLStreamMessage.h"
 
 @interface VLStreamMessage(){
-    NSString *type;
     NSDictionary *subject;
     NSDictionary *payload;
 }
@@ -20,7 +19,7 @@
 - (id) initWithDictionary:(NSDictionary *)dictionary{
     self = [super init];
     if(self){
-        type = [dictionary objectForKey:@"type"];
+        self.type = [dictionary objectForKey:@"type"];
         
         if([dictionary objectForKey:@"subject"] != nil){
             subject = [dictionary objectForKey:@"subject"];

@@ -103,6 +103,10 @@
 		65FFFB391CBE94E8009D4CF1 /* VLAccelData.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FFFB371CBE94E8009D4CF1 /* VLAccelData.m */; };
 		65FFFB451CBEA17A009D4CF1 /* VLParametricFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 65FFFB431CBEA17A009D4CF1 /* VLParametricFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65FFFB461CBEA17A009D4CF1 /* VLParametricFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FFFB441CBEA17A009D4CF1 /* VLParametricFilter.m */; };
+		65FFFB521CBEA8DC009D4CF1 /* VLGeometryFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 65FFFB501CBEA8DC009D4CF1 /* VLGeometryFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65FFFB531CBEA8DC009D4CF1 /* VLGeometryFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FFFB511CBEA8DC009D4CF1 /* VLGeometryFilter.m */; };
+		65FFFB561CBEAAAD009D4CF1 /* VLCoordinate.h in Headers */ = {isa = PBXBuildFile; fileRef = 65FFFB541CBEAAAD009D4CF1 /* VLCoordinate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65FFFB571CBEAAAD009D4CF1 /* VLCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FFFB551CBEAAAD009D4CF1 /* VLCoordinate.m */; };
 		7367E39E1B165EB6004223A6 /* VLEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367E39D1B165EB6004223A6 /* VLEvent.m */; };
 		7367E3A21B166ABB004223A6 /* VLEventPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367E3A11B166ABB004223A6 /* VLEventPager.m */; };
 		7367E3A41B1759A2004223A6 /* VLNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 7367E3A31B1759A2004223A6 /* VLNotification.m */; };
@@ -231,6 +235,10 @@
 		65FFFB371CBE94E8009D4CF1 /* VLAccelData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLAccelData.m; sourceTree = "<group>"; };
 		65FFFB431CBEA17A009D4CF1 /* VLParametricFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLParametricFilter.h; sourceTree = "<group>"; };
 		65FFFB441CBEA17A009D4CF1 /* VLParametricFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLParametricFilter.m; sourceTree = "<group>"; };
+		65FFFB501CBEA8DC009D4CF1 /* VLGeometryFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLGeometryFilter.h; sourceTree = "<group>"; };
+		65FFFB511CBEA8DC009D4CF1 /* VLGeometryFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLGeometryFilter.m; sourceTree = "<group>"; };
+		65FFFB541CBEAAAD009D4CF1 /* VLCoordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLCoordinate.h; sourceTree = "<group>"; };
+		65FFFB551CBEAAAD009D4CF1 /* VLCoordinate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLCoordinate.m; sourceTree = "<group>"; };
 		7367E39D1B165EB6004223A6 /* VLEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLEvent.m; sourceTree = "<group>"; };
 		7367E39F1B165ECF004223A6 /* VLEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VLEvent.h; sourceTree = "<group>"; };
 		7367E3A01B166AA9004223A6 /* VLEventPager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VLEventPager.h; sourceTree = "<group>"; };
@@ -507,6 +515,8 @@
 				0B89E4951B18BA3E00E69AEA /* VLUser.m */,
 				0B69F0A81B39B54100684F6D /* VLObjectRef.h */,
 				0B69F0A91B39B54100684F6D /* VLObjectRef.m */,
+				65FFFB541CBEAAAD009D4CF1 /* VLCoordinate.h */,
+				65FFFB551CBEAAAD009D4CF1 /* VLCoordinate.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -533,6 +543,8 @@
 				65FFFB371CBE94E8009D4CF1 /* VLAccelData.m */,
 				65FFFB431CBEA17A009D4CF1 /* VLParametricFilter.h */,
 				65FFFB441CBEA17A009D4CF1 /* VLParametricFilter.m */,
+				65FFFB501CBEA8DC009D4CF1 /* VLGeometryFilter.h */,
+				65FFFB511CBEA8DC009D4CF1 /* VLGeometryFilter.m */,
 			);
 			name = Streaming;
 			sourceTree = "<group>";
@@ -593,6 +605,8 @@
 				65F8CA6F1CBD813B00A58B4D /* VLStream.h in Headers */,
 				49AB6E971B82432C00DCF808 /* VLSessionManager.h in Headers */,
 				65FFFB451CBEA17A009D4CF1 /* VLParametricFilter.h in Headers */,
+				65FFFB561CBEAAAD009D4CF1 /* VLCoordinate.h in Headers */,
+				65FFFB521CBEA8DC009D4CF1 /* VLGeometryFilter.h in Headers */,
 				65FFFB381CBE94E8009D4CF1 /* VLAccelData.h in Headers */,
 				E990CE6E1B26405A00CDEF15 /* VLPolygonBoundary.h in Headers */,
 				0B69F0AA1B39B54100684F6D /* VLObjectRef.h in Headers */,
@@ -834,6 +848,7 @@
 				E990CE6F1B26405A00CDEF15 /* VLPolygonBoundary.m in Sources */,
 				7367E3A21B166ABB004223A6 /* VLEventPager.m in Sources */,
 				65FFFB391CBE94E8009D4CF1 /* VLAccelData.m in Sources */,
+				65FFFB531CBEA8DC009D4CF1 /* VLGeometryFilter.m in Sources */,
 				0B3DDC2B1B14C31B00D95E61 /* VLOffsetPager.m in Sources */,
 				E929437D1B18FE5F00AAC7D3 /* VLSnapshotPager.m in Sources */,
 				0B16714A1B0FC39D009BE7A9 /* VLRule.m in Sources */,
@@ -850,6 +865,7 @@
 				0B3DDC5F1B15355200D95E61 /* VLTripPager.m in Sources */,
 				0B2277011B165DD1000AF179 /* VLLoginViewController.m in Sources */,
 				777A6B821C91E3080050F6C0 /* VLUserSettings.m in Sources */,
+				65FFFB571CBEAAAD009D4CF1 /* VLCoordinate.m in Sources */,
 				0B2277071B167303000AF179 /* VLSession.m in Sources */,
 				0B89E4971B18BA3E00E69AEA /* VLUser.m in Sources */,
 				7367E3A41B1759A2004223A6 /* VLNotification.m in Sources */,

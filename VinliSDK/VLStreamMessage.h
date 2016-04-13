@@ -12,6 +12,7 @@
 
 @interface VLStreamMessage : NSObject
 
+@property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSString *deviceId;
 @property (nonatomic, strong) NSString *timestamp;
 @property (nonatomic, readonly) VLAccelData *accel;
