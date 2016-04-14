@@ -12,7 +12,7 @@
 
 #define TYPE @"geometry"
 
-- (id) initWithDirection:(GeometryDirection)direction coordinates:(NSArray *)coordinateList{
+- (id) initWithDirection:(VLGeometryDirection)direction coordinates:(NSArray *)coordinateList{
     self = [super init];
     
     if(self){
@@ -65,13 +65,13 @@
     return dictionary;
 }
 
-- (NSString *) stringFromDirection:(GeometryDirection) direction{
+- (NSString *) stringFromDirection:(VLGeometryDirection) direction{
     NSString *string = nil;
     switch(direction){
-        case GeometryDirectionInside:
+        case VLGeometryDirectionInside:
             string = @"inside";
             break;
-        case GeometryDirectionOutside:
+        case VLGeometryDirectionOutside:
             string = @"outside";
             break;
     }

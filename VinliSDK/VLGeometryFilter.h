@@ -11,15 +11,15 @@
 
 @interface VLGeometryFilter : NSObject
 
-typedef NS_ENUM(NSInteger, GeometryDirection){
-    GeometryDirectionInside = 0,
-    GeometryDirectionOutside
+typedef NS_ENUM(NSInteger, VLGeometryDirection){
+    VLGeometryDirectionInside = 0,
+    VLGeometryDirectionOutside
 };
 
-@property (nonatomic) GeometryDirection direction;
+@property (nonatomic) VLGeometryDirection direction;
 @property (nonatomic, strong) NSArray *coordinateList;
 
-- (id) initWithDirection:(GeometryDirection)direction coordinates:(NSArray *)coordinateList;
+- (id) initWithDirection:(VLGeometryDirection)direction coordinates:(NSArray *)coordinateList;
 
 - (NSDictionary *) toDictionary;
 
