@@ -70,6 +70,7 @@
     };
     
     streamSocket.onText = ^(NSString * jsonStr){
+        NSLog(@"Websocket got stuff: %@", jsonStr);
         NSData *data = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
         NSError *error;
         id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];

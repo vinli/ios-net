@@ -19,4 +19,7 @@
 - (id) initWithURL:(NSURL *)url deviceId:(NSString *)deviceId;
 - (id) initWithURL:(NSURL *)url deviceId:(NSString *)deviceId parametricFilters:(NSArray *)pFilters geometryFilter:(VLGeometryFilter *)gFilter;
 
+- (void) setOnMessageBlock:(void (^)(VLStreamMessage *message))onMessageBlock;
+- (void) setOnErrorBlock:(void (^)(NSError * error))onErrorBlock;
+
 @end

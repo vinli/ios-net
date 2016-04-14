@@ -90,6 +90,8 @@
         return ((NSNumber *) value);
     }else if([value isKindOfClass:NSDictionary.class]){
         return ((NSDictionary *) value);
+    }else if([value isKindOfClass:NSArray.class]){
+        return ((NSArray *) value);
     }else{
         return nil;
     }
