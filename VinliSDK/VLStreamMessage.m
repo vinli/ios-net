@@ -11,6 +11,7 @@
 @interface VLStreamMessage(){
     NSDictionary *subject;
     NSDictionary *payload;
+    NSNumber *statusCode;
 }
 @end
 
@@ -20,6 +21,10 @@
     self = [super init];
     if(self){
         self.type = [dictionary objectForKey:@"type"];
+        
+        if([dictionary objectForKey:@"statusCode"] != nil){
+            statusCode = [dictionary objectForKey:@"statusCode"];
+        }
         
         if([dictionary objectForKey:@"subject"] != nil){
             subject = [dictionary objectForKey:@"subject"];
@@ -52,6 +57,16 @@
     NSDictionary *coordData = (NSDictionary *) [self rawValueForKey:@"location"];
     if(coordData != nil){
         return [[VLLocation alloc] initWithDictionary:coordData];
+    }else{
+        return nil;
+    }
+}
+
+- (NSError *) error{
+    if(payload != nil && [payload objectForKey:@"error"] != nil){
+        NSString *errorDomain = [payload objectForKey:@"error"];
+        NSString *errorMessage = [payload objectForKey:@"message"];
+        return [NSError errorWithDomain:errorDomain code:statusCode.integerValue userInfo:@{@"NSLocalizedDescriptionKey" : errorMessage}];
     }else{
         return nil;
     }

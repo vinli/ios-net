@@ -13,17 +13,16 @@
 #define TYPE @"parametric"
 
 - (id) initWithParameter:(NSString *)parameter{
-    return [self initWithParameter:parameter min:nil max:nil deviceId:nil];
+    return [self initWithParameter:parameter min:nil max:nil];
 }
 
-- (id) initWithParameter:(NSString *)parameter min:(NSNumber *)min max:(NSNumber *)max deviceId:(NSString *)deviceId{
+- (id) initWithParameter:(NSString *)parameter min:(NSNumber *)min max:(NSNumber *)max{
     self = [super init];
     
     if(self){
         self.parameter = parameter;
         self.min = min;
         self.max = max;
-        self.deviceId = deviceId;
     }
     
     return self;
@@ -33,10 +32,6 @@
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
     
     dictionary[@"type"] = @"filter";
-    
-    if(self.deviceId != nil){
-        dictionary[@"id"] = self.deviceId;
-    }
     
     NSMutableDictionary *filterDictionary = [[NSMutableDictionary alloc] init];
     filterDictionary[@"type"] = TYPE;

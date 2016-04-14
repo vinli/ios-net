@@ -13,16 +13,11 @@
 #define TYPE @"geometry"
 
 - (id) initWithDirection:(GeometryDirection)direction coordinates:(NSArray *)coordinateList{
-    return [self initWithDirection:direction coordinates:coordinateList deviceId:nil];
-}
-
-- (id) initWithDirection:(GeometryDirection)direction coordinates:(NSArray *)coordinateList deviceId:(NSString *)deviceId{
     self = [super init];
     
     if(self){
         self.direction = direction;
         self.coordinateList = coordinateList;
-        self.deviceId = deviceId;
     }
     
     return self;
@@ -32,10 +27,6 @@
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
     
     dictionary[@"type"] = @"filter";
-    
-    if(self.deviceId != nil){
-        dictionary[@"deviceId"] = self.deviceId;
-    }
     
     NSMutableDictionary *filterDictionary = [[NSMutableDictionary alloc] init];
     

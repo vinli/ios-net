@@ -792,11 +792,38 @@
 
 #pragma mark - Stream Services
 
+// Create a websocket stream to constantly read telemetry data.
+// Route: WSS /api/v1/messages?token={OAuth Token}
+// @params:
+// deviceId:        device id of the device to read telemetry data from
+// @returns:        VLStream that will receive telemetry data for the specific device.
 - (VLStream *) getStreamForDeviceId:(nonnull NSString *)deviceId;
 
-- (VLStream *) getStreamForDeviceId:(nonnull NSString *)deviceId onMessageBlock:(void (^)(VLStreamMessage *)) onMessageBlock onErrorBlock:(void (^)(NSError *)) onErrorBlock;
+// Create a websocket stream to constantly read telemetry data.
+// Route: WSS /api/v1/messages?token={OAuth Token}
+// @params:
+// deviceId:        device id of the device to read telemetry data from
+// onMessageBlock:  block that gets passed a VLStreamMessage with each new telemetry data message.
+// onErrorBlock:    block that gets passed an NSError whenever an error occurs
+// @returns:        VLStream that will receive telemetry data for the specific device.
+- (VLStream *) getStreamForDeviceId:(nonnull NSString *)deviceId
+                     onMessageBlock:(void (^)(VLStreamMessage *)) onMessageBlock
+                       onErrorBlock:(void (^)(NSError *)) onErrorBlock;
 
-- (VLStream *) getStreamForDeviceId:(NSString *)deviceId parametricFilters:(NSArray *)parametricFilters geometryFilter:(VLGeometryFilter *)geometryFilter onMessageBlock:(void (^)(VLStreamMessage *)) onMessageBlock onErrorBlock:(void (^)(NSError *)) onErrorBlock;
+// Create a websocket stream to constantly read telemetry data.
+// Route: WSS /api/v1/messages?token={OAuth Token}
+// @params:
+// deviceId:            device id of the device to read telemetry data from
+// parametricFilters:   array of VLParametricFilter objects. These stack, so if there is one for 'rpm' and 'vehicleSpeed' only messages containing both keys will be sent to you.
+// geometryFilter:      geometry filter. Only messages either inside or outside of the polygon will be sent to you.
+// onMessageBlock:      block that gets passed a VLStreamMessage with each new telemetry data message.
+// onErrorBlock:        block that gets passed an NSError whenever an error occurs
+// @returns:        VLStream that will receive telemetry data for the specific device.
+- (VLStream *) getStreamForDeviceId:(NSString *)deviceId
+                  parametricFilters:(NSArray *)parametricFilters
+                     geometryFilter:(VLGeometryFilter *)geometryFilter
+                     onMessageBlock:(void (^)(VLStreamMessage *)) onMessageBlock
+                       onErrorBlock:(void (^)(NSError *)) onErrorBlock;
 
 #pragma mark - Auth Services
 

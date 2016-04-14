@@ -10,13 +10,12 @@
 
 @interface VLParametricFilter : NSObject
 
-@property (strong, nonatomic) NSString *deviceId;
+@property (nonatomic, strong) NSString *parameter;
 @property (nonatomic) NSNumber *min;
 @property (nonatomic) NSNumber *max;
-@property (nonatomic, strong) NSString *parameter;
 
 - (id) initWithParameter:(NSString *) parameter;
-- (id) initWithParameter:(NSString *) parameter min:(NSNumber *) min max:(NSNumber *) max deviceId:(NSString *) deviceId;
+- (id) initWithParameter:(NSString *) parameter min:(NSNumber *) min max:(NSNumber *) max;
 
 - (NSDictionary *) toDictionary;
 

@@ -18,10 +18,8 @@ typedef NS_ENUM(NSInteger, GeometryDirection){
 
 @property (nonatomic) GeometryDirection direction;
 @property (nonatomic, strong) NSArray *coordinateList;
-@property (nonatomic, strong) NSString *deviceId;
 
 - (id) initWithDirection:(GeometryDirection)direction coordinates:(NSArray *)coordinateList;
-- (id) initWithDirection:(GeometryDirection)direction coordinates:(NSArray *)coordinateList deviceId:(NSString *)deviceId;
 
 - (NSDictionary *) toDictionary;
 

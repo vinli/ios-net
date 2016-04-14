@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSString *timestamp;
 @property (nonatomic, readonly) VLAccelData *accel;
 @property (nonatomic, readonly) VLLocation *coord;
+@property (nonatomic, readonly) NSError *error;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary;
 

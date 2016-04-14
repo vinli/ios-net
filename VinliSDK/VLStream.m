@@ -85,8 +85,12 @@
         if([json isKindOfClass:[NSDictionary class]]){
             VLStreamMessage *message = [[VLStreamMessage alloc] initWithDictionary:json];
             
-            // Only need to send publish messages to the user.
-            if([message.type isEqualToString:@"pub"]){
+            if(message.error != nil){
+                if(strongSelf.onErrorBlock != nil){
+                    strongSelf.onErrorBlock(message.error);
+                }
+            }else if([message.type isEqualToString:@"pub"]){
+                // Only need to send publish messages to the user.
                 if(strongSelf.onMessageBlock != nil){
                     strongSelf.onMessageBlock(message);
                 }
