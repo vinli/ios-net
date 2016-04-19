@@ -143,11 +143,18 @@
 }
 
 - (void)testGetLastestVehicleWithDeviceId {
-    NSDictionary *expectedJSON = latestVehicle;
+    NSDictionary *expectedJSON = [VLTestHelper cleanDictionary:latestVehicle[@"vehicle"]];
     XCTestExpectation *expectedLatestVehicle = [self expectationWithDescription:@"service call for latest vehicles"];
     [[VLSessionManager sharedManager].service getLatestVehicleForDeviceWithId:deviceId onSuccess:^(VLVehicle *vehicle, NSHTTPURLResponse *response) {
         [expectedLatestVehicle fulfill];
-        //XCTAssertEqual(vehicle.make, expectedJSON[@"vehicle"][@"make"]);
+        XCTAssertEqualObjects(vehicle.vehicleId, expectedJSON[@"id"]);
+        XCTAssertEqualObjects(vehicle.year, expectedJSON[@"year"]);
+        XCTAssertEqualObjects(vehicle.make, expectedJSON[@"make"]);
+        XCTAssertEqualObjects(vehicle.model, expectedJSON[@"model"]);
+        XCTAssertEqualObjects(vehicle.trim, expectedJSON[@"trim"]);
+        XCTAssertEqualObjects(vehicle.vin, expectedJSON[@"vin"]);
+        XCTAssertEqualObjects(vehicle.name, expectedJSON[@"name"]);
+        
         XCTAssertTrue(YES);
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
