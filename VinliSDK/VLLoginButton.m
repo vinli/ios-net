@@ -14,6 +14,7 @@
 
 @interface VLLoginButton ()
 @property (weak, nonatomic) VLSession *currentSession;
+@property const int MIN_HEIGHT;
 @end
 
 
@@ -21,9 +22,9 @@
 
 - (id) init{
     self = [super init];
-    if(self){
+    if(self) {
+        
         [self initialize];
-
         
     }
     return self;
@@ -33,14 +34,16 @@
     self = [super initWithCoder:aDecoder];
     if(self){
         [self initialize];
+        
     }
     return self;
 }
 
-- (id) initWithFrame:(CGRect)frame{
+- (id) initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if(self){
         [self initialize];
+        
     }
     return self;
 }
@@ -212,7 +215,18 @@
 
 
 
-- (void) initialize {
+
+
+- (void)initialize {
+    
+//    self.MIN_HEIGHT = 80;
+//    
+//    if (self.frame.size.height < self.MIN_HEIGHT) {
+//        [self setFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.MIN_HEIGHT)];
+//        [self setNeedsDisplay];
+//    }
+    
+    
     
     self.currentSession = [VLSession currentSession];
     self.adjustsImageWhenHighlighted = NO; //prevents highlight change
@@ -221,6 +235,7 @@
     [self addTarget:self action:@selector(pressedDown:) forControlEvents:UIControlEventTouchDown];
     [super setBackgroundColor:[[UIColor alloc]initWithRed:0/255.0f green:163.0f/255.0f blue:224.0f/255.0f alpha:1]];
     [super setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal & UIControlStateSelected & UIControlStateHighlighted];
+    [super setTitleEdgeInsets:UIEdgeInsetsMake(-1.5, 0, 0, 0)];
     
     
     if (self.currentSession) {
@@ -238,8 +253,10 @@
         UIImage *btnImage = [self imageFromBundle:@"vinli_icon.png" bundleName:@"VinliSDK"];
         btnImage = [btnImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         [self setImage:btnImage forState:UIControlStateNormal & UIControlStateHighlighted & UIControlStateSelected];
-        //[[self imageView] setFrame:CGRectMake(self.imageView.frame.origin.x, self.imageView.frame.origin.y - 30, self.imageView.frame.size.width, self.imageView.frame.size.width)];
+        //[[super imageView] setFrame:CGRectMake(self.imageView.frame.origin.x, self.imageView.frame.origin.y, self.frame.size.width / 15, self.frame.size.height - 1)];
         [super setImageEdgeInsets:UIEdgeInsetsMake(0, (btnImage.size.width / 2) - 45, 0, 0)];
+        
+        
         [super setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         
         
@@ -252,6 +269,13 @@
     
     
 }
+
+
+
+
+
+
+
 
 
 //pass the delegates through 
