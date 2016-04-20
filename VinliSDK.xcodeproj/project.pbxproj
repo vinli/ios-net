@@ -116,7 +116,6 @@
 		77BE999C1C690E77001E8F64 /* VLTimeSeries.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BE999A1C690E77001E8F64 /* VLTimeSeries.m */; };
 		77BE999D1C73A4A5001E8F64 /* VLOffsetPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B3DDC281B14C31B00D95E61 /* VLOffsetPager.h */; };
 		77BE999E1C73A4A5001E8F64 /* VLVehicle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B1671371B0FC39D009BE7A9 /* VLVehicle.h */; };
-		C9282671332B8D879023C020 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B932AD70F20BD68F691129 /* libPods.a */; };
 		E92943591B15387C00AAC7D3 /* VLTelemetryServicesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E92943581B15387C00AAC7D3 /* VLTelemetryServicesTests.m */; };
 		E929435C1B15425400AAC7D3 /* VLTelemetryMessagePager.h in Headers */ = {isa = PBXBuildFile; fileRef = E929435A1B15425400AAC7D3 /* VLTelemetryMessagePager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E929435D1B15425400AAC7D3 /* VLTelemetryMessagePager.m in Sources */ = {isa = PBXBuildFile; fileRef = E929435B1B15425400AAC7D3 /* VLTelemetryMessagePager.m */; };
@@ -273,7 +272,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				770707171CB80AB700A40468 /* CoreText.framework in Frameworks */,
-				C9282671332B8D879023C020 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,7 +580,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0B16711A1B0FC2B9009BE7A9 /* Build configuration list for PBXNativeTarget "VinliSDK" */;
 			buildPhases = (
-				5BC02A8C59739DCED5653AAB /* Check Pods Manifest.lock */,
 				0B1670FF1B0FC2B8009BE7A9 /* Sources */,
 				0B1671001B0FC2B8009BE7A9 /* Frameworks */,
 				0B1671011B0FC2B8009BE7A9 /* Headers */,
@@ -735,21 +732,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5BC02A8C59739DCED5653AAB /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		EAD5DC25A232FD03332B3991 /* Copy Pods Resources */ = {
