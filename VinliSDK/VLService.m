@@ -28,6 +28,7 @@
 #define STRING_HOST_RULES       @"rules"
 #define STRING_HOST_AUTH        @"auth"
 #define STRING_HOST_TRIPS       @"trips"
+#define STRING_HOST_STREAM      @"stream"
 
 #define DEFAULT_HOST            @".vin.li"
 
@@ -1318,6 +1319,26 @@
             onFailureBlock(error, response, bodyString);
         }
     }];
+}
+
+#pragma mark - Stream Services
+
+- (VLStream *) getStreamForDeviceId:(NSString *)deviceId{
+    return [self getStreamForDeviceId:deviceId parametricFilters:nil geometryFilter:nil onMessageBlock:nil onErrorBlock:nil];
+}
+
+- (VLStream *) getStreamForDeviceId:(NSString *)deviceId onMessageBlock:(void (^)(VLStreamMessage *)) onMessageBlock onErrorBlock:(void (^)(NSError *)) onErrorBlock{
+    return [self getStreamForDeviceId:deviceId parametricFilters:nil geometryFilter:nil onMessageBlock:onMessageBlock onErrorBlock:onErrorBlock];
+}
+
+- (VLStream *) getStreamForDeviceId:(NSString *)deviceId parametricFilters:(NSArray *)parametricFilters geometryFilter:(VLGeometryFilter *)geometryFilter onMessageBlock:(void (^)(VLStreamMessage *))onMessageBlock onErrorBlock:(void (^)(NSError *))onErrorBlock{
+    NSString *urlString = [NSString stringWithFormat:@"wss://%@%@/api/v1/messages?token=%@", STRING_HOST_STREAM, _host, _session.accessToken];
+    
+    VLStream *stream = [[VLStream alloc] initWithURL:[NSURL URLWithString:urlString] deviceId:deviceId parametricFilters:parametricFilters geometryFilter:geometryFilter];
+    stream.onMessageBlock = onMessageBlock;
+    stream.onErrorBlock = onErrorBlock;
+    
+    return stream;
 }
 
 #pragma mark - Auth Services

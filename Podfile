@@ -5,7 +5,7 @@
 
 #pod ‘VinliUIResources’, :path => '~/Documents/Programs/Vinli/VinliUIResources’
 target 'VinliSDK' do
-
+pod 'jetfire'
 end
 
 target 'VinliSDKTests' do
