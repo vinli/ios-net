@@ -18,7 +18,8 @@ static NSDictionary *sessionCache;
     // NSKeyedUnarchiver
     
     if (!currentSession) {
-        currentSession = [[NSUserDefaults standardUserDefaults] objectForKey:kVLSessionCachedSession];
+        NSDictionary *sessionCache = [[NSUserDefaults standardUserDefaults] objectForKey:kVLSessionCachedSession];
+        currentSession = [NSKeyedUnarchiver unarchiveObjectWithData:sessionCache[@"session"]];
     }
     
     return currentSession;
@@ -47,7 +48,7 @@ static NSDictionary *sessionCache;
         }
         
         NSData *encodedSession = [NSKeyedArchiver archivedDataWithRootObject:session];
-        [mutableSessionsCache setObject:encodedSession forKey:session.accessToken];
+        [mutableSessionsCache setObject:encodedSession forKey:@"session"];
         sessionCache = [mutableSessionsCache copy];
         
         [[NSUserDefaults standardUserDefaults] setObject:sessionCache forKey:kVLSessionCachedSession];

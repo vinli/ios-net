@@ -130,7 +130,6 @@ static NSString * const kVinliSignUpRequest = @"/#/sign-up";
             //make better dismissal 
             if(params[@"access_token"]){
                 VLSession *session = [[VLSession alloc] initWithAccessToken:params[@"access_token"]];
-                [[VLSessionManager sharedManager].service useSession:session];
                  [self.navigationController popToRootViewControllerAnimated:YES];
                 // Create static method on VLSession currentSession -- will return cached session
                 if(_delegate && [_delegate respondsToSelector:@selector(vlLoginViewController:didLoginWithSession:)]){

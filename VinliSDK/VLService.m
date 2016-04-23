@@ -32,6 +32,8 @@
 
 #define DEFAULT_HOST            @".vin.li"
 
+
+static VLService *sharedService;
 @interface VLService (){
 }
 
@@ -41,6 +43,23 @@
 @end
 
 @implementation VLService
+
+
+//current service
++ (VLService *)sharedService {
+    if (!sharedService) {
+        if ([VLSession currentSession]) {
+            sharedService = [[VLService alloc] initWithSession:[VLSession currentSession]];
+        } else {
+            NSLog(@"No current session");
+        }
+    }
+    return sharedService;
+}
+
+
+
+
 
 #pragma mark - Initialization
 

@@ -47,6 +47,10 @@
 @property (strong, readonly, nullable) VLSession *session;
 @property (strong, nonatomic, nonnull) NSString *host;
 
+
+
++ (VLService *)sharedService;
+
 // Create a VLService object
 // @params:
 // session:     A valid VLSession to use
