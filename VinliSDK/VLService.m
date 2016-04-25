@@ -47,6 +47,11 @@ static VLService *sharedService;
 
 //current service
 + (VLService *)sharedService {
+    
+    if (![VLSession currentSession]) {
+        return nil;
+    }
+    
     if (!sharedService) {
         if ([VLSession currentSession]) {
             sharedService = [[VLService alloc] initWithSession:[VLSession currentSession]];
