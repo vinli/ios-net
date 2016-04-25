@@ -17,9 +17,17 @@ static NSDictionary *sessionCache;
 + (VLSession *)currentSession {
     // NSKeyedUnarchiver
     
+    
+
+    
     if (!currentSession) {
         NSDictionary *sessionCache = [[NSUserDefaults standardUserDefaults] objectForKey:kVLSessionCachedSession];
-        currentSession = [NSKeyedUnarchiver unarchiveObjectWithData:sessionCache[@"session"]];
+        if (sessionCache) {
+            currentSession = [NSKeyedUnarchiver unarchiveObjectWithData:sessionCache[@"session"]];
+        } else {
+            return nil;
+        }
+        
     }
     
     return currentSession;
@@ -63,7 +71,7 @@ static NSDictionary *sessionCache;
 
 - (instancetype) initWithAccessToken:(NSString *)token {
     self = [super init];
-    if(self){
+    if(self) {
         _accessToken = [token copy];
         _createdAt = [NSDate date];
         _lastUpdated = [NSDate date];
