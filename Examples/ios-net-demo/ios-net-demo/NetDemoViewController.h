@@ -10,7 +10,7 @@
 #import <VinliSDK.h>
 #import "Secrets.h"
 
-@interface NetDemoViewController : UIViewController <VLLoginViewControllerDelegate>
+@interface NetDemoViewController : UITableViewController <VLLoginViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) VLService *vlService;
 

@@ -10,6 +10,9 @@
 
 #define ACCESS_TOKEN_KEY @"net_demo_access_token"
 
+#define USER_SECTION 0
+#define DEVICE_SECTION 1
+
 @interface NetDemoViewController ()
 
 @end
@@ -64,6 +67,45 @@
     self.vlService = nil;
     [self beginLoginFlow];
 }
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{
+    return 2;
+}
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    int numRows = 0;
+    switch(section){
+        case USER_SECTION:
+            numRows = 1;
+            break;
+        case DEVICE_SECTION:
+            numRows = 2;
+            break;
+    }
+    return numRows;
+}
+
+- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    NSString *title = @"";
+    switch(section){
+        case USER_SECTION:
+            title = @"User";
+            break;
+        case DEVICE_SECTION:
+            title = @"Devices";
+            break;
+    }
+    return title;
+}
+
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
 
 #pragma mark - VLLoginViewControllerDelegate
 

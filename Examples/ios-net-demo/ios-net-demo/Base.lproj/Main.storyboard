@@ -14,7 +14,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="l8N-bZ-ffV"/>
+                        <segue destination="K8S-g7-G7S" kind="relationship" relationship="rootViewController" id="rsL-On-ApA"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="utV-jX-ih1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -22,34 +22,44 @@
             <point key="canvasLocation" x="-337" y="642"/>
         </scene>
         <!--Vinli Net Demo-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="F2Q-Nl-kfq">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="NetDemoViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <tableViewController id="K8S-g7-G7S" customClass="NetDemoViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="a5U-sZ-WvH">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <color key="tintColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Vinli Net Demo" id="jfA-ad-7Jz">
-                        <barButtonItem key="leftBarButtonItem" image="refresh" id="U11-p2-Q1d">
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Zj3-c4-bEX">
+                                <rect key="frame" x="0.0" y="114" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zj3-c4-bEX" id="kga-D2-RNg">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="K8S-g7-G7S" id="ude-XG-KvI"/>
+                            <outlet property="delegate" destination="K8S-g7-G7S" id="1ct-k6-n8y"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Vinli Net Demo" id="Kpm-Mg-Mee">
+                        <barButtonItem key="leftBarButtonItem" image="refresh" id="toh-ge-dsV">
                             <connections>
-                                <action selector="refreshButtonPressed:" destination="BYZ-38-t0r" id="lG0-1t-ZXd"/>
+                                <action selector="refreshButtonPressed:" destination="K8S-g7-G7S" id="rmW-ce-mML"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="logout" id="jas-oA-1j9">
+                        <barButtonItem key="rightBarButtonItem" image="logout" id="BlW-yq-baB">
                             <connections>
-                                <action selector="logoutButtonPressed:" destination="BYZ-38-t0r" id="b3l-JY-vtH"/>
+                                <action selector="logoutButtonPressed:" destination="K8S-g7-G7S" id="KFv-w2-xUu"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HxR-xX-OO7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="436" y="642"/>
         </scene>
     </scenes>
     <resources>
