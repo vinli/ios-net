@@ -103,15 +103,15 @@
     [streamSocket connect];
 }
 
-- (void) writeDictionary:(NSDictionary *)dictinary toSocket:(JFRWebSocket *)socket{
+- (void) writeDictionary:(NSDictionary *)dictionary toSocket:(JFRWebSocket *)socket{
     NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictinary options:0 error:&error];
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&error];
     
     if(jsonData){
         NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
         [socket writeString:jsonString];
     }else{
-        NSLog(@"Error parsing dictionary into JSON. Error: %@, Dictionary: %@", error, dictinary);
+        NSLog(@"Error parsing dictionary into JSON. Error: %@, Dictionary: %@", error, dictionary);
     }
 }
 

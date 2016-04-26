@@ -53,7 +53,7 @@
     }
 }
 
-- (VLLocation *) coord{
+- (VLLocation *) coord {
     NSDictionary *coordData = (NSDictionary *) [self rawValueForKey:@"location"];
     if(coordData != nil){
         return [[VLLocation alloc] initWithDictionary:coordData];
