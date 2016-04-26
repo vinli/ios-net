@@ -16,9 +16,14 @@ static NSDictionary *sessionCache;
 
 + (VLSession *)currentSession {
     // NSKeyedUnarchiver
-    
     if (!currentSession) {
-        currentSession = [[NSUserDefaults standardUserDefaults] objectForKey:kVLSessionCachedSession];
+        NSDictionary *sessionCache = [[NSUserDefaults standardUserDefaults] objectForKey:kVLSessionCachedSession];
+        if (sessionCache) {
+            currentSession = [NSKeyedUnarchiver unarchiveObjectWithData:sessionCache[@"session"]];
+        } else {
+            return nil;
+        }
+        
     }
     
     return currentSession;
@@ -37,32 +42,25 @@ static NSDictionary *sessionCache;
     if (!session) {
         return;
     }
-    
-    @synchronized(sessionCache)
-    {
+    @synchronized(sessionCache) {
         NSMutableDictionary* mutableSessionsCache = [sessionCache mutableCopy];
-        if (!mutableSessionsCache)
-        {
+        if (!mutableSessionsCache) {
             mutableSessionsCache = [NSMutableDictionary new];
         }
-        
         NSData *encodedSession = [NSKeyedArchiver archivedDataWithRootObject:session];
-        [mutableSessionsCache setObject:encodedSession forKey:session.accessToken];
+        [mutableSessionsCache setObject:encodedSession forKey:@"session"];
         sessionCache = [mutableSessionsCache copy];
-        
         [[NSUserDefaults standardUserDefaults] setObject:sessionCache forKey:kVLSessionCachedSession];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
 
-    
-    //return [VLSession new];
 }
 
 
 
 - (instancetype) initWithAccessToken:(NSString *)token {
     self = [super init];
-    if(self){
+    if(self) {
         _accessToken = [token copy];
         _createdAt = [NSDate date];
         _lastUpdated = [NSDate date];
@@ -80,17 +78,14 @@ static NSDictionary *sessionCache;
     return self;
 }
 
-- (instancetype)initWithAccessToken:(NSString *)token userId:(NSString *)userId
-{
-    if ([self initWithAccessToken:token])
-    {
+- (instancetype)initWithAccessToken:(NSString *)token userId:(NSString *)userId {
+    if ([self initWithAccessToken:token]) {
         _userId = [userId copy];
     }
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder {
-    
     [encoder encodeObject:_accessToken forKey:@"accessToken"];
     [encoder encodeObject:_userId forKey:@"userId"];
     [encoder encodeObject:_createdAt forKey:@"createdAt"];
@@ -98,7 +93,6 @@ static NSDictionary *sessionCache;
 }
 
 - (id)initWithCoder:(NSCoder *)decoder {
-    
     if((self = [super init])) {
         _accessToken = [decoder decodeObjectForKey:@"accessToken"];
         _userId = [decoder decodeObjectForKey:@"userId"];
