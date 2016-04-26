@@ -17,6 +17,8 @@ DerivedData
 *.ipa
 *.xcuserstate
 
+Examples/ios-net-demo/ios-net-demo/Secrets.h
+
 # CocoaPods
 #
 # We recommend against adding the Pods directory to your .gitignore. However

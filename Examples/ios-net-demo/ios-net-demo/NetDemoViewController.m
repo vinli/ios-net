@@ -36,6 +36,7 @@
 }
 
 - (void) beginLoginFlow{
+    [self clearCookies];
     VLLoginViewController *loginViewController = [[VLLoginViewController alloc] init];
     loginViewController.clientId = CLIENT_ID;
     loginViewController.redirectUri = REDIRECT_URI;
@@ -72,6 +73,15 @@
 
 - (void)vlLoginViewController:(VLLoginViewController *)loginController didFailToLoginWithError:(NSError *)error{
     NSLog(@"Failed to login, %@", error);
+}
+
+#pragma mark - Misc
+
+- (void) clearCookies{
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+    for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) {
+        [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+    }
 }
 
 @end
