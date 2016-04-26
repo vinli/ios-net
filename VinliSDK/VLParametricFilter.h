@@ -29,6 +29,7 @@ typedef NS_ENUM(NSInteger, VLDataType){
 @property (nonatomic) NSNumber *min;
 @property (nonatomic) NSNumber *max;
 
++ (NSString *) stringFromDataType:(VLDataType)dataType;
 - (id) initWithParameter:(NSString *) parameter;
 - (id) initWithDataType:(VLDataType) dataType;
 - (id) initWithParameter:(NSString *) parameter min:(NSNumber *) min max:(NSNumber *) max;
