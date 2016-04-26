@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B2BB1B7B3B1B60494FF3645 /* libPods-ios-net-demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70220FCE289078312F2F1B8E /* libPods-ios-net-demo.a */; };
 		657577D71CCFD69500561151 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 657577D61CCFD69500561151 /* main.m */; };
 		657577DA1CCFD69500561151 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 657577D91CCFD69500561151 /* AppDelegate.m */; };
-		657577DD1CCFD69500561151 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657577DC1CCFD69500561151 /* ViewController.m */; };
+		657577DD1CCFD69500561151 /* NetDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657577DC1CCFD69500561151 /* NetDemoViewController.m */; };
 		657577E01CCFD69500561151 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 657577DE1CCFD69500561151 /* Main.storyboard */; };
 		657577E21CCFD69500561151 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 657577E11CCFD69500561151 /* Assets.xcassets */; };
 		657577E51CCFD69500561151 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 657577E31CCFD69500561151 /* LaunchScreen.storyboard */; };
@@ -35,12 +36,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2751B93D82D5B8889A1E0C71 /* Pods-ios-net-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-net-demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios-net-demo/Pods-ios-net-demo.debug.xcconfig"; sourceTree = "<group>"; };
 		657577D21CCFD69500561151 /* ios-net-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-net-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		657577D61CCFD69500561151 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		657577D81CCFD69500561151 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		657577D91CCFD69500561151 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		657577DB1CCFD69500561151 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		657577DC1CCFD69500561151 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		657577DB1CCFD69500561151 /* NetDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetDemoViewController.h; sourceTree = "<group>"; };
+		657577DC1CCFD69500561151 /* NetDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetDemoViewController.m; sourceTree = "<group>"; };
 		657577DF1CCFD69500561151 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		657577E11CCFD69500561151 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		657577E41CCFD69500561151 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +53,9 @@
 		657577F61CCFD69500561151 /* ios-net-demoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-net-demoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		657577FA1CCFD69500561151 /* ios_net_demoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ios_net_demoUITests.m; sourceTree = "<group>"; };
 		657577FC1CCFD69500561151 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		657578081CCFF20C00561151 /* Secrets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Secrets.h; sourceTree = "<group>"; };
+		70220FCE289078312F2F1B8E /* libPods-ios-net-demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios-net-demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F267285F7F0EC31349D4B8E4 /* Pods-ios-net-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-net-demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios-net-demo/Pods-ios-net-demo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B2BB1B7B3B1B60494FF3645 /* libPods-ios-net-demo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +84,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B850402A86C2B107986FD49 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2751B93D82D5B8889A1E0C71 /* Pods-ios-net-demo.debug.xcconfig */,
+				F267285F7F0EC31349D4B8E4 /* Pods-ios-net-demo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		657577C91CCFD69500561151 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +100,8 @@
 				657577EE1CCFD69500561151 /* ios-net-demoTests */,
 				657577F91CCFD69500561151 /* ios-net-demoUITests */,
 				657577D31CCFD69500561151 /* Products */,
+				1B850402A86C2B107986FD49 /* Pods */,
+				6F21F699ED7573B39BBECB9A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,13 +120,14 @@
 			children = (
 				657577D81CCFD69500561151 /* AppDelegate.h */,
 				657577D91CCFD69500561151 /* AppDelegate.m */,
-				657577DB1CCFD69500561151 /* ViewController.h */,
-				657577DC1CCFD69500561151 /* ViewController.m */,
+				657577DB1CCFD69500561151 /* NetDemoViewController.h */,
+				657577DC1CCFD69500561151 /* NetDemoViewController.m */,
 				657577DE1CCFD69500561151 /* Main.storyboard */,
 				657577E11CCFD69500561151 /* Assets.xcassets */,
 				657577E31CCFD69500561151 /* LaunchScreen.storyboard */,
 				657577E61CCFD69500561151 /* Info.plist */,
 				657577D51CCFD69500561151 /* Supporting Files */,
+				657578081CCFF20C00561151 /* Secrets.h */,
 			);
 			path = "ios-net-demo";
 			sourceTree = "<group>";
@@ -140,6 +158,14 @@
 			path = "ios-net-demoUITests";
 			sourceTree = "<group>";
 		};
+		6F21F699ED7573B39BBECB9A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				70220FCE289078312F2F1B8E /* libPods-ios-net-demo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +173,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 657577FF1CCFD69500561151 /* Build configuration list for PBXNativeTarget "ios-net-demo" */;
 			buildPhases = (
+				AE6E1E629BF3480269FCF030 /* Check Pods Manifest.lock */,
 				657577CE1CCFD69500561151 /* Sources */,
 				657577CF1CCFD69500561151 /* Frameworks */,
 				657577D01CCFD69500561151 /* Resources */,
+				6976056080D6E1DFA152D1ED /* Embed Pods Frameworks */,
+				459D2068F29EC4801BF7CE78 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -265,12 +294,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		459D2068F29EC4801BF7CE78 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ios-net-demo/Pods-ios-net-demo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6976056080D6E1DFA152D1ED /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ios-net-demo/Pods-ios-net-demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE6E1E629BF3480269FCF030 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		657577CE1CCFD69500561151 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				657577DD1CCFD69500561151 /* ViewController.m in Sources */,
+				657577DD1CCFD69500561151 /* NetDemoViewController.m in Sources */,
 				657577DA1CCFD69500561151 /* AppDelegate.m in Sources */,
 				657577D71CCFD69500561151 /* main.m in Sources */,
 			);
@@ -413,6 +490,7 @@
 		};
 		657578001CCFD69500561151 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2751B93D82D5B8889A1E0C71 /* Pods-ios-net-demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "ios-net-demo/Info.plist";
@@ -424,6 +502,7 @@
 		};
 		657578011CCFD69500561151 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F267285F7F0EC31349D4B8E4 /* Pods-ios-net-demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "ios-net-demo/Info.plist";
@@ -498,6 +577,7 @@
 				657578011CCFD69500561151 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		657578021CCFD69500561151 /* Build configuration list for PBXNativeTarget "ios-net-demoTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +586,7 @@
 				657578041CCFD69500561151 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		657578051CCFD69500561151 /* Build configuration list for PBXNativeTarget "ios-net-demoUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +595,7 @@
 				657578071CCFD69500561151 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

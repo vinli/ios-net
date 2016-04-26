@@ -1,0 +1,1 @@
+../../../VinliNet/VinliSDK/VLSnapshot.h
