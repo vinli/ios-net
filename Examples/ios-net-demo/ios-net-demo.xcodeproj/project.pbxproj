@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B2BB1B7B3B1B60494FF3645 /* libPods-ios-net-demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70220FCE289078312F2F1B8E /* libPods-ios-net-demo.a */; };
+		650CF1A21CD28F9500C1CB67 /* SetOdometerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 650CF1A11CD28F9500C1CB67 /* SetOdometerViewController.m */; };
 		653436EE1CD2668B00484F08 /* DeviceFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 653436ED1CD2668B00484F08 /* DeviceFooterView.m */; };
 		653436F21CD270CB00484F08 /* StreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 653436F11CD270CB00484F08 /* StreamViewController.m */; };
 		653436F41CD2748700484F08 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 653436F31CD2748700484F08 /* MapKit.framework */; };
@@ -40,6 +41,8 @@
 
 /* Begin PBXFileReference section */
 		2751B93D82D5B8889A1E0C71 /* Pods-ios-net-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-net-demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios-net-demo/Pods-ios-net-demo.debug.xcconfig"; sourceTree = "<group>"; };
+		650CF1A01CD28F9500C1CB67 /* SetOdometerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetOdometerViewController.h; sourceTree = "<group>"; };
+		650CF1A11CD28F9500C1CB67 /* SetOdometerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetOdometerViewController.m; sourceTree = "<group>"; };
 		653436EC1CD2668B00484F08 /* DeviceFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeviceFooterView.h; path = Views/DeviceFooterView.h; sourceTree = "<group>"; };
 		653436ED1CD2668B00484F08 /* DeviceFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeviceFooterView.m; path = Views/DeviceFooterView.m; sourceTree = "<group>"; };
 		653436F01CD270CB00484F08 /* StreamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamViewController.h; sourceTree = "<group>"; };
@@ -107,6 +110,8 @@
 			children = (
 				653436EC1CD2668B00484F08 /* DeviceFooterView.h */,
 				653436ED1CD2668B00484F08 /* DeviceFooterView.m */,
+				650CF1A01CD28F9500C1CB67 /* SetOdometerViewController.h */,
+				650CF1A11CD28F9500C1CB67 /* SetOdometerViewController.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -385,6 +390,7 @@
 			files = (
 				657577DD1CCFD69500561151 /* NetDemoViewController.m in Sources */,
 				657577DA1CCFD69500561151 /* AppDelegate.m in Sources */,
+				650CF1A21CD28F9500C1CB67 /* SetOdometerViewController.m in Sources */,
 				653436F21CD270CB00484F08 /* StreamViewController.m in Sources */,
 				657577D71CCFD69500561151 /* main.m in Sources */,
 				653436EE1CD2668B00484F08 /* DeviceFooterView.m in Sources */,

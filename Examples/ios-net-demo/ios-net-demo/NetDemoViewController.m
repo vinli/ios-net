@@ -9,6 +9,7 @@
 #import "NetDemoViewController.h"
 #import "DeviceFooterView.h"
 #import "StreamViewController.h"
+#import "SetOdometerViewController.h"
 
 #define ACCESS_TOKEN_KEY @"net_demo_access_token"
 
@@ -167,7 +168,11 @@
 }
 
 - (IBAction) setOdometerButtonPressed:(id)sender{
-    
+    UIButton *setButton = (UIButton *) sender;
+    SetOdometerViewController *setOdometerViewController = (SetOdometerViewController *) [self.storyboard instantiateViewControllerWithIdentifier:@"SetOdometerViewController"];
+    setOdometerViewController.vehicle = [_latestVehicleMap objectForKey:[((VLDevice *)[_devices objectAtIndex:(setButton.tag - 1)]) deviceId]];
+    setOdometerViewController.vlService = _vlService;
+    [self.navigationController pushViewController:setOdometerViewController animated:YES];
 }
 
 - (IBAction) streamButtonPressed:(id)sender{

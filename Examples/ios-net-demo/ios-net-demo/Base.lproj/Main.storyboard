@@ -103,6 +103,59 @@
             </objects>
             <point key="canvasLocation" x="1119" y="642"/>
         </scene>
+        <!--Set Odometer View Controller-->
+        <scene sceneID="fcM-xN-0Jv">
+            <objects>
+                <viewController storyboardIdentifier="SetOdometerViewController" id="qg8-xs-iNj" customClass="SetOdometerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gcC-TC-7j7"/>
+                        <viewControllerLayoutGuide type="bottom" id="nxE-d9-o40"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JX8-sl-hvg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tuX-ZZ-Nqv">
+                                <rect key="frame" x="20" y="285" width="248" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ymh-wH-uhb">
+                                <rect key="frame" x="20" y="520" width="560" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="4QK-Q6-7Xy"/>
+                                </constraints>
+                                <state key="normal" title="Set"/>
+                                <connections>
+                                    <action selector="setOdometerButtonPressed:" destination="qg8-xs-iNj" eventType="touchUpInside" id="wFh-vf-Pz9"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RLi-Q9-Tbx">
+                                <rect key="frame" x="293" y="192" width="287" height="216"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RLi-Q9-Tbx" firstAttribute="leading" secondItem="tuX-ZZ-Nqv" secondAttribute="trailing" constant="8" id="3Rp-iW-lEB"/>
+                            <constraint firstItem="RLi-Q9-Tbx" firstAttribute="width" secondItem="tuX-ZZ-Nqv" secondAttribute="width" id="Btl-Dh-TbQ"/>
+                            <constraint firstItem="RLi-Q9-Tbx" firstAttribute="leading" secondItem="tuX-ZZ-Nqv" secondAttribute="trailing" constant="8" id="CxM-B3-3JW"/>
+                            <constraint firstItem="ymh-wH-uhb" firstAttribute="trailing" secondItem="JX8-sl-hvg" secondAttribute="trailingMargin" id="JSp-Xz-fta"/>
+                            <constraint firstItem="tuX-ZZ-Nqv" firstAttribute="leading" secondItem="JX8-sl-hvg" secondAttribute="leadingMargin" id="YSk-H0-YMS"/>
+                            <constraint firstItem="ymh-wH-uhb" firstAttribute="leading" secondItem="JX8-sl-hvg" secondAttribute="leadingMargin" id="obS-6s-muF"/>
+                            <constraint firstItem="RLi-Q9-Tbx" firstAttribute="trailing" secondItem="JX8-sl-hvg" secondAttribute="trailingMargin" id="oyL-Pg-XiP"/>
+                            <constraint firstItem="nxE-d9-o40" firstAttribute="top" secondItem="ymh-wH-uhb" secondAttribute="bottom" constant="20" id="pHO-8t-Ex8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="setOdometerButton" destination="ymh-wH-uhb" id="0bm-6L-WBv"/>
+                        <outlet property="textField" destination="tuX-ZZ-Nqv" id="AII-BQ-BXf"/>
+                        <outlet property="unitPicker" destination="RLi-Q9-Tbx" id="3Nn-5d-Hng"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zlo-5a-F2u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1759" y="642"/>
+        </scene>
     </scenes>
     <resources>
         <image name="logout" width="22" height="22"/>
