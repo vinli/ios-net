@@ -8,6 +8,7 @@
 
 #import "NetDemoViewController.h"
 #import "DeviceFooterView.h"
+#import "StreamViewController.h"
 
 #define ACCESS_TOKEN_KEY @"net_demo_access_token"
 
@@ -170,7 +171,10 @@
 }
 
 - (IBAction) streamButtonPressed:(id)sender{
-    
+    UIButton *streamButton = (UIButton *) sender;
+    StreamViewController *streamViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"StreamViewController"];
+    streamViewController.device = [_devices objectAtIndex:(streamButton.tag - 1)];
+    [self.navigationController pushViewController:streamViewController animated:YES];
 }
 
 #pragma mark - UITableViewDataSource
@@ -256,7 +260,7 @@
     }
     
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@%@", title, value]];
-    [attributedString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:16.0f] range:NSMakeRange(0, title.length)];
+    [attributedString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:14.0f] range:NSMakeRange(0, title.length)];
     [cell.textLabel setAttributedText:attributedString];
     
     return cell;

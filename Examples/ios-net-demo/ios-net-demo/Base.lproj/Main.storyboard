@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -60,6 +61,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HxR-xX-OO7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="436" y="642"/>
+        </scene>
+        <!--Stream View Controller-->
+        <scene sceneID="vh9-jl-VAS">
+            <objects>
+                <viewController storyboardIdentifier="StreamViewController" id="PCO-iU-cKN" customClass="StreamViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xlL-Qd-EYx"/>
+                        <viewControllerLayoutGuide type="bottom" id="tJR-88-ZbD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Np6-vv-SRa">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CNc-7q-C81">
+                                <rect key="frame" x="0.0" y="249" width="600" height="351"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="J05-RH-MSl">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="249"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="J05-RH-MSl" secondAttribute="trailing" constant="-20" id="3OJ-Tc-f1b"/>
+                            <constraint firstItem="CNc-7q-C81" firstAttribute="top" secondItem="J05-RH-MSl" secondAttribute="bottom" id="6BQ-oZ-V9E"/>
+                            <constraint firstItem="CNc-7q-C81" firstAttribute="top" secondItem="J05-RH-MSl" secondAttribute="bottom" id="DPM-Pd-yeC"/>
+                            <constraint firstItem="tJR-88-ZbD" firstAttribute="top" secondItem="CNc-7q-C81" secondAttribute="bottom" id="EPb-0d-1dt"/>
+                            <constraint firstItem="CNc-7q-C81" firstAttribute="leading" secondItem="Np6-vv-SRa" secondAttribute="leadingMargin" constant="-20" id="LJ8-Zc-zdm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CNc-7q-C81" secondAttribute="trailing" constant="-20" id="ThI-hG-MxR"/>
+                            <constraint firstItem="J05-RH-MSl" firstAttribute="top" secondItem="Np6-vv-SRa" secondAttribute="topMargin" id="VI0-sn-hHT"/>
+                            <constraint firstItem="J05-RH-MSl" firstAttribute="leading" secondItem="Np6-vv-SRa" secondAttribute="leadingMargin" constant="-20" id="ocj-sX-th3"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="J05-RH-MSl" id="ty3-5j-rT2"/>
+                        <outlet property="tableView" destination="CNc-7q-C81" id="aEp-Hh-BeT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kKo-AJ-MTk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1119" y="642"/>
         </scene>
     </scenes>
     <resources>
