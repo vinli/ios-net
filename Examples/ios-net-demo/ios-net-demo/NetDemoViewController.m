@@ -7,6 +7,7 @@
 //
 
 #import "NetDemoViewController.h"
+#import "DeviceFooterView.h"
 
 #define ACCESS_TOKEN_KEY @"net_demo_access_token"
 
@@ -164,6 +165,14 @@
     [self logout];
 }
 
+- (IBAction) setOdometerButtonPressed:(id)sender{
+    
+}
+
+- (IBAction) streamButtonPressed:(id)sender{
+    
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{
@@ -251,6 +260,23 @@
     [cell.textLabel setAttributedText:attributedString];
     
     return cell;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return (section == USER_SECTION) ? 0 : 50;
+}
+
+- (UIView *) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    
+    if(section == USER_SECTION){
+        return nil;
+    }
+    
+    CGRect frame = CGRectMake(0, 0, self.tableView.frame.size.width, [self tableView:self.tableView heightForFooterInSection:section]);
+    DeviceFooterView *footerView = [[DeviceFooterView alloc] initWithSection:(int)section frame:frame];
+    [footerView.setOdometerButton addTarget:self action:@selector(setOdometerButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [footerView.streamButton addTarget:self action:@selector(streamButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    return footerView;
 }
 
 #pragma mark - UITableViewDelegate

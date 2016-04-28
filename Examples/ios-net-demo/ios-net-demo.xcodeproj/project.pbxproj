@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B2BB1B7B3B1B60494FF3645 /* libPods-ios-net-demo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70220FCE289078312F2F1B8E /* libPods-ios-net-demo.a */; };
+		653436EE1CD2668B00484F08 /* DeviceFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 653436ED1CD2668B00484F08 /* DeviceFooterView.m */; };
 		657577D71CCFD69500561151 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 657577D61CCFD69500561151 /* main.m */; };
 		657577DA1CCFD69500561151 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 657577D91CCFD69500561151 /* AppDelegate.m */; };
 		657577DD1CCFD69500561151 /* NetDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 657577DC1CCFD69500561151 /* NetDemoViewController.m */; };
@@ -37,6 +38,8 @@
 
 /* Begin PBXFileReference section */
 		2751B93D82D5B8889A1E0C71 /* Pods-ios-net-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-net-demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios-net-demo/Pods-ios-net-demo.debug.xcconfig"; sourceTree = "<group>"; };
+		653436EC1CD2668B00484F08 /* DeviceFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeviceFooterView.h; path = Views/DeviceFooterView.h; sourceTree = "<group>"; };
+		653436ED1CD2668B00484F08 /* DeviceFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeviceFooterView.m; path = Views/DeviceFooterView.m; sourceTree = "<group>"; };
 		657577D21CCFD69500561151 /* ios-net-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-net-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		657577D61CCFD69500561151 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		657577D81CCFD69500561151 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -93,6 +96,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		653436EB1CD2663A00484F08 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				653436EC1CD2668B00484F08 /* DeviceFooterView.h */,
+				653436ED1CD2668B00484F08 /* DeviceFooterView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		657577C91CCFD69500561151 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +130,7 @@
 		657577D41CCFD69500561151 /* ios-net-demo */ = {
 			isa = PBXGroup;
 			children = (
+				653436EB1CD2663A00484F08 /* Views */,
 				657577D81CCFD69500561151 /* AppDelegate.h */,
 				657577D91CCFD69500561151 /* AppDelegate.m */,
 				657577DB1CCFD69500561151 /* NetDemoViewController.h */,
@@ -351,6 +364,7 @@
 				657577DD1CCFD69500561151 /* NetDemoViewController.m in Sources */,
 				657577DA1CCFD69500561151 /* AppDelegate.m in Sources */,
 				657577D71CCFD69500561151 /* main.m in Sources */,
+				653436EE1CD2668B00484F08 /* DeviceFooterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

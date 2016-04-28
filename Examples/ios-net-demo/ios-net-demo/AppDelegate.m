@@ -18,10 +18,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x2FA8DD)];
+    [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x00A3E0)];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     [[UINavigationBar appearance] setTranslucent:NO];
+    [UIButton appearance].backgroundColor = UIColorFromRGB(0x333F48);
     
     return YES;
 }
