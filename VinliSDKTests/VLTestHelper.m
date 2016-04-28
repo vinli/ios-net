@@ -7,9 +7,27 @@
 //
 
 #import "VLTestHelper.h"
+#import "VLDateFormatter.h"
+
 
 @implementation VLTestHelper
 
+
+
+
++ (NSString *)tripId {
+    return @"2dc6cd00-4888-4b02-b48f-2faf64e05a0b";
+}
+
+
++ (NSString *)odometerTriggerId {
+    return @"2adf089d-06ba-4c18-acef-cc70f848c461";
+}
+
+
++ (NSString *)odometerId {
+    return @"7b98a761-d270-48e9-8720-6e221353769c";
+}
 
 
 
@@ -30,7 +48,7 @@
 }
 
 + (NSInteger)defaultTimeOut {
-    return 5.0;
+    return 15.0;
 }
 
 + (NSString *)accessToken {

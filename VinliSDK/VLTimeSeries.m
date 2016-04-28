@@ -7,19 +7,14 @@
 //
 
 #import "VLTimeSeries.h"
+#import "VLDateFormatter.h"
 
-static NSDateFormatter* isoDateFormatter;
+
 
 
 @implementation VLTimeSeries
 
-+ (void)initialize
-{
-    isoDateFormatter = [[NSDateFormatter alloc] init];
-    NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
-    [isoDateFormatter setLocale:enUSPOSIXLocale];
-    [isoDateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
-}
+
 
 + (instancetype)timeSeriesFromPreviousNumberOfWeeks:(NSInteger)numWeeks
 {
@@ -74,14 +69,14 @@ static NSDateFormatter* isoDateFormatter;
 {
     NSMutableDictionary* retVal = [NSMutableDictionary new];
     if (self.since) {
-        NSString* sinceDateStr = [isoDateFormatter stringFromDate:self.since];
+        NSString* sinceDateStr = [VLDateFormatter stringFromDate:self.since];
         if (sinceDateStr.length > 0) {
             [retVal setObject:sinceDateStr forKey:@"since"];
         }
     }
     
     if (self.until) {
-        NSString* untilDateStr = [isoDateFormatter stringFromDate:self.until];
+        NSString* untilDateStr = [VLDateFormatter stringFromDate:self.until];
         if (untilDateStr.length > 0) {
             [retVal setObject:untilDateStr forKey:@"until"];
         }
