@@ -62,7 +62,7 @@
     }
 }
 
-- (NSError *) error{
+- (NSError *) error {
     if(payload != nil && [payload objectForKey:@"error"] != nil){
         NSString *errorDomain = [payload objectForKey:@"error"];
         NSString *errorMessage = [payload objectForKey:@"message"];

@@ -1,6 +1,6 @@
 PODS:
   - jetfire (0.1.5)
-  - OCMock (3.1.2)
+  - OCMock (3.3)
 
 DEPENDENCIES:
   - jetfire
@@ -8,6 +8,6 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   jetfire: 60c16cd6ae0282928e24203eb93f03b89c1929ce
-  OCMock: a10ea9f0a6e921651f96f78b6faee95ebc813b92
+  OCMock: d68685bde31f69cb61d518dcb39269080c78b5ed
 
 COCOAPODS: 0.39.0

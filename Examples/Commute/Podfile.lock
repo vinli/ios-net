@@ -1,0 +1,20 @@
+PODS:
+  - jetfire (0.1.5)
+  - Mapbox-iOS-SDK (3.2.1)
+  - VinliNet (1.0.9):
+    - jetfire
+
+DEPENDENCIES:
+  - Mapbox-iOS-SDK (~> 3.2.1)
+  - VinliNet (from `~/Documents/Programs/Vinli/ios-net`)
+
+EXTERNAL SOURCES:
+  VinliNet:
+    :path: "~/Documents/Programs/Vinli/ios-net"
+
+SPEC CHECKSUMS:
+  jetfire: 60c16cd6ae0282928e24203eb93f03b89c1929ce
+  Mapbox-iOS-SDK: 87de5f1223264da897d122f4b0b79266242f39bd
+  VinliNet: ebfea4b339a54a7cca612f3fa03253994f44a407
+
+COCOAPODS: 0.39.0
