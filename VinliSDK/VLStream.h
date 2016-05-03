@@ -19,6 +19,8 @@
 - (id) initWithURL:(NSURL *)url deviceId:(NSString *)deviceId;
 - (id) initWithURL:(NSURL *)url deviceId:(NSString *)deviceId parametricFilters:(NSArray *)pFilters geometryFilter:(VLGeometryFilter *)gFilter;
 
+- (void) disconnect;
+
 - (void) setOnMessageBlock:(void (^)(VLStreamMessage *message))onMessageBlock;
 - (void) setOnErrorBlock:(void (^)(NSError * error))onErrorBlock;
 
