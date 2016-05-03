@@ -179,6 +179,7 @@
     UIButton *streamButton = (UIButton *) sender;
     StreamViewController *streamViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"StreamViewController"];
     streamViewController.device = [_devices objectAtIndex:(streamButton.tag - 1)];
+    streamViewController.vlService = _vlService;
     [self.navigationController pushViewController:streamViewController animated:YES];
 }
 

@@ -10,9 +10,10 @@
 #import <VinliSDK.h>
 #import <MapKit/MapKit.h>
 
-@interface StreamViewController : UIViewController
+@interface StreamViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) VLDevice *device;
+@property (strong, nonatomic) VLService *vlService;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

@@ -14,6 +14,8 @@
 
 @interface SetOdometerViewController ()
 
+@property VLDistanceUnit distanceUnit;
+
 @end
 
 @implementation SetOdometerViewController
@@ -35,7 +37,14 @@
 #pragma mark - Actions
 
 - (IBAction) setOdometerButtonPressed:(id)sender{
-    VLOdometer *odometer = [[VLOdometer alloc] init];
+    NSLog(@"Value: %@ %d", [_textField text], _distanceUnit);
+    return;
+    VLOdometer *odometer = [[VLOdometer alloc] initWithReading:@([[_textField text] doubleValue]) dateStr:nil unit:_distanceUnit];
+    [_vlService createOdometer:odometer vehicleId:_vehicle.vehicleId OnSuccess:^(VLOdometer *odometer, NSHTTPURLResponse *response) {
+        
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        NSLog(@"Error creating odometer");
+    }];
 }
 
 #pragma mark - UIPickerViewDataSource
@@ -76,7 +85,17 @@
 }
 
 - (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    
+    switch(row){
+        case MILES:
+            _distanceUnit = VLDistanceUnitMiles;
+            break;
+        case KILOMETERS:
+            _distanceUnit = VLDistanceUnitKilometers;
+            break;
+        case METERS:
+            _distanceUnit = VLDistanceUnitMeters;
+            break;
+    }
 }
 
 @end
