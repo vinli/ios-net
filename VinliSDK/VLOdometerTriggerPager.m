@@ -11,14 +11,9 @@
 
 @implementation VLOdometerTriggerPager
 
-
-
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     return [self initWithDictionary:dictionary service:nil];
 }
-
-
-
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service {
     if (self = [super initWithDictionary:dictionary service:service]) {
@@ -28,9 +23,6 @@
     }
     return self;
 }
-
-
-
 
 - (NSArray *)populateOdometerTriggers:(NSDictionary *)dictionary {
     if (dictionary) {
@@ -44,11 +36,7 @@
             return odometerTriggersArray;
         }
     }
-    return [NSArray new];
+    return [[NSArray alloc] init];
 }
-
-
-
-
 
 @end

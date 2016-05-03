@@ -835,24 +835,19 @@
 //@callbacks: onSuccessBlock with newly created odometer
 //OnFailureBlock: connection fails
 
+- (void)createOdometer:(VLOdometer *)odometer
+             vehicleId:(NSString *)vehicleId
+             OnSuccess:(void (^)(VLOdometer *odometer, NSHTTPURLResponse *response))onSuccessBlock
+             onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
-/* example*/
-//NSDictionary *dictionary = @{@"reading":@50000, @"date":@"2016-02-16T17:01:36.243Z"}; date is optional
-//VLOdometer *odometer = [[VLOdometer alloc]initWithDictionary:dictionary];
-//pass unit in creation method
-
-
-
-- (void)createOdometer:(VLOdometer *)odometer unit:(NSString *)unit vehicleId:(NSString *)vehicleId OnSuccess:(void (^)(VLOdometer *odometer, NSHTTPURLResponse *response))onSuccessBlock
-                        onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
-
-
-- (void)getOdometersForVehicleWithId:(NSString *)vehicleId timeSeries:(VLTimeSeries *)timeSeries onSucess:(void (^)(VLOdometerPager *odometerPager, NSHTTPURLResponse *response))onSuccessBlock
+- (void)getOdometersForVehicleWithId:(NSString *)vehicleId
+                          timeSeries:(VLTimeSeries *)timeSeries
+                            onSucess:(void (^)(VLOdometerPager *odometerPager, NSHTTPURLResponse *response))onSuccessBlock
                            onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
-- (void)getOdometersForVehicleWithId:(NSString *)vehicleId onSuccess:(void (^)(VLOdometerPager *odometerPager, NSHTTPURLResponse *response))onSuccessBlock
-                          onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
-
+- (void)getOdometersForVehicleWithId:(NSString *)vehicleId
+                           onSuccess:(void (^)(VLOdometerPager *odometerPager, NSHTTPURLResponse *response))onSuccessBlock
+                           onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
 - (void)getOdometerWithId:(nonnull NSString *)odometerId onSuccess:(void (^)(VLOdometer *odometer, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
@@ -866,21 +861,14 @@
 //@callbacks: onSuccessBlock with newly created odometer trigger
 //OnFailureBlock: connection fails
 
-
-
-
-/* example*/
-//NSDictionary *dictionary = @{@"type":@"specific", @"threshold":@11};
-//VLOdometerTrigger *trigger = [[VLOdometerTrigger alloc]initWithDictionary:dictionary];
-//pass unit in creation method
-
-
-
-
-- (void)createOdometerTrigger:(VLOdometerTrigger *)odometerTrigger unit:(NSString *)unit vehicleId:(NSString *)vehicleId OnSuccess:(void (^)(VLOdometerTrigger *odometerTrigger, NSHTTPURLResponse *response))onSuccessBlock
+- (void)createOdometerTrigger:(VLOdometerTrigger *)odometerTrigger
+                    vehicleId:(NSString *)vehicleId
+                    OnSuccess:(void (^)(VLOdometerTrigger *odometerTrigger, NSHTTPURLResponse *response))onSuccessBlock
                     onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
-- (void)getOdometerTriggersForVehicleWithId:(NSString *)vehicleId timeSeries:(VLTimeSeries *)timeSeries onSucess:(void (^)(VLOdometerTriggerPager *odometerTriggerPager, NSHTTPURLResponse *response))onSuccessBlock
+- (void)getOdometerTriggersForVehicleWithId:(NSString *)vehicleId
+                                 timeSeries:(VLTimeSeries *)timeSeries
+                                   onSucess:(void (^)(VLOdometerTriggerPager *odometerTriggerPager, NSHTTPURLResponse *response))onSuccessBlock
                                   onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
 - (void)getOdometerTriggersForVehicleWithId:(NSString *)vehicleId onSucess:(void (^)(VLOdometerTriggerPager *odometerTriggerPager, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;

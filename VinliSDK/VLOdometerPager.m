@@ -9,30 +9,20 @@
 #import "VLOdometerPager.h"
 #import "VLOdometer.h"
 
-
 @implementation VLOdometerPager
-
-
-
 
 - (instancetype) initWithDictionary:(NSDictionary *)dictionary {
     return [self initWithDictionary:dictionary service:nil];
 }
-
-
-
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service {
     if (self = [super initWithDictionary:dictionary service:service]) {
         if (self) {
             _odometers = [self populateOdometers:dictionary];
         }
-        
     }
     return self;
 }
-
-
 
 - (NSArray *)populateOdometers:(NSDictionary *)dictionary {
     if (dictionary) {
@@ -46,10 +36,7 @@
             return odometerArray;
         }
     }
-    return [NSArray new];
+    return [[NSArray alloc] init];
 }
-
-
-
 
 @end
