@@ -103,6 +103,12 @@
     [streamSocket connect];
 }
 
+- (void) disconnect{
+    if(streamSocket.isConnected){
+        [streamSocket disconnect];
+    }
+}
+
 - (void) writeDictionary:(NSDictionary *)dictinary toSocket:(JFRWebSocket *)socket{
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictinary options:0 error:&error];

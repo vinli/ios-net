@@ -817,8 +817,8 @@
 // onErrorBlock:    block that gets passed an NSError whenever an error occurs
 // @returns:        VLStream that will receive telemetry data for the specific device.
 - (VLStream *) getStreamForDeviceId:(nonnull NSString *)deviceId
-                     onMessageBlock:(void (^)(VLStreamMessage *)) onMessageBlock
-                       onErrorBlock:(void (^)(NSError *)) onErrorBlock;
+                     onMessageBlock:(void (^)(VLStreamMessage *streamMessage)) onMessageBlock
+                       onErrorBlock:(void (^)(NSError *error)) onErrorBlock;
 
 // Create a websocket stream to constantly read telemetry data.
 // Route: WSS /api/v1/messages?token={OAuth Token}
@@ -832,8 +832,8 @@
 - (VLStream *) getStreamForDeviceId:(NSString *)deviceId
                   parametricFilters:(NSArray *)parametricFilters
                      geometryFilter:(VLGeometryFilter *)geometryFilter
-                     onMessageBlock:(void (^)(VLStreamMessage *)) onMessageBlock
-                       onErrorBlock:(void (^)(NSError *)) onErrorBlock;
+                     onMessageBlock:(void (^)(VLStreamMessage *streamMessage)) onMessageBlock
+                       onErrorBlock:(void (^)(NSError *error)) onErrorBlock;
 
 #pragma mark - Auth Services
 
