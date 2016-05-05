@@ -1,1 +1,0 @@
-../../../VinliNet/VinliSDK/VLOffsetPager.h
