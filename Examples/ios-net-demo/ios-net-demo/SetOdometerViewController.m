@@ -7,6 +7,7 @@
 //
 
 #import "SetOdometerViewController.h"
+#import "AppDelegate.h"
 
 #define MILES 0
 #define KILOMETERS 1
@@ -23,6 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = UIColorFromRGB(0xEEEEEE);
+    
     _unitPicker.delegate = self;
     _unitPicker.dataSource = self;
     [_unitPicker selectRow:KILOMETERS inComponent:0 animated:NO];
@@ -37,11 +40,9 @@
 #pragma mark - Actions
 
 - (IBAction) setOdometerButtonPressed:(id)sender{
-    NSLog(@"Value: %@ %d", [_textField text], _distanceUnit);
-    return;
     VLOdometer *odometer = [[VLOdometer alloc] initWithReading:@([[_textField text] doubleValue]) dateStr:nil unit:_distanceUnit];
     [_vlService createOdometer:odometer vehicleId:_vehicle.vehicleId OnSuccess:^(VLOdometer *odometer, NSHTTPURLResponse *response) {
-        
+        NSLog(@"Successfully created odometer with id: %@", odometer.odometerId);
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         NSLog(@"Error creating odometer");
     }];

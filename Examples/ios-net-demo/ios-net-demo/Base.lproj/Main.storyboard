@@ -115,7 +115,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tuX-ZZ-Nqv">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tuX-ZZ-Nqv">
                                 <rect key="frame" x="20" y="285" width="248" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -130,17 +130,28 @@
                                     <action selector="setOdometerButtonPressed:" destination="qg8-xs-iNj" eventType="touchUpInside" id="wFh-vf-Pz9"/>
                                 </connections>
                             </button>
-                            <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RLi-Q9-Tbx">
+                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RLi-Q9-Tbx">
                                 <rect key="frame" x="293" y="192" width="287" height="216"/>
                             </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Enter the odometer reading, select the unit, and press 'Set.'" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7K-xa-Bpy">
+                                <rect key="frame" x="20" y="66" width="560" height="81"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.24705882352941178" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="O7K-xa-Bpy" firstAttribute="top" secondItem="gcC-TC-7j7" secondAttribute="bottom" constant="46" id="3LP-SR-Ipx"/>
                             <constraint firstItem="RLi-Q9-Tbx" firstAttribute="leading" secondItem="tuX-ZZ-Nqv" secondAttribute="trailing" constant="8" id="3Rp-iW-lEB"/>
                             <constraint firstItem="RLi-Q9-Tbx" firstAttribute="width" secondItem="tuX-ZZ-Nqv" secondAttribute="width" id="Btl-Dh-TbQ"/>
                             <constraint firstItem="RLi-Q9-Tbx" firstAttribute="leading" secondItem="tuX-ZZ-Nqv" secondAttribute="trailing" constant="8" id="CxM-B3-3JW"/>
                             <constraint firstItem="ymh-wH-uhb" firstAttribute="trailing" secondItem="JX8-sl-hvg" secondAttribute="trailingMargin" id="JSp-Xz-fta"/>
+                            <constraint firstItem="O7K-xa-Bpy" firstAttribute="trailing" secondItem="JX8-sl-hvg" secondAttribute="trailingMargin" id="Shc-KR-NBD"/>
                             <constraint firstItem="tuX-ZZ-Nqv" firstAttribute="leading" secondItem="JX8-sl-hvg" secondAttribute="leadingMargin" id="YSk-H0-YMS"/>
+                            <constraint firstItem="tuX-ZZ-Nqv" firstAttribute="centerY" secondItem="JX8-sl-hvg" secondAttribute="centerY" id="fKu-Ax-Cd9"/>
+                            <constraint firstItem="RLi-Q9-Tbx" firstAttribute="centerY" secondItem="JX8-sl-hvg" secondAttribute="centerY" id="gSR-QP-4ow"/>
+                            <constraint firstItem="O7K-xa-Bpy" firstAttribute="leading" secondItem="JX8-sl-hvg" secondAttribute="leadingMargin" id="j7g-ko-nws"/>
                             <constraint firstItem="ymh-wH-uhb" firstAttribute="leading" secondItem="JX8-sl-hvg" secondAttribute="leadingMargin" id="obS-6s-muF"/>
                             <constraint firstItem="RLi-Q9-Tbx" firstAttribute="trailing" secondItem="JX8-sl-hvg" secondAttribute="trailingMargin" id="oyL-Pg-XiP"/>
                             <constraint firstItem="nxE-d9-o40" firstAttribute="top" secondItem="ymh-wH-uhb" secondAttribute="bottom" constant="20" id="pHO-8t-Ex8"/>

@@ -10,6 +10,7 @@
 #import "DeviceFooterView.h"
 #import "StreamViewController.h"
 #import "SetOdometerViewController.h"
+#import "AppDelegate.h"
 
 #define ACCESS_TOKEN_KEY @"net_demo_access_token"
 
@@ -214,6 +215,7 @@
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    cell.textLabel.textColor = UIColorFromRGB(0x333F48);
     
     NSString *title = @"";
     NSString *value = @"";
@@ -267,6 +269,7 @@
     
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@%@", title, value]];
     [attributedString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:14.0f] range:NSMakeRange(0, title.length)];
+    [attributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14.0f] range:NSMakeRange(title.length, value.length)];
     [cell.textLabel setAttributedText:attributedString];
     
     return cell;
