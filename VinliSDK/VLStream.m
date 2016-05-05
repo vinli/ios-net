@@ -121,4 +121,8 @@
     }
 }
 
+- (void) dealloc {
+    [self disconnect];
+}
+
 @end
