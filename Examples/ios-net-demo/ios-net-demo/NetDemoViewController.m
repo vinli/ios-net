@@ -169,10 +169,17 @@
 
 - (IBAction) setOdometerButtonPressed:(id)sender{
     UIButton *setButton = (UIButton *) sender;
-    SetOdometerViewController *setOdometerViewController = (SetOdometerViewController *) [self.storyboard instantiateViewControllerWithIdentifier:@"SetOdometerViewController"];
-    setOdometerViewController.vehicle = [_latestVehicleMap objectForKey:[((VLDevice *)[_devices objectAtIndex:(setButton.tag - 1)]) deviceId]];
-    setOdometerViewController.vlService = _vlService;
-    [self.navigationController pushViewController:setOdometerViewController animated:YES];
+    VLDevice *device = [_devices objectAtIndex:(setButton.tag - 1)];
+    VLVehicle *vehicle = [_latestVehicleMap objectForKey:device.deviceId];
+    
+    if(vehicle != nil){
+        SetOdometerViewController *setOdometerViewController = (SetOdometerViewController *) [self.storyboard instantiateViewControllerWithIdentifier:@"SetOdometerViewController"];
+        setOdometerViewController.vehicle = vehicle;
+        setOdometerViewController.vlService = _vlService;
+        [self.navigationController pushViewController:setOdometerViewController animated:YES];
+    }else{
+        [self presentNoVehicleAlertForDevice:device];
+    }
 }
 
 - (IBAction) streamButtonPressed:(id)sender{
@@ -329,6 +336,13 @@
     }
     
     return description;
+}
+
+- (void) presentNoVehicleAlertForDevice:(VLDevice *)device{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"No vehicle found for device %@.", device.name] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    [alertController addAction:okAction];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 @end
