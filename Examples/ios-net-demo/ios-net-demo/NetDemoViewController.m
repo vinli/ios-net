@@ -103,9 +103,8 @@
             
             [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:LATEST_VEHICLE_ROW inSection:section]] withRowAnimation:UITableViewRowAnimationFade];
         }
-        
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-        NSLog(@"Error fetching latest vehicle: %@", bodyString);
+        NSLog(@"Error fetching latest vehicle for device %@ error: %@", device.name, bodyString);
     }];
     
     [_vlService getLocationsForDeviceWithId:device.deviceId limit:@1 until:nil since:nil sortDirection:nil onSuccess:^(VLLocationPager *locationPager, NSHTTPURLResponse *response) {
@@ -289,6 +288,7 @@
     DeviceFooterView *footerView = [[DeviceFooterView alloc] initWithSection:(int)section frame:frame];
     [footerView.setOdometerButton addTarget:self action:@selector(setOdometerButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [footerView.streamButton addTarget:self action:@selector(streamButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
     return footerView;
 }
 

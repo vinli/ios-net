@@ -44,7 +44,7 @@
     [_vlService createOdometer:odometer vehicleId:_vehicle.vehicleId OnSuccess:^(VLOdometer *odometer, NSHTTPURLResponse *response) {
         NSLog(@"Successfully created odometer with id: %@", odometer.odometerId);
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-        NSLog(@"Error creating odometer");
+        NSLog(@"Error creating odometer: %@ %@", bodyString, _vehicle.vehicleId);
     }];
 }
 

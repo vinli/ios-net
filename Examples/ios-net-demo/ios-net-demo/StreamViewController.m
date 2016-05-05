@@ -64,7 +64,6 @@
     
     int rpm = [message integerForKey:@"rpm" defaultValue:DEFAULT_VALUE];
     if(rpm != DEFAULT_VALUE){
-        NSLog(@"Updating rpm: %d", rpm);
         [_valueDictionary setObject:@(rpm) forKey:@"rpm"];
         [reloadArray addObject:[NSIndexPath indexPathForRow:RPM_ROW inSection:0]];
     }
