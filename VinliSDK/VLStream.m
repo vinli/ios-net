@@ -91,6 +91,11 @@
                 }
             }else if([message.type isEqualToString:@"pub"]){
                 // Only need to send publish messages to the user.
+                
+                if(strongSelf.onRawMessageBlock != nil){
+                    strongSelf.onRawMessageBlock(data);
+                }
+                
                 if(strongSelf.onMessageBlock != nil){
                     strongSelf.onMessageBlock(message);
                 }
@@ -98,7 +103,8 @@
         }
     };
     
-    streamSocket.onData = ^(NSData *data){};
+    streamSocket.onData = ^(NSData *data){
+    };
     
     [streamSocket connect];
 }

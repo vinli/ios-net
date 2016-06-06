@@ -15,6 +15,7 @@
 
 @property (copy) void (^onMessageBlock)(VLStreamMessage *message);
 @property (copy) void (^onErrorBlock)(NSError *error);
+@property (copy) void (^onRawMessageBlock)(NSData *data);
 
 - (id) initWithURL:(NSURL *)url deviceId:(NSString *)deviceId;
 - (id) initWithURL:(NSURL *)url deviceId:(NSString *)deviceId parametricFilters:(NSArray *)pFilters geometryFilter:(VLGeometryFilter *)gFilter;
@@ -23,5 +24,6 @@
 
 - (void) setOnMessageBlock:(void (^)(VLStreamMessage *message))onMessageBlock;
 - (void) setOnErrorBlock:(void (^)(NSError * error))onErrorBlock;
+- (void) setOnRawMessageBlock:(void (^)(NSData *data))onRawMessageBlock;
 
 @end
