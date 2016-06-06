@@ -17,10 +17,11 @@
 
 @implementation VLStreamMessage
 
-- (id) initWithDictionary:(NSDictionary *)dictionary{
+- (instancetype) initWithDictionary:(NSDictionary *)dictionary{
     self = [super init];
     if(self){
-        self.type = [dictionary objectForKey:@"type"];
+        
+        _type = [dictionary objectForKey:@"type"];
         
         if([dictionary objectForKey:@"statusCode"] != nil){
             statusCode = [dictionary objectForKey:@"statusCode"];
@@ -30,14 +31,14 @@
             subject = [dictionary objectForKey:@"subject"];
             
             if([[subject objectForKey:@"type"] isEqualToString:@"device"]){
-                self.deviceId = [subject objectForKey:@"id"];
+                _deviceId = [subject objectForKey:@"id"];
             }
         }
         
         if([dictionary objectForKey:@"payload"] != nil){
             payload = [dictionary objectForKey:@"payload"];
             
-            self.timestamp = [payload objectForKey:@"timestamp"];
+            _timestamp = [payload objectForKey:@"timestamp"];
             
         }
     }
@@ -72,7 +73,7 @@
     }
 }
 
-- (NSObject *) rawValueForKey:(NSString *)key{
+- (id) rawValueForKey:(NSString *)key{
     
     if(payload == nil || [payload objectForKey:@"data"] == nil){
         return nil;

@@ -1,13 +1,24 @@
 PODS:
+  - CocoaAsyncSocket (7.4.3):
+    - CocoaAsyncSocket/All (= 7.4.3)
+  - CocoaAsyncSocket/All (7.4.3):
+    - CocoaAsyncSocket/GCD
+    - CocoaAsyncSocket/RunLoop
+  - CocoaAsyncSocket/GCD (7.4.3)
+  - CocoaAsyncSocket/RunLoop (7.4.3)
   - jetfire (0.1.5)
   - OCMock (3.1.2)
 
 DEPENDENCIES:
+  - CocoaAsyncSocket
   - jetfire
   - OCMock
 
 SPEC CHECKSUMS:
+  CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
   jetfire: 60c16cd6ae0282928e24203eb93f03b89c1929ce
   OCMock: a10ea9f0a6e921651f96f78b6faee95ebc813b92
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 4b5c51e11fcc51a0327d9ddbbfa650443f10bac2
+
+COCOAPODS: 1.0.0

@@ -3,6 +3,7 @@
 
 target 'VinliSDK' do
 pod 'jetfire'
+pod 'CocoaAsyncSocket'
 end
 
 target 'VinliSDKTests' do
