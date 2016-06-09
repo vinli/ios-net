@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "VLParametricFilter.h"
+#import "VLGeometryFilter.h"
 
 @class VLWebSocket;
 @protocol VLWebSocketDelegate <NSObject>
@@ -20,7 +22,7 @@
 
 @property (weak, nonatomic) id<VLWebSocketDelegate> delegate;
 
-- (instancetype)initWithDeviceId:(NSString*)deviceId token:(NSString *)token;
+- (instancetype)initWithDeviceId:(NSString*)deviceId url:(NSURL *)url parametricFilters:(NSArray *)pFilters geometryFilter:(VLGeometryFilter *)gFilter;
 
 - (BOOL)isConnected;
 

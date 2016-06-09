@@ -13,15 +13,19 @@
 @interface VLWebSocket()
 @property (strong, nonatomic) JFRWebSocket* socket;
 @property (copy, nonatomic) NSString* deviceId;
-@property (copy, nonatomic) NSString* token;
+@property (strong, nonatomic) NSURL *url;
+@property (strong, nonatomic) NSArray *parametricFilters;
+@property (strong, nonatomic) VLGeometryFilter *geometryFilter;
 @end
 
 @implementation VLWebSocket
 
-- (instancetype)initWithDeviceId:(NSString*)deviceId token:(NSString *)token {
+- (instancetype)initWithDeviceId:(NSString*)deviceId url:(NSURL *)url parametricFilters:(NSArray *)pFilters geometryFilter:(VLGeometryFilter *)gFilter{
     if (self = [super init]) {
         self.deviceId = deviceId;
-        self.token = token;
+        self.url = url;
+        self.parametricFilters = pFilters;
+        self.geometryFilter = gFilter;
     }
     return self;
 }
@@ -31,11 +35,7 @@
 }
 
 - (void)connect {
-    //NSString* token = @"48wOSOqrddSMUrCmO35raGnXUENWNt_9AHAGAcWQBgwOi5E1YsqXw26yAPT11qVs";
-    //f5999ee1-9b1f-4029-96a6-64550dd09ec1
-    NSString* socketURLStr = [NSString stringWithFormat:@"wss://stream.vin.li/api/v1/messages?token=%@", self.token];
-    NSURL* webSocketURL = [NSURL URLWithString:socketURLStr];
-    self.socket = [[JFRWebSocket alloc] initWithURL:webSocketURL protocols:nil];
+    self.socket = [[JFRWebSocket alloc] initWithURL:_url protocols:nil];
     
     [self setupSocketHandlers];
     
@@ -43,7 +43,13 @@
 }
 
 - (void)disconnect {
-    [self.socket disconnect];
+    if(self.socket.isConnected){
+        [self.socket disconnect];
+    }
+}
+
+- (void) dealloc {
+    [self disconnect];
 }
 
 - (void)setupSocketHandlers {
@@ -54,12 +60,15 @@
     }
     
     __weak JFRWebSocket* weakSocket = self.socket;
+    __weak VLWebSocket* weakSelf = self;
+    
     self.socket.onConnect = ^{
         NSLog(@"websocket is connected");
         JFRWebSocket* socket = weakSocket;
+        VLWebSocket* strongSelf = weakSelf;
         
         NSDictionary* subjectDic = @{@"type" : @"device",
-                                     @"id" : self.deviceId};
+                                     @"id" : strongSelf.deviceId};
         NSDictionary* subscription = @{@"type" : @"sub",
                                        @"subject" : subjectDic};
         
@@ -74,6 +83,16 @@
         } else {
             NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
             [socket writeString:jsonString];
+            
+            for(VLParametricFilter *pFilter in strongSelf.parametricFilters){
+                NSDictionary *filterAsDictionary = [pFilter toDictionary];
+                [strongSelf writeDictionary:filterAsDictionary toSocket:socket];
+            }
+            
+            if(strongSelf.geometryFilter != nil){
+                NSDictionary *filterAsDictionary = [strongSelf.geometryFilter toDictionary];
+                [strongSelf writeDictionary:filterAsDictionary toSocket:socket];
+            }
         }
         
     };
@@ -84,9 +103,7 @@
     };
     
     //websocketDidReceiveMessage
-    __weak VLWebSocket* weakSelf = self;
     self.socket.onText = ^(NSString *jsonStr) {
-        //NSLog(@"got some text: %@", jsonStr);
         
         NSData *data = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
         NSError* error;
@@ -97,7 +114,7 @@
         }
         
         VLWebSocket* strongSelf = weakSelf;
-        [strongSelf.delegate webSocket:self didReceiveData:json];
+        [strongSelf.delegate webSocket:strongSelf didReceiveData:json];
         
         return;
         
@@ -114,6 +131,18 @@
         
     };
 
+}
+
+- (void) writeDictionary:(NSDictionary *)dictinary toSocket:(JFRWebSocket *)socket{
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictinary options:0 error:&error];
+    
+    if(jsonData){
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        [socket writeString:jsonString];
+    }else{
+        NSLog(@"Error parsing dictionary into JSON. Error: %@, Dictionary: %@", error, dictinary);
+    }
 }
 
 @end

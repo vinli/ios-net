@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "VLParametricFilter.h"
+#import "VLGeometryFilter.h"
 
 @class VLSocketManager;
 @protocol VLSocketManagerDelegate <NSObject>
@@ -18,6 +20,8 @@
 
 @property (weak, nonatomic) id<VLSocketManagerDelegate> delegate;
 
-- (instancetype)initWithDeviceId:(NSString *)deviceId;
+- (instancetype)initWithDeviceId:(NSString *)deviceId webURL:(NSURL *)webURL parametricFilters:(NSArray *)pFilters geometryFilter:(VLGeometryFilter *)gFilter;
+
+- (void) disconnect;
 
 @end

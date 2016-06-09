@@ -20,14 +20,20 @@
 @property (assign, nonatomic) BOOL receivedMessage;
 
 @property (strong, nonatomic) NSString* deviceId;
+@property (strong, nonatomic) NSURL *webURL;
+@property (strong, nonatomic) NSArray *parametricFilters;
+@property (strong, nonatomic) VLGeometryFilter *geometryFilter;
 
 @end
 
 @implementation VLSocketManager
 
-- (instancetype)initWithDeviceId:(NSString *)deviceId {
+- (instancetype)initWithDeviceId:(NSString *)deviceId webURL:(NSURL *)webURL parametricFilters:(NSArray *)pFilters geometryFilter:(VLGeometryFilter *)gFilter{
     if (self = [super init]) {
         self.deviceId = deviceId;
+        self.webURL = webURL;
+        self.parametricFilters = pFilters;
+        self.geometryFilter = gFilter;
         [self setupSockets];
     }
     return self;
@@ -77,7 +83,7 @@
 - (void)launchWebSocket {
     
     if (!self.webSocket) {
-        self.webSocket = [[VLWebSocket alloc] initWithDeviceId:self.deviceId token:@"48wOSOqrddSMUrCmO35raGnXUENWNt_9AHAGAcWQBgwOi5E1YsqXw26yAPT11qVs"];
+        self.webSocket = [[VLWebSocket alloc] initWithDeviceId:self.deviceId url:_webURL parametricFilters:_parametricFilters geometryFilter:_geometryFilter];
         self.webSocket.delegate = self;
     }
     
@@ -87,6 +93,12 @@
     
     NSLog(@"Websocket: Connecting");
     [self.webSocket connect];
+}
+
+- (void) disconnect{
+    [self killConnectionTimer];
+    [_webSocket disconnect];
+    [_udpSocket disconnect];
 }
 
 #pragma mark - VLUDPSocketDelegate Method

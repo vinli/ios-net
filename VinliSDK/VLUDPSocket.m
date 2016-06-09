@@ -41,6 +41,7 @@ static const NSInteger UDP_HOST_PORT = 54321;
 
 - (void)dealloc {
     [self killStayAliveTimer];
+    [self disconnect];
 }
 
 - (instancetype)init {
@@ -80,6 +81,16 @@ static const NSInteger UDP_HOST_PORT = 54321;
 - (void)killStayAliveTimer {
     [self.udpStayAliveTimer invalidate];
     self.udpStayAliveTimer = nil;
+}
+
+- (void) disconnect{
+    if(self.udpStayAliveTimer != nil){
+        [self killStayAliveTimer];
+    }
+    
+    if(!_socket.isClosed){
+        [_socket close];
+    }
 }
 
 

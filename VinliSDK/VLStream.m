@@ -32,7 +32,7 @@
     
     if(self) {
         _bearingCalculator = [[VLBearingCalculator alloc] init];
-        self.socketManager = [[VLSocketManager alloc] initWithDeviceId:deviceId];
+        self.socketManager = [[VLSocketManager alloc] initWithDeviceId:deviceId webURL:url parametricFilters:pFilters geometryFilter:gFilter];
         self.socketManager.delegate = self;
         [self setupSocketWithURL:url deviceId:deviceId parametricFilters:pFilters geometryFilter:gFilter];
     }
@@ -101,11 +101,6 @@
             }else if([message.type isEqualToString:@"pub"]){
                 // Only need to send publish messages to the user.
                 
-                if(message.coord != nil){
-                    [strongSelf.bearingCalculator addCoordinate:message.coord atTimestamp:message.timestamp];
-                    message.bearing = [NSNumber numberWithDouble:[strongSelf.bearingCalculator currentBearing]];
-                }
-                
                 if(strongSelf.onRawMessageBlock != nil){
                     strongSelf.onRawMessageBlock(data);
                 }
@@ -120,10 +115,12 @@
     streamSocket.onData = ^(NSData *data){
     };
     
-    [streamSocket connect];
+//    [streamSocket connect];
 }
 
 - (void) disconnect{
+    [_socketManager disconnect];
+    
     if(streamSocket.isConnected){
         [streamSocket disconnect];
     }
@@ -149,9 +146,28 @@
 
 - (void)socketManager:(VLSocketManager *)socketManager didReceiveData:(NSDictionary *)data {
     
-    if (data && self.onMessageBlock) {
-        VLStreamMessage* message = [[VLStreamMessage alloc] initWithDictionary:data];;
-        self.onMessageBlock(message);
+    if (data && (self.onMessageBlock || self.onRawMessageBlock)) {
+        VLStreamMessage* message = [[VLStreamMessage alloc] initWithDictionary:data];
+        
+        if([message.type isEqualToString:@"pub"]){
+            if(message.coord != nil){
+                [self.bearingCalculator addCoordinate:message.coord atTimestamp:message.timestamp];
+                message.bearing = [NSNumber numberWithDouble:[self.bearingCalculator currentBearing]];
+            }
+            
+            if(self.onMessageBlock){
+                self.onMessageBlock(message);
+            }
+            
+            if(self.onRawMessageBlock){
+                NSError *error;
+                NSData *rawData = [NSJSONSerialization dataWithJSONObject:data options:0 error:&error];
+                if(!error){
+                    self.onRawMessageBlock(rawData);
+                }
+            }
+            
+        }
     }
 }
 

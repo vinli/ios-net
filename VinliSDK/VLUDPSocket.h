@@ -17,4 +17,6 @@
 
 @property (weak, nonatomic) id<VLUDPSocketDelegate> delegate;
 
+- (void) disconnect;
+
 @end
