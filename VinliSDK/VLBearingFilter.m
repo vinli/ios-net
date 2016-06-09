@@ -14,11 +14,11 @@
 
 @interface VLBearingFilter()
 
-@property (strong, nonatomic) NSMutableArray<Bearing *> *bearingList;
+@property (strong, nonatomic) NSMutableArray<VLBearing *> *bearingList;
 
 @end
 
-@implementation BearingFilter
+@implementation VLBearingFilter
 
 - (id) init{
     self = [super init];
@@ -39,7 +39,7 @@
         return 0.0;
     }
     
-    NSMutableArray<Bearing *> *recentBearings = [[NSMutableArray alloc] init];
+    NSMutableArray<VLBearing *> *recentBearings = [[NSMutableArray alloc] init];
     VLBearing *latestBearing = [_bearingList lastObject];
     for(VLBearing *bearing in _bearingList){
         if((latestBearing.timestamp - bearing.timestamp) <= SHORTENED_TIME){
