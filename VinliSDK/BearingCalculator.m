@@ -15,7 +15,7 @@
 @interface BearingCalculator()
 
 @property (strong, nonatomic) BearingFilter *bearingFilter;
-@property (nonatomic) CLLocationCoordinate2D previousCoordinate;
+@property (nonatomic) VLLocation *previousCoordinate;
 
 @end
 
@@ -26,14 +26,14 @@
     
     if(self){
         _bearingFilter = [[BearingFilter alloc] init];
-        _previousCoordinate = kCLLocationCoordinate2DInvalid;
+        _previousCoordinate = nil;
     }
     
     return self;
 }
 
-- (void) addCoordinate:(CLLocationCoordinate2D)coordinate atTimestamp:(NSString *)timestamp{
-    if(!CLLocationCoordinate2DIsValid(_previousCoordinate)){
+- (void) addCoordinate:(VLLocation *)coordinate atTimestamp:(NSString *)timestamp{
+    if(_previousCoordinate == nil){
         _previousCoordinate = coordinate;
         return;
     }
@@ -46,7 +46,7 @@
     
 }
 
-- (void) calcBearing:(NSString *)newTimestamp newCoord:(CLLocationCoordinate2D)newCoord prevCoord:(CLLocationCoordinate2D)prevCoord{
+- (void) calcBearing:(NSString *)newTimestamp newCoord:(VLLocation *)newCoord prevCoord:(VLLocation *)prevCoord{
     double dLat = newCoord.latitude - prevCoord.latitude;
     double dLon = newCoord.longitude - prevCoord.longitude;
     

@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MapKit/MapKit.h>
+#import "VLLocation.h"
 
 @interface BearingCalculator : NSObject
 
-- (void) addCoordinate:(CLLocationCoordinate2D)coordinate atTimestamp:(NSString *)timestamp;
+- (void) addCoordinate:(VLLocation *)coordinate atTimestamp:(NSString *)timestamp;
 - (double) currentBearing;
 
 @end

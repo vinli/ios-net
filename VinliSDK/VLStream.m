@@ -10,12 +10,14 @@
 #import "JFRWebSocket.h"
 #import "VLService.h"
 #import "VLSocketManager.h"
+#import "BearingCalculator.h"
 
 @interface VLStream() <VLSocketManagerDelegate> {
     JFRWebSocket *streamSocket;
 }
 
 @property (strong, nonatomic) VLSocketManager* socketManager;
+@property (strong, atomic) BearingCalculator * bearingCalculator;
 
 @end
 
@@ -29,6 +31,7 @@
     self = [super init];
     
     if(self) {
+        _bearingCalculator = [[BearingCalculator alloc] init];
         self.socketManager = [[VLSocketManager alloc] initWithDeviceId:deviceId];
         self.socketManager.delegate = self;
         [self setupSocketWithURL:url deviceId:deviceId parametricFilters:pFilters geometryFilter:gFilter];
@@ -97,6 +100,11 @@
                 }
             }else if([message.type isEqualToString:@"pub"]){
                 // Only need to send publish messages to the user.
+                
+                if(message.coord != nil){
+                    [strongSelf.bearingCalculator addCoordinate:message.coord atTimestamp:message.timestamp];
+                    message.bearing = [NSNumber numberWithDouble:[strongSelf.bearingCalculator currentBearing]];
+                }
                 
                 if(strongSelf.onRawMessageBlock != nil){
                     strongSelf.onRawMessageBlock(data);

@@ -17,6 +17,7 @@
 @property (nonatomic, readonly) NSString *timestamp;
 @property (nonatomic, readonly) VLAccelData *accel;
 @property (nonatomic, readonly) VLLocation *coord;
+@property (nonatomic, strong)   NSNumber *bearing;
 @property (nonatomic, readonly) NSError *error;
 
 - (instancetype) initWithDictionary:(NSDictionary *) dictionary;
@@ -26,6 +27,5 @@
 - (double) doubleForKey:(NSString *)key defaultValue:(double) defaultValue;
 - (long) longForKey:(NSString *)key defaultValue:(long) defaultValue;
 - (float) floatForKey:(NSString *)key defaultValue:(float) defaultValue;
-
 
 @end
