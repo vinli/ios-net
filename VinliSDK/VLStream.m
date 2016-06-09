@@ -10,14 +10,14 @@
 #import "JFRWebSocket.h"
 #import "VLService.h"
 #import "VLSocketManager.h"
-#import "BearingCalculator.h"
+#import "VLBearingCalculator.h"
 
 @interface VLStream() <VLSocketManagerDelegate> {
     JFRWebSocket *streamSocket;
 }
 
 @property (strong, nonatomic) VLSocketManager* socketManager;
-@property (strong, atomic) BearingCalculator * bearingCalculator;
+@property (strong, atomic) VLBearingCalculator * bearingCalculator;
 
 @end
 
@@ -31,7 +31,7 @@
     self = [super init];
     
     if(self) {
-        _bearingCalculator = [[BearingCalculator alloc] init];
+        _bearingCalculator = [[VLBearingCalculator alloc] init];
         self.socketManager = [[VLSocketManager alloc] initWithDeviceId:deviceId];
         self.socketManager.delegate = self;
         [self setupSocketWithURL:url deviceId:deviceId parametricFilters:pFilters geometryFilter:gFilter];

@@ -6,9 +6,9 @@
 //  Copyright © 2016 Vinli. All rights reserved.
 //
 
-#import "Bearing.h"
+#import "VLBearing.h"
 
-@implementation Bearing
+@implementation VLBearing
 
 - (id) initWithBearing:(double)bearing timestamp:(long)timestamp{
     self = [super init];

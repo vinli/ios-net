@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Bearing : NSObject
+@interface VLBearing : NSObject
 
 @property (nonatomic) double bearing;
 @property (nonatomic) long timestamp;

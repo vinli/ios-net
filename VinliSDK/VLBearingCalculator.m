@@ -6,26 +6,26 @@
 //  Copyright © 2016 Vinli. All rights reserved.
 //
 
-#import "BearingCalculator.h"
-#import "BearingFilter.h"
+#import "VLBearingCalculator.h"
+#import "VLBearingFilter.h"
 #import <VinliSDK.h>
 
 #define DISTANCE_THRESHOLD 0.00025
 
-@interface BearingCalculator()
+@interface VLBearingCalculator()
 
-@property (strong, nonatomic) BearingFilter *bearingFilter;
+@property (strong, nonatomic) VLBearingFilter *bearingFilter;
 @property (nonatomic) VLLocation *previousCoordinate;
 
 @end
 
-@implementation BearingCalculator
+@implementation VLBearingCalculator
 
 - (id) init{
     self = [super init];
     
     if(self){
-        _bearingFilter = [[BearingFilter alloc] init];
+        _bearingFilter = [[VLBearingFilter alloc] init];
         _previousCoordinate = nil;
     }
     

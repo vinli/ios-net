@@ -9,10 +9,10 @@
 #define SIZE 32
 #define SHORTENED_TIME 4.0
 
-#import "BearingFilter.h"
-#import "Bearing.h"
+#import "VLBearingFilter.h"
+#import "VLBearing.h"
 
-@interface BearingFilter()
+@interface VLBearingFilter()
 
 @property (strong, nonatomic) NSMutableArray<Bearing *> *bearingList;
 
@@ -31,7 +31,7 @@
 }
 
 - (void) addBearing:(double)bearing atTimestamp:(long)posixTimestamp{
-    [_bearingList addObject:[[Bearing alloc] initWithBearing:bearing timestamp:posixTimestamp]];
+    [_bearingList addObject:[[VLBearing alloc] initWithBearing:bearing timestamp:posixTimestamp]];
 }
 
 - (double) filteredBearing{
@@ -40,8 +40,8 @@
     }
     
     NSMutableArray<Bearing *> *recentBearings = [[NSMutableArray alloc] init];
-    Bearing *latestBearing = [_bearingList lastObject];
-    for(Bearing *bearing in _bearingList){
+    VLBearing *latestBearing = [_bearingList lastObject];
+    for(VLBearing *bearing in _bearingList){
         if((latestBearing.timestamp - bearing.timestamp) <= SHORTENED_TIME){
             [recentBearings addObject:bearing];
         }
@@ -49,9 +49,9 @@
     
     double x = 0;
     double y = 0;
-    Bearing *previous = nil;
+    VLBearing *previous = nil;
     
-    for(Bearing *bearing in recentBearings){
+    for(VLBearing *bearing in recentBearings){
         long timestampDiff = bearing.timestamp - recentBearings.firstObject.timestamp;
         if(timestampDiff == 0){
             timestampDiff = 1;

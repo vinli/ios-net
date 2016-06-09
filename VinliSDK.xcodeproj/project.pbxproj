@@ -105,12 +105,12 @@
 		49AB6E9E1B82446900DCF808 /* VLUserCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AB6E9C1B82446900DCF808 /* VLUserCache.m */; };
 		49E2F2FF1B6AA93700CD743C /* NSDictionary+NonNullable.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E2F2FD1B6AA93700CD743C /* NSDictionary+NonNullable.h */; };
 		49E2F3001B6AA93700CD743C /* NSDictionary+NonNullable.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E2F2FE1B6AA93700CD743C /* NSDictionary+NonNullable.m */; };
-		6589E6591D09CF220017D75B /* BearingCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = 6589E6531D09CF220017D75B /* BearingCalculator.h */; };
-		6589E65A1D09CF220017D75B /* BearingCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6589E6541D09CF220017D75B /* BearingCalculator.m */; };
-		6589E65B1D09CF220017D75B /* BearingFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6589E6551D09CF220017D75B /* BearingFilter.h */; };
-		6589E65C1D09CF220017D75B /* BearingFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6589E6561D09CF220017D75B /* BearingFilter.m */; };
-		6589E65D1D09CF220017D75B /* Bearing.h in Headers */ = {isa = PBXBuildFile; fileRef = 6589E6571D09CF220017D75B /* Bearing.h */; };
-		6589E65E1D09CF220017D75B /* Bearing.m in Sources */ = {isa = PBXBuildFile; fileRef = 6589E6581D09CF220017D75B /* Bearing.m */; };
+		6589E6591D09CF220017D75B /* VLBearingCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = 6589E6531D09CF220017D75B /* VLBearingCalculator.h */; };
+		6589E65A1D09CF220017D75B /* VLBearingCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6589E6541D09CF220017D75B /* VLBearingCalculator.m */; };
+		6589E65B1D09CF220017D75B /* VLBearingFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6589E6551D09CF220017D75B /* VLBearingFilter.h */; };
+		6589E65C1D09CF220017D75B /* VLBearingFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6589E6561D09CF220017D75B /* VLBearingFilter.m */; };
+		6589E65D1D09CF220017D75B /* VLBearing.h in Headers */ = {isa = PBXBuildFile; fileRef = 6589E6571D09CF220017D75B /* VLBearing.h */; };
+		6589E65E1D09CF220017D75B /* VLBearing.m in Sources */ = {isa = PBXBuildFile; fileRef = 6589E6581D09CF220017D75B /* VLBearing.m */; };
 		659718D21CBDA3020075BE36 /* VLStreamMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 659718D01CBDA3020075BE36 /* VLStreamMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		659718D31CBDA3020075BE36 /* VLStreamMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 659718D11CBDA3020075BE36 /* VLStreamMessage.m */; };
 		65F8CA6F1CBD813B00A58B4D /* VLStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 65F8CA6D1CBD813B00A58B4D /* VLStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -266,12 +266,12 @@
 		49AB6E9C1B82446900DCF808 /* VLUserCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLUserCache.m; sourceTree = "<group>"; };
 		49E2F2FD1B6AA93700CD743C /* NSDictionary+NonNullable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NonNullable.h"; sourceTree = "<group>"; };
 		49E2F2FE1B6AA93700CD743C /* NSDictionary+NonNullable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NonNullable.m"; sourceTree = "<group>"; };
-		6589E6531D09CF220017D75B /* BearingCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BearingCalculator.h; sourceTree = "<group>"; };
-		6589E6541D09CF220017D75B /* BearingCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BearingCalculator.m; sourceTree = "<group>"; };
-		6589E6551D09CF220017D75B /* BearingFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BearingFilter.h; sourceTree = "<group>"; };
-		6589E6561D09CF220017D75B /* BearingFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BearingFilter.m; sourceTree = "<group>"; };
-		6589E6571D09CF220017D75B /* Bearing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bearing.h; sourceTree = "<group>"; };
-		6589E6581D09CF220017D75B /* Bearing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bearing.m; sourceTree = "<group>"; };
+		6589E6531D09CF220017D75B /* VLBearingCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLBearingCalculator.h; sourceTree = "<group>"; };
+		6589E6541D09CF220017D75B /* VLBearingCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLBearingCalculator.m; sourceTree = "<group>"; };
+		6589E6551D09CF220017D75B /* VLBearingFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLBearingFilter.h; sourceTree = "<group>"; };
+		6589E6561D09CF220017D75B /* VLBearingFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLBearingFilter.m; sourceTree = "<group>"; };
+		6589E6571D09CF220017D75B /* VLBearing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLBearing.h; sourceTree = "<group>"; };
+		6589E6581D09CF220017D75B /* VLBearing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLBearing.m; sourceTree = "<group>"; };
 		659718D01CBDA3020075BE36 /* VLStreamMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLStreamMessage.h; sourceTree = "<group>"; };
 		659718D11CBDA3020075BE36 /* VLStreamMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLStreamMessage.m; sourceTree = "<group>"; };
 		65F8CA6D1CBD813B00A58B4D /* VLStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLStream.h; sourceTree = "<group>"; };
@@ -620,12 +620,12 @@
 		6589E6521D09CF1B0017D75B /* Bearing */ = {
 			isa = PBXGroup;
 			children = (
-				6589E6531D09CF220017D75B /* BearingCalculator.h */,
-				6589E6541D09CF220017D75B /* BearingCalculator.m */,
-				6589E6551D09CF220017D75B /* BearingFilter.h */,
-				6589E6561D09CF220017D75B /* BearingFilter.m */,
-				6589E6571D09CF220017D75B /* Bearing.h */,
-				6589E6581D09CF220017D75B /* Bearing.m */,
+				6589E6531D09CF220017D75B /* VLBearingCalculator.h */,
+				6589E6541D09CF220017D75B /* VLBearingCalculator.m */,
+				6589E6551D09CF220017D75B /* VLBearingFilter.h */,
+				6589E6561D09CF220017D75B /* VLBearingFilter.m */,
+				6589E6571D09CF220017D75B /* VLBearing.h */,
+				6589E6581D09CF220017D75B /* VLBearing.m */,
 			);
 			name = Bearing;
 			sourceTree = "<group>";
@@ -675,7 +675,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B3DDC5A1B1534AB00D95E61 /* VLTrip.h in Headers */,
-				6589E65D1D09CF220017D75B /* Bearing.h in Headers */,
+				6589E65D1D09CF220017D75B /* VLBearing.h in Headers */,
 				0B16714D1B0FC39D009BE7A9 /* VLTelemetryMessage.h in Headers */,
 				0B1671391B0FC39D009BE7A9 /* VLBoundary.h in Headers */,
 				0B3DDC541B1518BE00D95E61 /* VLRulePager.h in Headers */,
@@ -718,7 +718,7 @@
 				E92943741B17D6B100AAC7D3 /* VLDevicePager.h in Headers */,
 				0B89E4961B18BA3E00E69AEA /* VLUser.h in Headers */,
 				77BE999E1C73A4A5001E8F64 /* VLVehicle.h in Headers */,
-				6589E6591D09CF220017D75B /* BearingCalculator.h in Headers */,
+				6589E6591D09CF220017D75B /* VLBearingCalculator.h in Headers */,
 				777A6B811C91E3080050F6C0 /* VLUserSettings.h in Headers */,
 				0B89E48A1B179FE300E69AEA /* VLNotification.h in Headers */,
 				0B37782B1B28B7B8004AC2D6 /* VLLoginButton.h in Headers */,
@@ -733,7 +733,7 @@
 				E990CE6E1B26405A00CDEF15 /* VLPolygonBoundary.h in Headers */,
 				0B69F0AA1B39B54100684F6D /* VLObjectRef.h in Headers */,
 				0B3DDC261B14C28600D95E61 /* VLPager.h in Headers */,
-				6589E65B1D09CF220017D75B /* BearingFilter.h in Headers */,
+				6589E65B1D09CF220017D75B /* VLBearingFilter.h in Headers */,
 				0B16710A1B0FC2B8009BE7A9 /* VinliSDK.h in Headers */,
 				777A6B891C91F7B00050F6C0 /* VLDistance.h in Headers */,
 				0B1671541B0FC3DD009BE7A9 /* JCDHTTPConnection.h in Headers */,
@@ -973,7 +973,7 @@
 				0B16714E1B0FC39D009BE7A9 /* VLTelemetryMessage.m in Sources */,
 				E92943751B17D6B100AAC7D3 /* VLDevicePager.m in Sources */,
 				0B16713A1B0FC39D009BE7A9 /* VLBoundary.m in Sources */,
-				6589E65C1D09CF220017D75B /* BearingFilter.m in Sources */,
+				6589E65C1D09CF220017D75B /* VLBearingFilter.m in Sources */,
 				4903FDB71D008B630012AA72 /* VLOBDDataParser.m in Sources */,
 				77B3C1B81C9B300C00BE836A /* VLDateFormatter.m in Sources */,
 				777A6B941C9729EA0050F6C0 /* VLOdometer.m in Sources */,
@@ -984,7 +984,7 @@
 				7367E3A21B166ABB004223A6 /* VLEventPager.m in Sources */,
 				65FFFB391CBE94E8009D4CF1 /* VLAccelData.m in Sources */,
 				4903FDB91D008B630012AA72 /* VLSIMSignal.m in Sources */,
-				6589E65E1D09CF220017D75B /* Bearing.m in Sources */,
+				6589E65E1D09CF220017D75B /* VLBearing.m in Sources */,
 				65FFFB531CBEA8DC009D4CF1 /* VLGeometryFilter.m in Sources */,
 				0B3DDC2B1B14C31B00D95E61 /* VLOffsetPager.m in Sources */,
 				E929437D1B18FE5F00AAC7D3 /* VLSnapshotPager.m in Sources */,
@@ -1018,7 +1018,7 @@
 				E92943711B1679F600AAC7D3 /* VLSubscriptionPager.m in Sources */,
 				0B1671551B0FC3DD009BE7A9 /* JCDHTTPConnection.m in Sources */,
 				49AB6E981B82432C00DCF808 /* VLSessionManager.m in Sources */,
-				6589E65A1D09CF220017D75B /* BearingCalculator.m in Sources */,
+				6589E65A1D09CF220017D75B /* VLBearingCalculator.m in Sources */,
 				0B3778201B25DEF9004AC2D6 /* VLParametricBoundary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

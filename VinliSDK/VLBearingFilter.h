@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BearingFilter : NSObject
+@interface VLBearingFilter : NSObject
 
 - (void) addBearing:(double)bearing atTimestamp:(long)posixTimestamp;
 - (double) filteredBearing;
