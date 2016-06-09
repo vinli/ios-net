@@ -29,11 +29,18 @@
 //alternate schema
             if(dictionary[@"type"]){
                 _geometryType = dictionary[@"type"];
+                if(_geometryType == [NSNull null]){
+                    return nil;
+                }
             }
             
             if(dictionary[@"coordinates"]){
-                    _longitude = [dictionary[@"coordinates"][0] doubleValue];
-                    _latitude = [dictionary[@"coordinates"][1] doubleValue];
+                if(dictionary[@"coordinates"] == [NSNull null]){
+                    return nil;
+                }
+        
+                _longitude = [dictionary[@"coordinates"][0] doubleValue];
+                _latitude = [dictionary[@"coordinates"][1] doubleValue];
             }
             
             _properties = [dictionary objectForKey:@"properties"];
