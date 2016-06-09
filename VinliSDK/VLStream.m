@@ -9,10 +9,14 @@
 #import "VLStream.h"
 #import "JFRWebSocket.h"
 #import "VLService.h"
+#import "VLSocketManager.h"
 
-@interface VLStream(){
+@interface VLStream() <VLSocketManagerDelegate> {
     JFRWebSocket *streamSocket;
 }
+
+@property (strong, nonatomic) VLSocketManager* socketManager;
+
 @end
 
 @implementation VLStream
@@ -24,7 +28,9 @@
 - (id) initWithURL:(NSURL *)url deviceId:(NSString *)deviceId parametricFilters:(NSArray *)pFilters geometryFilter:(VLGeometryFilter *)gFilter{
     self = [super init];
     
-    if(self){
+    if(self) {
+        self.socketManager = [[VLSocketManager alloc] initWithDeviceId:deviceId];
+        self.socketManager.delegate = self;
         [self setupSocketWithURL:url deviceId:deviceId parametricFilters:pFilters geometryFilter:gFilter];
     }
     
@@ -106,7 +112,7 @@
     streamSocket.onData = ^(NSData *data){
     };
     
-    [streamSocket connect];
+    //[streamSocket connect];
 }
 
 - (void) disconnect{
@@ -129,6 +135,16 @@
 
 - (void) dealloc {
     [self disconnect];
+}
+
+#pragma mark - VLSocketManagerDelegateMethods
+
+- (void)socketManager:(VLSocketManager *)socketManager didReceiveData:(NSDictionary *)data {
+    
+    if (data && self.onMessageBlock) {
+        VLStreamMessage* message = [[VLStreamMessage alloc] initWithDictionary:data];;
+        self.onMessageBlock(message);
+    }
 }
 
 @end
