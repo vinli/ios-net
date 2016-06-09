@@ -120,7 +120,7 @@
     streamSocket.onData = ^(NSData *data){
     };
     
-    //[streamSocket connect];
+    [streamSocket connect];
 }
 
 - (void) disconnect{
