@@ -20,4 +20,6 @@
 - (instancetype) initWithDictionary:(NSDictionary *) dictionary;
 - (instancetype)initWithData:(NSData *)data;
 
+- (NSDictionary *) toStreamDictionary;
+
 @end

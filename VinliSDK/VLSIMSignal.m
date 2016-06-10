@@ -26,4 +26,21 @@
     return [NSString stringWithFormat:@"%@: Network: %@, Signal Strength:%@", [super description], _network, _signalStrengthStr];
 }
 
+- (NSDictionary *) toDictionary{
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+    
+    bool signalFound = NO;
+    if(_network != nil && _network.length > 0 && ![_network isEqualToString:@"null"]){
+        [dictionary setObject:_network forKey:@"udpSignalType"];
+        signalFound = true;
+    }
+    
+    if(_signalStrengthStr != nil && _signalStrengthStr.length > 0){
+        [dictionary setObject:[NSNumber numberWithInteger:_signalStrength] forKey:@"udpSignalStrength"];
+        signalFound = true;
+    }
+    
+    return (signalFound) ? dictionary : nil;
+}
+
 @end

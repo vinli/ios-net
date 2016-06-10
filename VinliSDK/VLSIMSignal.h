@@ -16,5 +16,6 @@
 
 - (instancetype)initWithRawString:(NSString *)str;
 
+- (NSDictionary *) toDictionary;
 
 @end
