@@ -121,6 +121,7 @@
         return;
     }
     
+    data = [data mutableCopy];
     NSMutableDictionary* messageData = [NSMutableDictionary new];
     [messageData setObject:data forKey:@"payload"];
     [messageData setObject:@"pub" forKey:@"type"];

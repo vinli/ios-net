@@ -24,6 +24,7 @@ Pod::Spec.new do |s|
   s.dependency 'CocoaAsyncSocket', '~>7.4.3'
 
   s.source_files = 'VinliSDK/*.{h,m}'
+  s.resources    = 'VinliSDK/*.{js}'
   #s.resources    = 'VinliSDK/*.{storyboard}'
 
   s.requires_arc = true

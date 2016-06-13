@@ -72,14 +72,23 @@
     }
     else {
         
-        NSArray* subComponents = [pidAndValue componentsSeparatedByString:@":"];
-        if (subComponents.count < 2) {
-            NSLog(@"Failed to parse OBD data with data: %@", pidAndValue);
+        if(pidAndValue == nil || [pidAndValue stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length < 2){
             return nil;
         }
         
-        NSString* pidType = subComponents[0];
-        NSString* dataStr = subComponents[1];
+        
+        NSString *pidType = nil;
+        NSString *dataStr = nil;
+        if([pidAndValue containsString:@":"]){
+            NSArray* subComponents = [pidAndValue componentsSeparatedByString:@":"];
+            pidType = subComponents[0];
+            dataStr = subComponents[1];
+        }else if(pidAndValue.length == 2){
+            pidType = pidAndValue;
+            dataStr = nil;
+        }else{
+            return nil;
+        }
         
         if ([pidType isEqualToString:@"A"]) { // Accel
             VLAccelData *accelData = [[VLAccelData alloc] initWithData:[dataStr dataUsingEncoding:NSASCIIStringEncoding]];
@@ -141,7 +150,6 @@
         }
         
     }
-    //[self parsePid:@"0D" hexValue:@"FF"];
     
     return  nil;
 }
@@ -159,13 +167,30 @@
     NSString* pidValue = [NSString stringWithFormat:@"01-%@", pid];
     
     JSValue* parsedVal = [parseFunction callWithArguments:@[pidValue, hexValue]];
-//    NSLog(@"Parsed Value = %@", parsedVal.toDictionary);
     
-    id retVal = nil;
+    NSDictionary *retVal = nil;
     if (parsedVal.isObject) {
         retVal = parsedVal.toDictionary;
+        
+        NSString *key = [retVal objectForKey:@"key"];
+        if(key == nil) return nil;
+        NSString *dataType = [retVal objectForKey:@"dataType"];
+        if(dataType == nil) return nil;
+        
+        if([retVal objectForKey:@"value"] == nil){
+            return nil;
+        }
+        
+        if([dataType isEqualToString:@"decimal"]){
+            NSNumber *val = [retVal objectForKey:@"value"];
+            return @{key : val};
+        }else{ // string
+            NSString *val = [retVal objectForKey:@"value"];
+            return @{key : val};
+        }
+    }else{
+        return nil;
     }
-    return retVal;
 }
 
 - (NSDictionary *) parseVin:(NSString *)dataStr{
