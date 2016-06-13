@@ -97,6 +97,7 @@
 		4903FDBD1D008B630012AA72 /* VLUDPSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4903FDB31D008B630012AA72 /* VLUDPSocket.m */; };
 		4903FDBE1D008B630012AA72 /* VLSocketManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4903FDB41D008B630012AA72 /* VLSocketManager.h */; };
 		4903FDBF1D008B630012AA72 /* VLSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4903FDB51D008B630012AA72 /* VLSocketManager.m */; };
+		49231C1C1D0F45C4004B6A71 /* compressed_JS_lib.js in Resources */ = {isa = PBXBuildFile; fileRef = 49231C1B1D0F45C4004B6A71 /* compressed_JS_lib.js */; };
 		49AB6E971B82432C00DCF808 /* VLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 49AB6E931B82432C00DCF808 /* VLSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49AB6E981B82432C00DCF808 /* VLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AB6E941B82432C00DCF808 /* VLSessionManager.m */; };
 		49AB6E991B82432C00DCF808 /* VLUrlParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 49AB6E951B82432C00DCF808 /* VLUrlParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -260,6 +261,7 @@
 		4903FDB31D008B630012AA72 /* VLUDPSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLUDPSocket.m; sourceTree = "<group>"; };
 		4903FDB41D008B630012AA72 /* VLSocketManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLSocketManager.h; sourceTree = "<group>"; };
 		4903FDB51D008B630012AA72 /* VLSocketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLSocketManager.m; sourceTree = "<group>"; };
+		49231C1B1D0F45C4004B6A71 /* compressed_JS_lib.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = compressed_JS_lib.js; sourceTree = "<group>"; };
 		49AB6E931B82432C00DCF808 /* VLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLSessionManager.h; sourceTree = "<group>"; };
 		49AB6E941B82432C00DCF808 /* VLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLSessionManager.m; sourceTree = "<group>"; };
 		49AB6E951B82432C00DCF808 /* VLUrlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLUrlParser.h; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 		0B1671071B0FC2B8009BE7A9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				49231C1B1D0F45C4004B6A71 /* compressed_JS_lib.js */,
 				0B1671081B0FC2B8009BE7A9 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -842,6 +845,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49231C1C1D0F45C4004B6A71 /* compressed_JS_lib.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
