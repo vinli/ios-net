@@ -168,29 +168,50 @@
     
     JSValue* parsedVal = [parseFunction callWithArguments:@[pidValue, hexValue]];
     
-    NSDictionary *retVal = nil;
     if (parsedVal.isObject) {
-        retVal = parsedVal.toDictionary;
-        
-        NSString *key = [retVal objectForKey:@"key"];
-        if(key == nil) return nil;
-        NSString *dataType = [retVal objectForKey:@"dataType"];
-        if(dataType == nil) return nil;
-        
-        if([retVal objectForKey:@"value"] == nil){
-            return nil;
-        }
-        
-        if([dataType isEqualToString:@"decimal"]){
-            NSNumber *val = [retVal objectForKey:@"value"];
-            return @{key : val};
-        }else{ // string
-            NSString *val = [retVal objectForKey:@"value"];
-            return @{key : val};
-        }
+        NSDictionary *dictionary = parsedVal.toDictionary;
+        return [self parseAsDictionary:dictionary];
+    }else if (parsedVal.isArray){
+        NSArray *array = parsedVal.toArray;
+        return [self parseAsArray:array];
     }else{
         return nil;
     }
+}
+
+- (NSDictionary *) parseAsDictionary:(NSDictionary *)dictionary{
+    NSString *key = [dictionary objectForKey:@"key"];
+    if(key == nil) return nil;
+    NSString *dataType = [dictionary objectForKey:@"dataType"];
+    if(dataType == nil) return nil;
+    
+    if([dictionary objectForKey:@"value"] == nil){
+        return nil;
+    }
+    
+    if([dataType isEqualToString:@"decimal"]){
+        NSNumber *val = [dictionary objectForKey:@"value"];
+        return @{key : val};
+    }else{ // string
+        NSString *val = [dictionary objectForKey:@"value"];
+        return @{key : val};
+    }
+}
+
+- (NSDictionary *) parseAsArray:(NSArray *)array{
+    if(array == nil || array.count == 0){
+        return nil;
+    }
+    
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+    
+    for(NSDictionary *d in array){
+        [dictionary addEntriesFromDictionary:d];
+    }
+    
+    NSLog(@"Hey we caught a double dictionary thing: %@", dictionary);
+    
+    return dictionary;
 }
 
 - (NSDictionary *) parseVin:(NSString *)dataStr{
@@ -245,8 +266,8 @@
     coords = [[coords reverseObjectEnumerator] allObjects];
     NSDictionary* location =  @{@"coordinates": coords ,@"type": @"Point"};
     
-    //            VLLocation* loc = [[VLLocation alloc] initWithDictionary:@{@"coordinates" : coords}];
-    //            NSLog(@"loc = %@", loc);
+//    VLLocation* loc = [[VLLocation alloc] initWithDictionary:@{@"coordinates" : coords}];
+//    NSLog(@"loc = %@", loc);
     
     return @{@"location" : location};
     //Note: GeoJSON expects coordinates as [lon, lat] but we recieve it as [lat, lon]

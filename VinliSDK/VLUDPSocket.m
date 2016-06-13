@@ -104,8 +104,6 @@ static const NSInteger UDP_HOST_PORT = 54321;
       fromAddress:(NSData *)address
 withFilterContext:(id)filterContext {
     
-    //[self handleReceivedUDPMessage];
-    
     NSDictionary* parsedData = [self.obdParser parseData:data];
     if (!parsedData) {
         return;
@@ -114,21 +112,6 @@ withFilterContext:(id)filterContext {
     if([parsedData allKeys].count > 0){
         [self.delegate udpSocket:self receivedData:@{@"data" : parsedData}];
     }
-
-//    if (parsedData[@"parameter"]) {
-//        
-//        NSString* key = parsedData[@"key"];
-//        NSString* value = parsedData[@"value"];
-//        if (!key || !value) {
-//            NSLog(@"Failed to parse key or value!");
-//            return;
-//        }
-//        
-//        parsedData = @{@"data": @{key: value}};
-//    }
-//    
-//    
-//    [self.delegate udpSocket:self receivedData:parsedData];
 }
 
 - (void)udpSocketDidClose:(GCDAsyncUdpSocket *)sock withError:(NSError *)error {
