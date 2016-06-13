@@ -10,7 +10,7 @@
 #import "JavaScriptCore/JavaScriptCore.h"
 
 #import "VLStreamMessage.h"
-
+#import "VLSupportedPids.h"
 #import "VLSIMSignal.h"
 
 @interface VLOBDDataParser()
@@ -63,9 +63,6 @@
     
     
     // Parse based on Pid Identifier
-    //return [self _parseWithIdentifier:pidIdentifier];
-    
-    
     if ([pidIdentifier isEqualToString:@"41"]) {
         if (pidAndValue.length >= 4) {
             NSString* pid = [pidAndValue substringWithRange:NSMakeRange(2, 2)];
@@ -90,10 +87,10 @@
             return [accelData toStreamDictionary];
         }
         else if ([pidType isEqualToString:@"G"]) { // GPS
-            [self parseGPS:dataStr];
+            return [self parseGPS:dataStr];
         }
         else if ([pidType isEqualToString:@"B"]) { // Voltage
-            [self parseVoltage:dataStr];
+            return [self parseVoltage:dataStr];
         }
         else if ([pidType isEqualToString:@"S"]) { // Cell Signal
             VLSIMSignal* signal = [[VLSIMSignal alloc] initWithRawString:dataStr];
@@ -114,6 +111,12 @@
             NSString *bver = dataStr;
 //            NSLog(@"BVER = %@", bver);
             return (bver != nil) ? @{@"udpBleVersion" : bver} : nil;
+        }
+        else if([pidType isEqualToString:@"K"]){
+            VLSupportedPids *supportedPids = [[VLSupportedPids alloc] initWithDataString:dataStr];
+            NSArray<NSString *> *support = supportedPids.support;
+//            NSLog(@"SupportedPids = %@", support);
+            return @{@"udpSupportedPids" : support};
         }
         else if([pidType isEqualToString:@"V"]){
             NSDictionary *vinDic = [self parseVin:dataStr];
@@ -205,7 +208,7 @@
     short rawValue = strtol(buffer, NULL, 16);
     float voltage = rawValue * .006f;
 //    NSLog(@"Voltage = %f", voltage);
-    return @{@"voltage": [NSNumber numberWithFloat:voltage]};
+    return @{@"udpBatteryVoltage": [NSNumber numberWithFloat:voltage]};
 }
 
 - (NSDictionary *) parseGPS:(NSString *)dataStr{

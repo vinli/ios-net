@@ -110,21 +110,25 @@ withFilterContext:(id)filterContext {
     if (!parsedData) {
         return;
     }
-
-    if (parsedData[@"parameter"]) {
-        
-        NSString* key = parsedData[@"key"];
-        NSString* value = parsedData[@"value"];
-        if (!key || !value) {
-            NSLog(@"Failed to parse key or value!");
-            return;
-        }
-        
-        parsedData = @{@"data": @{key: value}};
+    
+    if([parsedData allKeys].count > 0){
+        [self.delegate udpSocket:self receivedData:@{@"data" : parsedData}];
     }
-    
-    
-    [self.delegate udpSocket:self receivedData:parsedData];
+
+//    if (parsedData[@"parameter"]) {
+//        
+//        NSString* key = parsedData[@"key"];
+//        NSString* value = parsedData[@"value"];
+//        if (!key || !value) {
+//            NSLog(@"Failed to parse key or value!");
+//            return;
+//        }
+//        
+//        parsedData = @{@"data": @{key: value}};
+//    }
+//    
+//    
+//    [self.delegate udpSocket:self receivedData:parsedData];
 }
 
 - (void)udpSocketDidClose:(GCDAsyncUdpSocket *)sock withError:(NSError *)error {

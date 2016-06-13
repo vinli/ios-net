@@ -23,6 +23,7 @@
 @property (strong, nonatomic) NSURL *webURL;
 @property (strong, nonatomic) NSArray *parametricFilters;
 @property (strong, nonatomic) VLGeometryFilter *geometryFilter;
+@property (strong, nonatomic) NSDateFormatter *dateFormatter;
 
 @end
 
@@ -34,6 +35,10 @@
         self.webURL = webURL;
         self.parametricFilters = pFilters;
         self.geometryFilter = gFilter;
+        
+        self.dateFormatter = [[NSDateFormatter alloc] init];
+        self.dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+        
         [self setupSockets];
     }
     return self;
@@ -119,6 +124,9 @@
     NSMutableDictionary* messageData = [NSMutableDictionary new];
     [messageData setObject:data forKey:@"payload"];
     [messageData setObject:@"pub" forKey:@"type"];
+    
+    [[messageData objectForKey:@"payload"] setObject:[[NSUUID UUID] UUIDString] forKey:@"id"];
+    [[messageData objectForKey:@"payload"] setObject:[self.dateFormatter stringFromDate:[NSDate date]] forKey:@"timestamp"];
     
     if (self.deviceId) {
          NSDictionary* subject = @{@"id": self.deviceId, @"type" : @"device"};
