@@ -105,6 +105,8 @@
 		49AB6E9E1B82446900DCF808 /* VLUserCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AB6E9C1B82446900DCF808 /* VLUserCache.m */; };
 		49E2F2FF1B6AA93700CD743C /* NSDictionary+NonNullable.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E2F2FD1B6AA93700CD743C /* NSDictionary+NonNullable.h */; };
 		49E2F3001B6AA93700CD743C /* NSDictionary+NonNullable.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E2F2FE1B6AA93700CD743C /* NSDictionary+NonNullable.m */; };
+		6568FB2D1D0F0313006C3656 /* VLSupportedPids.h in Headers */ = {isa = PBXBuildFile; fileRef = 6568FB2B1D0F0313006C3656 /* VLSupportedPids.h */; };
+		6568FB2E1D0F0313006C3656 /* VLSupportedPids.m in Sources */ = {isa = PBXBuildFile; fileRef = 6568FB2C1D0F0313006C3656 /* VLSupportedPids.m */; };
 		6589E6591D09CF220017D75B /* VLBearingCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = 6589E6531D09CF220017D75B /* VLBearingCalculator.h */; };
 		6589E65A1D09CF220017D75B /* VLBearingCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6589E6541D09CF220017D75B /* VLBearingCalculator.m */; };
 		6589E65B1D09CF220017D75B /* VLBearingFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6589E6551D09CF220017D75B /* VLBearingFilter.h */; };
@@ -266,6 +268,8 @@
 		49AB6E9C1B82446900DCF808 /* VLUserCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLUserCache.m; sourceTree = "<group>"; };
 		49E2F2FD1B6AA93700CD743C /* NSDictionary+NonNullable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NonNullable.h"; sourceTree = "<group>"; };
 		49E2F2FE1B6AA93700CD743C /* NSDictionary+NonNullable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NonNullable.m"; sourceTree = "<group>"; };
+		6568FB2B1D0F0313006C3656 /* VLSupportedPids.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLSupportedPids.h; sourceTree = "<group>"; };
+		6568FB2C1D0F0313006C3656 /* VLSupportedPids.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLSupportedPids.m; sourceTree = "<group>"; };
 		6589E6531D09CF220017D75B /* VLBearingCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLBearingCalculator.h; sourceTree = "<group>"; };
 		6589E6541D09CF220017D75B /* VLBearingCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLBearingCalculator.m; sourceTree = "<group>"; };
 		6589E6551D09CF220017D75B /* VLBearingFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLBearingFilter.h; sourceTree = "<group>"; };
@@ -488,6 +492,8 @@
 				0B1671751B0FC418009BE7A9 /* NSString+Random.m */,
 				49E2F2FD1B6AA93700CD743C /* NSDictionary+NonNullable.h */,
 				49E2F2FE1B6AA93700CD743C /* NSDictionary+NonNullable.m */,
+				6568FB2B1D0F0313006C3656 /* VLSupportedPids.h */,
+				6568FB2C1D0F0313006C3656 /* VLSupportedPids.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -681,6 +687,7 @@
 				0B3DDC541B1518BE00D95E61 /* VLRulePager.h in Headers */,
 				77B3C1B71C9B300C00BE836A /* VLDateFormatter.h in Headers */,
 				77BE999B1C690E77001E8F64 /* VLTimeSeries.h in Headers */,
+				6568FB2D1D0F0313006C3656 /* VLSupportedPids.h in Headers */,
 				49E2F2FF1B6AA93700CD743C /* NSDictionary+NonNullable.h in Headers */,
 				77BE999E1C73A4A5001E8F64 /* VLVehicle.h in Headers */,
 				777A6B971C9740470050F6C0 /* VLOdometerPager.h in Headers */,
@@ -983,6 +990,7 @@
 				77B3C1B01C99ECF100BE836A /* VLOdometerTrigger.m in Sources */,
 				7367E3A21B166ABB004223A6 /* VLEventPager.m in Sources */,
 				65FFFB391CBE94E8009D4CF1 /* VLAccelData.m in Sources */,
+				6568FB2E1D0F0313006C3656 /* VLSupportedPids.m in Sources */,
 				4903FDB91D008B630012AA72 /* VLSIMSignal.m in Sources */,
 				6589E65E1D09CF220017D75B /* VLBearing.m in Sources */,
 				65FFFB531CBEA8DC009D4CF1 /* VLGeometryFilter.m in Sources */,
