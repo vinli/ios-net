@@ -22,7 +22,6 @@
 
 - (instancetype)initWithAccessToken:(NSString *)token deviceId:(NSString *)deviceId;
 - (instancetype)initWithAccessToken:(NSString *)token deviceId:(NSString *)deviceId parametricFilters:(NSArray *)pFilters geometryFilter:(VLGeometryFilter *)gFilter;
-;
 
 - (void) disconnect;
 
