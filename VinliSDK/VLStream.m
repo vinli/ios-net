@@ -7,15 +7,26 @@
 //
 
 #import "VLStream.h"
-#import "JFRWebSocket.h"
 #import "VLService.h"
-#import "VLSocketManager.h"
 #import "VLBearingCalculator.h"
+#import "VLWebSocket.h"
+#import "VLUDPSocket.h"
 
-@interface VLStream() <VLSocketManagerDelegate>
+@interface VLStream() <VLUDPSocketDelegate, VLWebSocketDelegate>
 
-@property (strong, nonatomic) VLSocketManager* socketManager;
 @property (strong, atomic) VLBearingCalculator * bearingCalculator;
+
+@property (strong, nonatomic) VLWebSocket* webSocket;
+@property (strong, nonatomic) VLUDPSocket* udpSocket;
+
+@property (strong, nonatomic) NSTimer* udpConnectionTimer;
+@property (assign, nonatomic) BOOL receivedMessage;
+
+@property (strong, nonatomic) NSString* deviceId;
+@property (strong, nonatomic) NSURL *webURL;
+@property (strong, nonatomic) NSArray *parametricFilters;
+@property (strong, nonatomic) VLGeometryFilter *geometryFilter;
+@property (strong, nonatomic) NSDateFormatter *dateFormatter;
 
 @end
 
@@ -30,24 +41,68 @@
     
     if(self) {
         _bearingCalculator = [[VLBearingCalculator alloc] init];
-        self.socketManager = [[VLSocketManager alloc] initWithDeviceId:deviceId webURL:url parametricFilters:pFilters geometryFilter:gFilter];
-        self.socketManager.delegate = self;
+        
+        self.deviceId = deviceId;
+        self.webURL = url;
+        self.parametricFilters = pFilters;
+        self.geometryFilter = gFilter;
+        
+        self.dateFormatter = [[NSDateFormatter alloc] init];
+        self.dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+        
+        [self setupSockets];
     }
     
     return self;
 }
 
-- (void) disconnect{
-    [_socketManager disconnect];
+- (void)setupSockets {
+    
+    self.udpSocket = [VLUDPSocket new];
+    self.udpSocket.delegate = self;
+    
+    self.udpConnectionTimer = [NSTimer scheduledTimerWithTimeInterval:8 target:self selector:@selector(checkConnection) userInfo:nil repeats:YES];
+    
+    [self checkConnection];
 }
 
-- (void) dealloc {
-    [self disconnect];
+- (void)launchWebSocket {
+    
+    if (!self.webSocket) {
+        self.webSocket = [[VLWebSocket alloc] initWithDeviceId:self.deviceId url:_webURL parametricFilters:_parametricFilters geometryFilter:_geometryFilter];
+        self.webSocket.delegate = self;
+    }
+    
+    if (self.webSocket.isConnected) {
+        return;
+    }
+    
+    NSLog(@"Websocket: Connecting");
+    [self.webSocket connect];
 }
 
-#pragma mark - VLSocketManagerDelegateMethods
+- (void)checkConnection {
+    
+    if (!self.receivedMessage) {
+        NSLog(@"UDP: Lost connection to device");
+        [self launchWebSocket];
+        return;
+    }
+    
+    self.receivedMessage = NO;
+}
 
-- (void)socketManager:(VLSocketManager *)socketManager didReceiveData:(NSDictionary *)data {
+- (void)handleReceivedUDPMessage {
+    
+    self.receivedMessage = YES;
+    
+    if (self.webSocket.isConnected) {
+        NSLog(@"Websocket: Disconnecting");
+        [self.webSocket disconnect];
+    }
+}
+
+- (void)didReceiveData:(NSDictionary *)data {
     
     if (data && (self.onMessageBlock || self.onRawMessageBlock)) {
         VLStreamMessage* message = [[VLStreamMessage alloc] initWithDictionary:data];
@@ -72,6 +127,54 @@
             
         }
     }
+}
+
+- (void)killConnectionTimer {
+    [self.udpConnectionTimer invalidate];
+    self.udpConnectionTimer = nil;
+}
+
+- (void) disconnect{
+    [self killConnectionTimer];
+    [_webSocket disconnect];
+    [_udpSocket disconnect];
+}
+
+- (void)dealloc {
+    [self killConnectionTimer];
+}
+
+#pragma mark - VLWebSocketDelegate
+
+- (void)webSocket:(VLWebSocket *)webSocket didReceiveData:(NSDictionary *)data
+{
+    [self didReceiveData:data];
+}
+
+#pragma mark - VLUDPSocketDelegate
+
+- (void)udpSocket:(VLUDPSocket *)udpSocket receivedData:(NSDictionary *)data {
+    
+    [self handleReceivedUDPMessage];
+    
+    if (!data) {
+        return;
+    }
+    
+    data = [data mutableCopy];
+    NSMutableDictionary* messageData = [NSMutableDictionary new];
+    [messageData setObject:data forKey:@"payload"];
+    [messageData setObject:@"pub" forKey:@"type"];
+    
+    [[messageData objectForKey:@"payload"] setObject:[[NSUUID UUID] UUIDString] forKey:@"id"];
+    [[messageData objectForKey:@"payload"] setObject:[self.dateFormatter stringFromDate:[NSDate date]] forKey:@"timestamp"];
+    
+    if (self.deviceId) {
+        NSDictionary* subject = @{@"id": self.deviceId, @"type" : @"device"};
+        [messageData setObject:subject forKey:@"subject"];
+    }
+    
+    [self didReceiveData:messageData];
 }
 
 @end

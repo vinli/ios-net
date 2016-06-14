@@ -95,8 +95,6 @@
 		4903FDBB1D008B630012AA72 /* VLWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4903FDB11D008B630012AA72 /* VLWebSocket.m */; };
 		4903FDBC1D008B630012AA72 /* VLUDPSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 4903FDB21D008B630012AA72 /* VLUDPSocket.h */; };
 		4903FDBD1D008B630012AA72 /* VLUDPSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4903FDB31D008B630012AA72 /* VLUDPSocket.m */; };
-		4903FDBE1D008B630012AA72 /* VLSocketManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4903FDB41D008B630012AA72 /* VLSocketManager.h */; };
-		4903FDBF1D008B630012AA72 /* VLSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4903FDB51D008B630012AA72 /* VLSocketManager.m */; };
 		49231C1C1D0F45C4004B6A71 /* compressed_JS_lib.js in Resources */ = {isa = PBXBuildFile; fileRef = 49231C1B1D0F45C4004B6A71 /* compressed_JS_lib.js */; };
 		49AB6E971B82432C00DCF808 /* VLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 49AB6E931B82432C00DCF808 /* VLSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49AB6E981B82432C00DCF808 /* VLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AB6E941B82432C00DCF808 /* VLSessionManager.m */; };
@@ -259,8 +257,6 @@
 		4903FDB11D008B630012AA72 /* VLWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLWebSocket.m; sourceTree = "<group>"; };
 		4903FDB21D008B630012AA72 /* VLUDPSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLUDPSocket.h; sourceTree = "<group>"; };
 		4903FDB31D008B630012AA72 /* VLUDPSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLUDPSocket.m; sourceTree = "<group>"; };
-		4903FDB41D008B630012AA72 /* VLSocketManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLSocketManager.h; sourceTree = "<group>"; };
-		4903FDB51D008B630012AA72 /* VLSocketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLSocketManager.m; sourceTree = "<group>"; };
 		49231C1B1D0F45C4004B6A71 /* compressed_JS_lib.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = compressed_JS_lib.js; sourceTree = "<group>"; };
 		49AB6E931B82432C00DCF808 /* VLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLSessionManager.h; sourceTree = "<group>"; };
 		49AB6E941B82432C00DCF808 /* VLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLSessionManager.m; sourceTree = "<group>"; };
@@ -620,8 +616,6 @@
 				4903FDB11D008B630012AA72 /* VLWebSocket.m */,
 				4903FDB21D008B630012AA72 /* VLUDPSocket.h */,
 				4903FDB31D008B630012AA72 /* VLUDPSocket.m */,
-				4903FDB41D008B630012AA72 /* VLSocketManager.h */,
-				4903FDB51D008B630012AA72 /* VLSocketManager.m */,
 			);
 			name = Socket;
 			sourceTree = "<group>";
@@ -722,7 +716,6 @@
 				E929436A1B165D0800AAC7D3 /* VLSubscription.h in Headers */,
 				777A6B851C91E31E0050F6C0 /* VLUnitLocalizer.h in Headers */,
 				49AB6E9D1B82446900DCF808 /* VLUserCache.h in Headers */,
-				4903FDBE1D008B630012AA72 /* VLSocketManager.h in Headers */,
 				77BE999D1C73A4A5001E8F64 /* VLOffsetPager.h in Headers */,
 				4903FDB81D008B630012AA72 /* VLSIMSignal.h in Headers */,
 				E92943741B17D6B100AAC7D3 /* VLDevicePager.h in Headers */,
@@ -1009,7 +1002,6 @@
 				4903FDBB1D008B630012AA72 /* VLWebSocket.m in Sources */,
 				0B16713C1B0FC39D009BE7A9 /* VLDevice.m in Sources */,
 				E92943611B160F3700AAC7D3 /* VLLocation.m in Sources */,
-				4903FDBF1D008B630012AA72 /* VLSocketManager.m in Sources */,
 				E92943651B160F4B00AAC7D3 /* VLLocationPager.m in Sources */,
 				49AB6E9A1B82432C00DCF808 /* VLUrlParser.m in Sources */,
 				49E2F3001B6AA93700CD743C /* NSDictionary+NonNullable.m in Sources */,
