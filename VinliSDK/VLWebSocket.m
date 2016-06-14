@@ -117,18 +117,6 @@
         [strongSelf.delegate webSocket:strongSelf didReceiveData:json];
         
         return;
-        
-        if ([json isKindOfClass:[NSDictionary class]]) {
-            NSDictionary* data = json[@"payload"][@"data"];
-            if (data) {
-                NSLog(@"%@", data);
-            }
-            else
-            {
-                NSLog(@"%@", json);
-            }
-        }
-        
     };
 
 }

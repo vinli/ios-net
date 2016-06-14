@@ -107,7 +107,9 @@
     if (data && (self.onMessageBlock || self.onRawMessageBlock)) {
         VLStreamMessage* message = [[VLStreamMessage alloc] initWithDictionary:data];
         
-        if([message.type isEqualToString:@"pub"]){
+        if(message.error != nil){
+            [self didReceiveError:message.error];
+        }else if([message.type isEqualToString:@"pub"]){
             if(message.coord != nil){
                 [self.bearingCalculator addCoordinate:message.coord atTimestamp:message.timestamp];
                 message.bearing = [NSNumber numberWithDouble:[self.bearingCalculator currentBearing]];
@@ -124,8 +126,13 @@
                     self.onRawMessageBlock(rawData);
                 }
             }
-            
         }
+    }
+}
+
+- (void) didReceiveError:(NSError *)error{
+    if(error && self.onErrorBlock){
+        self.onErrorBlock(error);
     }
 }
 
@@ -149,6 +156,10 @@
 - (void)webSocket:(VLWebSocket *)webSocket didReceiveData:(NSDictionary *)data
 {
     [self didReceiveData:data];
+}
+
+- (void) webSocket:(VLWebSocket *)webSocket didReceiveError:(NSError *)error{
+    [self didReceiveError:error];
 }
 
 #pragma mark - VLUDPSocketDelegate
