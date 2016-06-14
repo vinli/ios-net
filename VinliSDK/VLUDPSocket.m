@@ -18,6 +18,7 @@ static const NSInteger UDP_HOST_PORT = 54321;
 @property (strong, nonatomic) GCDAsyncUdpSocket* socket;
 @property (strong, nonatomic) VLOBDDataParser* obdParser;
 @property (strong, nonatomic) NSData* connectMessage;
+@property (atomic) unsigned int retryCount;
 @end
 
 @implementation VLUDPSocket
@@ -68,7 +69,6 @@ static const NSInteger UDP_HOST_PORT = 54321;
         return;
     }
     
-    self.udpStayAliveTimer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(sendConnectMessage) userInfo:nil repeats:YES];
     [self sendConnectMessage];
 }
 
@@ -76,6 +76,14 @@ static const NSInteger UDP_HOST_PORT = 54321;
     
     NSLog(@"UDP: Stay alive");
     [self.socket sendData:self.connectMessage toHost:UDP_HOST_ADDRESS port:UDP_HOST_PORT withTimeout:0 tag:100];
+    
+    [self.udpStayAliveTimer invalidate];
+    self.udpStayAliveTimer = nil;
+    
+    _retryCount++;
+    int timerInterval = 8 + pow(MIN(_retryCount, 4), 3); // 8s base retry. Additional timeout duration increases exponentially capping at a 64s increase.
+    
+    self.udpStayAliveTimer = [NSTimer scheduledTimerWithTimeInterval:timerInterval target:self selector:@selector(sendConnectMessage) userInfo:nil repeats:NO];
 }
 
 - (void)killStayAliveTimer {
@@ -103,6 +111,8 @@ static const NSInteger UDP_HOST_PORT = 54321;
 - (void)udpSocket:(GCDAsyncUdpSocket *)sock didReceiveData:(NSData *)data
       fromAddress:(NSData *)address
 withFilterContext:(id)filterContext {
+    
+    _retryCount = 0;
     
     NSDictionary* parsedData = [self.obdParser parseData:data];
     if (!parsedData) {
