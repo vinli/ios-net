@@ -17,6 +17,9 @@
 @property (readonly) double minY;
 @property (readonly) double minZ;
 
-- (id) initWithDictionary:(NSDictionary *) dictionary;
+- (instancetype) initWithDictionary:(NSDictionary *) dictionary;
+- (instancetype)initWithData:(NSData *)data;
+
+- (NSDictionary *) toStreamDictionary;
 
 @end

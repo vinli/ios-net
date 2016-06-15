@@ -7,12 +7,27 @@
 //
 
 #import "VLStream.h"
-#import "JFRWebSocket.h"
 #import "VLService.h"
+#import "VLBearingCalculator.h"
+#import "VLWebSocket.h"
+#import "VLUDPSocket.h"
 
-@interface VLStream(){
-    JFRWebSocket *streamSocket;
-}
+@interface VLStream() <VLUDPSocketDelegate, VLWebSocketDelegate>
+
+@property (strong, atomic) VLBearingCalculator * bearingCalculator;
+
+@property (strong, nonatomic) VLWebSocket* webSocket;
+@property (strong, nonatomic) VLUDPSocket* udpSocket;
+
+@property (strong, nonatomic) NSTimer* udpConnectionTimer;
+@property (assign, nonatomic) BOOL receivedMessage;
+
+@property (strong, nonatomic) NSString* deviceId;
+@property (strong, nonatomic) NSURL *webURL;
+@property (strong, nonatomic) NSArray *parametricFilters;
+@property (strong, nonatomic) VLGeometryFilter *geometryFilter;
+@property (strong, nonatomic) NSDateFormatter *dateFormatter;
+
 @end
 
 @implementation VLStream
@@ -24,105 +39,153 @@
 - (id) initWithURL:(NSURL *)url deviceId:(NSString *)deviceId parametricFilters:(NSArray *)pFilters geometryFilter:(VLGeometryFilter *)gFilter{
     self = [super init];
     
-    if(self){
-        [self setupSocketWithURL:url deviceId:deviceId parametricFilters:pFilters geometryFilter:gFilter];
+    if(self) {
+        _bearingCalculator = [[VLBearingCalculator alloc] init];
+        
+        self.deviceId = deviceId;
+        self.webURL = url;
+        self.parametricFilters = pFilters;
+        self.geometryFilter = gFilter;
+        
+        self.dateFormatter = [[NSDateFormatter alloc] init];
+        self.dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+        
+        [self setupSockets];
     }
     
     return self;
 }
 
-- (void) setupSocketWithURL:(NSURL *)url deviceId:(NSString *)deviceId parametricFilters:(NSArray *)parametricFilters geometryFilter:(VLGeometryFilter *)geometryFilter{
+- (void)setupSockets {
     
-    streamSocket = [[JFRWebSocket alloc] initWithURL:url protocols:nil];
-    [streamSocket addHeader:@"application/json" forKey:@"Accept"];
-    [streamSocket addHeader:@"application/json" forKey:@"Content-Type"];
+    self.udpSocket = [VLUDPSocket new];
+    self.udpSocket.delegate = self;
     
-    __weak JFRWebSocket *weakSocket = streamSocket;
-    __weak VLStream* weakSelf = self;
+    self.udpConnectionTimer = [NSTimer scheduledTimerWithTimeInterval:8 target:self selector:@selector(checkConnection) userInfo:nil repeats:YES];
     
-    streamSocket.onConnect = ^{
-        JFRWebSocket *socket = weakSocket;
-        VLStream *strongSelf = weakSelf;
-        
-        NSDictionary* subjectDic = @{@"type" : @"device",
-                                     @"id" : deviceId};
-        NSDictionary* subscription = @{@"type" : @"sub",
-                                       @"subject" : subjectDic};
+    [self checkConnection];
+}
 
-        [strongSelf writeDictionary:subscription toSocket:socket];
-        
-        for(VLParametricFilter *pFilter in parametricFilters){
-            NSDictionary *filterAsDictionary = [pFilter toDictionary];
-            [strongSelf writeDictionary:filterAsDictionary toSocket:socket];
-        }
-        
-        if(geometryFilter != nil){
-            NSDictionary *filterAsDictionary = [geometryFilter toDictionary];
-            [strongSelf writeDictionary:filterAsDictionary toSocket:socket];
-        }
-    };
+- (void)launchWebSocket {
     
-    streamSocket.onDisconnect = ^(NSError *error){
-        VLStream *strongSelf = weakSelf;
-        if(strongSelf.onErrorBlock != nil){
-            strongSelf.onErrorBlock(error);
-        }
-    };
+    if (!self.webSocket) {
+        self.webSocket = [[VLWebSocket alloc] initWithDeviceId:self.deviceId url:_webURL parametricFilters:_parametricFilters geometryFilter:_geometryFilter];
+        self.webSocket.delegate = self;
+    }
     
-    streamSocket.onText = ^(NSString * jsonStr){
-        NSData *data = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
-        NSError *error;
-        id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+    if (self.webSocket.isConnected) {
+        return;
+    }
+    
+    NSLog(@"Websocket: Connecting");
+    [self.webSocket connect];
+}
+
+- (void)checkConnection {
+    
+    if (!self.receivedMessage) {
+        NSLog(@"UDP: Lost connection to device");
+        [self launchWebSocket];
+        return;
+    }
+    
+    self.receivedMessage = NO;
+}
+
+- (void)handleReceivedUDPMessage {
+    
+    self.receivedMessage = YES;
+    
+    if (self.webSocket.isConnected) {
+        NSLog(@"Websocket: Disconnecting");
+        [self.webSocket disconnect];
+    }
+}
+
+- (void)didReceiveData:(NSDictionary *)data {
+    
+    if (data && (self.onMessageBlock || self.onRawMessageBlock)) {
+        VLStreamMessage* message = [[VLStreamMessage alloc] initWithDictionary:data];
         
-        VLStream* strongSelf = weakSelf;
-        
-        if(error){
-            if(strongSelf.onErrorBlock != nil){
-                strongSelf.onErrorBlock(error);
+        if(message.error != nil){
+            [self didReceiveError:message.error];
+        }else if([message.type isEqualToString:@"pub"]){
+            if(message.coord != nil){
+                [self.bearingCalculator addCoordinate:message.coord atTimestamp:message.timestamp];
+                message.bearing = [NSNumber numberWithDouble:[self.bearingCalculator currentBearing]];
             }
-        }
-        
-        if([json isKindOfClass:[NSDictionary class]]){
-            VLStreamMessage *message = [[VLStreamMessage alloc] initWithDictionary:json];
             
-            if(message.error != nil){
-                if(strongSelf.onErrorBlock != nil){
-                    strongSelf.onErrorBlock(message.error);
-                }
-            }else if([message.type isEqualToString:@"pub"]){
-                // Only need to send publish messages to the user.
-                if(strongSelf.onMessageBlock != nil){
-                    strongSelf.onMessageBlock(message);
+            if(self.onMessageBlock){
+                self.onMessageBlock(message);
+            }
+            
+            if(self.onRawMessageBlock){
+                NSError *error;
+                NSData *rawData = [NSJSONSerialization dataWithJSONObject:data options:0 error:&error];
+                if(!error){
+                    self.onRawMessageBlock(rawData);
                 }
             }
         }
-    };
-    
-    streamSocket.onData = ^(NSData *data){};
-    
-    [streamSocket connect];
+    }
+}
+
+- (void) didReceiveError:(NSError *)error{
+    if(error && self.onErrorBlock){
+        self.onErrorBlock(error);
+    }
+}
+
+- (void)killConnectionTimer {
+    [self.udpConnectionTimer invalidate];
+    self.udpConnectionTimer = nil;
 }
 
 - (void) disconnect{
-    if(streamSocket.isConnected){
-        [streamSocket disconnect];
-    }
+    [self killConnectionTimer];
+    [_webSocket disconnect];
+    [_udpSocket disconnect];
 }
 
-- (void) writeDictionary:(NSDictionary *)dictinary toSocket:(JFRWebSocket *)socket{
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictinary options:0 error:&error];
+- (void)dealloc {
+    [self killConnectionTimer];
+}
+
+#pragma mark - VLWebSocketDelegate
+
+- (void)webSocket:(VLWebSocket *)webSocket didReceiveData:(NSDictionary *)data
+{
+    [self didReceiveData:data];
+}
+
+- (void) webSocket:(VLWebSocket *)webSocket didReceiveError:(NSError *)error{
+    [self didReceiveError:error];
+}
+
+#pragma mark - VLUDPSocketDelegate
+
+- (void)udpSocket:(VLUDPSocket *)udpSocket receivedData:(NSDictionary *)data {
     
-    if(jsonData){
-        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-        [socket writeString:jsonString];
-    }else{
-        NSLog(@"Error parsing dictionary into JSON. Error: %@, Dictionary: %@", error, dictinary);
+    [self handleReceivedUDPMessage];
+    
+    if (!data) {
+        return;
     }
-}
-
-- (void) dealloc {
-    [self disconnect];
+    
+    data = [data mutableCopy];
+    NSMutableDictionary* messageData = [NSMutableDictionary new];
+    [messageData setObject:data forKey:@"payload"];
+    [messageData setObject:@"pub" forKey:@"type"];
+    
+    [[messageData objectForKey:@"payload"] setObject:[[NSUUID UUID] UUIDString] forKey:@"id"];
+    [[messageData objectForKey:@"payload"] setObject:[self.dateFormatter stringFromDate:[NSDate date]] forKey:@"timestamp"];
+    
+    if (self.deviceId) {
+        NSDictionary* subject = @{@"id": self.deviceId, @"type" : @"device"};
+        [messageData setObject:subject forKey:@"subject"];
+    }
+    
+    [self didReceiveData:messageData];
 }
 
 @end
