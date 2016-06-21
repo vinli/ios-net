@@ -1440,7 +1440,7 @@
 
 //Odometers
 
-- (void)createOdometer:(VLOdometer *)odometer unit:(NSString *)unit vehicleId:(NSString *)vehicleId OnSuccess:(void (^)(VLOdometer *odometer, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+- (void)createOdometer:(VLOdometer *)odometer vehicleId:(NSString *)vehicleId OnSuccess:(void (^)(VLOdometer *odometer, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
     
     if(_session == nil){
         if(onFailureBlock){
@@ -1450,9 +1450,8 @@
     }
     
     NSString *path = [NSString stringWithFormat:@"/vehicles/%@/odometers", vehicleId];
-
     
-    [self startWithHost:STRING_HOST_DISTANCE path:path queries:nil HTTPMethod:@"POST" parameters:[odometer toDictionary:unit] token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+    [self startWithHost:STRING_HOST_DISTANCE path:path queries:nil HTTPMethod:@"POST" parameters:[odometer toDictionary] token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
         if (response.statusCode == 201) {
             if (onSuccessBlock) {
@@ -1471,10 +1470,6 @@
             onFailureBlock(error, response, bodyString);
         }
     }];
-    
-    
-    
-    
 }
 
 
@@ -1599,7 +1594,7 @@
 
 //Odometer Trigger Methods
 
-- (void)createOdometerTrigger:(VLOdometerTrigger *)odometerTrigger unit:(NSString *)unit vehicleId:(NSString *)vehicleId OnSuccess:(void (^)(VLOdometerTrigger *odometerTrigger, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+- (void)createOdometerTrigger:(VLOdometerTrigger *)odometerTrigger vehicleId:(NSString *)vehicleId OnSuccess:(void (^)(VLOdometerTrigger *odometerTrigger, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
     
     if(_session == nil){
         if(onFailureBlock){
@@ -1610,8 +1605,7 @@
     
     NSString *path = [NSString stringWithFormat:@"/vehicles/%@/odometer_triggers", vehicleId];
     
-    
-    [self startWithHost:STRING_HOST_DISTANCE path:path queries:nil HTTPMethod:@"POST" parameters:[odometerTrigger toDictionary:unit] token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+    [self startWithHost:STRING_HOST_DISTANCE path:path queries:nil HTTPMethod:@"POST" parameters:[odometerTrigger toDictionary] token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
         if (response.statusCode == 201) {
             if (onSuccessBlock) {
@@ -1630,9 +1624,6 @@
             onFailureBlock(error, response, bodyString);
         }
     }];
-
-    
-    
 }
 
 - (void)getOdometerTriggersForVehicleWithId:(NSString *)vehicleId onSucess:(void (^)(VLOdometerTriggerPager *odometerTriggerPager, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
