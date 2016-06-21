@@ -1,0 +1,10 @@
+PODS:
+  - VinliNet (1.1.0)
+
+DEPENDENCIES:
+  - VinliNet
+
+SPEC CHECKSUMS:
+  VinliNet: 44dee2bb05f3ee93fc5680d1dc6834afcad8bd59
+
+COCOAPODS: 0.39.0
