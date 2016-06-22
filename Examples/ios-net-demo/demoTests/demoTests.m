@@ -1,18 +1,18 @@
 //
-//  ios_net_demoTests.m
-//  ios-net-demoTests
+//  demoTests.m
+//  demoTests
 //
-//  Created by Tommy Brown on 4/26/16.
+//  Created by Tommy Brown on 6/15/16.
 //  Copyright © 2016 Vinli. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface ios_net_demoTests : XCTestCase
+@interface demoTests : XCTestCase
 
 @end
 
-@implementation ios_net_demoTests
+@implementation demoTests
 
 - (void)setUp {
     [super setUp];
