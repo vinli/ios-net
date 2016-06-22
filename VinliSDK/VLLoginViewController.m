@@ -44,17 +44,17 @@ static NSString * const kVinliSignUpRequest = @"/#/sign-up";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Login to Vinli";
-    
-    if (self.navigationController)
-    {
-        UIButton* cancelBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, self.navigationController.navigationBar.frame.size.height)];
-        [cancelBtn setTitle:@"Cancel" forState:UIControlStateNormal];
-        [cancelBtn.titleLabel setFont:[UIFont boldSystemFontOfSize:14]];
-        [cancelBtn setTitleColor:[UIColor colorWithRed:36.0f/255.0f green:167.0f/255.0f blue:223.0f/255.0f alpha:1] forState:UIControlStateNormal];
-        [cancelBtn addTarget:self action:@selector(onLoginViewControllerCancelButton:) forControlEvents:UIControlEventTouchUpInside];
-        [self.navigationController.navigationBar addSubview:cancelBtn];
-    }
+//    self.title = @"Login to Vinli";
+//    
+//    if (self.navigationController)
+//    {
+//        UIButton* cancelBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, self.navigationController.navigationBar.frame.size.height)];
+//        [cancelBtn setTitle:@"Cancel" forState:UIControlStateNormal];
+//        [cancelBtn.titleLabel setFont:[UIFont boldSystemFontOfSize:14]];
+//        [cancelBtn setTitleColor:[UIColor colorWithRed:36.0f/255.0f green:167.0f/255.0f blue:223.0f/255.0f alpha:1] forState:UIControlStateNormal];
+//        [cancelBtn addTarget:self action:@selector(onLoginViewControllerCancelButton:) forControlEvents:UIControlEventTouchUpInside];
+//        [self.navigationController.navigationBar addSubview:cancelBtn];
+//    }
     
     
     if(_host == nil || _host.length == 0){
