@@ -20,6 +20,8 @@
 @property (nonatomic, strong)   NSNumber *bearing;
 @property (nonatomic, readonly) NSError *error;
 
+@property (nonatomic, readonly) NSDictionary* payload;
+
 - (instancetype) initWithDictionary:(NSDictionary *) dictionary;
 
 - (id) rawValueForKey:(NSString *)key;

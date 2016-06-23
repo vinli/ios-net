@@ -17,6 +17,10 @@
 
 @implementation VLStreamMessage
 
+- (NSDictionary *)payload {
+    return payload;
+}
+
 - (instancetype) initWithDictionary:(NSDictionary *)dictionary{
     self = [super init];
     if(self){
