@@ -3,15 +3,15 @@
 # Uncomment this line if you're using Swift
 # use_frameworks!
 
-target 'ios-net-demo' do
-pod ‘VinliNet’
+target 'demo' do
+pod 'VinliNet'
 end
 
-target 'ios-net-demoTests' do
+target 'demoTests' do
 
 end
 
-target 'ios-net-demoUITests' do
+target 'demoUITests' do
 
 end
 
