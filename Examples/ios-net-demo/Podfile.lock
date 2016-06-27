@@ -7,20 +7,16 @@ PODS:
   - CocoaAsyncSocket/GCD (7.4.3)
   - CocoaAsyncSocket/RunLoop (7.4.3)
   - jetfire (0.1.5)
-  - VinliNet (1.1.0):
+  - VinliNet (1.1.2):
     - CocoaAsyncSocket (~> 7.4.3)
     - jetfire (~> 0.1.5)
 
 DEPENDENCIES:
-  - VinliNet (from `~/Github/ios-net`)
-
-EXTERNAL SOURCES:
-  VinliNet:
-    :path: ~/Github/ios-net
+  - VinliNet
 
 SPEC CHECKSUMS:
   CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
   jetfire: 60c16cd6ae0282928e24203eb93f03b89c1929ce
-  VinliNet: 3911ef7d94bca0a824da5da526b1d72ad14cf008
+  VinliNet: e6273c3defde8f31a2de79539ef583cb89b63baf
 
 COCOAPODS: 0.39.0
