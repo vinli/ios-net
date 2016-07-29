@@ -15,6 +15,9 @@ pod 'VinliNet'
 ```
 Install manually, go to your project's General tab and add the VinliSDK.framework file as an Embedded Binary
 
+##OAuth Tutorial
+Example project that implements Vinli Auth http://bit.ly/vl-ios-auth`
+
 ##Usage
 Create a VLLoginViewController object and assign it your Client ID and Redirect URI.
 ```objective-c
