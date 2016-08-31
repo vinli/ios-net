@@ -143,7 +143,7 @@
         
         XCTAssertEqual(locationPager.remaining, [expectedJSON[@"meta"][@"pagination"][@"remaining"] unsignedLongValue]); // Make sure that the Meta more or less translated correctly.
         
-        XCTAssertEqual([locationPager.locations[0] latitude], [expectedJSON[@"locations"][@"features"][0][@"geometry"][@"coordinates"][1] doubleValue]);
+        XCTAssertEqual([((VLLocation *)[locationPager.locations objectAtIndex:0]) latitude], [expectedJSON[@"locations"][@"features"][0][@"geometry"][@"coordinates"][1] doubleValue]);
         
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
