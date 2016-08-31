@@ -96,6 +96,18 @@
     
 }
 
+- (void) testENV1{
+    NSLog(@"Test: %s", getenv("TEST_ENV"));
+    
+    NSString *env = [NSString stringWithUTF8String:getenv("TEST_ENV")];
+    
+    XCTAssertTrue([env isEqualToString:@"YES"]);
+}
+
+- (void) testENV2{
+    XCTAssertTrue(getenv("TEST_ENV"));
+}
+
 
 - (void)testGetDistancesForVehicleWithId {
     NSDictionary *expectedJSON = [VLTestHelper cleanDictionary:self.distances];

@@ -36,6 +36,7 @@
 }
 
 
+// This method removes all keys who's value is null from the dictionary;
 + (NSMutableDictionary *)cleanDictionary:(NSDictionary *)dict {
     NSMutableDictionary *mutDict = [dict mutableCopy];
     
@@ -43,8 +44,6 @@
     [mutDict removeObjectsForKeys:keyForNullValues];
     
     return mutDict;
-  
-    
 }
 
 + (NSInteger)defaultTimeOut {
