@@ -27,81 +27,89 @@
 - (void)setUp {
     [super setUp];
     
-    XCTestExpectation *expectationDistances = [self expectationWithDescription:@"URI call to get vehicle distances"];
-    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://distance.vin.li/api/v1/vehicles/%@/distances", [VLTestHelper vehicleId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        [expectationDistances fulfill];
-        self.distances = result;
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
-        XCTAssertTrue(NO);
-    }];
-    
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-
-    
-    
-    XCTestExpectation *expectationOdometers = [self expectationWithDescription:@"URI call to get odometers"];
-    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://distance.vin.li/api/v1/vehicles/%@/odometers", [VLTestHelper vehicleId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        [expectationOdometers fulfill];
-        self.odometers = result;
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
-        XCTAssertTrue(NO);
-    }];
-    
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-    
-    
-    
-    
-    
-    
-    XCTestExpectation *expectedOdometerWithId = [self expectationWithDescription:@"URI call to get specific odometer"];
-    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://distance.vin.li/api/v1/odometers/%@", [VLTestHelper odometerId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        [expectedOdometerWithId fulfill];
-        self.odometer = result;
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
-        XCTAssertTrue(NO);
-    }];
-    
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-
-    
-    
-    
-    XCTestExpectation *expectedAllOdometerTriggers = [self expectationWithDescription:@"URI call get all Odometer triggers"];
-    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://distance.vin.li/api/v1/vehicles/%@/odometer_triggers", [VLTestHelper vehicleId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        [expectedAllOdometerTriggers fulfill];
-        self.odometerTriggers = result;
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
-        XCTAssertTrue(NO);
-    }];
-    
-    
-    
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-    
-    
-    XCTestExpectation *expectedOdometerTrigger = [self expectationWithDescription:@"URI odometer trigger"];
-    
-    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://distance.vin.li/api/v1/odometer_triggers/%@", [VLTestHelper odometerTriggerId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        [expectedOdometerTrigger fulfill];
-        self.odometerTrigger = result;
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
-        XCTAssertTrue(NO);
-    }];
-    
-    
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
+//    XCTestExpectation *expectationDistances = [self expectationWithDescription:@"URI call to get vehicle distances"];
+//    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://distance.vin.li/api/v1/vehicles/%@/distances", [VLTestHelper vehicleId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+//        [expectationDistances fulfill];
+//        self.distances = result;
+//    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
+//        XCTAssertTrue(NO);
+//    }];
+//    
+//    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
+//
+//    
+//    
+//    XCTestExpectation *expectationOdometers = [self expectationWithDescription:@"URI call to get odometers"];
+//    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://distance.vin.li/api/v1/vehicles/%@/odometers", [VLTestHelper vehicleId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+//        [expectationOdometers fulfill];
+//        self.odometers = result;
+//    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
+//        XCTAssertTrue(NO);
+//    }];
+//    
+//    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
+//    
+//    
+//    
+//    
+//    
+//    
+//    XCTestExpectation *expectedOdometerWithId = [self expectationWithDescription:@"URI call to get specific odometer"];
+//    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://distance.vin.li/api/v1/odometers/%@", [VLTestHelper odometerId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+//        [expectedOdometerWithId fulfill];
+//        self.odometer = result;
+//    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
+//        XCTAssertTrue(NO);
+//    }];
+//    
+//    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
+//
+//    
+//    
+//    
+//    XCTestExpectation *expectedAllOdometerTriggers = [self expectationWithDescription:@"URI call get all Odometer triggers"];
+//    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://distance.vin.li/api/v1/vehicles/%@/odometer_triggers", [VLTestHelper vehicleId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+//        [expectedAllOdometerTriggers fulfill];
+//        self.odometerTriggers = result;
+//    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
+//        XCTAssertTrue(NO);
+//    }];
+//    
+//    
+//    
+//    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
+//    
+//    
+//    XCTestExpectation *expectedOdometerTrigger = [self expectationWithDescription:@"URI odometer trigger"];
+//    
+//    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://distance.vin.li/api/v1/odometer_triggers/%@", [VLTestHelper odometerTriggerId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+//        [expectedOdometerTrigger fulfill];
+//        self.odometerTrigger = result;
+//    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
+//        XCTAssertTrue(NO);
+//    }];
+//    
+//    
+//    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
 
     
     
 }
 
 - (void) testENV1{
-    NSLog(@"Test: %s", getenv("TEST_ENV"));
+    NSArray *args = [[NSProcessInfo processInfo] arguments];
     
-    NSString *env = [NSString stringWithUTF8String:getenv("TEST_ENV")];
+    NSString *thing = @"";
     
-    XCTAssertTrue([env isEqualToString:@"YES"]);
+    for(int i = 0; i < args.count; i++){
+        NSString *str = [args objectAtIndex:i];
+        NSString *testEnv = @"TEST_ENV";
+        if([str hasPrefix:testEnv]){
+            thing = @"yay";
+        }
+    }
+    
+    XCTAssertTrue([thing isEqualToString:@"yay"]);
 }
 
 - (void) testENV2{

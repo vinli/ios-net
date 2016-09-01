@@ -12,27 +12,68 @@
 
 @implementation VLTestHelper
 
-
-
-
 + (NSString *)tripId {
-    return @"2dc6cd00-4888-4b02-b48f-2faf64e05a0b";
+    static NSString *tripId = nil;
+    if(!tripId){
+        NSArray *args = [[NSProcessInfo processInfo] arguments];
+        
+        for(NSString *arg in args){
+            NSString *key = @"TRIP_ID";
+            if([arg hasPrefix:key]){
+                tripId = [arg substringFromIndex:(key.length + 1)];
+            }
+        }
+    }
+    return tripId;
 }
 
 
 + (NSString *)odometerTriggerId {
-    return @"2adf089d-06ba-4c18-acef-cc70f848c461";
+    static NSString *odoTriggerId = nil;
+    if(!odoTriggerId){
+        NSArray *args = [[NSProcessInfo processInfo] arguments];
+        
+        for(NSString *arg in args){
+            NSString *key = @"ODO_TRIGGER_ID";
+            if([arg hasPrefix:key]){
+                odoTriggerId = [arg substringFromIndex:(key.length + 1)];
+            }
+        }
+    }
+    return odoTriggerId;
 }
 
 
 + (NSString *)odometerId {
-    return @"7b98a761-d270-48e9-8720-6e221353769c";
+    static NSString *odoId = nil;
+    if(!odoId){
+        NSArray *args = [[NSProcessInfo processInfo] arguments];
+        
+        for(NSString *arg in args){
+            NSString *key = @"ODO_ID";
+            if([arg hasPrefix:key]){
+                odoId = [arg substringFromIndex:(key.length + 1)];
+            }
+        }
+    }
+    return odoId;
 }
 
 
 
 + (NSString *)vehicleId {
-    return @"c1e6f9e4-77eb-4989-bc23-a5e1236fd090";
+    static NSString *vehicleId = nil;
+    if(!vehicleId){
+        NSArray *args = [[NSProcessInfo processInfo] arguments];
+        
+        for(NSString *arg in args){
+            NSString *key = @"VEHICLE_ID";
+            if([arg hasPrefix:key]){
+                vehicleId = [arg substringFromIndex:(key.length + 1)];
+            }
+        }
+    }
+    return vehicleId;
 }
 
 
@@ -51,15 +92,34 @@
 }
 
 + (NSString *)accessToken {
-    
-    //Unzip token.zip and use the accesstoken here
-    
-    return @"";
+    static NSString *accessToken = nil;
+    if(!accessToken){
+        NSArray *args = [[NSProcessInfo processInfo] arguments];
+        
+        for(NSString *arg in args){
+            NSString *key = @"ACCESS_TOKEN";
+            if([arg hasPrefix:key]){
+                accessToken = [arg substringFromIndex:(key.length + 1)];
+            }
+        }
+    }
+    return accessToken;
 }
 
 
 + (NSString *)deviceId {
-    return @"ba89372f-74f4-43c8-a4fd-b8f24699426e";
+    static NSString *deviceId = nil;
+    if(!deviceId){
+        NSArray *args = [[NSProcessInfo processInfo] arguments];
+        
+        for(NSString *arg in args){
+            NSString *key = @"DEVICE_ID";
+            if([arg hasPrefix:key]){
+                deviceId = [arg substringFromIndex:(key.length + 1)];
+            }
+        }
+    }
+    return deviceId;
 }
 
 + (NSDictionary *) getVehicleJSON:(NSString *) deviceId{
