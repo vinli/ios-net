@@ -3,18 +3,20 @@ machine:
     version: "7.0"
 
 test:
-  pre:
-    - pod install
   override:
     - set -o pipefail &&
       xcodebuild
-        TEST_ENV=YES
-        ACCESS_TOKEN=$ACCESS_TOKEN
-        DEVICE_ID=$DEVICE_ID
-        VEHICLE_ID=$VEHICLE_ID
-        TRIP_ID=$TRIP_ID
-        ODO_TRIGGER_ID=$ODO_TRIGGER_ID
-        ODO_ID=$ODO_ID
+        -ACCESS_TOKEN=$ACCESS_TOKEN
+        -ODO_TRIGGER_ID=$ODO_TRIGGER_ID
+        -ODO_ID=$ODO_ID
+        -TRIP_ID=$TRIP_ID
+        -MESSAGE_ID=$MESSAGE_ID
+        -VEHICLE_ID=$VEHICLE_ID
+        -EVENT_ID=$EVENT_ID
+        -NOTIFICATION_ID=$NOTIFICATION_ID
+        -RULE_ID=$RULE_ID
+        -DEVICE_ID=$DEVICE_ID
+        -SUBSCRIPTION_ID=$SUBSCRIPTION_ID
         CODE_SIGNING_REQUIRED=NO
         CODE_SIGN_IDENTITY=
         PROVISIONING_PROFILE=
