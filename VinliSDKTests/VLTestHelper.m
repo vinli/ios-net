@@ -112,6 +112,21 @@
     return notificationId;
 }
 
++ (NSString *) ruleId{
+    static NSString *ruleId = nil;
+    if(!ruleId){
+        NSArray *args = [[NSProcessInfo processInfo] arguments];
+        
+        for(NSString *arg in args){
+            NSString *key = @"RULE_ID";
+            if([arg hasPrefix:key]){
+                ruleId = [arg substringFromIndex:(key.length + 1)];
+            }
+        }
+    }
+    return ruleId;
+}
+
 + (NSString *) subscriptionId {
     static NSString *subId = nil;
     if(!subId){
@@ -158,6 +173,20 @@
     return odoId;
 }
 
++ (NSString *) telemetryMessageId{
+    static NSString *messageId = nil;
+    if(!messageId){
+        NSArray *args = [[NSProcessInfo processInfo] arguments];
+        
+        for(NSString *arg in args){
+            NSString *key = @"MESSAGE_ID";
+            if([arg hasPrefix:key]){
+                messageId = [arg substringFromIndex:(key.length + 1)];
+            }
+        }
+    }
+    return messageId;
+}
 
 // This method removes all keys who's value is null from the dictionary;
 + (NSMutableDictionary *)cleanDictionary:(NSDictionary *)dict {

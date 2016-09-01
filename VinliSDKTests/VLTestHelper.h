@@ -19,10 +19,12 @@
 + (NSString *) vehicleId;
 + (NSString *) odometerId;
 + (NSString *) tripId;
++ (NSString *) ruleId;
 + (NSString *) odometerTriggerId;
 + (NSString *) eventId;
 + (NSString *) notificationId;
 + (NSString *) subscriptionId;
++ (NSString *) telemetryMessageId;
 
 + (NSDictionary *)getVehicleJSON:(NSString *) deviceId;
 + (NSDictionary *)getTripJSON: (NSString *) vehicleId;

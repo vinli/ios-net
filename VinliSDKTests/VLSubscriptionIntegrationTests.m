@@ -13,12 +13,15 @@
 #import "VLTestHelper.h"
 
 @interface VLSubscriptionIntegrationTests : XCTestCase
+
+@property VLService *vlService;
 @property NSDictionary *devices;
 @property VLDevice *device;
 @property NSDictionary *subscriptions;
 @property NSString *deviceId;
 @property NSString *subscriptionId;
 @property NSDictionary *subscription;
+
 @end
 
 @implementation VLSubscriptionIntegrationTests
@@ -26,102 +29,75 @@
 - (void)setUp {
     [super setUp];
     
-    self.deviceId = @"ba89372f-74f4-43c8-a4fd-b8f24699426e";
-    self.subscriptionId = @"979c2120-49cf-4fea-a6ed-10b0c70ace57";
+    _vlService = [VLTestHelper vlService];
+    self.deviceId = [VLTestHelper deviceId];
+    self.subscriptionId = [VLTestHelper subscriptionId];
+    
     XCTestExpectation *expectation = [self expectationWithDescription:@"getting devices call"];
-    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:@"https://platform.vin.li/api/v1/devices" onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        [expectation fulfill];
+    [_vlService startWithHost:[VLTestHelper accessToken] requestUri:@"https://platform.vin.li/api/v1/devices" onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         self.devices = result;
-        XCTAssertTrue(YES);
+        [expectation fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
         XCTAssertTrue(NO);
+        [expectation fulfill];
     } ];
     
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-    
-    
-
-    
-    
-    
-    //TO DO:need to add test for creating subscription and subscription with id
-    
-    
     XCTestExpectation *expectationS = [self expectationWithDescription:@"get subscriptions for device call"];
-    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://events.vin.li/api/v1/devices/%@/subscriptions", self.deviceId] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        [expectationS fulfill];
+    [_vlService startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://events.vin.li/api/v1/devices/%@/subscriptions", self.deviceId] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         self.subscriptions = result;
+        [expectationS fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
         XCTAssertTrue(NO);
+        [expectationS fulfill];
     }];
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-    
     
     XCTestExpectation *expectationSubscription = [self expectationWithDescription:@"single subscription get"];
-    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://events.vin.li/api/v1/subscriptions/%@", self.subscriptionId] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        [expectationSubscription fulfill];
+    [_vlService startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://events.vin.li/api/v1/subscriptions/%@", self.subscriptionId] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         self.subscription = result;
+        [expectationSubscription fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
         XCTAssertTrue(NO);
+        [expectationSubscription fulfill];
     }];
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-
-
-}
-
-
-- (void)testGetSubscriptionswithDeviceId {
-    NSDictionary *expectedJSON = self.subscriptions;
-    XCTestExpectation *expectedDevices = [self expectationWithDescription:@"getting the subscriptions"];
-    [[VLSessionManager sharedManager].service getSubscriptionsForDeviceWithId:self.deviceId onSuccess:^(VLSubscriptionPager *subscriptionPager, NSHTTPURLResponse *response) {
-        [expectedDevices fulfill];
-        XCTAssertEqual(subscriptionPager.subscriptions.count, [expectedJSON[@"subscriptions"] count]); // Make sure that there is one object in the array.
-        
-        XCTAssertEqual(subscriptionPager.total, [expectedJSON[@"meta"][@"pagination"][@"total"] unsignedLongValue]); // Make sure that the Meta more or less translated correctly.
-        
-        //add more tests ie specfic models
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-        XCTAssertTrue(NO);
-    }];
+    
     [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
 }
-
-
-
-
-
-- (void)testGetSubscriptionWithId {
-    NSDictionary *expectedJSON = self.subscription;
-    XCTestExpectation *subscriptionExpectation = [self expectationWithDescription:@"service call for a subscription"];
-    [[VLSessionManager sharedManager].service getSubscriptionWithId:self.subscriptionId onSuccess:^(VLSubscription *subscription, NSHTTPURLResponse *response) {
-        [subscriptionExpectation fulfill];
-        
-        XCTAssertEqualObjects(subscription.deviceId, expectedJSON[@"subscription"][@"deviceId"]);
-        
-        XCTAssertEqualObjects(subscription.selfURL.absoluteString, expectedJSON[@"subscription"][@"links"][@"self"]);
-        
-        XCTAssertEqualObjects(subscription.objectRef.objectId, expectedJSON[@"subscription"][@"object"][@"id"]);
-        
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-        XCTAssertTrue(NO);
-    }];
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-}
-
-
-//add tests for delete post
-
-
-
 
 - (void)tearDown {
-
     [super tearDown];
 }
 
+- (void)testGetSubscriptionswithDeviceId {
+    NSDictionary *expectedJSON = self.subscriptions;
+    
+    XCTestExpectation *expectedDevices = [self expectationWithDescription:@"getting the subscriptions"];
+    [_vlService getSubscriptionsForDeviceWithId:self.deviceId onSuccess:^(VLSubscriptionPager *subscriptionPager, NSHTTPURLResponse *response) {
+        XCTAssertEqual(subscriptionPager.subscriptions.count, [expectedJSON[@"subscriptions"] count]); // Make sure that there is one object in the array.
+        XCTAssertEqual(subscriptionPager.total, [expectedJSON[@"meta"][@"pagination"][@"total"] unsignedLongValue]); // Make sure that the Meta more or less translated correctly.
+        [expectedDevices fulfill];
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        XCTAssertTrue(NO);
+        [expectedDevices fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
+}
 
-
-
-
+- (void)testGetSubscriptionWithId {
+    NSDictionary *expectedJSON = self.subscription;
+    
+    XCTestExpectation *subscriptionExpectation = [self expectationWithDescription:@"service call for a subscription"];
+    [[VLSessionManager sharedManager].service getSubscriptionWithId:self.subscriptionId onSuccess:^(VLSubscription *subscription, NSHTTPURLResponse *response) {
+        XCTAssertEqualObjects(subscription.deviceId, expectedJSON[@"subscription"][@"deviceId"]);
+        XCTAssertEqualObjects(subscription.selfURL.absoluteString, expectedJSON[@"subscription"][@"links"][@"self"]);
+        XCTAssertEqualObjects(subscription.objectRef.objectId, expectedJSON[@"subscription"][@"object"][@"id"]);
+        [subscriptionExpectation fulfill];
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        XCTAssertTrue(NO);
+        [subscriptionExpectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
+}
 
 @end
