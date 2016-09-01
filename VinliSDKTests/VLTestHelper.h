@@ -8,18 +8,22 @@
 
 #import <Foundation/Foundation.h>
 #import "VLDateFormatter.h"
+#import "VLService.h"
 
 @interface VLTestHelper : NSObject
 
++ (NSInteger) defaultTimeOut;
++ (VLService *) vlService;
++ (NSString *) accessToken;
++ (NSString *) deviceId;
++ (NSString *) vehicleId;
++ (NSString *) odometerId;
++ (NSString *) tripId;
++ (NSString *) odometerTriggerId;
++ (NSString *) eventId;
++ (NSString *) notificationId;
++ (NSString *) subscriptionId;
 
-
-+ (NSInteger)defaultTimeOut;
-+ (NSString *)accessToken;
-+ (NSString *)deviceId;
-+ (NSString *)vehicleId;
-+ (NSString *)odometerId;
-+ (NSString *)tripId;
-+ (NSString *)odometerTriggerId;
 + (NSDictionary *)getVehicleJSON:(NSString *) deviceId;
 + (NSDictionary *)getTripJSON: (NSString *) vehicleId;
 + (NSDictionary *)getAllTripsJSON:(NSString *) deviceId;
@@ -46,12 +50,5 @@
 + (NSDictionary *)getUserJSON;
 + (NSDictionary *)getUserDevicesJSON;
 + (NSMutableDictionary *)cleanDictionary:(NSDictionary *)dict;
-
-
-
-
-
-
-
 
 @end

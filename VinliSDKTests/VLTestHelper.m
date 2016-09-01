@@ -8,9 +8,64 @@
 
 #import "VLTestHelper.h"
 #import "VLDateFormatter.h"
-
+#import "VLSessionManager.h"
 
 @implementation VLTestHelper
+
++ (VLService *) vlService{
+    static VLService *service;
+    if(!service){
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:[VLTestHelper accessToken] forKey:@"VLSessionManagerCachedAccessTokenKey"]; // This should match the same key in VLSessionManager
+        service = [[VLService alloc] initWithSession:[VLSessionManager currentSession]];
+    }
+    return service;
+}
+
++ (NSString *)accessToken {
+    static NSString *accessToken = nil;
+    if(!accessToken){
+        NSArray *args = [[NSProcessInfo processInfo] arguments];
+        
+        for(NSString *arg in args){
+            NSString *key = @"ACCESS_TOKEN";
+            if([arg hasPrefix:key]){
+                accessToken = [arg substringFromIndex:(key.length + 1)];
+            }
+        }
+    }
+    return accessToken;
+}
+
++ (NSString *)deviceId {
+    static NSString *deviceId = nil;
+    if(!deviceId){
+        NSArray *args = [[NSProcessInfo processInfo] arguments];
+        
+        for(NSString *arg in args){
+            NSString *key = @"DEVICE_ID";
+            if([arg hasPrefix:key]){
+                deviceId = [arg substringFromIndex:(key.length + 1)];
+            }
+        }
+    }
+    return deviceId;
+}
+
++ (NSString *)vehicleId {
+    static NSString *vehicleId = nil;
+    if(!vehicleId){
+        NSArray *args = [[NSProcessInfo processInfo] arguments];
+        
+        for(NSString *arg in args){
+            NSString *key = @"VEHICLE_ID";
+            if([arg hasPrefix:key]){
+                vehicleId = [arg substringFromIndex:(key.length + 1)];
+            }
+        }
+    }
+    return vehicleId;
+}
 
 + (NSString *)tripId {
     static NSString *tripId = nil;
@@ -27,6 +82,50 @@
     return tripId;
 }
 
++ (NSString *)eventId {
+    static NSString *eventId = nil;
+    if(!eventId){
+        NSArray *args = [[NSProcessInfo processInfo] arguments];
+        
+        for(NSString *arg in args){
+            NSString *key = @"EVENT_ID";
+            if([arg hasPrefix:key]){
+                eventId = [arg substringFromIndex:(key.length + 1)];
+            }
+        }
+    }
+    return eventId;
+}
+
++ (NSString *)notificationId {
+    static NSString *notificationId = nil;
+    if(!notificationId){
+        NSArray *args = [[NSProcessInfo processInfo] arguments];
+        
+        for(NSString *arg in args){
+            NSString *key = @"NOTIFICATION_ID";
+            if([arg hasPrefix:key]){
+                notificationId = [arg substringFromIndex:(key.length + 1)];
+            }
+        }
+    }
+    return notificationId;
+}
+
++ (NSString *) subscriptionId {
+    static NSString *subId = nil;
+    if(!subId){
+        NSArray *args = [[NSProcessInfo processInfo] arguments];
+        
+        for(NSString *arg in args){
+            NSString *key = @"SUBSCRIPTION_ID";
+            if([arg hasPrefix:key]){
+                subId = [arg substringFromIndex:(key.length + 1)];
+            }
+        }
+    }
+    return subId;
+}
 
 + (NSString *)odometerTriggerId {
     static NSString *odoTriggerId = nil;
@@ -60,23 +159,6 @@
 }
 
 
-
-+ (NSString *)vehicleId {
-    static NSString *vehicleId = nil;
-    if(!vehicleId){
-        NSArray *args = [[NSProcessInfo processInfo] arguments];
-        
-        for(NSString *arg in args){
-            NSString *key = @"VEHICLE_ID";
-            if([arg hasPrefix:key]){
-                vehicleId = [arg substringFromIndex:(key.length + 1)];
-            }
-        }
-    }
-    return vehicleId;
-}
-
-
 // This method removes all keys who's value is null from the dictionary;
 + (NSMutableDictionary *)cleanDictionary:(NSDictionary *)dict {
     NSMutableDictionary *mutDict = [dict mutableCopy];
@@ -89,37 +171,6 @@
 
 + (NSInteger)defaultTimeOut {
     return 15.0;
-}
-
-+ (NSString *)accessToken {
-    static NSString *accessToken = nil;
-    if(!accessToken){
-        NSArray *args = [[NSProcessInfo processInfo] arguments];
-        
-        for(NSString *arg in args){
-            NSString *key = @"ACCESS_TOKEN";
-            if([arg hasPrefix:key]){
-                accessToken = [arg substringFromIndex:(key.length + 1)];
-            }
-        }
-    }
-    return accessToken;
-}
-
-
-+ (NSString *)deviceId {
-    static NSString *deviceId = nil;
-    if(!deviceId){
-        NSArray *args = [[NSProcessInfo processInfo] arguments];
-        
-        for(NSString *arg in args){
-            NSString *key = @"DEVICE_ID";
-            if([arg hasPrefix:key]){
-                deviceId = [arg substringFromIndex:(key.length + 1)];
-            }
-        }
-    }
-    return deviceId;
 }
 
 + (NSDictionary *) getVehicleJSON:(NSString *) deviceId{

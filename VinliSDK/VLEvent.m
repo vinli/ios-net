@@ -19,7 +19,6 @@
     if(self){
         
         if(dictionary){
-            
             if(dictionary[@"event"] != nil){
                 dictionary = dictionary[@"event"];
             }
@@ -30,7 +29,7 @@
             _stored = dictionary[@"stored"];
             _eventType = dictionary[@"eventType"];
             
-            if([dictionary objectForKey:@"object"] != nil){
+            if([dictionary jsonObjectForKey:@"object"]){
                 _objectId = dictionary[@"object"][@"id"];
                 _objectType = dictionary[@"object"][@"type"];
             }
@@ -40,8 +39,7 @@
                 _notificationsURL = [NSURL URLWithString:dictionary[@"links"][@"notifications"]];
             }
             
-            if ([dictionary jsonObjectForKey:@"meta"])
-            {
+            if ([dictionary jsonObjectForKey:@"meta"]){
                 _vehicleId = [[dictionary jsonObjectForKey:@"meta"] jsonObjectForKey:@"vehicleId"];
             }
         }
