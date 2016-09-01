@@ -19,108 +19,85 @@
     NSDictionary *vehicles;
     VLDevice *firstDevice;
     NSDictionary *latestVehicle;
-    NSString *deviceId;
     NSDictionary *specificDevice;
-    
 }
 
+@property VLService *vlService;
+
 @end
-
-
 
 @implementation VLPlatformServicesIntegrationTests
 
 - (void)setUp {
     [super setUp];
-    deviceId = @"ba89372f-74f4-43c8-a4fd-b8f24699426e";
+    
+    _vlService = [VLTestHelper vlService];
+    
     XCTestExpectation *expectation = [self expectationWithDescription:@"getting devices call"];
-    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:@"https://platform.vin.li/api/v1/devices" onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        [expectation fulfill];
+    [_vlService startWithHost:[VLTestHelper accessToken] requestUri:@"https://platform.vin.li/api/v1/devices" onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         devices = result;
-        XCTAssertTrue(YES);
+        [expectation fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
         XCTAssertTrue(NO);
+        [expectation fulfill];
     } ];
-    
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
     
     XCTestExpectation *expectationv = [self expectationWithDescription:@"getting vehicles call"];
-
-    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://platform.vin.li/api/v1/devices/%@/vehicles",deviceId] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        [expectationv fulfill];
+    [_vlService startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://platform.vin.li/api/v1/devices/%@/vehicles", [VLTestHelper deviceId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         vehicles = result;
-        XCTAssertTrue(YES);
+        [expectationv fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
         XCTAssertTrue(NO);
+        [expectationv fulfill];
     } ];
     
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-    
-    
-    
     XCTestExpectation *deviceExpectation = [self expectationWithDescription:@"get devices with sessionManager"];
-    [[VLSessionManager sharedManager].service getDevicesOnSuccess:^(VLDevicePager *devicePager, NSHTTPURLResponse *response) {
-        [deviceExpectation fulfill];
+    [_vlService getDevicesOnSuccess:^(VLDevicePager *devicePager, NSHTTPURLResponse *response) {
         firstDevice = (devicePager.devices.count > 0) ? devicePager.devices[0] : nil;
-        if (firstDevice) {
-            XCTAssertTrue(YES);
-        }
+        [deviceExpectation fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
+        [deviceExpectation fulfill];
     }];
-    
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-    
-    
     
     XCTestExpectation *expectationLV = [self expectationWithDescription:@"URI to get the latest vehicle"];
-    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://platform.vin.li/api/v1/devices/%@/vehicles/_latest", deviceId] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        [expectationLV fulfill];
+    [_vlService startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://platform.vin.li/api/v1/devices/%@/vehicles/_latest", [VLTestHelper deviceId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         latestVehicle = result;
-        XCTAssertTrue(YES);
+        [expectationLV fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
         XCTAssertTrue(NO);
+        [expectationLV fulfill];
     }];
     
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-    
-    
     XCTestExpectation *expectationDevice = [self expectationWithDescription:@"get specific device"];
-    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://platform.vin.li/api/v1/devices/%@", deviceId] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+    [_vlService startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://platform.vin.li/api/v1/devices/%@", [VLTestHelper deviceId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         [expectationDevice fulfill];
         specificDevice = result;
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
         XCTAssertTrue(NO);
+        [expectationDevice fulfill];
     }];
+    
     [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-    
-    
-
 }
-
-
 
 - (void)tearDown {
     [super tearDown];
-    
 }
 
 - (void)testGetAllDevices {
-    NSDictionary *expectedJSON = devices; //this will be the calls raw json
+    NSDictionary *expectedJSON = devices;
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"get all devices"];
-    
-   [[VLSessionManager sharedManager].service getDevicesOnSuccess:^(VLDevicePager *devicePager, NSHTTPURLResponse *response) {
-       
-       [expectation fulfill];
+   [_vlService getDevicesOnSuccess:^(VLDevicePager *devicePager, NSHTTPURLResponse *response) {
        XCTAssertEqual(devicePager.devices.count, [expectedJSON[@"devices"] count]);
        XCTAssertEqualObjects([[devicePager.devices objectAtIndex:0] deviceId], expectedJSON[@"devices"][0][@"id"]);
        XCTAssertEqualObjects([[devicePager.devices objectAtIndex:0] selfURL].absoluteString, expectedJSON[@"devices"][0][@"links"][@"self"]);
        XCTAssertEqual(devicePager.total, [expectedJSON[@"meta"][@"pagination"][@"total"] unsignedIntegerValue]);
-
-       
+       [expectation fulfill];
    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
        XCTAssertTrue(NO);
+       [expectation fulfill];
    }];
     
   [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
@@ -128,25 +105,26 @@
 
 
 - (void)testAllVehicleWithDeviceId {
-    //using this method to just test vehicles no redundant calls
-    NSDictionary *expectedJSON = vehicles; //add in raw json
+    NSDictionary *expectedJSON = vehicles;
+    
     XCTestExpectation *vehicleExpecation = [self expectationWithDescription:@"Expecting vehicles"];
-        [[VLSessionManager sharedManager].service getVehiclesForDeviceWithId:deviceId onSuccess:^(VLVehiclePager *vehiclePager, NSHTTPURLResponse *response) {
+        [_vlService getVehiclesForDeviceWithId:[VLTestHelper deviceId] onSuccess:^(VLVehiclePager *vehiclePager, NSHTTPURLResponse *response) {
+            VLVehicle *vehicle = (vehiclePager.vehicles.count > 0) ? vehiclePager.vehicles[0] : nil;
+            XCTAssertEqualObjects(vehicle.make, expectedJSON[@"vehicles"][0][@"make"]);
             [vehicleExpecation fulfill];
-            //VLVehicle *vehicle = (vehiclePager.vehicles.count > 0) ? vehiclePager.vehicles[0] : nil;
-            //XCTAssertEqualObjects(vehicle.make, expectedJSON[@"vehicles"][0][@"make"]);
         } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
             XCTAssertTrue(NO);
+            [vehicleExpecation fulfill];
         }];
+    
     [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-
 }
 
 - (void)testGetLastestVehicleWithDeviceId {
     NSDictionary *expectedJSON = [VLTestHelper cleanDictionary:latestVehicle[@"vehicle"]];
+    
     XCTestExpectation *expectedLatestVehicle = [self expectationWithDescription:@"service call for latest vehicles"];
-    [[VLSessionManager sharedManager].service getLatestVehicleForDeviceWithId:deviceId onSuccess:^(VLVehicle *vehicle, NSHTTPURLResponse *response) {
-        [expectedLatestVehicle fulfill];
+    [_vlService getLatestVehicleForDeviceWithId:[VLTestHelper deviceId] onSuccess:^(VLVehicle *vehicle, NSHTTPURLResponse *response) {
         XCTAssertEqualObjects(vehicle.vehicleId, expectedJSON[@"id"]);
         XCTAssertEqualObjects(vehicle.year, expectedJSON[@"year"]);
         XCTAssertEqualObjects(vehicle.make, expectedJSON[@"make"]);
@@ -154,36 +132,29 @@
         XCTAssertEqualObjects(vehicle.trim, expectedJSON[@"trim"]);
         XCTAssertEqualObjects(vehicle.vin, expectedJSON[@"vin"]);
         XCTAssertEqualObjects(vehicle.name, expectedJSON[@"name"]);
-        
-        XCTAssertTrue(YES);
+        [expectedLatestVehicle fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
+        [expectedLatestVehicle fulfill];
     }];
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
     
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
 }
-
 
 - (void)testGetDeviceWithId {
     NSDictionary *expectedJSON = specificDevice;
+    
     XCTestExpectation *singleDeviceExpectation = [self expectationWithDescription:@"service call for a single device"];
-    [[VLSessionManager sharedManager].service getDeviceWithId:deviceId onSuccess:^(VLDevice *device, NSHTTPURLResponse *response) {
-        [singleDeviceExpectation fulfill];
+    [_vlService getDeviceWithId:[VLTestHelper deviceId] onSuccess:^(VLDevice *device, NSHTTPURLResponse *response) {
         XCTAssertEqualObjects(device.deviceId, expectedJSON[@"device"][@"id"]);
         XCTAssertEqualObjects(device.selfURL.absoluteString, expectedJSON[@"device"][@"links"][@"self"]);
+        [singleDeviceExpectation fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
+        [singleDeviceExpectation fulfill];
     } ];
+    
     [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
 }
-
-
-
-
-
-
-
-
-
 
 @end
