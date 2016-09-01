@@ -87,10 +87,9 @@
     NSDictionary *expectedJSON = self.subscription;
     
     XCTestExpectation *subscriptionExpectation = [self expectationWithDescription:@"service call for a subscription"];
-    [[VLSessionManager sharedManager].service getSubscriptionWithId:self.subscriptionId onSuccess:^(VLSubscription *subscription, NSHTTPURLResponse *response) {
+    [_vlService getSubscriptionWithId:self.subscriptionId onSuccess:^(VLSubscription *subscription, NSHTTPURLResponse *response) {
         XCTAssertEqualObjects(subscription.deviceId, expectedJSON[@"subscription"][@"deviceId"]);
         XCTAssertEqualObjects(subscription.selfURL.absoluteString, expectedJSON[@"subscription"][@"links"][@"self"]);
-        XCTAssertEqualObjects(subscription.objectRef.objectId, expectedJSON[@"subscription"][@"object"][@"id"]);
         [subscriptionExpectation fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);

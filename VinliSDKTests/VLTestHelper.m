@@ -135,6 +135,7 @@
         for(NSString *arg in args){
             NSString *key = @"SUBSCRIPTION_ID";
             if([arg hasPrefix:key]){
+                NSLog(arg);
                 subId = [arg substringFromIndex:(key.length + 1)];
             }
         }

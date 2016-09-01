@@ -43,6 +43,7 @@
         [expectations fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
         XCTAssertTrue(NO);
+        [expectations fulfill];
     }];
     
     XCTestExpectation *expectationT = [self expectationWithDescription:@"telemetry json"];
@@ -79,6 +80,7 @@
         [expectedTelemetryMessage fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
         XCTAssertTrue(NO);
+        [expectedTelemetryMessage fulfill];
     }];
     
     [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
@@ -118,14 +120,14 @@
         [telemetryExpectation fulfill];
     }];
     
-    [self waitForExpectationsWithTimeout:1.0 handler:nil];
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
 }
 
 - (void)testGetLocationsWithDeviceId {
     NSDictionary *expectedJSON = self.locations;
     
     XCTestExpectation *expectedLocations = [self expectationWithDescription:@"Getting locations"];
-    [[VLSessionManager sharedManager].service getLocationsForDeviceWithId:[VLTestHelper deviceId] onSuccess:^(VLLocationPager *locationPager, NSHTTPURLResponse *response) {
+    [_vlService getLocationsForDeviceWithId:[VLTestHelper deviceId] onSuccess:^(VLLocationPager *locationPager, NSHTTPURLResponse *response) {
         XCTAssertEqual(locationPager.locations.count, [expectedJSON[@"locations"][@"features"] count]);
         XCTAssertEqual(locationPager.remaining, [expectedJSON[@"meta"][@"pagination"][@"remaining"] unsignedLongValue]);
         XCTAssertEqual([((VLLocation *)[locationPager.locations objectAtIndex:0]) latitude], [expectedJSON[@"locations"][@"features"][0][@"geometry"][@"coordinates"][1] doubleValue]);
@@ -142,7 +144,7 @@
     NSDictionary *expectedJSON = self.telemetryMessage;
     
     XCTestExpectation *specificMessageExpectation = [self expectationWithDescription:@"service call for a single telemetry message"];
-    [[VLSessionManager sharedManager].service getTelemetryMessageWithId:self.messageId onSuccess:^(VLTelemetryMessage *telemetryMessage, NSHTTPURLResponse *response) {
+    [_vlService getTelemetryMessageWithId:self.messageId onSuccess:^(VLTelemetryMessage *telemetryMessage, NSHTTPURLResponse *response) {
         XCTAssertTrue([telemetryMessage.messageId isEqualToString:expectedJSON[@"message"][@"id"]]);
         XCTAssertEqual(telemetryMessage.latitude, [expectedJSON[@"message"][@"data"][@"location"][@"coordinates"][1]doubleValue ]);
         [specificMessageExpectation fulfill];

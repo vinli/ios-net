@@ -80,27 +80,6 @@
     [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
 }
 
-- (void) testENV1{
-    NSArray *args = [[NSProcessInfo processInfo] arguments];
-    
-    NSString *thing = @"";
-    
-    for(int i = 0; i < args.count; i++){
-        NSString *str = [args objectAtIndex:i];
-        NSString *testEnv = @"TEST_ENV";
-        if([str hasPrefix:testEnv]){
-            thing = @"yay";
-        }
-    }
-    
-    XCTAssertTrue([thing isEqualToString:@"yay"]);
-}
-
-- (void) testENV2{
-    XCTAssertTrue(getenv("TEST_ENV"));
-}
-
-
 - (void)testGetDistancesForVehicleWithId {
     NSDictionary *expectedJSON = [VLTestHelper cleanDictionary:self.distances];
     XCTestExpectation *distancesExpected = [self expectationWithDescription:@"service call distances"];
