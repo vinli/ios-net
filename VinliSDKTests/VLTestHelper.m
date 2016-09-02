@@ -18,11 +18,20 @@
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:[VLTestHelper accessToken] forKey:@"VLSessionManagerCachedAccessTokenKey"]; // This should match the same key in VLSessionManager
         service = [[VLService alloc] initWithSession:[VLSessionManager currentSession]];
+        service.host = @"-dev.vin.li";
     }
     return service;
 }
 
 + (NSString *)accessToken {
+    
+    NSLog(@"Process: %@", [[NSProcessInfo processInfo] arguments]);
+    NSLog(@"UserDefaults: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
+    NSLog(@"TEst: %@", [[NSUserDefaults standardUserDefaults] volatileDomainForName:@"NSArgumentDomain"]);
+    NSLog(@"Token maybe: %@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"ACCESS_TOKEN"]);
+    NSLog(@"asdf: %@", [[NSBundle mainBundle] infoDictionary]);
+    NSLog(@"Enviro: %@", [[NSProcessInfo processInfo] environment]);
+    
     static NSString *accessToken = nil;
     if(!accessToken){
         NSArray *args = [[NSProcessInfo processInfo] arguments];
@@ -1129,6 +1138,111 @@
                                          ]
                                  };
     return dictionary;
+}
+
++ (NSDictionary *) getAllDistancesJSON{
+    NSDictionary *dictionary = @{
+        @"distances": @[
+                      @{
+                          @"confidenceMin": @24140100,
+                          @"confidenceMax": @24140100,
+                          @"value": @24140100,
+                          @"lastOdometerDate": @"2016-09-01T19:29:01.267Z"
+                      },
+                      @{
+                          @"confidenceMin": @24139100,
+                          @"confidenceMax": @24141100,
+                          @"value": @24140100,
+                          @"lastOdometerDate": @"2016-09-01T19:29:01.267Z"
+                      }
+                      ]
+        };
+    
+    return dictionary;
+}
+
++ (NSDictionary *) getAllOdometersJSON{
+    NSDictionary *dictionary = @{
+                                 @"odometers": @[
+                                               @{
+                                                   @"id": @"7ffb35bb-bcff-46af-aa8e-6e5b8dbf6199",
+                                                   @"vehicleId": @"2e66842a-7dcf-476f-80bf-ed08961cbcfb",
+                                                   @"reading": @24140100,
+                                                   @"date": @"2016-09-01T19:29:01.267Z",
+                                                   @"links": @{
+                                                       @"vehicle": @"https://platform.vin.li/api/v1/vehicles/2e66842a-7dcf-476f-80bf-ed08961cbcfb"
+                                                   }
+                                               }
+                                               ],
+                                 @"meta": @{
+                                     @"pagination": @{
+                                         @"remaining": @0,
+                                         @"until": @"2016-09-02T19:21:25.474Z",
+                                         @"since": @"1970-01-01T00:00:00.000Z",
+                                         @"limit": @20,
+                                         @"sortDir": @"desc",
+                                         @"links": @{}
+                                     }
+                                 }
+                                 };
+    return dictionary;
+}
+
++ (NSDictionary *) getOdometerJSON{
+    NSDictionary *dictionary = @{
+                                 @"odometer": @{
+                                     @"id": @"7ffb35bb-bcff-46af-aa8e-6e5b8dbf6199",
+                                     @"vehicleId": @"2e66842a-7dcf-476f-80bf-ed08961cbcfb",
+                                     @"reading": @24140100,
+                                     @"date": @"2016-09-01T19:29:01.267Z",
+                                     @"links": @{
+                                         @"vehicle": @"https://platform.vin.li/api/v1/vehicles/2e66842a-7dcf-476f-80bf-ed08961cbcfb"
+                                     }
+                                 }
+                                 };
+    return dictionary;
+}
+
++ (NSDictionary *) getAllOdometerTriggersJSON{
+    return @{
+             @"odometerTriggers": @[
+                                  @{
+                                      @"id": @"2ad86caa-5a30-429e-80b8-80bc3da5efe6",
+                                      @"vehicleId": @"2e66842a-7dcf-476f-80bf-ed08961cbcfb",
+                                      @"type": @"specific",
+                                      @"threshold": @80467000,
+                                      @"events": @0,
+                                      @"links": @{
+                                          @"vehicle": @"https://platform.vin.li/api/v1/vehicles/2e66842a-7dcf-476f-80bf-ed08961cbcfb"
+                                      }
+                                  }
+                                  ],
+             @"meta": @{
+                 @"pagination": @{
+                     @"remaining": @0,
+                     @"until": @"2016-09-02T19:27:42.589Z",
+                     @"since": @"1970-01-01T00:00:00.000Z",
+                     @"limit": @20,
+                     @"sortDir": @"desc",
+                     @"links": @{}
+                 }
+             }
+             };
+}
+
++ (NSDictionary *) getOdometerTriggerJSON{
+    return @{
+             @"odometerTrigger": @{
+                 @"id": @"2ad86caa-5a30-429e-80b8-80bc3da5efe6",
+                 @"vehicleId": @"2e66842a-7dcf-476f-80bf-ed08961cbcfb",
+                 @"type": @"specific",
+                 @"threshold": @80467000,
+                 @"events": @0,
+                 @"links": @{
+                     @"vehicle": @"https://platform.vin.li/api/v1/vehicles/2e66842a-7dcf-476f-80bf-ed08961cbcfb"
+                 }
+             }
+             };
 }
 
 @end

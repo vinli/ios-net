@@ -17,11 +17,6 @@
 @interface VLDistanceServicesIntegrationTests : XCTestCase
 
 @property VLService *vlService;
-@property NSDictionary *distances;
-@property NSDictionary *odometers;
-@property NSDictionary *odometer;
-@property NSDictionary *odometerTriggers;
-@property NSDictionary *odometerTrigger;
 
 @end
 
@@ -31,57 +26,16 @@
     [super setUp];
     
     _vlService = [VLTestHelper vlService];
-    
-    XCTestExpectation *expectationDistances = [self expectationWithDescription:@"URI call to get vehicle distances"];
-    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://distance.vin.li/api/v1/vehicles/%@/distances", [VLTestHelper vehicleId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        self.distances = result;
-        [expectationDistances fulfill];
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
-        XCTAssertTrue(NO);
-        [expectationDistances fulfill];
-    }];
-    
-    XCTestExpectation *expectationOdometers = [self expectationWithDescription:@"URI call to get odometers"];
-    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://distance.vin.li/api/v1/vehicles/%@/odometers", [VLTestHelper vehicleId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        self.odometers = result;
-        [expectationOdometers fulfill];
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
-        XCTAssertTrue(NO);
-        [expectationOdometers fulfill];
-    }];
-    
-    XCTestExpectation *expectedOdometerWithId = [self expectationWithDescription:@"URI call to get specific odometer"];
-    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://distance.vin.li/api/v1/odometers/%@", [VLTestHelper odometerId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        self.odometer = result;
-        [expectedOdometerWithId fulfill];
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
-        XCTAssertTrue(NO);
-        [expectedOdometerWithId fulfill];
-    }];
-    
-    XCTestExpectation *expectedAllOdometerTriggers = [self expectationWithDescription:@"URI call get all Odometer triggers"];
-    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://distance.vin.li/api/v1/vehicles/%@/odometer_triggers", [VLTestHelper vehicleId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        self.odometerTriggers = result;
-        [expectedAllOdometerTriggers fulfill];
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
-        XCTAssertTrue(NO);
-        [expectedAllOdometerTriggers fulfill];
-    }];
-    
-    XCTestExpectation *expectedOdometerTrigger = [self expectationWithDescription:@"URI odometer trigger"];
-    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://distance.vin.li/api/v1/odometer_triggers/%@", [VLTestHelper odometerTriggerId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        self.odometerTrigger = result;
-        [expectedOdometerTrigger fulfill];
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
-        XCTAssertTrue(NO);
-        [expectedOdometerTrigger fulfill];
-    }];
-    
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
 }
 
 - (void)testGetDistancesForVehicleWithId {
-    NSDictionary *expectedJSON = [VLTestHelper cleanDictionary:self.distances];
+    NSDictionary *expectedJSON = [VLTestHelper getAllDistancesJSON];
+    
+    if(![VLTestHelper vehicleId]){
+        XCTAssertTrue(NO);
+        return;
+    }
+    
     XCTestExpectation *distancesExpected = [self expectationWithDescription:@"service call distances"];
     [_vlService getDistancesForVehicleWithId:[VLTestHelper vehicleId] onSuccess:^(VLDistancePager *distancePager, NSHTTPURLResponse *response) {
         XCTAssertEqual(distancePager.distances.count, [expectedJSON[@"distances"] count]);
@@ -106,9 +60,14 @@
 }
 
 - (void)testGetOdometersForVehicleId {
-    NSDictionary *expectedJSON = [VLTestHelper cleanDictionary:self.odometers];
-    XCTestExpectation *expectedOdometers = [self expectationWithDescription:@"Service Call to odometers"];
+    NSDictionary *expectedJSON = [VLTestHelper getAllOdometersJSON];
     
+    if(![VLTestHelper vehicleId]){
+        XCTAssertTrue(NO);
+        return;
+    }
+    
+    XCTestExpectation *expectedOdometers = [self expectationWithDescription:@"Service Call to odometers"];
     [_vlService getOdometersForVehicleWithId:[VLTestHelper vehicleId] onSuccess:^(VLOdometerPager *odometerPager, NSHTTPURLResponse *response) {
         XCTAssertEqual(odometerPager.odometers.count, [expectedJSON[@"odometers"] count]);
         [expectedOdometers fulfill];
@@ -121,7 +80,13 @@
 }
 
 - (void)testGetOdometerWithId {
-    NSDictionary *expectedJSON = [VLTestHelper cleanDictionary:self.odometer[@"odometer"]];
+    NSDictionary *expectedJSON = [VLTestHelper getOdometerJSON];
+    
+    if(![VLTestHelper odometerId]){
+        XCTAssertTrue(NO);
+        return;
+    }
+    
     XCTestExpectation *odometerExpected = [self expectationWithDescription:@"Service call for odometer"];
     [_vlService getOdometerWithId:[VLTestHelper odometerId] onSuccess:^(VLOdometer *odometer, NSHTTPURLResponse *response) {
         XCTAssertEqualObjects(odometer.odometerId, expectedJSON[@"id"]);
@@ -139,7 +104,13 @@
 }
 
 - (void)testGetOdometerTriggerForVehicleWithId {
-    NSDictionary *expectedJSON = [VLTestHelper cleanDictionary:self.odometerTriggers];
+    NSDictionary *expectedJSON = [VLTestHelper getAllOdometerTriggersJSON];
+    
+    if(![VLTestHelper vehicleId]){
+        XCTAssertTrue(NO);
+        return;
+    }
+    
     XCTestExpectation *odometerTriggersExpected = [self expectationWithDescription:@"expectedOdometerPagers"];
     [_vlService getOdometerTriggersForVehicleWithId:[VLTestHelper vehicleId] onSucess:^(VLOdometerTriggerPager *odometerTriggerPager, NSHTTPURLResponse *response) {
         XCTAssertEqual(odometerTriggerPager.odometerTriggers.count, [expectedJSON[@"odometerTriggers"] count]);
@@ -153,7 +124,13 @@
 }
 
 - (void)testGetOdometerTriggerWithId {
-    NSDictionary *expectedJSON = [VLTestHelper cleanDictionary:self.odometerTrigger[@"odometerTrigger"]];
+    NSDictionary *expectedJSON = [VLTestHelper getOdometerTriggerJSON];
+    
+    if(![VLTestHelper odometerTriggerId]){
+        XCTAssertTrue(NO);
+        return;
+    }
+    
     XCTestExpectation *odometerTriggerExpected = [self expectationWithDescription:@"service call to odometertrigger"];
     [_vlService getOdometerTriggerWithId:[VLTestHelper odometerTriggerId] onSuccess:^(VLOdometerTrigger *odometerTrigger, NSHTTPURLResponse *response) {
         XCTAssertEqualObjects(odometerTrigger.odometerTriggerId, expectedJSON[@"id"]);
@@ -167,6 +144,7 @@
          XCTAssertTrue(NO);
         [odometerTriggerExpected fulfill];
     }];
+    
     [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
 }
 
