@@ -14,6 +14,11 @@
 
 + (VLService *) vlService{
     static VLService *service;
+    
+    if(![VLTestHelper accessToken]){
+        return nil;
+    }
+    
     if(!service){
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:[VLTestHelper accessToken] forKey:@"VLSessionManagerCachedAccessTokenKey"]; // This should match the same key in VLSessionManager
