@@ -16,9 +16,6 @@
 @interface VLTripsIntegrationTests : XCTestCase
 
 @property VLService *vlService;
-@property NSDictionary *trips;
-@property NSDictionary *trip;
-@property NSDictionary *vehicleTrips;
 
 @end
 
@@ -28,35 +25,6 @@
     [super setUp];
     
     _vlService = [VLTestHelper vlService];
-    
-    XCTestExpectation *expectationT = [self expectationWithDescription:@"call made to get device trips"];
-    [_vlService startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://trips.vin.li/api/v1/devices/%@/trips", [VLTestHelper deviceId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        self.trips = result;
-        [expectationT fulfill];
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
-        XCTAssertTrue(NO);
-        [expectationT fulfill];
-    }];
-    
-    XCTestExpectation *singleTripExpectation = [self expectationWithDescription:@"uri call for single trip"];
-    [_vlService startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://trips.vin.li/api/v1/trips/%@", [VLTestHelper tripId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        self.trip = result;
-        [singleTripExpectation fulfill];
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
-        XCTAssertTrue(NO);
-        [singleTripExpectation fulfill];
-    }];
-    
-    XCTestExpectation *vehicleTripExpectation = [self expectationWithDescription:@"call to get a vehicles trips"];
-    [_vlService startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://trips.vin.li/api/v1/vehicles/%@/trips", [VLTestHelper vehicleId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        self.vehicleTrips = result;
-        [vehicleTripExpectation fulfill];
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
-        XCTAssertTrue(NO);
-        [vehicleTripExpectation fulfill];
-    }];
-    
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
 }
 
 - (void)tearDown {
@@ -64,7 +32,12 @@
 }
 
 - (void)testGetAllTripsWithDeviceId {
-    NSDictionary *expectedJSON = self.trips;
+    NSDictionary *expectedJSON = [VLTestHelper getAllTripsJSON:@"2ad86caa-5a30-429e-80b8-80bc3da5efe6"];
+    
+    if(![VLTestHelper deviceId]){
+        XCTAssertTrue(NO);
+        return;
+    }
     
     XCTestExpectation *tripsExpectation = [self expectationWithDescription:@"trips call"];
     [_vlService getTripsForDeviceWithId:[VLTestHelper deviceId] onSuccess:^(VLTripPager *tripPager, NSHTTPURLResponse *response) {
@@ -90,7 +63,12 @@
 }
 
 - (void)testTripWithId {
-    NSDictionary *expectedJSON = [VLTestHelper cleanDictionary:self.trip[@"trip"]];
+    NSDictionary *expectedJSON = [VLTestHelper getTripJSON:@"2ad86caa-5a30-429e-80b8-80bc3da5efe6"];
+    
+    if(![VLTestHelper tripId]){
+        XCTAssertTrue(NO);
+        return;
+    }
     
     XCTestExpectation *singleExpectedTrip = [self expectationWithDescription:@"test service call for getting a single trip"];
     [_vlService getTripWithId:[VLTestHelper tripId] onSuccess:^(VLTrip *trip, NSHTTPURLResponse *response) {
@@ -110,7 +88,12 @@
 }
 
 - (void)testTripsWithVehicleId {
-    NSDictionary *expectedJSON = self.vehicleTrips;
+    NSDictionary *expectedJSON = [VLTestHelper getAllTripsJSON:@"2ad86caa-5a30-429e-80b8-80bc3da5efe6"];
+    
+    if(![VLTestHelper vehicleId]){
+        XCTAssertTrue(NO);
+        return;
+    }
     
     XCTestExpectation *expectedVehicleTrips = [self expectationWithDescription:@"Service call for vehicle trips"];
     [_vlService getTripsForVehicleWithId:[VLTestHelper vehicleId] onSuccess:^(VLTripPager *tripPager, NSHTTPURLResponse *response) {
