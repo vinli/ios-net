@@ -18,7 +18,7 @@
 
 + (instancetype)timeSeriesFromPreviousNumberOfWeeks:(NSInteger)numWeeks
 {
-    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *comps = [NSDateComponents new];
     comps.weekOfYear = - numWeeks;
     NSDate *previousWeekOfCurrentDate = [calendar dateByAddingComponents:comps toDate:[NSDate date] options:0];
