@@ -32,8 +32,6 @@
 }
 
 - (void)testGetAllTripsWithDeviceId {
-    NSDictionary *expectedJSON = [VLTestHelper getAllTripsJSON:@"2ad86caa-5a30-429e-80b8-80bc3da5efe6"];
-    
     if(![VLTestHelper deviceId]){
         XCTAssertTrue(NO);
         return;
@@ -41,18 +39,18 @@
     
     XCTestExpectation *tripsExpectation = [self expectationWithDescription:@"trips call"];
     [_vlService getTripsForDeviceWithId:[VLTestHelper deviceId] onSuccess:^(VLTripPager *tripPager, NSHTTPURLResponse *response) {
-        if (tripPager.trips.count == 0){
-            XCTAssertEqual(tripPager.priorURL, expectedJSON[@"meta"][@"pagination"][@"links"][@"prior"]);
-            XCTAssertEqual(tripPager.nextURL, expectedJSON[@"meta"][@"pagination"][@"links"][@"next"]);
-        }else {
-            XCTAssertEqual(tripPager.trips.count, [expectedJSON[@"trips"] count]);
-            //XCTAssertEqual(tripPager.total, [expectedJSON[@"meta"][@"pagination"][@"total"] unsignedLongValue]);
-            XCTAssertEqualObjects(((VLTrip*)[tripPager.trips objectAtIndex:0]).tripId, expectedJSON[@"trips"][0][@"id"]);
-            XCTAssertEqualObjects([tripPager.priorURL absoluteString], expectedJSON[@"meta"][@"pagination"][@"links"][@"prior"]);
-            XCTAssertEqualObjects([tripPager.nextURL absoluteString], expectedJSON[@"meta"][@"pagination"][@"links"][@"next"]);
-            //XCTAssertEqualObjects(tripPager.since, expectedJSON[@"meta"][@"pagination"][@"since"]);
-            // XCTAssertEqualObjects(tripPager.until, expectedJSON[@"meta"][@"pagination"][@"until"]); //timeseries sensitive
+        XCTAssertTrue(tripPager.trips.count > 0);
+        XCTAssertTrue(tripPager.since != nil && [tripPager.since isKindOfClass:[NSString class]] && tripPager.since.length > 0);
+        XCTAssertTrue(tripPager.until != nil && [tripPager.until isKindOfClass:[NSString class]] && tripPager.until.length > 0);
+        
+        for(VLTrip *trip in tripPager.trips){
+            XCTAssertTrue(trip.tripId != nil && [trip.tripId isKindOfClass:[NSString class]] && trip.tripId.length > 0);
+            XCTAssertTrue(trip.start != nil && [trip.start isKindOfClass:[NSString class]] && trip.start.length > 0);
+            XCTAssertTrue(trip.stop != nil && [trip.stop isKindOfClass:[NSString class]] && trip.stop.length > 0);
+            XCTAssertTrue(trip.vehicleId != nil && [trip.vehicleId isKindOfClass:[NSString class]] && trip.vehicleId.length > 0);
+            XCTAssertTrue(trip.deviceId != nil && [trip.deviceId isKindOfClass:[NSString class]] && trip.deviceId.length > 0);
         }
+        
         [tripsExpectation fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
@@ -63,8 +61,6 @@
 }
 
 - (void)testTripWithId {
-    NSDictionary *expectedJSON = [VLTestHelper getTripJSON:@"2ad86caa-5a30-429e-80b8-80bc3da5efe6"];
-    
     if(![VLTestHelper tripId]){
         XCTAssertTrue(NO);
         return;
@@ -72,12 +68,11 @@
     
     XCTestExpectation *singleExpectedTrip = [self expectationWithDescription:@"test service call for getting a single trip"];
     [_vlService getTripWithId:[VLTestHelper tripId] onSuccess:^(VLTrip *trip, NSHTTPURLResponse *response) {
-        XCTAssertEqualObjects(trip.tripId, expectedJSON[@"id"]);
-        XCTAssertEqualObjects(trip.start, expectedJSON[@"start"]);
-        XCTAssertEqualObjects([VLDateFormatter stringFromDate:[trip startDate]], expectedJSON[@"start"]);
-        XCTAssertEqualObjects(trip.stop, expectedJSON[@"stop"]);
-        XCTAssertEqualObjects([VLDateFormatter stringFromDate:[trip stopDate]], expectedJSON[@"stop"]);
-        XCTAssertEqualObjects(trip.status, expectedJSON[@"status"]);
+        XCTAssertTrue(trip.tripId != nil && [trip.tripId isKindOfClass:[NSString class]] && trip.tripId.length > 0);
+        XCTAssertTrue(trip.start != nil && [trip.start isKindOfClass:[NSString class]] && trip.start.length > 0);
+        XCTAssertTrue(trip.stop != nil && [trip.stop isKindOfClass:[NSString class]] && trip.stop.length > 0);
+        XCTAssertTrue(trip.vehicleId != nil && [trip.vehicleId isKindOfClass:[NSString class]] && trip.vehicleId.length > 0);
+        XCTAssertTrue(trip.deviceId != nil && [trip.deviceId isKindOfClass:[NSString class]] && trip.deviceId.length > 0);
         [singleExpectedTrip fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
@@ -88,8 +83,6 @@
 }
 
 - (void)testTripsWithVehicleId {
-    NSDictionary *expectedJSON = [VLTestHelper getAllTripsJSON:@"2ad86caa-5a30-429e-80b8-80bc3da5efe6"];
-    
     if(![VLTestHelper vehicleId]){
         XCTAssertTrue(NO);
         return;
@@ -97,13 +90,17 @@
     
     XCTestExpectation *expectedVehicleTrips = [self expectationWithDescription:@"Service call for vehicle trips"];
     [_vlService getTripsForVehicleWithId:[VLTestHelper vehicleId] onSuccess:^(VLTripPager *tripPager, NSHTTPURLResponse *response) {
-        XCTAssertEqual(tripPager.trips.count, [expectedJSON[@"trips"] count]);
-        //XCTAssertEqual(tripPager.total, [expectedJSON[@"meta"][@"pagination"][@"total"] unsignedLongValue]);
-        XCTAssertEqualObjects(((VLTrip*)[tripPager.trips objectAtIndex:0]).tripId, expectedJSON[@"trips"][0][@"id"]);
-        XCTAssertEqualObjects([tripPager.priorURL absoluteString], expectedJSON[@"meta"][@"pagination"][@"links"][@"prior"]);
-        XCTAssertEqualObjects([tripPager.nextURL absoluteString], expectedJSON[@"meta"][@"pagination"][@"links"][@"next"]);
-        XCTAssertEqualObjects(tripPager.since, expectedJSON[@"meta"][@"pagination"][@"since"]);
-        // XCTAssertEqualObjects(tripPager.until, expectedJSON[@"meta"][@"pagination"][@"until"]); //timeseries sensitive
+        XCTAssertTrue(tripPager.trips.count > 0);
+        XCTAssertTrue(tripPager.since != nil && [tripPager.since isKindOfClass:[NSString class]] && tripPager.since.length > 0);
+        XCTAssertTrue(tripPager.until != nil && [tripPager.until isKindOfClass:[NSString class]] && tripPager.until.length > 0);
+        
+        for(VLTrip *trip in tripPager.trips){
+            XCTAssertTrue(trip.tripId != nil && [trip.tripId isKindOfClass:[NSString class]] && trip.tripId.length > 0);
+            XCTAssertTrue(trip.start != nil && [trip.start isKindOfClass:[NSString class]] && trip.start.length > 0);
+            XCTAssertTrue(trip.stop != nil && [trip.stop isKindOfClass:[NSString class]] && trip.stop.length > 0);
+            XCTAssertTrue(trip.vehicleId != nil && [trip.vehicleId isKindOfClass:[NSString class]] && trip.vehicleId.length > 0);
+            XCTAssertTrue(trip.deviceId != nil && [trip.deviceId isKindOfClass:[NSString class]] && trip.deviceId.length > 0);
+        }
         [expectedVehicleTrips fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
