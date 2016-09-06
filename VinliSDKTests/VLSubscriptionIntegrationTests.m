@@ -30,9 +30,7 @@
     [super tearDown];
 }
 
-- (void)testGetSubscriptionswithDeviceId {
-    NSDictionary *expectedJSON = [VLTestHelper getAllSubscriptionsJSON:@"2ad86caa-5a30-429e-80b8-80bc3da5efe6"];
-    
+- (void)testGetSubscriptionsWithDeviceId {
     if(![VLTestHelper deviceId]){
         XCTAssertTrue(NO);
         return;
@@ -40,8 +38,14 @@
     
     XCTestExpectation *expectedDevices = [self expectationWithDescription:@"getting the subscriptions"];
     [_vlService getSubscriptionsForDeviceWithId:[VLTestHelper deviceId] onSuccess:^(VLSubscriptionPager *subscriptionPager, NSHTTPURLResponse *response) {
-        XCTAssertEqual(subscriptionPager.subscriptions.count, [expectedJSON[@"subscriptions"] count]); // Make sure that there is one object in the array.
-        XCTAssertEqual(subscriptionPager.total, [expectedJSON[@"meta"][@"pagination"][@"total"] unsignedLongValue]); // Make sure that the Meta more or less translated correctly.
+        XCTAssertTrue(subscriptionPager.subscriptions.count > 0);
+        XCTAssertTrue(subscriptionPager.total > 0);
+        
+        for(VLSubscription *subscription in subscriptionPager.subscriptions){
+            XCTAssertTrue(subscription.eventType != nil && [subscription.eventType isKindOfClass:[NSString class]] && subscription.eventType.length > 0);
+            XCTAssertTrue(subscription.subscriptionId != nil && [subscription.subscriptionId isKindOfClass:[NSString class]] && subscription.subscriptionId.length > 0);
+            XCTAssertTrue(subscription.url != nil && [subscription.url isKindOfClass:[NSURL class]] && subscription.url.absoluteString.length > 0);
+        }
         [expectedDevices fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
@@ -52,8 +56,6 @@
 }
 
 - (void)testGetSubscriptionWithId {
-    NSDictionary *expectedJSON = [VLTestHelper getSpecificSubscriptionJSON:@"2ad86caa-5a30-429e-80b8-80bc3da5efe6"];
-    
     if(![VLTestHelper subscriptionId]){
         XCTAssertTrue(NO);
         return;
@@ -61,8 +63,9 @@
     
     XCTestExpectation *subscriptionExpectation = [self expectationWithDescription:@"service call for a subscription"];
     [_vlService getSubscriptionWithId:[VLTestHelper subscriptionId] onSuccess:^(VLSubscription *subscription, NSHTTPURLResponse *response) {
-        XCTAssertEqualObjects(subscription.deviceId, expectedJSON[@"subscription"][@"deviceId"]);
-        XCTAssertEqualObjects(subscription.selfURL.absoluteString, expectedJSON[@"subscription"][@"links"][@"self"]);
+        XCTAssertTrue(subscription.eventType != nil && [subscription.eventType isKindOfClass:[NSString class]] && subscription.eventType.length > 0);
+        XCTAssertTrue(subscription.subscriptionId != nil && [subscription.subscriptionId isKindOfClass:[NSString class]] && subscription.subscriptionId.length > 0);
+        XCTAssertTrue(subscription.url != nil && [subscription.url isKindOfClass:[NSURL class]] && subscription.url.absoluteString.length > 0);
         [subscriptionExpectation fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
