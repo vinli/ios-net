@@ -22,7 +22,6 @@
 
 @implementation VLTelemetryIntegrationTests
 
-//temporary test urls
 - (void)setUp {
     [super setUp];
 
@@ -34,17 +33,20 @@
 }
 
 - (void)testGetSnapshotsWithDeviceId {
-   NSDictionary *expectedJSON = [VLTestHelper getSnapshotsJSON:@"2ad86caa-5a30-429e-80b8-80bc3da5efe6"];
-    
-    if(![VLTestHelper deviceId]){
+   if(![VLTestHelper deviceId]){
         XCTAssertTrue(NO);
         return;
     }
     
     XCTestExpectation *snapshotExpectation = [self expectationWithDescription:@"Get snapshots"];
-    [_vlService getSnapshotsForDeviceWithId:[VLTestHelper deviceId] fields:@"rpm" onSuccess:^(VLSnapshotPager *snapshotPager, NSHTTPURLResponse *response) {
-        XCTAssertEqual(snapshotPager.snapshots.count, [expectedJSON[@"snapshots"] count]);
-        XCTAssertEqual(snapshotPager.remaining, [expectedJSON[@"meta"][@"pagination"][@"remaining"] unsignedLongValue]);
+    [_vlService getSnapshotsForDeviceWithId:[VLTestHelper deviceId] fields:@"vehicleSpeed" onSuccess:^(VLSnapshotPager *snapshotPager, NSHTTPURLResponse *response) {
+        XCTAssertTrue(snapshotPager.snapshots.count > 0);
+        XCTAssertTrue(snapshotPager.since != nil && [snapshotPager.since isKindOfClass:[NSString class]] && snapshotPager.since.length > 0);
+        XCTAssertTrue(snapshotPager.until != nil && [snapshotPager.until isKindOfClass:[NSString class]] && snapshotPager.until.length > 0);
+        
+        for(VLSnapshot *snapshot in snapshotPager.snapshots){
+            XCTAssertTrue(snapshot.data != nil && [snapshot.data isKindOfClass:[NSDictionary class]] && snapshot.data.allKeys.count > 0);
+        }
         [snapshotExpectation fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
@@ -55,8 +57,6 @@
 }
 
 - (void)testGetTelemetryMessageWithDeviceId {
-    NSDictionary *expectedJSON = [VLTestHelper getMessagesJSON];
-    
     if(![VLTestHelper deviceId]){
         XCTAssertTrue(NO);
         return;
@@ -64,8 +64,15 @@
     
     XCTestExpectation *telemetryExpectation = [self expectationWithDescription:@"telemetry messages"];
     [_vlService getTelemetryMessagesForDeviceWithId:[VLTestHelper deviceId] onSuccess:^(VLTelemetryMessagePager *telemetryPager, NSHTTPURLResponse *response) {
-        XCTAssertEqual(telemetryPager.messages.count, [expectedJSON[@"messages"] count]);
-        XCTAssertEqual(telemetryPager.remaining, [expectedJSON[@"meta"][@"pagination"][@"remaining"] unsignedLongValue]);
+        XCTAssertTrue(telemetryPager.messages.count > 0);
+        XCTAssertTrue(telemetryPager.since != nil && [telemetryPager.since isKindOfClass:[NSString class]] && telemetryPager.since.length > 0);
+        XCTAssertTrue(telemetryPager.until != nil && [telemetryPager.until isKindOfClass:[NSString class]] && telemetryPager.until.length > 0);
+        
+        for(VLTelemetryMessage *message in telemetryPager.messages){
+            XCTAssertTrue(message.messageId != nil && [message.messageId isKindOfClass:[NSString class]] && message.messageId.length > 0);
+            XCTAssertTrue(message.timestamp != nil && [message.timestamp isKindOfClass:[NSString class]] && message.timestamp.length > 0);
+            XCTAssertTrue(message.data != nil && [message.data isKindOfClass:[NSDictionary class]]);
+        }
         [telemetryExpectation fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
@@ -76,8 +83,6 @@
 }
 
 - (void)testGetLocationsWithDeviceId {
-    NSDictionary *expectedJSON = [VLTestHelper getLocationsJSON];
-    
     if(![VLTestHelper deviceId]){
         XCTAssertTrue(NO);
         return;
@@ -85,9 +90,14 @@
     
     XCTestExpectation *expectedLocations = [self expectationWithDescription:@"Getting locations"];
     [_vlService getLocationsForDeviceWithId:[VLTestHelper deviceId] onSuccess:^(VLLocationPager *locationPager, NSHTTPURLResponse *response) {
-        XCTAssertEqual(locationPager.locations.count, [expectedJSON[@"locations"][@"features"] count]);
-        XCTAssertEqual(locationPager.remaining, [expectedJSON[@"meta"][@"pagination"][@"remaining"] unsignedLongValue]);
-        XCTAssertEqual([((VLLocation *)[locationPager.locations objectAtIndex:0]) latitude], [expectedJSON[@"locations"][@"features"][0][@"geometry"][@"coordinates"][1] doubleValue]);
+        XCTAssertTrue(locationPager.locations.count > 0);
+        XCTAssertTrue(locationPager.since != nil && [locationPager.since isKindOfClass:[NSString class]] && locationPager.since.length > 0);
+        XCTAssertTrue(locationPager.until != nil && [locationPager.until isKindOfClass:[NSString class]] && locationPager.until.length > 0);
+        
+        for(VLLocation *location in locationPager.locations){
+            XCTAssertTrue(fabs(location.latitude) <= 180.0);
+            XCTAssertTrue(fabs(location.longitude) <= 180.0);
+        }
         [expectedLocations fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
@@ -98,17 +108,16 @@
 }
 
 - (void)testGetTelemetryMessageWithId {
-    NSDictionary *expectedJSON = [VLTestHelper getSpecificMessageJSON];
-    
     if(![VLTestHelper telemetryMessageId]){
         XCTAssertTrue(NO);
         return;
     }
     
     XCTestExpectation *specificMessageExpectation = [self expectationWithDescription:@"service call for a single telemetry message"];
-    [_vlService getTelemetryMessageWithId:[VLTestHelper telemetryMessageId] onSuccess:^(VLTelemetryMessage *telemetryMessage, NSHTTPURLResponse *response) {
-        XCTAssertTrue([telemetryMessage.messageId isEqualToString:expectedJSON[@"message"][@"id"]]);
-        XCTAssertEqual(telemetryMessage.latitude, [expectedJSON[@"message"][@"data"][@"location"][@"coordinates"][1]doubleValue ]);
+    [_vlService getTelemetryMessageWithId:[VLTestHelper telemetryMessageId] onSuccess:^(VLTelemetryMessage *message, NSHTTPURLResponse *response) {
+        XCTAssertTrue(message.messageId != nil && [message.messageId isKindOfClass:[NSString class]] && message.messageId.length > 0);
+        XCTAssertTrue(message.timestamp != nil && [message.timestamp isKindOfClass:[NSString class]] && message.timestamp.length > 0);
+        XCTAssertTrue(message.data != nil && [message.data isKindOfClass:[NSDictionary class]]);
         [specificMessageExpectation fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);

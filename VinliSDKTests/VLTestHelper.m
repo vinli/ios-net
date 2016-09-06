@@ -161,7 +161,7 @@
 }
 
 + (NSInteger)defaultTimeOut {
-    return 15.0;
+    return 20.0;
 }
 
 + (NSDictionary *) getVehicleJSON:(NSString *) deviceId{

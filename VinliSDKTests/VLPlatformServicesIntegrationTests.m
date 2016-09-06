@@ -33,8 +33,6 @@
 }
 
 - (void)testGetAllDevices {
-    NSDictionary *expectedJSON = [VLTestHelper getAllDevicesJSON];
-    
     if(!_vlService){
         XCTAssertTrue(NO);
         return;
@@ -42,10 +40,13 @@
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"get all devices"];
    [_vlService getDevicesOnSuccess:^(VLDevicePager *devicePager, NSHTTPURLResponse *response) {
-       XCTAssertEqual(devicePager.devices.count, [expectedJSON[@"devices"] count]);
-       XCTAssertEqualObjects([[devicePager.devices objectAtIndex:0] deviceId], expectedJSON[@"devices"][0][@"id"]);
-       XCTAssertEqualObjects([[devicePager.devices objectAtIndex:0] selfURL].absoluteString, expectedJSON[@"devices"][0][@"links"][@"self"]);
-       XCTAssertEqual(devicePager.total, [expectedJSON[@"meta"][@"pagination"][@"total"] unsignedIntegerValue]);
+       XCTAssertTrue(devicePager.devices.count > 0);
+       XCTAssertTrue(devicePager.total > 0);
+       
+       for(VLDevice *device in devicePager.devices){
+           XCTAssertTrue(device.deviceId != nil && [device.deviceId isKindOfClass:[NSString class]] && device.deviceId.length > 0);
+           XCTAssertTrue(device.name != nil && [device.name isKindOfClass:[NSString class]]);
+       }
        [expectation fulfill];
    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
        XCTAssertTrue(NO);
@@ -56,8 +57,6 @@
 }
 
 - (void)testAllVehicleWithDeviceId {
-    NSDictionary *expectedJSON = [VLTestHelper getAllVehiclesJSON:@"2ad86caa-5a30-429e-80b8-80bc3da5efe6"];
-    
     if(![VLTestHelper deviceId]){
         XCTAssertTrue(NO);
         return;
@@ -65,8 +64,13 @@
     
     XCTestExpectation *vehicleExpecation = [self expectationWithDescription:@"Expecting vehicles"];
         [_vlService getVehiclesForDeviceWithId:[VLTestHelper deviceId] onSuccess:^(VLVehiclePager *vehiclePager, NSHTTPURLResponse *response) {
-            VLVehicle *vehicle = (vehiclePager.vehicles.count > 0) ? vehiclePager.vehicles[0] : nil;
-            XCTAssertEqualObjects(vehicle.make, expectedJSON[@"vehicles"][0][@"make"]);
+            XCTAssertTrue(vehiclePager.vehicles.count > 0);
+            XCTAssertTrue(vehiclePager.total > 0);
+            
+            for(VLVehicle *vehicle in vehiclePager.vehicles){
+                XCTAssertTrue(vehicle.vehicleId != nil && [vehicle.vehicleId isKindOfClass:[NSString class]] && vehicle.vehicleId.length > 0);
+                XCTAssertTrue(vehicle.vin != nil && [vehicle.vin isKindOfClass:[NSString class]] && vehicle.vin.length > 0);
+            }
             [vehicleExpecation fulfill];
         } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
             XCTAssertTrue(NO);
@@ -77,8 +81,6 @@
 }
 
 - (void)testGetLastestVehicleWithDeviceId {
-    NSDictionary *expectedJSON = [VLTestHelper getVehicleJSON:@"2ad86caa-5a30-429e-80b8-80bc3da5efe6"];
-    
     if(![VLTestHelper deviceId]){
         XCTAssertTrue(NO);
         return;
@@ -86,13 +88,8 @@
     
     XCTestExpectation *expectedLatestVehicle = [self expectationWithDescription:@"service call for latest vehicles"];
     [_vlService getLatestVehicleForDeviceWithId:[VLTestHelper deviceId] onSuccess:^(VLVehicle *vehicle, NSHTTPURLResponse *response) {
-        XCTAssertEqualObjects(vehicle.vehicleId, expectedJSON[@"id"]);
-        XCTAssertEqualObjects(vehicle.year, expectedJSON[@"year"]);
-        XCTAssertEqualObjects(vehicle.make, expectedJSON[@"make"]);
-        XCTAssertEqualObjects(vehicle.model, expectedJSON[@"model"]);
-        XCTAssertEqualObjects(vehicle.trim, expectedJSON[@"trim"]);
-        XCTAssertEqualObjects(vehicle.vin, expectedJSON[@"vin"]);
-        XCTAssertEqualObjects(vehicle.name, expectedJSON[@"name"]);
+        XCTAssertTrue(vehicle.vehicleId != nil && [vehicle.vehicleId isKindOfClass:[NSString class]] && vehicle.vehicleId.length > 0);
+        XCTAssertTrue(vehicle.vin != nil && [vehicle.vin isKindOfClass:[NSString class]] && vehicle.vin.length > 0);
         [expectedLatestVehicle fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
@@ -103,8 +100,6 @@
 }
 
 - (void)testGetDeviceWithId {
-    NSDictionary *expectedJSON = [VLTestHelper getDeviceJSON:@"2ad86caa-5a30-429e-80b8-80bc3da5efe6"];
-    
     if(![VLTestHelper deviceId]){
         XCTAssertTrue(NO);
         return;
@@ -112,8 +107,8 @@
     
     XCTestExpectation *singleDeviceExpectation = [self expectationWithDescription:@"service call for a single device"];
     [_vlService getDeviceWithId:[VLTestHelper deviceId] onSuccess:^(VLDevice *device, NSHTTPURLResponse *response) {
-        XCTAssertEqualObjects(device.deviceId, expectedJSON[@"device"][@"id"]);
-        XCTAssertEqualObjects(device.selfURL.absoluteString, expectedJSON[@"device"][@"links"][@"self"]);
+        XCTAssertTrue(device.deviceId != nil && [device.deviceId isKindOfClass:[NSString class]] && device.deviceId.length > 0);
+        XCTAssertTrue(device.name != nil && [device.name isKindOfClass:[NSString class]]);
         [singleDeviceExpectation fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);

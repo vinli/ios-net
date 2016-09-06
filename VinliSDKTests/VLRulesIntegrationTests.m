@@ -31,8 +31,6 @@
 }
 
 - (void)testGetAllRulesWithDeviceId {
-    NSDictionary *expectedJSON = [VLTestHelper getAllRulesJSON:@"2ad86caa-5a30-429e-80b8-80bc3da5efe6"];
-    
     if(![VLTestHelper deviceId]){
         XCTAssertTrue(NO);
         return;
@@ -40,9 +38,14 @@
     
     XCTestExpectation *expectedRules = [self expectationWithDescription:@"rules service call"];
     [_vlService getRulesForDeviceWithId:[VLTestHelper deviceId] onSuccess:^(VLRulePager *rulePager, NSHTTPURLResponse *response) {
-        XCTAssertEqual(rulePager.rules.count, [expectedJSON[@"rules"] count]);
-        XCTAssertEqual(rulePager.total, [expectedJSON[@"meta"][@"pagination"][@"total"] unsignedLongValue]);
-        //XCTAssertTrue([[[rulePager.rules objectAtIndex:0] name] isEqualToString:expectedJSON[@"rules"][0][@"name"]]);
+        XCTAssertTrue(rulePager.rules.count > 0);
+        XCTAssertTrue(rulePager.total > 0);
+        
+        for(VLRule *rule in rulePager.rules){
+            XCTAssertTrue(rule.ruleId != nil && [rule.ruleId isKindOfClass:[NSString class]] && rule.ruleId.length > 0);
+            XCTAssertTrue(rule.deviceId != nil && [rule.deviceId isKindOfClass:[NSString class]] && rule.deviceId.length > 0);
+            XCTAssertTrue(rule.ruleId != nil && [rule.ruleId isKindOfClass:[NSString class]] && rule.ruleId.length > 0);
+        }
         [expectedRules fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
@@ -53,8 +56,6 @@
 }
 
 - (void)testGetRuleWithId {
-    NSDictionary *expectedJSON = [VLTestHelper getRuleJSON:@"2ad86caa-5a30-429e-80b8-80bc3da5efe6"];
-    
     if(![VLTestHelper ruleId]){
         XCTAssertTrue(NO);
         return;
@@ -62,9 +63,9 @@
     
     XCTestExpectation *expectedRule = [self expectationWithDescription:@"service call for a single rule"];
     [_vlService getRuleWithId:[VLTestHelper ruleId] onSuccess:^(VLRule *rule, NSHTTPURLResponse *response) {
-        XCTAssertEqualObjects(rule.deviceId, expectedJSON[@"rule"][@"deviceId"]);
-        XCTAssertEqualObjects(rule.eventsURL.absoluteString, expectedJSON[@"rule"][@"links"][@"events"]); // Make sure that the Meta more or less translated correctly.
-        XCTAssertEqualObjects(rule.name, expectedJSON[@"rule"][@"name"]);
+        XCTAssertTrue(rule.ruleId != nil && [rule.ruleId isKindOfClass:[NSString class]] && rule.ruleId.length > 0);
+        XCTAssertTrue(rule.deviceId != nil && [rule.deviceId isKindOfClass:[NSString class]] && rule.deviceId.length > 0);
+        XCTAssertTrue(rule.ruleId != nil && [rule.ruleId isKindOfClass:[NSString class]] && rule.ruleId.length > 0);
         [expectedRule fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
