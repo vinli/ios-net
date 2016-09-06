@@ -12,9 +12,6 @@
 #import "VLService.h"
 #import "VLTestHelper.h"
 
-#define MACRO_NAME(f) #f
-#define MACRO_VALUE(f)  MACRO_NAME(f)
-
 @interface VLPlatformServicesTests : XCTestCase{
     VLService *connection;
     NSString * deviceId;
@@ -28,8 +25,6 @@
     connection = [[VLService alloc] init];
     [connection useSession:[[VLSession alloc] initWithAccessToken:@"TEST"]];
     deviceId = @"11111111-2222-3333-4444-555555555555";
-    
-    NSLog(@"ACCESS_TOKEN ==== %s", MACRO_VALUE(ACCESS_TOKEN));
 }
 
 - (void)tearDown {

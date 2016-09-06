@@ -1222,6 +1222,8 @@
 			buildSettings = {
 				ACCESS_TOKEN = "\"DEFAULT_ACCESS_TOKEN\"";
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				DEVICE_ID = "\"DEFAULT_DEVICE_ID\"";
+				EVENT_ID = "\"DEFAULT_EVENT_ID\"";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1230,11 +1232,29 @@
 					"DEBUG=1",
 					"$(inherited)",
 					"ACCESS_TOKEN=${ACCESS_TOKEN}",
+					"MESSAGE_ID=${MESSAGE_ID}",
+					"ODO_ID=${ODO_ID}",
+					"ODO_TRIGGER_ID=${ODO_TRIGGER_ID}",
+					"SUBSCRIPTION_ID=${SUBSCRIPTION_ID}",
+					"RULE_ID=${RULE_ID}",
+					"NOTIFICATION_ID=${NOTIFICATION_ID}",
+					"EVENT_ID=${EVENT_ID}",
+					"TRIP_ID=${TRIP_ID}",
+					"VEHICLE_ID=${VEHICLE_ID}",
+					"DEVICE_ID=${DEVICE_ID}",
 				);
 				INFOPLIST_FILE = VinliSDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MESSAGE_ID = "\"DEFAULT_MESSAGE_ID\"";
+				NOTIFICATION_ID = "\"DEFAULT_NOTIFICATION_ID\"";
+				ODO_ID = "\"DEFAULT_ODO_ID\"";
+				ODO_TRIGGER_ID = "\"DEFAULT_ODO_TRIGGER_ID\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "li.vin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RULE_ID = "\"DEFAULT_RULE_ID\"";
+				SUBSCRIPTION_ID = "\"DEFAULT_SUBSCRIPTION_ID\"";
+				TRIP_ID = "\"DEFAULT_TRIP_ID\"";
+				VEHICLE_ID = "\"DEFAULT_VEHICLE_ID\"";
 			};
 			name = Debug;
 		};
@@ -1244,14 +1264,24 @@
 			buildSettings = {
 				ACCESS_TOKEN = "\"DEFAULT_ACCESS_TOKEN\"";
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				DEVICE_ID = "\"DEFAULT_DEVICE_ID\"";
+				EVENT_ID = "\"DEFAULT_EVENT_ID\"";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = VinliSDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MESSAGE_ID = "\"DEFAULT_MESSAGE_ID\"";
+				NOTIFICATION_ID = "\"DEFAULT_NOTIFICATION_ID\"";
+				ODO_ID = "\"DEFAULT_ODO_ID\"";
+				ODO_TRIGGER_ID = "\"DEFAULT_ODO_TRIGGER_ID\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "li.vin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RULE_ID = "\"DEFAULT_RULE_ID\"";
+				SUBSCRIPTION_ID = "\"DEFAULT_SUBSCRIPTION_ID\"";
+				TRIP_ID = "\"DEFAULT_TRIP_ID\"";
+				VEHICLE_ID = "\"DEFAULT_VEHICLE_ID\"";
 			};
 			name = Release;
 		};

@@ -10,6 +10,9 @@
 #import "VLDateFormatter.h"
 #import "VLService.h"
 
+#define MACRO_NAME(f) #f
+#define MACRO_VALUE(f)  MACRO_NAME(f)
+
 @interface VLTestHelper : NSObject
 
 + (NSInteger) defaultTimeOut;

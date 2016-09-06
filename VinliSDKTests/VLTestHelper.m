@@ -29,23 +29,11 @@
 }
 
 + (NSString *)accessToken {
-    
-    NSLog(@"Process: %@", [[NSProcessInfo processInfo] arguments]);
-    NSLog(@"UserDefaults: %@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
-    NSLog(@"TEst: %@", [[NSUserDefaults standardUserDefaults] volatileDomainForName:@"NSArgumentDomain"]);
-    NSLog(@"Token maybe: %@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"ACCESS_TOKEN"]);
-    NSLog(@"asdf: %@", [[NSBundle mainBundle] infoDictionary]);
-    NSLog(@"Enviro: %@", [[NSProcessInfo processInfo] environment]);
-    
     static NSString *accessToken = nil;
     if(!accessToken){
-        NSArray *args = [[NSProcessInfo processInfo] arguments];
-        
-        for(NSString *arg in args){
-            NSString *key = @"ACCESS_TOKEN";
-            if([arg hasPrefix:key]){
-                accessToken = [arg substringFromIndex:(key.length + 1)];
-            }
+        accessToken = @MACRO_VALUE(ACCESS_TOKEN);
+        if([accessToken isEqualToString:@"DEFAULT_ACCESS_TOKEN"]){
+            accessToken = nil;
         }
     }
     return accessToken;
@@ -54,13 +42,9 @@
 + (NSString *)deviceId {
     static NSString *deviceId = nil;
     if(!deviceId){
-        NSArray *args = [[NSProcessInfo processInfo] arguments];
-        
-        for(NSString *arg in args){
-            NSString *key = @"DEVICE_ID";
-            if([arg hasPrefix:key]){
-                deviceId = [arg substringFromIndex:(key.length + 1)];
-            }
+        deviceId = @MACRO_VALUE(DEVICE_ID);
+        if([deviceId isEqualToString:@"DEFAULT_DEVICE_ID"]){
+            deviceId = nil;
         }
     }
     return deviceId;
@@ -69,13 +53,9 @@
 + (NSString *)vehicleId {
     static NSString *vehicleId = nil;
     if(!vehicleId){
-        NSArray *args = [[NSProcessInfo processInfo] arguments];
-        
-        for(NSString *arg in args){
-            NSString *key = @"VEHICLE_ID";
-            if([arg hasPrefix:key]){
-                vehicleId = [arg substringFromIndex:(key.length + 1)];
-            }
+        vehicleId = @MACRO_VALUE(VEHICLE_ID);
+        if([vehicleId isEqualToString:@"DEFAULT_VEHICLE_ID"]){
+            vehicleId = nil;
         }
     }
     return vehicleId;
@@ -84,13 +64,9 @@
 + (NSString *)tripId {
     static NSString *tripId = nil;
     if(!tripId){
-        NSArray *args = [[NSProcessInfo processInfo] arguments];
-        
-        for(NSString *arg in args){
-            NSString *key = @"TRIP_ID";
-            if([arg hasPrefix:key]){
-                tripId = [arg substringFromIndex:(key.length + 1)];
-            }
+        tripId = @MACRO_VALUE(TRIP_ID);
+        if([tripId isEqualToString:@"DEFAULT_TRIP_ID"]){
+            tripId = nil;
         }
     }
     return tripId;
@@ -99,13 +75,9 @@
 + (NSString *)eventId {
     static NSString *eventId = nil;
     if(!eventId){
-        NSArray *args = [[NSProcessInfo processInfo] arguments];
-        
-        for(NSString *arg in args){
-            NSString *key = @"EVENT_ID";
-            if([arg hasPrefix:key]){
-                eventId = [arg substringFromIndex:(key.length + 1)];
-            }
+        eventId = @MACRO_VALUE(EVENT_ID);
+        if([eventId isEqualToString:@"DEFAULT_EVENT_ID"]){
+            eventId = nil;
         }
     }
     return eventId;
@@ -114,13 +86,9 @@
 + (NSString *)notificationId {
     static NSString *notificationId = nil;
     if(!notificationId){
-        NSArray *args = [[NSProcessInfo processInfo] arguments];
-        
-        for(NSString *arg in args){
-            NSString *key = @"NOTIFICATION_ID";
-            if([arg hasPrefix:key]){
-                notificationId = [arg substringFromIndex:(key.length + 1)];
-            }
+        notificationId = @MACRO_VALUE(NOTIFICATION_ID);
+        if([notificationId isEqualToString:@"DEFAULT_NOTIFICATION_ID"]){
+            notificationId = nil;
         }
     }
     return notificationId;
@@ -129,13 +97,9 @@
 + (NSString *) ruleId{
     static NSString *ruleId = nil;
     if(!ruleId){
-        NSArray *args = [[NSProcessInfo processInfo] arguments];
-        
-        for(NSString *arg in args){
-            NSString *key = @"RULE_ID";
-            if([arg hasPrefix:key]){
-                ruleId = [arg substringFromIndex:(key.length + 1)];
-            }
+        ruleId = @MACRO_VALUE(RULE_ID);
+        if([ruleId isEqualToString:@"DEFAULT_RULE_ID"]){
+            ruleId = nil;
         }
     }
     return ruleId;
@@ -144,14 +108,9 @@
 + (NSString *) subscriptionId {
     static NSString *subId = nil;
     if(!subId){
-        NSArray *args = [[NSProcessInfo processInfo] arguments];
-        
-        for(NSString *arg in args){
-            NSString *key = @"SUBSCRIPTION_ID";
-            if([arg hasPrefix:key]){
-                NSLog(arg);
-                subId = [arg substringFromIndex:(key.length + 1)];
-            }
+        subId = @MACRO_VALUE(SUBSCRIPTION_ID);
+        if([subId isEqualToString:@"DEFAULT_SUBSCRIPTION_ID"]){
+            subId = nil;
         }
     }
     return subId;
@@ -160,13 +119,9 @@
 + (NSString *)odometerTriggerId {
     static NSString *odoTriggerId = nil;
     if(!odoTriggerId){
-        NSArray *args = [[NSProcessInfo processInfo] arguments];
-        
-        for(NSString *arg in args){
-            NSString *key = @"ODO_TRIGGER_ID";
-            if([arg hasPrefix:key]){
-                odoTriggerId = [arg substringFromIndex:(key.length + 1)];
-            }
+        odoTriggerId = @MACRO_VALUE(ODO_TRIGGER_ID);
+        if([odoTriggerId isEqualToString:@"DEFAULT_ODO_TRIGGER_ID"]){
+            odoTriggerId = nil;
         }
     }
     return odoTriggerId;
@@ -176,13 +131,9 @@
 + (NSString *)odometerId {
     static NSString *odoId = nil;
     if(!odoId){
-        NSArray *args = [[NSProcessInfo processInfo] arguments];
-        
-        for(NSString *arg in args){
-            NSString *key = @"ODO_ID";
-            if([arg hasPrefix:key]){
-                odoId = [arg substringFromIndex:(key.length + 1)];
-            }
+        odoId = @MACRO_VALUE(ODO_ID);
+        if([odoId isEqualToString:@"DEFAULT_ODO_ID"]){
+            odoId = nil;
         }
     }
     return odoId;
@@ -191,13 +142,9 @@
 + (NSString *) telemetryMessageId{
     static NSString *messageId = nil;
     if(!messageId){
-        NSArray *args = [[NSProcessInfo processInfo] arguments];
-        
-        for(NSString *arg in args){
-            NSString *key = @"MESSAGE_ID";
-            if([arg hasPrefix:key]){
-                messageId = [arg substringFromIndex:(key.length + 1)];
-            }
+        messageId = @MACRO_VALUE(MESSAGE_ID);
+        if([messageId isEqualToString:@"DEFAULT_MESSAGE_ID"]){
+            messageId = nil;
         }
     }
     return messageId;
