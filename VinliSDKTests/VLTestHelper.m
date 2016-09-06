@@ -33,7 +33,8 @@
     if(!accessToken){
         accessToken = @MACRO_VALUE(ACCESS_TOKEN);
         if([accessToken isEqualToString:@"DEFAULT_ACCESS_TOKEN"]){
-            accessToken = nil;
+            char *envar = getenv("ACCESS_TOKEN");
+            accessToken = (envar) ? [NSString stringWithUTF8String:envar] : nil;
         }
     }
     return accessToken;
@@ -44,7 +45,8 @@
     if(!deviceId){
         deviceId = @MACRO_VALUE(DEVICE_ID);
         if([deviceId isEqualToString:@"DEFAULT_DEVICE_ID"]){
-            deviceId = nil;
+            char *envar = getenv("DEVICE_ID");
+            deviceId = (envar) ? [NSString stringWithUTF8String:envar] : nil;
         }
     }
     return deviceId;
@@ -55,7 +57,8 @@
     if(!vehicleId){
         vehicleId = @MACRO_VALUE(VEHICLE_ID);
         if([vehicleId isEqualToString:@"DEFAULT_VEHICLE_ID"]){
-            vehicleId = nil;
+            char *envar = getenv("VEHICLE_ID");
+            vehicleId = (envar) ? [NSString stringWithUTF8String:envar] : nil;
         }
     }
     return vehicleId;
@@ -66,7 +69,8 @@
     if(!tripId){
         tripId = @MACRO_VALUE(TRIP_ID);
         if([tripId isEqualToString:@"DEFAULT_TRIP_ID"]){
-            tripId = nil;
+            char *envar = getenv("TRIP_ID");
+            tripId = (envar) ? [NSString stringWithUTF8String:envar] : nil;
         }
     }
     return tripId;
@@ -77,7 +81,8 @@
     if(!eventId){
         eventId = @MACRO_VALUE(EVENT_ID);
         if([eventId isEqualToString:@"DEFAULT_EVENT_ID"]){
-            eventId = nil;
+            char *envar = getenv("EVENT_ID");
+            eventId = (envar) ? [NSString stringWithUTF8String:envar] : nil;
         }
     }
     return eventId;
@@ -88,7 +93,8 @@
     if(!notificationId){
         notificationId = @MACRO_VALUE(NOTIFICATION_ID);
         if([notificationId isEqualToString:@"DEFAULT_NOTIFICATION_ID"]){
-            notificationId = nil;
+            char *envar = getenv("NOTIFICATION_ID");
+            notificationId = (envar) ? [NSString stringWithUTF8String:envar] : nil;
         }
     }
     return notificationId;
@@ -99,7 +105,8 @@
     if(!ruleId){
         ruleId = @MACRO_VALUE(RULE_ID);
         if([ruleId isEqualToString:@"DEFAULT_RULE_ID"]){
-            ruleId = nil;
+            char *envar = getenv("RULE_ID");
+            ruleId = (envar) ? [NSString stringWithUTF8String:envar] : nil;
         }
     }
     return ruleId;
@@ -110,7 +117,8 @@
     if(!subId){
         subId = @MACRO_VALUE(SUBSCRIPTION_ID);
         if([subId isEqualToString:@"DEFAULT_SUBSCRIPTION_ID"]){
-            subId = nil;
+            char *envar = getenv("SUBSCRIPTION_ID");
+            subId = (envar) ? [NSString stringWithUTF8String:envar] : nil;
         }
     }
     return subId;
@@ -121,7 +129,8 @@
     if(!odoTriggerId){
         odoTriggerId = @MACRO_VALUE(ODO_TRIGGER_ID);
         if([odoTriggerId isEqualToString:@"DEFAULT_ODO_TRIGGER_ID"]){
-            odoTriggerId = nil;
+            char *envar = getenv("ODO_TRIGGER_ID");
+            odoTriggerId = (envar) ? [NSString stringWithUTF8String:envar] : nil;
         }
     }
     return odoTriggerId;
@@ -133,7 +142,8 @@
     if(!odoId){
         odoId = @MACRO_VALUE(ODO_ID);
         if([odoId isEqualToString:@"DEFAULT_ODO_ID"]){
-            odoId = nil;
+            char *envar = getenv("ODO_ID");
+            odoId = (envar) ? [NSString stringWithUTF8String:envar] : nil;
         }
     }
     return odoId;
@@ -144,7 +154,8 @@
     if(!messageId){
         messageId = @MACRO_VALUE(MESSAGE_ID);
         if([messageId isEqualToString:@"DEFAULT_MESSAGE_ID"]){
-            messageId = nil;
+            char *envar = getenv("MESSAGE_ID");
+            messageId = (envar) ? [NSString stringWithUTF8String:envar] : nil;
         }
     }
     return messageId;
@@ -161,7 +172,7 @@
 }
 
 + (NSInteger)defaultTimeOut {
-    return 20.0;
+    return 45.0;
 }
 
 + (NSDictionary *) getVehicleJSON:(NSString *) deviceId{
