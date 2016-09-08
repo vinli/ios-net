@@ -779,6 +779,7 @@
 				0B16710D1B0FC2B9009BE7A9 /* Resources */,
 				FFF99E9E521D015D88D7AE2E /* 📦 Embed Pods Frameworks */,
 				B39DFEF4171F96B89AFBE1C1 /* 📦 Copy Pods Resources */,
+				CBC7D776AB6B185CE2C6C4ED /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -921,6 +922,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CBC7D776AB6B185CE2C6C4ED /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VinliSDKTests/Pods-VinliSDKTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DDBAA5811AD755D241C94170 /* 📦 Check Pods Manifest.lock */ = {
@@ -1158,11 +1174,15 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
 				INFOPLIST_FILE = VinliSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "li.vin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1179,11 +1199,15 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
 				INFOPLIST_FILE = VinliSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "li.vin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1196,7 +1220,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C4778D3E1E82642D2908354C /* Pods-VinliSDKTests.debug.xcconfig */;
 			buildSettings = {
+				ACCESS_TOKEN = "\"DEFAULT_ACCESS_TOKEN\"";
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				DEVICE_ID = "\"DEFAULT_DEVICE_ID\"";
+				EVENT_ID = "\"DEFAULT_EVENT_ID\"";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1204,11 +1231,30 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
+					"ACCESS_TOKEN=${ACCESS_TOKEN}",
+					"MESSAGE_ID=${MESSAGE_ID}",
+					"ODO_ID=${ODO_ID}",
+					"ODO_TRIGGER_ID=${ODO_TRIGGER_ID}",
+					"SUBSCRIPTION_ID=${SUBSCRIPTION_ID}",
+					"RULE_ID=${RULE_ID}",
+					"NOTIFICATION_ID=${NOTIFICATION_ID}",
+					"EVENT_ID=${EVENT_ID}",
+					"TRIP_ID=${TRIP_ID}",
+					"VEHICLE_ID=${VEHICLE_ID}",
+					"DEVICE_ID=${DEVICE_ID}",
 				);
 				INFOPLIST_FILE = VinliSDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MESSAGE_ID = "\"DEFAULT_MESSAGE_ID\"";
+				NOTIFICATION_ID = "\"DEFAULT_NOTIFICATION_ID\"";
+				ODO_ID = "\"DEFAULT_ODO_ID\"";
+				ODO_TRIGGER_ID = "\"DEFAULT_ODO_TRIGGER_ID\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "li.vin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RULE_ID = "\"DEFAULT_RULE_ID\"";
+				SUBSCRIPTION_ID = "\"DEFAULT_SUBSCRIPTION_ID\"";
+				TRIP_ID = "\"DEFAULT_TRIP_ID\"";
+				VEHICLE_ID = "\"DEFAULT_VEHICLE_ID\"";
 			};
 			name = Debug;
 		};
@@ -1216,15 +1262,26 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F29E3136C46BBD5847447553 /* Pods-VinliSDKTests.release.xcconfig */;
 			buildSettings = {
+				ACCESS_TOKEN = "\"DEFAULT_ACCESS_TOKEN\"";
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				DEVICE_ID = "\"DEFAULT_DEVICE_ID\"";
+				EVENT_ID = "\"DEFAULT_EVENT_ID\"";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = VinliSDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MESSAGE_ID = "\"DEFAULT_MESSAGE_ID\"";
+				NOTIFICATION_ID = "\"DEFAULT_NOTIFICATION_ID\"";
+				ODO_ID = "\"DEFAULT_ODO_ID\"";
+				ODO_TRIGGER_ID = "\"DEFAULT_ODO_TRIGGER_ID\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "li.vin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RULE_ID = "\"DEFAULT_RULE_ID\"";
+				SUBSCRIPTION_ID = "\"DEFAULT_SUBSCRIPTION_ID\"";
+				TRIP_ID = "\"DEFAULT_TRIP_ID\"";
+				VEHICLE_ID = "\"DEFAULT_VEHICLE_ID\"";
 			};
 			name = Release;
 		};

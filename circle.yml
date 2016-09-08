@@ -1,0 +1,30 @@
+machine:
+  xcode:
+    version: "7.0"
+
+test:
+  pre:
+  override:
+    - set -o pipefail &&
+      xcodebuild
+        CODE_SIGNING_REQUIRED=NO
+        CODE_SIGN_IDENTITY=
+        PROVISIONING_PROFILE=
+        -sdk iphonesimulator
+        -destination 'platform=iOS Simulator,OS=latest,name=iPhone 6'
+        -workspace VinliSDK.xcworkspace
+        -scheme "VinliSDK"
+        clean build test
+        ACCESS_TOKEN=$ACCESS_TOKEN
+        ODO_TRIGGER_ID=$ODO_TRIGGER_ID
+        ODO_ID=$ODO_ID
+        TRIP_ID=$TRIP_ID
+        MESSAGE_ID=$MESSAGE_ID
+        VEHICLE_ID=$VEHICLE_ID
+        EVENT_ID=$EVENT_ID
+        NOTIFICATION_ID=$NOTIFICATION_ID
+        RULE_ID=$RULE_ID
+        DEVICE_ID=$DEVICE_ID
+        SUBSCRIPTION_ID=$SUBSCRIPTION_ID |
+      tee $CIRCLE_ARTIFACTS/xcode_raw.log |
+      xcpretty --color --report junit --output $CIRCLE_TEST_REPORTS/xcode/results.xml

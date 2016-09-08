@@ -8,34 +8,160 @@
 
 #import "VLTestHelper.h"
 #import "VLDateFormatter.h"
-
+#import "VLSessionManager.h"
 
 @implementation VLTestHelper
 
-
-
-
-+ (NSString *)tripId {
-    return @"2dc6cd00-4888-4b02-b48f-2faf64e05a0b";
++ (VLService *) vlService{
+    static VLService *service;
+    
+    if(![VLTestHelper accessToken]){
+        return nil;
+    }
+    
+    if(!service){
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:[VLTestHelper accessToken] forKey:@"VLSessionManagerCachedAccessTokenKey"]; // This should match the same key in VLSessionManager
+        service = [[VLService alloc] initWithSession:[VLSessionManager currentSession]];
+        service.host = @"-dev.vin.li";
+    }
+    return service;
 }
 
++ (NSString *)accessToken {
+    static NSString *accessToken = nil;
+    if(!accessToken){
+        accessToken = @MACRO_VALUE(ACCESS_TOKEN);
+        if([accessToken isEqualToString:@"DEFAULT_ACCESS_TOKEN"]){
+            char *envar = getenv("ACCESS_TOKEN");
+            accessToken = (envar) ? [NSString stringWithUTF8String:envar] : nil;
+        }
+    }
+    return accessToken;
+}
+
++ (NSString *)deviceId {
+    static NSString *deviceId = nil;
+    if(!deviceId){
+        deviceId = @MACRO_VALUE(DEVICE_ID);
+        if([deviceId isEqualToString:@"DEFAULT_DEVICE_ID"]){
+            char *envar = getenv("DEVICE_ID");
+            deviceId = (envar) ? [NSString stringWithUTF8String:envar] : nil;
+        }
+    }
+    return deviceId;
+}
+
++ (NSString *)vehicleId {
+    static NSString *vehicleId = nil;
+    if(!vehicleId){
+        vehicleId = @MACRO_VALUE(VEHICLE_ID);
+        if([vehicleId isEqualToString:@"DEFAULT_VEHICLE_ID"]){
+            char *envar = getenv("VEHICLE_ID");
+            vehicleId = (envar) ? [NSString stringWithUTF8String:envar] : nil;
+        }
+    }
+    return vehicleId;
+}
+
++ (NSString *)tripId {
+    static NSString *tripId = nil;
+    if(!tripId){
+        tripId = @MACRO_VALUE(TRIP_ID);
+        if([tripId isEqualToString:@"DEFAULT_TRIP_ID"]){
+            char *envar = getenv("TRIP_ID");
+            tripId = (envar) ? [NSString stringWithUTF8String:envar] : nil;
+        }
+    }
+    return tripId;
+}
+
++ (NSString *)eventId {
+    static NSString *eventId = nil;
+    if(!eventId){
+        eventId = @MACRO_VALUE(EVENT_ID);
+        if([eventId isEqualToString:@"DEFAULT_EVENT_ID"]){
+            char *envar = getenv("EVENT_ID");
+            eventId = (envar) ? [NSString stringWithUTF8String:envar] : nil;
+        }
+    }
+    return eventId;
+}
+
++ (NSString *)notificationId {
+    static NSString *notificationId = nil;
+    if(!notificationId){
+        notificationId = @MACRO_VALUE(NOTIFICATION_ID);
+        if([notificationId isEqualToString:@"DEFAULT_NOTIFICATION_ID"]){
+            char *envar = getenv("NOTIFICATION_ID");
+            notificationId = (envar) ? [NSString stringWithUTF8String:envar] : nil;
+        }
+    }
+    return notificationId;
+}
+
++ (NSString *) ruleId{
+    static NSString *ruleId = nil;
+    if(!ruleId){
+        ruleId = @MACRO_VALUE(RULE_ID);
+        if([ruleId isEqualToString:@"DEFAULT_RULE_ID"]){
+            char *envar = getenv("RULE_ID");
+            ruleId = (envar) ? [NSString stringWithUTF8String:envar] : nil;
+        }
+    }
+    return ruleId;
+}
+
++ (NSString *) subscriptionId {
+    static NSString *subId = nil;
+    if(!subId){
+        subId = @MACRO_VALUE(SUBSCRIPTION_ID);
+        if([subId isEqualToString:@"DEFAULT_SUBSCRIPTION_ID"]){
+            char *envar = getenv("SUBSCRIPTION_ID");
+            subId = (envar) ? [NSString stringWithUTF8String:envar] : nil;
+        }
+    }
+    return subId;
+}
 
 + (NSString *)odometerTriggerId {
-    return @"2adf089d-06ba-4c18-acef-cc70f848c461";
+    static NSString *odoTriggerId = nil;
+    if(!odoTriggerId){
+        odoTriggerId = @MACRO_VALUE(ODO_TRIGGER_ID);
+        if([odoTriggerId isEqualToString:@"DEFAULT_ODO_TRIGGER_ID"]){
+            char *envar = getenv("ODO_TRIGGER_ID");
+            odoTriggerId = (envar) ? [NSString stringWithUTF8String:envar] : nil;
+        }
+    }
+    return odoTriggerId;
 }
 
 
 + (NSString *)odometerId {
-    return @"7b98a761-d270-48e9-8720-6e221353769c";
+    static NSString *odoId = nil;
+    if(!odoId){
+        odoId = @MACRO_VALUE(ODO_ID);
+        if([odoId isEqualToString:@"DEFAULT_ODO_ID"]){
+            char *envar = getenv("ODO_ID");
+            odoId = (envar) ? [NSString stringWithUTF8String:envar] : nil;
+        }
+    }
+    return odoId;
 }
 
-
-
-+ (NSString *)vehicleId {
-    return @"c1e6f9e4-77eb-4989-bc23-a5e1236fd090";
++ (NSString *) telemetryMessageId{
+    static NSString *messageId = nil;
+    if(!messageId){
+        messageId = @MACRO_VALUE(MESSAGE_ID);
+        if([messageId isEqualToString:@"DEFAULT_MESSAGE_ID"]){
+            char *envar = getenv("MESSAGE_ID");
+            messageId = (envar) ? [NSString stringWithUTF8String:envar] : nil;
+        }
+    }
+    return messageId;
 }
 
-
+// This method removes all keys who's value is null from the dictionary;
 + (NSMutableDictionary *)cleanDictionary:(NSDictionary *)dict {
     NSMutableDictionary *mutDict = [dict mutableCopy];
     
@@ -43,24 +169,10 @@
     [mutDict removeObjectsForKeys:keyForNullValues];
     
     return mutDict;
-  
-    
 }
 
 + (NSInteger)defaultTimeOut {
-    return 15.0;
-}
-
-+ (NSString *)accessToken {
-    
-    //Unzip token.zip and use the accesstoken here
-    
-    return @"";
-}
-
-
-+ (NSString *)deviceId {
-    return @"ba89372f-74f4-43c8-a4fd-b8f24699426e";
+    return 45.0;
 }
 
 + (NSDictionary *) getVehicleJSON:(NSString *) deviceId{
@@ -989,6 +1101,111 @@
                                          ]
                                  };
     return dictionary;
+}
+
++ (NSDictionary *) getAllDistancesJSON{
+    NSDictionary *dictionary = @{
+        @"distances": @[
+                      @{
+                          @"confidenceMin": @24140100,
+                          @"confidenceMax": @24140100,
+                          @"value": @24140100,
+                          @"lastOdometerDate": @"2016-09-01T19:29:01.267Z"
+                      },
+                      @{
+                          @"confidenceMin": @24139100,
+                          @"confidenceMax": @24141100,
+                          @"value": @24140100,
+                          @"lastOdometerDate": @"2016-09-01T19:29:01.267Z"
+                      }
+                      ]
+        };
+    
+    return dictionary;
+}
+
++ (NSDictionary *) getAllOdometersJSON{
+    NSDictionary *dictionary = @{
+                                 @"odometers": @[
+                                               @{
+                                                   @"id": @"7ffb35bb-bcff-46af-aa8e-6e5b8dbf6199",
+                                                   @"vehicleId": @"2e66842a-7dcf-476f-80bf-ed08961cbcfb",
+                                                   @"reading": @24140100,
+                                                   @"date": @"2016-09-01T19:29:01.267Z",
+                                                   @"links": @{
+                                                       @"vehicle": @"https://platform.vin.li/api/v1/vehicles/2e66842a-7dcf-476f-80bf-ed08961cbcfb"
+                                                   }
+                                               }
+                                               ],
+                                 @"meta": @{
+                                     @"pagination": @{
+                                         @"remaining": @0,
+                                         @"until": @"2016-09-02T19:21:25.474Z",
+                                         @"since": @"1970-01-01T00:00:00.000Z",
+                                         @"limit": @20,
+                                         @"sortDir": @"desc",
+                                         @"links": @{}
+                                     }
+                                 }
+                                 };
+    return dictionary;
+}
+
++ (NSDictionary *) getOdometerJSON{
+    NSDictionary *dictionary = @{
+                                 @"odometer": @{
+                                     @"id": @"7ffb35bb-bcff-46af-aa8e-6e5b8dbf6199",
+                                     @"vehicleId": @"2e66842a-7dcf-476f-80bf-ed08961cbcfb",
+                                     @"reading": @24140100,
+                                     @"date": @"2016-09-01T19:29:01.267Z",
+                                     @"links": @{
+                                         @"vehicle": @"https://platform.vin.li/api/v1/vehicles/2e66842a-7dcf-476f-80bf-ed08961cbcfb"
+                                     }
+                                 }
+                                 };
+    return dictionary;
+}
+
++ (NSDictionary *) getAllOdometerTriggersJSON{
+    return @{
+             @"odometerTriggers": @[
+                                  @{
+                                      @"id": @"2ad86caa-5a30-429e-80b8-80bc3da5efe6",
+                                      @"vehicleId": @"2e66842a-7dcf-476f-80bf-ed08961cbcfb",
+                                      @"type": @"specific",
+                                      @"threshold": @80467000,
+                                      @"events": @0,
+                                      @"links": @{
+                                          @"vehicle": @"https://platform.vin.li/api/v1/vehicles/2e66842a-7dcf-476f-80bf-ed08961cbcfb"
+                                      }
+                                  }
+                                  ],
+             @"meta": @{
+                 @"pagination": @{
+                     @"remaining": @0,
+                     @"until": @"2016-09-02T19:27:42.589Z",
+                     @"since": @"1970-01-01T00:00:00.000Z",
+                     @"limit": @20,
+                     @"sortDir": @"desc",
+                     @"links": @{}
+                 }
+             }
+             };
+}
+
++ (NSDictionary *) getOdometerTriggerJSON{
+    return @{
+             @"odometerTrigger": @{
+                 @"id": @"2ad86caa-5a30-429e-80b8-80bc3da5efe6",
+                 @"vehicleId": @"2e66842a-7dcf-476f-80bf-ed08961cbcfb",
+                 @"type": @"specific",
+                 @"threshold": @80467000,
+                 @"events": @0,
+                 @"links": @{
+                     @"vehicle": @"https://platform.vin.li/api/v1/vehicles/2e66842a-7dcf-476f-80bf-ed08961cbcfb"
+                 }
+             }
+             };
 }
 
 @end

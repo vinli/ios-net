@@ -14,13 +14,8 @@
 
 
 @interface VLTripsIntegrationTests : XCTestCase
-@property NSDictionary *trips;
-@property NSDictionary *trip;
-@property NSDictionary *vehicleTrips;
 
-
-
-
+@property VLService *vlService;
 
 @end
 
@@ -29,133 +24,90 @@
 - (void)setUp {
     [super setUp];
     
-    
-    
-    XCTestExpectation *expectationT = [self expectationWithDescription:@"call made to get device trips"];
-    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://trips.vin.li/api/v1/devices/%@/trips", [VLTestHelper deviceId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        [expectationT fulfill];
-        self.trips = result;
-        XCTAssertTrue(YES);
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
-        XCTAssertTrue(NO);
-}];
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-    
-    XCTestExpectation *singleTripExpectation = [self expectationWithDescription:@"uri call for single trip"];
-    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://trips.vin.li/api/v1/trips/%@", [VLTestHelper tripId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        [singleTripExpectation fulfill];
-        self.trip = result;
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
-        XCTAssertTrue(NO);
-    }];
-    
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-    
-    
-    XCTestExpectation *vehicleTripExpectation = [self expectationWithDescription:@"call to get a vehicles trips"];
-    [[VLSessionManager sharedManager].service startWithHost:[VLTestHelper accessToken] requestUri:[NSString stringWithFormat:@"https://trips.vin.li/api/v1/vehicles/%@/trips", [VLTestHelper vehicleId]] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        [vehicleTripExpectation fulfill];
-        self.vehicleTrips = result;
-        XCTAssertTrue(YES);
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *msg) {
-        XCTAssertTrue(NO);
-    }];
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-    
-    
-    
-    
-
-
+    _vlService = [VLTestHelper vlService];
 }
-
-
-- (void)testGetAllTripsWithDeviceId {
-    NSDictionary *expectedJSON = self.trips;
-    XCTestExpectation *tripsExpectation = [self expectationWithDescription:@"trips call"];
-    [[VLSessionManager sharedManager].service getTripsForDeviceWithId:[VLTestHelper deviceId] onSuccess:^(VLTripPager *tripPager, NSHTTPURLResponse *response) {
-        [tripsExpectation fulfill];
-        
-        
-        
-        if (tripPager.trips.count == 0)
-        {
-            XCTAssertEqual(tripPager.priorURL, expectedJSON[@"meta"][@"pagination"][@"links"][@"prior"]);
-            XCTAssertEqual(tripPager.nextURL, expectedJSON[@"meta"][@"pagination"][@"links"][@"next"]);
-            
-        }
-        else
-        {
-        XCTAssertEqual(tripPager.trips.count, [expectedJSON[@"trips"] count]);
-        //XCTAssertEqual(tripPager.total, [expectedJSON[@"meta"][@"pagination"][@"total"] unsignedLongValue]);
-        XCTAssertEqualObjects(((VLTrip*)[tripPager.trips objectAtIndex:0]).tripId, expectedJSON[@"trips"][0][@"id"]);
-        XCTAssertEqualObjects([tripPager.priorURL absoluteString], expectedJSON[@"meta"][@"pagination"][@"links"][@"prior"]);
-        XCTAssertEqualObjects([tripPager.nextURL absoluteString], expectedJSON[@"meta"][@"pagination"][@"links"][@"next"]);
-        //XCTAssertEqualObjects(tripPager.since, expectedJSON[@"meta"][@"pagination"][@"since"]);
-       // XCTAssertEqualObjects(tripPager.until, expectedJSON[@"meta"][@"pagination"][@"until"]); //timeseries sensitive
-        }
-        
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-        XCTAssertTrue(NO);
-    }];
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-}
-
-
-
-- (void)testTripWithId {
-    NSDictionary *expectedJSON = [VLTestHelper cleanDictionary:self.trip[@"trip"]];
-    XCTestExpectation *singleExpectedTrip = [self expectationWithDescription:@"test service call for getting a single trip"];
-    [[VLSessionManager sharedManager].service getTripWithId:[VLTestHelper tripId] onSuccess:^(VLTrip *trip, NSHTTPURLResponse *response) {
-        [singleExpectedTrip fulfill];
-        XCTAssertEqualObjects(trip.tripId, expectedJSON[@"id"]);
-        XCTAssertEqualObjects(trip.start, expectedJSON[@"start"]);
-        XCTAssertEqualObjects([VLDateFormatter stringFromDate:[trip startDate]], expectedJSON[@"start"]);
-        XCTAssertEqualObjects(trip.stop, expectedJSON[@"stop"]);
-        XCTAssertEqualObjects([VLDateFormatter stringFromDate:[trip stopDate]], expectedJSON[@"stop"]);
-        XCTAssertEqualObjects(trip.status, expectedJSON[@"status"]);
-        
-        
-        
-
-       
-        
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-        XCTAssertTrue(NO);
-    }];
-    
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-}
-
-
-- (void)testTripsWithVehicleId {
-    NSDictionary *expectedJSON = self.vehicleTrips;
-    XCTestExpectation *expectedVehicleTrips = [self expectationWithDescription:@"Service call for vehicle trips"];
-    [[VLSessionManager sharedManager].service getTripsForVehicleWithId:[VLTestHelper vehicleId] onSuccess:^(VLTripPager *tripPager, NSHTTPURLResponse *response) {
-        [expectedVehicleTrips fulfill];
-        XCTAssertEqual(tripPager.trips.count, [expectedJSON[@"trips"] count]);
-        //XCTAssertEqual(tripPager.total, [expectedJSON[@"meta"][@"pagination"][@"total"] unsignedLongValue]);
-        XCTAssertEqualObjects(((VLTrip*)[tripPager.trips objectAtIndex:0]).tripId, expectedJSON[@"trips"][0][@"id"]);
-        XCTAssertEqualObjects([tripPager.priorURL absoluteString], expectedJSON[@"meta"][@"pagination"][@"links"][@"prior"]);
-        XCTAssertEqualObjects([tripPager.nextURL absoluteString], expectedJSON[@"meta"][@"pagination"][@"links"][@"next"]);
-        XCTAssertEqualObjects(tripPager.since, expectedJSON[@"meta"][@"pagination"][@"since"]);
-        // XCTAssertEqualObjects(tripPager.until, expectedJSON[@"meta"][@"pagination"][@"until"]); //timeseries sensitive
-        
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-        XCTAssertTrue(NO);
-    }];
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-}
-
-
 
 - (void)tearDown {
-
     [super tearDown];
 }
 
+- (void)testGetAllTripsWithDeviceId {
+    if(![VLTestHelper deviceId]){
+        XCTAssertTrue(NO);
+        return;
+    }
+    
+    XCTestExpectation *tripsExpectation = [self expectationWithDescription:@"trips call"];
+    [_vlService getTripsForDeviceWithId:[VLTestHelper deviceId] onSuccess:^(VLTripPager *tripPager, NSHTTPURLResponse *response) {
+        XCTAssertTrue(tripPager.trips.count > 0);
+        XCTAssertTrue(tripPager.since != nil && [tripPager.since isKindOfClass:[NSString class]] && tripPager.since.length > 0);
+        XCTAssertTrue(tripPager.until != nil && [tripPager.until isKindOfClass:[NSString class]] && tripPager.until.length > 0);
+        
+        for(VLTrip *trip in tripPager.trips){
+            XCTAssertTrue(trip.tripId != nil && [trip.tripId isKindOfClass:[NSString class]] && trip.tripId.length > 0);
+            XCTAssertTrue(trip.start != nil && [trip.start isKindOfClass:[NSString class]] && trip.start.length > 0);
+            XCTAssertTrue(trip.stop != nil && [trip.stop isKindOfClass:[NSString class]] && trip.stop.length > 0);
+            XCTAssertTrue(trip.vehicleId != nil && [trip.vehicleId isKindOfClass:[NSString class]] && trip.vehicleId.length > 0);
+            XCTAssertTrue(trip.deviceId != nil && [trip.deviceId isKindOfClass:[NSString class]] && trip.deviceId.length > 0);
+        }
+        
+        [tripsExpectation fulfill];
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        XCTAssertTrue(NO);
+        [tripsExpectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
+}
 
+- (void)testTripWithId {
+    if(![VLTestHelper tripId]){
+        XCTAssertTrue(NO);
+        return;
+    }
+    
+    XCTestExpectation *singleExpectedTrip = [self expectationWithDescription:@"test service call for getting a single trip"];
+    [_vlService getTripWithId:[VLTestHelper tripId] onSuccess:^(VLTrip *trip, NSHTTPURLResponse *response) {
+        XCTAssertTrue(trip.tripId != nil && [trip.tripId isKindOfClass:[NSString class]] && trip.tripId.length > 0);
+        XCTAssertTrue(trip.start != nil && [trip.start isKindOfClass:[NSString class]] && trip.start.length > 0);
+        XCTAssertTrue(trip.stop != nil && [trip.stop isKindOfClass:[NSString class]] && trip.stop.length > 0);
+        XCTAssertTrue(trip.vehicleId != nil && [trip.vehicleId isKindOfClass:[NSString class]] && trip.vehicleId.length > 0);
+        XCTAssertTrue(trip.deviceId != nil && [trip.deviceId isKindOfClass:[NSString class]] && trip.deviceId.length > 0);
+        [singleExpectedTrip fulfill];
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        XCTAssertTrue(NO);
+        [singleExpectedTrip fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
+}
 
-
+- (void)testTripsWithVehicleId {
+    if(![VLTestHelper vehicleId]){
+        XCTAssertTrue(NO);
+        return;
+    }
+    
+    XCTestExpectation *expectedVehicleTrips = [self expectationWithDescription:@"Service call for vehicle trips"];
+    [_vlService getTripsForVehicleWithId:[VLTestHelper vehicleId] onSuccess:^(VLTripPager *tripPager, NSHTTPURLResponse *response) {
+        XCTAssertTrue(tripPager.trips.count > 0);
+        XCTAssertTrue(tripPager.since != nil && [tripPager.since isKindOfClass:[NSString class]] && tripPager.since.length > 0);
+        XCTAssertTrue(tripPager.until != nil && [tripPager.until isKindOfClass:[NSString class]] && tripPager.until.length > 0);
+        
+        for(VLTrip *trip in tripPager.trips){
+            XCTAssertTrue(trip.tripId != nil && [trip.tripId isKindOfClass:[NSString class]] && trip.tripId.length > 0);
+            XCTAssertTrue(trip.start != nil && [trip.start isKindOfClass:[NSString class]] && trip.start.length > 0);
+            XCTAssertTrue(trip.stop != nil && [trip.stop isKindOfClass:[NSString class]] && trip.stop.length > 0);
+            XCTAssertTrue(trip.vehicleId != nil && [trip.vehicleId isKindOfClass:[NSString class]] && trip.vehicleId.length > 0);
+            XCTAssertTrue(trip.deviceId != nil && [trip.deviceId isKindOfClass:[NSString class]] && trip.deviceId.length > 0);
+        }
+        [expectedVehicleTrips fulfill];
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        XCTAssertTrue(NO);
+        [expectedVehicleTrips fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
+}
 
 @end
