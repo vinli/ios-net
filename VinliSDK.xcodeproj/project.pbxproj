@@ -104,6 +104,10 @@
 		49AB6E9E1B82446900DCF808 /* VLUserCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AB6E9C1B82446900DCF808 /* VLUserCache.m */; };
 		49E2F2FF1B6AA93700CD743C /* NSDictionary+NonNullable.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E2F2FD1B6AA93700CD743C /* NSDictionary+NonNullable.h */; };
 		49E2F3001B6AA93700CD743C /* NSDictionary+NonNullable.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E2F2FE1B6AA93700CD743C /* NSDictionary+NonNullable.m */; };
+		65312B5A1D945643006FB968 /* VLBatteryStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 65312B581D945643006FB968 /* VLBatteryStatus.h */; };
+		65312B5B1D945643006FB968 /* VLBatteryStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 65312B591D945643006FB968 /* VLBatteryStatus.m */; };
+		65312B5D1D945E7C006FB968 /* VLDiagnosticTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65312B5C1D945E7C006FB968 /* VLDiagnosticTests.m */; };
+		65312B5F1D946154006FB968 /* VLDiagnosticIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65312B5E1D946154006FB968 /* VLDiagnosticIntegrationTests.m */; };
 		6568FB2D1D0F0313006C3656 /* VLSupportedPids.h in Headers */ = {isa = PBXBuildFile; fileRef = 6568FB2B1D0F0313006C3656 /* VLSupportedPids.h */; };
 		6568FB2E1D0F0313006C3656 /* VLSupportedPids.m in Sources */ = {isa = PBXBuildFile; fileRef = 6568FB2C1D0F0313006C3656 /* VLSupportedPids.m */; };
 		6589E6591D09CF220017D75B /* VLBearingCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = 6589E6531D09CF220017D75B /* VLBearingCalculator.h */; };
@@ -266,6 +270,10 @@
 		49AB6E9C1B82446900DCF808 /* VLUserCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLUserCache.m; sourceTree = "<group>"; };
 		49E2F2FD1B6AA93700CD743C /* NSDictionary+NonNullable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NonNullable.h"; sourceTree = "<group>"; };
 		49E2F2FE1B6AA93700CD743C /* NSDictionary+NonNullable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NonNullable.m"; sourceTree = "<group>"; };
+		65312B581D945643006FB968 /* VLBatteryStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLBatteryStatus.h; sourceTree = "<group>"; };
+		65312B591D945643006FB968 /* VLBatteryStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLBatteryStatus.m; sourceTree = "<group>"; };
+		65312B5C1D945E7C006FB968 /* VLDiagnosticTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLDiagnosticTests.m; sourceTree = "<group>"; };
+		65312B5E1D946154006FB968 /* VLDiagnosticIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLDiagnosticIntegrationTests.m; sourceTree = "<group>"; };
 		6568FB2B1D0F0313006C3656 /* VLSupportedPids.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLSupportedPids.h; sourceTree = "<group>"; };
 		6568FB2C1D0F0313006C3656 /* VLSupportedPids.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLSupportedPids.m; sourceTree = "<group>"; };
 		6589E6531D09CF220017D75B /* VLBearingCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLBearingCalculator.h; sourceTree = "<group>"; };
@@ -453,6 +461,8 @@
 				7753A7861C80EC7A00D3080F /* VLEventsIntegrationTests.m */,
 				7753A7841C80C8A700D3080F /* VLSubscriptionIntegrationTests.m */,
 				7753A78A1C87713D00D3080F /* VLRulesIntegrationTests.m */,
+				65312B5C1D945E7C006FB968 /* VLDiagnosticTests.m */,
+				65312B5E1D946154006FB968 /* VLDiagnosticIntegrationTests.m */,
 			);
 			path = VinliSDKTests;
 			sourceTree = "<group>";
@@ -601,6 +611,8 @@
 				0B69F0A91B39B54100684F6D /* VLObjectRef.m */,
 				65FFFB541CBEAAAD009D4CF1 /* VLCoordinate.h */,
 				65FFFB551CBEAAAD009D4CF1 /* VLCoordinate.m */,
+				65312B581D945643006FB968 /* VLBatteryStatus.h */,
+				65312B591D945643006FB968 /* VLBatteryStatus.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -723,6 +735,7 @@
 				77BE999E1C73A4A5001E8F64 /* VLVehicle.h in Headers */,
 				6589E6591D09CF220017D75B /* VLBearingCalculator.h in Headers */,
 				777A6B811C91E3080050F6C0 /* VLUserSettings.h in Headers */,
+				65312B5A1D945643006FB968 /* VLBatteryStatus.h in Headers */,
 				0B89E48A1B179FE300E69AEA /* VLNotification.h in Headers */,
 				0B37782B1B28B7B8004AC2D6 /* VLLoginButton.h in Headers */,
 				659718D21CBDA3020075BE36 /* VLStreamMessage.h in Headers */,
@@ -1005,6 +1018,7 @@
 				65FFFB391CBE94E8009D4CF1 /* VLAccelData.m in Sources */,
 				6568FB2E1D0F0313006C3656 /* VLSupportedPids.m in Sources */,
 				4903FDB91D008B630012AA72 /* VLSIMSignal.m in Sources */,
+				65312B5B1D945643006FB968 /* VLBatteryStatus.m in Sources */,
 				6589E65E1D09CF220017D75B /* VLBearing.m in Sources */,
 				65FFFB531CBEA8DC009D4CF1 /* VLGeometryFilter.m in Sources */,
 				0B3DDC2B1B14C31B00D95E61 /* VLOffsetPager.m in Sources */,
@@ -1055,11 +1069,13 @@
 				7753A7801C7CE66300D3080F /* A_VLLoginIntegrationTest.m in Sources */,
 				7753A78B1C87713D00D3080F /* VLRulesIntegrationTests.m in Sources */,
 				777A6B901C9379890050F6C0 /* VLDistanceServicesIntegrationTests.m in Sources */,
+				65312B5D1D945E7C006FB968 /* VLDiagnosticTests.m in Sources */,
 				0B3DDC571B1528DB00D95E61 /* VLTripServicesTests.m in Sources */,
 				7753A7851C80C8A700D3080F /* VLSubscriptionIntegrationTests.m in Sources */,
 				E92943671B165A3300AAC7D3 /* VLEventServicesTests.m in Sources */,
 				7753A7811C7CE66300D3080F /* VLPlatformServicesIntegrationTests.m in Sources */,
 				7753A7831C7CEF3700D3080F /* VLTelemetryIntegrationTests.m in Sources */,
+				65312B5F1D946154006FB968 /* VLDiagnosticIntegrationTests.m in Sources */,
 				0B3DDC3D1B14EEE200D95E61 /* VLTestHelper.m in Sources */,
 				7753A7891C86365F00D3080F /* VLTripsIntegrationTests.m in Sources */,
 			);
