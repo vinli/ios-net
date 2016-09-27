@@ -30,6 +30,7 @@
 #define STRING_HOST_TRIPS       @"trips"
 #define STRING_HOST_STREAM      @"stream"
 #define STRING_HOST_DISTANCE   @"distance"
+#define STRING_HOST_DIAGNOSTIC @"diagnostic"
 
 #define DEFAULT_HOST            @".vin.li"
 
@@ -1731,14 +1732,40 @@
     
 }
 
+#pragma mark - Diagnostic Service
 
-
-
-
-
-
-
-
+- (void) getCurrentBatteryStatusWithVehicleId:(NSString *)vehicleId
+                                    onSuccess:(void (^)(VLBatteryStatus *batteryStatus, NSHTTPURLResponse *response))onSuccessBlock
+                                    onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
+    if(_session == nil){
+        if(onFailureBlock){
+            onFailureBlock([self getNoSessionError], nil, nil);
+        }
+        return;
+    }
+    
+    NSString *path = [NSString stringWithFormat:@"/vehicles/%@/battery_statuses/_current", vehicleId];
+    
+    [self startWithHost:STRING_HOST_DIAGNOSTIC path:path queries:nil HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        
+        if (response.statusCode == 200) {
+            if (onSuccessBlock) {
+                VLBatteryStatus *batteryStatus = [[VLBatteryStatus alloc] initWithDictionary:result];
+                onSuccessBlock(batteryStatus, response);
+            }
+        }
+        else {
+            if (onFailureBlock) {
+                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:2002 userInfo:@{@"NSLocalizedDescriptionKey": @"Received unexpected response from API call"}];
+                onFailureBlock(error, response, result.description);
+            }
+        }
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) {
+            onFailureBlock(error, response, bodyString);
+        }
+    }];
+}
 
 #pragma mark - NSError
 

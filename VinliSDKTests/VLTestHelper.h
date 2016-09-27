@@ -59,6 +59,7 @@
 + (NSDictionary *) getOdometerJSON;
 + (NSDictionary *) getAllOdometerTriggersJSON;
 + (NSDictionary *) getOdometerTriggerJSON;
++ (NSDictionary *) getBatteryStatusJSON;
 
 + (NSMutableDictionary *)cleanDictionary:(NSDictionary *)dict;
 
