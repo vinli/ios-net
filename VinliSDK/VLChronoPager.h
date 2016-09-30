@@ -13,9 +13,7 @@
 
 @interface VLChronoPager : VLPager
 
-
-
-@property (readonly) unsigned long remaining;
+@property (readonly) unsigned long remaining; // This should return the number trips left to be paginated
 @property (readonly) NSString *until;
 @property (readonly) NSString *since;
 @property (readonly) NSURL *nextURL;

@@ -23,11 +23,15 @@
     self = [super init];
     if(self) {
         
-        if(dictionary){
+        if(dictionary)
+        {
             
-            if(dictionary[@"trip"] != nil){
+            if(dictionary[@"trip"] != nil)
+            {
                 dictionary = dictionary[@"trip"];
             }
+            
+            dictionary = [dictionary filterAllNSNullValues];
             
             _tripId = [dictionary objectForKey:@"id"];
             _start = [dictionary jsonObjectForKey:@"start"];
@@ -50,7 +54,7 @@
             
             if([dictionary objectForKey:@"links"]){
                 _selfURL = [NSURL URLWithString:[[dictionary objectForKey:@"links"] objectForKey:@"self"]];
-                _deviceURL = [NSURL URLWithString:[[dictionary objectForKey:@"link"] objectForKey:@"device"]];
+                _deviceURL = [NSURL URLWithString:[[dictionary objectForKey:@"links"] objectForKey:@"device"]];
                 _vehicleURL = [NSURL URLWithString:[[dictionary objectForKey:@"links"] objectForKey:@"vehicle"]];
                 _locationsURL = [NSURL URLWithString:[[dictionary objectForKey:@"links"] objectForKey:@"locations"]];
                 _messagesURL = [NSURL URLWithString:[[dictionary objectForKey:@"links"] objectForKey:@"messages"]];
@@ -59,8 +63,14 @@
             
             if ([dictionary jsonObjectForKey:@"stats"])
             {
-                _stats = [dictionary jsonObjectForKey:@"stats"];
-                
+                NSDictionary* stats = [[dictionary jsonObjectForKey:@"stats"] copy];
+                NSMutableDictionary* statsMutable = [stats mutableCopy];
+                [stats enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+                    if ([obj isKindOfClass:[NSNull class]]) {
+                        [statsMutable removeObjectForKey:key];
+                    }
+                }];
+                _stats = [NSDictionary dictionaryWithDictionary:statsMutable];
             }
         
         }

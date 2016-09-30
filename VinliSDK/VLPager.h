@@ -18,7 +18,7 @@
 @property (readonly) unsigned long limit; // Max = 50;
 @property (weak, nonatomic) VLService* service;
 
-- (id) initWithDictionary: (NSDictionary *) dictionary;
-- (id) initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service;
+- (id)initWithDictionary:(NSDictionary *)dictionary;
+- (id)initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service;
 
 @end

@@ -18,12 +18,18 @@
 
 - (id) initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service
 {
-    if (self = [super initWithDictionary:dictionary service:service]) {
-        if(dictionary && dictionary[@"meta"] && dictionary[@"meta"][@"pagination"]){
+    if (self = [super initWithDictionary:dictionary service:service])
+    {
+        if(dictionary[@"meta"][@"pagination"])
+        {
+            dictionary = [dictionary filterAllNSNullValues];
+            
             _remaining = [dictionary[@"meta"][@"pagination"][@"remaining"] unsignedLongValue];//tbd this maybe should be remainingCount.
             _until = dictionary[@"meta"][@"pagination"][@"until"];
             _since = dictionary[@"meta"][@"pagination"][@"since"];
-            if(dictionary[@"meta"][@"pagination"][@"links"]){
+            
+            if(dictionary[@"meta"][@"pagination"][@"links"])
+            {
                 _nextURL = [NSURL URLWithString:dictionary[@"meta"][@"pagination"][@"links"][@"next"]];
                 _priorURL = [NSURL URLWithString:dictionary[@"meta"][@"pagination"][@"links"][@"prior"]];
             }

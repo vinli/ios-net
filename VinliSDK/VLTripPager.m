@@ -12,7 +12,10 @@
 
 @implementation VLTripPager
 
-- (id) initWithDictionary:(NSDictionary *)dictionary{
+@dynamic priorURL, nextURL, remaining;
+
+- (id) initWithDictionary:(NSDictionary *)dictionary
+{
     return [self initWithDictionary:dictionary service:nil];
 }
 
@@ -66,15 +69,24 @@
     
 }
 
-- (NSArray *)poulateTrips:(NSDictionary *)dictionary
+- (NSArray *)populateTrips:(NSDictionary *)dictionary
 {
-    if(dictionary) {
-        if(dictionary[@"trips"]){
+    if(dictionary)
+    {
+        dictionary = [dictionary filterAllNSNullValues];
+        
+        if(dictionary[@"trips"])
+        {
             NSArray *json = dictionary[@"trips"];
             NSMutableArray *tripArray = [[NSMutableArray alloc] init];
             
-            for(NSDictionary *trip in json){
-                [tripArray addObject:[[VLTrip alloc] initWithDictionary:trip]];
+            for(NSDictionary *trip in json)
+            {
+                VLTrip *aTrip = [[VLTrip alloc] initWithDictionary:trip];
+                if (aTrip)
+                {
+                    [tripArray addObject:aTrip];
+                }
             }
             return tripArray;
         }

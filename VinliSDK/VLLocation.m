@@ -8,37 +8,39 @@
 
 #import "VLLocation.h"
 
+#import "NSDictionary+NonNullable.h"
+
 @implementation VLLocation
 
-- (id) initWithDictionary: (NSDictionary *) dictionary{
+- (id)initWithDictionary: (NSDictionary *) dictionary{
     
-    self = [super init];
-    if(self){
-        if(dictionary){
+    if (self = [super init])
+    {
+        if (dictionary)
+        {
+            dictionary = [dictionary filterAllNSNullValues];
             
             _locationType = dictionary[@"type"];
             
-            if(dictionary[@"geometry"]){
+            if (dictionary[@"geometry"])
+            {
                 _geometryType = dictionary[@"geometry"][@"type"];
-                if(dictionary[@"geometry"][@"coordinates"]){
+                
+                if (dictionary[@"geometry"][@"coordinates"])
+                {
                     _longitude = [dictionary[@"geometry"][@"coordinates"][0] doubleValue];
                     _latitude = [dictionary[@"geometry"][@"coordinates"][1] doubleValue];
                 }
             }
             
-//alternate schema
-            if(dictionary[@"type"]){
+// alternate schema
+            if (dictionary[@"type"])
+            {
                 _geometryType = dictionary[@"type"];
-                if(_geometryType == [NSNull null]){
-                    return nil;
-                }
             }
             
-            if(dictionary[@"coordinates"]){
-                if(dictionary[@"coordinates"] == [NSNull null]){
-                    return nil;
-                }
-        
+            if (dictionary[@"coordinates"])
+            {
                 _longitude = [dictionary[@"coordinates"][0] doubleValue];
                 _latitude = [dictionary[@"coordinates"][1] doubleValue];
             }
@@ -49,7 +51,8 @@
     return self;
 }
 
-- (NSString *) description{
+- (NSString *)description
+{
      return [NSString stringWithFormat: @"latitude: %f, longitude: %f", _latitude, _longitude];
 }
 
