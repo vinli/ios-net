@@ -159,6 +159,11 @@
 		77BE999D1C73A4A5001E8F64 /* VLOffsetPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B3DDC281B14C31B00D95E61 /* VLOffsetPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		77BE999E1C73A4A5001E8F64 /* VLVehicle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B1671371B0FC39D009BE7A9 /* VLVehicle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F0CDBA0D67CD0F5601B7D06 /* libPods-VinliSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0DCB50B987057256E8F3F31 /* libPods-VinliSDK.a */; };
+		BF3B33351D9B14F8001DED7D /* VLPagerUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3B33341D9B14F8001DED7D /* VLPagerUnitTests.m */; };
+		BF3B33391D9C1F33001DED7D /* VLChronoPagerUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3B33381D9C1F33001DED7D /* VLChronoPagerUnitTests.m */; };
+		BF3B333B1D9C4999001DED7D /* VLTripPagerUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3B333A1D9C4999001DED7D /* VLTripPagerUnitTests.m */; };
+		BF3B333D1D9C4F82001DED7D /* VLLocationUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3B333C1D9C4F82001DED7D /* VLLocationUnitTests.m */; };
+		BF3B333F1D9C59E6001DED7D /* VLTripUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3B333E1D9C59E6001DED7D /* VLTripUnitTests.m */; };
 		E92943591B15387C00AAC7D3 /* VLTelemetryServicesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E92943581B15387C00AAC7D3 /* VLTelemetryServicesTests.m */; };
 		E929435C1B15425400AAC7D3 /* VLTelemetryMessagePager.h in Headers */ = {isa = PBXBuildFile; fileRef = E929435A1B15425400AAC7D3 /* VLTelemetryMessagePager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E929435D1B15425400AAC7D3 /* VLTelemetryMessagePager.m in Sources */ = {isa = PBXBuildFile; fileRef = E929435B1B15425400AAC7D3 /* VLTelemetryMessagePager.m */; };
@@ -324,6 +329,11 @@
 		77BE999A1C690E77001E8F64 /* VLTimeSeries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTimeSeries.m; sourceTree = "<group>"; };
 		88D7379D442A45FB492F5431 /* Pods-VinliSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinliSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VinliSDK/Pods-VinliSDK.debug.xcconfig"; sourceTree = "<group>"; };
 		8B5953BB46AA0C7E3B90F9B5 /* libPods-VinliSDKTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VinliSDKTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF3B33341D9B14F8001DED7D /* VLPagerUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLPagerUnitTests.m; sourceTree = "<group>"; };
+		BF3B33381D9C1F33001DED7D /* VLChronoPagerUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLChronoPagerUnitTests.m; sourceTree = "<group>"; };
+		BF3B333A1D9C4999001DED7D /* VLTripPagerUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTripPagerUnitTests.m; sourceTree = "<group>"; };
+		BF3B333C1D9C4F82001DED7D /* VLLocationUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLLocationUnitTests.m; sourceTree = "<group>"; };
+		BF3B333E1D9C59E6001DED7D /* VLTripUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTripUnitTests.m; sourceTree = "<group>"; };
 		C4778D3E1E82642D2908354C /* Pods-VinliSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinliSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VinliSDKTests/Pods-VinliSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E92943581B15387C00AAC7D3 /* VLTelemetryServicesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTelemetryServicesTests.m; sourceTree = "<group>"; };
 		E929435A1B15425400AAC7D3 /* VLTelemetryMessagePager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLTelemetryMessagePager.h; sourceTree = "<group>"; };
@@ -436,6 +446,11 @@
 		0B1671131B0FC2B9009BE7A9 /* VinliSDKTests */ = {
 			isa = PBXGroup;
 			children = (
+				BF3B333E1D9C59E6001DED7D /* VLTripUnitTests.m */,
+				BF3B333C1D9C4F82001DED7D /* VLLocationUnitTests.m */,
+				BF3B333A1D9C4999001DED7D /* VLTripPagerUnitTests.m */,
+				BF3B33381D9C1F33001DED7D /* VLChronoPagerUnitTests.m */,
+				BF3B33341D9B14F8001DED7D /* VLPagerUnitTests.m */,
 				0B1671141B0FC2B9009BE7A9 /* Supporting Files */,
 				0B1671781B0FD64B009BE7A9 /* VLPlatformServicesTests.m */,
 				7753A7821C7CEF3700D3080F /* VLTelemetryIntegrationTests.m */,
@@ -1048,17 +1063,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BD2E50E1B0FF3DD00A5D2BC /* VLRuleServicesTests.m in Sources */,
+				BF3B33351D9B14F8001DED7D /* VLPagerUnitTests.m in Sources */,
 				0B1671791B0FD64B009BE7A9 /* VLPlatformServicesTests.m in Sources */,
 				E929436D1B166B4600AAC7D3 /* VLSubscriptionServiceTests.m in Sources */,
 				7753A7871C80EC7A00D3080F /* VLEventsIntegrationTests.m in Sources */,
 				E92943591B15387C00AAC7D3 /* VLTelemetryServicesTests.m in Sources */,
 				7753A7801C7CE66300D3080F /* A_VLLoginIntegrationTest.m in Sources */,
 				7753A78B1C87713D00D3080F /* VLRulesIntegrationTests.m in Sources */,
+				BF3B333D1D9C4F82001DED7D /* VLLocationUnitTests.m in Sources */,
 				777A6B901C9379890050F6C0 /* VLDistanceServicesIntegrationTests.m in Sources */,
 				0B3DDC571B1528DB00D95E61 /* VLTripServicesTests.m in Sources */,
 				7753A7851C80C8A700D3080F /* VLSubscriptionIntegrationTests.m in Sources */,
+				BF3B33391D9C1F33001DED7D /* VLChronoPagerUnitTests.m in Sources */,
+				BF3B333B1D9C4999001DED7D /* VLTripPagerUnitTests.m in Sources */,
 				E92943671B165A3300AAC7D3 /* VLEventServicesTests.m in Sources */,
 				7753A7811C7CE66300D3080F /* VLPlatformServicesIntegrationTests.m in Sources */,
+				BF3B333F1D9C59E6001DED7D /* VLTripUnitTests.m in Sources */,
 				7753A7831C7CEF3700D3080F /* VLTelemetryIntegrationTests.m in Sources */,
 				0B3DDC3D1B14EEE200D95E61 /* VLTestHelper.m in Sources */,
 				7753A7891C86365F00D3080F /* VLTripsIntegrationTests.m in Sources */,
