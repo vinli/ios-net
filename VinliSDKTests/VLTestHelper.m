@@ -161,6 +161,16 @@
     return messageId;
 }
 
++ (NSString *)uuid
+{
+    return @"aa8073e0-0d4e-40cd-91da-6e198f864466";
+}
+
++ (NSString *)urlStr
+{
+    return @"https://vin.li";
+}
+
 // This method removes all keys who's value is null from the dictionary;
 + (NSMutableDictionary *)cleanDictionary:(NSDictionary *)dict {
     NSMutableDictionary *mutDict = [dict mutableCopy];
@@ -296,7 +306,8 @@
                                         ],
                                 @"meta": @{
                                         @"pagination" : @{
-                                                @"totalCount" : @14,
+                                                @"limit" : @14,
+                                                @"remaining" : @100,
                                                 @"since" : @"2015-12-15T06:00:00.000Z",
                                                 @"until" : @"2016-02-06T06:00:00.000Z",
                                                 @"links" : @{

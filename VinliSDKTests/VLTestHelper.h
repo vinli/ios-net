@@ -28,6 +28,8 @@
 + (NSString *) notificationId;
 + (NSString *) subscriptionId;
 + (NSString *) telemetryMessageId;
++ (NSString *) uuid;
++ (NSString *) urlStr;
 
 + (NSDictionary *) getVehicleJSON:(NSString *) deviceId;
 + (NSDictionary *) getTripJSON: (NSString *) vehicleId;
