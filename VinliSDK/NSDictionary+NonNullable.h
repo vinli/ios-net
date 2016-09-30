@@ -12,4 +12,6 @@
 
 - (id)jsonObjectForKey:(id)aKey;
 
+- (NSDictionary *)filterAllNSNullValues;
+
 @end
