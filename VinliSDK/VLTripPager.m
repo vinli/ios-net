@@ -9,6 +9,15 @@
 #import "VLTripPager.h"
 #import "VLService.h"
 
+#import "NSDictionary+NonNullable.h"
+
+@interface VLTripPager()
+@property (strong, nonatomic) NSURL* priorURL;
+@property (strong, nonatomic) NSURL* nextURL;
+@property (assign, readwrite) NSInteger remainingTrips;
+@property (readwrite) unsigned long remaining;
+
+@end
 
 @implementation VLTripPager
 

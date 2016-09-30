@@ -9,6 +9,14 @@
 #import "VLChronoPager.h"
 #import "VLService.h"
 
+#import "NSDictionary+NonNullable.h"
+
+@interface VLChronoPager()
+@property (strong, nonatomic) NSURL* priorURL;
+@property (strong, nonatomic) NSURL* nextURL;
+@property (readwrite) unsigned long remaining;
+@end
+
 @implementation VLChronoPager
 
 - (id) initWithDictionary:(NSDictionary *)dictionary {
