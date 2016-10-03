@@ -8,16 +8,22 @@
 
 #import "VLBatteryStatus.h"
 
+#import "NSDictionary+NonNullable.h"
+
 @implementation VLBatteryStatus
 
 - (instancetype) initWithDictionary:(NSDictionary *)dictionary{
     self = [super init];
     if(self){
-        if(dictionary){
-            if(dictionary == [NSNull null]){
+        if(dictionary)
+        {
+            if([dictionary isKindOfClass:[NSNull class]])
+            {
                 self = nil;
                 return nil;
             }
+            
+            dictionary = [dictionary filterAllNSNullValues];
             
             if([dictionary objectForKey:@"batteryStatus"] != nil){
                 if(dictionary[@"batteryStatus"] == [NSNull null]){
