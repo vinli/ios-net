@@ -86,6 +86,20 @@
     return mutableDict;
 }
 
+- (NSDictionary *)createZeroRemaingTripsPagerDictionaryWithLink
+{
+    NSMutableDictionary *mutableDict = [NSMutableDictionary new];
+    [mutableDict setObject:[NSMutableArray new] forKey:@"trips"];
+    
+    [mutableDict setObject:[NSMutableDictionary new] forKey:@"meta"];
+    [mutableDict[@"meta"] setObject:[NSMutableDictionary new] forKey:@"pagination"];
+    [mutableDict[@"meta"][@"pagination"] setObject:@0 forKey:@"remaining"];
+    [mutableDict[@"meta"][@"pagination"] setObject:[NSMutableDictionary new] forKey:@"links"];
+    [mutableDict[@"meta"][@"pagination"][@"links"] setObject:@"https://nextPriorURL" forKey:@"prior"];
+    
+    return mutableDict;
+}
+
 - (NSDictionary *)createNullTripsJSONResponse
 {
     NSMutableDictionary *mutableDict = [NSMutableDictionary new];
@@ -250,6 +264,59 @@
     }];
 }
 
+- (void)testGetNextTripsWithZeroRemainingAndPriorURLOnSuccess
+{
+    id mockConnection = OCMPartialMock(self.service);
+    
+    NSDictionary *initialResponse = [self createZeroRemaingTripsPagerDictionaryWithLink];
+    
+    VLTripPager *tripPager = [[VLTripPager alloc] initWithDictionary:initialResponse service:mockConnection];
+    
+    NSURL *copyNextURL = tripPager.nextURL;
+    NSURL *copyPriorURL = tripPager.priorURL;
+    
+    [tripPager getNextTrips:^(NSArray *values, NSError *error) {
+        
+        XCTAssertNotNil(error, @"Error should not be nil");
+        XCTAssertEqual(error.code, NSURLErrorUnknown, @"The error codes should equal eachother in order to explain the error.");
+
+        XCTAssertNil(values, @"Values should not exist.");
+        
+        if (copyPriorURL.absoluteString.length > 0)
+        {
+            XCTAssertNotNil(tripPager.priorURL, @"Since there are no remaining trips, then we should expect links dictionary to be empty since there is no new link to get more trips. However, there shoudld be an error if there is this one exists.");
+        }
+        
+        if (copyNextURL.absoluteString.length > 0)
+        {
+            XCTAssertNotNil(tripPager.nextURL, @"Since there are no remaining trips, then we should expect links dictionary to be empty since there is no new link to get more trips. However, there shoudld be an error if there is this one exists.");
+        }
+        
+    }];
+}
+
+- (void)testGetNextTripsWithZeroRemainingOnSuccess
+{
+    id mockConnection = OCMPartialMock(self.service);
+    
+    NSDictionary *initialResponse = [self createEmptyNextPagerDictionary];
+    
+    VLTripPager *tripPager = [[VLTripPager alloc] initWithDictionary:initialResponse service:mockConnection];
+    
+    [tripPager getNextTrips:^(NSArray *values, NSError *error) {
+        
+        XCTAssertNil(error, @"Error should be nil");
+        
+        XCTAssertNotNil(values, @"Values should exist.");
+        
+        XCTAssertEqual(values.count, 0, @"Since there are no remaining trips values should be zero.");
+        XCTAssertEqual(tripPager.remaining, 0, @"There should be zero remaining trips.");
+        
+        XCTAssertNil(tripPager.nextURL, @"Since there are no remaining trips, then we should expect links dictionary to be empty since there is no new link to get more trips.");
+        XCTAssertNil(tripPager.priorURL, @"Since there are no remaining trips, then we should expect links dictionary to be empty since there is no new link to get more trips.");
+    }];
+}
+
 - (void)testGetNextTripsOnFailure
 {
     id mockConnection = OCMPartialMock(self.service);
@@ -273,6 +340,19 @@
         XCTAssertNotNil(error, @"Error should not be nil");
         
         XCTAssertNil(values, @"Values should not exist.");
+    }];
+}
+
+- (void)testGetNextTripsWithoutVLService
+{
+    VLTripPager *pager = [[VLTripPager alloc] initWithDictionary:@{} service:nil];
+    
+    [pager getNextTrips:^(NSArray *values, NSError *error) {
+        
+        XCTAssertNil(values);
+        XCTAssertNotNil(error);
+        XCTAssertEqual(error.code, NSURLErrorUserAuthenticationRequired);
+        
     }];
 }
 
