@@ -157,7 +157,7 @@
     [self createDictionaryWithLocationType:nil geometryType:nil longitude:nil latitude:nil properties:@{}];
     VLLocation *location = [[VLLocation alloc] initWithDictionary:self.dictionary];
     XCTAssertNotNil(location.properties, @"geometryType property should not be nil");
-    XCTAssertEqual(location.properties, self.dictionary[@"properties"], @"properties property should equal what was passed in self.dictionary");
+    XCTAssertEqualObjects(location.properties, self.dictionary[@"properties"], @"properties property should equal what was passed in self.dictionary");
 }
 
 - (void)testWhenPropertiesTypeDoesNotExist
