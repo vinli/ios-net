@@ -86,12 +86,15 @@
         [retVal setObject:self.limit forKey:@"limit"];
     }
     
-    if (self.sortOrder) {
-        if (self.sortOrder == VLTimerSeriesSortDirectionAscending) {
-            [retVal setObject:@"asc" forKey:@"sortDir"]; //make a bit more clean later
-        }
+    if (self.sortOrder == VLTimerSeriesSortDirectionAscending)
+    {
+        [retVal setObject:@"asc" forKey:@"sortDir"]; //make a bit more clean later
     }
     
+    if (self.sortOrder == VLTimerSeriesSortDirectionDescending)
+    {
+        [retVal setObject:@"desc" forKey:@"sortDir"]; //make a bit more clean later
+    }
     
     return [retVal copy];
 }

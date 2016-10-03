@@ -17,7 +17,7 @@ typedef NS_ENUM(NSInteger, VLTimerSeriesSortDirection){
 
 @property (strong, nonatomic) NSDate* since;
 @property (strong, nonatomic) NSDate* until;
-@property (nonatomic) NSInteger sortOrder;
+@property (assign, nonatomic) VLTimerSeriesSortDirection sortOrder;
 
 // Limit doesnt need to be set - Defaults to 20
 @property (strong, nonatomic) NSNumber* limit;
