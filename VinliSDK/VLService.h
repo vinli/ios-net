@@ -41,6 +41,7 @@
 #import "VLDistancePager.h"
 #import "VLOdometer.h"
 #import "VLOdometerPager.h"
+#import "VLBatteryStatus.h"
 #import "VLOdometerTrigger.h"
 #import "VLOdometerTriggerPager.h"
 #import "VLDateFormatter.h"
@@ -916,6 +917,16 @@
 - (void)deleteOdometerTriggerWithId:(nonnull NSString *)odometerTriggerId onSuccess:(void (^)(NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
 
+#pragma mark - Diagnostic Service
+
+// Get Current Battery Status
+// Route: GET /api/v1/vehicles/{vehicleId}/battery_statuses/_current
+// @callbacks: onSuccess with current battery status
+// onFailureBlock: connection fails
+
+- (void) getCurrentBatteryStatusWithVehicleId:(nonnull NSString *)vehicleId
+                                    onSuccess:(void (^)(VLBatteryStatus *batteryStatus, NSHTTPURLResponse *response))onSuccessBlock
+                                    onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
 
 @end

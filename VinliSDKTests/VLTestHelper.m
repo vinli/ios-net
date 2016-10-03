@@ -1219,4 +1219,9 @@
              };
 }
 
++ (NSDictionary *) getBatteryStatusJSON{
+    NSString *json = @"{\"batteryStatus\": {\"status\": \"green\",\"timestamp\": \"2016-09-22T08:36:29.175Z\"}}";
+    return [NSJSONSerialization JSONObjectWithData:[json dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+}
+
 @end
