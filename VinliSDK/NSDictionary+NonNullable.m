@@ -45,11 +45,21 @@
            
             if ([obj isKindOfClass:[NSArray class]])
             {
-                for (NSDictionary *aDict in (NSArray *)obj)
+                NSMutableArray *mutableCopy = [NSMutableArray arrayWithArray:obj];
+                for (id arrayObject in (NSMutableArray *)obj)
                 {
-                    [(NSMutableArray *)obj addObject:[aDict filterAllNSNullValues]];
-                    [(NSMutableArray *)obj removeObject:aDict];
+                    if (![arrayObject isKindOfClass:[NSDictionary class]] && [arrayObject isKindOfClass:[NSNull class]])
+                    {
+                        [mutableCopy removeObject:arrayObject];
+                    }
+                    else if ([arrayObject isKindOfClass:[NSDictionary class]])
+                    {
+                        [mutableCopy addObject:[arrayObject filterAllNSNullValues]];
+                        [mutableCopy removeObject:arrayObject];
+                    }
                 }
+                
+                obj = mutableCopy;
             }
             else if ([obj isKindOfClass:[NSDictionary class]])
             {
