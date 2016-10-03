@@ -23,12 +23,7 @@
 
 @dynamic priorURL, nextURL, remaining;
 
-- (id) initWithDictionary:(NSDictionary *)dictionary
-{
-    return [self initWithDictionary:dictionary service:nil];
-}
-
-- (id) initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service
 {
     if (self = [super initWithDictionary:dictionary service:service])
     {
@@ -38,7 +33,7 @@
     return self;
 }
 
-- (void)getNextTrips:(void(^)(NSArray *values, NSError *error))completion
+- (void)getNextTrips:(void (^)(NSArray<VLTrip *> * _Nullable nextTrips, NSError * _Nullable))completion
 {
     if (!self.service)
     {
