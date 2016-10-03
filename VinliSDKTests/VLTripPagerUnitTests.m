@@ -204,7 +204,7 @@
     NSURL *copyNextURL = tripPager.nextURL;
     NSURL *copyPriorURL = tripPager.priorURL;
     
-    [tripPager getNextTrips:^(NSArray *values, NSError *error) {
+    [tripPager getNextTrips:^(NSArray<VLTrip *> * _Nullable nextTrips, NSError * _Nullable error) {
        
         XCTAssertNil(error, @"Error should be nil");
         
@@ -212,12 +212,12 @@
         XCTAssertNotEqualObjects(copyPriorURL.absoluteString, tripPager.priorURL.absoluteString, @"priorURL should have been updated to grab the next set of trips.");
         XCTAssertGreaterThanOrEqual(copyRemaining, tripPager.remaining, @"The remaining property should be decreasing with each pagination.");
         
-        XCTAssertNotNil(values, @"Values should exist.");
-        XCTAssertLessThanOrEqual(values.count, tripPager.limit, @"The number of values returned back should be less than or equal to pager limit.");
-        XCTAssertGreaterThanOrEqual(values.count, 0, @"The number of values should always be at least zero.");
+        XCTAssertNotNil(nextTrips, @"nextTrips should exist.");
+        XCTAssertLessThanOrEqual(nextTrips.count, tripPager.limit, @"The number of nextTrips returned back should be less than or equal to pager limit.");
+        XCTAssertGreaterThanOrEqual(nextTrips.count, 0, @"The number of nextTrips should always be at least zero.");
         
         BOOL containsEachTrip = YES;
-        for (VLTrip *aTrip in values)
+        for (VLTrip *aTrip in nextTrips)
         {
             if (![tripPager.trips containsObject:aTrip])
             {
@@ -226,7 +226,7 @@
             }
         }
         
-        XCTAssertTrue(containsEachTrip, @"Each VLTrip returned in values should be in the VLTripPager's trips array.");
+        XCTAssertTrue(containsEachTrip, @"Each VLTrip returned in nextTrips should be in the VLTripPager's trips array.");
         
     }];
 }
@@ -250,13 +250,13 @@
     
     VLTripPager *tripPager = [[VLTripPager alloc] initWithDictionary:initialResponse service:mockConnection];
     
-    [tripPager getNextTrips:^(NSArray *values, NSError *error) {
+    [tripPager getNextTrips:^(NSArray<VLTrip *> * _Nullable nextTrips, NSError * _Nullable error) {
         
         XCTAssertNil(error, @"Error should be nil");
         
-        XCTAssertNotNil(values, @"Values should exist.");
+        XCTAssertNotNil(nextTrips, @"nextTrips should exist.");
         
-        XCTAssertEqual(values.count, 0, @"Since there are no remaining trips values should be zero.");
+        XCTAssertEqual(nextTrips.count, 0, @"Since there are no remaining trips nextTrips should be zero.");
         XCTAssertEqual(tripPager.remaining, 0, @"There should be zero remaining trips.");
         
         XCTAssertNil(tripPager.nextURL, @"Since there are no remaining trips, then we should expect links dictionary to be empty since there is no new link to get more trips.");
@@ -275,12 +275,12 @@
     NSURL *copyNextURL = tripPager.nextURL;
     NSURL *copyPriorURL = tripPager.priorURL;
     
-    [tripPager getNextTrips:^(NSArray *values, NSError *error) {
+    [tripPager getNextTrips:^(NSArray<VLTrip *> * _Nullable nextTrips, NSError * _Nullable error) {
         
         XCTAssertNotNil(error, @"Error should not be nil");
         XCTAssertEqual(error.code, NSURLErrorUnknown, @"The error codes should equal eachother in order to explain the error.");
 
-        XCTAssertNil(values, @"Values should not exist.");
+        XCTAssertNil(nextTrips, @"nextTrips should not exist.");
         
         if (copyPriorURL.absoluteString.length > 0)
         {
@@ -303,13 +303,13 @@
     
     VLTripPager *tripPager = [[VLTripPager alloc] initWithDictionary:initialResponse service:mockConnection];
     
-    [tripPager getNextTrips:^(NSArray *values, NSError *error) {
+    [tripPager getNextTrips:^(NSArray<VLTrip *> * _Nullable nextTrips, NSError * _Nullable error) {
         
         XCTAssertNil(error, @"Error should be nil");
         
-        XCTAssertNotNil(values, @"Values should exist.");
+        XCTAssertNotNil(nextTrips, @"nextTrips should exist.");
         
-        XCTAssertEqual(values.count, 0, @"Since there are no remaining trips values should be zero.");
+        XCTAssertEqual(nextTrips.count, 0, @"Since there are no remaining trips nextTrips should be zero.");
         XCTAssertEqual(tripPager.remaining, 0, @"There should be zero remaining trips.");
         
         XCTAssertNil(tripPager.nextURL, @"Since there are no remaining trips, then we should expect links dictionary to be empty since there is no new link to get more trips.");
@@ -335,21 +335,21 @@
     
     VLTripPager *tripPager = [[VLTripPager alloc] initWithDictionary:initialResponse service:mockConnection];
     
-    [tripPager getNextTrips:^(NSArray *values, NSError *error) {
+    [tripPager getNextTrips:^(NSArray<VLTrip *> * _Nullable nextTrips, NSError * _Nullable error) {
         
         XCTAssertNotNil(error, @"Error should not be nil");
         
-        XCTAssertNil(values, @"Values should not exist.");
+        XCTAssertNil(nextTrips, @"nextTrips should not exist.");
     }];
 }
 
 - (void)testGetNextTripsWithoutVLService
 {
-    VLTripPager *pager = [[VLTripPager alloc] initWithDictionary:@{} service:nil];
+    VLTripPager *pager = [[VLTripPager alloc] initWithDictionary:nil service:nil];
     
-    [pager getNextTrips:^(NSArray *values, NSError *error) {
+    [pager getNextTrips:^(NSArray<VLTrip *> * _Nullable nextTrips, NSError * _Nullable error) {
         
-        XCTAssertNil(values);
+        XCTAssertNil(nextTrips);
         XCTAssertNotNil(error);
         XCTAssertEqual(error.code, NSURLErrorUserAuthenticationRequired);
         
@@ -384,13 +384,13 @@
     
     VLTripPager *tripPager = [[VLTripPager alloc] initWithDictionary:initialResponse service:mockConnection];
     
-    [tripPager getNextTrips:^(NSArray *values, NSError *error) {
+    [tripPager getNextTrips:^(NSArray<VLTrip *> * _Nullable nextTrips, NSError * _Nullable error) {
         
         XCTAssertNil(error, @"Error should be nil");
         
-        XCTAssertNotNil(values, @"Values should exist.");
+        XCTAssertNotNil(nextTrips, @"nextTrips should exist.");
         
-        XCTAssertEqual(values.count, 0, @"Since there are no remaining trips values should be zero.");
+        XCTAssertEqual(nextTrips.count, 0, @"Since there are no remaining trips nextTrips should be zero.");
         XCTAssertEqual(tripPager.remaining, 0, @"There should be zero remaining trips.");
         
         XCTAssertNil(tripPager.nextURL, @"Since there are no remaining trips, then we should expect links dictionary to be empty since there is no new link to get more trips.");

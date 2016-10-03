@@ -43,7 +43,7 @@
 
 #pragma mark - Tests With Service
 
-- (void)testGetNextSetOfTripsWhereTimeSeriesIsNil
+- (void)testGetNextSetOfTripsWhereTimeSeriesOrderIsDescending
 {
     XCTestExpectation *tripsExpectation = [self expectationWithDescription:@"Create Trip Pagination and get next set of trips in default sort order, descending."];
 
@@ -60,7 +60,7 @@
                 unsigned long copyRemaining = self.tripPager.remaining;
                 NSURL *copyPriorURL = self.tripPager.priorURL;
                 
-                [self.tripPager getNextTrips:^(NSArray *values, NSError *error) {
+                [self.tripPager getNextTrips:^(NSArray<VLTrip *> * _Nullable nextTrips, NSError * _Nullable error) {
                     
                     if (error)
                     {
@@ -80,12 +80,12 @@
                     
                     XCTAssertGreaterThanOrEqual(copyRemaining, self.tripPager.remaining, @"The remaining property should be decreasing with each pagination.");
                     
-                    XCTAssertNotNil(values, @"Values should exist.");
-                    XCTAssertLessThanOrEqual(values.count, self.tripPager.limit, @"The number of values returned back should be less than or equal to pager limit.");
-                    XCTAssertGreaterThanOrEqual(values.count, 0, @"The number of values should always be at least zero.");
+                    XCTAssertNotNil(nextTrips, @"nextTrips should exist.");
+                    XCTAssertLessThanOrEqual(nextTrips.count, self.tripPager.limit, @"The number of nextTrips returned back should be less than or equal to pager limit.");
+                    XCTAssertGreaterThanOrEqual(nextTrips.count, 0, @"The number of nextTrips should always be at least zero.");
                     
                     BOOL containsEachTrip = YES;
-                    for (VLTrip *aTrip in values)
+                    for (VLTrip *aTrip in nextTrips)
                     {
                         if (![self.tripPager.trips containsObject:aTrip])
                         {
@@ -94,7 +94,7 @@
                         }
                     }
                     
-                    XCTAssertTrue(containsEachTrip, @"Each VLTrip returned in values should be in the VLTripPager's trips array.");
+                    XCTAssertTrue(containsEachTrip, @"Each VLTrip returned in nextTrips should be in the VLTripPager's trips array.");
                     [tripsExpectation fulfill];
                     
                 }];
@@ -133,7 +133,7 @@
                 unsigned long copyRemaining = self.tripPager.remaining;
                 NSURL *copyNextURL = self.tripPager.nextURL;
                 
-                [self.tripPager getNextTrips:^(NSArray *values, NSError *error) {
+                [self.tripPager getNextTrips:^(NSArray<VLTrip *> * _Nullable nextTrips, NSError * _Nullable error) {
                     
                     if (error)
                     {
@@ -152,12 +152,12 @@
                     
                     XCTAssertGreaterThanOrEqual(copyRemaining, self.tripPager.remaining, @"The remaining property should be decreasing with each pagination.");
                     
-                    XCTAssertNotNil(values, @"Values should exist.");
-                    XCTAssertLessThanOrEqual(values.count, self.tripPager.limit, @"The number of values returned back should be less than or equal to pager limit.");
-                    XCTAssertGreaterThanOrEqual(values.count, 0, @"The number of values should always be at least zero.");
+                    XCTAssertNotNil(nextTrips, @"nextTrips should exist.");
+                    XCTAssertLessThanOrEqual(nextTrips.count, self.tripPager.limit, @"The number of nextTrips returned back should be less than or equal to pager limit.");
+                    XCTAssertGreaterThanOrEqual(nextTrips.count, 0, @"The number of nextTrips should always be at least zero.");
                     
                     BOOL containsEachTrip = YES;
-                    for (VLTrip *aTrip in values)
+                    for (VLTrip *aTrip in nextTrips)
                     {
                         if (![self.tripPager.trips containsObject:aTrip])
                         {
@@ -166,7 +166,7 @@
                         }
                     }
                     
-                    XCTAssertTrue(containsEachTrip, @"Each VLTrip returned in values should be in the VLTripPager's trips array.");
+                    XCTAssertTrue(containsEachTrip, @"Each VLTrip returned in nextTrips should be in the VLTripPager's trips array.");
                     [tripsExpectation fulfill];
                     
                 }];
@@ -192,9 +192,9 @@
 {
     VLTripPager *pager = [[VLTripPager alloc] init];
     
-    [pager getNextTrips:^(NSArray *values, NSError *error) {
+    [pager getNextTrips:^(NSArray<VLTrip *> * _Nullable nextTrips, NSError * _Nullable error) {
        
-        XCTAssertNil(values, @"Values should be nil becasue you not make a request without a VLService");
+        XCTAssertNil(nextTrips, @"nextTrips should be nil becasue you not make a request without a VLService");
         XCTAssertNotNil(error, @"Error should explain that one needs a VLService in order to get next trips.");
         XCTAssertEqual(error.code, NSURLErrorUserAuthenticationRequired, @"The error codes should equal eachother in order to explain the error.");
         
