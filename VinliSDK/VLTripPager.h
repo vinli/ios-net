@@ -14,7 +14,7 @@
 
 @interface VLTripPager : VLChronoPager
 
-@property (readonly) NSArray *trips;
+@property (readonly) NSMutableArray *trips;
 
 - (id) initWithDictionary:(NSDictionary *)dictionary;
 - (id) initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service;
