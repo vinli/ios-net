@@ -12,41 +12,42 @@
 
 @implementation VLBatteryStatus
 
-- (instancetype) initWithDictionary:(NSDictionary *)dictionary{
-    self = [super init];
-    if(self){
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary{
+    
+    if(self = [super init])
+    {
         if(dictionary)
         {
             if([dictionary isKindOfClass:[NSNull class]])
             {
-                self = nil;
                 return nil;
             }
             
             dictionary = [dictionary filterAllNSNullValues];
             
-            if([dictionary objectForKey:@"batteryStatus"] != nil){
-                if(dictionary[@"batteryStatus"] == [NSNull null]){
-                    self = nil;
-                    return nil;
-                }
-                dictionary = dictionary[@"batteryStatus"];
+            if (dictionary.allKeys.count == 0)
+            {
+                return nil;
             }
             
-            if(!dictionary){
-                self = nil;
-            } else {
-                NSString *rawStatus = dictionary[@"status"];
+            if([dictionary objectForKey:@"batteryStatus"])
+            {
+                NSString *rawStatus = dictionary[@"batteryStatus"][@"status"];
                 
-                if([rawStatus isEqualToString:@"green"]){
+                if([rawStatus isEqualToString:@"green"])
+                {
                     _status = VLBatteryStatusColorGreen;
-                } else if([rawStatus isEqualToString:@"yellow"]){
+                }
+                else if([rawStatus isEqualToString:@"yellow"])
+                {
                     _status = VLBatteryStatusColorYellow;
-                } else if([rawStatus isEqualToString:@"red"]){
+                }
+                else if([rawStatus isEqualToString:@"red"])
+                {
                     _status = VLBatteryStatusColorRed;
                 }
                 
-                _timestamp = dictionary[@"timestamp"];
+                _timestamp = dictionary[@"batteryStatus"][@"timestamp"];
             }
         }
     }

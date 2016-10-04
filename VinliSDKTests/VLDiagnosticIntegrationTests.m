@@ -27,20 +27,26 @@
     [super tearDown];
 }
 
-- (void) testGetCurrentBatteryStatusWithVehicleId{
-    if(![VLTestHelper vehicleId]){
+- (void)testGetCurrentBatteryStatusWithVehicleId
+{
+    if(![VLTestHelper vehicleId])
+    {
         XCTAssertTrue(NO);
         return;
     }
     
     XCTestExpectation *expectedDevices = [self expectationWithDescription:@"getting the battery status"];
     [_vlService getCurrentBatteryStatusWithVehicleId:[VLTestHelper vehicleId] onSuccess:^(VLBatteryStatus *batteryStatus, NSHTTPURLResponse *response) {
-        if(batteryStatus != nil){
+        
+        if(batteryStatus)
+        {
             XCTAssertTrue(batteryStatus.status == VLBatteryStatusColorGreen || batteryStatus.status == VLBatteryStatusColorYellow || batteryStatus.status == VLBatteryStatusColorRed);
             XCTAssertTrue(batteryStatus.timestamp != nil && batteryStatus.timestamp.length > 0);
         }
+        
         [expectedDevices fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        
         XCTAssertTrue(NO);
         [expectedDevices fulfill];
     }];

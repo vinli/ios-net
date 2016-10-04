@@ -19,6 +19,6 @@ typedef NS_ENUM(NSInteger, VLBatteryStatusColor) {
 @property (readonly) VLBatteryStatusColor status;
 @property (strong, readonly, nonatomic) NSString *timestamp;
 
-- (instancetype) initWithDictionary:(NSDictionary *)dictionary;
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 @end
