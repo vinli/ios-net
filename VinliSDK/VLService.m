@@ -32,8 +32,8 @@
 #define STRING_HOST_AUTH        @"auth"
 #define STRING_HOST_TRIPS       @"trips"
 #define STRING_HOST_STREAM      @"stream"
-#define STRING_HOST_DISTANCE   @"distance"
-#define STRING_HOST_DIAGNOSTIC @"diagnostic"
+#define STRING_HOST_DISTANCE    @"distance"
+#define STRING_HOST_DIAGNOSTIC  @"diagnostic"
 
 #define DEFAULT_HOST            @".vin.li"
 
