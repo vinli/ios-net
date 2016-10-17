@@ -296,8 +296,8 @@
             }];
             
         } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-
-            XCTFail(@"%@", bodyString);
+            
+            XCTAssertTrue(NO, @"%@", bodyString);
             [odometerCreationExpected fulfill];
             
         }];
@@ -305,7 +305,7 @@
         
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         
-        XCTFail(@"%@", bodyString);
+        XCTAssertTrue(NO, @"%@", bodyString);
         [odometerCreationExpected fulfill];
         
     }];
@@ -373,7 +373,7 @@
             
         } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
             
-            XCTAssertTrue(NO);
+            XCTAssertTrue(NO, @"%@", bodyString);
             [odometerCreationExpected fulfill];
             
         }];
@@ -381,7 +381,7 @@
         
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         
-        XCTAssertTrue(NO);
+        XCTAssertTrue(NO, @"%@", bodyString);
         [odometerCreationExpected fulfill];
         
     }];
@@ -454,7 +454,7 @@
             
         } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
             
-            XCTAssertTrue(NO);
+            XCTAssertTrue(NO, @"%@", bodyString);
             [odometerCreationExpected fulfill];
             
         }];
@@ -462,7 +462,7 @@
         
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         
-        XCTAssertTrue(NO);
+        XCTAssertTrue(NO, @"%@", bodyString);
         [odometerCreationExpected fulfill];
         
     }];
