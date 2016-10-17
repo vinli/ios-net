@@ -256,11 +256,20 @@
     [self.vlService getOdometersForVehicleWithId:[VLTestHelper vehicleId] onSuccess:^(VLOdometerPager *odometerPager, NSHTTPURLResponse *response) {
         
         BOOL hasPreviousOdometerReading = [(VLOdometer *)odometerPager.odometers.firstObject reading];
+        VLDistanceUnit unit;
+
+        if (hasPreviousOdometerReading)
+        {
+            VLOdometer *existingOdometer = odometerPager.odometers.firstObject;
+            highestCurrentReading = existingOdometer.reading;
+            unit = existingOdometer.distanceUnit;
+        }
+        else
+        {
+            highestCurrentReading = @1;
+            unit = VLDistanceUnitMiles;
+        }
         
-        // grab same reading for previous odometer
-        highestCurrentReading = hasPreviousOdometerReading ? [(VLOdometer *)odometerPager.odometers.firstObject reading] : @1;
-        
-        VLDistanceUnit unit = hasPreviousOdometerReading ? [(VLOdometer *)odometerPager.odometers.firstObject distanceUnit] : VLDistanceUnitMiles;
         VLOdometer *odometerParameter = [[VLOdometer alloc] initWithReading:highestCurrentReading dateStr:currentDateStr unit:unit];
         
         [self.vlService createOdometer:odometerParameter vehicleId:[VLTestHelper vehicleId] OnSuccess:^(VLOdometer *firstReturnOdometer, NSHTTPURLResponse *response) {
@@ -333,10 +342,20 @@
         
         BOOL hasPreviousOdometerReading = [(VLOdometer *)odometerPager.odometers.firstObject reading];
         
-        // grab same reading for previous odometer
-        highestCurrentReading = hasPreviousOdometerReading ? [(VLOdometer *)odometerPager.odometers.firstObject reading] : @1;
+        VLDistanceUnit unit;
         
-        VLDistanceUnit unit = hasPreviousOdometerReading ? [(VLOdometer *)odometerPager.odometers.firstObject distanceUnit] : VLDistanceUnitMiles;
+        if (hasPreviousOdometerReading)
+        {
+            VLOdometer *existingOdometer = odometerPager.odometers.firstObject;
+            highestCurrentReading = existingOdometer.reading;
+            unit = existingOdometer.distanceUnit;
+        }
+        else
+        {
+            highestCurrentReading = @1;
+            unit = VLDistanceUnitMiles;
+        }
+        
         VLOdometer *odometerParameter = [[VLOdometer alloc] initWithReading:highestCurrentReading dateStr:currentDateStr unit:unit];
         
         [self.vlService createOdometer:odometerParameter vehicleId:[VLTestHelper vehicleId] OnSuccess:^(VLOdometer *firstReturnOdometer, NSHTTPURLResponse *response) {
@@ -408,10 +427,20 @@
         
         BOOL hasPreviousOdometerReading = [(VLOdometer *)odometerPager.odometers.firstObject reading];
         
-        // grab same reading for previous odometer
-        highestCurrentReading = hasPreviousOdometerReading ? [(VLOdometer *)odometerPager.odometers.firstObject reading] : @100000;
+        VLDistanceUnit unit;
         
-        VLDistanceUnit unit = hasPreviousOdometerReading ? [(VLOdometer *)odometerPager.odometers.firstObject distanceUnit] : VLDistanceUnitMiles;
+        if (hasPreviousOdometerReading)
+        {
+            VLOdometer *existingOdometer = odometerPager.odometers.firstObject;
+            highestCurrentReading = existingOdometer.reading;
+            unit = existingOdometer.distanceUnit;
+        }
+        else
+        {
+            highestCurrentReading = @1;
+            unit = VLDistanceUnitMiles;
+        }
+        
         VLOdometer *odometerParameter = [[VLOdometer alloc] initWithReading:highestCurrentReading dateStr:currentDateStr unit:unit];
         
         // create dummy odometer
