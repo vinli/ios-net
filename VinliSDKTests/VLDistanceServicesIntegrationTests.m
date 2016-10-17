@@ -296,8 +296,8 @@
             }];
             
         } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-            
-            XCTAssertTrue(NO);
+
+            XCTFail(@"%@", bodyString);
             [odometerCreationExpected fulfill];
             
         }];
@@ -305,7 +305,7 @@
         
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         
-        XCTAssertTrue(NO);
+        XCTFail(@"%@", bodyString);
         [odometerCreationExpected fulfill];
         
     }];
