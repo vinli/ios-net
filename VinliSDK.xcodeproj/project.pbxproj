@@ -169,6 +169,10 @@
 		BF3B333D1D9C4F82001DED7D /* VLLocationUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3B333C1D9C4F82001DED7D /* VLLocationUnitTests.m */; };
 		BF3B333F1D9C59E6001DED7D /* VLTripUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3B333E1D9C59E6001DED7D /* VLTripUnitTests.m */; };
 		BF3B33431D9EF3D9001DED7D /* VLTripPagerIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3B33421D9EF3D9001DED7D /* VLTripPagerIntegrationTests.m */; };
+		BF5BEC791DAEF7C1002DBA76 /* VLErrorConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = BF5BEC771DAEF7C1002DBA76 /* VLErrorConstants.h */; };
+		BF5BEC7A1DAEF7C1002DBA76 /* VLErrorConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5BEC781DAEF7C1002DBA76 /* VLErrorConstants.m */; };
+		BFB0E7BB1DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = BFB0E7B91DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.h */; };
+		BFB0E7BC1DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BFB0E7BA1DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.m */; };
 		E92943591B15387C00AAC7D3 /* VLTelemetryServicesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E92943581B15387C00AAC7D3 /* VLTelemetryServicesTests.m */; };
 		E929435C1B15425400AAC7D3 /* VLTelemetryMessagePager.h in Headers */ = {isa = PBXBuildFile; fileRef = E929435A1B15425400AAC7D3 /* VLTelemetryMessagePager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E929435D1B15425400AAC7D3 /* VLTelemetryMessagePager.m in Sources */ = {isa = PBXBuildFile; fileRef = E929435B1B15425400AAC7D3 /* VLTelemetryMessagePager.m */; };
@@ -344,6 +348,10 @@
 		BF3B333C1D9C4F82001DED7D /* VLLocationUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLLocationUnitTests.m; sourceTree = "<group>"; };
 		BF3B333E1D9C59E6001DED7D /* VLTripUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTripUnitTests.m; sourceTree = "<group>"; };
 		BF3B33421D9EF3D9001DED7D /* VLTripPagerIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTripPagerIntegrationTests.m; sourceTree = "<group>"; };
+		BF5BEC771DAEF7C1002DBA76 /* VLErrorConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLErrorConstants.h; sourceTree = "<group>"; };
+		BF5BEC781DAEF7C1002DBA76 /* VLErrorConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLErrorConstants.m; sourceTree = "<group>"; };
+		BFB0E7B91DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSHTTPURLResponse+VLAdditions.h"; sourceTree = "<group>"; };
+		BFB0E7BA1DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSHTTPURLResponse+VLAdditions.m"; sourceTree = "<group>"; };
 		C4778D3E1E82642D2908354C /* Pods-VinliSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinliSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VinliSDKTests/Pods-VinliSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E92943581B15387C00AAC7D3 /* VLTelemetryServicesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTelemetryServicesTests.m; sourceTree = "<group>"; };
 		E929435A1B15425400AAC7D3 /* VLTelemetryMessagePager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLTelemetryMessagePager.h; sourceTree = "<group>"; };
@@ -415,6 +423,8 @@
 		0B1671061B0FC2B8009BE7A9 /* VinliSDK */ = {
 			isa = PBXGroup;
 			children = (
+				BFB0E7B81DB041C300934FB7 /* Categories */,
+				BF5BEC731DAEF3BD002DBA76 /* Constants */,
 				4903FDAB1D008B510012AA72 /* Socket */,
 				777A6B831C91E31E0050F6C0 /* VLUnitLocalizer.h */,
 				777A6B841C91E31E0050F6C0 /* VLUnitLocalizer.m */,
@@ -689,6 +699,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BF5BEC731DAEF3BD002DBA76 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				BF5BEC771DAEF7C1002DBA76 /* VLErrorConstants.h */,
+				BF5BEC781DAEF7C1002DBA76 /* VLErrorConstants.m */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		BFB0E7B81DB041C300934FB7 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				BFB0E7B91DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.h */,
+				BFB0E7BA1DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		C2D94E72DABDA48213D7C1E6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -716,6 +744,7 @@
 				77BE999B1C690E77001E8F64 /* VLTimeSeries.h in Headers */,
 				6568FB2D1D0F0313006C3656 /* VLSupportedPids.h in Headers */,
 				49E2F2FF1B6AA93700CD743C /* NSDictionary+NonNullable.h in Headers */,
+				BFB0E7BB1DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.h in Headers */,
 				77BE999E1C73A4A5001E8F64 /* VLVehicle.h in Headers */,
 				777A6B971C9740470050F6C0 /* VLOdometerPager.h in Headers */,
 				0B2277061B167303000AF179 /* VLSession.h in Headers */,
@@ -757,6 +786,7 @@
 				0B89E48A1B179FE300E69AEA /* VLNotification.h in Headers */,
 				0B37782B1B28B7B8004AC2D6 /* VLLoginButton.h in Headers */,
 				659718D21CBDA3020075BE36 /* VLStreamMessage.h in Headers */,
+				BF5BEC791DAEF7C1002DBA76 /* VLErrorConstants.h in Headers */,
 				4903FDB61D008B630012AA72 /* VLOBDDataParser.h in Headers */,
 				65F8CA6F1CBD813B00A58B4D /* VLStream.h in Headers */,
 				49AB6E971B82432C00DCF808 /* VLSessionManager.h in Headers */,
@@ -1027,6 +1057,7 @@
 				6589E65C1D09CF220017D75B /* VLBearingFilter.m in Sources */,
 				4903FDB71D008B630012AA72 /* VLOBDDataParser.m in Sources */,
 				77B3C1B81C9B300C00BE836A /* VLDateFormatter.m in Sources */,
+				BF5BEC7A1DAEF7C1002DBA76 /* VLErrorConstants.m in Sources */,
 				777A6B941C9729EA0050F6C0 /* VLOdometer.m in Sources */,
 				0B1671501B0FC39D009BE7A9 /* VLVehicle.m in Sources */,
 				0B3DDC271B14C28600D95E61 /* VLPager.m in Sources */,
@@ -1071,6 +1102,7 @@
 				0B1671551B0FC3DD009BE7A9 /* JCDHTTPConnection.m in Sources */,
 				49AB6E981B82432C00DCF808 /* VLSessionManager.m in Sources */,
 				6589E65A1D09CF220017D75B /* VLBearingCalculator.m in Sources */,
+				BFB0E7BC1DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.m in Sources */,
 				0B3778201B25DEF9004AC2D6 /* VLParametricBoundary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
