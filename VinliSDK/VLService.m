@@ -13,6 +13,9 @@
 #import "VLDevice.h"
 #import "VLBoundary.h"
 
+#import "VLErrorConstants.h"
+#import "NSHTTPURLResponse+VLAdditions.h"
+
 #define NUMBER_DEFAULT_PORT        @80
 #define NUMBER_HTTPS_PORT          @443
 #define STRING_API_VERSION      @"/api/v1"
@@ -276,7 +279,7 @@
     
     [self startWithHost:STRING_HOST_PLATFORM path:path queries:[self getDictionaryWithLimit:limit offset:offset] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLDevicePager *devicePager = [[VLDevicePager alloc] initWithDictionary:result service:self];
                 onSuccessBlock(devicePager, response);
@@ -310,7 +313,7 @@
     
     [self startWithHost:STRING_HOST_PLATFORM path:path queries:nil HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLDevice *device = [[VLDevice alloc] initWithDictionary:result];
                 onSuccessBlock(device, response);
@@ -344,7 +347,7 @@
     
     [self startWithHost:STRING_HOST_PLATFORM path:path queries:nil HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 NSDictionary* capabilites = result[@"capabilities"];
                 onSuccessBlock(capabilites, response);
@@ -379,7 +382,7 @@
     
     [self startWithHost:STRING_HOST_PLATFORM path:path queries:nil HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLVehicle *vehicle = [[VLVehicle alloc] initWithDictionary:result];
                 onSuccessBlock(vehicle, response);
@@ -422,7 +425,7 @@
     
     [self startWithHost:STRING_HOST_PLATFORM path:path queries:[self getDictionaryWithLimit:limit offset:offset] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLVehiclePager *vehiclePager = [[VLVehiclePager alloc] initWithDictionary:result service:self];
                 onSuccessBlock(vehiclePager, response);
@@ -467,7 +470,7 @@
     
     [self startWithHost:STRING_HOST_RULES path:path queries:[self getDictionaryWithLimit:limit offset:offset] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLRulePager *rulePager = [[VLRulePager alloc] initWithDictionary:result service:self];
                 onSuccessBlock(rulePager, response);
@@ -503,7 +506,7 @@
     
     [self startWithHost:STRING_HOST_RULES path:path queries:nil HTTPMethod:@"POST" parameters:parameters token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 201) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLRule *rule = [[VLRule alloc] initWithDictionary:result];
                 onSuccessBlock(rule, response);
@@ -537,7 +540,7 @@
     
     [self startWithHost:STRING_HOST_RULES path:path queries:nil HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
 
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLRule *rule = [[VLRule alloc] initWithDictionary:result];
                 onSuccessBlock(rule, response);
@@ -571,7 +574,7 @@
     
     [self startWithHost:STRING_HOST_RULES path:path queries:nil HTTPMethod:@"DELETE" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 204) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 onSuccessBlock(response);
             }
@@ -638,7 +641,7 @@
     
     [self startWithHost:STRING_HOST_TELEMETRY path:path queries:queries HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 //NSLog(@"result: %@", result);
                 VLSnapshotPager *snapshotPager = [[VLSnapshotPager alloc] initWithDictionary:result service:self fields:fields];
@@ -675,7 +678,7 @@
     
     [self startWithHost:STRING_HOST_TELEMETRY path:path queries:nil HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLTelemetryMessage *telemetryMessage = [[VLTelemetryMessage alloc] initWithDictionary:result];
                 onSuccessBlock(telemetryMessage, response);
@@ -715,7 +718,7 @@
     
     [self startWithHost:STRING_HOST_TELEMETRY path:path queries:[timeSeries toDictionary] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLTelemetryMessagePager *telemetryPager = [[VLTelemetryMessagePager alloc] initWithDictionary:result service:self];
                 onSuccessBlock(telemetryPager, response);
@@ -778,7 +781,7 @@
     
     [self startWithHost:STRING_HOST_TELEMETRY path:path queries:[timeSeries toDictionary] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLLocationPager *locationPager = [[VLLocationPager alloc] initWithDictionary:result service:self];
                 onSuccessBlock(locationPager, response);
@@ -850,7 +853,7 @@
         
 
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLTripPager *tripPager = [[VLTripPager alloc] initWithDictionary:result service:self];
                 onSuccessBlock(tripPager, response);
@@ -892,7 +895,7 @@
     
     [self startWithHost:STRING_HOST_TRIPS path:path queries:[timeSeries toDictionary] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLTripPager *tripPager = [[VLTripPager alloc] initWithDictionary:result service:self];
                 onSuccessBlock(tripPager, response);
@@ -926,7 +929,7 @@
     
     [self startWithHost:STRING_HOST_TRIPS path:path queries:nil HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLTrip *trip = [[VLTrip alloc] initWithDictionary:result];
                 onSuccessBlock(trip, response);
@@ -963,7 +966,7 @@
     
     [self startWithHost:STRING_HOST_EVENTS path:path queries:nil HTTPMethod:@"POST" parameters:parameters token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 201) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLSubscription *subscription = [[VLSubscription alloc] initWithDictionary:result];
                 onSuccessBlock(subscription, response);
@@ -1002,7 +1005,7 @@
     NSDictionary *parameters = [subscription toSubscriptionEditDictionary];
     
     [self startWithHost:STRING_HOST_EVENTS path:path queries:nil HTTPMethod:@"PUT" parameters:parameters token:_session.accessToken onSuccess:^(NSDictionary * result, NSHTTPURLResponse *response) {
-        if(response.statusCode == 200){
+        if([response isSuccessfulResponse]){
             if(onSuccessBlock){
                 VLSubscription *subscription = [[VLSubscription alloc] initWithDictionary:result];
                 onSuccessBlock(subscription, response);
@@ -1033,7 +1036,7 @@
     
     [self startWithHost:STRING_HOST_EVENTS path:path queries:nil HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLSubscription *subcription = [[VLSubscription alloc] initWithDictionary:result];
                 onSuccessBlock(subcription, response);
@@ -1078,7 +1081,7 @@
     
     [self startWithHost:STRING_HOST_EVENTS path:path queries:[self getDictionaryWithLimit:limit offset:offset] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLSubscriptionPager *subscriptionPager = [[VLSubscriptionPager alloc] initWithDictionary:result service:self];
                 onSuccessBlock(subscriptionPager, response);
@@ -1112,7 +1115,7 @@
     
     [self startWithHost:STRING_HOST_EVENTS path:path queries:nil HTTPMethod:@"DELETE" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 204) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 onSuccessBlock(response);
             }
@@ -1145,7 +1148,7 @@
     
     [self startWithHost:STRING_HOST_EVENTS path:path queries:nil HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLEvent *event = [[VLEvent alloc] initWithDictionary:result];
                 onSuccessBlock(event, response);
@@ -1190,7 +1193,7 @@
     
     [self startWithHost:STRING_HOST_EVENTS path:path queries:[self getDictionaryWithLimit:limit until:until since:since sortDirection:sortDirection] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLEventPager *eventPager = [[VLEventPager alloc] initWithDictionary:result service:self];
                 onSuccessBlock(eventPager, response);
@@ -1232,7 +1235,7 @@
     
     [self startWithHost:STRING_HOST_EVENTS path:path queries:[timeSeries toDictionary] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLNotificationPager *notificationPager = [[VLNotificationPager alloc] initWithDictionary:result service:self];
                 onSuccessBlock(notificationPager, response);
@@ -1274,7 +1277,7 @@
     
     [self startWithHost:STRING_HOST_EVENTS path:path queries:[timeSeries toDictionary] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLNotificationPager *notificationPager = [[VLNotificationPager alloc] initWithDictionary:result service:self];
                 onSuccessBlock(notificationPager, response);
@@ -1308,7 +1311,7 @@
     
     [self startWithHost:STRING_HOST_EVENTS path:path queries:nil HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLNotification *notification = [[VLNotification alloc] initWithDictionary:result];
                 onSuccessBlock(notification, response);
@@ -1363,7 +1366,7 @@
     
     [self startWithHost:STRING_HOST_AUTH path:path queries:nil HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLUser *user = [[VLUser alloc] initWithDictionary:result];
                 onSuccessBlock(user, response);
@@ -1413,7 +1416,7 @@
     
     [self startWithHost:STRING_HOST_DISTANCE path:path queries:[timeSeries toDictionary] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLDistancePager *distancePager = [[VLDistancePager alloc]initWithDictionary:result];
                 onSuccessBlock(distancePager, response);
@@ -1495,7 +1498,7 @@
     
     [self startWithHost:STRING_HOST_DISTANCE path:path queries:[timeSeries toDictionary] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLOdometerPager *odometerPager = [[VLOdometerPager alloc] initWithDictionary:result];
                 onSuccessBlock(odometerPager, response);
@@ -1532,7 +1535,7 @@
     
     [self startWithHost:STRING_HOST_DISTANCE path:path queries:nil HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLOdometer *odometer = [[VLOdometer alloc] initWithDictionary:result];
                 onSuccessBlock(odometer, response);
@@ -1568,7 +1571,7 @@
     
     [self startWithHost:STRING_HOST_DISTANCE path:path queries:nil HTTPMethod:@"DELETE" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 204) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 onSuccessBlock(response);
             }
@@ -1608,7 +1611,7 @@
     
     [self startWithHost:STRING_HOST_DISTANCE path:path queries:nil HTTPMethod:@"POST" parameters:[odometerTrigger toDictionary] token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 201) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLOdometerTrigger *odometerTrigger = [[VLOdometerTrigger alloc] initWithDictionary:result];
                 onSuccessBlock(odometerTrigger, response);
@@ -1645,7 +1648,7 @@
     
     [self startWithHost:STRING_HOST_DISTANCE path:path queries:[timeSeries toDictionary] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLOdometerTriggerPager *odometerTriggerPager = [[VLOdometerTriggerPager alloc] initWithDictionary:result];
                 onSuccessBlock(odometerTriggerPager, response);
@@ -1677,7 +1680,7 @@
     
     [self startWithHost:STRING_HOST_DISTANCE path:path queries:nil HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLOdometerTrigger *odometerTrigger = [[VLOdometerTrigger alloc] initWithDictionary:result];
                 onSuccessBlock(odometerTrigger, response);
@@ -1712,7 +1715,7 @@
     
     [self startWithHost:STRING_HOST_DISTANCE path:path queries:nil HTTPMethod:@"DELETE" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 204) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 onSuccessBlock(response);
             }
@@ -1748,7 +1751,7 @@
     
     [self startWithHost:STRING_HOST_DIAGNOSTIC path:path queries:nil HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 200) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLBatteryStatus *batteryStatus = [[VLBatteryStatus alloc] initWithDictionary:result];
                 onSuccessBlock(batteryStatus, response);
