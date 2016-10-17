@@ -1457,10 +1457,35 @@
     
     [self startWithHost:STRING_HOST_DISTANCE path:path queries:nil HTTPMethod:@"POST" parameters:[odometer toDictionary] token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if (response.statusCode == 201) {
+        if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
                 VLOdometer *odometer = [[VLOdometer alloc] initWithDictionary:result];
                 onSuccessBlock(odometer, response);
+            }
+        }
+        else if (response.statusCode == 409)
+        {
+            if (onFailureBlock)
+            {
+                NSError *error;
+                NSString *messageFromResult = result[@"message"];
+                if ([messageFromResult containsString:VLErrorMessageExistingOdometerWithSameValues])
+                {
+                    error = [NSError errorWithDomain:VLErrorDomainExistingOdometerWithSameValues code:VLErrorCodeExistingOdometerWithSameValues userInfo:@{NSLocalizedDescriptionKey: messageFromResult}];
+                }
+                else if ([messageFromResult isEqualToString:VLErrorMessageExistingOdometerWithOlderDateThanPrevious])
+                {
+                    error = [NSError errorWithDomain:VLErrorDomainExistingOdometerWithOlderDateThanPrevious code:VLErrorCodeExistingOdometerWithOlderDateThanPrevious userInfo:@{NSLocalizedDescriptionKey: VLErrorMessageExistingOdometerWithOlderDateThanPrevious}];
+                }
+                else if ([messageFromResult isEqualToString:VLErrorMessageExistingOdometerWithSmallerReadingThanPrevious])
+                {
+                    error = [NSError errorWithDomain:VLErrorDomainExistingOdometerWithSmallerReadingThanPrevious code:VLErrorCodeExistingOdometerWithSmallerReadingThanPrevious userInfo:@{NSLocalizedDescriptionKey: VLErrorMessageExistingOdometerWithSmallerReadingThanPrevious}];
+                }
+                else
+                {
+                    error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:4009 userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"%@: %@", result[@"error"], result[@"message"]]}];
+                }
+                onFailureBlock(error, response, result.description);
             }
         }
         else {
