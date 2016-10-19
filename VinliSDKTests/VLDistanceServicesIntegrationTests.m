@@ -248,7 +248,8 @@
     }
     
     __block NSNumber *highestCurrentReading;
-    NSString *currentDateStr = [VLDateFormatter stringFromDate:[[NSDate date] dateByAddingTimeInterval:-10.0f]];
+
+    NSString *currentDateStr = [VLDateFormatter stringFromDate:[NSDate date]];
     NSString *currentDatePlusOneStr = [VLDateFormatter stringFromDate:[[VLDateFormatter initializeDateFromString:currentDateStr] dateByAddingTimeInterval:0.1]];
 
     XCTestExpectation *odometerCreationExpected = [self expectationWithDescription:@"Expect to create odometer1 and odometer2 but when odometer2 is created there is conflict because they have the same reading values."];
@@ -331,8 +332,9 @@
     }
     
     __block NSNumber *highestCurrentReading;
-    NSString *currentDateStr = [VLDateFormatter stringFromDate:[[NSDate date] dateByAddingTimeInterval:-10.0f]];
 
+    NSString *currentDateStr = [VLDateFormatter stringFromDate:[NSDate date]];
+    
     // create older date here
     NSString *dateWithOneSecondFromUTC = [VLDateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:1]];
     
@@ -417,7 +419,8 @@
     }
     
     __block NSNumber *highestCurrentReading;
-    NSString *currentDateStr = [VLDateFormatter stringFromDate:[[NSDate date] dateByAddingTimeInterval:-10.0f]];
+
+    NSString *currentDateStr = [VLDateFormatter stringFromDate:[NSDate date]];
     NSString *currentDatePlusOneStr = [VLDateFormatter stringFromDate:[[VLDateFormatter initializeDateFromString:currentDateStr] dateByAddingTimeInterval:0.1]];
 
     XCTestExpectation *odometerCreationExpected = [self expectationWithDescription:@"Expect to create odometer1 and odometer2 but when odometer2 is created there is conflict because odometer 2 will have smaller reading."];
