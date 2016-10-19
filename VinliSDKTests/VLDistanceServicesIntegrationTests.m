@@ -307,6 +307,7 @@
             
         } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
             
+            XCTFail(@"%@", bodyString);
             XCTAssertTrue(NO, @"%@", bodyString);
             [odometerCreationExpected fulfill];
             
@@ -420,7 +421,7 @@
     
     __block NSNumber *highestCurrentReading;
 
-    NSString *currentDateStr = [VLDateFormatter stringFromDate:[[NSDate date] dateByAddingTimeInterval:1000.0f]];
+    NSString *currentDateStr = [VLDateFormatter stringFromDate:[[NSDate date] dateByAddingTimeInterval:-1000.0f]];
     NSString *currentDatePlusOneStr = [VLDateFormatter stringFromDate:[[VLDateFormatter initializeDateFromString:currentDateStr] dateByAddingTimeInterval:0.1]];
 
     XCTestExpectation *odometerCreationExpected = [self expectationWithDescription:@"Expect to create odometer1 and odometer2 but when odometer2 is created there is conflict because odometer 2 will have smaller reading."];
@@ -445,6 +446,9 @@
         }
         
         VLOdometer *odometerParameter = [[VLOdometer alloc] initWithReading:highestCurrentReading dateStr:currentDateStr unit:unit];
+        NSLog(@"LIME AND COOCNUT: reading %@", highestCurrentReading);
+        NSLog(@"LIME AND COOCNUT: odometer parameter %@", [VLTestHelper vehicleId]);
+        NSLog(@"LIME AND COOCNUT: odometer parameter %@", currentDateStr);
         
         // create dummy odometer
         [self.vlService createOdometer:odometerParameter vehicleId:[VLTestHelper vehicleId] OnSuccess:^(VLOdometer *firstReturnOdometer, NSHTTPURLResponse *response) {
@@ -469,19 +473,19 @@
                 XCTAssertEqualObjects(VLErrorMessageExistingOdometerWithSmallerReadingThanPrevious, error.localizedDescription, @"The Message from constants should be the same we are getting from the back end");
                 
                 // Need to delete Odometer after we create it
-                if (firstReturnOdometer.odometerId.length > 0)
-                {
-                    [self.vlService deleteOdometerWithId:firstReturnOdometer.odometerId onSuccess:^(NSHTTPURLResponse *response) {
-                        
-                        [odometerCreationExpected fulfill];
-                        
-                    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-                        
-                        XCTAssertTrue(NO);
-                        [odometerCreationExpected fulfill];
-                        
-                    }];
-                }
+//                if (firstReturnOdometer.odometerId.length > 0)
+//                {
+//                    [self.vlService deleteOdometerWithId:firstReturnOdometer.odometerId onSuccess:^(NSHTTPURLResponse *response) {
+//                        
+//                        [odometerCreationExpected fulfill];
+//                        
+//                    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+//                        
+//                        XCTAssertTrue(NO);
+//                        [odometerCreationExpected fulfill];
+//                        
+//                    }];
+//                }
             }];
             
         } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
