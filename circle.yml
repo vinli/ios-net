@@ -1,6 +1,10 @@
 machine:
   xcode:
-    version: "7.3"
+    version: "8.0"
+
+dependencies:
+  pre:
+    - xcrun instruments -w '2D96E690-BFB5-44D5-8B22-31D9C57EDADF' || true
 
 test:
   pre:
@@ -11,7 +15,7 @@ test:
         CODE_SIGN_IDENTITY=
         PROVISIONING_PROFILE=
         -sdk iphonesimulator
-        -destination 'platform=iOS Simulator,OS=latest,name=iPhone 6'
+        -destination 'platform=iOS Simulator,OS=latest,name=iPhone 7'
         -workspace VinliSDK.xcworkspace
         -scheme "VinliSDK"
         clean build test
