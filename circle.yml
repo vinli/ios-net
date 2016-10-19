@@ -2,10 +2,6 @@ machine:
   xcode:
     version: "8.0"
 
-dependencies:
-  pre:
-    - xcrun instruments -w '2D96E690-BFB5-44D5-8B22-31D9C57EDADF' || true
-
 test:
   pre:
   override:
@@ -22,7 +18,6 @@ test:
         ACCESS_TOKEN=$ACCESS_TOKEN
         ODO_TRIGGER_ID=$ODO_TRIGGER_ID
         ODO_ID=$ODO_ID
-        OS_ACTIVITY_MODE=disable
         TRIP_ID=$TRIP_ID
         MESSAGE_ID=$MESSAGE_ID
         VEHICLE_ID=$VEHICLE_ID
