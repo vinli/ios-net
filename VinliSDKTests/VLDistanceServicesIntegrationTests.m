@@ -73,52 +73,141 @@
 {
     if(![VLTestHelper vehicleId])
     {
-        XCTAssertTrue(NO);
+        XCTFail(@"There is no vehicleId in Scheme Enviornment Variables");
         return;
     }
     
     XCTestExpectation *expectedOdometers = [self expectationWithDescription:@"Service Call to odometers"];
-    [_vlService getOdometersForVehicleWithId:[VLTestHelper vehicleId] onSuccess:^(VLOdometerPager *odometerPager, NSHTTPURLResponse *response) {
-        XCTAssertTrue(odometerPager.odometers.count > 0);
-        XCTAssertTrue(odometerPager.since != nil && [odometerPager.since isKindOfClass:[NSString class]] && odometerPager.since.length > 0);
-        XCTAssertTrue(odometerPager.until != nil && [odometerPager.until isKindOfClass:[NSString class]] && odometerPager.until.length > 0);
+    
+    NSString *currentDateStr = [VLDateFormatter stringFromDate:[[NSDate date] dateByAddingTimeInterval:-1000.0f]];
+    VLOdometer *odometerParameter = [[VLOdometer alloc] initWithReading:@1 dateStr:currentDateStr unit:VLDistanceUnitMiles];
+    [self.vlService createOdometer:odometerParameter vehicleId:[VLTestHelper vehicleId] OnSuccess:^(VLOdometer *createdOdometer, NSHTTPURLResponse *response) {
         
-        for(VLOdometer *odometer in odometerPager.odometers)
-        {
-            XCTAssertTrue(odometer.odometerId != nil && [odometer.odometerId isKindOfClass:[NSString class]] && odometer.odometerId.length > 0);
-            XCTAssertTrue(odometer.vehicleId != nil && [odometer.vehicleId isKindOfClass:[NSString class]] && odometer.vehicleId.length > 0);
-            XCTAssertTrue(odometer.reading != nil && [odometer.reading isKindOfClass:[NSNumber class]]);
-            XCTAssertTrue(odometer.dateStr != nil && [odometer.dateStr isKindOfClass:[NSString class]] && odometer.dateStr.length > 0);
-        }
+        [self.vlService getOdometersForVehicleWithId:[VLTestHelper vehicleId] onSuccess:^(VLOdometerPager *odometerPager, NSHTTPURLResponse *response) {
+            
+            XCTAssertTrue(odometerPager.odometers.count > 0);
+            XCTAssertTrue(odometerPager.since != nil && [odometerPager.since isKindOfClass:[NSString class]] && odometerPager.since.length > 0);
+            XCTAssertTrue(odometerPager.until != nil && [odometerPager.until isKindOfClass:[NSString class]] && odometerPager.until.length > 0);
+            
+            for (VLOdometer *odometer in odometerPager.odometers)
+            {
+                XCTAssertTrue(odometer.odometerId != nil && [odometer.odometerId isKindOfClass:[NSString class]] && odometer.odometerId.length > 0);
+                XCTAssertTrue(odometer.vehicleId != nil && [odometer.vehicleId isKindOfClass:[NSString class]] && odometer.vehicleId.length > 0);
+                XCTAssertTrue(odometer.reading != nil && [odometer.reading isKindOfClass:[NSNumber class]]);
+                XCTAssertTrue(odometer.dateStr != nil && [odometer.dateStr isKindOfClass:[NSString class]] && odometer.dateStr.length > 0);
+            }
+            
+            // Need to delete Odometer after we create it
+            if (createdOdometer.odometerId.length > 0)
+            {
+                [self.vlService deleteOdometerWithId:createdOdometer.odometerId onSuccess:^(NSHTTPURLResponse *response) {
+                    
+                    [expectedOdometers fulfill];
+                    
+                } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+                    
+                    XCTFail(@"Failed to delete the odoemter: %@ that was created.", createdOdometer.odometerId);
+                    [expectedOdometers fulfill];
+                    
+                }];
+            }
+            
+        } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+            
+            XCTFail(@"Failed to get Odometer by odometerId: %@", createdOdometer.odometerId);
+            
+            // Need to delete Odometer after we create it
+            if (createdOdometer.odometerId.length > 0)
+            {
+                [self.vlService deleteOdometerWithId:createdOdometer.odometerId onSuccess:^(NSHTTPURLResponse *response) {
+                    
+                    [expectedOdometers fulfill];
+                    
+                } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+                    
+                    XCTFail(@"Failed to delete the odoemter: %@ that was created.", createdOdometer.odometerId);
+                    [expectedOdometers fulfill];
+                    
+                }];
+            }
+        }];
+
         
-        [expectedOdometers fulfill];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-        XCTAssertTrue(NO);
+        
+        XCTFail(@"Failed to create Odoemter for testing testGetOdometerWithId");
         [expectedOdometers fulfill];
+        
     }];
+    
     
     [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
 }
 
 - (void)testGetOdometerWithId
 {
-    if(![VLTestHelper odometerId])
+    if(![VLTestHelper vehicleId])
     {
-        XCTAssertTrue(NO);
+        XCTFail(@"There is no vehicleId in Scheme Enviornment Variables");
         return;
     }
     
     XCTestExpectation *odometerExpected = [self expectationWithDescription:@"Service call for odometer"];
-    [_vlService getOdometerWithId:[VLTestHelper odometerId] onSuccess:^(VLOdometer *odometer, NSHTTPURLResponse *response) {
-        XCTAssertTrue(odometer.odometerId != nil && [odometer.odometerId isKindOfClass:[NSString class]] && odometer.odometerId.length > 0);
-        XCTAssertTrue(odometer.vehicleId != nil && [odometer.vehicleId isKindOfClass:[NSString class]] && odometer.vehicleId.length > 0);
-        XCTAssertTrue(odometer.reading != nil && [odometer.reading isKindOfClass:[NSNumber class]]);
-        XCTAssertTrue(odometer.dateStr != nil && [odometer.dateStr isKindOfClass:[NSString class]] && odometer.dateStr.length > 0);
-        [odometerExpected fulfill];
+    
+    NSString *currentDateStr = [VLDateFormatter stringFromDate:[[NSDate date] dateByAddingTimeInterval:-1000.0f]];
+    VLOdometer *odometerParameter = [[VLOdometer alloc] initWithReading:@1 dateStr:currentDateStr unit:VLDistanceUnitMiles];
+    
+    [self.vlService createOdometer:odometerParameter vehicleId:[VLTestHelper vehicleId] OnSuccess:^(VLOdometer *createdOdometer, NSHTTPURLResponse *response) {
+        
+        [self.vlService getOdometerWithId:createdOdometer.odometerId onSuccess:^(VLOdometer *odometer, NSHTTPURLResponse *response) {
+            
+            XCTAssertTrue(odometer.odometerId != nil && [odometer.odometerId isKindOfClass:[NSString class]] && odometer.odometerId.length > 0);
+            XCTAssertTrue(odometer.vehicleId != nil && [odometer.vehicleId isKindOfClass:[NSString class]] && odometer.vehicleId.length > 0);
+            XCTAssertTrue(odometer.reading != nil && [odometer.reading isKindOfClass:[NSNumber class]]);
+            XCTAssertTrue(odometer.dateStr != nil && [odometer.dateStr isKindOfClass:[NSString class]] && odometer.dateStr.length > 0);
+            
+            // Need to delete Odometer after we create it
+            if (createdOdometer.odometerId.length > 0)
+            {
+                [self.vlService deleteOdometerWithId:createdOdometer.odometerId onSuccess:^(NSHTTPURLResponse *response) {
+                    
+                    [odometerExpected fulfill];
+                    
+                } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+                    
+                    XCTFail(@"Failed to delete the odoemter: %@ that was created.", createdOdometer.odometerId);
+                    [odometerExpected fulfill];
+                    
+                }];
+            }
+            
+        } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+            
+            XCTFail(@"Failed to get Odometer by odometerId: %@", createdOdometer.odometerId);
+            
+            // Need to delete Odometer after we create it
+            if (createdOdometer.odometerId.length > 0)
+            {
+                [self.vlService deleteOdometerWithId:createdOdometer.odometerId onSuccess:^(NSHTTPURLResponse *response) {
+                    
+                    [odometerExpected fulfill];
+                    
+                } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+                    
+                    XCTFail(@"Failed to delete the odoemter: %@ that was created.", createdOdometer.odometerId);
+                    [odometerExpected fulfill];
+                    
+                }];
+            }
+        }];
+
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-        XCTAssertTrue(NO);
+       
+        XCTFail(@"Failed to create Odoemter for testing testGetOdometerWithId");
         [odometerExpected fulfill];
+        
     }];
+    
     
     [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
 }
@@ -239,269 +328,262 @@
 
 #pragma mark - Odometer 409 errors
 
-//- (void)testCreateOdometerForConflictErrorWithSameValues
-//{
-//    if(![VLTestHelper vehicleId])
-//    {
-//        XCTAssertTrue(NO);
-//        return;
-//    }
-//    
-//    __block NSNumber *highestCurrentReading;
-//    NSString *currentDateStr = [VLDateFormatter stringFromDate:[[NSDate date] dateByAddingTimeInterval:-1000.0f]];
-//
-//    NSString *currentDatePlusOneStr = [VLDateFormatter stringFromDate:[[VLDateFormatter initializeDateFromString:currentDateStr] dateByAddingTimeInterval:0.1]];
-//
-//    XCTestExpectation *odometerCreationExpected = [self expectationWithDescription:@"Expect to create odometer1 and odometer2 but when odometer2 is created there is conflict because they have the same reading values."];
-//    
-//    [self.vlService getOdometersForVehicleWithId:[VLTestHelper vehicleId] onSuccess:^(VLOdometerPager *odometerPager, NSHTTPURLResponse *response) {
-//        
-//        BOOL hasPreviousOdometerReading = [(VLOdometer *)odometerPager.odometers.firstObject reading];
-//        VLDistanceUnit unit;
-//
-//        if (hasPreviousOdometerReading)
-//        {
-//            VLOdometer *existingOdometer = odometerPager.odometers.firstObject;
-//            highestCurrentReading = existingOdometer.reading;
-//            unit = existingOdometer.distanceUnit;
-//        }
-//        else
-//        {
-//            highestCurrentReading = @1;
-//            unit = VLDistanceUnitMiles;
-//        }
-//        
-//        VLOdometer *odometerParameter = [[VLOdometer alloc] initWithReading:highestCurrentReading dateStr:currentDateStr unit:unit];
-//        
-//        [self.vlService createOdometer:odometerParameter vehicleId:[VLTestHelper vehicleId] OnSuccess:^(VLOdometer *firstReturnOdometer, NSHTTPURLResponse *response) {
-//            
-//            VLOdometer *newOdometerParameter = [[VLOdometer alloc] initWithReading:firstReturnOdometer.reading dateStr:currentDatePlusOneStr unit:firstReturnOdometer.distanceUnit];
-//            
-//            [self.vlService createOdometer:newOdometerParameter vehicleId:[VLTestHelper vehicleId] OnSuccess:^(VLOdometer *secondReturnOdometer, NSHTTPURLResponse *response) {
-//                
-//                XCTAssertTrue(NO, @"We expect that the status code of response will be something other than a 200.");
-//                [odometerCreationExpected fulfill];
-//                
-//            } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-//                
-//                XCTAssertNotNil(error, @"Error will exist.");
-//                XCTAssertEqual(response.statusCode, 409, @"The status code of response should be a 409.");
-//                XCTAssertEqual(VLErrorCodeExistingOdometerWithSameValues, error.code, @"The error code should be a 4091");
-//                XCTAssertEqualObjects(VLErrorDomainExistingOdometerWithSameValues, error.domain, @"Error Domain should equal our custom domain string");
-//                XCTAssertEqualObjects(([NSString stringWithFormat:@"%@ %@", VLErrorMessageExistingOdometerWithSameValues, [VLTestHelper vehicleId]]), error.localizedDescription, @"The Message from constants should be the same we are getting from the back end");
-//                
-//                // Need to delete Odometer after we create it
-//                if (firstReturnOdometer.odometerId.length > 0)
-//                {
-//                    [self.vlService deleteOdometerWithId:firstReturnOdometer.odometerId onSuccess:^(NSHTTPURLResponse *response) {
-//                        
-//                        [odometerCreationExpected fulfill];
-//                        
-//                    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-//                        
-//                        [odometerCreationExpected fulfill];
-//                        
-//                    }];
-//                }
-//            }];
-//            
-//        } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-//            
-//            XCTFail(@"%@", bodyString);
-//            XCTAssertTrue(NO, @"%@", bodyString);
-//            [odometerCreationExpected fulfill];
-//            
-//        }];
-//        
-//        
-//    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-//        
-//        XCTAssertTrue(NO, @"%@", bodyString);
-//        [odometerCreationExpected fulfill];
-//        
-//    }];
-//    
-//    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-//}
-//
-//- (void)testCreateOdometerForConflictErrorWithOlderDate
-//{
-//    if(![VLTestHelper vehicleId])
-//    {
-//        XCTAssertTrue(NO);
-//        return;
-//    }
-//    
-//    __block NSNumber *highestCurrentReading;
-//
-//    NSString *currentDateStr = [VLDateFormatter stringFromDate:[[NSDate date] dateByAddingTimeInterval:-1000.0f]];
-//    
-//    // create older date here
-//    NSString *dateWithOneSecondFromUTC = [VLDateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:1]];
-//    
-//    XCTestExpectation *odometerCreationExpected = [self expectationWithDescription:@"Expect to create odometer1 and odometer2 but when odometer2 is created there is conflict because odometer2 will have an older date."];
-//    
-//    [self.vlService getOdometersForVehicleWithId:[VLTestHelper vehicleId] onSuccess:^(VLOdometerPager *odometerPager, NSHTTPURLResponse *response) {
-//        
-//        BOOL hasPreviousOdometerReading = [(VLOdometer *)odometerPager.odometers.firstObject reading];
-//        
-//        VLDistanceUnit unit;
-//        
-//        if (hasPreviousOdometerReading)
-//        {
-//            VLOdometer *existingOdometer = odometerPager.odometers.firstObject;
-//            highestCurrentReading = existingOdometer.reading;
-//            unit = existingOdometer.distanceUnit;
-//        }
-//        else
-//        {
-//            highestCurrentReading = @1;
-//            unit = VLDistanceUnitMiles;
-//        }
-//        
-//        VLOdometer *odometerParameter = [[VLOdometer alloc] initWithReading:highestCurrentReading dateStr:currentDateStr unit:unit];
-//        
-//        [self.vlService createOdometer:odometerParameter vehicleId:[VLTestHelper vehicleId] OnSuccess:^(VLOdometer *firstReturnOdometer, NSHTTPURLResponse *response) {
-//            
-//            VLOdometer *newOdometerParameter = [[VLOdometer alloc] initWithReading:firstReturnOdometer.reading dateStr:dateWithOneSecondFromUTC unit:unit];
-//            
-//            [self.vlService createOdometer:newOdometerParameter vehicleId:[VLTestHelper vehicleId] OnSuccess:^(VLOdometer *secondReturnOdometer, NSHTTPURLResponse *response) {
-//                
-//                XCTAssertTrue(NO, @"We expect that the status code of response will be something other than a 200.");
-//                [odometerCreationExpected fulfill];
-//                
-//            } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-//                
-//                XCTAssertNotNil(error, @"Error will exist.");
-//                XCTAssertEqual(response.statusCode, 409, @"The status code of response should be a 409.");
-//                XCTAssertEqual(VLErrorCodeExistingOdometerWithOlderDateThanPrevious, error.code, @"The error code should be a 4093");
-//                XCTAssertEqualObjects(VLErrorDomainExistingOdometerWithOlderDateThanPrevious, error.domain, @"Error Domain should equal our custom domain string");
-//                XCTAssertEqualObjects(VLErrorMessageExistingOdometerWithOlderDateThanPrevious, error.localizedDescription, @"The Message from constants should be the same we are getting from the back end");
-//                
-//                // Need to delete Odometer after we create it
-//                if (firstReturnOdometer.odometerId.length > 0)
-//                {
-//                    [self.vlService deleteOdometerWithId:firstReturnOdometer.odometerId onSuccess:^(NSHTTPURLResponse *response) {
-//                        
-//                        [odometerCreationExpected fulfill];
-//                        
-//                    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-//                        
-//                        [odometerCreationExpected fulfill];
-//                        
-//                    }];
-//                }
-//            }];
-//            
-//        } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-//            
-//            XCTAssertTrue(NO, @"%@", bodyString);
-//            [odometerCreationExpected fulfill];
-//            
-//        }];
-//        
-//        
-//    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-//        
-//        XCTAssertTrue(NO, @"%@", bodyString);
-//        [odometerCreationExpected fulfill];
-//        
-//    }];
-//    
-//    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-//}
+- (void)testCreateOdometerForConflictErrorWithSameValues
+{
+    if(![VLTestHelper vehicleId])
+    {
+        XCTFail(@"There is no vehicleId in Scheme Enviornment Variables");
+        return;
+    }
+    
+    NSString *currentDateStr = [VLDateFormatter stringFromDate:[[NSDate date] dateByAddingTimeInterval:-1000.0f]];
+    NSString *currentDatePlusOneStr = [VLDateFormatter stringFromDate:[[VLDateFormatter initializeDateFromString:currentDateStr] dateByAddingTimeInterval:0.1]];
+
+    XCTestExpectation *odometerCreationExpected = [self expectationWithDescription:@"Expect to create odometer1 and odometer2 but when odometer2 is created there is conflict because they have the same reading values."];
+    
+    VLOdometer *odometerParameter = [[VLOdometer alloc] initWithReading:@1 dateStr:currentDateStr unit:VLDistanceUnitMiles];
+    
+    [self.vlService createOdometer:odometerParameter vehicleId:[VLTestHelper vehicleId] OnSuccess:^(VLOdometer *firstReturnOdometer, NSHTTPURLResponse *response) {
+        
+        VLOdometer *newOdometerParameter = [[VLOdometer alloc] initWithReading:firstReturnOdometer.reading dateStr:currentDatePlusOneStr unit:firstReturnOdometer.distanceUnit];
+        
+        [self.vlService createOdometer:newOdometerParameter vehicleId:[VLTestHelper vehicleId] OnSuccess:^(VLOdometer *secondReturnOdometer, NSHTTPURLResponse *response) {
+            
+            XCTFail(@"We expect that the status code of response will be something other than a 200.");
+            
+            if (firstReturnOdometer.odometerId.length > 0)
+            {
+                [self.vlService deleteOdometerWithId:firstReturnOdometer.odometerId onSuccess:^(NSHTTPURLResponse *response) {
+                    
+                    if (secondReturnOdometer.odometerId.length > 0 )
+                    {
+                        [self.vlService deleteOdometerWithId:secondReturnOdometer.odometerId onSuccess:^(NSHTTPURLResponse *response) {
+                            
+                            [odometerCreationExpected fulfill];
+                            
+                        } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+                            
+                            XCTFail(@"Failed to delete the second odoemter that was accidentally created.");
+                            [odometerCreationExpected fulfill];
+                            
+                        }];
+                    }
+                    
+                } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+                    
+                    XCTFail(@"Failed to delete the first odoemter that was created.");
+                    [odometerCreationExpected fulfill];
+                    
+                }];
+            }
+            
+            [odometerCreationExpected fulfill];
+            
+        } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+            
+            XCTAssertNotNil(error, @"Error will exist.");
+            XCTAssertEqual(response.statusCode, 409, @"The status code of response should be a 409.");
+            XCTAssertEqual(VLErrorCodeExistingOdometerWithSameValues, error.code, @"The error code should be a 4091");
+            XCTAssertEqualObjects(VLErrorDomainExistingOdometerWithSameValues, error.domain, @"Error Domain should equal our custom domain string");
+            XCTAssertEqualObjects(([NSString stringWithFormat:@"%@ %@", VLErrorMessageExistingOdometerWithSameValues, [VLTestHelper vehicleId]]), error.localizedDescription, @"The Message from constants should be the same we are getting from the back end");
+            
+            // Need to delete Odometer after we create it
+            if (firstReturnOdometer.odometerId.length > 0)
+            {
+                [self.vlService deleteOdometerWithId:firstReturnOdometer.odometerId onSuccess:^(NSHTTPURLResponse *response) {
+                    
+                    [odometerCreationExpected fulfill];
+                    
+                } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+                    
+                    XCTFail(@"Failed to delete the first odoemter that was created.");
+                    [odometerCreationExpected fulfill];
+                    
+                }];
+            }
+        }];
+        
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        
+        XCTFail(@"%@", bodyString);
+        [odometerCreationExpected fulfill];
+        
+    }];
+    
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
+}
+
+- (void)testCreateOdometerForConflictErrorWithOlderDate
+{
+    if(![VLTestHelper vehicleId])
+    {
+        XCTFail(@"There is no vehicleId in Scheme Enviornment Variables");
+        return;
+    }
+    
+    NSString *currentDateStr = [VLDateFormatter stringFromDate:[[NSDate date] dateByAddingTimeInterval:-1000.0f]];
+    
+    // create older date here
+    NSString *dateWithOneSecondFromUTC = [VLDateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:1]];
+    
+    XCTestExpectation *odometerCreationExpected = [self expectationWithDescription:@"Expect to create odometer1 and odometer2 but when odometer2 is created there is conflict because odometer2 will have an older date."];
+    
+    VLOdometer *odometerParameter = [[VLOdometer alloc] initWithReading:@1 dateStr:currentDateStr unit:VLDistanceUnitMiles];
+    
+    [self.vlService createOdometer:odometerParameter vehicleId:[VLTestHelper vehicleId] OnSuccess:^(VLOdometer *firstReturnOdometer, NSHTTPURLResponse *response) {
+        
+        NSNumber *readingPlusOne = [NSNumber numberWithFloat:firstReturnOdometer.reading.floatValue + 1];
+        
+        VLOdometer *newOdometerParameter = [[VLOdometer alloc] initWithReading:readingPlusOne dateStr:dateWithOneSecondFromUTC unit:firstReturnOdometer.distanceUnit];
+        
+        [self.vlService createOdometer:newOdometerParameter vehicleId:[VLTestHelper vehicleId] OnSuccess:^(VLOdometer *secondReturnOdometer, NSHTTPURLResponse *response) {
+            
+            XCTFail(@"We expect that the status code of response will be something other than a 200.");
+            
+            if (firstReturnOdometer.odometerId.length > 0)
+            {
+                [self.vlService deleteOdometerWithId:firstReturnOdometer.odometerId onSuccess:^(NSHTTPURLResponse *response) {
+                    
+                    if (secondReturnOdometer.odometerId.length > 0 )
+                    {
+                        [self.vlService deleteOdometerWithId:secondReturnOdometer.odometerId onSuccess:^(NSHTTPURLResponse *response) {
+                            
+                            [odometerCreationExpected fulfill];
+                            
+                        } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+                            
+                            XCTFail(@"Failed to delete the second odoemter that was accidentally created.");
+                            [odometerCreationExpected fulfill];
+                            
+                        }];
+                    }
+                    
+                } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+                    
+                    XCTFail(@"Failed to delete the first odoemter that was created.");
+                    [odometerCreationExpected fulfill];
+                    
+                }];
+            }
+            
+            [odometerCreationExpected fulfill];
+            
+        } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+            
+            XCTAssertNotNil(error, @"Error will exist.");
+            XCTAssertEqual(response.statusCode, 409, @"The status code of response should be a 409.");
+            XCTAssertEqual(VLErrorCodeExistingOdometerWithOlderDateThanPrevious, error.code, @"The error code should be a 4093");
+            XCTAssertEqualObjects(VLErrorDomainExistingOdometerWithOlderDateThanPrevious, error.domain, @"Error Domain should equal our custom domain string");
+            XCTAssertEqualObjects(VLErrorMessageExistingOdometerWithOlderDateThanPrevious, error.localizedDescription, @"The Message from constants should be the same we are getting from the back end");
+            
+            // Need to delete Odometer after we create it
+            if (firstReturnOdometer.odometerId.length > 0)
+            {
+                [self.vlService deleteOdometerWithId:firstReturnOdometer.odometerId onSuccess:^(NSHTTPURLResponse *response) {
+                    
+                    [odometerCreationExpected fulfill];
+                    
+                } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+                    
+                    XCTFail(@"Failed to delete the first odoemter that was created.");
+                    [odometerCreationExpected fulfill];
+                    
+                }];
+            }
+        }];
+        
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        
+        XCTFail(@"%@", bodyString);
+        [odometerCreationExpected fulfill];
+        
+    }];
+
+    
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
+}
 
 - (void)testCreateOdometerForConflictErrorWithSmallerReading
 {
     if(![VLTestHelper vehicleId])
     {
-        XCTAssertTrue(NO);
+        XCTFail(@"There is no vehicleId in Scheme Enviornment Variables");
         return;
     }
     
-    __block NSNumber *highestCurrentReading;
-
     NSString *currentDateStr = [VLDateFormatter stringFromDate:[[NSDate date] dateByAddingTimeInterval:-1000.0f]];
     NSString *currentDatePlusOneStr = [VLDateFormatter stringFromDate:[[VLDateFormatter initializeDateFromString:currentDateStr] dateByAddingTimeInterval:0.1]];
 
     XCTestExpectation *odometerCreationExpected = [self expectationWithDescription:@"Expect to create odometer1 and odometer2 but when odometer2 is created there is conflict because odometer 2 will have smaller reading."];
     
-    // get Odometer if it exists
-    [self.vlService getOdometersForVehicleWithId:[VLTestHelper vehicleId] onSuccess:^(VLOdometerPager *odometerPager, NSHTTPURLResponse *response) {
+    VLOdometer *odometerParameter = [[VLOdometer alloc] initWithReading:@1 dateStr:currentDateStr unit:VLDistanceUnitMiles];
+    
+    // create dummy odometer
+    [self.vlService createOdometer:odometerParameter vehicleId:[VLTestHelper vehicleId] OnSuccess:^(VLOdometer *firstReturnOdometer, NSHTTPURLResponse *response) {
         
-        BOOL hasPreviousOdometerReading = [(VLOdometer *)odometerPager.odometers.firstObject reading];
+        // create older date here
+        NSNumber *smallerReading = [NSNumber numberWithDouble:firstReturnOdometer.reading.doubleValue - 1000];
         
-        VLDistanceUnit unit;
+        VLOdometer *newOdometerParameter = [[VLOdometer alloc] initWithReading:smallerReading dateStr:currentDatePlusOneStr unit:firstReturnOdometer.distanceUnit];
         
-        if (hasPreviousOdometerReading)
-        {
-            VLOdometer *existingOdometer = odometerPager.odometers.firstObject;
-            highestCurrentReading = existingOdometer.reading;
-            unit = existingOdometer.distanceUnit;
-        }
-        else
-        {
-            highestCurrentReading = @1;
-            unit = VLDistanceUnitMiles;
-        }
-        
-        VLOdometer *odometerParameter = [[VLOdometer alloc] initWithReading:highestCurrentReading dateStr:currentDateStr unit:unit];
-        NSLog(@"LIME AND COOCNUT: reading %@", highestCurrentReading);
-        NSLog(@"LIME AND COOCNUT: odometer parameter %@", [VLTestHelper vehicleId]);
-        NSLog(@"LIME AND COOCNUT: odometer parameter %@", currentDateStr);
-        
-        // create dummy odometer
-        [self.vlService createOdometer:odometerParameter vehicleId:[VLTestHelper vehicleId] OnSuccess:^(VLOdometer *firstReturnOdometer, NSHTTPURLResponse *response) {
+        // create a second dummy odometer but with a reading that is less than the first
+        [self.vlService createOdometer:newOdometerParameter vehicleId:[VLTestHelper vehicleId] OnSuccess:^(VLOdometer *secondReturnOdometer, NSHTTPURLResponse *response) {
             
-            // create older date here
-            NSNumber *smallerReading = [NSNumber numberWithDouble:firstReturnOdometer.reading.doubleValue - 1000];
+            XCTFail(@"We expect that the status code of response will be something other than a 200.");
             
-            VLOdometer *newOdometerParameter = [[VLOdometer alloc] initWithReading:smallerReading dateStr:currentDatePlusOneStr unit:firstReturnOdometer.distanceUnit];
-            
-            // create a second dummy odometer but with a reading that is less than the first
-            [self.vlService createOdometer:newOdometerParameter vehicleId:[VLTestHelper vehicleId] OnSuccess:^(VLOdometer *secondReturnOdometer, NSHTTPURLResponse *response) {
-                
-                XCTAssertTrue(NO, @"We expect that the status code of response will be something other than a 200.");
-                [odometerCreationExpected fulfill];
-                
-            } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-                
-                XCTAssertNotNil(error, @"Error will exist.");
-                XCTAssertEqual(response.statusCode, 409, @"The status code of response should be a 409.");
-                XCTAssertEqual(VLErrorCodeExistingOdometerWithSmallerReadingThanPrevious, error.code, @"The error code should be a 4092");
-                XCTAssertEqualObjects(VLErrorDomainExistingOdometerWithSmallerReadingThanPrevious, error.domain, @"Error Domain should equal our custom domain string");
-                XCTAssertEqualObjects(VLErrorMessageExistingOdometerWithSmallerReadingThanPrevious, error.localizedDescription, @"The Message from constants should be the same we are getting from the back end");
-                
-                [odometerCreationExpected fulfill];
-
-                // Need to delete Odometer after we create it
-//                if (firstReturnOdometer.odometerId.length > 0)
-//                {
-//                    [self.vlService deleteOdometerWithId:firstReturnOdometer.odometerId onSuccess:^(NSHTTPURLResponse *response) {
-//                        
-//                        [odometerCreationExpected fulfill];
-//                        
-//                    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-//                        
-//                        XCTAssertTrue(NO);
-//                        [odometerCreationExpected fulfill];
-//                        
-//                    }];
-//                }
-            }];
+            if (firstReturnOdometer.odometerId.length > 0)
+            {
+                [self.vlService deleteOdometerWithId:firstReturnOdometer.odometerId onSuccess:^(NSHTTPURLResponse *response) {
+                    
+                    if (secondReturnOdometer.odometerId.length > 0 )
+                    {
+                        [self.vlService deleteOdometerWithId:secondReturnOdometer.odometerId onSuccess:^(NSHTTPURLResponse *response) {
+                            
+                            [odometerCreationExpected fulfill];
+                            
+                        } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+                           
+                            XCTFail(@"Failed to delete the second odoemter that was accidentally created.");
+                            [odometerCreationExpected fulfill];
+                            
+                        }];
+                    }
+                    
+                } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+                    
+                    XCTFail(@"Failed to delete the first odoemter that was created.");
+                    [odometerCreationExpected fulfill];
+                    
+                }];
+            }
             
         } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
             
-            NSLog(@"LIME AND COCONUT: FAILED WITH ERROR %@", bodyString);
-            XCTAssertTrue(NO, @"%@", bodyString);
-            [odometerCreationExpected fulfill];
+            XCTAssertNotNil(error, @"Error will exist.");
+            XCTAssertEqual(response.statusCode, 409, @"The status code of response should be a 409.");
+            XCTAssertEqual(VLErrorCodeExistingOdometerWithSmallerReadingThanPrevious, error.code, @"The error code should be a 4092");
+            XCTAssertEqualObjects(VLErrorDomainExistingOdometerWithSmallerReadingThanPrevious, error.domain, @"Error Domain should equal our custom domain string");
+            XCTAssertEqualObjects(VLErrorMessageExistingOdometerWithSmallerReadingThanPrevious, error.localizedDescription, @"The Message from constants should be the same we are getting from the back end");
             
+            // Need to delete Odometer after we create it
+            if (firstReturnOdometer.odometerId.length > 0)
+            {
+                [self.vlService deleteOdometerWithId:firstReturnOdometer.odometerId onSuccess:^(NSHTTPURLResponse *response) {
+                    
+                    [odometerCreationExpected fulfill];
+                    
+                } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+                    
+                    XCTFail(@"Failed to delete the first odoemter that was created.");
+                    [odometerCreationExpected fulfill];
+                    
+                }];
+            }
         }];
-        
         
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         
-        XCTAssertTrue(NO, @"%@", bodyString);
+        XCTFail(@"%@", bodyString);
         [odometerCreationExpected fulfill];
         
     }];
