@@ -420,7 +420,7 @@
     
     __block NSNumber *highestCurrentReading;
 
-    NSString *currentDateStr = [VLDateFormatter stringFromDate:[[NSDate date] dateByAddingTimeInterval:-1000.0f]];
+    NSString *currentDateStr = [VLDateFormatter stringFromDate:[[NSDate date] dateByAddingTimeInterval:1000.0f]];
     NSString *currentDatePlusOneStr = [VLDateFormatter stringFromDate:[[VLDateFormatter initializeDateFromString:currentDateStr] dateByAddingTimeInterval:0.1]];
 
     XCTestExpectation *odometerCreationExpected = [self expectationWithDescription:@"Expect to create odometer1 and odometer2 but when odometer2 is created there is conflict because odometer 2 will have smaller reading."];
@@ -486,6 +486,7 @@
             
         } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
             
+            NSLog(@"LIME AND COCONUT: FAILED WITH ERROR %@", bodyString);
             XCTAssertTrue(NO, @"%@", bodyString);
             [odometerCreationExpected fulfill];
             
