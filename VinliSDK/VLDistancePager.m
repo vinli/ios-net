@@ -19,7 +19,7 @@
 
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service {
-    if (self = [super initWithDictionary:dictionary service:nil])
+    if (self = [super initWithDictionary:dictionary service:service])
     {
         if (self) {
             _distances = [self populateDistances:dictionary];

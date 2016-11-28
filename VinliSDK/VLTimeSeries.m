@@ -10,10 +10,11 @@
 #import "VLDateFormatter.h"
 
 
-
-
 @implementation VLTimeSeries
 
++ (instancetype)timeSeries {
+    return [VLTimeSeries new];
+}
 
 
 + (instancetype)timeSeriesFromPreviousNumberOfWeeks:(NSInteger)numWeeks

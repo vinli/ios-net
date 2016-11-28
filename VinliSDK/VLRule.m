@@ -11,6 +11,7 @@
 #import "VLParametricBoundary.h"
 #import "VLRadiusBoundary.h"
 #import "VLPolygonBoundary.h"
+#import "NSDictionary+NonNullable.h"
 
 @implementation VLRule
 
@@ -34,7 +35,7 @@
             
             _ruleId = dictionary[@"id"];
             _name = dictionary[@"name"];
-            _deviceId = dictionary[@"deviceId"];
+            _deviceId = [dictionary vl_getStringAttributeForKey:@"deviceId" defaultValue:nil];
             _evaluated = [dictionary[@"evaluated"] boolValue];
             
             if(!_evaluated){
@@ -48,6 +49,11 @@
                 _selfURL = [NSURL URLWithString:dictionary[@"links"][@"self"]];
                 _eventsURL = [NSURL URLWithString:dictionary[@"links"][@"events"]];
                 _subscriptionsURL = [NSURL URLWithString:dictionary[@"links"][@"subscriptions"]];
+            }
+            
+            NSDictionary* associatedObject = [dictionary vl_getDictionaryAttributeForKey:@"object" defaultValue:nil];
+            if (associatedObject && [associatedObject[@"type"] isEqualToString:@"vehicle"]) {
+                _vehicleId = [associatedObject vl_getStringAttributeForKey:@"id" defaultValue:nil];
             }
             
             if(dictionary[@"boundaries"]){

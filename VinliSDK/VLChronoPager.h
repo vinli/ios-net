@@ -19,7 +19,7 @@
 /**
  This should return the number trips left to be paginated
  */
-@property (readonly) unsigned long remaining;
+@property (readonly) NSInteger remaining;
 
 /**
  Based on the time series passed into the service call, until can represent many values. The default value is the start date of the time series and the since value will represent a date in the past. This is a string representation of an ISO formmatted date.
@@ -51,5 +51,8 @@
  @return should an instance of VLChronoPager
  */
 - (nullable instancetype)initWithDictionary:(NSDictionary * _Nullable)dictionary service:(VLService * _Nullable)service;
+
+
+- (void)getNext:(void (^)(NSArray *newValues, NSError *error))completion;
 
 @end

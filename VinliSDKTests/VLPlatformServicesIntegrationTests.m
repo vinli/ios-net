@@ -118,4 +118,46 @@
     [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
 }
 
+// This fails for the test because the app we are using to test is not an enterprise app. So we get a 403.
+//- (void)testGetVehicles {
+//    XCTestExpectation *expectation = [self expectationWithDescription:@"Expecting vehicles"];
+//    [self.vlService getVehiclesOnSuccess:^(VLVehiclePager *vehiclePager, NSHTTPURLResponse *response) {
+//        XCTAssertTrue(vehiclePager.vehicles.count > 0);
+//        XCTAssertTrue(vehiclePager.total > 0);
+//        
+//        for(VLVehicle *vehicle in vehiclePager.vehicles){
+//            XCTAssertTrue(vehicle.vehicleId != nil && [vehicle.vehicleId isKindOfClass:[NSString class]] && vehicle.vehicleId.length > 0);
+//            XCTAssertTrue(vehicle.vin != nil && [vehicle.vin isKindOfClass:[NSString class]] && vehicle.vin.length > 0);
+//        }
+//        [expectation fulfill];
+//
+//    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+//        XCTAssertTrue(NO);
+//        [expectation fulfill];
+//    }];
+//    
+//    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
+//
+//}
+
+- (void)testGetVehicleWithId {
+    if(![VLTestHelper vehicleId]){
+        XCTAssertTrue(NO);
+        return;
+    }
+    
+    XCTestExpectation *expectation = [self expectationWithDescription:@"service call for latest vehicles"];
+    [self.vlService getVehicleWithWithId:[VLTestHelper vehicleId] onSuccess:^(VLVehicle *vehicle, NSHTTPURLResponse *response) {
+        XCTAssertTrue(vehicle.vehicleId != nil && [vehicle.vehicleId isKindOfClass:[NSString class]] && vehicle.vehicleId.length > 0);
+        XCTAssertTrue(vehicle.vin != nil && [vehicle.vin isKindOfClass:[NSString class]] && vehicle.vin.length > 0);
+        XCTAssertEqualObjects([VLTestHelper vehicleId], vehicle.vehicleId);
+        [expectation fulfill];
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        XCTAssertTrue(NO);
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
+}
+
 @end

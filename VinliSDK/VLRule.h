@@ -22,6 +22,7 @@ typedef NS_ENUM(NSInteger, CoveredState){
 
 @property (readonly) NSString *ruleId;
 @property (readonly) NSString *deviceId;
+@property (readonly) NSString *vehicleId;
 @property (readonly) BOOL evaluated;
 @property (readonly) CoveredState coveredState;
 

@@ -15,6 +15,7 @@
 
 @interface VLTestHelper : NSObject
 
+
 + (NSInteger) defaultTimeOut;
 + (VLService *) vlService;
 + (NSString *) accessToken;
@@ -30,6 +31,18 @@
 + (NSString *) telemetryMessageId;
 + (NSString *) uuid;
 + (NSString *) urlStr;
++ (NSString *) reportCardId;
+
++ (double) getTestLongitude;
++ (double) getTestLatitude;
++ (NSArray *) getPolygonGeometry;
+
+#pragma mark - Vehicularization Tests
+
++ (NSString *) vehicularizationAccessToken;
++ (NSString *) vehicularizationVehicleId;
+
+#pragma mark - Unit Test Fakes
 
 + (NSDictionary *) getVehicleJSON:(NSString *) deviceId;
 + (NSDictionary *) getTripJSON: (NSString *) vehicleId;

@@ -187,7 +187,7 @@
 }
 
 #pragma mark - Tests without Service
-
+ 
 - (void)testGetNextSetOfTripsWithoutVLService
 {
     VLTripPager *pager = [[VLTripPager alloc] init];
@@ -199,6 +199,27 @@
         XCTAssertEqual(error.code, NSURLErrorUserAuthenticationRequired, @"The error codes should equal eachother in order to explain the error.");
         
     }];
+}
+
+- (void)testSomething {
+    XCTestExpectation *tripsExpectation = [self expectationWithDescription:@"Create Trip Pagination and get next set of trips in default sort order, descending."];
+    VLTimeSeries *timeSeries = [VLTimeSeries timeSeriesFromPreviousNumberOfWeeks:12];
+    timeSeries.sortOrder = VLTimerSeriesSortDirectionAscending;
+    timeSeries.limit = @(1);
+    [self.service getTripsForDeviceWithId:[VLTestHelper deviceId] timeSeries:timeSeries onSuccess:^(VLTripPager *tripPager, NSHTTPURLResponse *response) {
+        NSLog(@"test");
+        [tripPager getNext:^(NSArray *newValues, NSError *error) {
+            NSLog(@"");
+            XCTAssertTrue(YES);
+            [tripsExpectation fulfill];
+        }];
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        XCTAssertTrue(NO);
+        [tripsExpectation fulfill];
+    }];
+    
+
+    [self waitForExpectationsWithTimeout:20 handler:nil];
 }
 
 @end

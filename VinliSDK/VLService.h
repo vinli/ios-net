@@ -45,6 +45,8 @@
 #import "VLOdometerTrigger.h"
 #import "VLOdometerTriggerPager.h"
 #import "VLDateFormatter.h"
+#import "VLReportCard.h"
+#import "VLReportCardPager.h"
 
 #pragma clang diagnostic ignored "-Wnullability-completeness"
 
@@ -106,6 +108,11 @@
 
 
 - (void) startWithHost:(nonnull NSString *)token requestUri:(nonnull NSString *)requestUri onSuccess:(void (^)(NSDictionary *result, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *msg))onFailureBlock;
+
+- (void) startWithHost:(nonnull NSString *)requestUri onSuccess:(void (^)(NSDictionary *result, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *msg))onFailureBlock;
+
+- (void)requestWithUri:(nonnull NSURL *)url onSuccess:(void (^)(NSDictionary *result, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *msg))onFailureBlock;
+
 
 
 //Get the queries for a particular URL
@@ -222,6 +229,15 @@
                           onSuccess:(void (^)(VLVehiclePager *vehiclePager, NSHTTPURLResponse *response))onSuccessBlock
                           onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
+//// TODO - This only works for enterprise apps.
+//- (void) getVehiclesOnSuccess:(void (^)(VLVehiclePager *vehiclePager, NSHTTPURLResponse *response))onSuccessBlock
+//                    onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+// TODO - update documentation
+- (void) getVehicleWithWithId:(NSString *)vehicleId
+                    onSuccess:(void (^)(VLVehicle *vehicle, NSHTTPURLResponse *response))onSuccessBlock
+                    onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
 #pragma mark - Rule Services
 
 // Get a VLRulePager object containing a list of rules and pagination data
@@ -258,6 +274,18 @@
                        onSuccess:(void (^)(VLRulePager *rulePager, NSHTTPURLResponse *response))onSuccessBlock
                        onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
+// TODO -- Need to update documentation
+- (void)getRulesForVehicleWithId:(NSString *)vehicleId
+                       onSuccess:(void (^)(VLRulePager *rulePager, NSHTTPURLResponse *response))onSuccessBlock
+                       onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+// TODO -- Need to update documentation
+- (void)getRulesForVehicleWithId:(NSString *)vehicleId
+                           limit:(NSNumber *)limit
+                          offset:(NSNumber *)offSet
+                       onSuccess:(void (^)(VLRulePager *rulePager, NSHTTPURLResponse *response))onSuccessBlock
+                       onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
 // Get a VLRule object corresponding to the rule id
 // Route: GET /api/v1/rules/{ruleId}
 // @params:
@@ -289,6 +317,12 @@
           forDevice:(nonnull NSString *) deviceId
           onSuccess:(void (^)(VLRule *rule, NSHTTPURLResponse *response))onSuccessBlock
           onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+// TODO - Update documentation
+- (void)createRule:(VLRule *)rule
+        forVehicle:(NSString *)vehicleId
+         onSuccess:(void (^)(VLRule *, NSHTTPURLResponse *))onSuccessBlock
+         onFailure:(void (^)(NSError *, NSHTTPURLResponse *, NSString *))onFailureBlock;
 
 // Delete a rule
 // Route: DELETE /api/v1/rules/{ruleId}
@@ -475,6 +509,35 @@
                                    onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
 
+// TODO - need to update documentations
+- (void) getTelemetryMessagesForVehicleWithId:(NSString *)vehicleId
+                                        limit:(nullable NSNumber *)limit
+                                        until:(nullable NSDate *)until
+                                        since:(nullable NSDate *)since
+                                sortDirection:(nullable NSString *)sortDirection
+                                    onSuccess:(void (^)(VLTelemetryMessagePager *telemetryPager, NSHTTPURLResponse *response))onSuccessBlock
+                                    onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+// TODO - need to update documentation
+- (void) getTelemetryMessagesForVehicleWithId:(NSString *)vehicleId
+                                   timeSeries:(VLTimeSeries *)timeSeries
+                                    onSuccess:(void (^)(VLTelemetryMessagePager *telemetryPager, NSHTTPURLResponse *response))onSuccessBlock
+                                    onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+// TODO - need to update documentation -- Also, expand convience methods
+- (void) getLocationsForVehicleWithId:(nonnull NSString *) vehicleId
+                          timeSeries:(VLTimeSeries *)timeSeries
+                           onSuccess:(void (^)(VLLocationPager *locationPager, NSHTTPURLResponse *response))onSuccessBlock
+                           onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+// TODO - need to update documentation -- Also, expand convience methods
+- (void) getSnapshotsForVehicleWithId:(NSString *)vehicleId
+                           timeSeries:(VLTimeSeries *)timeSeries
+                               fields:(nonnull NSString *)fields
+                            onSuccess:(void (^)(VLSnapshotPager *snapshotPager, NSHTTPURLResponse *response))onSuccessBlock
+                            onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+
 #pragma mark - Trip Services
 
 // Get a VLTripPager object containing a list of trips and pagination data
@@ -570,6 +633,33 @@
              onSuccess:(void (^)(VLTrip *trip, NSHTTPURLResponse *response))onSuccessBlock
              onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
+
+#pragma mark - Behavioral Services
+
+- (void)getReportCardsForDeviceWithId:(nonnull NSString *)deviceId
+                           timeSeries:(nullable VLTimeSeries *)timeSeries
+                            onSuccess:(void (^)(VLReportCardPager *reportCardPager, NSHTTPURLResponse *response))onSuccessBlock
+                            onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+- (void)getReportCardsForVehicleWithId:(nonnull NSString *)vehicleId
+                            timeSeries:(nullable VLTimeSeries *)timeSeries
+                             onSuccess:(void (^)(VLReportCardPager *reportCardPager, NSHTTPURLResponse *response))onSuccessBlock
+                             onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+- (void)getOverallReportCardForDeviceWithId:(nonnull NSString *)deviceId
+                                 timeSeries:(nullable VLTimeSeries *)timeSeries
+                                  onSuccess:(void (^)(VLOverallReportCard *reportCard,  NSHTTPURLResponse *response))onSuccessBlock
+                                  onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+- (void)getReportCardForTripWithId:(nonnull NSString *)tripId
+                         onSuccess:(void (^)(VLReportCard *reportCard, NSHTTPURLResponse *response))onSuccessBlock
+                         onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+- (void)getReportCardWithId:(nonnull NSString *)reportCardId
+                  onSuccess:(void (^)(VLReportCard *reportCard, NSHTTPURLResponse *response))onSuccessBlock
+                  onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+
 #pragma mark - Event Services
 
 // Get a VLEventPager object containing a list of events and pagination data
@@ -610,6 +700,11 @@
                         onSuccess:(void (^)(VLEventPager *eventPager, NSHTTPURLResponse *response))onSuccessBlock
                         onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
+- (void)getEventsForVehicleWithId:(nonnull NSString *)vehicleId
+                       timeSeries:(nullable VLTimeSeries *)timeSeries
+                        onSuccess:(void (^)(VLEventPager *eventPager, NSHTTPURLResponse *response))onSuccessBlock
+                        onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
 // Create a subscription
 // Route: POST /api/v1/devices/{deviceId}/subscriptions
 // @params:
@@ -626,6 +721,12 @@
                   forDevice:(nonnull NSString *) deviceId
                   onSuccess:(void (^)(VLSubscription *subscription, NSHTTPURLResponse *response))onSuccessBlock
                   onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+// TODO -- Update documentation
+- (void)createSubscription:(nonnull VLSubscription *)subscription
+                forVehicle:(nonnull NSString *)vehicleId
+                 onSuccess:(void (^)(VLSubscription *, NSHTTPURLResponse *))onSuccessBlock
+                 onFailure:(void (^)(NSError *, NSHTTPURLResponse *, NSString *))onFailureBlock;
 
 // Edit a subscription
 // Route: PUT /api/v1/devices/{deviceId}/subscription/{subscriptionId}
@@ -782,6 +883,16 @@
 //                  response:   An NSHTTPURLResponse instance, from which user will know the URL, statusCode, etc.
 // onFailureBlock:  Called when connection failed. Usually occurred when the website does not exist, or no internet connection.
 - (void) getSubscriptionsForDeviceWithId:(nonnull NSString *) deviceId
+                                   limit:(nullable NSNumber *)limit
+                                  offset:(nullable NSNumber *)offset
+                               onSuccess:(void (^)(VLSubscriptionPager *subscriptionPager, NSHTTPURLResponse *response))onSuccessBlock
+                               onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+- (void)getSubscriptionsForVehicleWithId:(nonnull NSString *)vehicleId
+                               onSuccess:(void (^)(VLSubscriptionPager *subscriptionPager, NSHTTPURLResponse *response))onSuccessBlock
+                               onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+- (void)getSubscriptionsForVehicleWithId:(nonnull NSString *)vehicleId
                                    limit:(nullable NSNumber *)limit
                                   offset:(nullable NSNumber *)offset
                                onSuccess:(void (^)(VLSubscriptionPager *subscriptionPager, NSHTTPURLResponse *response))onSuccessBlock

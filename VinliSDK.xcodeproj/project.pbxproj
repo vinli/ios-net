@@ -96,12 +96,19 @@
 		4903FDBC1D008B630012AA72 /* VLUDPSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 4903FDB21D008B630012AA72 /* VLUDPSocket.h */; };
 		4903FDBD1D008B630012AA72 /* VLUDPSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4903FDB31D008B630012AA72 /* VLUDPSocket.m */; };
 		49231C1C1D0F45C4004B6A71 /* compressed_JS_lib.js in Resources */ = {isa = PBXBuildFile; fileRef = 49231C1B1D0F45C4004B6A71 /* compressed_JS_lib.js */; };
+		493E46A31DDCD5EC00F72300 /* VLReportCard.h in Headers */ = {isa = PBXBuildFile; fileRef = 493E46A11DDCD5EC00F72300 /* VLReportCard.h */; };
+		493E46A41DDCD5EC00F72300 /* VLReportCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 493E46A21DDCD5EC00F72300 /* VLReportCard.m */; };
 		49AB6E971B82432C00DCF808 /* VLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 49AB6E931B82432C00DCF808 /* VLSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49AB6E981B82432C00DCF808 /* VLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AB6E941B82432C00DCF808 /* VLSessionManager.m */; };
 		49AB6E991B82432C00DCF808 /* VLUrlParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 49AB6E951B82432C00DCF808 /* VLUrlParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49AB6E9A1B82432C00DCF808 /* VLUrlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AB6E961B82432C00DCF808 /* VLUrlParser.m */; };
 		49AB6E9D1B82446900DCF808 /* VLUserCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 49AB6E9B1B82446900DCF808 /* VLUserCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49AB6E9E1B82446900DCF808 /* VLUserCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AB6E9C1B82446900DCF808 /* VLUserCache.m */; };
+		49C717721DE38D1200074C18 /* VLBehavioralServiceUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C717711DE38D1200074C18 /* VLBehavioralServiceUnitTests.m */; };
+		49C717741DE38D3000074C18 /* VLBehavioralServiceIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C717731DE38D3000074C18 /* VLBehavioralServiceIntegrationTests.m */; };
+		49C717771DE3A51F00074C18 /* VLReportCardPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 49C717751DE3A51F00074C18 /* VLReportCardPager.h */; };
+		49C717781DE3A51F00074C18 /* VLReportCardPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C717761DE3A51F00074C18 /* VLReportCardPager.m */; };
+		49C7177C1DE5FB7F00074C18 /* VLReportCardPagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C7177B1DE5FB7F00074C18 /* VLReportCardPagerTests.m */; };
 		49E2F2FF1B6AA93700CD743C /* NSDictionary+NonNullable.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E2F2FD1B6AA93700CD743C /* NSDictionary+NonNullable.h */; };
 		49E2F3001B6AA93700CD743C /* NSDictionary+NonNullable.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E2F2FE1B6AA93700CD743C /* NSDictionary+NonNullable.m */; };
 		65312B5A1D945643006FB968 /* VLBatteryStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 65312B581D945643006FB968 /* VLBatteryStatus.h */; };
@@ -270,12 +277,19 @@
 		4903FDB21D008B630012AA72 /* VLUDPSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLUDPSocket.h; sourceTree = "<group>"; };
 		4903FDB31D008B630012AA72 /* VLUDPSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLUDPSocket.m; sourceTree = "<group>"; };
 		49231C1B1D0F45C4004B6A71 /* compressed_JS_lib.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = compressed_JS_lib.js; sourceTree = "<group>"; };
+		493E46A11DDCD5EC00F72300 /* VLReportCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLReportCard.h; sourceTree = "<group>"; };
+		493E46A21DDCD5EC00F72300 /* VLReportCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLReportCard.m; sourceTree = "<group>"; };
 		49AB6E931B82432C00DCF808 /* VLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLSessionManager.h; sourceTree = "<group>"; };
 		49AB6E941B82432C00DCF808 /* VLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLSessionManager.m; sourceTree = "<group>"; };
 		49AB6E951B82432C00DCF808 /* VLUrlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLUrlParser.h; sourceTree = "<group>"; };
 		49AB6E961B82432C00DCF808 /* VLUrlParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLUrlParser.m; sourceTree = "<group>"; };
 		49AB6E9B1B82446900DCF808 /* VLUserCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLUserCache.h; sourceTree = "<group>"; };
 		49AB6E9C1B82446900DCF808 /* VLUserCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLUserCache.m; sourceTree = "<group>"; };
+		49C717711DE38D1200074C18 /* VLBehavioralServiceUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLBehavioralServiceUnitTests.m; sourceTree = "<group>"; };
+		49C717731DE38D3000074C18 /* VLBehavioralServiceIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLBehavioralServiceIntegrationTests.m; sourceTree = "<group>"; };
+		49C717751DE3A51F00074C18 /* VLReportCardPager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLReportCardPager.h; sourceTree = "<group>"; };
+		49C717761DE3A51F00074C18 /* VLReportCardPager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLReportCardPager.m; sourceTree = "<group>"; };
+		49C7177B1DE5FB7F00074C18 /* VLReportCardPagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLReportCardPagerTests.m; sourceTree = "<group>"; };
 		49E2F2FD1B6AA93700CD743C /* NSDictionary+NonNullable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NonNullable.h"; sourceTree = "<group>"; };
 		49E2F2FE1B6AA93700CD743C /* NSDictionary+NonNullable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NonNullable.m"; sourceTree = "<group>"; };
 		65312B581D945643006FB968 /* VLBatteryStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLBatteryStatus.h; sourceTree = "<group>"; };
@@ -461,6 +475,9 @@
 		0B1671131B0FC2B9009BE7A9 /* VinliSDKTests */ = {
 			isa = PBXGroup;
 			children = (
+				49C7177D1DE5FB9200074C18 /* Unit Tests */,
+				49C7177B1DE5FB7F00074C18 /* VLReportCardPagerTests.m */,
+				49C717711DE38D1200074C18 /* VLBehavioralServiceUnitTests.m */,
 				BF3B33421D9EF3D9001DED7D /* VLTripPagerIntegrationTests.m */,
 				BF3B333E1D9C59E6001DED7D /* VLTripUnitTests.m */,
 				BF3B333C1D9C4F82001DED7D /* VLLocationUnitTests.m */,
@@ -486,6 +503,7 @@
 				7753A78A1C87713D00D3080F /* VLRulesIntegrationTests.m */,
 				65312B5C1D945E7C006FB968 /* VLDiagnosticTests.m */,
 				65312B5E1D946154006FB968 /* VLDiagnosticIntegrationTests.m */,
+				49C717731DE38D3000074C18 /* VLBehavioralServiceIntegrationTests.m */,
 			);
 			path = VinliSDKTests;
 			sourceTree = "<group>";
@@ -591,6 +609,8 @@
 				777A6B8C1C91FC5E0050F6C0 /* VLDistancePager.m */,
 				77B3C1B11C99F3C700BE836A /* VLOdometerTriggerPager.h */,
 				77B3C1B21C99F3C700BE836A /* VLOdometerTriggerPager.m */,
+				49C717751DE3A51F00074C18 /* VLReportCardPager.h */,
+				49C717761DE3A51F00074C18 /* VLReportCardPager.m */,
 			);
 			name = Pager;
 			sourceTree = "<group>";
@@ -636,6 +656,8 @@
 				65FFFB551CBEAAAD009D4CF1 /* VLCoordinate.m */,
 				65312B581D945643006FB968 /* VLBatteryStatus.h */,
 				65312B591D945643006FB968 /* VLBatteryStatus.m */,
+				493E46A11DDCD5EC00F72300 /* VLReportCard.h */,
+				493E46A21DDCD5EC00F72300 /* VLReportCard.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -653,6 +675,13 @@
 				4903FDB31D008B630012AA72 /* VLUDPSocket.m */,
 			);
 			name = Socket;
+			sourceTree = "<group>";
+		};
+		49C7177D1DE5FB9200074C18 /* Unit Tests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Unit Tests";
 			sourceTree = "<group>";
 		};
 		6589E6521D09CF1B0017D75B /* Bearing */ = {
@@ -721,6 +750,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				493E46A31DDCD5EC00F72300 /* VLReportCard.h in Headers */,
 				0B3DDC5A1B1534AB00D95E61 /* VLTrip.h in Headers */,
 				6589E65D1D09CF220017D75B /* VLBearing.h in Headers */,
 				0B16714D1B0FC39D009BE7A9 /* VLTelemetryMessage.h in Headers */,
@@ -762,6 +792,7 @@
 				777A6B851C91E31E0050F6C0 /* VLUnitLocalizer.h in Headers */,
 				49AB6E9D1B82446900DCF808 /* VLUserCache.h in Headers */,
 				77BE999D1C73A4A5001E8F64 /* VLOffsetPager.h in Headers */,
+				49C717771DE3A51F00074C18 /* VLReportCardPager.h in Headers */,
 				4903FDB81D008B630012AA72 /* VLSIMSignal.h in Headers */,
 				E92943741B17D6B100AAC7D3 /* VLDevicePager.h in Headers */,
 				0B89E4961B18BA3E00E69AEA /* VLUser.h in Headers */,
@@ -1078,6 +1109,8 @@
 				659718D31CBDA3020075BE36 /* VLStreamMessage.m in Sources */,
 				0B37782C1B28B7B8004AC2D6 /* VLLoginButton.m in Sources */,
 				0B1671771B0FC418009BE7A9 /* NSString+Random.m in Sources */,
+				493E46A41DDCD5EC00F72300 /* VLReportCard.m in Sources */,
+				49C717781DE3A51F00074C18 /* VLReportCardPager.m in Sources */,
 				0B69F0AB1B39B54100684F6D /* VLObjectRef.m in Sources */,
 				65FFFB461CBEA17A009D4CF1 /* VLParametricFilter.m in Sources */,
 				7367E3A71B175FEA004223A6 /* VLNotificationPager.m in Sources */,
@@ -1095,8 +1128,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49C717721DE38D1200074C18 /* VLBehavioralServiceUnitTests.m in Sources */,
 				0BD2E50E1B0FF3DD00A5D2BC /* VLRuleServicesTests.m in Sources */,
 				BF3B33351D9B14F8001DED7D /* VLPagerUnitTests.m in Sources */,
+				49C7177C1DE5FB7F00074C18 /* VLReportCardPagerTests.m in Sources */,
 				0B1671791B0FD64B009BE7A9 /* VLPlatformServicesTests.m in Sources */,
 				E929436D1B166B4600AAC7D3 /* VLSubscriptionServiceTests.m in Sources */,
 				7753A7871C80EC7A00D3080F /* VLEventsIntegrationTests.m in Sources */,
@@ -1104,6 +1139,7 @@
 				7753A7801C7CE66300D3080F /* A_VLLoginIntegrationTest.m in Sources */,
 				BF3B33431D9EF3D9001DED7D /* VLTripPagerIntegrationTests.m in Sources */,
 				7753A78B1C87713D00D3080F /* VLRulesIntegrationTests.m in Sources */,
+				49C717741DE38D3000074C18 /* VLBehavioralServiceIntegrationTests.m in Sources */,
 				BF3B333D1D9C4F82001DED7D /* VLLocationUnitTests.m in Sources */,
 				777A6B901C9379890050F6C0 /* VLDistanceServicesIntegrationTests.m in Sources */,
 				65312B5D1D945E7C006FB968 /* VLDiagnosticTests.m in Sources */,
@@ -1298,6 +1334,9 @@
 					"TRIP_ID=${TRIP_ID}",
 					"VEHICLE_ID=${VEHICLE_ID}",
 					"DEVICE_ID=${DEVICE_ID}",
+					"REPORT_CARD_ID=${REPORT_CARD_ID}",
+					"VEHICULARIZATION_ACCESS_TOKEN=${VEHICULARIZATION_ACCESS_TOKEN}",
+					"VEHICULARIZATION_VEHICLE_ID=${VEHICULARIZATION_VEHICLE_ID}",
 				);
 				INFOPLIST_FILE = VinliSDKTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1307,10 +1346,13 @@
 				ODO_TRIGGER_ID = "\"DEFAULT_ODO_TRIGGER_ID\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "li.vin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REPORT_CARD_ID = "\"DEFAULT_REPORT_CARD_ID\"";
 				RULE_ID = "\"DEFAULT_RULE_ID\"";
 				SUBSCRIPTION_ID = "\"DEFAULT_SUBSCRIPTION_ID\"";
 				TRIP_ID = "\"DEFAULT_TRIP_ID\"";
 				VEHICLE_ID = "\"DEFAULT_VEHICLE_ID\"";
+				VEHICULARIZATION_ACCESS_TOKEN = "\"DEFAULT_VEHICULARIZATION_ACCESS_TOKEN\"";
+				VEHICULARIZATION_VEHICLE_ID = "\"DEFAULT_VEHICULARIZATION_VEHICLE_ID\"";
 			};
 			name = Debug;
 		};
@@ -1334,10 +1376,13 @@
 				ODO_TRIGGER_ID = "\"DEFAULT_ODO_TRIGGER_ID\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "li.vin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REPORT_CARD_ID = "\"DEFAULT_REPORT_CARD_ID\"";
 				RULE_ID = "\"DEFAULT_RULE_ID\"";
 				SUBSCRIPTION_ID = "\"DEFAULT_SUBSCRIPTION_ID\"";
 				TRIP_ID = "\"DEFAULT_TRIP_ID\"";
 				VEHICLE_ID = "\"DEFAULT_VEHICLE_ID\"";
+				VEHICULARIZATION_ACCESS_TOKEN = "\"DEFAULT_VEHICULARIZATION_ACCESS_TOKEN\"";
+				VEHICULARIZATION_VEHICLE_ID = "\"DEFAULT_VEHICULARIZATION_VEHICLE_ID\"";
 			};
 			name = Release;
 		};

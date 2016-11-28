@@ -26,5 +26,7 @@ typedef NS_ENUM(NSInteger, VLProtocolType) {
 
 + (NSURLRequest *) requestWithToken:(NSString *)token contentType:(NSString *)contentType requestUri:(NSString *)requestUri;
 
++ (NSURLRequest *)requestWithToken:(NSString *)token requestUri:(NSURL *)requestUri;
+
 
 @end

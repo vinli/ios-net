@@ -150,7 +150,7 @@
 }
 
 + (NSString *) telemetryMessageId{
-    static NSString *messageId = nil;
+    static NSString *messageId = nil;        
     if(!messageId){
         messageId = @MACRO_VALUE(MESSAGE_ID);
         if([messageId isEqualToString:@"DEFAULT_MESSAGE_ID"]){
@@ -171,6 +171,67 @@
     return @"https://vin.li";
 }
 
++ (NSString *) reportCardId {
+    static NSString *reportCardId = nil;
+    if(!reportCardId){
+        reportCardId = @MACRO_VALUE(REPORT_CARD_ID);
+        if([reportCardId isEqualToString:@"DEFAULT_REPORT_CARD_ID"]){
+            char *envar = getenv("REPORT_CARD_ID");
+            reportCardId = (envar) ? [NSString stringWithUTF8String:envar] : nil;
+        }
+    }
+    return reportCardId;
+}
+
++ (double) getTestLongitude {
+    return -96.864586;
+}
+
++ (double) getTestLatitude {
+    return 32.736259;
+}
+
++ (NSNumber *) getTestLatitudeNum {
+    return @([self getTestLatitude]);
+}
+
++ (NSNumber *) getTestLongitudeNum {
+    return @([self getTestLongitude]);
+}
+
++ (NSArray *) getPolygonGeometry {
+    return @[ @[[self getTestLongitudeNum], [self getTestLatitudeNum]],
+              @[[self getTestLongitudeNum], [self getTestLatitudeNum]],
+              @[[self getTestLongitudeNum], [self getTestLatitudeNum]],
+              @[[self getTestLongitudeNum], [self getTestLatitudeNum]]];
+}
+
+#pragma mark - Vehicularization
+
++ (NSString *) vehicularizationAccessToken {
+    static NSString *vehicularizationAccessToken = nil;
+    if(!vehicularizationAccessToken){
+        vehicularizationAccessToken = @MACRO_VALUE(VEHICULARIZATION_ACCESS_TOKEN);
+        if([vehicularizationAccessToken isEqualToString:@"DEFAULT_VEHICULARIZATION_ACCESS_TOKEN"]){
+            char *envar = getenv("VEHICULARIZATION_ACCESS_TOKEN");
+            vehicularizationAccessToken = (envar) ? [NSString stringWithUTF8String:envar] : nil;
+        }
+    }
+    return vehicularizationAccessToken;
+}
+
++ (NSString *) vehicularizationVehicleId {
+    static NSString *vehicularizationVehicleId = nil;
+    if(!vehicularizationVehicleId){
+        vehicularizationVehicleId = @MACRO_VALUE(VEHICULARIZATION_VEHICLE_ID);
+        if([vehicularizationVehicleId isEqualToString:@"DEFAULT_VEHICULARIZATION_VEHICLE_ID"]){
+            char *envar = getenv("VEHICULARIZATION_VEHICLE_ID");
+            vehicularizationVehicleId = (envar) ? [NSString stringWithUTF8String:envar] : nil;
+        }
+    }
+    return vehicularizationVehicleId;
+}
+
 // This method removes all keys who's value is null from the dictionary;
 + (NSMutableDictionary *)cleanDictionary:(NSDictionary *)dict {
     NSMutableDictionary *mutDict = [dict mutableCopy];
@@ -184,6 +245,8 @@
 + (NSInteger)defaultTimeOut {
     return 45.0;
 }
+
+#pragma mark - Unit Test Fakes
 
 + (NSDictionary *) getVehicleJSON:(NSString *) deviceId{
     int minYear = 2000;

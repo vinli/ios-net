@@ -145,5 +145,10 @@
     
 }
 
+- (NSArray *)parseJSON:(NSDictionary *)json {
+    NSLog(@"");
+    return [self populateTrips:json];
+}
+
 
 @end

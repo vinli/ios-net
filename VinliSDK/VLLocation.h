@@ -16,6 +16,10 @@
 @property (readonly) double longitude;
 @property (readonly) double latitude;
 
+@property (readonly) NSString *locationId;
+@property (readonly) NSString *timeStampStr;
+@property (readonly) NSDate *timeStamp;
+
 @property (readonly) NSDictionary *properties;
 
 - (id) initWithDictionary: (NSDictionary *) dictionary;

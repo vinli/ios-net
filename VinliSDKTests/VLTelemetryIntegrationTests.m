@@ -17,6 +17,7 @@
 @interface VLTelemetryIntegrationTests : XCTestCase
 
 @property VLService *vlService;
+@property VLService *vehicularizationService;
 
 @end
 
@@ -26,6 +27,9 @@
     [super setUp];
 
     self.vlService = [VLTestHelper vlService];
+    VLSession *vehicleSession = [[VLSession alloc] initWithAccessToken:[VLTestHelper vehicularizationAccessToken]];
+    self.vehicularizationService = [[VLService alloc] initWithSession:vehicleSession];
+    self.vehicularizationService.host = @"-dev.vin.li";
 }
 
 - (void)tearDown {
@@ -126,5 +130,91 @@
     
     [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
 }
+
+#pragma mark - Vehicularization Tests
+
+- (void)testGetTelemetryMessageWithVehicleId {
+    
+    if(![VLTestHelper vehicularizationVehicleId]){
+        XCTAssertTrue(NO);
+        return;
+    }
+    
+    XCTestExpectation *telemetryExpectation = [self expectationWithDescription:@"telemetry messages"];
+    [self.vehicularizationService getTelemetryMessagesForVehicleWithId:[VLTestHelper vehicularizationVehicleId] timeSeries:[VLTimeSeries new] onSuccess:^(VLTelemetryMessagePager *telemetryPager, NSHTTPURLResponse *response) {
+        XCTAssertTrue(telemetryPager.messages.count > 0);
+        XCTAssertTrue(telemetryPager.since != nil && [telemetryPager.since isKindOfClass:[NSString class]] && telemetryPager.since.length > 0);
+        XCTAssertTrue(telemetryPager.until != nil && [telemetryPager.until isKindOfClass:[NSString class]] && telemetryPager.until.length > 0);
+        
+        for(VLTelemetryMessage *message in telemetryPager.messages){
+            XCTAssertTrue(message.messageId != nil && [message.messageId isKindOfClass:[NSString class]] && message.messageId.length > 0);
+            XCTAssertTrue(message.timestamp != nil && [message.timestamp isKindOfClass:[NSString class]] && message.timestamp.length > 0);
+            XCTAssertTrue(message.data != nil && [message.data isKindOfClass:[NSDictionary class]]);
+        }
+        [telemetryExpectation fulfill];
+
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        XCTAssertTrue(NO);
+        [telemetryExpectation fulfill];
+    }];
+    
+    
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
+}
+
+- (void)testGetLocationsWithVehicleId {
+    if(![VLTestHelper vehicularizationVehicleId]){
+        XCTAssertTrue(NO);
+        return;
+    }
+    
+    XCTestExpectation *expectedLocations = [self expectationWithDescription:@"Getting locations"];
+    [self.vehicularizationService getLocationsForVehicleWithId:[VLTestHelper vehicularizationVehicleId] timeSeries:[VLTimeSeries timeSeries] onSuccess:^(VLLocationPager *locationPager, NSHTTPURLResponse *response) {
+        XCTAssertTrue(locationPager.locations.count > 0);
+        XCTAssertTrue(locationPager.since != nil && [locationPager.since isKindOfClass:[NSString class]] && locationPager.since.length > 0);
+        XCTAssertTrue(locationPager.until != nil && [locationPager.until isKindOfClass:[NSString class]] && locationPager.until.length > 0);
+        
+        for(VLLocation *location in locationPager.locations){
+            XCTAssertNotNil(location.locationId);
+            XCTAssertNotNil(location.timeStampStr);
+            XCTAssertNotNil(location.timeStamp);
+            XCTAssertTrue(fabs(location.latitude) <= 180.0);
+            XCTAssertTrue(fabs(location.longitude) <= 180.0);
+        }
+        [expectedLocations fulfill];
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        XCTAssertTrue(NO);
+        [expectedLocations fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
+}
+
+- (void)testGetSnapshotsWithVehicleId {
+    if(![VLTestHelper vehicularizationVehicleId]){
+        XCTAssertTrue(NO);
+        return;
+    }
+    
+    XCTestExpectation *snapshotExpectation = [self expectationWithDescription:@"Get snapshots"];
+    [self.vehicularizationService getSnapshotsForVehicleWithId:[VLTestHelper vehicularizationVehicleId] timeSeries:[VLTimeSeries new] fields:@"vehicleSpeed" onSuccess:^(VLSnapshotPager *snapshotPager, NSHTTPURLResponse *response) {
+        XCTAssertTrue(snapshotPager.snapshots.count > 0);
+        XCTAssertTrue(snapshotPager.since != nil && [snapshotPager.since isKindOfClass:[NSString class]] && snapshotPager.since.length > 0);
+        XCTAssertTrue(snapshotPager.until != nil && [snapshotPager.until isKindOfClass:[NSString class]] && snapshotPager.until.length > 0);
+        
+        for(VLSnapshot *snapshot in snapshotPager.snapshots){
+            XCTAssertTrue(snapshot.data != nil && [snapshot.data isKindOfClass:[NSDictionary class]] && snapshot.data.allKeys.count > 0);
+            XCTAssertNotNil(snapshot.timeStampStr);
+            XCTAssertNotNil(snapshot.timeStamp);
+        }
+        [snapshotExpectation fulfill];
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        XCTAssertTrue(NO);
+        [snapshotExpectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
+}
+
 
 @end

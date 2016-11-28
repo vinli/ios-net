@@ -14,6 +14,7 @@
 #import "VLBoundary.h"
 
 #import "NSHTTPURLResponse+VLAdditions.h"
+#import "NSDictionary+NonNullable.h"
 
 #define NUMBER_DEFAULT_PORT        @80
 #define NUMBER_HTTPS_PORT          @443
@@ -23,10 +24,10 @@
 #define ERROR_VINLI_DOMAIN      @"VinliSDKErrorDomain"
 #define ERROR_NO_SESSION        @"VinliSDKErrorNoSession"
 
+#define STRING_HOST_BEHAVIORAL  @"behavioral"
 #define STRING_HOST_EVENTS      @"events"
 #define STRING_HOST_PLATFORM    @"platform"
 #define STRING_HOST_TELEMETRY   @"telemetry"
-#define STRING_HOST_DIAG        @"diag"
 #define STRING_HOST_RULES       @"rules"
 #define STRING_HOST_AUTH        @"auth"
 #define STRING_HOST_TRIPS       @"trips"
@@ -36,16 +37,8 @@
 
 #define DEFAULT_HOST            @".vin.li"
 
-
-
-
-
-@interface VLService (){
-}
-
+@interface VLService ()
 @property (copy, nonatomic) void(^AccessTokenExpirationHandler)(VLService* service, NSError* error);
-
-
 @end
 
 @implementation VLService
@@ -199,9 +192,14 @@
     [self startConnectionWithRequest:request method:@"GET" onSuccess:onSuccessBlock onFailure:onFailureBlock];
 }
 
+- (void) startWithHost:(nonnull NSString *)requestUri onSuccess:(void (^)(NSDictionary *result, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *msg))onFailureBlock {
+    [self startWithHost:self.session.accessToken requestUri:requestUri onSuccess:onSuccessBlock onFailure:onFailureBlock];
+}
 
-
-
+- (void)requestWithUri:(nonnull NSURL *)url onSuccess:(void (^)(NSDictionary *result, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *msg))onFailureBlock {
+    NSURLRequest *request = [VLRequestHeader requestWithToken:self.session.accessToken requestUri:url];
+    [self startConnectionWithRequest:request method:@"GET" onSuccess:onSuccessBlock onFailure:onFailureBlock];
+}
 
 
 - (NSDictionary *) getDictionaryWithLimit: (nullable NSNumber *) limit
@@ -299,7 +297,7 @@
 
 - (void) getDeviceWithId:(NSString *) deviceId
                        onSuccess:(void (^)(VLDevice *device, NSHTTPURLResponse *response))onSuccessBlock
-                       onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
+                       onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
     
     if(_session == nil){
         if(onFailureBlock){
@@ -437,17 +435,59 @@
             }
         }
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-        if (onFailureBlock) {
-            onFailureBlock(error, response, bodyString);
+        if (onFailureBlock) { onFailureBlock(error, response, bodyString); }
+    }];
+}
+
+- (void) getVehiclesOnSuccess:(void (^)(VLVehiclePager *vehiclePager, NSHTTPURLResponse *response))onSuccessBlock
+                    onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+    [self startWithHost:STRING_HOST_PLATFORM path:@"/vehicles" queries:nil HTTPMethod:@"GET" parameters:nil token:self.session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        if (![response isSuccessfulResponse]) {
+            if (onFailureBlock) {
+                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:response.statusCode userInfo:result];
+                onFailureBlock(error, response, nil);
+            }
+            return;
         }
+        
+        if (onSuccessBlock) {
+            VLVehiclePager* pager = [[VLVehiclePager alloc] initWithDictionary:result];
+            onSuccessBlock(pager, response);
+        }
+
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) { onFailureBlock(error, response, bodyString); }
+    }];
+}
+
+- (void) getVehicleWithWithId:(NSString *)vehicleId
+                    onSuccess:(void (^)(VLVehicle *vehicle, NSHTTPURLResponse *response))onSuccessBlock
+                    onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+    NSString *path = [NSString stringWithFormat:@"/vehicles/%@", vehicleId];
+    [self startWithHost:STRING_HOST_PLATFORM path:path queries:nil HTTPMethod:@"GET" parameters:nil token:self.session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        if (![response isSuccessfulResponse]) {
+            if (onFailureBlock) {
+                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:response.statusCode userInfo:result];
+                onFailureBlock(error, response, nil);
+            }
+            return;
+        }
+        
+        if (onSuccessBlock) {
+            VLVehicle* vehicle = [[VLVehicle alloc] initWithDictionary:result];
+            onSuccessBlock(vehicle, response);
+        }
+        
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) { onFailureBlock(error, response, bodyString); }
     }];
 }
 
 #pragma mark - Rule Service
 
-- (void) getRulesForDeviceWithId:(NSString *) deviceId
+- (void) getRulesForDeviceWithId:(NSString *)deviceId
                           onSuccess:(void (^)(VLRulePager *rulePager, NSHTTPURLResponse *response))onSuccessBlock
-                          onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
+                          onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
     
     [self getRulesForDeviceWithId:deviceId limit:nil offset:nil onSuccess:onSuccessBlock onFailure:onFailureBlock];
 }
@@ -488,6 +528,37 @@
     }];
 }
 
+- (void)getRulesForVehicleWithId:(NSString *)vehicleId
+                       onSuccess:(void (^)(VLRulePager *rulePager, NSHTTPURLResponse *response))onSuccessBlock
+                       onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+    [self getRulesForVehicleWithId:vehicleId limit:nil offset:nil onSuccess:onSuccessBlock onFailure:onFailureBlock];
+}
+
+- (void)getRulesForVehicleWithId:(NSString *)vehicleId
+                           limit:(NSNumber *)limit
+                          offset:(NSNumber *)offSet
+                       onSuccess:(void (^)(VLRulePager *rulePager, NSHTTPURLResponse *response))onSuccessBlock
+                       onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+    NSString *path = [NSString stringWithFormat:@"/vehicles/%@/rules", vehicleId];
+    [self startWithHost:STRING_HOST_RULES path:path queries:[self getDictionaryWithLimit:limit offset:offSet] HTTPMethod:@"GET" parameters:nil token:self.session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        if (![response isSuccessfulResponse]) {
+            if (onFailureBlock) {
+                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:response.statusCode userInfo:result];
+                onFailureBlock(error, response, nil);
+            }
+            return;
+        }
+        
+        if (onSuccessBlock) {
+            VLRulePager *pager = [[VLRulePager alloc] initWithDictionary:result service:self];
+            onSuccessBlock(pager, result);
+        }
+        
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) { onFailureBlock(error, response, bodyString); }
+    }];
+}
+
 - (void) createRule:(VLRule *) rule
           forDevice: (NSString *) deviceId
           onSuccess:(void (^)(VLRule *rule, NSHTTPURLResponse *response))onSuccessBlock
@@ -505,22 +576,46 @@
     
     [self startWithHost:STRING_HOST_RULES path:path queries:nil HTTPMethod:@"POST" parameters:parameters token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
-        if ([response isSuccessfulResponse]) {
-            if (onSuccessBlock) {
-                VLRule *rule = [[VLRule alloc] initWithDictionary:result];
-                onSuccessBlock(rule, response);
-            }
-        }
-        else {
+        if (![response isSuccessfulResponse]) {
             if (onFailureBlock) {
-                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:2002 userInfo:@{@"NSLocalizedDescriptionKey": @"Received unexpected response from API call"}];
-                onFailureBlock(error, response, result.description);
+                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:response.statusCode userInfo:result];
+                onFailureBlock(error, response, nil);
             }
+            return;
+        }
+        
+        if (onSuccessBlock) {
+            VLRule *rule = [[VLRule alloc] initWithDictionary:result];
+            onSuccessBlock(rule, response);
         }
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         if (onFailureBlock) {
             onFailureBlock(error, response, bodyString);
         }
+    }];
+}
+
+- (void)createRule:(VLRule *)rule
+         forVehicle:(NSString *)vehicleId
+         onSuccess:(void (^)(VLRule *, NSHTTPURLResponse *))onSuccessBlock
+         onFailure:(void (^)(NSError *, NSHTTPURLResponse *, NSString *))onFailureBlock {
+    NSString *path = [NSString stringWithFormat:@"/vehicles/%@/rules", vehicleId];
+    NSDictionary *params = [rule toDictionary];
+    [self startWithHost:STRING_HOST_RULES path:path queries:nil HTTPMethod:@"POST" parameters:params token:self.session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        if (![response isSuccessfulResponse]) {
+            if (onFailureBlock) {
+                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:response.statusCode userInfo:result];
+                onFailureBlock(error, response, nil);
+            }
+            return;
+        }
+        
+        if (onSuccessBlock) {
+            VLRule *rule = [[VLRule alloc] initWithDictionary:result];
+            onSuccessBlock(rule, response);
+        }
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *body) {
+        if (onFailureBlock) { onFailureBlock(error, response, body); }
     }];
 }
 
@@ -660,8 +755,6 @@
     }];
 }
 
-
-
 - (void) getTelemetryMessageWithId:(NSString *) messageId
                          onSuccess:(void (^)(VLTelemetryMessage *telemetryMessage, NSHTTPURLResponse *response))onSuccessBlock
                          onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
@@ -734,18 +827,15 @@
             onFailureBlock(error, response, bodyString);
         }
     }];
-    
 }
 
-
-
-- (void) getTelemetryMessagesForDeviceWithId:(NSString *) deviceId
+- (void) getTelemetryMessagesForDeviceWithId:(NSString *)deviceId
                                        limit:(nullable NSNumber *)limit
                                        until:(nullable NSDate *)until
                                        since:(nullable NSDate *)since
                                sortDirection:(nullable NSString *)sortDirection
                                    onSuccess:(void (^)(VLTelemetryMessagePager *telemetryPager, NSHTTPURLResponse *response))onSuccessBlock
-                                   onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
+                                   onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
     
     
     VLTimeSeries *timeSeries = [VLTimeSeries timeSeriesFromDate:since until:until];
@@ -757,15 +847,56 @@
 
 }
 
+- (void) getTelemetryMessagesForVehicleWithId:(NSString *)vehicleId
+                                       limit:(nullable NSNumber *)limit
+                                       until:(nullable NSDate *)until
+                                       since:(nullable NSDate *)since
+                               sortDirection:(nullable NSString *)sortDirection
+                                   onSuccess:(void (^)(VLTelemetryMessagePager *telemetryPager, NSHTTPURLResponse *response))onSuccessBlock
+                                   onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+    VLTimeSeries *timeSeries = [VLTimeSeries new];
+    timeSeries.limit = limit;
+    timeSeries.until = until;
+    timeSeries.since = since;
+    timeSeries.sortOrder = [sortDirection isEqualToString:@"desc"] ? VLTimerSeriesSortDirectionDescending : VLTimerSeriesSortDirectionAscending;
+    [self getTelemetryMessagesForVehicleWithId:vehicleId timeSeries:timeSeries onSuccess:onSuccessBlock onFailure:onFailureBlock];
+}
+
+- (void) getTelemetryMessagesForVehicleWithId:(NSString *)vehicleId
+                                   timeSeries:(VLTimeSeries *)timeSeries
+                                    onSuccess:(void (^)(VLTelemetryMessagePager *telemetryPager, NSHTTPURLResponse *response))onSuccessBlock
+                                    onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+    
+    NSString *path = [NSString stringWithFormat:@"/vehicles/%@/messages", vehicleId];
+    
+    [self startWithHost:STRING_HOST_TELEMETRY path:path queries:[timeSeries toDictionary] HTTPMethod:@"GET" parameters:nil token:self.session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        
+        if (![response isSuccessfulResponse]) {
+            if (onFailureBlock) {
+                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:response.statusCode userInfo:result];
+                onFailureBlock(error, response, nil);
+            }
+            return;
+        }
+        
+        if (onSuccessBlock) {
+            VLTelemetryMessagePager *telemetryPager = [[VLTelemetryMessagePager alloc] initWithDictionary:result service:self];
+            onSuccessBlock(telemetryPager, response);
+        }
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) {
+            onFailureBlock(error, response, bodyString);
+        }
+    }];
+}
+
+
 - (void) getLocationsForDeviceWithId:(NSString *) deviceId
                            onSuccess:(void (^)(VLLocationPager *locationPager, NSHTTPURLResponse *response))onSuccessBlock
                            onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
     
     [self getLocationsForDeviceWithId:deviceId limit:nil until:nil since:nil sortDirection:nil onSuccess:onSuccessBlock onFailure:onFailureBlock];
 }
-
-
-
 
 - (void)getLocationsForDeviceWithId:(NSString *)deviceId timeSeries:(VLTimeSeries *)timeSeries onSuccess:(void (^)(VLLocationPager *, NSHTTPURLResponse *))onSuccessBlock onFailure:(void (^)(NSError *, NSHTTPURLResponse *, NSString *))onFailureBlock
 {
@@ -799,13 +930,7 @@
     }];
 }
 
-
-
-
-
-
-
-- (void) getLocationsForDeviceWithId:(NSString *) deviceId
+- (void) getLocationsForDeviceWithId:(NSString *)deviceId
                                limit:(nullable NSNumber *)limit
                                until:(nullable NSDate *)until
                                since:(nullable NSDate *)since
@@ -819,9 +944,67 @@
     timeSeries.limit = limit;
     
     [self getLocationsForDeviceWithId:deviceId timeSeries:timeSeries onSuccess:onSuccessBlock onFailure:onFailureBlock];
-    
-    
+}
 
+- (void) getLocationsForVehicleWithId:(nonnull NSString *)vehicleId
+                           timeSeries:(VLTimeSeries *)timeSeries
+                            onSuccess:(void (^)(VLLocationPager *locationPager, NSHTTPURLResponse *response))onSuccessBlock
+                            onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+    NSString *path = [NSString stringWithFormat:@"/vehicles/%@/locations", vehicleId];
+    
+    [self startWithHost:STRING_HOST_TELEMETRY path:path queries:[timeSeries toDictionary] HTTPMethod:@"GET" parameters:nil token:self.session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        if (![response isSuccessfulResponse]) {
+            if (onFailureBlock) {
+                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:response.statusCode userInfo:result];
+                onFailureBlock(error, response, nil);
+            }
+            return;
+        }
+        
+        if (onSuccessBlock) {
+            VLLocationPager *locationPager = [[VLLocationPager alloc] initWithDictionary:result service:self];
+            onSuccessBlock(locationPager, response);
+        }
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) {
+            onFailureBlock(error, response, bodyString);
+        }
+    }];
+}
+
+- (void) getSnapshotsForVehicleWithId:(NSString *)vehicleId
+                           timeSeries:(VLTimeSeries *)timeSeries
+                               fields:(nonnull NSString *)fields
+                            onSuccess:(void (^)(VLSnapshotPager *snapshotPager, NSHTTPURLResponse *response))onSuccessBlock
+                            onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+    
+    NSString *path = [NSString stringWithFormat:@"/vehicles/%@/snapshots", vehicleId];
+    
+    NSMutableDictionary *queries = [[timeSeries toDictionary] mutableCopy];
+    if (!queries) {
+        queries = [NSMutableDictionary new];
+    }
+    [queries setObject:fields forKey:@"fields"];
+    
+    [self startWithHost:STRING_HOST_TELEMETRY path:path queries:queries HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        
+        if (![response isSuccessfulResponse]) {
+            if (onFailureBlock) {
+                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:response.statusCode userInfo:result];
+                onFailureBlock(error, response, nil);
+            }
+            return;
+        }
+        
+        if (onSuccessBlock) {
+            VLSnapshotPager *snapshotPager = [[VLSnapshotPager alloc] initWithDictionary:result service:self fields:fields];
+            onSuccessBlock(snapshotPager, response);
+        }
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) {
+            onFailureBlock(error, response, bodyString);
+        }
+    }];
 }
 
 #pragma mark - Trip Services
@@ -947,6 +1130,80 @@
     }];
 }
 
+#pragma mark - Behavioral Services
+
+- (void)getReportCardsForDeviceWithId:(NSString *)deviceId
+                           timeSeries:(VLTimeSeries *)timeSeries
+                            onSuccess:(void (^)(VLReportCardPager *reportCardPager, NSHTTPURLResponse *response))onSuccessBlock
+                            onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+    NSString* path = [NSString stringWithFormat:@"/devices/%@/report_cards", deviceId];
+    [self startWithHost:STRING_HOST_BEHAVIORAL path:path queries:[timeSeries toDictionary] HTTPMethod:@"GET" parameters:nil token:self.session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        
+        VLReportCardPager* reportCardPager = [[VLReportCardPager alloc] initWithDictionary:result service:self];
+        if (onSuccessBlock) {
+            onSuccessBlock(reportCardPager, response);
+        }
+        
+        
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) { onFailureBlock(error, response, bodyString); }
+    }];
+}
+
+- (void)getReportCardsForVehicleWithId:(NSString *)vehicleId
+                            timeSeries:(VLTimeSeries *)timeSeries
+                             onSuccess:(void (^)(VLReportCardPager *reportCardPager, NSHTTPURLResponse *response))onSuccessBlock
+                             onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+    NSString* path = [NSString stringWithFormat:@"/vehicles/%@/report_cards", vehicleId];
+    [self startWithHost:STRING_HOST_BEHAVIORAL path:path queries:[timeSeries toDictionary] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        VLReportCardPager* reportCardPager = [[VLReportCardPager alloc] initWithDictionary:result service:self];
+        if (onSuccessBlock) {
+            onSuccessBlock(reportCardPager, response);
+        }
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) { onFailureBlock(error, response, bodyString); }
+    }];
+}
+
+- (void)getOverallReportCardForDeviceWithId:(NSString *)deviceId
+                                 timeSeries:(VLTimeSeries *)timeSeries
+                                  onSuccess:(void (^)(VLOverallReportCard *overallReportCard,  NSHTTPURLResponse *response))onSuccessBlock
+                                  onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+    NSString* path = [NSString stringWithFormat:@"/devices/%@/report_cards/overall", deviceId];
+    [self startWithHost:STRING_HOST_BEHAVIORAL path:path queries:[timeSeries toDictionary] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        VLOverallReportCard* overallReportCard = [[VLOverallReportCard alloc] initWithDictionary:result];
+        if (onSuccessBlock) { onSuccessBlock(overallReportCard, response); }
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) { onFailureBlock(error, response, bodyString); }
+    }];
+}
+
+
+- (void)getReportCardForTripWithId:(NSString *)tripId
+                         onSuccess:(void (^)(VLReportCard *reportCard, NSHTTPURLResponse *response))onSuccessBlock
+                         onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+    NSString* path = [NSString stringWithFormat:@"/trips/%@/report_cards/_current", tripId];
+    [self startWithHost:STRING_HOST_BEHAVIORAL path:path queries:nil HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        VLReportCard* reportCard = [[VLReportCard alloc] initWithDictionary:[result vl_getDictionaryAttributeForKey:@"reportCard" defaultValue:nil]];
+        if (onSuccessBlock) { onSuccessBlock(reportCard, response); }
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) { onFailureBlock(error, response, bodyString); }
+    }];
+}
+
+- (void)getReportCardWithId:(NSString *)reportCardId
+                  onSuccess:(void (^)(VLReportCard *reportCard, NSHTTPURLResponse *response))onSuccessBlock
+                  onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+    NSString* path = [NSString stringWithFormat:@"/report_cards/%@", reportCardId];
+    [self startWithHost:STRING_HOST_BEHAVIORAL path:path queries:nil HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        VLReportCard* reportCard = [[VLReportCard alloc] initWithDictionary:[result vl_getDictionaryAttributeForKey:@"reportCard" defaultValue:nil]];
+        if (onSuccessBlock) { onSuccessBlock(reportCard, response); }
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) { onFailureBlock(error, response, bodyString); }
+    }];
+}
+
+
 #pragma mark - Event Services
 
 - (void) createSubscription:(VLSubscription *) subscription
@@ -981,6 +1238,33 @@
         if (onFailureBlock) {
             onFailureBlock(error, response, bodyString);
         }
+    }];
+}
+
+- (void)createSubscription:(nonnull VLSubscription *)subscription
+                 forVehicle:(nonnull NSString *)vehicleId
+                 onSuccess:(void (^)(VLSubscription *, NSHTTPURLResponse *))onSuccessBlock
+                 onFailure:(void (^)(NSError *, NSHTTPURLResponse *, NSString *))onFailureBlock {
+    
+    NSString *path = [NSString stringWithFormat:@"/vehicles/%@/subscriptions", vehicleId];
+    NSDictionary *parameters = [subscription toDictionary];
+    
+    [self startWithHost:STRING_HOST_EVENTS path:path queries:nil HTTPMethod:@"POST" parameters:parameters token:self.session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        if (![response isSuccessfulResponse]) {
+            if (onFailureBlock) {
+                NSError* error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:response.statusCode userInfo:result];
+                onFailureBlock(error, response, nil);
+            }
+            return;
+        }
+        
+        if (onSuccessBlock) {
+            VLSubscription *subscription = [[VLSubscription alloc] initWithDictionary:result];
+            onSuccessBlock(subscription, response);
+        }
+        
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) { onFailureBlock(error, response, bodyString); }
     }];
 }
 
@@ -1067,7 +1351,7 @@
                                    limit:(nullable NSNumber *)limit
                                   offset:(nullable NSNumber *)offset
                                onSuccess:(void (^)(VLSubscriptionPager *subscriptionPager, NSHTTPURLResponse *response))onSuccessBlock
-                               onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
+                               onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
     
     if(_session == nil){
         if(onFailureBlock){
@@ -1097,6 +1381,39 @@
             onFailureBlock(error, response, bodyString);
         }
     }];
+}
+
+- (void)getSubscriptionsForVehicleWithId:(nonnull NSString *)vehicleId
+                               onSuccess:(void (^)(VLSubscriptionPager *subscriptionPager, NSHTTPURLResponse *response))onSuccessBlock
+                               onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+    [self getSubscriptionsForVehicleWithId:vehicleId limit:nil offset:nil onSuccess:onSuccessBlock onFailure:onFailureBlock];
+    
+}
+
+- (void)getSubscriptionsForVehicleWithId:(nonnull NSString *)vehicleId
+                                   limit:(nullable NSNumber *)limit
+                                  offset:(nullable NSNumber *)offset
+                               onSuccess:(void (^)(VLSubscriptionPager *subscriptionPager, NSHTTPURLResponse *response))onSuccessBlock
+                               onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+    
+    NSString *path = [NSString stringWithFormat:@"/vehicles/%@/subscriptions", vehicleId];
+    [self startWithHost:STRING_HOST_EVENTS path:path queries:[self getDictionaryWithLimit:limit offset:offset] HTTPMethod:@"GET" parameters:nil token:self.session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        if (![response isSuccessfulResponse]) {
+            if (onFailureBlock) {
+                NSError* error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:response.statusCode userInfo:result];
+                onFailureBlock(error, response, nil);
+            }
+            return;
+        }
+        
+        if (onSuccessBlock) {
+            VLSubscriptionPager* pager = [[VLSubscriptionPager alloc] initWithDictionary:result service:self];
+            onSuccessBlock(pager, response);
+        }
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) { onFailureBlock(error, response, bodyString); }
+    }];
+    
 }
 
 - (void) deleteSubscriptionWithId:(NSString *) subscriptionId
@@ -1168,7 +1485,7 @@
 
 - (void) getEventsForDeviceWithId:(NSString *) deviceId
                            onSuccess:(void (^)(VLEventPager *eventPager, NSHTTPURLResponse *response))onSuccessBlock
-                           onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
+                           onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
     
     [self getEventsForDeviceWithId:deviceId limit:nil until:nil since:nil sortDirection:nil onSuccess:onSuccessBlock onFailure:onFailureBlock];
 }
@@ -1209,6 +1526,32 @@
             onFailureBlock(error, response, bodyString);
         }
     }];
+}
+
+- (void)getEventsForVehicleWithId:(NSString *)vehicleId
+                       timeSeries:(VLTimeSeries *)timeSeries
+                        onSuccess:(void (^)(VLEventPager *eventPager, NSHTTPURLResponse *response))onSuccessBlock
+                        onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+    
+    NSString *path = [NSString stringWithFormat:@"/vehicles/%@/events", vehicleId];
+    [self startWithHost:STRING_HOST_EVENTS path:path queries:[timeSeries toDictionary] HTTPMethod:@"GET" parameters:nil token:self.session.accessToken onSuccess:^(NSDictionary *result , NSHTTPURLResponse *response) {
+        if (![response isSuccessfulResponse]) {
+            if (onFailureBlock) {
+                NSError* error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:response.statusCode userInfo:result];
+                onFailureBlock(error, response, nil);
+            }
+            return;
+        }
+        
+        if (onSuccessBlock) {
+            VLEventPager* pager = [[VLEventPager alloc] initWithDictionary:result service:self];
+            onSuccessBlock(pager, response);
+        }
+        
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) { onFailureBlock(error, response, bodyString); }
+    }];
+    
 }
 
 - (void) getNotificationsForEventWithId:(NSString *) eventId
@@ -1382,24 +1725,14 @@
             onFailureBlock(error, response, bodyString);
         }
     }];
-    
 }
-
-
-
 
 #pragma mark - Distance Services 
 
-
-
 - (void)getDistancesForVehicleWithId:(NSString *)vehicleId onSuccess:(void (^)(VLDistancePager *distancePager, NSHTTPURLResponse *response))onSuccessBlock
                            onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
-    
-    
     [self getDistancesForVehicleWithId:vehicleId timeSeries:nil onSuccess:onSuccessBlock onFailure:onFailureBlock];
-    
 }
-
 
 - (void)getDistancesForVehicleWithId:(NSString *)vehicleId timeSeries:(VLTimeSeries *)timeSeries onSuccess:(void (^)(VLDistancePager *distancePager, NSHTTPURLResponse *response))onSuccessBlock
                            onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
@@ -1434,12 +1767,7 @@
             onFailureBlock(error, response, bodyString);
         }
     }];
-    
-    
 }
-
-
-
 
 //Odometers
 
@@ -1475,14 +1803,9 @@
     }];
 }
 
-
-
-
-
 - (void)getOdometersForVehicleWithId:(NSString *)vehicleId onSuccess:(void (^)(VLOdometerPager *odometerPager, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
     [self getOdometersForVehicleWithId:vehicleId timeSeries:nil onSucess:onSuccessBlock onFailure:onFailureBlock];
 }
-
 
 - (void) getOdometersForVehicleWithId:(NSString *)vehicleId timeSeries:(VLTimeSeries *)timeSeries onSucess:(void (^)(VLOdometerPager *odometerPager, NSHTTPURLResponse *OdometerPager))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
     if(_session == nil){
@@ -1516,12 +1839,6 @@
     }];
 }
 
-
-
-
-
-
-
 - (void)getOdometerWithId:(NSString *)odometerId onSuccess:(void (^)(VLOdometer *odometer, NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *reponse, NSString *bodyString))onFailureBlock {
     if(_session == nil){
         if(onFailureBlock){
@@ -1551,12 +1868,7 @@
             onFailureBlock(error, response, bodyString);
         }
     }];
-    
 }
-
-
-
-
 
 - (void)deleteOdometerWithId:(NSString *)odometerId onSuccess:(void (^)(NSHTTPURLResponse *response))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
     if(_session == nil){
@@ -1588,12 +1900,6 @@
     }];
     
 }
-
-
-
-
-
-
 
 //Odometer Trigger Methods
 
@@ -1699,9 +2005,6 @@
     
 }
 
-
-
-
 - (void)deleteOdometerTriggerWithId:(NSString *)odometerTriggerId onSuccess:(void (^)(NSHTTPURLResponse *reponse))onSuccessBlock onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
     if(_session == nil){
         if(onFailureBlock){
@@ -1730,8 +2033,6 @@
             onFailureBlock(error, response, bodyString);
         }
     }];
-
-    
 }
 
 #pragma mark - Diagnostic Service

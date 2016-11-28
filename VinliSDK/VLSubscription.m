@@ -34,6 +34,7 @@
             
             _subscriptionId = dictionary[@"id"];
             _deviceId = dictionary[@"deviceId"];
+            _vehicleId = [dictionary vl_getStringAttributeForKey:@"vehicleId" defaultValue:nil];
             _eventType = dictionary[@"eventType"];
             _url =   [NSURL URLWithString:dictionary[@"url"]];
             _createdAt = [dictionary jsonObjectForKey:@"createdAt"];

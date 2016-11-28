@@ -18,6 +18,7 @@
 
 @property (readonly) NSString *subscriptionId;
 @property (readonly) NSString *deviceId;
+@property (readonly) NSString *vehicleId;
 @property (readonly) NSString *createdAt;
 @property (readonly) NSString *updatedAt;
 

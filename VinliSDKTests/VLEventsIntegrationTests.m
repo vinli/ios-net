@@ -161,4 +161,27 @@
     [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
 }
 
+#pragma mark - Vehicularization
+
+- (void)testGetEventsWithVehicleId {
+    if (![VLTestHelper vehicleId]) {
+        XCTAssertTrue(NO);
+        return;
+    }
+    
+    XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"Vehicularization: Get events for vehicle with id: %@", [VLTestHelper vehicleId]]];
+    [self.vlService getEventsForVehicleWithId:[VLTestHelper vehicleId] timeSeries:nil onSuccess:^(VLEventPager *eventPager, NSHTTPURLResponse *response) {
+        XCTAssertNotNil(eventPager);
+        XCTAssertNotNil(eventPager.events);
+        XCTAssertTrue(eventPager.events.count > 0);
+        [expectation fulfill];
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        XCTAssertTrue(NO);
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
+}
+
+
 @end

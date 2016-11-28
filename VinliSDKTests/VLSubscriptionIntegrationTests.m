@@ -75,4 +75,57 @@
     [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
 }
 
+#pragma mark - Vehicularization
+
+- (void)testGetSubscriptionsWithVehicleId {
+    if (![VLTestHelper vehicleId]) {
+        XCTAssertTrue(NO);
+        return;
+    }
+    
+    XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"Vehicularization: Get subscriptions for vehicle with id: %@", [VLTestHelper vehicleId]]];
+    [self.vlService getSubscriptionsForVehicleWithId:[VLTestHelper vehicleId] onSuccess:^(VLSubscriptionPager *subscriptionPager, NSHTTPURLResponse *response) {
+        XCTAssertNotNil(subscriptionPager);
+        XCTAssertNotNil(subscriptionPager.subscriptions);
+        XCTAssertTrue(subscriptionPager.subscriptions.count > 0);
+        [expectation fulfill];
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        XCTAssertTrue(NO);
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
+}
+
+- (void)testCreateSubscriptionWithVehicleId {
+    if (![VLTestHelper vehicleId]) {
+        XCTAssertTrue(NO);
+        return;
+    }
+    
+    VLSubscription* subscription = [[VLSubscription alloc] initWithEventType:@"startup" url:[NSURL URLWithString:@"http://www.google.com"] appData:nil objectRef:nil];
+    
+    XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"Vehicularization: Get subscriptions for vehicle with id: %@", [VLTestHelper vehicleId]]];
+    
+    [self.vlService createSubscription:subscription forVehicle:[VLTestHelper vehicleId] onSuccess:^(VLSubscription *newSubscription, NSHTTPURLResponse *response) {
+        XCTAssertNotNil(newSubscription);
+        XCTAssertEqualObjects(newSubscription.eventType, subscription.eventType);
+        XCTAssertEqualObjects(newSubscription.vehicleId, [VLTestHelper vehicleId]);
+        XCTAssertEqualObjects(newSubscription.url, subscription.url);
+        
+        [self.vlService deleteSubscriptionWithId:newSubscription.subscriptionId onSuccess:^(NSHTTPURLResponse *response) {
+            [expectation fulfill];
+        } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+            [expectation fulfill];
+        }];
+        
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *body) {
+        XCTAssertTrue(NO);
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
+}
+
+
 @end

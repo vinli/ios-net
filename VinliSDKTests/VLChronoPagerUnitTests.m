@@ -105,7 +105,7 @@ NSString * const kUrlStringIdentifier = @"https://vin.li";
     [self createDictionaryWithRemaining:@1 since:nil until:nil nextURL:nil priorURL:nil];
     VLChronoPager *pager = [[VLChronoPager alloc] initWithDictionary:self.dictionary];
     XCTAssertEqual(pager.remaining, [self.dictionary[@"meta"][@"pagination"][@"remaining"] unsignedLongValue], @"Remaing property should equal the remaining key value of the passing in dictionary.");
-    XCTAssertNil(pager. service, @"serice should be nil");
+    XCTAssertNil(pager.service, @"serice should be nil");
 }
 
 - (void)testInitWithDictionaryAndServiceWithRemaining
@@ -121,7 +121,7 @@ NSString * const kUrlStringIdentifier = @"https://vin.li";
     [self createDictionaryWithRemaining:nil since:nil until:nil nextURL:nil priorURL:nil];
     VLChronoPager *pager = [[VLChronoPager alloc] initWithDictionary:self.dictionary];
     XCTAssertEqual(pager.remaining, 0, @"Remaing property should equal 0 if the key from the dictionary being passed in does not exist.");
-    XCTAssertNil(pager. service, @"serice should be nil");
+    XCTAssertNil(pager.service, @"serice should be nil");
 }
 
 - (void)testInitWithDictionaryAndServiceWithoutRemaining
@@ -139,7 +139,7 @@ NSString * const kUrlStringIdentifier = @"https://vin.li";
     [self createDictionaryWithRemaining:nil since:kDateStringIdentifier until:nil nextURL:nil priorURL:nil];
     VLChronoPager *pager = [[VLChronoPager alloc] initWithDictionary:self.dictionary];
     XCTAssertEqualObjects(pager.since, self.dictionary[@"meta"][@"pagination"][@"since"], @"Since property should equal the since key value of the passing in dictionary.");
-    XCTAssertNil(pager. service, @"serice should be nil");
+    XCTAssertNil(pager.service, @"serice should be nil");
 }
 
 - (void)testInitWithDictionaryAndServiceWithSince
@@ -155,7 +155,7 @@ NSString * const kUrlStringIdentifier = @"https://vin.li";
     [self createDictionaryWithRemaining:nil since:nil until:nil nextURL:nil priorURL:nil];
     VLChronoPager *pager = [[VLChronoPager alloc] initWithDictionary:self.dictionary];
     XCTAssertNil(pager.since, @"Since should be nil because key value does not exist.");
-    XCTAssertNil(pager. service, @"serice should be nil");
+    XCTAssertNil(pager.service, @"serice should be nil");
 }
 
 - (void)testInitWithDictionaryAndServiceWithoutSince
@@ -174,7 +174,7 @@ NSString * const kUrlStringIdentifier = @"https://vin.li";
     [self createDictionaryWithRemaining:nil since:nil until:kDateStringIdentifier nextURL:nil priorURL:nil];
     VLChronoPager *pager = [[VLChronoPager alloc] initWithDictionary:self.dictionary];
     XCTAssertEqualObjects(pager.until, self.dictionary[@"meta"][@"pagination"][@"until"], @"Until property should equal the until key value of the passing in dictionary.");
-    XCTAssertNil(pager. service, @"serice should be nil");
+    XCTAssertNil(pager.service, @"serice should be nil");
 }
 
 - (void)testInitWithDictionaryAndServiceWithUntil
@@ -190,7 +190,7 @@ NSString * const kUrlStringIdentifier = @"https://vin.li";
     [self createDictionaryWithRemaining:nil since:nil until:nil nextURL:nil priorURL:nil];
     VLChronoPager *pager = [[VLChronoPager alloc] initWithDictionary:self.dictionary];
     XCTAssertNil(pager.until, @"Until should be nil because key value does not exist.");
-    XCTAssertNil(pager. service, @"serice should be nil");
+    XCTAssertNil(pager.service, @"serice should be nil");
 }
 
 - (void)testInitWithDictionaryAndServiceWithoutUntil
@@ -208,7 +208,7 @@ NSString * const kUrlStringIdentifier = @"https://vin.li";
     [self createDictionaryWithRemaining:nil since:nil until:nil nextURL:kUrlStringIdentifier priorURL:nil];
     VLChronoPager *pager = [[VLChronoPager alloc] initWithDictionary:self.dictionary];
     XCTAssertEqualObjects(pager.nextURL, self.dictionary[@"meta"][@"pagination"][@"nextURL"], @"nextURL property should equal the nextURL key value of the passing in dictionary.");
-    XCTAssertNil(pager. service, @"serice should be nil");
+    XCTAssertNil(pager.service, @"serice should be nil");
 }
 
 - (void)testInitWithDictionaryAndServiceWithNextURL
@@ -224,7 +224,7 @@ NSString * const kUrlStringIdentifier = @"https://vin.li";
     [self createDictionaryWithRemaining:nil since:nil until:nil nextURL:nil priorURL:nil];
     VLChronoPager *pager = [[VLChronoPager alloc] initWithDictionary:self.dictionary];
     XCTAssertNil(pager.nextURL, @"Until should be nil because key value does not exist.");
-    XCTAssertNil(pager. service, @"serice should be nil");
+    XCTAssertNil(pager.service, @"serice should be nil");
 }
 
 - (void)testInitWithDictionaryAndServiceWithoutNextURL
@@ -242,7 +242,7 @@ NSString * const kUrlStringIdentifier = @"https://vin.li";
     [self createDictionaryWithRemaining:nil since:nil until:nil nextURL:nil priorURL:kUrlStringIdentifier];
     VLChronoPager *pager = [[VLChronoPager alloc] initWithDictionary:self.dictionary];
     XCTAssertEqualObjects(pager.priorURL, self.dictionary[@"meta"][@"pagination"][@"priorURL"], @"priorURL property should equal the priorURL key value of the passing in dictionary.");
-    XCTAssertNil(pager. service, @"serice should be nil");
+    XCTAssertNil(pager.service, @"serice should be nil");
 }
 
 - (void)testInitWithDictionaryAndServiceWithPriorURL
@@ -258,7 +258,7 @@ NSString * const kUrlStringIdentifier = @"https://vin.li";
     [self createDictionaryWithRemaining:nil since:nil until:nil nextURL:nil priorURL:nil];
     VLChronoPager *pager = [[VLChronoPager alloc] initWithDictionary:self.dictionary];
     XCTAssertNil(pager.priorURL, @"Until should be nil because key value does not exist.");
-    XCTAssertNil(pager. service, @"serice should be nil");
+    XCTAssertNil(pager.service, @"serice should be nil");
 }
 
 - (void)testInitWithDictionaryAndServiceWithoutPriorURL
