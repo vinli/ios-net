@@ -51,8 +51,8 @@ typedef NS_ENUM(NSInteger, VLLocalizedUnitType) {
 + (NSString *)localizedLiquidCapacityUnitShort;
 + (NSString *)localizedLiquidCapacityUnitPlural;
 
-// Returns mpg or kml
-//+ (NSNumber *)localizedFuelEconomy:(NSNumber *)fuel distance:(NSNumber *)distance;
+// Returns mpg or L/100 km
++ (NSNumber *)localizedFuelEconomy:(NSNumber *)fuel;
 + (NSString *)localizedFuelEconomyUnit;
 + (NSString *)localizedFuelEconomyUnitShort;
 

@@ -187,18 +187,15 @@ static VLLocalizedUnitType localizedUnitType;
 
 #pragma mark - Fuel Economy
 
-//+ (NSNumber *)localizedFuelEconomy:(NSNumber *)fuel distance:(NSNumber *)distance {
-//    
-//    if ([distance doubleValue] == 0) {
-//        return @(0);
-//    }
-//    
-//    if (self.isImperial) {
-//   
-//    }
-//    
-//    return @([[self localizedLiquidCapacity:fuel] doubleValue] / [[self localizedDistance:distance] doubleValue]);
-//}
++ (NSNumber *)localizedFuelEconomy:(NSNumber *)fuel
+{
+    // We get this value in imperial form from the back end
+    if (!self.isImperial) {
+        return [NSNumber numberWithFloat:[VLUnitLocalizer mpgToKmPer100:fuel.floatValue]];
+    }
+    
+    return fuel;
+}
 
 + (NSString *)localizedFuelEconomyUnit {
     
@@ -206,7 +203,7 @@ static VLLocalizedUnitType localizedUnitType;
         return NSLocalizedString(@"miles per gallon", @"");
     }
     
-    return NSLocalizedString(@"kilometeres per liter", @"");
+    return NSLocalizedString(@"liters per 100 kilometers", @"");
 }
 
 + (NSString *)localizedFuelEconomyUnitShort {
@@ -214,7 +211,12 @@ static VLLocalizedUnitType localizedUnitType;
         return NSLocalizedString(@"mpg", @"");
     }
     
-    return NSLocalizedString(@"km/l", @"");
+    return NSLocalizedString(@"L/100 km", @"");
+}
+
++ (CGFloat)mpgToKmPer100:(CGFloat)mpg
+{
+    return (100.0f * 3.785411784f) / (1.609344f * mpg);
 }
 
 #pragma mark - Numbers
