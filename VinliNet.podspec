@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
 
-  s.source       = { :git => "https://github.com/vinli/ios-net.git", :tag => "1.1.3" }
+  s.source       = { :git => "https://github.com/vinli/ios-net.git", :tag => "1.1.5" }
 
   s.dependency 'jetfire', '~>0.1.5'
   s.dependency 'CocoaAsyncSocket', '~>7.4.3'
