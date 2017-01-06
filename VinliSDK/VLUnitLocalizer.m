@@ -214,7 +214,7 @@ static VLLocalizedUnitType localizedUnitType;
     return NSLocalizedString(@"L/100 km", @"");
 }
 
-+ (CGFloat)mpgToKmPer100:(CGFloat)mpg
++ (float)mpgToKmPer100:(float)mpg
 {
     return (100.0f * 3.785411784f) / (1.609344f * mpg);
 }

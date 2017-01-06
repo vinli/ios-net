@@ -7,7 +7,7 @@
 //
 
 #import "VLPager.h"
-
+#import "VLParsable.h"
 #import "NSDictionary+NonNullable.h"
 
 @implementation VLPager
@@ -20,9 +20,7 @@
 
 - (id)initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service
 {
-    
-    if (self = [super init])
-    {
+    if (self = [super init]) {
         self.service = service;
 
         if(dictionary[@"meta"][@"pagination"])
@@ -30,17 +28,18 @@
             dictionary = [dictionary filterAllNSNullValues];
             [self setLimit:[dictionary[@"meta"][@"pagination"][@"limit"] unsignedLongValue]];
         }
+        
+        if ([self conformsToProtocol:@protocol(VLParsable)]) {
+            [self performSelector:@selector(parseJSON:) withObject:dictionary];
+        }
     }
     
     return self;
 }
 
 
-
-- (void)setLimit:(unsigned long)limit
-{
+- (void)setLimit:(unsigned long)limit {
     _limit = (limit > 50) ? 50 : limit; //limit is 50 if its greater than 50 else its limit passed
-    
 }
 
 @end

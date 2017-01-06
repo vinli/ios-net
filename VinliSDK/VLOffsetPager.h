@@ -18,4 +18,8 @@
 
 - (id) initWithDictionary: (NSDictionary *) dictionary;
 - (id) initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service;
+
+- (void)getNext:(void (^)(NSArray *newValues, NSError *error))completion;
+- (void)getFirst:(void (^)(id value, NSError *error))completion;
+- (void)getLast:(void (^)(id value, NSError *error))completion;
 @end

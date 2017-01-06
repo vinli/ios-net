@@ -31,14 +31,6 @@ typedef void(^AuthenticationCompletion)(VLSession* _Nullable session, NSError* _
 
 + (instancetype _Nonnull)sharedManager;
 
-- (void)handleCustomURL:(NSURL * _Nullable)url;
-
-
-- (void)getSessionForUserWithId:(NSString * _Nonnull)userId completion:(AuthenticationCompletion _Nonnull)onCompletion;
-
-// Convenience method to display an AlertView with available users.
-- (void)loginWithCompletion:(AuthenticationCompletion _Nonnull)onCompletion onCancel:(nullable void(^)(void))onCancel;
-
 + (VLSession * _Nullable) currentSession;
 + (BOOL) loggedIn;
 + (void) loginWithClientId:(NSString * _Nonnull)clientId redirectUri:(NSString * _Nonnull)redirectUri completion:(AuthenticationCompletion _Nonnull)onCompletion onCancel:(nullable void(^)(void))onCancel;

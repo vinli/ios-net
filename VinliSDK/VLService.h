@@ -47,6 +47,8 @@
 #import "VLDateFormatter.h"
 #import "VLReportCard.h"
 #import "VLReportCardPager.h"
+#import "VLCode.h"
+#import "VLDtc.h"
 
 #pragma clang diagnostic ignored "-Wnullability-completeness"
 
@@ -60,10 +62,13 @@
 @property (strong, readonly, nullable) VLSession *session;
 @property (strong, nonatomic, nonnull) NSString *host;
 
+
+- (instancetype)initWithAccessToken:(NSString *)token;
+
 // Create a VLService object
 // @params:
 // session:     A valid VLSession to use
-- (nonnull id) initWithSession: (nullable VLSession *) session;
+- (instancetype) initWithSession: (nullable VLSession *) session;
 
 // Set the session that this service is to use.
 // @params:
@@ -1034,10 +1039,29 @@
 // Route: GET /api/v1/vehicles/{vehicleId}/battery_statuses/_current
 // @callbacks: onSuccess with current battery status
 // onFailureBlock: connection fails
+// NOTE: The battery status route applies only to voltage sampled intermittently while the vehicle is powered off, and it is strongly recommended to handle the null case where this data is unavailable. If what you are actually looking for is battery voltage while the vehicle is running, please call telemetry snapshots with batteryVoltage included in the fields. However, battery voltage sampled while the engine is running will not be an indication of battery health, since the alternator (or equivalent) will keep even an unhealthy battery at fairly high voltage while a trip is in progress.
 
 - (void) getCurrentBatteryStatusWithVehicleId:(nonnull NSString *)vehicleId
                                     onSuccess:(void (^)(VLBatteryStatus *batteryStatus, NSHTTPURLResponse *response))onSuccessBlock
                                     onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
+// Codes
+// TODO -- Update documentation
+- (void) getCodesWithPID:(NSString *)pid
+                   limit:(NSNumber *)limit
+                  offset:(NSNumber *)offset
+               onSuccess:(void (^)(VLCodePager *codePager, NSHTTPURLResponse *response))onSuccessBlock
+               onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+// TODO - update documentation
+- (void) getCodeWithId:(NSString *)codeId
+             onSuccess:(void (^)(VLCode *code, NSHTTPURLResponse *response))onSuccessBlock
+             onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
+
+// TODO = update documentation
+- (void) getDtcsForVehicleWithId:(NSString *)vehicleId
+                      timeSeries:(VLTimeSeries *)timeSeries
+                       onSuccess:(void (^)(VLDtcPager *dtcPager, NSHTTPURLResponse *response))onSuccessBlock
+                       onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
 @end

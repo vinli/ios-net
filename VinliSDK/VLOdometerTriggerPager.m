@@ -18,13 +18,13 @@
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service {
     if (self = [super initWithDictionary:dictionary service:service]) {
         if (self) {
-            _odometerTriggers = [self populateOdometerTriggers:dictionary];
+            _odometerTriggers = [self parseJSON:dictionary];
         }
     }
     return self;
 }
 
-- (NSArray *)populateOdometerTriggers:(NSDictionary *)dictionary {
+- (NSArray *)parseJSON:(NSDictionary *)dictionary {
     if (dictionary) {
         if (dictionary[@"odometerTriggers"]) {
             NSArray *json = dictionary[@"odometerTriggers"];

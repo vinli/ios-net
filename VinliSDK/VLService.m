@@ -45,7 +45,12 @@
 
 #pragma mark - Initialization
 
-- (id) initWithSession:(VLSession *)session{
+- (instancetype)initWithAccessToken:(NSString *)token {
+    VLSession *session = [[VLSession alloc] initWithAccessToken:token];
+    return [self initWithSession:session];
+}
+
+- (instancetype) initWithSession:(VLSession *)session{
     self = [super init];
     if(self){
         _session = session;
@@ -54,7 +59,7 @@
     return self;
 }
 
-- (id) init{
+- (instancetype) init{
     self = [super init];
     if(self){
         _host = DEFAULT_HOST;
@@ -711,8 +716,6 @@
     timeSeries.limit = limit;
     
     [self getSnapshotsForDeviceWithId:deviceId fields:fields timeSeries:timeSeries onSuccess:onSuccessBlock onFailure:onFailureBlock];
-    
-    
 }
 
 - (void)getSnapshotsForDeviceWithId:(NSString *)deviceId fields:(NSString *)fields timeSeries:(VLTimeSeries *)timeSeries onSuccess:(void (^)(VLSnapshotPager *, NSHTTPURLResponse *))onSuccessBlock onFailure:(void (^)(NSError *, NSHTTPURLResponse *, NSString *))onFailureBlock
@@ -2067,6 +2070,83 @@
         if (onFailureBlock) {
             onFailureBlock(error, response, bodyString);
         }
+    }];
+}
+
+- (void) getCodesWithPID:(NSString *)pid
+                   limit:(NSNumber *)limit
+                  offset:(NSNumber *)offset
+               onSuccess:(void (^)(VLCodePager *codePager, NSHTTPURLResponse *response))onSuccessBlock
+               onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+
+    NSMutableDictionary *query = [[self getDictionaryWithLimit:limit offset:offset] mutableCopy];
+    if (!query) {
+        query = [NSMutableDictionary new];
+    }
+    query[@"number"] = pid;
+    
+    [self startWithHost:STRING_HOST_DIAGNOSTIC path:@"/codes" queries:query HTTPMethod:@"GET" parameters:nil token:self.session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        if (![response isSuccessfulResponse]) {
+            if (onFailureBlock) {
+                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:response.statusCode userInfo:result];
+                onFailureBlock(error, response, nil);
+            }
+            return;
+        }
+        
+        if (onSuccessBlock) {
+            VLCodePager *pager = [[VLCodePager alloc] initWithDictionary:result service:self];
+            onSuccessBlock(pager, response);
+        }
+        
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) { onFailureBlock(error, response, bodyString); }
+    }];
+}
+
+- (void) getCodeWithId:(NSString *)codeId
+             onSuccess:(void (^)(VLCode *code, NSHTTPURLResponse *response))onSuccessBlock
+             onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+    NSString* path = [NSString stringWithFormat:@"/codes/%@", codeId];
+    [self startWithHost:STRING_HOST_DIAGNOSTIC path:path queries:nil HTTPMethod:@"GET" parameters:nil token:self.session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+        if (![response isSuccessfulResponse]) {
+            if (onFailureBlock) {
+                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:response.statusCode userInfo:result];
+                onFailureBlock(error, response, nil);
+            }
+            return;
+        }
+        
+        if (onSuccessBlock) {
+            VLCode *code = [[VLCode alloc] initWithDictionary:result];
+            onSuccessBlock(code, response);
+        }
+        
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) { onFailureBlock(error, response, bodyString); }
+    }];
+}
+
+- (void) getDtcsForVehicleWithId:(NSString *)vehicleId
+                      timeSeries:(VLTimeSeries *)timeSeries
+                       onSuccess:(void (^)(VLDtcPager *dtcPager, NSHTTPURLResponse *response))onSuccessBlock
+                       onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+    NSString *path = [NSString stringWithFormat:@"/vehicles/%@/codes", vehicleId];
+    [self startWithHost:STRING_HOST_DIAGNOSTIC path:path queries:[timeSeries toDictionary] HTTPMethod:@"GET" parameters:nil token:self.session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response ) {
+        if (![response isSuccessfulResponse]) {
+            if (onFailureBlock) {
+                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:response.statusCode userInfo:result];
+                onFailureBlock(error, response, nil);
+            }
+            return;
+        }
+        
+        if (onSuccessBlock) {
+            VLDtcPager *pager = [[VLDtcPager alloc] initWithDictionary:result service:self];;
+            onSuccessBlock(pager, response);
+        }
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        if (onFailureBlock) { onFailureBlock(error, response, bodyString); }
     }];
 }
 

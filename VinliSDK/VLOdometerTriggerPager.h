@@ -8,14 +8,16 @@
 
 #import "VLChronoPager.h"
 #import "VLService.h"
+#import "VLParsable.h"
 
-@interface VLOdometerTriggerPager : VLChronoPager
+@interface VLOdometerTriggerPager : VLChronoPager <VLParsable>
 
 @property NSArray *odometerTriggers;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service;
 
-- (NSArray *)populateOdometerTriggers:(NSDictionary *)dictionary;
+- (NSArray *)parseJSON:(NSDictionary *)json;
+//- (NSArray *)populateOdometerTriggers:(NSDictionary *)dictionary;
 
 @end

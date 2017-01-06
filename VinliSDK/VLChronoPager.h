@@ -52,7 +52,7 @@
  */
 - (nullable instancetype)initWithDictionary:(NSDictionary * _Nullable)dictionary service:(VLService * _Nullable)service;
 
-
-- (void)getNext:(void (^)(NSArray *newValues, NSError *error))completion;
+// TODO -- update documentation
+- (void)getNext:(void (^ _Nullable)( NSArray * _Nullable newValues, NSError * _Nullable error))completion;
 
 @end

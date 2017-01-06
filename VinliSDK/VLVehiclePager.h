@@ -7,8 +7,9 @@
 //
 
 #import "VLOffsetPager.h"
+#import "VLParsable.h"
 
-@interface VLVehiclePager : VLOffsetPager
+@interface VLVehiclePager : VLOffsetPager <VLParsable>
 
 @property (readonly) NSArray *vehicles;
 

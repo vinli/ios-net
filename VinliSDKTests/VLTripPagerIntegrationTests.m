@@ -203,14 +203,14 @@
 
 - (void)testSomething {
     XCTestExpectation *tripsExpectation = [self expectationWithDescription:@"Create Trip Pagination and get next set of trips in default sort order, descending."];
-    VLTimeSeries *timeSeries = [VLTimeSeries timeSeriesFromPreviousNumberOfWeeks:12];
+    VLTimeSeries *timeSeries = [VLTimeSeries timeSeries];
     timeSeries.sortOrder = VLTimerSeriesSortDirectionAscending;
     timeSeries.limit = @(1);
     [self.service getTripsForDeviceWithId:[VLTestHelper deviceId] timeSeries:timeSeries onSuccess:^(VLTripPager *tripPager, NSHTTPURLResponse *response) {
-        NSLog(@"test");
+        NSLog(@"Trip pager %@ \n\nURL = %@", tripPager.trips, tripPager.nextURL);
         [tripPager getNext:^(NSArray *newValues, NSError *error) {
-            NSLog(@"");
             XCTAssertTrue(YES);
+             NSLog(@"Trip pager %@ \n\nURL = %@", tripPager.trips, tripPager.nextURL);
             [tripsExpectation fulfill];
         }];
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {

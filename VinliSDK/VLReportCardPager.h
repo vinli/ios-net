@@ -7,8 +7,9 @@
 //
 
 #import "VLChronoPager.h"
+#import "VLParsable.h"
 
-@interface VLReportCardPager : VLChronoPager
+@interface VLReportCardPager : VLChronoPager <VLParsable>
 
 @property (readonly, nonatomic) NSArray* reportCards;
 

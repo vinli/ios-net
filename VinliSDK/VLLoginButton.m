@@ -37,7 +37,7 @@
 - (void) initialize{
     [super setTitle:@"Login with Vinli" forState:UIControlStateNormal];
     [super setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [super setBackgroundColor:[UIColor colorWithRed:23/255.0 green:172/255.0 blue:139/255.0 alpha:1.0]];
+    [super setBackgroundColor:[UIColor colorWithRed:23.0f/255.0f green:172.0f/255.0f blue:139.0f/255.0f alpha:1]];
 }
 
 #pragma mark - Override super methods

@@ -128,13 +128,6 @@
     [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
 }
 
-// Test report card
-//id: 2104b358-4d13-4a58-8674-d9906153f33e
-//deviceId: 82ea8053-aff0-4f51-b075-bd90fbec9d41
-//vehicleId: ec67a76e-8acb-4c8f-8db8-4300201714a0
-//tripId: 61c561b2-85b9-4779-8e55-1d163d96ad85
-//grade: A
-
 - (void)testGetReportCardWithId {
     if (![VLTestHelper reportCardId]) {
         XCTAssertTrue(NO);
