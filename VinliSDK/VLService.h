@@ -49,6 +49,7 @@
 #import "VLReportCardPager.h"
 #import "VLCode.h"
 #import "VLDtc.h"
+#import "VLEventType.h"
 
 #pragma clang diagnostic ignored "-Wnullability-completeness"
 
@@ -678,7 +679,8 @@
 //                  eventsPager:    A VLEventPager object containing the list of events and pagination data
 //                  response:   An NSHTTPURLResponse instance, from which user will know the URL, statusCode, etc.
 // onFailureBlock:  Called when connection failed. Usually occurred when the website does not exist, or no internet connection.
-- (void) getEventsForDeviceWithId:(nonnull NSString *) deviceId
+- (void)getEventsForDeviceWithId:(nonnull NSString *) deviceId
+                        eventType:(nullable NSString *)eventType
                         onSuccess:(void (^)(VLEventPager *eventPager, NSHTTPURLResponse *response))onSuccessBlock
                         onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
@@ -697,11 +699,12 @@
 //                  eventsPager:    A VLEventPager object containing the list of events and pagination data
 //                  response:   An NSHTTPURLResponse instance, from which user will know the URL, statusCode, etc.
 // onFailureBlock:  Called when connection failed. Usually occurred when the website does not exist, or no internet connection.
-- (void) getEventsForDeviceWithId:(nonnull NSString *) deviceId
+- (void)getEventsForDeviceWithId:(nonnull NSString *) deviceId
                             limit:(nullable NSNumber *)limit
                             until:(nullable NSDate *)until
                             since:(nullable NSDate *)since
                     sortDirection:(nullable NSString *)sortDirection
+                        eventType:(nullable NSString *)eventType
                         onSuccess:(void (^)(VLEventPager *eventPager, NSHTTPURLResponse *response))onSuccessBlock
                         onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 

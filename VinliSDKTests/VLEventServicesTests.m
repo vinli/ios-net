@@ -83,12 +83,40 @@
         
     }] startWithHost:[OCMArg any] path:[OCMArg any] queries:[OCMArg any] HTTPMethod:[OCMArg any] parameters:[OCMArg any] token:[OCMArg any] onSuccess:[OCMArg any] onFailure:[OCMArg any]];
     
-    [connection getEventsForDeviceWithId:deviceId onSuccess:^(VLEventPager *eventPager, NSHTTPURLResponse *response) {
+    [connection getEventsForDeviceWithId:deviceId eventType:nil onSuccess:^(VLEventPager *eventPager, NSHTTPURLResponse *response) {
         
         XCTAssertEqual(eventPager.events.count, [expectedJSON[@"events"] count]); // Make sure that there are two objects in the array.
         XCTAssertEqual(eventPager.until, expectedJSON[@"meta"][@"pagination"][@"until"]); // Make sure that the Meta more or less translated correctly.
         XCTAssertEqual(((VLEvent*)[eventPager.events objectAtIndex:0]).eventId, expectedJSON[@"events"][0][@"id"]); // Make sure that the events array more or less translated correctly
         
+        
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        XCTAssertTrue(NO);
+    }];
+}
+
+- (void)testGetAllEventsForDeviceWithIdAndEventType
+{
+    id mockConnection = OCMPartialMock(connection);
+    
+    NSDictionary *expectedJSON = [VLTestHelper getAllEventsJSON:deviceId];
+    
+    [[[mockConnection expect] andDo:^(NSInvocation *invocation) {
+        NSDictionary *event = [expectedJSON copy];
+        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:[NSURL new] statusCode:200 HTTPVersion:nil headerFields:nil];
+        
+        void (^successBlock)(NSDictionary *result, NSHTTPURLResponse *response) = nil;
+        [invocation getArgument:&successBlock atIndex:8];
+        successBlock(event, response);
+        
+    }] startWithHost:[OCMArg any] path:[OCMArg any] queries:[OCMArg any] HTTPMethod:[OCMArg any] parameters:[OCMArg any] token:[OCMArg any] onSuccess:[OCMArg any] onFailure:[OCMArg any]];
+    
+    [connection getEventsForDeviceWithId:deviceId eventType:VLEventTypeRuleLeave onSuccess:^(VLEventPager *eventPager, NSHTTPURLResponse *response) {
+        
+        XCTAssertEqual(eventPager.events.count, [expectedJSON[@"events"] count]); // Make sure that there are two objects in the array.
+        XCTAssertEqual(eventPager.until, expectedJSON[@"meta"][@"pagination"][@"until"]); // Make sure that the Meta more or less translated correctly.
+        XCTAssertEqual(((VLEvent*)[eventPager.events objectAtIndex:0]).eventId, expectedJSON[@"events"][0][@"id"]); // Make sure that the events array more or less translated correctly
+        XCTAssertEqual(((VLEvent*)[eventPager.events objectAtIndex:0]).eventType, expectedJSON[@"events"][0][@"eventType"]); // Make sure that the events array more or less translated correctly
         
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);

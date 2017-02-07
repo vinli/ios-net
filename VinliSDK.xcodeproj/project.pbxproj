@@ -183,6 +183,8 @@
 		BF3B333D1D9C4F82001DED7D /* VLLocationUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3B333C1D9C4F82001DED7D /* VLLocationUnitTests.m */; };
 		BF3B333F1D9C59E6001DED7D /* VLTripUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3B333E1D9C59E6001DED7D /* VLTripUnitTests.m */; };
 		BF3B33431D9EF3D9001DED7D /* VLTripPagerIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3B33421D9EF3D9001DED7D /* VLTripPagerIntegrationTests.m */; };
+		BF79B18E1E4A5BB9007E9AE6 /* VLEventType.h in Headers */ = {isa = PBXBuildFile; fileRef = BF79B18C1E4A5BB9007E9AE6 /* VLEventType.h */; };
+		BF79B18F1E4A5BB9007E9AE6 /* VLEventType.m in Sources */ = {isa = PBXBuildFile; fileRef = BF79B18D1E4A5BB9007E9AE6 /* VLEventType.m */; };
 		BFB0E7BB1DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = BFB0E7B91DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.h */; };
 		BFB0E7BC1DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BFB0E7BA1DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.m */; };
 		E92943591B15387C00AAC7D3 /* VLTelemetryServicesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E92943581B15387C00AAC7D3 /* VLTelemetryServicesTests.m */; };
@@ -374,6 +376,8 @@
 		BF3B333C1D9C4F82001DED7D /* VLLocationUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLLocationUnitTests.m; sourceTree = "<group>"; };
 		BF3B333E1D9C59E6001DED7D /* VLTripUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTripUnitTests.m; sourceTree = "<group>"; };
 		BF3B33421D9EF3D9001DED7D /* VLTripPagerIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTripPagerIntegrationTests.m; sourceTree = "<group>"; };
+		BF79B18C1E4A5BB9007E9AE6 /* VLEventType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLEventType.h; sourceTree = "<group>"; };
+		BF79B18D1E4A5BB9007E9AE6 /* VLEventType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLEventType.m; sourceTree = "<group>"; };
 		BFB0E7B91DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSHTTPURLResponse+VLAdditions.h"; sourceTree = "<group>"; };
 		BFB0E7BA1DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSHTTPURLResponse+VLAdditions.m"; sourceTree = "<group>"; };
 		C4778D3E1E82642D2908354C /* Pods-VinliSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinliSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VinliSDKTests/Pods-VinliSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -559,6 +563,8 @@
 				6568FB2B1D0F0313006C3656 /* VLSupportedPids.h */,
 				6568FB2C1D0F0313006C3656 /* VLSupportedPids.m */,
 				4953E4D51DEDEA21006FB7BE /* VLParsable.h */,
+				BF79B18C1E4A5BB9007E9AE6 /* VLEventType.h */,
+				BF79B18D1E4A5BB9007E9AE6 /* VLEventType.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -840,6 +846,7 @@
 				49AB6E971B82432C00DCF808 /* VLSessionManager.h in Headers */,
 				65FFFB451CBEA17A009D4CF1 /* VLParametricFilter.h in Headers */,
 				65FFFB561CBEAAAD009D4CF1 /* VLCoordinate.h in Headers */,
+				BF79B18E1E4A5BB9007E9AE6 /* VLEventType.h in Headers */,
 				65FFFB521CBEA8DC009D4CF1 /* VLGeometryFilter.h in Headers */,
 				65FFFB381CBE94E8009D4CF1 /* VLAccelData.h in Headers */,
 				E990CE6E1B26405A00CDEF15 /* VLPolygonBoundary.h in Headers */,
@@ -1122,6 +1129,7 @@
 				E929437D1B18FE5F00AAC7D3 /* VLSnapshotPager.m in Sources */,
 				0B16714A1B0FC39D009BE7A9 /* VLRule.m in Sources */,
 				0B3DDC391B14D1DD00D95E61 /* VLVehiclePager.m in Sources */,
+				BF79B18F1E4A5BB9007E9AE6 /* VLEventType.m in Sources */,
 				77BE999C1C690E77001E8F64 /* VLTimeSeries.m in Sources */,
 				0B1671481B0FC39D009BE7A9 /* VLService.m in Sources */,
 				0B3778241B25E0A7004AC2D6 /* VLRadiusBoundary.m in Sources */,

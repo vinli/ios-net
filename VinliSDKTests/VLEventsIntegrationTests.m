@@ -39,7 +39,7 @@
     }
     
     XCTestExpectation *eventsExpectation = [self expectationWithDescription:@"Getting events"];
-    [_vlService getEventsForDeviceWithId:[VLTestHelper deviceId] onSuccess:^(VLEventPager *eventPager, NSHTTPURLResponse *response) {
+    [_vlService getEventsForDeviceWithId:[VLTestHelper deviceId] eventType:nil onSuccess:^(VLEventPager *eventPager, NSHTTPURLResponse *response) {
         XCTAssertTrue(eventPager.events.count > 0);
         XCTAssertTrue(eventPager.since != nil && [eventPager.since isKindOfClass:[NSString class]] && eventPager.since.length > 0);
         XCTAssertTrue(eventPager.until != nil && [eventPager.until isKindOfClass:[NSString class]] && eventPager.until.length > 0);
@@ -58,6 +58,35 @@
     
     [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
 }
+
+- (void)testGetEventsWithDeviceIdAndStartUp {
+    if(![VLTestHelper deviceId]){
+        XCTAssertTrue(NO);
+        return;
+    }
+    
+    XCTestExpectation *eventsExpectation = [self expectationWithDescription:@"Getting events"];
+    [_vlService getEventsForDeviceWithId:[VLTestHelper deviceId] eventType:VLEventTypeStartUp onSuccess:^(VLEventPager *eventPager, NSHTTPURLResponse *response) {
+        XCTAssertTrue(eventPager.events.count > 0);
+        XCTAssertTrue(eventPager.since != nil && [eventPager.since isKindOfClass:[NSString class]] && eventPager.since.length > 0);
+        XCTAssertTrue(eventPager.until != nil && [eventPager.until isKindOfClass:[NSString class]] && eventPager.until.length > 0);
+        
+        for(VLEvent *event in eventPager.events){
+            XCTAssertTrue(event.eventId != nil && [event.eventId isKindOfClass:[NSString class]] && event.eventId.length > 0);
+            XCTAssertTrue(event.timestamp != nil && [event.timestamp isKindOfClass:[NSString class]] && event.timestamp.length > 0);
+            XCTAssertTrue(event.deviceId != nil && [event.deviceId isKindOfClass:[NSString class]] && event.deviceId.length > 0);
+            XCTAssertTrue(event.eventType != nil && [event.eventType isKindOfClass:[NSString class]] && event.eventType.length > 0);
+            XCTAssertTrue([event.eventType isEqualToString:VLEventTypeStartUp]);
+        }
+        [eventsExpectation fulfill];
+    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
+        XCTAssertTrue(NO);
+        [eventsExpectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
+}
+
 
 - (void)testGetNotificationsWithEventId {
     if(![VLTestHelper eventId]){
@@ -170,7 +199,7 @@
     }
     
     XCTestExpectation *expectation = [self expectationWithDescription:[NSString stringWithFormat:@"Vehicularization: Get events for vehicle with id: %@", [VLTestHelper vehicleId]]];
-    [self.vlService getEventsForVehicleWithId:[VLTestHelper vehicleId] timeSeries:nil onSuccess:^(VLEventPager *eventPager, NSHTTPURLResponse *response) {
+    [self.vlService getEventsForVehicleWithId:[VLTestHelper vehicleId] eventType:nil timeSeries:nil onSuccess:^(VLEventPager *eventPager, NSHTTPURLResponse *response) {
         XCTAssertNotNil(eventPager);
         XCTAssertNotNil(eventPager.events);
         XCTAssertTrue(eventPager.events.count > 0);

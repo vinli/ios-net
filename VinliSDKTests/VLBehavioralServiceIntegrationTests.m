@@ -128,7 +128,7 @@
     [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
 }
 
-- (void)testGetReportCardWithId {
+- (void)testGetSnapshotsWithVehicleId {
     if (![VLTestHelper reportCardId]) {
         XCTAssertTrue(NO);
         return;

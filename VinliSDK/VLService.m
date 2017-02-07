@@ -1486,20 +1486,22 @@
     }];
 }
 
-- (void) getEventsForDeviceWithId:(NSString *) deviceId
-                           onSuccess:(void (^)(VLEventPager *eventPager, NSHTTPURLResponse *response))onSuccessBlock
-                           onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
+- (void)getEventsForDeviceWithId:(nonnull NSString *) deviceId
+                        eventType:(nullable NSString *)eventType
+                        onSuccess:(void (^)(VLEventPager *eventPager, NSHTTPURLResponse *response))onSuccessBlock
+                        onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
     
-    [self getEventsForDeviceWithId:deviceId limit:nil until:nil since:nil sortDirection:nil onSuccess:onSuccessBlock onFailure:onFailureBlock];
+    [self getEventsForDeviceWithId:deviceId limit:nil until:nil since:nil sortDirection:nil eventType:eventType onSuccess:onSuccessBlock onFailure:onFailureBlock];
 }
 
-- (void) getEventsForDeviceWithId:(NSString *) deviceId
-                            limit:(nullable NSNumber *)limit
-                            until:(nullable NSDate *)until
-                            since:(nullable NSDate *)since
-                    sortDirection:(nullable NSString *)sortDirection
-                        onSuccess:(void (^)(VLEventPager *eventPager, NSHTTPURLResponse *response))onSuccessBlock
-                        onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
+- (void)getEventsForDeviceWithId:(nonnull NSString *) deviceId
+                           limit:(nullable NSNumber *)limit
+                           until:(nullable NSDate *)until
+                           since:(nullable NSDate *)since
+                   sortDirection:(nullable NSString *)sortDirection
+                       eventType:(nullable NSString *)eventType
+                       onSuccess:(void (^)(VLEventPager *eventPager, NSHTTPURLResponse *response))onSuccessBlock
+                       onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
     
     if(_session == nil){
         if(onFailureBlock){
@@ -1510,7 +1512,16 @@
     
     NSString *path = [NSString stringWithFormat:@"/devices/%@/events", deviceId];
     
-    [self startWithHost:STRING_HOST_EVENTS path:path queries:[self getDictionaryWithLimit:limit until:until since:since sortDirection:sortDirection] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
+    NSMutableDictionary *queryDict = [self getDictionaryWithLimit:limit until:until since:since sortDirection:sortDirection];
+    
+    if (eventType) {
+        if (!queryDict) {
+            queryDict = [NSMutableDictionary new];
+        }
+        [queryDict setObject:eventType forKey:@"type"];
+    }
+    
+    [self startWithHost:STRING_HOST_EVENTS path:path queries:queryDict HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
         
         if ([response isSuccessfulResponse]) {
             if (onSuccessBlock) {
