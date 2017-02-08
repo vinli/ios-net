@@ -709,6 +709,7 @@
                         onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
 - (void)getEventsForVehicleWithId:(nonnull NSString *)vehicleId
+                        eventType:(nullable NSString *)eventType
                        timeSeries:(nullable VLTimeSeries *)timeSeries
                         onSuccess:(void (^)(VLEventPager *eventPager, NSHTTPURLResponse *response))onSuccessBlock
                         onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;

@@ -1542,13 +1542,24 @@
     }];
 }
 
-- (void)getEventsForVehicleWithId:(NSString *)vehicleId
-                       timeSeries:(VLTimeSeries *)timeSeries
+- (void)getEventsForVehicleWithId:(nonnull NSString *)vehicleId
+                        eventType:(nullable NSString *)eventType
+                       timeSeries:(nullable VLTimeSeries *)timeSeries
                         onSuccess:(void (^)(VLEventPager *eventPager, NSHTTPURLResponse *response))onSuccessBlock
                         onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock {
     
     NSString *path = [NSString stringWithFormat:@"/vehicles/%@/events", vehicleId];
-    [self startWithHost:STRING_HOST_EVENTS path:path queries:[timeSeries toDictionary] HTTPMethod:@"GET" parameters:nil token:self.session.accessToken onSuccess:^(NSDictionary *result , NSHTTPURLResponse *response) {
+    
+    NSMutableDictionary *queryDict = [timeSeries toDictionary];
+    
+    if (eventType) {
+        if (!queryDict) {
+            queryDict = [NSMutableDictionary new];
+        }
+        [queryDict setObject:eventType forKey:@"type"];
+    }
+    
+    [self startWithHost:STRING_HOST_EVENTS path:path queries:queryDict HTTPMethod:@"GET" parameters:nil token:self.session.accessToken onSuccess:^(NSDictionary *result , NSHTTPURLResponse *response) {
         if (![response isSuccessfulResponse]) {
             if (onFailureBlock) {
                 NSError* error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:response.statusCode userInfo:result];
