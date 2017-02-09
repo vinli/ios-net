@@ -14,31 +14,16 @@ static NSDateFormatter* isoDateToStringFormatter;
 
 
 + (NSDate *)initializeDateFromString:(NSString *)dateString {
-    
-    
-    
     [self initializeStringToDateFormatter];
     NSDate *date = [isoStringToDateFormatter dateFromString:dateString];
     return date;
-    
-    
-
-    
 }
 
 + (NSString *)stringFromDate:(NSDate *)date {
-
     [self initializeDateToStringFormatter];
     
-    
     NSString *strDate = [isoDateToStringFormatter stringFromDate:date];
-    
     return strDate;
-    
-    
-    
-    
-    
     
 }
 
@@ -55,9 +40,6 @@ static NSDateFormatter* isoDateToStringFormatter;
     [isoStringToDateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ'"];
     [isoStringToDateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:seconds]];
 
-
-    
-    
 }
 
 
@@ -70,20 +52,6 @@ static NSDateFormatter* isoDateToStringFormatter;
      isoDateToStringFormatter = [[NSDateFormatter alloc] init];
     [isoDateToStringFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
     [isoDateToStringFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT: 0]]; // Prevent adjustment to user's local time zone.
-   
-    
-
-    
 }
-
-
-
-
-
-
-
-
-
-
 
 @end
