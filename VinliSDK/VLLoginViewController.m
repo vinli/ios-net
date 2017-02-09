@@ -77,7 +77,7 @@ static NSString * const kVinliSignUpRequest = @"/#/sign-up";
     
     NSString *oauthEndpoint = [NSString stringWithFormat:@"https://my%@/oauth/authorization/new", _host];
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?client_id=%@&redirect_uri=%@&response_type=%@&lang=%@", oauthEndpoint, _clientId, _redirectUri, responseType, [NSLocale preferredLanguages].firstObject ?: @"en"]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?client_id=%@&redirect_uri=%@&response_type=%@&locale=%@", oauthEndpoint, _clientId, _redirectUri, responseType, [NSLocale preferredLanguages].firstObject ?: @"en"]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [webView loadRequest:request];
 }
