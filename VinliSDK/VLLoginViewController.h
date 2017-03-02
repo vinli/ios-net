@@ -18,15 +18,18 @@
 @property NSString *redirectUri;
 @property NSString *host;
 
-- (id) initWithClientId: (NSString *) clientId redirectUri: (NSString *) redirectUri;
-- (id) initWithClientId: (NSString *) clientId redirectUri: (NSString *) redirectUri host:(NSString *)host;
+- (instancetype)initWithClientId:(NSString *)clientId redirectUri:(NSString *)redirectUri;
+- (instancetype)initWithClientId:(NSString *)clientId redirectUri:(NSString *)redirectUri host:(NSString *)host;
 
 @end
 
 @protocol VLLoginViewControllerDelegate <NSObject>
 
 @required
-- (void) vlLoginViewController:(VLLoginViewController *)loginController didLoginWithSession:(VLSession *) session;
-- (void) vlLoginViewController:(VLLoginViewController *)loginController didFailToLoginWithError:(NSError *) error;
+- (void)vlLoginViewController:(VLLoginViewController *)loginController didLoginWithSession:(VLSession *) session;
+- (void)vlLoginViewController:(VLLoginViewController *)loginController didFailToLoginWithError:(NSError *) error;
+
+@optional
+- (void)vlLoginViewControllerDidCancelLogin:(VLLoginViewController *)loginController;
 
 @end
