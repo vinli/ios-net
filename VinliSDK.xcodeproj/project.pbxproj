@@ -87,21 +87,21 @@
 		0B89E4971B18BA3E00E69AEA /* VLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B89E4951B18BA3E00E69AEA /* VLUser.m */; };
 		0BD2E50E1B0FF3DD00A5D2BC /* VLRuleServicesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2E50D1B0FF3DD00A5D2BC /* VLRuleServicesTests.m */; };
 		13B7331F05C6D75C1D4B803F /* libPods-VinliSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5953BB46AA0C7E3B90F9B5 /* libPods-VinliSDKTests.a */; };
-		4903FDB61D008B630012AA72 /* VLOBDDataParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 4903FDAC1D008B630012AA72 /* VLOBDDataParser.h */; };
+		4903FDB61D008B630012AA72 /* VLOBDDataParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 4903FDAC1D008B630012AA72 /* VLOBDDataParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4903FDB71D008B630012AA72 /* VLOBDDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4903FDAD1D008B630012AA72 /* VLOBDDataParser.m */; };
-		4903FDB81D008B630012AA72 /* VLSIMSignal.h in Headers */ = {isa = PBXBuildFile; fileRef = 4903FDAE1D008B630012AA72 /* VLSIMSignal.h */; };
+		4903FDB81D008B630012AA72 /* VLSIMSignal.h in Headers */ = {isa = PBXBuildFile; fileRef = 4903FDAE1D008B630012AA72 /* VLSIMSignal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4903FDB91D008B630012AA72 /* VLSIMSignal.m in Sources */ = {isa = PBXBuildFile; fileRef = 4903FDAF1D008B630012AA72 /* VLSIMSignal.m */; };
-		4903FDBA1D008B630012AA72 /* VLWebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 4903FDB01D008B630012AA72 /* VLWebSocket.h */; };
+		4903FDBA1D008B630012AA72 /* VLWebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 4903FDB01D008B630012AA72 /* VLWebSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4903FDBB1D008B630012AA72 /* VLWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4903FDB11D008B630012AA72 /* VLWebSocket.m */; };
-		4903FDBC1D008B630012AA72 /* VLUDPSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 4903FDB21D008B630012AA72 /* VLUDPSocket.h */; };
+		4903FDBC1D008B630012AA72 /* VLUDPSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 4903FDB21D008B630012AA72 /* VLUDPSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4903FDBD1D008B630012AA72 /* VLUDPSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4903FDB31D008B630012AA72 /* VLUDPSocket.m */; };
 		49231C1C1D0F45C4004B6A71 /* compressed_JS_lib.js in Resources */ = {isa = PBXBuildFile; fileRef = 49231C1B1D0F45C4004B6A71 /* compressed_JS_lib.js */; };
-		493E46A31DDCD5EC00F72300 /* VLReportCard.h in Headers */ = {isa = PBXBuildFile; fileRef = 493E46A11DDCD5EC00F72300 /* VLReportCard.h */; };
+		493E46A31DDCD5EC00F72300 /* VLReportCard.h in Headers */ = {isa = PBXBuildFile; fileRef = 493E46A11DDCD5EC00F72300 /* VLReportCard.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		493E46A41DDCD5EC00F72300 /* VLReportCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 493E46A21DDCD5EC00F72300 /* VLReportCard.m */; };
-		494566431DECF47C00DE3CE2 /* VLCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 494566411DECF47C00DE3CE2 /* VLCode.h */; };
+		494566431DECF47C00DE3CE2 /* VLCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 494566411DECF47C00DE3CE2 /* VLCode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		494566441DECF47C00DE3CE2 /* VLCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 494566421DECF47C00DE3CE2 /* VLCode.m */; };
-		4953E4D61DEDEA21006FB7BE /* VLParsable.h in Headers */ = {isa = PBXBuildFile; fileRef = 4953E4D51DEDEA21006FB7BE /* VLParsable.h */; };
-		4953E4D91DEE1A22006FB7BE /* VLDtc.h in Headers */ = {isa = PBXBuildFile; fileRef = 4953E4D71DEE1A22006FB7BE /* VLDtc.h */; };
+		4953E4D61DEDEA21006FB7BE /* VLParsable.h in Headers */ = {isa = PBXBuildFile; fileRef = 4953E4D51DEDEA21006FB7BE /* VLParsable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4953E4D91DEE1A22006FB7BE /* VLDtc.h in Headers */ = {isa = PBXBuildFile; fileRef = 4953E4D71DEE1A22006FB7BE /* VLDtc.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4953E4DA1DEE1A22006FB7BE /* VLDtc.m in Sources */ = {isa = PBXBuildFile; fileRef = 4953E4D81DEE1A22006FB7BE /* VLDtc.m */; };
 		4953E4DC1DEE3BA4006FB7BE /* VLOffsetPagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4953E4DB1DEE3BA4006FB7BE /* VLOffsetPagerTests.m */; };
 		49AB6E971B82432C00DCF808 /* VLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 49AB6E931B82432C00DCF808 /* VLSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -112,23 +112,23 @@
 		49AB6E9E1B82446900DCF808 /* VLUserCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AB6E9C1B82446900DCF808 /* VLUserCache.m */; };
 		49C717721DE38D1200074C18 /* VLBehavioralServiceUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C717711DE38D1200074C18 /* VLBehavioralServiceUnitTests.m */; };
 		49C717741DE38D3000074C18 /* VLBehavioralServiceIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C717731DE38D3000074C18 /* VLBehavioralServiceIntegrationTests.m */; };
-		49C717771DE3A51F00074C18 /* VLReportCardPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 49C717751DE3A51F00074C18 /* VLReportCardPager.h */; };
+		49C717771DE3A51F00074C18 /* VLReportCardPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 49C717751DE3A51F00074C18 /* VLReportCardPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49C717781DE3A51F00074C18 /* VLReportCardPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C717761DE3A51F00074C18 /* VLReportCardPager.m */; };
 		49C7177C1DE5FB7F00074C18 /* VLReportCardPagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C7177B1DE5FB7F00074C18 /* VLReportCardPagerTests.m */; };
-		49E2F2FF1B6AA93700CD743C /* NSDictionary+NonNullable.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E2F2FD1B6AA93700CD743C /* NSDictionary+NonNullable.h */; };
+		49E2F2FF1B6AA93700CD743C /* NSDictionary+NonNullable.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E2F2FD1B6AA93700CD743C /* NSDictionary+NonNullable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49E2F3001B6AA93700CD743C /* NSDictionary+NonNullable.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E2F2FE1B6AA93700CD743C /* NSDictionary+NonNullable.m */; };
 		49FBA70E1DF8A95400E7D232 /* VLVehiclePagerIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49FBA70D1DF8A95400E7D232 /* VLVehiclePagerIntegrationTests.m */; };
-		65312B5A1D945643006FB968 /* VLBatteryStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 65312B581D945643006FB968 /* VLBatteryStatus.h */; };
+		65312B5A1D945643006FB968 /* VLBatteryStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 65312B581D945643006FB968 /* VLBatteryStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65312B5B1D945643006FB968 /* VLBatteryStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 65312B591D945643006FB968 /* VLBatteryStatus.m */; };
 		65312B5D1D945E7C006FB968 /* VLDiagnosticTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65312B5C1D945E7C006FB968 /* VLDiagnosticTests.m */; };
 		65312B5F1D946154006FB968 /* VLDiagnosticIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65312B5E1D946154006FB968 /* VLDiagnosticIntegrationTests.m */; };
-		6568FB2D1D0F0313006C3656 /* VLSupportedPids.h in Headers */ = {isa = PBXBuildFile; fileRef = 6568FB2B1D0F0313006C3656 /* VLSupportedPids.h */; };
+		6568FB2D1D0F0313006C3656 /* VLSupportedPids.h in Headers */ = {isa = PBXBuildFile; fileRef = 6568FB2B1D0F0313006C3656 /* VLSupportedPids.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6568FB2E1D0F0313006C3656 /* VLSupportedPids.m in Sources */ = {isa = PBXBuildFile; fileRef = 6568FB2C1D0F0313006C3656 /* VLSupportedPids.m */; };
-		6589E6591D09CF220017D75B /* VLBearingCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = 6589E6531D09CF220017D75B /* VLBearingCalculator.h */; };
+		6589E6591D09CF220017D75B /* VLBearingCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = 6589E6531D09CF220017D75B /* VLBearingCalculator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6589E65A1D09CF220017D75B /* VLBearingCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6589E6541D09CF220017D75B /* VLBearingCalculator.m */; };
-		6589E65B1D09CF220017D75B /* VLBearingFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6589E6551D09CF220017D75B /* VLBearingFilter.h */; };
+		6589E65B1D09CF220017D75B /* VLBearingFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6589E6551D09CF220017D75B /* VLBearingFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6589E65C1D09CF220017D75B /* VLBearingFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6589E6561D09CF220017D75B /* VLBearingFilter.m */; };
-		6589E65D1D09CF220017D75B /* VLBearing.h in Headers */ = {isa = PBXBuildFile; fileRef = 6589E6571D09CF220017D75B /* VLBearing.h */; };
+		6589E65D1D09CF220017D75B /* VLBearing.h in Headers */ = {isa = PBXBuildFile; fileRef = 6589E6571D09CF220017D75B /* VLBearing.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6589E65E1D09CF220017D75B /* VLBearing.m in Sources */ = {isa = PBXBuildFile; fileRef = 6589E6581D09CF220017D75B /* VLBearing.m */; };
 		659718D21CBDA3020075BE36 /* VLStreamMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 659718D01CBDA3020075BE36 /* VLStreamMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		659718D31CBDA3020075BE36 /* VLStreamMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 659718D11CBDA3020075BE36 /* VLStreamMessage.m */; };
@@ -155,22 +155,22 @@
 		7753A78B1C87713D00D3080F /* VLRulesIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7753A78A1C87713D00D3080F /* VLRulesIntegrationTests.m */; };
 		777A6B811C91E3080050F6C0 /* VLUserSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 777A6B7F1C91E3080050F6C0 /* VLUserSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		777A6B821C91E3080050F6C0 /* VLUserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 777A6B801C91E3080050F6C0 /* VLUserSettings.m */; };
-		777A6B851C91E31E0050F6C0 /* VLUnitLocalizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 777A6B831C91E31E0050F6C0 /* VLUnitLocalizer.h */; };
+		777A6B851C91E31E0050F6C0 /* VLUnitLocalizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 777A6B831C91E31E0050F6C0 /* VLUnitLocalizer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		777A6B861C91E31E0050F6C0 /* VLUnitLocalizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 777A6B841C91E31E0050F6C0 /* VLUnitLocalizer.m */; };
-		777A6B891C91F7B00050F6C0 /* VLDistance.h in Headers */ = {isa = PBXBuildFile; fileRef = 777A6B871C91F7B00050F6C0 /* VLDistance.h */; };
+		777A6B891C91F7B00050F6C0 /* VLDistance.h in Headers */ = {isa = PBXBuildFile; fileRef = 777A6B871C91F7B00050F6C0 /* VLDistance.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		777A6B8A1C91F7B00050F6C0 /* VLDistance.m in Sources */ = {isa = PBXBuildFile; fileRef = 777A6B881C91F7B00050F6C0 /* VLDistance.m */; };
-		777A6B8D1C91FC5E0050F6C0 /* VLDistancePager.h in Headers */ = {isa = PBXBuildFile; fileRef = 777A6B8B1C91FC5E0050F6C0 /* VLDistancePager.h */; };
+		777A6B8D1C91FC5E0050F6C0 /* VLDistancePager.h in Headers */ = {isa = PBXBuildFile; fileRef = 777A6B8B1C91FC5E0050F6C0 /* VLDistancePager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		777A6B8E1C91FC5E0050F6C0 /* VLDistancePager.m in Sources */ = {isa = PBXBuildFile; fileRef = 777A6B8C1C91FC5E0050F6C0 /* VLDistancePager.m */; };
 		777A6B901C9379890050F6C0 /* VLDistanceServicesIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 777A6B8F1C9379890050F6C0 /* VLDistanceServicesIntegrationTests.m */; };
-		777A6B931C9729EA0050F6C0 /* VLOdometer.h in Headers */ = {isa = PBXBuildFile; fileRef = 777A6B911C9729EA0050F6C0 /* VLOdometer.h */; };
+		777A6B931C9729EA0050F6C0 /* VLOdometer.h in Headers */ = {isa = PBXBuildFile; fileRef = 777A6B911C9729EA0050F6C0 /* VLOdometer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		777A6B941C9729EA0050F6C0 /* VLOdometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 777A6B921C9729EA0050F6C0 /* VLOdometer.m */; };
-		777A6B971C9740470050F6C0 /* VLOdometerPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 777A6B951C9740470050F6C0 /* VLOdometerPager.h */; };
+		777A6B971C9740470050F6C0 /* VLOdometerPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 777A6B951C9740470050F6C0 /* VLOdometerPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		777A6B981C9740470050F6C0 /* VLOdometerPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 777A6B961C9740470050F6C0 /* VLOdometerPager.m */; };
-		77B3C1AF1C99ECF100BE836A /* VLOdometerTrigger.h in Headers */ = {isa = PBXBuildFile; fileRef = 77B3C1AD1C99ECF100BE836A /* VLOdometerTrigger.h */; };
+		77B3C1AF1C99ECF100BE836A /* VLOdometerTrigger.h in Headers */ = {isa = PBXBuildFile; fileRef = 77B3C1AD1C99ECF100BE836A /* VLOdometerTrigger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		77B3C1B01C99ECF100BE836A /* VLOdometerTrigger.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B3C1AE1C99ECF100BE836A /* VLOdometerTrigger.m */; };
-		77B3C1B31C99F3C700BE836A /* VLOdometerTriggerPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 77B3C1B11C99F3C700BE836A /* VLOdometerTriggerPager.h */; };
+		77B3C1B31C99F3C700BE836A /* VLOdometerTriggerPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 77B3C1B11C99F3C700BE836A /* VLOdometerTriggerPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		77B3C1B41C99F3C700BE836A /* VLOdometerTriggerPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B3C1B21C99F3C700BE836A /* VLOdometerTriggerPager.m */; };
-		77B3C1B71C9B300C00BE836A /* VLDateFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 77B3C1B51C9B300C00BE836A /* VLDateFormatter.h */; };
+		77B3C1B71C9B300C00BE836A /* VLDateFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 77B3C1B51C9B300C00BE836A /* VLDateFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		77B3C1B81C9B300C00BE836A /* VLDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B3C1B61C9B300C00BE836A /* VLDateFormatter.m */; };
 		77BE999B1C690E77001E8F64 /* VLTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 77BE99991C690E77001E8F64 /* VLTimeSeries.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		77BE999C1C690E77001E8F64 /* VLTimeSeries.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BE999A1C690E77001E8F64 /* VLTimeSeries.m */; };
@@ -183,9 +183,9 @@
 		BF3B333D1D9C4F82001DED7D /* VLLocationUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3B333C1D9C4F82001DED7D /* VLLocationUnitTests.m */; };
 		BF3B333F1D9C59E6001DED7D /* VLTripUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3B333E1D9C59E6001DED7D /* VLTripUnitTests.m */; };
 		BF3B33431D9EF3D9001DED7D /* VLTripPagerIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3B33421D9EF3D9001DED7D /* VLTripPagerIntegrationTests.m */; };
-		BF79B18E1E4A5BB9007E9AE6 /* VLEventType.h in Headers */ = {isa = PBXBuildFile; fileRef = BF79B18C1E4A5BB9007E9AE6 /* VLEventType.h */; };
+		BF79B18E1E4A5BB9007E9AE6 /* VLEventType.h in Headers */ = {isa = PBXBuildFile; fileRef = BF79B18C1E4A5BB9007E9AE6 /* VLEventType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF79B18F1E4A5BB9007E9AE6 /* VLEventType.m in Sources */ = {isa = PBXBuildFile; fileRef = BF79B18D1E4A5BB9007E9AE6 /* VLEventType.m */; };
-		BFB0E7BB1DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = BFB0E7B91DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.h */; };
+		BFB0E7BB1DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = BFB0E7B91DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB0E7BC1DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BFB0E7BA1DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.m */; };
 		E92943591B15387C00AAC7D3 /* VLTelemetryServicesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E92943581B15387C00AAC7D3 /* VLTelemetryServicesTests.m */; };
 		E929435C1B15425400AAC7D3 /* VLTelemetryMessagePager.h in Headers */ = {isa = PBXBuildFile; fileRef = E929435A1B15425400AAC7D3 /* VLTelemetryMessagePager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -785,78 +785,78 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				493E46A31DDCD5EC00F72300 /* VLReportCard.h in Headers */,
 				0B3DDC5A1B1534AB00D95E61 /* VLTrip.h in Headers */,
-				6589E65D1D09CF220017D75B /* VLBearing.h in Headers */,
 				0B16714D1B0FC39D009BE7A9 /* VLTelemetryMessage.h in Headers */,
 				0B1671391B0FC39D009BE7A9 /* VLBoundary.h in Headers */,
 				0B3DDC541B1518BE00D95E61 /* VLRulePager.h in Headers */,
-				77B3C1B71C9B300C00BE836A /* VLDateFormatter.h in Headers */,
 				77BE999B1C690E77001E8F64 /* VLTimeSeries.h in Headers */,
-				6568FB2D1D0F0313006C3656 /* VLSupportedPids.h in Headers */,
-				49E2F2FF1B6AA93700CD743C /* NSDictionary+NonNullable.h in Headers */,
-				BFB0E7BB1DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.h in Headers */,
 				77BE999E1C73A4A5001E8F64 /* VLVehicle.h in Headers */,
-				777A6B971C9740470050F6C0 /* VLOdometerPager.h in Headers */,
 				0B2277061B167303000AF179 /* VLSession.h in Headers */,
 				0B3DDC381B14D1DD00D95E61 /* VLVehiclePager.h in Headers */,
 				0B1671491B0FC39D009BE7A9 /* VLRule.h in Headers */,
 				49AB6E991B82432C00DCF808 /* VLUrlParser.h in Headers */,
-				77B3C1B31C99F3C700BE836A /* VLOdometerTriggerPager.h in Headers */,
 				0B2277001B165DD1000AF179 /* VLLoginViewController.h in Headers */,
 				0B3DDC2E1B14C40A00D95E61 /* VLChronoPager.h in Headers */,
 				E92943701B1679F600AAC7D3 /* VLSubscriptionPager.h in Headers */,
 				0B89E48B1B17A03000E69AEA /* VLNotificationPager.h in Headers */,
 				0B89E4881B179FCA00E69AEA /* VLEventPager.h in Headers */,
 				0B1671471B0FC39D009BE7A9 /* VLService.h in Headers */,
-				777A6B8D1C91FC5E0050F6C0 /* VLDistancePager.h in Headers */,
-				494566431DECF47C00DE3CE2 /* VLCode.h in Headers */,
 				0B16713B1B0FC39D009BE7A9 /* VLDevice.h in Headers */,
 				E92943641B160F4B00AAC7D3 /* VLLocationPager.h in Headers */,
-				77B3C1AF1C99ECF100BE836A /* VLOdometerTrigger.h in Headers */,
 				E92943601B160F3700AAC7D3 /* VLLocation.h in Headers */,
-				4953E4D61DEDEA21006FB7BE /* VLParsable.h in Headers */,
 				0B89E4891B179FD000E69AEA /* VLEvent.h in Headers */,
 				0B3DDC5E1B15355200D95E61 /* VLTripPager.h in Headers */,
 				E929435C1B15425400AAC7D3 /* VLTelemetryMessagePager.h in Headers */,
 				E92943781B18FAF600AAC7D3 /* VLSnapshot.h in Headers */,
 				E929437C1B18FE5F00AAC7D3 /* VLSnapshotPager.h in Headers */,
 				0B3778231B25E0A7004AC2D6 /* VLRadiusBoundary.h in Headers */,
-				4903FDBC1D008B630012AA72 /* VLUDPSocket.h in Headers */,
-				4903FDBA1D008B630012AA72 /* VLWebSocket.h in Headers */,
 				0B37781F1B25DEF9004AC2D6 /* VLParametricBoundary.h in Headers */,
 				E929436A1B165D0800AAC7D3 /* VLSubscription.h in Headers */,
-				4953E4D91DEE1A22006FB7BE /* VLDtc.h in Headers */,
-				777A6B851C91E31E0050F6C0 /* VLUnitLocalizer.h in Headers */,
 				49AB6E9D1B82446900DCF808 /* VLUserCache.h in Headers */,
 				77BE999D1C73A4A5001E8F64 /* VLOffsetPager.h in Headers */,
-				49C717771DE3A51F00074C18 /* VLReportCardPager.h in Headers */,
-				4903FDB81D008B630012AA72 /* VLSIMSignal.h in Headers */,
 				E92943741B17D6B100AAC7D3 /* VLDevicePager.h in Headers */,
 				0B89E4961B18BA3E00E69AEA /* VLUser.h in Headers */,
-				77BE999E1C73A4A5001E8F64 /* VLVehicle.h in Headers */,
+				493E46A31DDCD5EC00F72300 /* VLReportCard.h in Headers */,
+				6589E65D1D09CF220017D75B /* VLBearing.h in Headers */,
+				77B3C1B71C9B300C00BE836A /* VLDateFormatter.h in Headers */,
+				6568FB2D1D0F0313006C3656 /* VLSupportedPids.h in Headers */,
+				49E2F2FF1B6AA93700CD743C /* NSDictionary+NonNullable.h in Headers */,
+				BFB0E7BB1DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.h in Headers */,
+				777A6B971C9740470050F6C0 /* VLOdometerPager.h in Headers */,
+				77B3C1B31C99F3C700BE836A /* VLOdometerTriggerPager.h in Headers */,
+				777A6B8D1C91FC5E0050F6C0 /* VLDistancePager.h in Headers */,
+				494566431DECF47C00DE3CE2 /* VLCode.h in Headers */,
+				77B3C1AF1C99ECF100BE836A /* VLOdometerTrigger.h in Headers */,
+				4953E4D61DEDEA21006FB7BE /* VLParsable.h in Headers */,
+				4903FDBC1D008B630012AA72 /* VLUDPSocket.h in Headers */,
+				4903FDBA1D008B630012AA72 /* VLWebSocket.h in Headers */,
+				4953E4D91DEE1A22006FB7BE /* VLDtc.h in Headers */,
+				777A6B851C91E31E0050F6C0 /* VLUnitLocalizer.h in Headers */,
+				49C717771DE3A51F00074C18 /* VLReportCardPager.h in Headers */,
+				4903FDB81D008B630012AA72 /* VLSIMSignal.h in Headers */,
 				6589E6591D09CF220017D75B /* VLBearingCalculator.h in Headers */,
-				777A6B811C91E3080050F6C0 /* VLUserSettings.h in Headers */,
 				65312B5A1D945643006FB968 /* VLBatteryStatus.h in Headers */,
+				4903FDB61D008B630012AA72 /* VLOBDDataParser.h in Headers */,
+				BF79B18E1E4A5BB9007E9AE6 /* VLEventType.h in Headers */,
+				6589E65B1D09CF220017D75B /* VLBearingFilter.h in Headers */,
+				777A6B891C91F7B00050F6C0 /* VLDistance.h in Headers */,
+				777A6B931C9729EA0050F6C0 /* VLOdometer.h in Headers */,
+				77BE999E1C73A4A5001E8F64 /* VLVehicle.h in Headers */,
+				777A6B811C91E3080050F6C0 /* VLUserSettings.h in Headers */,
 				0B89E48A1B179FE300E69AEA /* VLNotification.h in Headers */,
 				0B37782B1B28B7B8004AC2D6 /* VLLoginButton.h in Headers */,
 				659718D21CBDA3020075BE36 /* VLStreamMessage.h in Headers */,
-				4903FDB61D008B630012AA72 /* VLOBDDataParser.h in Headers */,
 				65F8CA6F1CBD813B00A58B4D /* VLStream.h in Headers */,
 				49AB6E971B82432C00DCF808 /* VLSessionManager.h in Headers */,
 				65FFFB451CBEA17A009D4CF1 /* VLParametricFilter.h in Headers */,
 				65FFFB561CBEAAAD009D4CF1 /* VLCoordinate.h in Headers */,
-				BF79B18E1E4A5BB9007E9AE6 /* VLEventType.h in Headers */,
 				65FFFB521CBEA8DC009D4CF1 /* VLGeometryFilter.h in Headers */,
 				65FFFB381CBE94E8009D4CF1 /* VLAccelData.h in Headers */,
 				E990CE6E1B26405A00CDEF15 /* VLPolygonBoundary.h in Headers */,
 				0B69F0AA1B39B54100684F6D /* VLObjectRef.h in Headers */,
 				0B3DDC261B14C28600D95E61 /* VLPager.h in Headers */,
-				6589E65B1D09CF220017D75B /* VLBearingFilter.h in Headers */,
 				0B16710A1B0FC2B8009BE7A9 /* VinliSDK.h in Headers */,
-				777A6B891C91F7B00050F6C0 /* VLDistance.h in Headers */,
 				0B1671541B0FC3DD009BE7A9 /* JCDHTTPConnection.h in Headers */,
-				777A6B931C9729EA0050F6C0 /* VLOdometer.h in Headers */,
 				0B1671761B0FC418009BE7A9 /* NSString+Random.h in Headers */,
 				0B1671691B0FC401009BE7A9 /* VLRequestHeader.h in Headers */,
 			);
@@ -918,6 +918,7 @@
 				TargetAttributes = {
 					0B1671031B0FC2B8009BE7A9 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = V826A2XT85;
 					};
 					0B16710E1B0FC2B9009BE7A9 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -1306,7 +1307,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 88D7379D442A45FB492F5431 /* Pods-VinliSDK.debug.xcconfig */;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = V826A2XT85;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1332,6 +1335,7 @@
 			baseConfigurationReference = F04485A5F1718BFFC46FE47D /* Pods-VinliSDK.release.xcconfig */;
 			buildSettings = {
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = V826A2XT85;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
