@@ -13,9 +13,4 @@
 + (NSDate *)initializeDateFromString:(NSString *)dateString;
 + (NSString *)stringFromDate:(NSDate *)date;
 
-
-
-
-
-
 @end
