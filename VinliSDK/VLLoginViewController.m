@@ -77,16 +77,6 @@ static NSString * const kVinliSignUpRequest = @"/#/sign-up";
     [webView loadRequest:request];
 }
 
-#pragma  mark - Actions
-
-- (void)onLoginViewControllerCancelButton:(id)sender
-{
-    if ([self.delegate respondsToSelector:@selector(vlLoginViewControllerDidCancelLogin:)])
-    {
-        [self.delegate vlLoginViewControllerDidCancelLogin:self];
-    }
-}
-
 #pragma mark - UIWebViewDelegate methods
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{

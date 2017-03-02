@@ -29,7 +29,4 @@
 - (void)vlLoginViewController:(VLLoginViewController *)loginController didLoginWithSession:(VLSession *) session;
 - (void)vlLoginViewController:(VLLoginViewController *)loginController didFailToLoginWithError:(NSError *) error;
 
-@optional
-- (void)vlLoginViewControllerDidCancelLogin:(VLLoginViewController *)loginController;
-
 @end
