@@ -1,0 +1,6 @@
+framework module Pods_VinliSDK {
+  umbrella header "Pods-VinliSDK-umbrella.h"
+
+  export *
+  module * { export * }
+}
