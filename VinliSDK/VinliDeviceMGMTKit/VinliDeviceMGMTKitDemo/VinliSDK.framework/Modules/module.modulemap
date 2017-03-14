@@ -1,0 +1,6 @@
+framework module VinliSDK {
+  umbrella header "VinliSDK.h"
+
+  export *
+  module * { export * }
+}

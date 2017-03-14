@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DocSetNodes version="1.0">
+    <TOC>
+        <Node type="folder">
+            <Name>VinliSDK</Name>
+            <Path>index.html</Path>
+			<Subnodes>
+                
+				
+				<Node type="folder">
+					<Name>Classes</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="1"/>
+						
+					</Subnodes>
+				</Node>
+				
+				
+                
+                
+				<Node>
+					<Name>Constants</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="2"/>
+						
+					</Subnodes>
+				</Node>
+				
+                
+                <Node>
+                    <Name>Blocks</Name>
+                    <Path>index.html</Path>
+                    <Subnodes>
+                        <NodeRef refid="3"/>
+                        <NodeRef refid="4"/>
+                        <NodeRef refid="5"/>
+                        <NodeRef refid="6"/>
+                        
+                    </Subnodes>
+                </Node>
+                
+			</Subnodes>
+        </Node>
+    </TOC>
+	<Library>
+		
+		<Node id="1" type="file" documentType="reference">
+            <Name>OCClassMockObject</Name>
+            <Path>Classes/OCClassMockObject.html</Path>
+            
+        </Node>
+		
+		
+        
+        <Node id="2" type="file" documentType="reference">
+            <Name>CoveredState</Name>
+            <Path>Constants/CoveredState.html</Path>
+            
+        </Node>
+		
+        <Node id="3" type="file" documentType="reference">
+            <Name>AuthenticationCompletion</Name>
+            <Path>Blocks/AuthenticationCompletion.html</Path>
+            
+        </Node>
+        <Node id="4" type="file" documentType="reference">
+            <Name>OnDidSendData</Name>
+            <Path>Blocks/OnDidSendData.html</Path>
+            
+        </Node>
+        <Node id="5" type="file" documentType="reference">
+            <Name>OnFailure</Name>
+            <Path>Blocks/OnFailure.html</Path>
+            
+        </Node>
+        <Node id="6" type="file" documentType="reference">
+            <Name>OnSuccess</Name>
+            <Path>Blocks/OnSuccess.html</Path>
+            
+        </Node>
+        
+	</Library>
+</DocSetNodes>

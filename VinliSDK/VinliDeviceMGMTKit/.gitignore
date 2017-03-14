@@ -1,0 +1,25 @@
+# Xcode
+.DS_Store
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+*.xcworkspace
+!default.xcworkspace
+xcuserdata
+profile
+*.moved-aside
+DerivedData
+.idea/
+# Pods - for those of you who use CocoaPods
+Pods
+CertificateSigningRequest.certSigningRequest
+CertificateSigningRequest_prod.certSigningRequest
+certificates/apns/app/production/myvinli_apns_prod.p12
+certificates/apns/enterprise/GoogleService-Info.plist
+certificates/apns/enterprise/production/myvinli_enterprise_apns_prod.p12

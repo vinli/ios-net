@@ -1,0 +1,6 @@
+framework module VinliDeviceMGMTKit {
+  umbrella header "VinliDeviceMGMTKit.h"
+
+  export *
+  module * { export * }
+}

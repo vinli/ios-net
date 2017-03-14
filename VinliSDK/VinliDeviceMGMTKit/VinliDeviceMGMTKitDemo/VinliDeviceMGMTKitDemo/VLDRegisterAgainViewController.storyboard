@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Register Again View Controller-->
+        <scene sceneID="w2s-MA-9rw">
+            <objects>
+                <viewController storyboardIdentifier="VLDRegisterAgainViewController" id="0WY-f8-TX2" customClass="VLDRegisterAgainViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="v4p-pH-BCJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ouq-xs-8f7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xE9-PH-Na2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkq-D7-TGM">
+                                <rect key="frame" x="104.5" y="318.5" width="166" height="30"/>
+                                <state key="normal" title="Register Another Device"/>
+                                <connections>
+                                    <action selector="registerAnotherDeviceButtonAction:" destination="0WY-f8-TX2" eventType="touchUpInside" id="LhS-H4-ntA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hkq-D7-TGM" firstAttribute="centerY" secondItem="xE9-PH-Na2" secondAttribute="centerY" id="F25-So-Gyd"/>
+                            <constraint firstItem="hkq-D7-TGM" firstAttribute="centerX" secondItem="xE9-PH-Na2" secondAttribute="centerX" id="VGP-7f-A3Y"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="izm-EG-vpt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="190" y="117"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Manage Cancel Wifi View Controller-->
+        <scene sceneID="CYd-6k-yiy">
+            <objects>
+                <viewController storyboardIdentifier="VLDManageCancelWifiViewController" id="hLr-U0-9tE" customClass="VLDManageCancelWifiViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kOv-EP-nzR"/>
+                        <viewControllerLayoutGuide type="bottom" id="E2D-Ox-hS7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="htz-dB-4QH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J6A-wE-W8P" userLabel="Manage Wifi Container View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="333.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pbN-S9-Jga" userLabel="Manage Wifi Button">
+                                        <rect key="frame" x="144.5" y="152" width="86" height="30"/>
+                                        <state key="normal" title="Manage Wifi"/>
+                                        <connections>
+                                            <action selector="manageWifiButtonAction:" destination="hLr-U0-9tE" eventType="touchUpInside" id="By2-MZ-uAv"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="pbN-S9-Jga" firstAttribute="centerY" secondItem="J6A-wE-W8P" secondAttribute="centerY" id="CXO-AP-Rzc"/>
+                                    <constraint firstItem="pbN-S9-Jga" firstAttribute="centerX" secondItem="J6A-wE-W8P" secondAttribute="centerX" id="Ef9-SZ-NtS"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jiz-Uc-Mvx" userLabel="Cancel Wifi Container View">
+                                <rect key="frame" x="0.0" y="333.5" width="375" height="333.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSm-k9-whg" userLabel="Cancel Wifi Button">
+                                        <rect key="frame" x="149" y="152.5" width="78" height="30"/>
+                                        <state key="normal" title="Cancel Wifi"/>
+                                        <connections>
+                                            <action selector="cancelWifiButtonAction:" destination="hLr-U0-9tE" eventType="touchUpInside" id="7EG-mu-ZTR"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="dSm-k9-whg" firstAttribute="centerY" secondItem="Jiz-Uc-Mvx" secondAttribute="centerY" id="199-eE-hb5"/>
+                                    <constraint firstItem="dSm-k9-whg" firstAttribute="centerX" secondItem="Jiz-Uc-Mvx" secondAttribute="centerX" id="ilC-Gt-hU5"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Jiz-Uc-Mvx" firstAttribute="top" secondItem="J6A-wE-W8P" secondAttribute="bottom" id="At3-lh-T7j"/>
+                            <constraint firstItem="Jiz-Uc-Mvx" firstAttribute="leading" secondItem="htz-dB-4QH" secondAttribute="leading" id="C2f-wd-Kma"/>
+                            <constraint firstAttribute="trailing" secondItem="Jiz-Uc-Mvx" secondAttribute="trailing" id="K0f-QT-HPA"/>
+                            <constraint firstAttribute="bottom" secondItem="Jiz-Uc-Mvx" secondAttribute="bottom" id="e1b-A3-9f2"/>
+                            <constraint firstAttribute="trailing" secondItem="J6A-wE-W8P" secondAttribute="trailing" id="fEd-F1-eln"/>
+                            <constraint firstItem="J6A-wE-W8P" firstAttribute="top" secondItem="htz-dB-4QH" secondAttribute="top" id="gxx-2z-4Mx"/>
+                            <constraint firstItem="J6A-wE-W8P" firstAttribute="height" secondItem="htz-dB-4QH" secondAttribute="height" multiplier="0.5" id="vdt-og-Lth"/>
+                            <constraint firstItem="J6A-wE-W8P" firstAttribute="leading" secondItem="htz-dB-4QH" secondAttribute="leading" id="xSB-0x-TXG"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L5O-m1-fp5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="172" y="106"/>
+        </scene>
+    </scenes>
+</document>

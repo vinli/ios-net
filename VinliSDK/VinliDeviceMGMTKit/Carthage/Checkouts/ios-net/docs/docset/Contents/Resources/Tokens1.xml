@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/OCClassMockObject.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/OCClassMockObject</TokenIdentifier>
+			<Abstract type="html">taken from:
+class-dump -f isNS /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/CoreFoundation.framework</Abstract>
+			<DeclaredIn>OCClassMockObject.h</DeclaredIn>
+            
+			
+			<NodeRef refid="1"/>
+		</Token>
+		
+		
+        
+        
+	</File>
+</Tokens>
