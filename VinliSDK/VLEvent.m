@@ -10,7 +10,11 @@
 #import "VLRule.h"
 #import "VLEvent.h"
 #import "NSDictionary+NonNullable.h"
+#import "VLDateFormatter.h"
 
+@interface VLEvent()
+@property (strong, nonatomic) NSDate* eventDate;
+@end
 
 @implementation VLEvent
 
@@ -49,6 +53,17 @@
 
 - (NSString *) description{
     return [NSString stringWithFormat:@"EventId: %@", _eventId];
+}
+
+- (NSDate *)eventDate
+{
+    if (!_eventDate) {
+        _eventDate = [VLDateFormatter initializeDateFromString:self.timestamp];
+        
+    }
+    
+    return _eventDate;
+    
 }
 
 @end
