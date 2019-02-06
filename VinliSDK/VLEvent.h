@@ -12,6 +12,7 @@
 
 @property (readonly) NSString *eventId;
 @property (readonly) NSString *timestamp;
+@property (readonly, nonatomic) NSDate* eventDate;
 @property (readonly) NSString *deviceId;
 @property (readonly) NSString *stored;
 @property (readonly) NSString *eventType;
