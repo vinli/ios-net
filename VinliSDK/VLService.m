@@ -311,6 +311,13 @@
         return;
     }
     
+    if (!deviceId || [deviceId isEqualToString:@""]) {
+        if (onFailureBlock) {
+            onFailureBlock([self getNoDeviceId], nil, nil);
+        }
+        return;
+    }
+    
     NSString *path = [NSString stringWithFormat:@"/devices/%@", deviceId];
     
     [self startWithHost:STRING_HOST_PLATFORM path:path queries:nil HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
@@ -341,6 +348,13 @@
     if(_session == nil){
         if(onFailureBlock){
             onFailureBlock([self getNoSessionError], nil, nil);
+        }
+        return;
+    }
+    
+    if (!deviceId || [deviceId isEqualToString:@""]) {
+        if (onFailureBlock) {
+            onFailureBlock([self getNoDeviceId], nil, nil);
         }
         return;
     }
@@ -376,6 +390,13 @@
     if(_session == nil){
         if(onFailureBlock){
             onFailureBlock([self getNoSessionError], nil, nil);
+        }
+        return;
+    }
+    
+    if (!deviceId || [deviceId isEqualToString:@""]) {
+        if (onFailureBlock) {
+            onFailureBlock([self getNoDeviceId], nil, nil);
         }
         return;
     }
@@ -419,6 +440,13 @@
     if(_session == nil){
         if(onFailureBlock){
             onFailureBlock([self getNoSessionError], nil, nil);
+        }
+        return;
+    }
+    
+    if (!deviceId || [deviceId isEqualToString:@""]) {
+        if (onFailureBlock) {
+            onFailureBlock([self getNoDeviceId], nil, nil);
         }
         return;
     }
@@ -506,6 +534,13 @@
     if(_session == nil){
         if(onFailureBlock){
             onFailureBlock([self getNoSessionError], nil, nil);
+        }
+        return;
+    }
+    
+    if (!deviceId || [deviceId isEqualToString:@""]) {
+        if (onFailureBlock) {
+            onFailureBlock([self getNoDeviceId], nil, nil);
         }
         return;
     }
@@ -723,6 +758,13 @@
     if(_session == nil){
         if(onFailureBlock){
             onFailureBlock([self getNoSessionError], nil, nil);
+        }
+        return;
+    }
+    
+    if (!deviceId || [deviceId isEqualToString:@""]) {
+        if (onFailureBlock) {
+            onFailureBlock([self getNoDeviceId], nil, nil);
         }
         return;
     }
@@ -2176,6 +2218,10 @@
 
 - (NSError *) getNoSessionError{
     return [NSError errorWithDomain:ERROR_NO_SESSION code:2003 userInfo:@{@"NSLocalizedDescriptionKey" : @"Valid VLSession required to use this VLService method."}];
+}
+
+- (NSError *)getNoDeviceId {
+    return [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:2004 userInfo:@{@"NSLocalizedDescriptionKey" : @"Valid deviceId required to use this VLService method."}];
 }
 
 #pragma mark - Handlers
