@@ -13,17 +13,17 @@
 #import "VLDateFormatter.h"
 
 @interface VLEvent()
+
 @property (strong, nonatomic) NSDate* eventDate;
+
 @end
 
 @implementation VLEvent
 
-- (id) initWithDictionary:(NSDictionary *)dictionary{
-    self = [super init];
-    if(self){
-        
-        if(dictionary){
-            if(dictionary[@"event"] != nil){
+- (id)initWithDictionary:(NSDictionary *)dictionary {
+    if (self = [super init]) {
+        if (dictionary) {
+            if (dictionary[@"event"] != nil) {
                 dictionary = dictionary[@"event"];
             }
             
@@ -33,17 +33,22 @@
             _stored = dictionary[@"stored"];
             _eventType = dictionary[@"eventType"];
             
-            if([dictionary jsonObjectForKey:@"object"]){
+            if ([dictionary jsonObjectForKey:@"object"]) {
                 _objectId = dictionary[@"object"][@"id"];
                 _objectType = dictionary[@"object"][@"type"];
             }
-            
-            if([dictionary objectForKey:@"links"] != nil){
+
+            if ([dictionary jsonObjectForKey:@"location"]) {
+                _latitude = dictionary[@"location"][@"lat"];
+                _longitude = dictionary[@"location"][@"lon"];
+            }
+
+            if ([dictionary objectForKey:@"links"] != nil) {
                 _selfURL = [NSURL URLWithString:dictionary[@"links"][@"self"]];
                 _notificationsURL = [NSURL URLWithString:dictionary[@"links"][@"notifications"]];
             }
             
-            if ([dictionary jsonObjectForKey:@"meta"]){
+            if ([dictionary jsonObjectForKey:@"meta"]) {
                 _vehicleId = [[dictionary jsonObjectForKey:@"meta"] jsonObjectForKey:@"vehicleId"];
             }
         }
@@ -51,19 +56,16 @@
     return self;
 }
 
-- (NSString *) description{
+- (NSString *)description {
     return [NSString stringWithFormat:@"EventId: %@", _eventId];
 }
 
-- (NSDate *)eventDate
-{
+- (NSDate *)eventDate {
     if (!_eventDate) {
         _eventDate = [VLDateFormatter initializeDateFromString:self.timestamp];
-        
     }
     
-    return _eventDate;
-    
+    return _eventDate;    
 }
 
 @end

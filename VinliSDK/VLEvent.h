@@ -25,7 +25,10 @@
 @property (readonly) NSURL *selfURL;
 @property (readonly) NSURL *notificationsURL;
 
-- (id) initWithDictionary: (NSDictionary *) dictionary;
-- (NSString *) description;
+@property (readonly) NSNumber *latitude;
+@property (readonly) NSNumber *longitude;
+
+- (id)initWithDictionary: (NSDictionary *)dictionary;
+- (NSString *)description;
 
 @end
