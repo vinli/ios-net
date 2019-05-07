@@ -16,6 +16,19 @@
 
 @property (strong, nonatomic) NSDate* eventDate;
 
+@property (readwrite, nonatomic) NSString *eventId;
+@property (readwrite, nonatomic) NSString *timestamp;
+@property (readwrite, nonatomic) NSString *deviceId;
+@property (readwrite, nonatomic) NSString *stored;
+@property (readwrite, nonatomic) NSString *eventType;
+@property (readwrite, nonatomic) NSString *vehicleId;
+@property (readwrite, nonatomic) NSString *objectId;
+@property (readwrite, nonatomic) NSString *objectType;
+@property (readwrite, nonatomic) NSURL *selfURL;
+@property (readwrite, nonatomic) NSURL *notificationsURL;
+@property (readwrite, nonatomic) NSNumber *latitude;
+@property (readwrite, nonatomic) NSNumber *longitude;
+
 @end
 
 @implementation VLEvent
@@ -23,6 +36,8 @@
 - (id)initWithDictionary:(NSDictionary *)dictionary {
     if (self = [super init]) {
         if (dictionary) {
+            NSLog(@"Event: %@", dictionary);
+            
             if (dictionary[@"event"] != nil) {
                 dictionary = dictionary[@"event"];
             }
@@ -57,7 +72,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"EventId: %@", _eventId];
+    return [NSString stringWithFormat:@"Event: %@, %@", self.eventType, self.eventId];
 }
 
 - (NSDate *)eventDate {

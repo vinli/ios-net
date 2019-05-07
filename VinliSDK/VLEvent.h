@@ -10,23 +10,23 @@
 
 @interface VLEvent : NSObject
 
-@property (readonly) NSString *eventId;
-@property (readonly) NSString *timestamp;
+@property (readonly, nonatomic) NSString *eventId;
+@property (readonly, nonatomic) NSString *timestamp;
 @property (readonly, nonatomic) NSDate* eventDate;
-@property (readonly) NSString *deviceId;
-@property (readonly) NSString *stored;
-@property (readonly) NSString *eventType;
+@property (readonly, nonatomic) NSString *deviceId;
+@property (readonly, nonatomic) NSString *stored;
+@property (readonly, nonatomic) NSString *eventType;
 
-@property (readonly) NSString *vehicleId;
+@property (readonly, nonatomic) NSString *vehicleId;
 
-@property (readonly) NSString *objectId;
-@property (readonly) NSString *objectType;
+@property (readonly, nonatomic) NSString *objectId;
+@property (readonly, nonatomic) NSString *objectType;
 
-@property (readonly) NSURL *selfURL;
-@property (readonly) NSURL *notificationsURL;
+@property (readonly, nonatomic) NSURL *selfURL;
+@property (readonly, nonatomic) NSURL *notificationsURL;
 
-@property (readonly) NSNumber *latitude;
-@property (readonly) NSNumber *longitude;
+@property (readonly, nonatomic) NSNumber *latitude;
+@property (readonly, nonatomic) NSNumber *longitude;
 
 - (id)initWithDictionary: (NSDictionary *)dictionary;
 - (NSString *)description;
