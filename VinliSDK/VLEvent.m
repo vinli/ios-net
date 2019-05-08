@@ -54,8 +54,12 @@
             }
 
             if ([dictionary jsonObjectForKey:@"location"]) {
-                _latitude = dictionary[@"location"][@"lat"];
-                _longitude = dictionary[@"location"][@"lon"];
+                NSDictionary *location = dictionary[@"location"];
+                if ([location jsonObjectForKey:@"coordinates"]) {
+                    NSArray *coords = location[@"coordinates"];
+                    _longitude = [coords objectAtIndex:0];
+                    _latitude = [coords objectAtIndex:1];
+                }
             }
 
             if ([dictionary objectForKey:@"links"] != nil) {
