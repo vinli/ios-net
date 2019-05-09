@@ -28,6 +28,8 @@
 @property (readonly, nonatomic) NSNumber *latitude;
 @property (readonly, nonatomic) NSNumber *longitude;
 
+@property (readonly, nonatomic) NSDictionary *meta;
+
 - (id)initWithDictionary: (NSDictionary *)dictionary;
 - (NSString *)description;
 

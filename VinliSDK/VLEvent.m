@@ -28,6 +28,7 @@
 @property (readwrite, nonatomic) NSURL *notificationsURL;
 @property (readwrite, nonatomic) NSNumber *latitude;
 @property (readwrite, nonatomic) NSNumber *longitude;
+@property (readwrite, nonatomic) NSDictionary *meta;
 
 @end
 
@@ -68,7 +69,8 @@
             }
             
             if ([dictionary jsonObjectForKey:@"meta"]) {
-                _vehicleId = [[dictionary jsonObjectForKey:@"meta"] jsonObjectForKey:@"vehicleId"];
+                _meta = [dictionary jsonObjectForKey:@"meta"];
+                _vehicleId = [_meta jsonObjectForKey:@"vehicleId"];
             }
         }
     }
