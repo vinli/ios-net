@@ -11,92 +11,52 @@
 #import "VLEvent.h"
 #import "VLService.h"
 
-
 @implementation VLEventPager : VLChronoPager;
 
-- (id) initWithDictionary:(NSDictionary *)dictionary{
+- (id)initWithDictionary:(NSDictionary *)dictionary{
     return [self initWithDictionary:dictionary service:nil];
 }
 
-- (id) initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service
-{
-    if (self = [super initWithDictionary:dictionary service:service])
-    {
-        _events =  [self populateEvents:dictionary];
+- (id)initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service {
+    if (self = [super initWithDictionary:dictionary service:service]) {
+        _events =  [self parseJSON:dictionary];
     }
     return self;
 }
 
-
-
-
-
-- (void)getNextEvents:(void (^)(NSArray *, NSError *))completion
-{
-    NSURL* url = (self.priorURL) ? self.priorURL : self.nextURL; //if there is a call to getNextEvents there should be a prior or a next url
+- (void)getNextEvents:(void (^)(NSArray *, NSError *))completion {
+    NSURL *url = self.priorURL ?: self.nextURL; //if there is a call to getNextEvents there should be a prior or a next url
     
-    if (url && self.service)
-    {
-        
+    if (url && self.service) {
         [self.service startWithHost:self.service.session.accessToken requestUri:[url absoluteString] onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-            
-            NSLog(@"%@", response);
-            if (result)
-            {
+            if (result) {
                 //use populate method
-                NSArray *latestEvents = [self populateEvents:result];
+                NSArray *latestEvents = [self parseJSON:result];
                 
-                if (completion)
-                {
+                if (completion) {
                     completion(latestEvents, nil);
                 }
-                
             }
-            
-            
         } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *message) {
             NSLog(@"No next or prior URL");
         }];
     }
-    
-    else
-    {
-        return;
-    }
-
 }
 
-
-
-
-
-
-
-- (NSArray *)populateEvents:(NSDictionary *)dictionary
-{
-    if(dictionary && dictionary[@"events"])
-    {
+- (NSArray *)parseJSON:(NSDictionary *)dictionary {
+    NSArray *ret =@[];
+    if (dictionary && dictionary[@"events"]) {
         NSArray *json = dictionary[@"events"];
-        NSMutableArray *eventArrayTemp = [[NSMutableArray alloc] init];
+        NSMutableArray *events = [[NSMutableArray alloc] init];
         
-        for(NSDictionary *event in json){
-            [eventArrayTemp addObject:[[VLEvent alloc] initWithDictionary:event]];
+        for (NSDictionary *event in json) {
+            [events addObject:[[VLEvent alloc] initWithDictionary:event]];
         }
         
-        return eventArrayTemp;
+        ret = [NSArray arrayWithArray:events];
     }
-    else
-    {
-        return [NSArray new];
-    }
+    
+    return ret;
 }
-
-
-
-
-
-
-
-
 
 @end

@@ -12,9 +12,8 @@
 
 @property (readonly) NSArray *events;
 
-- (id) initWithDictionary:(NSDictionary *)dictionary;
-- (id) initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service;
+- (id)initWithDictionary:(NSDictionary *)dictionary;
+- (id)initWithDictionary:(NSDictionary *)dictionary service:(VLService *)service;
 - (void)getNextEvents:(void (^)(NSArray *values, NSError *error))completion;
-- (NSArray *)populateEvents:(NSDictionary *)dictionary;
 
 @end
