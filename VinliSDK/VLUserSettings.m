@@ -10,24 +10,23 @@
 
 @implementation VLUserSettings
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary
-{
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     if (self = [super init]) {
         _unitStr = dictionary[@"unit"];
         _localeStr = dictionary[@"locale"];
-        
+        _countryCode = dictionary[@"countryCode"];
         _unit = [self getUnitType:_unitStr];
     }
     return self;
 }
 
-- (NSDictionary *)toDictionary
-{
-    return @{@"unit" : _unitStr, @"locale" : _localeStr ?: @"en-US"};
+- (NSDictionary *)toDictionary {
+    return @{ @"unit": _unitStr,
+              @"locale": _localeStr ?: @"en-US",
+              @"countryCode": _countryCode ?: @"" };
 }
 
-- (VLUserSettingsUnit)getUnitType:(NSString *)unitStr
-{
+- (VLUserSettingsUnit)getUnitType:(NSString *)unitStr {
     if ([unitStr.lowercaseString isEqualToString:@"metric"]) {
         return VLUserSettingsUnitMetric;
     }

@@ -15,8 +15,9 @@ typedef NS_ENUM(NSInteger, VLUserSettingsUnit) {
 
 @interface VLUserSettings : NSObject
 
-@property (readonly) NSString* unitStr;
-@property (readonly) NSString* localeStr;
+@property (readonly) NSString *unitStr;
+@property (readonly) NSString *localeStr;
+@property (readonly) NSString *countryCode;
 @property (readonly) VLUserSettingsUnit unit;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
