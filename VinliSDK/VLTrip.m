@@ -10,24 +10,21 @@
 #import "VLDateFormatter.h"
 #import "NSDictionary+NonNullable.h"
 
-
-
 @interface VLTrip()
+
 @property (strong, nonatomic) NSDate* startDate;
 @property (strong, nonatomic) NSDate* stopDate;
+
 @end
 
 @implementation VLTrip
 
-- (id) initWithDictionary:(NSDictionary *)dictionary{
+- (id)initWithDictionary:(NSDictionary *)dictionary{
     self = [super init];
-    if(self) {
-        
-        if(dictionary)
-        {
-            
-            if(dictionary[@"trip"] != nil)
-            {
+    
+    if (self) {
+        if (dictionary){
+            if (dictionary[@"trip"] != nil) {
                 dictionary = dictionary[@"trip"];
             }
             
@@ -44,6 +41,7 @@
             _locationCount = [dictionary objectForKey:@"locationCount"];
             _messageCount = [dictionary objectForKey:@"messageCount"];
             _mpg = [[dictionary jsonObjectForKey:@"stats"] objectForKey:@"fuelEconomy"];
+            
             if ([dictionary[@"preview"] isKindOfClass:[NSString class]]) {
                 _preview = dictionary[@"preview"];
             }
@@ -52,7 +50,7 @@
             _stopPoint = ([dictionary jsonObjectForKey:@"stopPoint"]) ? [[VLLocation alloc] initWithDictionary:[dictionary objectForKey:@"stopPoint"]] : nil;
             _orphanedAt = [dictionary objectForKey:@"orphanedAt"];
             
-            if([dictionary objectForKey:@"links"]){
+            if ([dictionary objectForKey:@"links"]) {
                 _selfURL = [NSURL URLWithString:[[dictionary objectForKey:@"links"] objectForKey:@"self"]];
                 _deviceURL = [NSURL URLWithString:[[dictionary objectForKey:@"links"] objectForKey:@"device"]];
                 _vehicleURL = [NSURL URLWithString:[[dictionary objectForKey:@"links"] objectForKey:@"vehicle"]];
@@ -61,52 +59,50 @@
                 _eventsURL = [NSURL URLWithString:[[dictionary objectForKey:@"links"] objectForKey:@"events"]];
             }
             
-            if ([dictionary jsonObjectForKey:@"stats"])
-            {
-                NSDictionary* stats = [[dictionary jsonObjectForKey:@"stats"] copy];
-                NSMutableDictionary* statsMutable = [stats mutableCopy];
-                [stats enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+            if ([dictionary jsonObjectForKey:@"stats"]) {
+                NSDictionary *data = [[dictionary jsonObjectForKey:@"stats"] copy];
+                NSMutableDictionary *dataMutable = [data mutableCopy];
+                [data enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
                     if ([obj isKindOfClass:[NSNull class]]) {
-                        [statsMutable removeObjectForKey:key];
+                        [dataMutable removeObjectForKey:key];
                     }
                 }];
-                _stats = [NSDictionary dictionaryWithDictionary:statsMutable];
+                _stats = [NSDictionary dictionaryWithDictionary:dataMutable];
             }
         
+            if ([dictionary jsonObjectForKey:@"eventCounts"]) {
+                NSDictionary *data = [[dictionary jsonObjectForKey:@"eventCounts"] copy];
+                NSMutableDictionary *dataMutable = [data mutableCopy];
+                [data enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+                    if ([obj isKindOfClass:[NSNull class]]) {
+                        [dataMutable removeObjectForKey:key];
+                    }
+                }];
+                _eventCounts = [NSDictionary dictionaryWithDictionary:dataMutable];
+            }
         }
     }
     return self;
 }
 
-- (NSString *) description {
+- (NSString *)description {
     return [NSString stringWithFormat: @"Trip Id:%@, start:%@, stop:%@, status:%@, Vehicle Id%@", self.tripId, self.start, self.stop, self.status, self.vehicleId];
 }
 
-
-
-
-
-- (NSDate *)startDate
-{
+- (NSDate *)startDate {
     if (!_startDate) {
         _startDate = [VLDateFormatter initializeDateFromString:self.start];
-
     }
     
     return _startDate;
-    
 }
 
-- (NSDate *)stopDate
-{
+- (NSDate *)stopDate {
     if (!_stopDate) {
         _stopDate = [VLDateFormatter initializeDateFromString:self.stop];
     }
     
     return _stopDate;
 }
-
-
-
 
 @end

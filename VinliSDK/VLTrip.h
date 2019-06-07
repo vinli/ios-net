@@ -33,11 +33,12 @@
 @property (readonly) NSURL *messagesURL;
 @property (readonly) NSURL *eventsURL;
 
-@property (readonly, nonatomic) NSDate* startDate;
-@property (readonly, nonatomic) NSDate* stopDate;
+@property (readonly, nonatomic) NSDate *startDate;
+@property (readonly, nonatomic) NSDate *stopDate;
 
-@property (readonly) NSDictionary* stats;
+@property (readonly) NSDictionary *stats;
+@property (readonly) NSDictionary *eventCounts;
 
-- (id) initWithDictionary: (NSDictionary *) dictionary;
+- (id)initWithDictionary:(NSDictionary *)dictionary;
 
 @end
