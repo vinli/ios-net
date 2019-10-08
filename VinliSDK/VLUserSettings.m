@@ -14,7 +14,7 @@
     if (self = [super init]) {
         _unitStr = dictionary[@"unit"];
         _localeStr = dictionary[@"locale"];
-        _countryCode = dictionary[@"countryCode"];
+        _countryCode = dictionary[@"country"];
         _unit = [self getUnitType:_unitStr];
     }
     return self;
@@ -23,7 +23,7 @@
 - (NSDictionary *)toDictionary {
     return @{ @"unit": _unitStr,
               @"locale": _localeStr ?: @"en-US",
-              @"countryCode": _countryCode ?: @"" };
+              @"country": _countryCode ?: @"" };
 }
 
 - (VLUserSettingsUnit)getUnitType:(NSString *)unitStr {
