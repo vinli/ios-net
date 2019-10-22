@@ -39,6 +39,8 @@
 @property (readonly) NSDictionary *stats;
 @property (readonly) NSDictionary *eventCounts;
 
+@property (readonly) NSDictionary *meta;
+
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 
 @end

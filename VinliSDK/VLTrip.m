@@ -41,6 +41,7 @@
             _locationCount = [dictionary objectForKey:@"locationCount"];
             _messageCount = [dictionary objectForKey:@"messageCount"];
             _mpg = [[dictionary jsonObjectForKey:@"stats"] objectForKey:@"fuelEconomy"];
+            _meta = [dictionary objectForKey:@"meta"];
             
             if ([dictionary[@"preview"] isKindOfClass:[NSString class]]) {
                 _preview = dictionary[@"preview"];

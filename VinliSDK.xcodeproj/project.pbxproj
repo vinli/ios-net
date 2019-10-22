@@ -277,6 +277,7 @@
 		0B89E4941B18BA3E00E69AEA /* VLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLUser.h; sourceTree = "<group>"; };
 		0B89E4951B18BA3E00E69AEA /* VLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLUser.m; sourceTree = "<group>"; };
 		0BD2E50D1B0FF3DD00A5D2BC /* VLRuleServicesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLRuleServicesTests.m; sourceTree = "<group>"; };
+		29B48722235F6F12008EFCAF /* VinliNet.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = VinliNet.podspec; sourceTree = "<group>"; };
 		4903FDAC1D008B630012AA72 /* VLOBDDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLOBDDataParser.h; sourceTree = "<group>"; };
 		4903FDAD1D008B630012AA72 /* VLOBDDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLOBDDataParser.m; sourceTree = "<group>"; };
 		4903FDAE1D008B630012AA72 /* VLSIMSignal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLSIMSignal.h; sourceTree = "<group>"; };
@@ -431,6 +432,7 @@
 		0B1670FA1B0FC2B8009BE7A9 = {
 			isa = PBXGroup;
 			children = (
+				29B48722235F6F12008EFCAF /* VinliNet.podspec */,
 				0B1671061B0FC2B8009BE7A9 /* VinliSDK */,
 				0B1671131B0FC2B9009BE7A9 /* VinliSDKTests */,
 				0B1671051B0FC2B8009BE7A9 /* Products */,
@@ -935,6 +937,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 0B1670FA1B0FC2B8009BE7A9;
