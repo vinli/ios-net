@@ -52,16 +52,12 @@
 		0B1671761B0FC418009BE7A9 /* NSString+Random.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B1671741B0FC418009BE7A9 /* NSString+Random.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		0B1671771B0FC418009BE7A9 /* NSString+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1671751B0FC418009BE7A9 /* NSString+Random.m */; };
 		0B1671791B0FD64B009BE7A9 /* VLPlatformServicesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1671781B0FD64B009BE7A9 /* VLPlatformServicesTests.m */; };
-		0B2277001B165DD1000AF179 /* VLLoginViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B2276FE1B165DD1000AF179 /* VLLoginViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0B2277011B165DD1000AF179 /* VLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2276FF1B165DD1000AF179 /* VLLoginViewController.m */; };
 		0B2277061B167303000AF179 /* VLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B2277041B167303000AF179 /* VLSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B2277071B167303000AF179 /* VLSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2277051B167303000AF179 /* VLSession.m */; };
 		0B37781F1B25DEF9004AC2D6 /* VLParametricBoundary.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B37781D1B25DEF9004AC2D6 /* VLParametricBoundary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B3778201B25DEF9004AC2D6 /* VLParametricBoundary.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B37781E1B25DEF9004AC2D6 /* VLParametricBoundary.m */; };
 		0B3778231B25E0A7004AC2D6 /* VLRadiusBoundary.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B3778211B25E0A7004AC2D6 /* VLRadiusBoundary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B3778241B25E0A7004AC2D6 /* VLRadiusBoundary.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3778221B25E0A7004AC2D6 /* VLRadiusBoundary.m */; };
-		0B37782B1B28B7B8004AC2D6 /* VLLoginButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B3778291B28B7B8004AC2D6 /* VLLoginButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0B37782C1B28B7B8004AC2D6 /* VLLoginButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B37782A1B28B7B8004AC2D6 /* VLLoginButton.m */; };
 		0B3DDC261B14C28600D95E61 /* VLPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B3DDC241B14C28600D95E61 /* VLPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B3DDC271B14C28600D95E61 /* VLPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3DDC251B14C28600D95E61 /* VLPager.m */; };
 		0B3DDC2B1B14C31B00D95E61 /* VLOffsetPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3DDC291B14C31B00D95E61 /* VLOffsetPager.m */; };
@@ -245,16 +241,12 @@
 		0B1671741B0FC418009BE7A9 /* NSString+Random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Random.h"; sourceTree = "<group>"; };
 		0B1671751B0FC418009BE7A9 /* NSString+Random.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Random.m"; sourceTree = "<group>"; };
 		0B1671781B0FD64B009BE7A9 /* VLPlatformServicesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLPlatformServicesTests.m; sourceTree = "<group>"; };
-		0B2276FE1B165DD1000AF179 /* VLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLLoginViewController.h; sourceTree = "<group>"; };
-		0B2276FF1B165DD1000AF179 /* VLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLLoginViewController.m; sourceTree = "<group>"; };
 		0B2277041B167303000AF179 /* VLSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLSession.h; sourceTree = "<group>"; };
 		0B2277051B167303000AF179 /* VLSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLSession.m; sourceTree = "<group>"; };
 		0B37781D1B25DEF9004AC2D6 /* VLParametricBoundary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLParametricBoundary.h; sourceTree = "<group>"; };
 		0B37781E1B25DEF9004AC2D6 /* VLParametricBoundary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLParametricBoundary.m; sourceTree = "<group>"; };
 		0B3778211B25E0A7004AC2D6 /* VLRadiusBoundary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLRadiusBoundary.h; sourceTree = "<group>"; };
 		0B3778221B25E0A7004AC2D6 /* VLRadiusBoundary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLRadiusBoundary.m; sourceTree = "<group>"; };
-		0B3778291B28B7B8004AC2D6 /* VLLoginButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLLoginButton.h; sourceTree = "<group>"; };
-		0B37782A1B28B7B8004AC2D6 /* VLLoginButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLLoginButton.m; sourceTree = "<group>"; };
 		0B3DDC241B14C28600D95E61 /* VLPager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLPager.h; sourceTree = "<group>"; };
 		0B3DDC251B14C28600D95E61 /* VLPager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLPager.m; sourceTree = "<group>"; };
 		0B3DDC281B14C31B00D95E61 /* VLOffsetPager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLOffsetPager.h; sourceTree = "<group>"; };
@@ -586,17 +578,6 @@
 			name = Boundaries;
 			sourceTree = "<group>";
 		};
-		0B3778331B29C776004AC2D6 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				0B2276FE1B165DD1000AF179 /* VLLoginViewController.h */,
-				0B2276FF1B165DD1000AF179 /* VLLoginViewController.m */,
-				0B3778291B28B7B8004AC2D6 /* VLLoginButton.h */,
-				0B37782A1B28B7B8004AC2D6 /* VLLoginButton.m */,
-			);
-			name = Login;
-			sourceTree = "<group>";
-		};
 		0B3DDC231B14C19A00D95E61 /* Pager */ = {
 			isa = PBXGroup;
 			children = (
@@ -642,7 +623,6 @@
 			isa = PBXGroup;
 			children = (
 				65FFFB351CBE9460009D4CF1 /* Streaming */,
-				0B3778331B29C776004AC2D6 /* Login */,
 				0B37781C1B25DEDA004AC2D6 /* Boundaries */,
 				0B3DDC231B14C19A00D95E61 /* Pager */,
 				0B1671231B0FC39D009BE7A9 /* VLDevice.h */,
@@ -805,7 +785,6 @@
 				0B1671491B0FC39D009BE7A9 /* VLRule.h in Headers */,
 				49AB6E991B82432C00DCF808 /* VLUrlParser.h in Headers */,
 				77B3C1B31C99F3C700BE836A /* VLOdometerTriggerPager.h in Headers */,
-				0B2277001B165DD1000AF179 /* VLLoginViewController.h in Headers */,
 				0B3DDC2E1B14C40A00D95E61 /* VLChronoPager.h in Headers */,
 				E92943701B1679F600AAC7D3 /* VLSubscriptionPager.h in Headers */,
 				0B89E48B1B17A03000E69AEA /* VLNotificationPager.h in Headers */,
@@ -841,7 +820,6 @@
 				777A6B811C91E3080050F6C0 /* VLUserSettings.h in Headers */,
 				65312B5A1D945643006FB968 /* VLBatteryStatus.h in Headers */,
 				0B89E48A1B179FE300E69AEA /* VLNotification.h in Headers */,
-				0B37782B1B28B7B8004AC2D6 /* VLLoginButton.h in Headers */,
 				659718D21CBDA3020075BE36 /* VLStreamMessage.h in Headers */,
 				4903FDB61D008B630012AA72 /* VLOBDDataParser.h in Headers */,
 				65F8CA6F1CBD813B00A58B4D /* VLStream.h in Headers */,
@@ -1145,14 +1123,12 @@
 				49E2F3001B6AA93700CD743C /* NSDictionary+NonNullable.m in Sources */,
 				494566441DECF47C00DE3CE2 /* VLCode.m in Sources */,
 				0B3DDC5F1B15355200D95E61 /* VLTripPager.m in Sources */,
-				0B2277011B165DD1000AF179 /* VLLoginViewController.m in Sources */,
 				777A6B821C91E3080050F6C0 /* VLUserSettings.m in Sources */,
 				65FFFB571CBEAAAD009D4CF1 /* VLCoordinate.m in Sources */,
 				0B2277071B167303000AF179 /* VLSession.m in Sources */,
 				0B89E4971B18BA3E00E69AEA /* VLUser.m in Sources */,
 				7367E3A41B1759A2004223A6 /* VLNotification.m in Sources */,
 				659718D31CBDA3020075BE36 /* VLStreamMessage.m in Sources */,
-				0B37782C1B28B7B8004AC2D6 /* VLLoginButton.m in Sources */,
 				0B1671771B0FC418009BE7A9 /* NSString+Random.m in Sources */,
 				493E46A41DDCD5EC00F72300 /* VLReportCard.m in Sources */,
 				49C717781DE3A51F00074C18 /* VLReportCardPager.m in Sources */,

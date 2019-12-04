@@ -22,7 +22,7 @@ static AuthenticationCompletion authCompletionBlock;
 static void (^cancelBlock)(void);
 static UINavigationController *navigationController;
 
-@interface VLSessionManager () <VLLoginViewControllerDelegate>
+@interface VLSessionManager ()
 
 @property (copy, nonatomic) AuthenticationCompletion authenticationCompletionBlock;
 
@@ -75,23 +75,6 @@ static UINavigationController *navigationController;
     return ([VLSessionManager currentSession] != nil);
 }
 
-+ (void) loginWithClientId:(NSString *)clientId redirectUri:(NSString *)redirectUri completion:(AuthenticationCompletion)onCompletion onCancel:(void (^)(void))onCancel{
-    
-    authCompletionBlock = onCompletion;
-    cancelBlock = onCancel;
-    
-    VLLoginViewController *loginVC = [[VLLoginViewController alloc] initWithClientId:clientId redirectUri:redirectUri];
-    loginVC.delegate = self;
-    loginVC.title = @"Login With Vinli";
-    navigationController = [[UINavigationController alloc] initWithRootViewController:loginVC];
-    loginVC.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:[VLSessionManager class] action:@selector(cancelLogin)];
-    navigationController.navigationBar.barTintColor = [UIColor colorWithRed:36.0f/255.0f green:167.0f/255.0f blue:223.0f/255.0f alpha:1];
-    navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    navigationController.navigationBar.translucent = NO;
-    navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
-    [[[[[UIApplication sharedApplication] delegate] window] rootViewController] presentViewController:navigationController animated:YES completion:nil];
-}
-
 + (void) logOut{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:nil forKey:VLSessionManagerCachedAccessTokenKey];
@@ -105,21 +88,6 @@ static UINavigationController *navigationController;
             cancelBlock();
         }
     }];
-}
-
-#pragma mark - VLLoginViewControllerDelegate
-
-+ (void) vlLoginViewController:(VLLoginViewController *)loginController didLoginWithSession:(VLSession *)session{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:session.accessToken forKey:VLSessionManagerCachedAccessTokenKey];
-    [defaults synchronize];
-    navigationController = nil;
-    authCompletionBlock(session, nil);
-}
-
-+ (void) vlLoginViewController:(VLLoginViewController *)loginController didFailToLoginWithError:(NSError *)error{
-    navigationController = nil;
-    authCompletionBlock(nil, error);
 }
 
 @end

@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "VLService.h"
 #import "VLSessionManager.h"
-#import "VLLoginViewController.h"
 #import "VLUserCache.h"
 #import "VLUrlParser.h"
 

@@ -31,7 +31,6 @@
 #import "VLSnapshotPager.h"
 #import "VLRadiusBoundary.h"
 #import "VLParametricBoundary.h"
-#import "VLLoginButton.h"
 #import "VLObjectRef.h"
 #import "VLPolygonBoundary.h"
 #import "VLTimeSeries.h"

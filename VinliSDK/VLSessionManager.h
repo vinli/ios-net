@@ -33,7 +33,6 @@ typedef void(^AuthenticationCompletion)(VLSession* _Nullable session, NSError* _
 
 + (VLSession * _Nullable) currentSession;
 + (BOOL) loggedIn;
-+ (void) loginWithClientId:(NSString * _Nonnull)clientId redirectUri:(NSString * _Nonnull)redirectUri completion:(AuthenticationCompletion _Nonnull)onCompletion onCancel:(nullable void(^)(void))onCancel;
 + (void) logOut;
 
 @end
