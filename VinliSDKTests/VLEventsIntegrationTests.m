@@ -87,36 +87,6 @@
     [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
 }
 
-
-- (void)testGetNotificationsWithEventId {
-    if(![VLTestHelper eventId]){
-        XCTAssertTrue(NO);
-        return;
-    }
-    
-    XCTestExpectation *eventNotificationExpectation = [self expectationWithDescription:@"All notifications for event"];
-    [_vlService getNotificationsForEventWithId:[VLTestHelper eventId] onSuccess:^(VLNotificationPager *notificationPager, NSHTTPURLResponse *response) {
-        XCTAssertTrue(notificationPager.notifications.count > 0);
-        XCTAssertTrue(notificationPager.since != nil && [notificationPager.since isKindOfClass:[NSString class]] && notificationPager.since.length > 0);
-        XCTAssertTrue(notificationPager.until != nil && [notificationPager.until isKindOfClass:[NSString class]] && notificationPager.until.length > 0);
-        
-        for(VLNotification *notification in notificationPager.notifications){
-            XCTAssertTrue(notification.notificationId != nil && [notification.notificationId isKindOfClass:[NSString class]] && notification.notificationId.length > 0);
-            XCTAssertTrue(notification.eventId != nil && [notification.eventId isKindOfClass:[NSString class]] && notification.eventId.length > 0);
-            XCTAssertTrue(notification.eventType != nil && [notification.eventType isKindOfClass:[NSString class]] && notification.eventType.length > 0);
-            XCTAssertTrue(notification.eventTimestamp != nil && [notification.eventTimestamp isKindOfClass:[NSString class]] && notification.eventTimestamp.length > 0);
-            XCTAssertTrue(notification.subscriptionId != nil && [notification.subscriptionId isKindOfClass:[NSString class]] && notification.subscriptionId.length > 0);
-            XCTAssertTrue(notification.url != nil && [notification.url isKindOfClass:[NSURL class]] && notification.url.absoluteString.length > 0);
-        }
-        [eventNotificationExpectation fulfill];
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-        XCTAssertTrue(NO);
-        [eventNotificationExpectation fulfill];
-    }];
-    
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-}
-
 - (void)testGetNotificationsWithSubscriptionId {
     if(![VLTestHelper subscriptionId]){
         XCTAssertTrue(NO);
@@ -141,27 +111,6 @@
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
         [expectedNotificationsForSubscription fulfill];
-    }];
-    
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-}
-
-- (void)testGetEventWithId {
-    if(![VLTestHelper eventId]){
-        XCTAssertTrue(NO);
-        return;
-    }
-    
-    XCTestExpectation *singleEventExpected = [self expectationWithDescription:@"service call for a single event"];
-    [_vlService getEventWithId:[VLTestHelper eventId] onSuccess:^(VLEvent *event, NSHTTPURLResponse *response) {
-        XCTAssertTrue(event.eventId != nil && [event.eventId isKindOfClass:[NSString class]] && event.eventId.length > 0);
-        XCTAssertTrue(event.timestamp != nil && [event.timestamp isKindOfClass:[NSString class]] && event.timestamp.length > 0);
-        XCTAssertTrue(event.deviceId != nil && [event.deviceId isKindOfClass:[NSString class]] && event.deviceId.length > 0);
-        XCTAssertTrue(event.eventType != nil && [event.eventType isKindOfClass:[NSString class]] && event.eventType.length > 0);
-        [singleEventExpected fulfill];
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-        XCTAssertTrue(NO);
-        [singleEventExpected fulfill];
     }];
     
     [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];

@@ -111,26 +111,6 @@
     [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
 }
 
-- (void)testGetTelemetryMessageWithId {
-    if(![VLTestHelper telemetryMessageId]){
-        XCTAssertTrue(NO);
-        return;
-    }
-    
-    XCTestExpectation *specificMessageExpectation = [self expectationWithDescription:@"service call for a single telemetry message"];
-    [_vlService getTelemetryMessageWithId:[VLTestHelper telemetryMessageId] onSuccess:^(VLTelemetryMessage *message, NSHTTPURLResponse *response) {
-        XCTAssertTrue(message.messageId != nil && [message.messageId isKindOfClass:[NSString class]] && message.messageId.length > 0);
-        XCTAssertTrue(message.timestamp != nil && [message.timestamp isKindOfClass:[NSString class]] && message.timestamp.length > 0);
-        XCTAssertTrue(message.data != nil && [message.data isKindOfClass:[NSDictionary class]]);
-        [specificMessageExpectation fulfill];
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-        XCTAssertTrue(NO);
-        [specificMessageExpectation fulfill];
-    }];
-    
-    [self waitForExpectationsWithTimeout:[VLTestHelper defaultTimeOut] handler:nil];
-}
-
 #pragma mark - Vehicularization Tests
 
 - (void)testGetTelemetryMessageWithVehicleId {

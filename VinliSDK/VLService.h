@@ -345,21 +345,6 @@
 
 #pragma mark - Telemetry Services
 
-// Get a VLTelemetryMessage object containing telemetry information
-// Route: GET /api/v1/messages/{messageId}
-// @params:
-// messageId:        Message id of the message to get
-// @callbacks:
-// onSuccessBlock:  This is a block that will be called if (onSuccessBlock != nil)
-//                  User will be passed parameters through this callback block
-//                  @params:
-//                  telemetryMessage:    A VLTelemetryMessage object containing telemetry message info
-//                  response:   An NSHTTPURLResponse instance, from which user will know the URL, statusCode, etc.
-// onFailureBlock:  Called when connection failed. Usually occurred when the website does not exist, or no internet connection.
-- (void) getTelemetryMessageWithId:(nonnull NSString *) messageId
-                         onSuccess:(void (^)(VLTelemetryMessage *telemetryMessage, NSHTTPURLResponse *response))onSuccessBlock
-                         onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
-
 // Get a VLSnapshotPager object containing a list of snapshots and pagination data
 // Route: GET /api/vi/devices/{deviceId}/snapshots
 // @params:
@@ -750,54 +735,6 @@
 - (void) editSubscription:(nonnull VLSubscription *) subscription
                   onSuccess:(void (^)(VLSubscription *subscription, NSHTTPURLResponse *response))onSuccessBlock
                   onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
-
-// Get a VLEvent object containing a event information
-// Route: GET /api/v1/events/{eventId}
-// @params:
-// eventId:         Event id to retrieve
-// @callbacks:
-// onSuccessBlock:  This is a block that will be called if (onSuccessBlock != nil)
-//                  User will be passed parameters through this callback block
-//                  @params:
-//                  event:    A VLEvent object containing event information
-//                  response:   An NSHTTPURLResponse instance, from which user will know the URL, statusCode, etc.
-// onFailureBlock:  Called when connection failed. Usually occurred when the website does not exist, or no internet connection.
-- (void) getEventWithId:(nonnull NSString *) eventId
-              onSuccess:(void (^)(VLEvent *event, NSHTTPURLResponse *response))onSuccessBlock
-              onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
-
-// Get a VLNotificationPager object containing a list of notifications and pagination data
-// Route: GET /api/v1/events/{eventId}/notifications
-// @params:
-// eventId:        Event id to get the notifications from
-// @callbacks:
-// onSuccessBlock:  This is a block that will be called if (onSuccessBlock != nil)
-//                  User will be passed parameters through this callback block
-//                  @params:
-//                  notificationPager:    A VLNotificationPager object containing the list of notifications and pagination data
-//                  response:   An NSHTTPURLResponse instance, from which user will know the URL, statusCode, etc.
-// onFailureBlock:  Called when connection failed. Usually occurred when the website does not exist, or no internet connection.
-- (void) getNotificationsForEventWithId:(nonnull NSString *) eventId
-                              onSuccess:(void (^)(VLNotificationPager *notificationPager, NSHTTPURLResponse *response))onSuccessBlock
-                              onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
-
-// Get a VLNotificationPager object containing a list of notifications and pagination data
-// Route: GET /api/v1/events/{eventId}/notifications
-// @params:
-// eventId:         Event id to get the notifications from
-// limit:           Maximum number of notifications to return per page. Max = 50
-// offset:          Offset into the notifications
-// @callbacks:
-// onSuccessBlock:  This is a block that will be called if (onSuccessBlock != nil)
-//                  User will be passed parameters through this callback block
-//                  @params:
-//                  notificationPager:    A VLNotificationPager object containing the list of notifications and pagination data
-//                  response:   An NSHTTPURLResponse instance, from which user will know the URL, statusCode, etc.
-// onFailureBlock:  Called when connection failed. Usually occurred when the website does not exist, or no internet connection.
-- (void) getNotificationsForEventWithId:(nonnull NSString *) eventId
-                             timeSeries:(VLTimeSeries *)timeSeries
-                              onSuccess:(void (^)(VLNotificationPager *notificationPager, NSHTTPURLResponse *response))onSuccessBlock
-                              onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock;
 
 // Get a VLNotificationPager object containing a list of notifications and pagination data
 // Route: GET /api/v1/subscriptions/{subscriptionId}/notifications

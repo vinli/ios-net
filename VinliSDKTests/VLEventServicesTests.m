@@ -37,37 +37,6 @@
     [super tearDown];
 }
 
-- (void)testGetSpecificEventWithId{
-    id mockConnection = OCMPartialMock(connection);
-    
-    NSDictionary *expectedJSON = [VLTestHelper getEventJSON:eventId];
-    
-    [[[mockConnection expect] andDo:^(NSInvocation *invocation) {
-        
-        NSDictionary *event = [expectedJSON copy];
-        
-        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:[NSURL  new] statusCode:200 HTTPVersion:nil headerFields:nil];
-        
-        void (^successBlock)(NSDictionary *result, NSHTTPURLResponse *response) = nil;
-        
-        [invocation getArgument:&successBlock atIndex:8];
-        
-        successBlock(event, response);
-        
-    }] startWithHost:[OCMArg any] path:[OCMArg any] queries:[OCMArg any] HTTPMethod:[OCMArg any] parameters:[OCMArg any] token:[OCMArg any] onSuccess:[OCMArg any] onFailure:[OCMArg any]];
-    
-    [connection getEventWithId:eventId onSuccess:^(VLEvent *event, NSHTTPURLResponse *response) {
-        //just make sure that trip got created, and is not empty.
-        XCTAssert(event != nil);
-        XCTAssert(event.eventId != nil);
-        XCTAssert(event.deviceId != nil);
-        XCTAssert(event.timestamp != nil);
-        
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-        XCTAssert(NO);
-    }];
-}
-
 - (void)testGetAllEventsForDeviceWithId{
     id mockConnection = OCMPartialMock(connection);
     
@@ -118,31 +87,6 @@
         XCTAssertEqual(((VLEvent*)[eventPager.events objectAtIndex:0]).eventId, expectedJSON[@"events"][0][@"id"]); // Make sure that the events array more or less translated correctly
         XCTAssertEqual(((VLEvent*)[eventPager.events objectAtIndex:0]).eventType, expectedJSON[@"events"][0][@"eventType"]); // Make sure that the events array more or less translated correctly
         
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-        XCTAssertTrue(NO);
-    }];
-}
-
-- (void)testGetAllNotificationsForEventWithId{
-    id mockConnection = OCMPartialMock(connection);
-    
-    NSDictionary *expectedJSON = [VLTestHelper getAllEventsOrSubscriptionsNotificationsJSON:eventId];
-    
-    [[[mockConnection expect] andDo:^(NSInvocation *invocation) {
-        NSDictionary *event = [expectedJSON copy];
-        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc] initWithURL:[NSURL new] statusCode:200 HTTPVersion:nil headerFields:nil];
-        
-        void (^successBlock)(NSDictionary *result, NSHTTPURLResponse *response) = nil;
-        [invocation getArgument:&successBlock atIndex:8];
-        successBlock(event, response);
-        
-    }] startWithHost:[OCMArg any] path:[OCMArg any] queries:[OCMArg any] HTTPMethod:[OCMArg any] parameters:[OCMArg any] token:[OCMArg any] onSuccess:[OCMArg any] onFailure:[OCMArg any]];
-    
-    [connection getNotificationsForEventWithId:eventId onSuccess:^(VLNotificationPager *notificationPager, NSHTTPURLResponse *response) {
-        
-        XCTAssertEqual(notificationPager.notifications.count, [expectedJSON[@"notifications"] count]); // Make sure that there are two objects in the array.
-        XCTAssertEqual([notificationPager.priorURL  absoluteString], expectedJSON[@"meta"][@"pagination"][@"links"][@"prior"]);
-        XCTAssertEqual([notificationPager.nextURL  absoluteString], expectedJSON[@"meta"][@"pagination"][@"links"][@"next"]); // Make sure that the Meta more or less translated correctly.
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
         XCTAssertTrue(NO);
     }];

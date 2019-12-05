@@ -800,40 +800,6 @@
     }];
 }
 
-- (void) getTelemetryMessageWithId:(NSString *) messageId
-                         onSuccess:(void (^)(VLTelemetryMessage *telemetryMessage, NSHTTPURLResponse *response))onSuccessBlock
-                         onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
-    
-    if(_session == nil){
-        if(onFailureBlock){
-            onFailureBlock([self getNoSessionError], nil, nil);
-        }
-        return;
-    }
-    
-    NSString *path = [NSString stringWithFormat:@"/messages/%@", messageId];
-    
-    [self startWithHost:STRING_HOST_TELEMETRY path:path queries:nil HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        
-        if ([response isSuccessfulResponse]) {
-            if (onSuccessBlock) {
-                VLTelemetryMessage *telemetryMessage = [[VLTelemetryMessage alloc] initWithDictionary:result];
-                onSuccessBlock(telemetryMessage, response);
-            }
-        }
-        else {
-            if (onFailureBlock) {
-                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:2002 userInfo:@{@"NSLocalizedDescriptionKey": @"Received unexpected response from API call"}];
-                onFailureBlock(error, response, result.description);
-            }
-        }
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-        if (onFailureBlock) {
-            onFailureBlock(error, response, bodyString);
-        }
-    }];
-}
-
 - (void) getTelemetryMessagesForDeviceWithId:(NSString *) deviceId
                          onSuccess:(void (^)(VLTelemetryMessagePager *telemetryPager, NSHTTPURLResponse *response))onSuccessBlock
                          onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
@@ -1494,40 +1460,6 @@
     }];
 }
 
-- (void) getEventWithId:(NSString *) eventId
-                      onSuccess:(void (^)(VLEvent *event, NSHTTPURLResponse *response))onSuccessBlock
-                      onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
-    
-    if(_session == nil){
-        if(onFailureBlock){
-            onFailureBlock([self getNoSessionError], nil, nil);
-        }
-        return;
-    }
-    
-    NSString *path = [NSString stringWithFormat:@"/events/%@", eventId];
-    
-    [self startWithHost:STRING_HOST_EVENTS path:path queries:nil HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        
-        if ([response isSuccessfulResponse]) {
-            if (onSuccessBlock) {
-                VLEvent *event = [[VLEvent alloc] initWithDictionary:result];
-                onSuccessBlock(event, response);
-            }
-        }
-        else {
-            if (onFailureBlock) {
-                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:2002 userInfo:@{@"NSLocalizedDescriptionKey": @"Received unexpected response from API call"}];
-                onFailureBlock(error, response, result.description);
-            }
-        }
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-        if (onFailureBlock) {
-            onFailureBlock(error, response, bodyString);
-        }
-    }];
-}
-
 - (void)getEventsForDeviceWithId:(nonnull NSString *) deviceId
                         eventType:(nullable NSString *)eventType
                         onSuccess:(void (^)(VLEventPager *eventPager, NSHTTPURLResponse *response))onSuccessBlock
@@ -1621,47 +1553,6 @@
     
 }
 
-- (void) getNotificationsForEventWithId:(NSString *) eventId
-                                 onSuccess:(void (^)(VLNotificationPager *notificationPager, NSHTTPURLResponse *response))onSuccessBlock
-                                 onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
-    
-    [self getNotificationsForEventWithId:eventId timeSeries:nil onSuccess:onSuccessBlock onFailure:onFailureBlock];
-}
-
-- (void) getNotificationsForEventWithId:(NSString *) eventId
-                             timeSeries:(VLTimeSeries *)timeSeries
-                              onSuccess:(void (^)(VLNotificationPager *notificationPager, NSHTTPURLResponse *response))onSuccessBlock
-                              onFailure:(void (^)(NSError *error, NSHTTPURLResponse *response, NSString *bodyString))onFailureBlock{
- 
-    if(_session == nil){
-        if(onFailureBlock){
-            onFailureBlock([self getNoSessionError], nil, nil);
-        }
-        return;
-    }
-    
-    NSString *path = [NSString stringWithFormat:@"/events/%@/notifications", eventId];
-    
-    [self startWithHost:STRING_HOST_EVENTS path:path queries:[timeSeries toDictionary] HTTPMethod:@"GET" parameters:nil token:_session.accessToken onSuccess:^(NSDictionary *result, NSHTTPURLResponse *response) {
-        
-        if ([response isSuccessfulResponse]) {
-            if (onSuccessBlock) {
-                VLNotificationPager *notificationPager = [[VLNotificationPager alloc] initWithDictionary:result service:self];
-                onSuccessBlock(notificationPager, response);
-            }
-        }
-        else {
-            if (onFailureBlock) {
-                NSError *error = [NSError errorWithDomain:ERROR_VINLI_DOMAIN code:2002 userInfo:@{@"NSLocalizedDescriptionKey": @"Received unexpected response from API call"}];
-                onFailureBlock(error, response, result.description);
-            }
-        }
-    } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
-        if (onFailureBlock) {
-            onFailureBlock(error, response, bodyString);
-        }
-    }];
-}
 
 - (void) getNotificationsForSubscriptionWithId:(NSString *) subscriptionId
                                         onSuccess:(void (^)(VLNotificationPager *notificationPager, NSHTTPURLResponse *response))onSuccessBlock
