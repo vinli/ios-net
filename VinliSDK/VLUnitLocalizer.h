@@ -9,24 +9,32 @@
 #import <Foundation/Foundation.h>
 
 #define KILOMETERS_TO_MILES 0.621371f
-#define METERS_TO_MILES 0.000621371f
-#define LITERS_TO_GALLONS 0.264172f
-#define MPG_TO_KML 0.425144f
+#define MILES_TO_KILOMETERS (1.0f / KILOMETERS_TO_MILES)
+#define LITERS_TO_GALLONS_UK 0.219969f
+#define LITERS_TO_GALLONS_US 0.264172f
+#define GALLON_US_TO_GALLON_UK 0.832674f
 
-#define MPH_TO_KPH 1.60934f
-#define KPH_TO_MPH 0.621371f
+#define METERS_TO_MILES (0.001f * KILOMETERS_TO_MILES)
+#define MPH_TO_KPH MILES_TO_KILOMETERS
+#define KPH_TO_MPH KILOMETERS_TO_MILES
 
+extern NSString * const kVLLocalizationManagerUnitImperialUK;
+extern NSString * const kVLLocalizationManagerUnitImperialUS;
+extern NSString * const kVLLocalizationManagerUnitMetric;
 
 typedef NS_ENUM(NSInteger, VLLocalizedUnitType) {
-    VLLocalizedUnitTypeImperial,
-    VLLocalizedUnitTypeMetric
+    VLLocalizedUnitTypeImperialUK,
+    VLLocalizedUnitTypeMetric,
+    VLLocalizedUnitTypeImperialUS
 };
 
 @interface VLUnitLocalizer : NSObject
 
 + (VLLocalizedUnitType)localizedUnitType;
 
-+ (BOOL)isImperial;
++ (BOOL)isImperialUK;
++ (BOOL)isImperialUS;
++ (BOOL)isMetric;
 
 + (NSString *)getUnitTypeStr:(VLLocalizedUnitType)type;
 
@@ -34,7 +42,6 @@ typedef NS_ENUM(NSInteger, VLLocalizedUnitType) {
 
 // Returns kilometeres or miles
 + (NSNumber *)localizedDistance:(NSNumber *)distance;
-
 + (NSString *)localizedDistanceUnit;
 + (NSString *)localizedDistanceUnitPlural;
 + (NSString *)localizedDistanceUnitPluralShort;
@@ -55,9 +62,6 @@ typedef NS_ENUM(NSInteger, VLLocalizedUnitType) {
 + (NSNumber *)localizedFuelEconomy:(NSNumber *)fuel;
 + (NSString *)localizedFuelEconomyUnit;
 + (NSString *)localizedFuelEconomyUnitShort;
-
-
-+ (NSString *)localizedUnitForLocale;
 
 + (NSString *)localizedNumber:(NSNumber *)number;
 + (NSString *)localizedDecimalNumber:(NSNumber *)number maxDecimals:(NSInteger)decimals;

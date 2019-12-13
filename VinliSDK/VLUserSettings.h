@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, VLUserSettingsUnit) {
-    VLUserSettingsUnitMetric,
-    VLUserSettingsUnitImperial
+	VLUserSettingsUnitMetric,
+	VLUserSettingsUnitImperialUK,
+	VLUserSettingsUnitImperialUS,
 };
 
 @interface VLUserSettings : NSObject
