@@ -7,54 +7,45 @@
 //
 
 #import "VLVehicle.h"
+#import "NSDictionary+NonNullable.h"
 
 @implementation VLVehicle
 
-- (id) initWithDictionary:(NSDictionary *)dictionary{
-    self = [super init];
-    if(self){
-        if(dictionary){
-            
-            if([dictionary objectForKey:@"vehicle"] == (id)[NSNull null]){
-                return nil;
-            }
-            
-            if(dictionary[@"vehicle"] != nil){
-                dictionary = dictionary[@"vehicle"];
-            }
-            
-            _vehicleId = dictionary[@"id"];
-            
-            BOOL yearNull = [dictionary[@"year"] isKindOfClass:[NSNull class]];
-            _year = yearNull ? nil : dictionary[@"year"];
-            
-            BOOL makeNull = [dictionary[@"make"] isKindOfClass:[NSNull class]];
-            _make = makeNull ? nil : dictionary[@"make"];
-            
-            BOOL modelNull = [dictionary[@"model"] isKindOfClass:[NSNull class]];
-            _model = modelNull ? nil : dictionary[@"model"];
-            
-            BOOL trimNull = [dictionary[@"trim"] isKindOfClass:[NSNull class]];
-            _trim = trimNull ? nil : dictionary[@"trim"];
-            
-            _vin = dictionary[@"vin"];
-        }
-    }
-    return self;
+- (id)initWithDictionary:(NSDictionary *)dictionary{
+	if (self = [super init]) {
+		if (dictionary) {
+			NSDictionary *vehicle = [dictionary vl_getDictionaryAttributeForKey:@"vehicle" defaultValue:nil];
+			if (vehicle == nil) {
+				return nil;
+			}
+
+			_rawDictionary = vehicle;
+			_vehicleId = [vehicle vl_getStringAttributeForKey:@"id" defaultValue:nil];
+			_year = [vehicle vl_getStringAttributeForKey:@"year" defaultValue:nil];
+			_make = [vehicle vl_getStringAttributeForKey:@"make" defaultValue:nil];
+			_model = [vehicle vl_getStringAttributeForKey:@"model" defaultValue:nil];
+			_trim = [vehicle vl_getStringAttributeForKey:@"trim" defaultValue:nil];
+			_vin = [vehicle vl_getStringAttributeForKey:@"vin" defaultValue:nil];
+			_registrationNumber = [vehicle vl_getStringAttributeForKey:@"registrationNumber" defaultValue:nil];
+		}
+	}
+	return self;
 }
 
-- (NSString *) description{
-    return [NSString stringWithFormat: @"Vehicle ID :%@, Year:%@, Make:%@, Model:%@", _vehicleId, _year, _make, _model];
+- (NSString *)description {
+	return [NSString stringWithFormat: @"Vehicle ID: %@, Year: %@, Make: %@, Model: %@, VIN: %@, RegNum: %@", _vehicleId, _year, _make, _model, _vin, _registrationNumber];
 }
 
-- (NSDictionary *)toDictionary
-{
-    return @{@"id" : _vehicleId.length > 0 ? _vehicleId : @"",
-             @"year" : _year.length > 0 ? _year : @"",
-             @"make" : _make.length > 0 ? _make : @"",
-             @"model" : _model.length > 0 ? _model : @"",
-             @"trim" : _trim.length > 0 ? _trim : @"",
-             @"vin" : _vin.length > 0 ? _vin : @""};
+- (NSDictionary *)toDictionary {
+	return @{
+		@"id" : _vehicleId.length > 0 ? _vehicleId : @"",
+		@"year" : _year.length > 0 ? _year : @"",
+		@"make" : _make.length > 0 ? _make : @"",
+		@"model" : _model.length > 0 ? _model : @"",
+		@"trim" : _trim.length > 0 ? _trim : @"",
+		@"vin" : _vin.length > 0 ? _vin : @"",
+		@"registrationNumber" : _registrationNumber.length > 0 ? _registrationNumber : @"",
+	};
 }
 
 @end

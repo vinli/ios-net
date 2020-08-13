@@ -7,83 +7,41 @@
 //
 
 #import "VLDateFormatter.h"
+
 static NSDateFormatter* isoStringToDateFormatter;
 static NSDateFormatter* isoDateToStringFormatter;
 
 @implementation VLDateFormatter
 
-
 + (NSDate *)initializeDateFromString:(NSString *)dateString {
-    
-    
-    
-    [self initializeStringToDateFormatter];
-    NSDate *date = [isoStringToDateFormatter dateFromString:dateString];
-    return date;
-    
-    
-
-    
+	[self initializeStringToDateFormatter];
+	NSDate *date = [isoStringToDateFormatter dateFromString:dateString];
+	return date;
 }
 
 + (NSString *)stringFromDate:(NSDate *)date {
-
-    [self initializeDateToStringFormatter];
-    
-    
-    NSString *strDate = [isoDateToStringFormatter stringFromDate:date];
-    
-    return strDate;
-    
-    
-    
-    
-    
-    
+	[self initializeDateToStringFormatter];
+	NSString *strDate = [isoDateToStringFormatter stringFromDate:date];
+	return strDate;
 }
 
-
-+ (void)initializeStringToDateFormatter
-{
-    if (isoStringToDateFormatter) {
-        return;
-    }
-    
-    
-    NSInteger seconds = [[NSTimeZone systemTimeZone] secondsFromGMT];
-    isoStringToDateFormatter = [[NSDateFormatter alloc] init];
-    [isoStringToDateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ'"];
-    [isoStringToDateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:seconds]];
-
-
-    
-    
++ (void)initializeStringToDateFormatter {
+	if (isoStringToDateFormatter) {
+		return;
+	}
+	NSInteger seconds = [[NSTimeZone systemTimeZone] secondsFromGMT];
+	isoStringToDateFormatter = [[NSDateFormatter alloc] init];
+	[isoStringToDateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ'"];
+	[isoStringToDateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:seconds]];
 }
-
 
 + (void)initializeDateToStringFormatter {
-    
-    if (isoDateToStringFormatter) {
-        return;
-    }
-    
-     isoDateToStringFormatter = [[NSDateFormatter alloc] init];
-    [isoDateToStringFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
-    [isoDateToStringFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT: 0]]; // Prevent adjustment to user's local time zone.
-   
-    
-
-    
+	if (isoDateToStringFormatter) {
+		return;
+	}
+	isoDateToStringFormatter = [[NSDateFormatter alloc] init];
+	[isoDateToStringFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+	[isoDateToStringFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT: 0]]; // Prevent adjustment to user's local time zone.
 }
-
-
-
-
-
-
-
-
-
-
 
 @end

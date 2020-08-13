@@ -17,8 +17,11 @@
 @property (readonly) NSString *trim;
 @property (readonly) NSString *vin;
 @property (readonly) NSString *name;
+@property (readonly) NSString *registrationNumber;
 
-- (id) initWithDictionary: (NSDictionary *) dictionary;
+@property (readonly) NSDictionary *rawDictionary;
+
+- (id)initWithDictionary:(NSDictionary *)dictionary;
 - (NSDictionary *)toDictionary;
 
 @end
