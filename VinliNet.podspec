@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
 
 
   s.name         = "VinliNet"
-  s.version      = "1.9.0"
+  s.version      = "1.9.1"
   s.summary      = "Framework for accessing Vinli services."
 
   s.description  = <<-DESC
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
 
-  s.source       = { :git => "https://github.com/vinli/ios-net.git", :tag => "1.9.0" }
+  s.source       = { :git => "https://github.com/vinli/ios-net.git", :tag => "1.9.1" }
 
   s.dependency 'jetfire', '~>0.1.5'
   s.dependency 'CocoaAsyncSocket', '~>7.4.3'

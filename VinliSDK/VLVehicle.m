@@ -16,7 +16,7 @@
 		if (dictionary) {
 			NSDictionary *vehicle = [dictionary vl_getDictionaryAttributeForKey:@"vehicle" defaultValue:nil];
 			if (vehicle == nil) {
-				return nil;
+				vehicle = dictionary;
 			}
 
 			_rawDictionary = vehicle;
