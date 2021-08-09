@@ -31,6 +31,7 @@ static NSDateFormatter* isoDateToStringFormatter;
 	}
 	NSInteger seconds = [[NSTimeZone systemTimeZone] secondsFromGMT];
 	isoStringToDateFormatter = [[NSDateFormatter alloc] init];
+	[isoDateToStringFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"]];
 	[isoStringToDateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ'"];
 	[isoStringToDateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:seconds]];
 }
@@ -40,6 +41,7 @@ static NSDateFormatter* isoDateToStringFormatter;
 		return;
 	}
 	isoDateToStringFormatter = [[NSDateFormatter alloc] init];
+	[isoDateToStringFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"]];
 	[isoDateToStringFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
 	[isoDateToStringFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT: 0]]; // Prevent adjustment to user's local time zone.
 }

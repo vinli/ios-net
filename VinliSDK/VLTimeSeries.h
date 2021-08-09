@@ -28,7 +28,6 @@ typedef NS_ENUM(NSInteger, VLTimerSeriesSortDirection){
 + (instancetype)timeSeriesFromDate:(NSDate *)date;
 + (instancetype)timeSeriesFromDate:(NSDate *)date until:(NSDate *)until;
 
-
 - (void)setOrder:(NSInteger)order;
 - (NSDictionary *)toDictionary;
 

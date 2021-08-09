@@ -9,65 +9,47 @@
 #import "VLTimeSeries.h"
 #import "VLDateFormatter.h"
 
-
 @implementation VLTimeSeries
 
 + (instancetype)timeSeries {
     return [VLTimeSeries new];
 }
 
-
-+ (instancetype)timeSeriesFromPreviousNumberOfWeeks:(NSInteger)numWeeks
-{
++ (instancetype)timeSeriesFromPreviousNumberOfWeeks:(NSInteger)numWeeks {
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *comps = [NSDateComponents new];
     comps.weekOfYear = - numWeeks;
     NSDate *previousWeekOfCurrentDate = [calendar dateByAddingComponents:comps toDate:[NSDate date] options:0];
-    
-    //NSDateComponents *components = [calendar components:NSMonthCalendarUnit|NSDayCalendarUnit fromDate:date];
-    
+
     VLTimeSeries* timeSeries = [VLTimeSeries new];
     timeSeries.since = previousWeekOfCurrentDate;
     
     return timeSeries;
-
 }
 
-+ (instancetype)timeSeriesLast7Days
-{
++ (instancetype)timeSeriesLast7Days {
     return [VLTimeSeries timeSeriesFromPreviousNumberOfWeeks:1];
 }
 
-
-+ (instancetype)timeSeriesFromDate:(NSDate *)date until:(NSDate *)until
-{
++ (instancetype)timeSeriesFromDate:(NSDate *)date until:(NSDate *)until {
     VLTimeSeries *timeSeries = [VLTimeSeries new];
     
     timeSeries.since = date;
     timeSeries.until = until;
     return timeSeries;
-    
 }
 
-
-+ (instancetype)timeSeriesFromDate:(NSDate *)date
-{
-//    VLTimeSeries* timeSeries = [VLTimeSeries new];
-//  //  timeSeries.until = date; //should this be since as well
-    
++ (instancetype)timeSeriesFromDate:(NSDate *)date {
     NSDate *now = [NSDate date];
     VLTimeSeries *timeSeries = [VLTimeSeries timeSeriesFromDate:date until:now];
     return timeSeries;
 }
 
-
-- (void)setOrder:(NSInteger)order
-{
+- (void)setOrder:(NSInteger)order {
     self.sortOrder = order;
 }
 
-- (NSDictionary *)toDictionary
-{
+- (NSDictionary *)toDictionary {
     NSMutableDictionary* retVal = [NSMutableDictionary new];
     if (self.since) {
         NSString* sinceDateStr = [VLDateFormatter stringFromDate:self.since];
@@ -87,13 +69,11 @@
         [retVal setObject:self.limit forKey:@"limit"];
     }
     
-    if (self.sortOrder == VLTimerSeriesSortDirectionAscending)
-    {
+    if (self.sortOrder == VLTimerSeriesSortDirectionAscending) {
         [retVal setObject:@"asc" forKey:@"sortDir"]; //make a bit more clean later
     }
     
-    if (self.sortOrder == VLTimerSeriesSortDirectionDescending)
-    {
+    if (self.sortOrder == VLTimerSeriesSortDirectionDescending) {
         [retVal setObject:@"desc" forKey:@"sortDir"]; //make a bit more clean later
     }
     
