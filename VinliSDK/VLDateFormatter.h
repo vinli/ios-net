@@ -12,5 +12,6 @@
 
 + (NSDate *)initializeDateFromString:(NSString *)dateString;
 + (NSString *)stringFromDate:(NSDate *)date;
++ (NSString *)cleanUpDate:(NSString *)dateStr;
 
 @end

@@ -42,6 +42,9 @@ static NSDateFormatter* isoDateToStringFormatter;
 + (NSString *)stringFromDate:(NSDate *)date {
 	[self initializeDateToStringFormatter];
 	NSString *strDate = [isoDateToStringFormatter stringFromDate:date];
+
+	strDate = [self cleanUpDate:strDate];
+
 	return strDate;
 }
 
@@ -64,6 +67,20 @@ static NSDateFormatter* isoDateToStringFormatter;
 	[isoDateToStringFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"]];
 	[isoDateToStringFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
 	[isoDateToStringFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]]; // Prevent adjustment to user's local time zone.
+}
+
+// Because it doesn't seem supplying the locale with "en_US_POSIX" fixes the issue that's recommended by apple:
+// https://developer.apple.com/library/archive/qa/qa1480/_index.html
+// https://stackoverflow.com/questions/64431790/nsdateformatter-is-adding-am-pm-when-date-format-doesnt-specify-it
++ (NSString *)cleanUpDate:(NSString *)dateStr {
+	NSArray *replacements = @[@"am", @"AM", @"a.m.", @"A.M.", @"pm", @"PM", @"p.m.", @"P.M."];
+	NSString *str = dateStr;
+
+	for (NSString *replace in replacements) {
+		str = [str stringByReplacingOccurrencesOfString:replace withString:@""];
+	}
+	str = [str stringByReplacingOccurrencesOfString:@" " withString:@""];
+	return str;
 }
 
 @end
