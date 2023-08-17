@@ -44,19 +44,22 @@
 }
 
 - (NSArray *)parseJSON:(NSDictionary *)dictionary {
-    NSArray *ret =@[];
-    if (dictionary && dictionary[@"events"]) {
-        NSArray *json = dictionary[@"events"];
-        NSMutableArray *events = [[NSMutableArray alloc] init];
-        
-        for (NSDictionary *event in json) {
-            [events addObject:[[VLEvent alloc] initWithDictionary:event]];
-        }
-        
-        ret = [NSArray arrayWithArray:events];
-    }
-    
-    return ret;
+	NSArray *ret =@[];
+	if (dictionary && dictionary[@"events"]) {
+		NSArray *json = dictionary[@"events"];
+
+		if ([json isKindOfClass:[NSArray class]]) {
+			NSMutableArray *events = [[NSMutableArray alloc] init];
+
+			for (NSDictionary *event in json) {
+				[events addObject:[[VLEvent alloc] initWithDictionary:event]];
+			}
+
+			ret = [NSArray arrayWithArray:events];
+		}
+	}
+
+	return ret;
 }
 
 @end
