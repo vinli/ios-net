@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2009-2014 Erik Doernenburg and contributors
+ *  Copyright (c) 2009-2021 Erik Doernenburg and contributors
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may
  *  not use these files except in compliance with the License. You may obtain
@@ -21,20 +21,30 @@
 
 - (id)initWithValue:(id)aValue
 {
-	self = [super init];
-	value = [aValue retain];
-	return self;
+    if((self = [super init]))
+    {
+        value = [aValue retain];
+    }
+
+    return self;
 }
 
 - (void)dealloc
 {
-	[value release];
-	[super dealloc];
+    [value release];
+    [super dealloc];
 }
 
-- (id)value
+- (void)handleArgument:(id)arg
 {
-	return value;
+    void *pointerValue = [arg pointerValue];
+    if(pointerValue != NULL)
+    {
+        if([value isKindOfClass:[NSValue class]])
+            [(NSValue *)value getValue:pointerValue];
+        else
+            *(id *)pointerValue = value;
+    }
 }
 
 @end

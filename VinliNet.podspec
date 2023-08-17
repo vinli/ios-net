@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
 
   s.author       = { "Vinli Devs" => "dev@vin.li" }
 
-  s.platform     = :ios, "8.0"
+  s.platform     = :ios, "12.0"
 
   s.source       = { :git => "https://github.com/vinli/ios-net.git", :tag => "1.9.5" }
 
