@@ -88,10 +88,6 @@
 		4903FDB71D008B630012AA72 /* VLOBDDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4903FDAD1D008B630012AA72 /* VLOBDDataParser.m */; };
 		4903FDB81D008B630012AA72 /* VLSIMSignal.h in Headers */ = {isa = PBXBuildFile; fileRef = 4903FDAE1D008B630012AA72 /* VLSIMSignal.h */; };
 		4903FDB91D008B630012AA72 /* VLSIMSignal.m in Sources */ = {isa = PBXBuildFile; fileRef = 4903FDAF1D008B630012AA72 /* VLSIMSignal.m */; };
-		4903FDBA1D008B630012AA72 /* VLWebSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 4903FDB01D008B630012AA72 /* VLWebSocket.h */; };
-		4903FDBB1D008B630012AA72 /* VLWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4903FDB11D008B630012AA72 /* VLWebSocket.m */; };
-		4903FDBC1D008B630012AA72 /* VLUDPSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 4903FDB21D008B630012AA72 /* VLUDPSocket.h */; };
-		4903FDBD1D008B630012AA72 /* VLUDPSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4903FDB31D008B630012AA72 /* VLUDPSocket.m */; };
 		49231C1C1D0F45C4004B6A71 /* compressed_JS_lib.js in Resources */ = {isa = PBXBuildFile; fileRef = 49231C1B1D0F45C4004B6A71 /* compressed_JS_lib.js */; };
 		493E46A31DDCD5EC00F72300 /* VLReportCard.h in Headers */ = {isa = PBXBuildFile; fileRef = 493E46A11DDCD5EC00F72300 /* VLReportCard.h */; };
 		493E46A41DDCD5EC00F72300 /* VLReportCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 493E46A21DDCD5EC00F72300 /* VLReportCard.m */; };
@@ -130,8 +126,6 @@
 		6589E65E1D09CF220017D75B /* VLBearing.m in Sources */ = {isa = PBXBuildFile; fileRef = 6589E6581D09CF220017D75B /* VLBearing.m */; };
 		659718D21CBDA3020075BE36 /* VLStreamMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 659718D01CBDA3020075BE36 /* VLStreamMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		659718D31CBDA3020075BE36 /* VLStreamMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 659718D11CBDA3020075BE36 /* VLStreamMessage.m */; };
-		65F8CA6F1CBD813B00A58B4D /* VLStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 65F8CA6D1CBD813B00A58B4D /* VLStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		65F8CA701CBD813B00A58B4D /* VLStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F8CA6E1CBD813B00A58B4D /* VLStream.m */; };
 		65FFFB381CBE94E8009D4CF1 /* VLAccelData.h in Headers */ = {isa = PBXBuildFile; fileRef = 65FFFB361CBE94E8009D4CF1 /* VLAccelData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		65FFFB391CBE94E8009D4CF1 /* VLAccelData.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FFFB371CBE94E8009D4CF1 /* VLAccelData.m */; };
 		65FFFB451CBEA17A009D4CF1 /* VLParametricFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 65FFFB431CBEA17A009D4CF1 /* VLParametricFilter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -278,10 +272,6 @@
 		4903FDAD1D008B630012AA72 /* VLOBDDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLOBDDataParser.m; sourceTree = "<group>"; };
 		4903FDAE1D008B630012AA72 /* VLSIMSignal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLSIMSignal.h; sourceTree = "<group>"; };
 		4903FDAF1D008B630012AA72 /* VLSIMSignal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLSIMSignal.m; sourceTree = "<group>"; };
-		4903FDB01D008B630012AA72 /* VLWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLWebSocket.h; sourceTree = "<group>"; };
-		4903FDB11D008B630012AA72 /* VLWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLWebSocket.m; sourceTree = "<group>"; };
-		4903FDB21D008B630012AA72 /* VLUDPSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLUDPSocket.h; sourceTree = "<group>"; };
-		4903FDB31D008B630012AA72 /* VLUDPSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLUDPSocket.m; sourceTree = "<group>"; };
 		49231C1B1D0F45C4004B6A71 /* compressed_JS_lib.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = compressed_JS_lib.js; sourceTree = "<group>"; };
 		493E46A11DDCD5EC00F72300 /* VLReportCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLReportCard.h; sourceTree = "<group>"; };
 		493E46A21DDCD5EC00F72300 /* VLReportCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLReportCard.m; sourceTree = "<group>"; };
@@ -319,8 +309,6 @@
 		6589E6581D09CF220017D75B /* VLBearing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLBearing.m; sourceTree = "<group>"; };
 		659718D01CBDA3020075BE36 /* VLStreamMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLStreamMessage.h; sourceTree = "<group>"; };
 		659718D11CBDA3020075BE36 /* VLStreamMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLStreamMessage.m; sourceTree = "<group>"; };
-		65F8CA6D1CBD813B00A58B4D /* VLStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLStream.h; sourceTree = "<group>"; };
-		65F8CA6E1CBD813B00A58B4D /* VLStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLStream.m; sourceTree = "<group>"; };
 		65FFFB361CBE94E8009D4CF1 /* VLAccelData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLAccelData.h; sourceTree = "<group>"; };
 		65FFFB371CBE94E8009D4CF1 /* VLAccelData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLAccelData.m; sourceTree = "<group>"; };
 		65FFFB431CBEA17A009D4CF1 /* VLParametricFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLParametricFilter.h; sourceTree = "<group>"; };
@@ -654,10 +642,6 @@
 				4903FDAD1D008B630012AA72 /* VLOBDDataParser.m */,
 				4903FDAE1D008B630012AA72 /* VLSIMSignal.h */,
 				4903FDAF1D008B630012AA72 /* VLSIMSignal.m */,
-				4903FDB01D008B630012AA72 /* VLWebSocket.h */,
-				4903FDB11D008B630012AA72 /* VLWebSocket.m */,
-				4903FDB21D008B630012AA72 /* VLUDPSocket.h */,
-				4903FDB31D008B630012AA72 /* VLUDPSocket.m */,
 			);
 			name = Socket;
 			sourceTree = "<group>";
@@ -725,8 +709,6 @@
 			children = (
 				659718D01CBDA3020075BE36 /* VLStreamMessage.h */,
 				659718D11CBDA3020075BE36 /* VLStreamMessage.m */,
-				65F8CA6D1CBD813B00A58B4D /* VLStream.h */,
-				65F8CA6E1CBD813B00A58B4D /* VLStream.m */,
 				65FFFB361CBE94E8009D4CF1 /* VLAccelData.h */,
 				65FFFB371CBE94E8009D4CF1 /* VLAccelData.m */,
 				65FFFB431CBEA17A009D4CF1 /* VLParametricFilter.h */,
@@ -809,8 +791,6 @@
 				E92943781B18FAF600AAC7D3 /* VLSnapshot.h in Headers */,
 				E929437C1B18FE5F00AAC7D3 /* VLSnapshotPager.h in Headers */,
 				0B3778231B25E0A7004AC2D6 /* VLRadiusBoundary.h in Headers */,
-				4903FDBC1D008B630012AA72 /* VLUDPSocket.h in Headers */,
-				4903FDBA1D008B630012AA72 /* VLWebSocket.h in Headers */,
 				0B37781F1B25DEF9004AC2D6 /* VLParametricBoundary.h in Headers */,
 				E929436A1B165D0800AAC7D3 /* VLSubscription.h in Headers */,
 				4953E4D91DEE1A22006FB7BE /* VLDtc.h in Headers */,
@@ -828,7 +808,6 @@
 				0B89E48A1B179FE300E69AEA /* VLNotification.h in Headers */,
 				659718D21CBDA3020075BE36 /* VLStreamMessage.h in Headers */,
 				4903FDB61D008B630012AA72 /* VLOBDDataParser.h in Headers */,
-				65F8CA6F1CBD813B00A58B4D /* VLStream.h in Headers */,
 				49AB6E971B82432C00DCF808 /* VLSessionManager.h in Headers */,
 				65FFFB451CBEA17A009D4CF1 /* VLParametricFilter.h in Headers */,
 				65FFFB561CBEAAAD009D4CF1 /* VLCoordinate.h in Headers */,
@@ -1029,7 +1008,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4903FDBD1D008B630012AA72 /* VLUDPSocket.m in Sources */,
 				4953E4DA1DEE1A22006FB7BE /* VLDtc.m in Sources */,
 				777A6B8E1C91FC5E0050F6C0 /* VLDistancePager.m in Sources */,
 				777A6B8A1C91F7B00050F6C0 /* VLDistance.m in Sources */,
@@ -1070,8 +1048,6 @@
 				77BE999C1C690E77001E8F64 /* VLTimeSeries.m in Sources */,
 				0B1671481B0FC39D009BE7A9 /* VLService.m in Sources */,
 				0B3778241B25E0A7004AC2D6 /* VLRadiusBoundary.m in Sources */,
-				65F8CA701CBD813B00A58B4D /* VLStream.m in Sources */,
-				4903FDBB1D008B630012AA72 /* VLWebSocket.m in Sources */,
 				0B16713C1B0FC39D009BE7A9 /* VLDevice.m in Sources */,
 				E92943611B160F3700AAC7D3 /* VLLocation.m in Sources */,
 				E92943651B160F4B00AAC7D3 /* VLLocationPager.m in Sources */,

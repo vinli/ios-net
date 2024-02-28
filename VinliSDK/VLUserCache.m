@@ -28,7 +28,8 @@ static NSString * const VLUserCacheUsers = @"VLUserCacheUsers";
     NSDictionary* cacheData = [[NSUserDefaults standardUserDefaults] objectForKey:VLUserCacheUsers];
     NSMutableDictionary* retVal = [NSMutableDictionary new];
     [cacheData enumerateKeysAndObjectsUsingBlock:^(id key, NSData* data, BOOL *stop) {
-        VLUserCache* userCache = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+		 NSError *error;
+        VLUserCache* userCache = [NSKeyedUnarchiver unarchivedObjectOfClass:[VLUserCache class] fromData:data error:&error];
         if (userCache) {
             [retVal setObject:userCache forKey:key];
         }
