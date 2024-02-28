@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -115,6 +115,7 @@
 		49E2F2FF1B6AA93700CD743C /* NSDictionary+NonNullable.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E2F2FD1B6AA93700CD743C /* NSDictionary+NonNullable.h */; };
 		49E2F3001B6AA93700CD743C /* NSDictionary+NonNullable.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E2F2FE1B6AA93700CD743C /* NSDictionary+NonNullable.m */; };
 		49FBA70E1DF8A95400E7D232 /* VLVehiclePagerIntegrationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49FBA70D1DF8A95400E7D232 /* VLVehiclePagerIntegrationTests.m */; };
+		5C6A911A2912D3AF10AB79C8 /* libPods-VinliSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 81EC99735529377ABF6E2265 /* libPods-VinliSDK.a */; };
 		65312B5A1D945643006FB968 /* VLBatteryStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 65312B581D945643006FB968 /* VLBatteryStatus.h */; };
 		65312B5B1D945643006FB968 /* VLBatteryStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 65312B591D945643006FB968 /* VLBatteryStatus.m */; };
 		65312B5D1D945E7C006FB968 /* VLDiagnosticTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65312B5C1D945E7C006FB968 /* VLDiagnosticTests.m */; };
@@ -173,7 +174,6 @@
 		77BE999C1C690E77001E8F64 /* VLTimeSeries.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BE999A1C690E77001E8F64 /* VLTimeSeries.m */; };
 		77BE999D1C73A4A5001E8F64 /* VLOffsetPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B3DDC281B14C31B00D95E61 /* VLOffsetPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		77BE999E1C73A4A5001E8F64 /* VLVehicle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B1671371B0FC39D009BE7A9 /* VLVehicle.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87BBD495991458228FB0056E /* libPods-VinliSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D683978C1A20A329FC6D3DD /* libPods-VinliSDKTests.a */; };
 		BF3B33351D9B14F8001DED7D /* VLPagerUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3B33341D9B14F8001DED7D /* VLPagerUnitTests.m */; };
 		BF3B33391D9C1F33001DED7D /* VLChronoPagerUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3B33381D9C1F33001DED7D /* VLChronoPagerUnitTests.m */; };
 		BF3B333B1D9C4999001DED7D /* VLTripPagerUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3B333A1D9C4999001DED7D /* VLTripPagerUnitTests.m */; };
@@ -205,7 +205,7 @@
 		E929437D1B18FE5F00AAC7D3 /* VLSnapshotPager.m in Sources */ = {isa = PBXBuildFile; fileRef = E929437B1B18FE5F00AAC7D3 /* VLSnapshotPager.m */; };
 		E990CE6E1B26405A00CDEF15 /* VLPolygonBoundary.h in Headers */ = {isa = PBXBuildFile; fileRef = E990CE6C1B26405A00CDEF15 /* VLPolygonBoundary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E990CE6F1B26405A00CDEF15 /* VLPolygonBoundary.m in Sources */ = {isa = PBXBuildFile; fileRef = E990CE6D1B26405A00CDEF15 /* VLPolygonBoundary.m */; };
-		F1E35BBE71DAD4E9BA31D480 /* libPods-VinliSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D5A0A4072E34119F53C434E /* libPods-VinliSDK.a */; };
+		F614571F3A6988E0EE27FFF6 /* libPods-VinliSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D757C0199167822C82801A63 /* libPods-VinliSDKTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -272,7 +272,7 @@
 		0B89E4951B18BA3E00E69AEA /* VLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLUser.m; sourceTree = "<group>"; };
 		0BD2E50D1B0FF3DD00A5D2BC /* VLRuleServicesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLRuleServicesTests.m; sourceTree = "<group>"; };
 		296B3501243F7964001399A4 /* VLDateFormatterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VLDateFormatterTests.m; sourceTree = "<group>"; };
-		29B48722235F6F12008EFCAF /* VinliNet.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = VinliNet.podspec; sourceTree = "<group>"; };
+		29B48722235F6F12008EFCAF /* VinliNet.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = VinliNet.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		29FB51E223A41B13006238EB /* VLLocalizationUnitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VLLocalizationUnitTests.m; sourceTree = "<group>"; };
 		4903FDAC1D008B630012AA72 /* VLOBDDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLOBDDataParser.h; sourceTree = "<group>"; };
 		4903FDAD1D008B630012AA72 /* VLOBDDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLOBDDataParser.m; sourceTree = "<group>"; };
@@ -305,7 +305,6 @@
 		49E2F2FD1B6AA93700CD743C /* NSDictionary+NonNullable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NonNullable.h"; sourceTree = "<group>"; };
 		49E2F2FE1B6AA93700CD743C /* NSDictionary+NonNullable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NonNullable.m"; sourceTree = "<group>"; };
 		49FBA70D1DF8A95400E7D232 /* VLVehiclePagerIntegrationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLVehiclePagerIntegrationTests.m; sourceTree = "<group>"; };
-		4D5A0A4072E34119F53C434E /* libPods-VinliSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VinliSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65312B581D945643006FB968 /* VLBatteryStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLBatteryStatus.h; sourceTree = "<group>"; };
 		65312B591D945643006FB968 /* VLBatteryStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLBatteryStatus.m; sourceTree = "<group>"; };
 		65312B5C1D945E7C006FB968 /* VLDiagnosticTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLDiagnosticTests.m; sourceTree = "<group>"; };
@@ -366,9 +365,8 @@
 		77B3C1B61C9B300C00BE836A /* VLDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLDateFormatter.m; sourceTree = "<group>"; };
 		77BE99991C690E77001E8F64 /* VLTimeSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLTimeSeries.h; sourceTree = "<group>"; };
 		77BE999A1C690E77001E8F64 /* VLTimeSeries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTimeSeries.m; sourceTree = "<group>"; };
-		88FB64A77C1DB13EBEE89422 /* Pods-VinliSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinliSDK.release.xcconfig"; path = "Target Support Files/Pods-VinliSDK/Pods-VinliSDK.release.xcconfig"; sourceTree = "<group>"; };
-		8D683978C1A20A329FC6D3DD /* libPods-VinliSDKTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VinliSDKTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BA2383A91B2E9FD229E14C08 /* Pods-VinliSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinliSDKTests.debug.xcconfig"; path = "Target Support Files/Pods-VinliSDKTests/Pods-VinliSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
+		81EC99735529377ABF6E2265 /* libPods-VinliSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VinliSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2D33D52D42A4CDD24CE410F /* Pods-VinliSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinliSDKTests.release.xcconfig"; path = "Target Support Files/Pods-VinliSDKTests/Pods-VinliSDKTests.release.xcconfig"; sourceTree = "<group>"; };
 		BF3B33341D9B14F8001DED7D /* VLPagerUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLPagerUnitTests.m; sourceTree = "<group>"; };
 		BF3B33381D9C1F33001DED7D /* VLChronoPagerUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLChronoPagerUnitTests.m; sourceTree = "<group>"; };
 		BF3B333A1D9C4999001DED7D /* VLTripPagerUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTripPagerUnitTests.m; sourceTree = "<group>"; };
@@ -379,8 +377,9 @@
 		BF79B18D1E4A5BB9007E9AE6 /* VLEventType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLEventType.m; sourceTree = "<group>"; };
 		BFB0E7B91DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSHTTPURLResponse+VLAdditions.h"; sourceTree = "<group>"; };
 		BFB0E7BA1DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSHTTPURLResponse+VLAdditions.m"; sourceTree = "<group>"; };
-		C27FF1F585D595BF2FBE0FC5 /* Pods-VinliSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinliSDK.debug.xcconfig"; path = "Target Support Files/Pods-VinliSDK/Pods-VinliSDK.debug.xcconfig"; sourceTree = "<group>"; };
-		C3210E33075C7288C585493C /* Pods-VinliSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinliSDKTests.release.xcconfig"; path = "Target Support Files/Pods-VinliSDKTests/Pods-VinliSDKTests.release.xcconfig"; sourceTree = "<group>"; };
+		D1731156EAE76A80CB244EF8 /* Pods-VinliSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinliSDK.debug.xcconfig"; path = "Target Support Files/Pods-VinliSDK/Pods-VinliSDK.debug.xcconfig"; sourceTree = "<group>"; };
+		D757C0199167822C82801A63 /* libPods-VinliSDKTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VinliSDKTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBFA34F3BA351FEB4CD198DD /* Pods-VinliSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinliSDKTests.debug.xcconfig"; path = "Target Support Files/Pods-VinliSDKTests/Pods-VinliSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E92943581B15387C00AAC7D3 /* VLTelemetryServicesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTelemetryServicesTests.m; sourceTree = "<group>"; };
 		E929435A1B15425400AAC7D3 /* VLTelemetryMessagePager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLTelemetryMessagePager.h; sourceTree = "<group>"; };
 		E929435B1B15425400AAC7D3 /* VLTelemetryMessagePager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLTelemetryMessagePager.m; sourceTree = "<group>"; };
@@ -402,6 +401,7 @@
 		E929437B1B18FE5F00AAC7D3 /* VLSnapshotPager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLSnapshotPager.m; sourceTree = "<group>"; };
 		E990CE6C1B26405A00CDEF15 /* VLPolygonBoundary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLPolygonBoundary.h; sourceTree = "<group>"; };
 		E990CE6D1B26405A00CDEF15 /* VLPolygonBoundary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLPolygonBoundary.m; sourceTree = "<group>"; };
+		ED25014AEB24413A6BD3637C /* Pods-VinliSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinliSDK.release.xcconfig"; path = "Target Support Files/Pods-VinliSDK/Pods-VinliSDK.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -409,7 +409,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1E35BBE71DAD4E9BA31D480 /* libPods-VinliSDK.a in Frameworks */,
+				5C6A911A2912D3AF10AB79C8 /* libPods-VinliSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,7 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B1671101B0FC2B9009BE7A9 /* VinliSDK.framework in Frameworks */,
-				87BBD495991458228FB0056E /* libPods-VinliSDKTests.a in Frameworks */,
+				F614571F3A6988E0EE27FFF6 /* libPods-VinliSDKTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,7 +433,7 @@
 				0B1671131B0FC2B9009BE7A9 /* VinliSDKTests */,
 				0B1671051B0FC2B8009BE7A9 /* Products */,
 				C91311A5172C5E591F1A53AD /* Pods */,
-				B97B6E4251B38EA0E930C842 /* Frameworks */,
+				86BC98D5D0B2B92D7B2D38CA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -737,11 +737,11 @@
 			name = Streaming;
 			sourceTree = "<group>";
 		};
-		B97B6E4251B38EA0E930C842 /* Frameworks */ = {
+		86BC98D5D0B2B92D7B2D38CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4D5A0A4072E34119F53C434E /* libPods-VinliSDK.a */,
-				8D683978C1A20A329FC6D3DD /* libPods-VinliSDKTests.a */,
+				81EC99735529377ABF6E2265 /* libPods-VinliSDK.a */,
+				D757C0199167822C82801A63 /* libPods-VinliSDKTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -758,10 +758,10 @@
 		C91311A5172C5E591F1A53AD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C27FF1F585D595BF2FBE0FC5 /* Pods-VinliSDK.debug.xcconfig */,
-				88FB64A77C1DB13EBEE89422 /* Pods-VinliSDK.release.xcconfig */,
-				BA2383A91B2E9FD229E14C08 /* Pods-VinliSDKTests.debug.xcconfig */,
-				C3210E33075C7288C585493C /* Pods-VinliSDKTests.release.xcconfig */,
+				D1731156EAE76A80CB244EF8 /* Pods-VinliSDK.debug.xcconfig */,
+				ED25014AEB24413A6BD3637C /* Pods-VinliSDK.release.xcconfig */,
+				DBFA34F3BA351FEB4CD198DD /* Pods-VinliSDKTests.debug.xcconfig */,
+				A2D33D52D42A4CDD24CE410F /* Pods-VinliSDKTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -855,7 +855,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0B16711A1B0FC2B9009BE7A9 /* Build configuration list for PBXNativeTarget "VinliSDK" */;
 			buildPhases = (
-				624F6B2E5B29D2F3F166D1AA /* [CP] Check Pods Manifest.lock */,
+				82ECE1C27BF17859FE34D59B /* [CP] Check Pods Manifest.lock */,
 				0B1670FF1B0FC2B8009BE7A9 /* Sources */,
 				0B1671001B0FC2B8009BE7A9 /* Frameworks */,
 				0B1671011B0FC2B8009BE7A9 /* Headers */,
@@ -874,7 +874,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0B16711D1B0FC2B9009BE7A9 /* Build configuration list for PBXNativeTarget "VinliSDKTests" */;
 			buildPhases = (
-				0DE678DD686296A6CEEBCB8C /* [CP] Check Pods Manifest.lock */,
+				D0A8119B5879DC5DAE5979A0 /* [CP] Check Pods Manifest.lock */,
 				0B16710B1B0FC2B9009BE7A9 /* Sources */,
 				0B16710C1B0FC2B9009BE7A9 /* Frameworks */,
 				0B16710D1B0FC2B9009BE7A9 /* Resources */,
@@ -913,7 +913,7 @@
 				};
 			};
 			buildConfigurationList = 0B1670FE1B0FC2B8009BE7A9 /* Build configuration list for PBXProject "VinliSDK" */;
-			compatibilityVersion = "Xcode 8.0";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -965,28 +965,6 @@
 			shellPath = /bin/sh;
 			shellScript = "######################\n# Options\n######################\n\nREVEAL_ARCHIVE_IN_FINDER=false\n\nFRAMEWORK_NAME=\"${PROJECT_NAME}\"\n\nSIMULATOR_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${FRAMEWORK_NAME}.framework\"\n\nDEVICE_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${FRAMEWORK_NAME}.framework\"\n\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal\"\n\nFRAMEWORK=\"${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework\"\n\n\n######################\n# Build Frameworks\n######################\n\nxcodebuild -workspace ${PROJECT_NAME}.xcworkspace -scheme ${PROJECT_NAME} -sdk iphonesimulator -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphonesimulator 2>&1\n\nxcodebuild -workspace ${PROJECT_NAME}.xcworkspace -scheme ${PROJECT_NAME} -sdk iphoneos -configuration ${CONFIGURATION} clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphoneos 2>&1\n\n######################\n# Create directory for universal\n######################\n\nrm -rf \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${FRAMEWORK}\"\n\n\n######################\n# Copy files Framework\n######################\n\ncp -r \"${DEVICE_LIBRARY_PATH}/.\" \"${FRAMEWORK}\"\n\n\n######################\n# Make an universal binary\n######################\n\nlipo \"${SIMULATOR_LIBRARY_PATH}/${FRAMEWORK_NAME}\" \"${DEVICE_LIBRARY_PATH}/${FRAMEWORK_NAME}\" -create -output \"${FRAMEWORK}/${FRAMEWORK_NAME}\" | echo\n                                                                      \n                                                                      ######################\n                                                                      # On Release, copy the result to release directory\n                                                                      ######################\n                                                                      OUTPUT_DIR=\"${PROJECT_DIR}/Output/${FRAMEWORK_NAME}-${CONFIGURATION}-iphoneuniversal/\"\n                                                                      \n                                                                      rm -rf \"$OUTPUT_DIR\"\n                                                                      mkdir -p \"$OUTPUT_DIR\"\n";
 		};
-		0DE678DD686296A6CEEBCB8C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VinliSDKTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		49DD2CCC1B84CE2600991353 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1000,7 +978,7 @@
 			shellPath = /bin/sh;
 			shellScript = "#appledoc Xcode script\n# Start constants\ncompany=\"Vinli\";\ncompanyID=\"li.Vin\";\ncompanyURL=\"http://www.vin.li\";\ntarget=\"iphoneos\";\noutputPath=\"${PROJECT_DIR}/docs\";\n# End constants\n/usr/bin/appledoc \\\n--project-name \"${PROJECT_NAME}\" \\\n--project-company \"${company}\" \\\n--company-id \"${companyID}\" \\\n--docset-atom-filename \"${company}.atom\" \\\n--docset-feed-url \"${companyURL}/${company}/%DOCSETATOMFILENAME\" \\\n--docset-package-url \"${companyURL}/${company}/%DOCSETPACKAGEFILENAME\" \\\n--docset-fallback-url \"${companyURL}/${company}\" \\\n--output \"${outputPath}\" \\\n--publish-docset \\\n--docset-platform-family \"${target}\" \\\n--logformat xcode \\\n--keep-intermediate-files \\\n--no-repeat-first-par \\\n--no-warn-invalid-crossref \\\n--exit-threshold 2 \\\n\"${PROJECT_DIR}\"";
 		};
-		624F6B2E5B29D2F3F166D1AA /* [CP] Check Pods Manifest.lock */ = {
+		82ECE1C27BF17859FE34D59B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1016,6 +994,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-VinliSDK-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D0A8119B5879DC5DAE5979A0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VinliSDKTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1245,7 +1245,7 @@
 		};
 		0B16711B1B0FC2B9009BE7A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C27FF1F585D595BF2FBE0FC5 /* Pods-VinliSDK.debug.xcconfig */;
+			baseConfigurationReference = D1731156EAE76A80CB244EF8 /* Pods-VinliSDK.debug.xcconfig */;
 			buildSettings = {
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1258,7 +1258,11 @@
 				INFOPLIST_FILE = VinliSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "li.vin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1270,7 +1274,7 @@
 		};
 		0B16711C1B0FC2B9009BE7A9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 88FB64A77C1DB13EBEE89422 /* Pods-VinliSDK.release.xcconfig */;
+			baseConfigurationReference = ED25014AEB24413A6BD3637C /* Pods-VinliSDK.release.xcconfig */;
 			buildSettings = {
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1283,7 +1287,11 @@
 				INFOPLIST_FILE = VinliSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "li.vin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1295,7 +1303,7 @@
 		};
 		0B16711E1B0FC2B9009BE7A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BA2383A91B2E9FD229E14C08 /* Pods-VinliSDKTests.debug.xcconfig */;
+			baseConfigurationReference = DBFA34F3BA351FEB4CD198DD /* Pods-VinliSDKTests.debug.xcconfig */;
 			buildSettings = {
 				ACCESS_TOKEN = "\"DEFAULT_ACCESS_TOKEN\"";
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
@@ -1324,7 +1332,11 @@
 					"VEHICULARIZATION_VEHICLE_ID=${VEHICULARIZATION_VEHICLE_ID}",
 				);
 				INFOPLIST_FILE = VinliSDKTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MESSAGE_ID = "\"DEFAULT_MESSAGE_ID\"";
 				NOTIFICATION_ID = "\"DEFAULT_NOTIFICATION_ID\"";
 				ODO_ID = "\"DEFAULT_ODO_ID\"";
@@ -1343,7 +1355,7 @@
 		};
 		0B16711F1B0FC2B9009BE7A9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C3210E33075C7288C585493C /* Pods-VinliSDKTests.release.xcconfig */;
+			baseConfigurationReference = A2D33D52D42A4CDD24CE410F /* Pods-VinliSDKTests.release.xcconfig */;
 			buildSettings = {
 				ACCESS_TOKEN = "\"DEFAULT_ACCESS_TOKEN\"";
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
@@ -1354,7 +1366,11 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = VinliSDKTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MESSAGE_ID = "\"DEFAULT_MESSAGE_ID\"";
 				NOTIFICATION_ID = "\"DEFAULT_NOTIFICATION_ID\"";
 				ODO_ID = "\"DEFAULT_ODO_ID\"";

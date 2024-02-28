@@ -20,6 +20,8 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/vinli/ios-net.git", :tag => "1.9.5" }
 
+  s.ios.deployment_target = '13.0'
+
   s.dependency 'jetfire', '~>0.1.5'
   s.dependency 'CocoaAsyncSocket', '~>7.4.3'
 
@@ -27,6 +29,10 @@ Pod::Spec.new do |s|
   s.resources    = 'VinliSDK/*.{js}'
   #s.resources    = 'VinliSDK/*.{storyboard}'
 
-  s.requires_arc = true
+  # s.requires_arc = true
+
+#  s.subspec 'jetfire' do |cs|
+#    cs.ios.deployment_target = '13.0'
+#  end
 
 end

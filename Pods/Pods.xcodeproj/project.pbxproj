@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -202,7 +202,7 @@
 		95C2272FD78F390A234D837204733C1E /* OCMFunctions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMFunctions.m; path = Source/OCMock/OCMFunctions.m; sourceTree = "<group>"; };
 		98D909935FCAE86C124C862C401CFDC0 /* OCMInvocationExpectation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OCMInvocationExpectation.m; path = Source/OCMock/OCMInvocationExpectation.m; sourceTree = "<group>"; };
 		9A02B557C453981E31331DD5E116744F /* NSValue+OCMAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSValue+OCMAdditions.h"; path = "Source/OCMock/NSValue+OCMAdditions.h"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E287D0E6C1516B7BBD3588B021E019C /* NSInvocation+OCMAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSInvocation+OCMAdditions.h"; path = "Source/OCMock/NSInvocation+OCMAdditions.h"; sourceTree = "<group>"; };
 		A2B5124864AEB010A6E90548EF37B668 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncSocket.m; path = Source/GCD/GCDAsyncSocket.m; sourceTree = "<group>"; };
 		A2D35415BCFAFAAAFAFD522F9EDEEC36 /* OCMArgAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCMArgAction.h; path = Source/OCMock/OCMArgAction.h; sourceTree = "<group>"; };
@@ -387,6 +387,7 @@
 				DB30F5A213F51475D9D2D396029CCCE0 /* OCProtocolMockObject.m */,
 				27E3BFC5655BBC56CA508B9AB2D012B0 /* Support Files */,
 			);
+			name = OCMock;
 			path = OCMock;
 			sourceTree = "<group>";
 		};
@@ -430,6 +431,7 @@
 				E1487D597D334A7B7714F17EC2FB512D /* GCDAsyncUdpSocket.m */,
 				87A4E65D1C2C460ACCF54B4400EC8B16 /* Support Files */,
 			);
+			name = CocoaAsyncSocket;
 			path = CocoaAsyncSocket;
 			sourceTree = "<group>";
 		};
@@ -472,6 +474,7 @@
 				1D74A2C27628F37679B7FB4E21D02FD4 /* JFRWebSocket.m */,
 				E8BDF2A062144BF463F82D1C4F679AD3 /* Support Files */,
 			);
+			name = jetfire;
 			path = jetfire;
 			sourceTree = "<group>";
 		};
@@ -683,7 +686,7 @@
 				LastUpgradeCheck = 1300;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 8.0";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -820,33 +823,55 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		10AECE80620EFA4881CD8DE7E1094490 /* Debug */ = {
+		0E479439D7CABB60493AC2E485F7708B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8F849FA32462F01825968849C394429C /* Pods-VinliSDKTests.debug.xcconfig */;
+			baseConfigurationReference = 86B227013EFA5DB0EE2C1EA56A66500D /* jetfire.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/jetfire/jetfire-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				MACH_O_TYPE = staticlib;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = jetfire;
+				PRODUCT_NAME = jetfire;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		122DA89F424B82BE157AE608F213CEAD /* Debug */ = {
+		1456E372F95E1291E3721574CF2E8791 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2B433EEDB2EADEFCBE2551F9392B935 /* CocoaAsyncSocket.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/CocoaAsyncSocket/CocoaAsyncSocket-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = CocoaAsyncSocket;
+				PRODUCT_NAME = CocoaAsyncSocket;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2A90160A7D7E6EDE0D81F66C2FC356DC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A629A5484EF338EF628E191FE9A1535F /* OCMock.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -933,12 +958,34 @@
 			};
 			name = Debug;
 		};
-		61B4855F2200DBFCAB32B78D402DD49C /* Release */ = {
+		2FF439F8F423A29D19B160B14346E0AD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1A5F9E46F69077D199D917E68C2D22A3 /* Pods-VinliSDK.release.xcconfig */;
+			baseConfigurationReference = 8E67BB5C205BE561F4EDCC960BE723E0 /* OCMock.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/OCMock/OCMock-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = OCMock;
+				PRODUCT_NAME = OCMock;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3292A5D2C80F6DE33194C168C57BEC99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F849FA32462F01825968849C394429C /* Pods-VinliSDKTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -951,6 +998,93 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		34A672FF93CE1B3752C695707B91D615 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A5F9E46F69077D199D917E68C2D22A3 /* Pods-VinliSDK.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3AC9D3E6DD3D32E22AFA67EC493490A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3AD6D6DB29D475CF9256876BC6E106BE /* CocoaAsyncSocket.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/CocoaAsyncSocket/CocoaAsyncSocket-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = CocoaAsyncSocket;
+				PRODUCT_NAME = CocoaAsyncSocket;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4EABABAABE2B80BA5BCCC2F7EC1C040B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CDA2A0CA09BC4B6CFFEEBCD8966A383F /* Pods-VinliSDK.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		552D58642E03B0CF1CE3BF7E18B37770 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A509E978B3CDEF720C33DE02945ECD40 /* jetfire.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/jetfire/jetfire-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = jetfire;
+				PRODUCT_NAME = jetfire;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1013,42 +1147,18 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
 		};
-		67179C52367A302FF204C5CF6DAF23AA /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A509E978B3CDEF720C33DE02945ECD40 /* jetfire.release.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/jetfire/jetfire-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = jetfire;
-				PRODUCT_NAME = jetfire;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		69487013973EA0C252A1DD280139F61D /* Release */ = {
+		D289EC5BEC571B07C3B80CA8115E2055 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 47F2ED50AC66BAF97D284B0D895C43F3 /* Pods-VinliSDKTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1065,122 +1175,6 @@
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
-		};
-		744531120764CB7E1FE93D7508997E35 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D2B433EEDB2EADEFCBE2551F9392B935 /* CocoaAsyncSocket.release.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/CocoaAsyncSocket/CocoaAsyncSocket-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = CocoaAsyncSocket;
-				PRODUCT_NAME = CocoaAsyncSocket;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		C3ADD52900FE7CCC72B0F03739D98BBF /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8E67BB5C205BE561F4EDCC960BE723E0 /* OCMock.release.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/OCMock/OCMock-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = OCMock;
-				PRODUCT_NAME = OCMock;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		D0EAC8121FF7461D5EF27CCBE83C31B4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 86B227013EFA5DB0EE2C1EA56A66500D /* jetfire.debug.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/jetfire/jetfire-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = jetfire;
-				PRODUCT_NAME = jetfire;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		E35C5A58ACED34536384B02586916495 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CDA2A0CA09BC4B6CFFEEBCD8966A383F /* Pods-VinliSDK.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		F870F84366C4C9F3A11B9CEA0E0619C4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3AD6D6DB29D475CF9256876BC6E106BE /* CocoaAsyncSocket.debug.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/CocoaAsyncSocket/CocoaAsyncSocket-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = CocoaAsyncSocket;
-				PRODUCT_NAME = CocoaAsyncSocket;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1188,8 +1182,8 @@
 		0F2BAEF2E3ADDA5146DDCC8F2393B86F /* Build configuration list for PBXNativeTarget "CocoaAsyncSocket" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F870F84366C4C9F3A11B9CEA0E0619C4 /* Debug */,
-				744531120764CB7E1FE93D7508997E35 /* Release */,
+				3AC9D3E6DD3D32E22AFA67EC493490A0 /* Debug */,
+				1456E372F95E1291E3721574CF2E8791 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1197,8 +1191,8 @@
 		1C9B60F9CFFD5D90B44811F6ADA5EFE8 /* Build configuration list for PBXNativeTarget "OCMock" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				122DA89F424B82BE157AE608F213CEAD /* Debug */,
-				C3ADD52900FE7CCC72B0F03739D98BBF /* Release */,
+				2A90160A7D7E6EDE0D81F66C2FC356DC /* Debug */,
+				2FF439F8F423A29D19B160B14346E0AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1206,8 +1200,8 @@
 		284494315EF98ABD768687FF54573683 /* Build configuration list for PBXNativeTarget "jetfire" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D0EAC8121FF7461D5EF27CCBE83C31B4 /* Debug */,
-				67179C52367A302FF204C5CF6DAF23AA /* Release */,
+				0E479439D7CABB60493AC2E485F7708B /* Debug */,
+				552D58642E03B0CF1CE3BF7E18B37770 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1224,8 +1218,8 @@
 		6C0DD23280D6A33D3403AA0B48EBC3D1 /* Build configuration list for PBXNativeTarget "Pods-VinliSDKTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				10AECE80620EFA4881CD8DE7E1094490 /* Debug */,
-				69487013973EA0C252A1DD280139F61D /* Release */,
+				3292A5D2C80F6DE33194C168C57BEC99 /* Debug */,
+				D289EC5BEC571B07C3B80CA8115E2055 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1233,8 +1227,8 @@
 		AAAE1780EB593326069DE2B79270BAE4 /* Build configuration list for PBXNativeTarget "Pods-VinliSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E35C5A58ACED34536384B02586916495 /* Debug */,
-				61B4855F2200DBFCAB32B78D402DD49C /* Release */,
+				4EABABAABE2B80BA5BCCC2F7EC1C040B /* Debug */,
+				34A672FF93CE1B3752C695707B91D615 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
