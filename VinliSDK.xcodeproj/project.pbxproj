@@ -82,6 +82,7 @@
 		0B89E4961B18BA3E00E69AEA /* VLUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B89E4941B18BA3E00E69AEA /* VLUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B89E4971B18BA3E00E69AEA /* VLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B89E4951B18BA3E00E69AEA /* VLUser.m */; };
 		0BD2E50E1B0FF3DD00A5D2BC /* VLRuleServicesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD2E50D1B0FF3DD00A5D2BC /* VLRuleServicesTests.m */; };
+		29660A212B8FF9A60036ACD1 /* VLVehicle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B1671371B0FC39D009BE7A9 /* VLVehicle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		296B3502243F7964001399A4 /* VLDateFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 296B3501243F7964001399A4 /* VLDateFormatterTests.m */; };
 		29FB51E323A41B13006238EB /* VLLocalizationUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 29FB51E223A41B13006238EB /* VLLocalizationUnitTests.m */; };
 		4903FDB61D008B630012AA72 /* VLOBDDataParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 4903FDAC1D008B630012AA72 /* VLOBDDataParser.h */; };
@@ -754,6 +755,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29660A212B8FF9A60036ACD1 /* VLVehicle.h in Headers */,
 				493E46A31DDCD5EC00F72300 /* VLReportCard.h in Headers */,
 				0B3DDC5A1B1534AB00D95E61 /* VLTrip.h in Headers */,
 				6589E65D1D09CF220017D75B /* VLBearing.h in Headers */,
