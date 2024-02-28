@@ -167,6 +167,7 @@
 		77BE999B1C690E77001E8F64 /* VLTimeSeries.h in Headers */ = {isa = PBXBuildFile; fileRef = 77BE99991C690E77001E8F64 /* VLTimeSeries.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		77BE999C1C690E77001E8F64 /* VLTimeSeries.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BE999A1C690E77001E8F64 /* VLTimeSeries.m */; };
 		77BE999D1C73A4A5001E8F64 /* VLOffsetPager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B3DDC281B14C31B00D95E61 /* VLOffsetPager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		77BE999E1C73A4A5001E8F64 /* VLVehicle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B1671371B0FC39D009BE7A9 /* VLVehicle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF3B33351D9B14F8001DED7D /* VLPagerUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3B33341D9B14F8001DED7D /* VLPagerUnitTests.m */; };
 		BF3B33391D9C1F33001DED7D /* VLChronoPagerUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3B33381D9C1F33001DED7D /* VLChronoPagerUnitTests.m */; };
 		BF3B333B1D9C4999001DED7D /* VLTripPagerUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3B333A1D9C4999001DED7D /* VLTripPagerUnitTests.m */; };
@@ -765,6 +766,7 @@
 				6568FB2D1D0F0313006C3656 /* VLSupportedPids.h in Headers */,
 				49E2F2FF1B6AA93700CD743C /* NSDictionary+NonNullable.h in Headers */,
 				BFB0E7BB1DB51B9B00934FB7 /* NSHTTPURLResponse+VLAdditions.h in Headers */,
+				77BE999E1C73A4A5001E8F64 /* VLVehicle.h in Headers */,
 				777A6B971C9740470050F6C0 /* VLOdometerPager.h in Headers */,
 				0B2277061B167303000AF179 /* VLSession.h in Headers */,
 				0B3DDC381B14D1DD00D95E61 /* VLVehiclePager.h in Headers */,
@@ -799,6 +801,7 @@
 				4903FDB81D008B630012AA72 /* VLSIMSignal.h in Headers */,
 				E92943741B17D6B100AAC7D3 /* VLDevicePager.h in Headers */,
 				0B89E4961B18BA3E00E69AEA /* VLUser.h in Headers */,
+				77BE999E1C73A4A5001E8F64 /* VLVehicle.h in Headers */,
 				6589E6591D09CF220017D75B /* VLBearingCalculator.h in Headers */,
 				777A6B811C91E3080050F6C0 /* VLUserSettings.h in Headers */,
 				65312B5A1D945643006FB968 /* VLBatteryStatus.h in Headers */,
