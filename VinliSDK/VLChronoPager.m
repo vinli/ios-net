@@ -66,7 +66,7 @@
 }
 
 - (NSArray *)parseJSON:(NSDictionary *)json {
-    assert(@"This is an abstract method. Must be implemented by subclass");
+    NSAssert(false, @"This is an abstract method. Must be implemented by subclass");
     return nil;
 }
 

@@ -105,7 +105,7 @@
         }
         
         if(queryString.length > 0) {
-            queryString = [queryString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+			  queryString = [queryString stringByRemovingPercentEncoding];
             strUri = [strUri stringByAppendingString:queryString];
         }
         
@@ -591,7 +591,7 @@
         
         if (onSuccessBlock) {
             VLRulePager *pager = [[VLRulePager alloc] initWithDictionary:result service:self];
-            onSuccessBlock(pager, result);
+            onSuccessBlock(pager, response);
         }
         
     } onFailure:^(NSError *error, NSHTTPURLResponse *response, NSString *bodyString) {
@@ -1486,7 +1486,7 @@
     
     NSString *path = [NSString stringWithFormat:@"/devices/%@/events", deviceId];
     
-    NSMutableDictionary *queryDict = [self getDictionaryWithLimit:limit until:until since:since sortDirection:sortDirection];
+    NSMutableDictionary *queryDict = [[self getDictionaryWithLimit:limit until:until since:since sortDirection:sortDirection] mutableCopy];
     
     if (eventType) {
         if (!queryDict) {
@@ -1524,7 +1524,7 @@
     
     NSString *path = [NSString stringWithFormat:@"/vehicles/%@/events", vehicleId];
     
-    NSMutableDictionary *queryDict = [timeSeries toDictionary];
+    NSMutableDictionary *queryDict = [[timeSeries toDictionary] mutableCopy];
     
     if (eventType) {
         if (!queryDict) {
